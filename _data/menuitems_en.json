@@ -1,0 +1,8 @@
+﻿{
+	"item": {
+		"name": "Home",
+		"url": "/",
+		"showInMenu": true,
+		"showInFooter": false
+	}
+}
