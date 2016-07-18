@@ -1,36 +1,34 @@
-﻿{
-	"items": [
-		{
-			"title": "Home",
-			"url": "/de",
-			"showInMenu": true,
-			"showInFooter": false
-		},
-		{
-			"title": "Tour",
-			"url": "/de/tour",
-			"showInMenu": true,
-			"showInFooter": true,
-			"items": [
-				{
-					"title": "Graphischer Kalender",
-					"url": "/de/tour/grafischer-kalender",
-					"showInMenu": true,
-					"showInFooter": true
-				},
-				{
-					"title": "Aktivitäten aufzeichnen",
-					"url": "/de/tour/aktivitaeten-aufzeichnen",
-					"showInMenu": true,
-					"showInFooter": true
-				}
-			]
-		},
-		{
-			"title": "Preis",
-			"url": "/de/preis",
-			"showInMenu": true,
-			"showInFooter": false
-		}
-	]
-}
+﻿[
+	{
+		"title": "Home",
+		"url": "/de",
+		"showInMenu": true,
+		"showInFooter": false
+	},
+	{
+		"title": "Tour",
+		"url": "/de/tour",
+		"showInMenu": true,
+		"showInFooter": true,
+		"items": [
+			{
+				"title": "Graphischer Kalender",
+				"url": "/de/tour/grafischer-kalender",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Aktivitäten aufzeichnen",
+				"url": "/de/tour/aktivitaeten-aufzeichnen",
+				"showInMenu": true,
+				"showInFooter": true
+			}
+		]
+	},
+	{
+		"title": "Preis",
+		"url": "/de/preis",
+		"showInMenu": true,
+		"showInFooter": false
+	}
+]
