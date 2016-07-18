@@ -41,55 +41,6 @@
             margin-right: 20px;
         }
     }
-
-    @include media-query($on-palm) {
-        position: absolute;
-        top: 9px;
-        right: $spacing-unit / 2;
-        background-color: $background-color;
-        border: 1px solid $grey-color-light;
-        border-radius: 5px;
-        text-align: right;
-
-        .menu-icon {
-            display: block;
-            float: right;
-            width: 36px;
-            height: 26px;
-            line-height: 0;
-            padding-top: 10px;
-            text-align: center;
-
-            > svg {
-                width: 18px;
-                height: 15px;
-
-                path {
-                    fill: $grey-color-dark;
-                }
-            }
-        }
-
-        .trigger {
-            clear: both;
-            display: none;
-        }
-
-        &:hover .trigger {
-            display: block;
-            padding-bottom: 5px;
-        }
-
-        .page-link {
-            display: block;
-            padding: 5px 10px;
-
-            &:not(:last-child) {
-                margin-right: 0;
-            }
-            margin-left: 20px;
-        }
-    }
 }
 
 
@@ -182,10 +133,6 @@
     font-size: 42px;
     letter-spacing: -1px;
     line-height: 1;
-
-    @include media-query($on-laptop) {
-        font-size: 36px;
-    }
 }
 
 .post-content {
@@ -193,25 +140,13 @@
 
     h2 {
         font-size: 32px;
-
-        @include media-query($on-laptop) {
-            font-size: 28px;
-        }
     }
 
     h3 {
         font-size: 26px;
-
-        @include media-query($on-laptop) {
-            font-size: 22px;
-        }
     }
 
     h4 {
         font-size: 20px;
-
-        @include media-query($on-laptop) {
-            font-size: 18px;
-        }
     }
 }
