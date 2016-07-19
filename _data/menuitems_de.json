@@ -1,25 +1,61 @@
 ﻿[
 	{
 		"title": "Home",
-		"url": "/de",
+		"url": "/de/",
 		"showInMenu": true,
 		"showInFooter": false
 	},
 	{
 		"title": "Tour",
-		"url": "/de/tour",
+		"url": "/de/tour/",
 		"showInMenu": true,
 		"showInFooter": true,
 		"items": [
 			{
 				"title": "Graphischer Kalender",
-				"url": "/de/tour/grafischer-kalender",
+				"url": "/de/tour/grafischer-kalender/",
 				"showInMenu": true,
 				"showInFooter": true
 			},
 			{
 				"title": "Aktivitäten aufzeichnen",
-				"url": "/de/tour/aktivitaeten-aufzeichnen",
+				"url": "/de/tour/aktivitaeten-aufzeichnen/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Teamwork",
+				"url": "/de/tour/teamwork/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Reporting",
+				"url": "/de/tour/reporting/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Erweiterbarkeit",
+				"url": "/de/tour/erweiterbarkeit/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Online und Offline",
+				"url": "/de/tour/online-und-offline/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Software as a Service",
+				"url": "/de/tour/software-as-a-service/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Sicherheit",
+				"url": "/de/tour/sicherheit/",
 				"showInMenu": true,
 				"showInFooter": true
 			}
@@ -27,7 +63,39 @@
 	},
 	{
 		"title": "Preis",
-		"url": "/de/preis",
+		"url": "/de/preis/preis/",
+		"showInMenu": true,
+		"showInFooter": true
+	},
+	{
+		"title": "Hilfe & Support",
+		"url": "/de/hilfe-support/",
+		"showInMenu": true,
+		"showInFooter": true,
+		"items": [
+			{
+				"title": "Kontakt",
+				"url": "/de/hilfe-support/kontakt/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Dokumentation",
+				"url": "/de/hilfe-support/dokumentation/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Suche",
+				"url": "/de/hilfe-support/suche/",
+				"showInMenu": true,
+				"showInFooter": true
+			}
+		]
+	},
+	{
+		"title": "Blog",
+		"url": "/de/blog/",
 		"showInMenu": true,
 		"showInFooter": false
 	}

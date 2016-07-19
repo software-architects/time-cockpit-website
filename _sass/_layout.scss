@@ -1,0 +1,31 @@
+@import "_variables.scss";
+
+div.header {
+	background-color: #000;
+	color: #fff;
+
+	.navbar {
+		border: none;
+		background-color: transparent;
+		margin-bottom: 0;
+	}
+
+	a.site-title {
+		svg {
+			height: 30px;
+			width: auto;
+			margin: 5px 0;
+		}
+	}
+}
+
+p.highlighted {
+	text-align: center;
+    background-color: $main-color;
+    color: #fff;
+    padding: 20px 40px;
+}
+
+span.highlightedText {
+    font-size: 30px;
+}

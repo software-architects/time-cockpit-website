@@ -1,20 +1,49 @@
-<nav class="navbar navbar-default">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
-		</div>
-
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			{{ site.data.menuitems_de.length }}test
-			<ul class="nav navbar-nav">
-				
-				{% for my_page in site.data.menuitems_de %}
-				{% if my_page.title %}
-				<li><a href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a></li>
-
-				{% endif %}
-				{% endfor %}
-			</ul>
+<div class="header">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<a class="site-title" href="{{ site.baseurl }}/de/">{% include timecockpit-logo.svg %}</a>
+			</div>
 		</div>
 	</div>
-</nav>
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					{% for page in site.data.menuitems_de %}
+					{% if page.title %}
+					{% if page.items %}
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ page.title }} <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							{% for subpage in page.items %}
+							{% if subpage.title %}
+							<li><a href="{{ subpage.url | prepend: site.baseurl }}">{{ subpage.title }}</a></li>
+							{% endif %}
+							{% endfor %}
+						</ul>
+					</li>
+					{% else %}
+					<li>
+						<a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+					</li>
+					{% endif %}
+					{% endif %}
+					{% endfor %}
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="{{ site.baseurl }}/de/create-trial-account">Jetzt testen</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</div>
