@@ -1,7 +1,7 @@
 @import "_variables.scss";
 
 div.header {
-	background-color: #000;
+	background-color: #222;
 	color: #fff;
 
 	.navbar {
@@ -10,12 +10,40 @@ div.header {
 		margin-bottom: 0;
 	}
 
+	.navbar-default .navbar-nav > li > a  {
+		text-transform: uppercase;
+		color: #fff;
+	}
+
+	.navbar-collapse {
+		padding-left: 0;
+		padding-right: 0;
+
+		.navbar-nav {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
+	.navbar-default .navbar-toggle .icon-bar {
+		color: #fff;
+	}
+
 	a.site-title {
 		svg {
 			height: 30px;
 			width: auto;
-			margin: 5px 0;
+			margin: 10px 0 0 0;
 		}
+	}
+}
+
+footer {
+	background-color: #222;
+	color: #fff;
+
+	a {
+		color: #fff;
 	}
 }
 

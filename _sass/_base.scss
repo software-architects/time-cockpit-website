@@ -1,7 +1,9 @@
 @import "_variables.scss";
 
 body {
-	font-family: $font;
+	font-family: $base-font-family;
+	font-size: $base-font-size;
+	line-height: $base-line-height;
 }
 
 h1, h2, h3 {
