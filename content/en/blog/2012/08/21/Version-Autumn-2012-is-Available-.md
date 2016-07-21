@@ -12,14 +12,14 @@ permalink: /2012/08/21/Version-Autumn-2012-is-Available-
   <a href="~/sign-in" target="_blank">Download the new version!</a>
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">The All New Timesheet Calendar</h2><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>In the autumn release of time cockpit, we have completely revamped the timesheet calendar. We have simplified and modernized the layout to make efficient use of the existing screen estate. Now you can use time cockpit also on smaller screens more efficiently and fluently. While redesigning the calendar, we have grouped signal data which is of similar kind (e.g. sent mails, telephone calls etc.) to one single signal track.
-<br /><img src="{{site.baseurl}}images/blog/2012/08/WhatsNew_1_9_Calendar_en.png" class="  " /></li>
+<br /><img src="{{site.baseurl}}/images/blog/2012/08/WhatsNew_1_9_Calendar_en.png" class="  " /></li>
   <li>To make time cockpit more usable on older laptops or PCs, we have completely revised and optimized signal data processing. The visualization of signal data and signal tracks in the timesheet calendar is considerably faster, so that you can see what you have been doing throughout a day near instantaneously. </li>
   <li>On some PCs we had performance issues when it came to reoccurring Outlook appointments (e.g. weekly appointments). You can now activate or deactivate the display of reoccurring appointments in time cockpit in the options dialog.
-<br /><img src="{{site.baseurl}}images/blog/2012/08/WhatsNew_1_9_ReoccuringAppointments_en.png" class="    mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused" /></li>
+<br /><img src="{{site.baseurl}}/images/blog/2012/08/WhatsNew_1_9_ReoccuringAppointments_en.png" class="    mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused" /></li>
   <li>If signals in the signal track with grouped signal types (e.g. sent mails, telephone calls etc.), are overlapping, we show a tooltip that gives you a detailed outline what happened at a given point in time. From there, you can perform signal-specific actions like opening a sent mail.
-<br /><img src="{{site.baseurl}}images/blog/2012/08/WhatsNew_1_9_SignalTooltip_en.png" class="     " /></li>
+<br /><img src="{{site.baseurl}}/images/blog/2012/08/WhatsNew_1_9_SignalTooltip_en.png" class="     " /></li>
   <li>Timesheet templates can now be created directly from the ribbon. You do not have to open the list of available timesheet templates before you can select a template and create a timesheet.
-<br /><img src="{{site.baseurl}}images/blog/2012/08/WhatsNew_1_9_TemplateTimesheets_en.png" class="         " /></li>
+<br /><img src="{{site.baseurl}}/images/blog/2012/08/WhatsNew_1_9_TemplateTimesheets_en.png" class="         " /></li>
 </ul><h2 xmlns="http://www.w3.org/1999/xhtml">List &amp; Forms</h2><div xmlns="http://www.w3.org/1999/xhtml">
   <ul>
     <li>FIX: The error “Unable to connect to shared memory region…” that occasionally occurred during sync has been fixed.</li>

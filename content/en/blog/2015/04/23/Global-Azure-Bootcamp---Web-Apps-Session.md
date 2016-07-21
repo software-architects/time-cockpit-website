@@ -7,7 +7,7 @@ permalink: /2015/04/23/Global-Azure-Bootcamp---Web-Apps-Session
 ---
 
 <p class="floatRight" xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2015/04/2015-logo-250x250.png" />
+  <img src="{{site.baseurl}}/images/blog/2015/04/2015-logo-250x250.png" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">This Saturday, the <a href="http://global.azurebootcamp.net/" target="_blank">Global Azure Bootcamp (GAB)</a> will take place. We organize the <a href="https://austriaazurebootcamp2015.eventday.com/" target="_blank">local event in Austria</a>. I will do a session about Azure App Services Web Apps. In this blog article I publish the recording of this session. Here is a short summary of the video content:
 		</p><div style="margin-left: 2em" xmlns="http://www.w3.org/1999/xhtml">
   <p>

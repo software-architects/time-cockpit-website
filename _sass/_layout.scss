@@ -1,7 +1,8 @@
 @import "_variables.scss";
 
 div.header {
-	background-color: #222;
+	margin-bottom: 20px;
+	background-color: $main-color;
 	color: #fff;
 
 	.navbar {
@@ -13,6 +14,15 @@ div.header {
 	.navbar-default .navbar-nav > li > a  {
 		text-transform: uppercase;
 		color: #fff;
+		font-size: 16px;
+	}
+
+	.navbar-default .navbar-nav > li:first-of-type > a  {
+		padding-left: 0;
+	}
+
+	.navbar-default .navbar-nav > li:last-of-type > a {
+		padding-right: 0;
 	}
 
 	.navbar-collapse {
@@ -36,9 +46,28 @@ div.header {
 			margin: 10px 0 0 0;
 		}
 	}
+
+	.header-side-menu {
+		line-height: 45px;
+
+		a {
+			color: #fff;
+			opacity: 0.8;
+			text-decoration: none;
+		}
+	}
+}
+
+.tc-banner {
+	background-image: url(/time-cockpit-website/content/images/banner.jpg);
+	background-size: cover;
+	width: 100%;
+	height: 400px;
+	margin-top: -20px;
 }
 
 footer {
+	margin-top: 40px;
 	background-color: #222;
 	color: #fff;
 

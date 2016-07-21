@@ -27,7 +27,7 @@ permalink: /2009/10/13/SQL-Champ---Quiz
       </p>
       <p>1. SQL Server uses a random port.<br /> 2. 1433<br /> 3. 1433 and 1434<br /> 4. It depends; the port can be chosen by an administrator</p>
       <p class="DecoratorRight">
-        <img alt="Port settings in SQL Server Configuration Manager" src="{{site.baseurl}}images/blog/2009/10/sqlQuizQuestion1.png" />
+        <img alt="Port settings in SQL Server Configuration Manager" src="{{site.baseurl}}/images/blog/2009/10/sqlQuizQuestion1.png" />
         <em>Port settings in SQL Server Configuration Manager</em>
         <br />
       </p>
@@ -99,7 +99,7 @@ permalink: /2009/10/13/SQL-Champ---Quiz
       <h2 class="Head">
         <a id="Q6" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="Q6"></a>Question 6 - Database Snapshots</h2>
       <p class="DecoratorRight">
-        <img alt="Copy On Write" src="{{site.baseurl}}images/blog/2009/10/CopyOnWrite.gif" class="   " />
+        <img alt="Copy On Write" src="{{site.baseurl}}/images/blog/2009/10/CopyOnWrite.gif" class="   " />
         <em>Copy-on-write (Source: <a target="_blank" href="http://msdn2.microsoft.com/en-us/library/ms187054.aspx">MSDN</a>)</em>
         <br />
       </p>
@@ -116,10 +116,7 @@ permalink: /2009/10/13/SQL-Champ---Quiz
       <p dir="ltr">1. SELECT<br /> 2. SELECT, INSERT (if used with INSERT...SELECT syntax)<br /> 3. SELECT, INSERT, UPDATE, DELETE<br /> 4. None. TOP is new in SQL Server 2008</p>
       <p class="DecoratorRight">Parentheses that delimit expression in TOP is required in INSERT, UPDATE, and DELETE statements. For backward compatibility, TOP expression without parentheses in SELECT statements is supported, but Microsoft does not recommend this.</p>
       <p dir="ltr">The correct answer is <em>SELECT, INSERT, UPDATE, DELETE</em>. In SQL Server 2000 TOP was only supported in SELECT statements. Since SQL Server 2005 you can use TOP also with INSERT, UPDATE and DELETE. Here is an example for the use of TOP in a DELETE statement:</p>
-      <f:function name="Composite.Web.Html.SyntaxHighlighter" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="SourceCode" value="use tempdb;  &#xA;&#xA;create table Orders ( OrderId int, CustId int, Revenue money );  &#xA;&#xA;insert into Orders ( OrderId, CustId, Revenue )  &#xA;select 1, 1, 5000 union all  &#xA;select 2, 1, 1000 union all  &#xA;select 3, 2, 500 union all  &#xA;select 4, 2, 100 union all  &#xA;select 5, 3, 50 union all  &#xA;select 6, 3, 10;  &#xA;&#xA;while exists ( select 1 from Orders where CustId = 1 )  &#xA;  delete top(1) from Orders where CustId = 1;  &#xA;&#xA;select * from Orders;" xmlns:f="http://www.composite.net/ns/function/1.0" />
-        <f:param name="CodeType" value="sql" xmlns:f="http://www.composite.net/ns/function/1.0" />
-      </f:function>
+      {% highlight javascript}use tempdb;  &#xA;&#xA;create table Orders ( OrderId int, CustId int, Revenue money );  &#xA;&#xA;insert into Orders ( OrderId, CustId, Revenue )  &#xA;select 1, 1, 5000 union all  &#xA;select 2, 1, 1000 union all  &#xA;select 3, 2, 500 union all  &#xA;select 4, 2, 100 union all  &#xA;select 5, 3, 50 union all  &#xA;select 6, 3, 10;  &#xA;&#xA;while exists ( select 1 from Orders where CustId = 1 )  &#xA;  delete top(1) from Orders where CustId = 1;  &#xA;&#xA;select * from Orders;{% endhighlight javascript }
       <p dir="ltr">You may ask yourself why someone would write such a strange script to delete all orders of a certain customer. Imagine the table <span class="InlineCode">Orders</span> containing a very large amount of rows. If you would delete all orders of customer 1 in a single <span class="InlineCode">delete</span> statement this would lead to a very large transaction. It could be hard to handle it (e.g. disk space for transaction log could be critical, stopping the transaction could take a long time, etc.). With <span class="InlineCode">delete top(n)</span> you can split the large transaction into multiple smaller ones.</p>
     </div>
   </div>

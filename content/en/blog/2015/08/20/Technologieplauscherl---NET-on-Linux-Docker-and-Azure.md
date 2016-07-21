@@ -22,13 +22,13 @@ permalink: /2015/08/20/Technologieplauscherl---NET-on-Linux-Docker-and-Azure
 </ul><p xmlns="http://www.w3.org/1999/xhtml">If you want to try the sample I show at <em>Technologieplauscherl</em>, here is my story book for the demo:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Open a terminal window on your Linux box.</li>
   <li>Use <em>dnvm</em>, the .NET version manager, to install the .NET runtime you would like to use. For my demos I will use Mono as the CoreCLR is still too unstable. If you read that in a few months, you will probably be able to use the CoreCLR version already.
-<br /><img src="{{site.baseurl}}images/blog/2015/08/techplauscherl-01-dnvm.png" /></li>
+<br /><img src="{{site.baseurl}}/images/blog/2015/08/techplauscherl-01-dnvm.png" /></li>
   <li>Run <em>yo aspnet</em> and create a console application.
-<br /><img src="{{site.baseurl}}images/blog/2015/08/techplauscherl-02-yeoman.png" /></li>
+<br /><img src="{{site.baseurl}}/images/blog/2015/08/techplauscherl-02-yeoman.png" /></li>
   <li>Use <em>Code</em> to open the folder with the console app and make yourself familiar with the code.</li>
   <li>Run <em>dnu restore</em> in the folder with the console app to restore the library that the app depends on.</li>
   <li>Run <em>dnx . run</em> to execute your console app. You should see <em>Hello World</em>.
-<br /><img src="{{site.baseurl}}images/blog/2015/08/techplauscherl-03-dnu-dnx.png" /></li>
+<br /><img src="{{site.baseurl}}/images/blog/2015/08/techplauscherl-03-dnu-dnx.png" /></li>
 </ul><p xmlns="http://www.w3.org/1999/xhtml">Voila, .NET on Linux :-)</p><h2 xmlns="http://www.w3.org/1999/xhtml">Demo 2 - Web Application</h2><p xmlns="http://www.w3.org/1999/xhtml">Next, we want to try a more complex program, an ASP.NET web application with server- and client-side code:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Run <em>yo aspnet</em> and create a <em>Web Application Basic</em>.</li>
   <li>Use <em>Code</em> to open the folder with the console app and make yourself familiar with the code.</li>

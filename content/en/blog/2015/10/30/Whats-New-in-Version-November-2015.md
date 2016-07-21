@@ -13,7 +13,7 @@ permalink: /2015/10/30/Whats-New-in-Version-November-2015
 <br /></li>
   <li>Result logs of past imports are stored historically.</li>
 </ul><p xmlns="http://www.w3.org/1999/xhtml">
-  <img title="Test Import in HTML 5" src="{{site.baseurl}}test-import-html5.png" />
+  <img title="Test Import in HTML 5" src="{{site.baseurl}}/test-import-html5.png" />
 </p><h3 xmlns="http://www.w3.org/1999/xhtml">Read More</h3><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>
     <a href="~/blog/2015/10/30/How-to-Use-the-Excel-Import-in-the-HTML-5-Web-Client" target="_blank">How does the Excel import work in HTML5</a>

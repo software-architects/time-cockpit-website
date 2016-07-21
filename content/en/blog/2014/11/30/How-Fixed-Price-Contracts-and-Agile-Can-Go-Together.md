@@ -7,7 +7,7 @@ permalink: /2014/11/30/How-Fixed-Price-Contracts-and-Agile-Can-Go-Together
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2014/11/2085887252_06b49ee29d_b.jpg" />
+  <img src="{{site.baseurl}}/images/blog/2014/11/2085887252_06b49ee29d_b.jpg" />
 </p><p class="imageCaption" xmlns="http://www.w3.org/1999/xhtml">Image source: <a href="https://flic.kr/p/4bjHBj" target="_blank">https://flic.kr/p/4bjHBj</a>, under <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Creative Commons</a> License</p><p xmlns="http://www.w3.org/1999/xhtml">Haven't we all learned in project management courses that fixed-price contracts are not necessarily an advantage for the buyer-side? Weren't these problems the very reason why agile project management principles have been invented? However, it is a matter of fact that many customers still insist on fixed project prices. In this blog article I want to share our approach of making fixed-price and agile go together.</p><h2 xmlns="http://www.w3.org/1999/xhtml">The Myth of Risk Reduction and Fixed-Price Contracts</h2><p xmlns="http://www.w3.org/1999/xhtml">Many software projects fail. At least many are seen as failures by the involved customers for a variety of reasons:</p><ol xmlns="http://www.w3.org/1999/xhtml">
   <li>Project budget was exceeded.</li>
   <li>Time schedule did not hold.</li>

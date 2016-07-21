@@ -7,7 +7,7 @@ permalink: /2013/11/29/Time-Cockpit-and-Cloud-Security
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2013/11/TimeCockpitHttps-3.jpg" />
+  <img src="{{site.baseurl}}/images/blog/2013/11/TimeCockpitHttps-3.jpg" />
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">
   <span style="color: rgb(80, 80, 80); font-size: 14px; line-height: 22px;" data-mce-style="color: #505050; font-size: 14px; line-height: 22px;">Nowadays people are cautious about cloud computing because of data security and privacy issues. Time cockpit is a SaaS offering in the cloud. In this article I want to describe in detail how we designed, developed, and how we operate time cockpit in order to be secure. Depending on their use cases, our customers can use time cockpit in two different ways:</span>
 </h2><ul xmlns="http://www.w3.org/1999/xhtml">

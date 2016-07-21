@@ -19,5 +19,5 @@ permalink: /2014/04/30/Whats-New-in-Version-May-2014
   <li>
     <a href="http://help.timecockpit.com" title="time cockpit help" target="_blank">help.timecockpit.com</a> - Detailed information on how to use, configure and customize time cockpit, samples for integration with other software, documentation of the .NET and OData API, etc.</li>
 </ul><p xmlns="http://www.w3.org/1999/xhtml">To make it easier for you to find the information you are looking for, we have added search functionality to the time cockpit website in the top right corner. Use the new search box to search for information in the time cockpit website as well as in the help website.</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img title="Time Cockpit Website Search" src="{{site.baseurl}}images/blog/2014/04/time-cockpit-search.png" alt="Time Cockpit Website Search" />
+  <img title="Time Cockpit Website Search" src="{{site.baseurl}}/images/blog/2014/04/time-cockpit-search.png" alt="Time Cockpit Website Search" />
 </p><h3 xmlns="http://www.w3.org/1999/xhtml">Full Client</h3><p xmlns="http://www.w3.org/1999/xhtml">This month we focused on the OData Web API mentioned above. Therefore we did not change very much in the full client. The new version contains some minor bug fixes. Additionally, the OData Web API documentation has been added to the offline help.</p>

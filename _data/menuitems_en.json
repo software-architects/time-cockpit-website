@@ -1,8 +1,102 @@
-﻿{
-	"item": {
-		"name": "Home",
+﻿[
+	{
+		"title": "Home",
 		"url": "/",
 		"showInMenu": true,
 		"showInFooter": false
+	},
+	{
+		"title": "Tour",
+		"url": "/tour/",
+		"showInMenu": true,
+		"showInFooter": true,
+		"items": [
+			{
+				"title": "Graphical Calendar",
+				"url": "/tour/graphical-calendar/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Activity Tracking",
+				"url": "/tour/activity-tracking/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Teamwork",
+				"url": "/tour/teamwork/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Reporting",
+				"url": "/tour/reporting/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Extensibility",
+				"url": "/tour/extensibility/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Online and Offline",
+				"url": "/tour/online-and-offline/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Software as a Service",
+				"url": "/tour/software-as-a-service/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Security",
+				"url": "/tour/security/",
+				"showInMenu": true,
+				"showInFooter": true
+			}
+		]
+	},
+	{
+		"title": "Pricing",
+		"url": "/pricing/pricing/",
+		"showInMenu": true,
+		"showInFooter": true
+	},
+	{
+		"title": "Help & Support",
+		"url": "/help-support/",
+		"showInMenu": true,
+		"showInFooter": true,
+		"items": [
+			{
+				"title": "Contact Us",
+				"url": "/help-support/contact-us/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Documentation",
+				"url": "/help-support/documentation/",
+				"showInMenu": true,
+				"showInFooter": true
+			},
+			{
+				"title": "Search",
+				"url": "/help-support/search/",
+				"showInMenu": true,
+				"showInFooter": true
+			}
+		]
+	},
+	{
+		"title": "Blog",
+		"url": "/blog/",
+		"showInMenu": true,
+		"showInFooter": false
 	}
-}
+]

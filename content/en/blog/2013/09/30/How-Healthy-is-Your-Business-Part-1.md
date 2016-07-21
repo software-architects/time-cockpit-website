@@ -7,7 +7,7 @@ permalink: /2013/09/30/How-Healthy-is-Your-Business-Part-1
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2013/09/TimeCockpitBreit1.jpg" />
+  <img src="{{site.baseurl}}/images/blog/2013/09/TimeCockpitBreit1.jpg" />
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">Why Measuring KPIs Is Important</h2><p xmlns="http://www.w3.org/1999/xhtml">As a manager or entrepreneur, how do you assess the health of your team or company businesswise? If your team is small and you are in the middle of the action, it is likely that you can just rely on your gut feeling.</p><p xmlns="http://www.w3.org/1999/xhtml">Things change if you have to manage a larger team or if you are not involved in every day operational business. It is dangerous to solely rely on your instincts in such a situation. Similar to a pilot steering a plane through nightly, cloudy sky, you will need measuring instruments evaluating your team’s performance. Such numbers are typically called <a href="http://en.wikipedia.org/wiki/Performance_indicator" target="_blank">Performance Indicators or Key Performance Indicators</a> (KPI).</p><h2 xmlns="http://www.w3.org/1999/xhtml">KPI Obstacles</h2><p xmlns="http://www.w3.org/1999/xhtml">Although it seems obvious that managers need KPIs, we regularly see many people struggling with them. The following obstacles are the ones we typically hear when working with customers:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Really important, strategic things are <em>intangible</em> and cannot be measured.</li>
   <li>We drown in an endless number of potential performance indicators because we <em>don’t know on which KPIs to focus</em>.</li>

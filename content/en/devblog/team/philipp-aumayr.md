@@ -12,7 +12,7 @@ permalink: /devblog/team/philipp-aumayr/
   </f:function>
   <br />
 </p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/team/philipp_aumayr.jpg" alt="Philipp Aumayr" title="Philipp Aumayr" class="floatLeft " />
+  <img src="{{site.baseurl}}/images/team/philipp_aumayr.jpg" alt="Philipp Aumayr" title="Philipp Aumayr" class="floatLeft " />
 </p><h3 xmlns="http://www.w3.org/1999/xhtml">Philipp Aumayr</h3><p xmlns="http://www.w3.org/1999/xhtml">Senior Software Developer</p><p class="floatClear" xmlns="http://www.w3.org/1999/xhtml"></p><p xmlns="http://www.w3.org/1999/xhtml">
   <a href="http://stackoverflow.com/users/1288539/philipp-aumayr">
     <img src="http://stackoverflow.com/users/flair/1288539.png?theme=default" width="208" height="58" alt="profile for Philipp Aumayr at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Philipp Aumayr at Stack Overflow, Q&amp;A for professional and enthusiast programmers" />

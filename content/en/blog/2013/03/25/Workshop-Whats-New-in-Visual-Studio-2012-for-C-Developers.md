@@ -17,4 +17,4 @@ permalink: /2013/03/25/Workshop-Whats-New-in-Visual-Studio-2012-for-C-Developers
   <strong>
     <a href="http://de.slideshare.net/rstropek/vcpp2012-full-styled" title="What's New in Visual Studio 2012 for C++ Developers" target="_blank">What's New in Visual Studio 2012 for C++ Developers</a>
   </strong> from <strong>Philipp Aumayr</strong></div><h2 xmlns="http://www.w3.org/1999/xhtml">Samples</h2><p xmlns="http://www.w3.org/1999/xhtml">
-  <a href="{{site.baseurl}}images/blog/2013/03/VC2012.zip" title="Samples for C++ workshop" target="_blank">Download the samples (ZIP-File)</a>.</p>
+  <a href="{{site.baseurl}}/images/blog/2013/03/VC2012.zip" title="Samples for C++ workshop" target="_blank">Download the samples (ZIP-File)</a>.</p>

@@ -10,7 +10,7 @@ permalink: /2012/11/19/WPF-and-Prism-Workshop-at-BASTA-Austria
   <strong>
     <a href="http://www.slideshare.net/rstropek/prism-basta-at-2012" title="WPF and Prism 4.1 Workshop at BASTA Austria" target="_blank">WPF and Prism 4.1 Workshop at BASTA Austria</a>
   </strong> from <strong><a href="http://www.slideshare.net/rstropek" target="_blank">rstropek</a></strong></div><h2 xmlns="http://www.w3.org/1999/xhtml">Samples</h2><ul xmlns="http://www.w3.org/1999/xhtml">
-  <li>(Nearly) <a href="{{site.baseurl}}Blog Assets/Code Samples/Prism41Sample_Begin.zip" title="Download empty sample solution" target="_blank">empty sample solution</a>  (I started with this basic solution)</li>
+  <li>(Nearly) <a href="{{site.baseurl}}/Blog Assets/Code Samples/Prism41Sample_Begin.zip" title="Download empty sample solution" target="_blank">empty sample solution</a>  (I started with this basic solution)</li>
   <li>
-    <a href="{{site.baseurl}}Blog Assets/Code Samples/Prism41Sample_End.zip" title="Download final solution" target="_blank">Final solution</a> (result at the end of the workshop)</li>
+    <a href="{{site.baseurl}}/Blog Assets/Code Samples/Prism41Sample_End.zip" title="Download final solution" target="_blank">Final solution</a> (result at the end of the workshop)</li>
 </ul>

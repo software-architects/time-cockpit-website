@@ -16,5 +16,5 @@ permalink: /2013/06/26/MS-TechEd-2013-Talk-Continuous-Integration-with-Team-Foun
     <a href="http://www.slideshare.net/rstropek/wad-b302-stropekv03" title="MS TechEd 2013: Continuous Integration with Team Foundation Services and Windows Azure Websites" target="_blank">MS TechEd 2013: Continuous Integration with Team Foundation Services and Windows Azure Websites</a>
   </strong> from <strong><a href="http://www.slideshare.net/rstropek" target="_blank">Rainer Stropek</a></strong></div><h2 xmlns="http://www.w3.org/1999/xhtml">Sample Code</h2><p xmlns="http://www.w3.org/1999/xhtml">
   <strong>
-    <a href="{{site.baseurl}}images/blog/2013/06/BeeInMyGarden.zip" target="_blank">Download the entire sample</a> (ZIP File)</strong>
+    <a href="{{site.baseurl}}/images/blog/2013/06/BeeInMyGarden.zip" target="_blank">Download the entire sample</a> (ZIP File)</strong>
 </p>

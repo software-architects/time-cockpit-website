@@ -26,7 +26,7 @@ permalink: /2016/05/1/Whats-New-in-Version-May-2016
   <a name="date-input" id="date-input" class="mce-item-anchor"></a>Date and Time Input
 		</h2><p xmlns="http://www.w3.org/1999/xhtml">This month we have made it much easier to enter date and time values. We offer several shortcuts to enter a valid date now.
 		</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2016/04/date-and-time-input.gif" />
+  <img src="{{site.baseurl}}/images/blog/2016/04/date-and-time-input.gif" />
 </p><h3 xmlns="http://www.w3.org/1999/xhtml">Date Input <br /></h3><p xmlns="http://www.w3.org/1999/xhtml">
   <strong>Day only</strong>: if you only enter one or two digits, we assume that you want to select this day in the current month.
 		</p><table class="infoTable" xmlns="http://www.w3.org/1999/xhtml">
@@ -259,12 +259,12 @@ permalink: /2016/05/1/Whats-New-in-Version-May-2016
 </table><h2 xmlns="http://www.w3.org/1999/xhtml">
   <a name="tooltips" id="tooltips" class="mce-item-anchor"></a>Tooltips in Calendar
 		</h2><p xmlns="http://www.w3.org/1999/xhtml">We already had tooltips in the time tracking calendar, but they were not very pretty and even worse did not render correctly in some browsers. So we have revised the layout for tooltips this month. They show the description and the footer of the time sheet entry as configured in the selected <a href="https://help.timecockpit.com/?topic=html/95b1ce59-c4ec-461a-ba9b-cb978295c3de.htm" title="Formatting profiles in time tracking calendar" target="_blank">formatting profile</a>.<br /></p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2016/04/tooltips.png" />
+  <img src="{{site.baseurl}}/images/blog/2016/04/tooltips.png" />
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">
   <a name="permissions" id="permissions" class="mce-item-anchor"></a>Permission Improvements
 		</h2><p xmlns="http://www.w3.org/1999/xhtml">Time cockpit has issues with insert and update permissions when creating new items. In some scenarios it was not possible to create new items, even if a user had insert-permission for this item. In the new versions insert and update permissions are handled correctly. You will see failing permissions at the bottom of the edit form. Hover over the red area that displays the total number of error messages to see a list of all errors.
 		</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2016/04/write-permission.png" />
+  <img src="{{site.baseurl}}/images/blog/2016/04/write-permission.png" />
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">
   <a name="extensibility" id="extensibility" class="mce-item-anchor"></a>Extensibility of the HTML5 Client
 		</h2><p xmlns="http://www.w3.org/1999/xhtml">This month we have put a lot of effort in allowing you to write custom modules for time cockpit. You will be able to add them to the menu and they will be displayed in the whole area below the menu equally to the time sheet calendar or to lists.

@@ -7,7 +7,7 @@ permalink: /2016/04/15/Global-Azure-Bootcamp-2016
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2016/04/GAB-2016-logo-800x540.png" />
+  <img src="{{site.baseurl}}/images/blog/2016/04/GAB-2016-logo-800x540.png" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">Morgen ist es soweit, das Global Azure Bootcamp 2016 findet statt. 120 angemeldete Teilnehmerinnen und Teilnehmer, 23 Sessions - wir werden dieses Jahr alle Rekorde aus den Vorjahren sprengen. In diesem Blogartikel fassen wir die wichtigsten Informationen und Links für morgen zusammen.</p><p class="highlighted" xmlns="http://www.w3.org/1999/xhtml">Feedback ist uns wichtig. Es würde uns freuen, wenn du dir die Zeit nimmst, unseren <a href="http://bit.ly/gab16feedback" target="_blank">Feedbackbogen</a> am Ende des Events auszufüllen.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Veranstaltungsort: Wissensturm Linz</h2><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Adresse: Kärtnerstraße 26, 4020 Linz (<a href="https://goo.gl/maps/o3pfoB8U5ZJ2" target="_blank">Google Maps</a>)</li>
   <li>

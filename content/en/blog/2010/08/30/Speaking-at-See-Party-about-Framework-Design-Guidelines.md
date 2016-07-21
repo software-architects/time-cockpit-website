@@ -16,4 +16,4 @@ permalink: /2010/08/30/Speaking-at-See-Party-about-Framework-Design-Guidelines
   <li>Correct use of collections</li>
   <li>Exceptions in class libraries</li>
   <li>Why unit testing is important?</li>
-</ol><p xmlns="http://www.w3.org/1999/xhtml">You can download the slides for the session here (German): <a href="{{site.baseurl}}images/blog/2010/08/See Sharp Party 2010 - Framework Design Guidelines.pdf" target="__blank">See Sharp Party 2010 - Framework Design Guidelines</a>.</p>
+</ol><p xmlns="http://www.w3.org/1999/xhtml">You can download the slides for the session here (German): <a href="{{site.baseurl}}/images/blog/2010/08/See Sharp Party 2010 - Framework Design Guidelines.pdf" target="__blank">See Sharp Party 2010 - Framework Design Guidelines</a>.</p>

@@ -5,7 +5,7 @@ permalink: /de/loesungen/case-studies/Zeiterfassung-bei-codeworx-mit-time-cockpi
 ---
 
 <h1 xmlns="http://www.w3.org/1999/xhtml">Zeiterfassung bei codeworx mit time cockpit</h1><div class="floatRight" xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/customer_solutions/case-studies/codeworx/codeworx_raphael_schwarz.jpg" alt="Raphael Schwarz, codeworx" title="Raphael Schwarz, codeworx" />
+  <img src="{{site.baseurl}}/images/customer_solutions/case-studies/codeworx/codeworx_raphael_schwarz.jpg" alt="Raphael Schwarz, codeworx" title="Raphael Schwarz, codeworx" />
   <span class="imageCaption">Raphael Schwarz</span>
 </div><p xmlns="http://www.w3.org/1999/xhtml">
   <strong>In diesem Monat möchten wir einen der längsten und treuesten time cockpit Kunden vorstellen: Raphael Schwarz, der unter dem Markennamen <a href="http://www.codeworx.at/" title="codeworx" target="_blank">codeworx</a> am Markt auftritt, hat sich in den letzten Jahren einen Namen als .NET Berater in Deutschland und Österreich gemacht. Im Interview berichtet uns Raphael, welche Herausforderungen er als Freiberufler zu meistern hat und wie er erfolgreich SaaS Lösungen wie time cockpit zur Administration seines Geschäfts nutzt.</strong>

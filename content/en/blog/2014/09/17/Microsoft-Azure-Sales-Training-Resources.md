@@ -6,12 +6,12 @@ bannerimage:
 permalink: /2014/09/17/Microsoft-Azure-Sales-Training-Resources
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">Tomorrow I will do another Microsoft Azure training for sales executives in Vienna. In this blog article I summarize the most important web resources I will mention during the training.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Sales Scenarios and Slides</h2><p xmlns="http://www.w3.org/1999/xhtml">During the training we will do sales scenario pitches in groups of two. <a href="{{site.baseurl}}images/blog/2014/09/Azure Sales Scenario Training.pdf" target="_blank">Here you can download the case study document</a> (German).</p><p xmlns="http://www.w3.org/1999/xhtml">I covered most topics during the training with live demos. Here you can download the two slide decks I used during the training:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+<p xmlns="http://www.w3.org/1999/xhtml">Tomorrow I will do another Microsoft Azure training for sales executives in Vienna. In this blog article I summarize the most important web resources I will mention during the training.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Sales Scenarios and Slides</h2><p xmlns="http://www.w3.org/1999/xhtml">During the training we will do sales scenario pitches in groups of two. <a href="{{site.baseurl}}/images/blog/2014/09/Azure Sales Scenario Training.pdf" target="_blank">Here you can download the case study document</a> (German).</p><p xmlns="http://www.w3.org/1999/xhtml">I covered most topics during the training with live demos. Here you can download the two slide decks I used during the training:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>
-    <a href="{{site.baseurl}}images/blog/2014/09/Introduction.pdf" target="_blank">Introducing Microsoft Azure</a>
+    <a href="{{site.baseurl}}/images/blog/2014/09/Introduction.pdf" target="_blank">Introducing Microsoft Azure</a>
   </li>
   <li>
-    <a href="{{site.baseurl}}images/blog/2014/09/Cloud Economics.pdf" target="_blank">Cloud Economics</a>
+    <a href="{{site.baseurl}}/images/blog/2014/09/Cloud Economics.pdf" target="_blank">Cloud Economics</a>
   </li>
 </ul><h2 xmlns="http://www.w3.org/1999/xhtml">General Resources</h2><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>

@@ -18,7 +18,7 @@ permalink: /solutions/case-studies/
   </div>
   <div class="col-sm-12 col-md-4">
     <a href="{{site.baseurl}}/loesungen/case-studies/Brainworx/" title="Time Tracking at Brainworx with Time Cockpit">
-      <img src="{{site.baseurl}}images/customer_logos/brainworx_logo_246.jpg" alt="Brainworx" title="Brainworx" />
+      <img src="{{site.baseurl}}/images/customer_logos/brainworx_logo_246.jpg" alt="Brainworx" title="Brainworx" />
     </a>
   </div>
 </div><hr xmlns="http://www.w3.org/1999/xhtml" /><h2 xmlns="http://www.w3.org/1999/xhtml">mea IT Services
@@ -34,7 +34,7 @@ permalink: /solutions/case-studies/
   </div>
   <div class="col-sm-12 col-md-4">
     <a href="{{site.baseurl}}/loesungen/case-studies/Zeiterfassung-bei-mea-IT-Services-mit-time-cockpit/" title="Time Tracking at mea IT Services with Time Cockpit">
-      <img src="{{site.baseurl}}images/customer_logos/mea_it_services_logo_246.png" alt="mea IT Services" title="mea IT Services" />
+      <img src="{{site.baseurl}}/images/customer_logos/mea_it_services_logo_246.png" alt="mea IT Services" title="mea IT Services" />
     </a>
   </div>
 </div><hr xmlns="http://www.w3.org/1999/xhtml" /><h2 xmlns="http://www.w3.org/1999/xhtml">g.tec
@@ -48,7 +48,7 @@ permalink: /solutions/case-studies/
   </div>
   <div class="col-sm-12 col-md-4">
     <a href="{{site.baseurl}}/loesungen/case-studies/Time-Tracking-at-gtec-With-Time-Cockpit/" title="Time Tracking at g.tec with Time Cockpit">
-      <img src="{{site.baseurl}}images/customer_logos/gtec_logo_246.jpg" alt="g.tec" title="g.tec" />
+      <img src="{{site.baseurl}}/images/customer_logos/gtec_logo_246.jpg" alt="g.tec" title="g.tec" />
     </a>
   </div>
 </div><hr xmlns="http://www.w3.org/1999/xhtml" /><h2 xmlns="http://www.w3.org/1999/xhtml">codeworx
@@ -62,7 +62,7 @@ permalink: /solutions/case-studies/
   </div>
   <div class="col-sm-12 col-md-4">
     <a href="{{site.baseurl}}/loesungen/case-studies/Zeiterfassung-bei-codeworx-mit-time-cockpit/" title="Time Tracking at Codeworx with Time Cockpit">
-      <img src="{{site.baseurl}}images/customer_logos/codeworx_logo_246.png" alt="codeworx" title="codeworx" />
+      <img src="{{site.baseurl}}/images/customer_logos/codeworx_logo_246.png" alt="codeworx" title="codeworx" />
     </a>
   </div>
 </div><hr xmlns="http://www.w3.org/1999/xhtml" /><h2 xmlns="http://www.w3.org/1999/xhtml">Softline Group
@@ -79,7 +79,7 @@ permalink: /solutions/case-studies/
   </div>
   <div class="col-sm-12 col-md-4">
     <a href="{{site.baseurl}}/loesungen/case-studies/Time-Tracking-at-Softline-with-Time-Cockpit/">
-      <img src="{{site.baseurl}}images/customer_logos/softline_group_logo.png" alt="Softline Solutions GmbH" title="Softline Solutions GmbH" />
+      <img src="{{site.baseurl}}/images/customer_logos/softline_group_logo.png" alt="Softline Solutions GmbH" title="Softline Solutions GmbH" />
     </a>
   </div>
 </div><hr xmlns="http://www.w3.org/1999/xhtml" /><h2 xmlns="http://www.w3.org/1999/xhtml">Constantia Teich GmbH
@@ -93,7 +93,7 @@ permalink: /solutions/case-studies/
   </div>
   <div class="col-sm-12 col-md-4">
     <a href="{{site.baseurl}}/loesungen/case-studies/Constantia-Teich/">
-      <img src="{{site.baseurl}}images/customer_logos/teich_logo_246.png" alt="Constantia Teich GmbH" title="Constantia Teich GmbH" />
+      <img src="{{site.baseurl}}/images/customer_logos/teich_logo_246.png" alt="Constantia Teich GmbH" title="Constantia Teich GmbH" />
     </a>
   </div>
 </div><hr xmlns="http://www.w3.org/1999/xhtml" /><h2 xmlns="http://www.w3.org/1999/xhtml">WebReal Real Estate Marketing
@@ -107,7 +107,7 @@ permalink: /solutions/case-studies/
   </div>
   <div class="col-sm-12 col-md-4">
     <a href="{{site.baseurl}}/loesungen/case-studies/webreal/">
-      <img src="{{site.baseurl}}images/customer_logos/webreal_logo.png" alt="WebReal" title="WebReal" />
+      <img src="{{site.baseurl}}/images/customer_logos/webreal_logo.png" alt="WebReal" title="WebReal" />
     </a>
   </div>
 </div><hr xmlns="http://www.w3.org/1999/xhtml" /><h2 xmlns="http://www.w3.org/1999/xhtml">softaware gmbh
@@ -122,7 +122,7 @@ permalink: /solutions/case-studies/
   </div>
   <div class="col-sm-12 col-md-4">
     <a href="{{site.baseurl}}/loesungen/case-studies/softaware-gmbh/">
-      <img src="{{site.baseurl}}images/customer_logos/softaware_logo_246.png" alt="softaware gmbh" title="softaware gmbh" />
+      <img src="{{site.baseurl}}/images/customer_logos/softaware_logo_246.png" alt="softaware gmbh" title="softaware gmbh" />
     </a>
   </div>
 </div><hr xmlns="http://www.w3.org/1999/xhtml" /><h2 xmlns="http://www.w3.org/1999/xhtml">Prologics IT Gmbh
@@ -137,7 +137,7 @@ permalink: /solutions/case-studies/
   </div>
   <div class="col-sm-12 col-md-4">
     <a href="{{site.baseurl}}/loesungen/case-studies/PROLOGICS-IT-GmbH/">
-      <img src="{{site.baseurl}}images/customer_logos/prologics_logo.png" alt="Prologics IT Gmbh" title="Prologics IT Gmbh" class="   " />
+      <img src="{{site.baseurl}}/images/customer_logos/prologics_logo.png" alt="Prologics IT Gmbh" title="Prologics IT Gmbh" class="   " />
     </a>
   </div>
 </div><hr xmlns="http://www.w3.org/1999/xhtml" /><h2 xmlns="http://www.w3.org/1999/xhtml">Hexa Business Services
@@ -152,113 +152,113 @@ permalink: /solutions/case-studies/
   </div>
   <div class="col-sm-12 col-md-4">
     <a href="{{site.baseurl}}/loesungen/case-studies/hexa-business-services/">
-      <img src="{{site.baseurl}}images/customer_logos/hexa_logo.png" alt="Hexa" title="Hexa" />
+      <img src="{{site.baseurl}}/images/customer_logos/hexa_logo.png" alt="Hexa" title="Hexa" />
     </a>
   </div>
 </div><hr xmlns="http://www.w3.org/1999/xhtml" /><div class="row customerLogos" xmlns="http://www.w3.org/1999/xhtml">
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.webreal.at/" target="_blank">
-      <img class="center " src="{{site.baseurl}}images/customer_logos/webreal_logo.png?mw=120&amp;mh=120" alt="WebReal" title="WebReal" />
+      <img class="center " src="{{site.baseurl}}/images/customer_logos/webreal_logo.png?mw=120&amp;mh=120" alt="WebReal" title="WebReal" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://teich.cflex.com/" target="_blank">
-      <img class="center " src="{{site.baseurl}}images/customer_logos/teich_logo.png?mw=120&amp;mh=120" alt="Constantia Teich GmbH" title="Constantia Teich GmbH" />
+      <img class="center " src="{{site.baseurl}}/images/customer_logos/teich_logo.png?mw=120&amp;mh=120" alt="Constantia Teich GmbH" title="Constantia Teich GmbH" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.softline-group.com/" target="_blank">
-      <img class="center" src="{{site.baseurl}}images/customer_logos/softline_group_logo.png?mw=120&amp;mh=120" alt="Softline Group" title="Softline Group" />
+      <img class="center" src="{{site.baseurl}}/images/customer_logos/softline_group_logo.png?mw=120&amp;mh=120" alt="Softline Group" title="Softline Group" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.cardskid.com/" target="_blank">
-      <img class="center" src="{{site.baseurl}}images/customer_logos/card_skid_logo.png?mw=120&amp;mh=120" alt="CardSkid." title="CardSkid." />
+      <img class="center" src="{{site.baseurl}}/images/customer_logos/card_skid_logo.png?mw=120&amp;mh=120" alt="CardSkid." title="CardSkid." />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.ehouse.at/" target="_blank">
-      <img class="center" src="{{site.baseurl}}images/customer_logos/ehouse_logo.png?mw=120&amp;mh=120" alt="eHouse Informationstechnologie GmbH" title="eHouse Informationstechnologie GmbH" />
+      <img class="center" src="{{site.baseurl}}/images/customer_logos/ehouse_logo.png?mw=120&amp;mh=120" alt="eHouse Informationstechnologie GmbH" title="eHouse Informationstechnologie GmbH" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.insite-it.net/" target="_blank">
-      <img class="center " src="{{site.baseurl}}images/customer_logos/insite_logo.png?mw=120&amp;mh=120" alt="INSITE IT" title="INSITE IT" />
+      <img class="center " src="{{site.baseurl}}/images/customer_logos/insite_logo.png?mw=120&amp;mh=120" alt="INSITE IT" title="INSITE IT" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.gtec.at/" target="_blank">
-      <img class="center" src="{{site.baseurl}}images/customer_logos/gtec_logo.png?mw=120&amp;mh=120" alt="g.tec" title="g.tec" />
+      <img class="center" src="{{site.baseurl}}/images/customer_logos/gtec_logo.png?mw=120&amp;mh=120" alt="g.tec" title="g.tec" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.hexa.at/" target="_blank">
-      <img class="center" src="{{site.baseurl}}images/customer_logos/hexa_logo.png?mw=120&amp;mh=120" alt="Hexa" title="Hexa" />
+      <img class="center" src="{{site.baseurl}}/images/customer_logos/hexa_logo.png?mw=120&amp;mh=120" alt="Hexa" title="Hexa" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.brand-logic.com/" target="_blank">
-      <img class="center" src="{{site.baseurl}}images/customer_logos/brandlogic_logo.png?mw=120&amp;mh=120" alt="Institute of Brand Logic" title="Institute of Brand Logic" />
+      <img class="center" src="{{site.baseurl}}/images/customer_logos/brandlogic_logo.png?mw=120&amp;mh=120" alt="Institute of Brand Logic" title="Institute of Brand Logic" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://codeworx.at/" target="_blank">
-      <img class="center " src="{{site.baseurl}}images/customer_logos/codeworx_logo.png?mw=120&amp;mh=120" alt="codeworx" title="codeworx" />
+      <img class="center " src="{{site.baseurl}}/images/customer_logos/codeworx_logo.png?mw=120&amp;mh=120" alt="codeworx" title="codeworx" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.softaware.at/" target="_blank">
-      <img class="center " src="{{site.baseurl}}images/customer_logos/softaware_logo.png?mw=120&amp;mh=120" alt="softaware" title="softaware" />
+      <img class="center " src="{{site.baseurl}}/images/customer_logos/softaware_logo.png?mw=120&amp;mh=120" alt="softaware" title="softaware" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.prologics-it.com/" target="_blank">
-      <img class="center" src="{{site.baseurl}}images/customer_logos/prologics_logo.png?mw=120&amp;mh=120" alt="PROLOGICS" title="PROLOGICS" />
+      <img class="center" src="{{site.baseurl}}/images/customer_logos/prologics_logo.png?mw=120&amp;mh=120" alt="PROLOGICS" title="PROLOGICS" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.eventplan.at/" target="_blank">
-      <img class="center" src="{{site.baseurl}}images/customer_logos/eventplan_logo.png?mw=120&amp;mh=120" alt="eventplan" title="eventplan" />
+      <img class="center" src="{{site.baseurl}}/images/customer_logos/eventplan_logo.png?mw=120&amp;mh=120" alt="eventplan" title="eventplan" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.mea-it.com/" target="_blank">
-      <img class="center" src="{{site.baseurl}}images/customer_logos/mea_it_logo.png?mw=120&amp;mh=120" alt="MEA IT" title="MEA IT" />
+      <img class="center" src="{{site.baseurl}}/images/customer_logos/mea_it_logo.png?mw=120&amp;mh=120" alt="MEA IT" title="MEA IT" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.brainworx.at/" target="_blank">
-      <img class="center" src="{{site.baseurl}}images/customer_logos/brainworx_logo.jpg?mw=120&amp;mh=120" alt="Brainworx" title="Brainworx" />
+      <img class="center" src="{{site.baseurl}}/images/customer_logos/brainworx_logo.jpg?mw=120&amp;mh=120" alt="Brainworx" title="Brainworx" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.linearis.at/" target="_blank">
-      <img class="center " src="{{site.baseurl}}images/customer_logos/linearis_logo.png?mw=120&amp;mh=120" alt="linearis" title="linearis" />
+      <img class="center " src="{{site.baseurl}}/images/customer_logos/linearis_logo.png?mw=120&amp;mh=120" alt="linearis" title="linearis" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.kuka.com/" target="_blank">
-      <img class="center" src="{{site.baseurl}}images/customer_logos/kuka_logo.jpg?mw=120&amp;mh=120" alt="KUKA" title="KUKA" />
+      <img class="center" src="{{site.baseurl}}/images/customer_logos/kuka_logo.jpg?mw=120&amp;mh=120" alt="KUKA" title="KUKA" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.quorum.at/" target="_blank">
-      <img class="center" src="{{site.baseurl}}images/customer_logos/quorum_logo.jpg?mw=120&amp;mh=120" alt="quorum" title="quorum" />
+      <img class="center" src="{{site.baseurl}}/images/customer_logos/quorum_logo.jpg?mw=120&amp;mh=120" alt="quorum" title="quorum" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.gtw-mc.com/" target="_blank">
-      <img class="center" src="{{site.baseurl}}images/customer_logos/gtw_logo.jpg?mw=120&amp;mh=120" alt="GTW management consulting" title="GTW management consulting" />
+      <img class="center" src="{{site.baseurl}}/images/customer_logos/gtw_logo.jpg?mw=120&amp;mh=120" alt="GTW management consulting" title="GTW management consulting" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.concedis.net/" target="_blank">
-      <img class="center" src="{{site.baseurl}}images/customer_logos/concedis_logo.jpg?mw=120&amp;mh=120" alt="concedis" title="concedis" />
+      <img class="center" src="{{site.baseurl}}/images/customer_logos/concedis_logo.jpg?mw=120&amp;mh=120" alt="concedis" title="concedis" />
     </a>
   </div>
   <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
     <a href="http://www.l-p-a.com/" target="_blank">
-      <img class="center" src="{{site.baseurl}}images/customer_logos/lpa_logo.png?mw=120&amp;mh=120" alt="LPA" title="LPA" />
+      <img class="center" src="{{site.baseurl}}/images/customer_logos/lpa_logo.png?mw=120&amp;mh=120" alt="LPA" title="LPA" />
     </a>
   </div>
 </div>

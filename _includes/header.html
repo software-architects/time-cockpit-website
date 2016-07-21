@@ -1,8 +1,19 @@
 <div class="header">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12">
+			<div class="col-sm-6">
+				{% if page.path contains "/de/" %}
 				<a class="site-title" href="{{ site.baseurl }}/de/">{% include timecockpit-logo-white.svg %}</a>
+				{% else %}
+				<a class="site-title" href="{{ site.baseurl }}/">{% include timecockpit-logo-white.svg %}</a>
+				{% endif %}
+			</div>
+			<div class="col-sm-6 header-side-menu text-right">
+				{% if page.path contains "/de/" %}
+				<a href="{{ site.baseurl }}/">English</a>
+				{% else %}
+				<a href="{{ site.baseurl }}/de/">German</a>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -18,7 +29,13 @@
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					{% for page in site.data.menuitems_de %}
+					{% if page.path contains "/de/" %}
+					{% assign menuItems = site.data.menuitems_de %}
+					{% else %}
+					{% assign menuItems = site.data.menuitems_en %}
+					{% endif %}
+
+					{% for page in menuItems %}
 					{% if page.title %}
 					{% if page.items %}
 					<li class="dropdown">

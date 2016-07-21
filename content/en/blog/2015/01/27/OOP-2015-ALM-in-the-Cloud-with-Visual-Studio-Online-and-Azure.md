@@ -76,7 +76,7 @@ permalink: /2015/01/27/OOP-2015-ALM-in-the-Cloud-with-Visual-Studio-Online-and-A
   <li>
     <a href="http://www.timecockpit.com" target="_blank">Time cockpit</a> for time tracking, project controlling, and billing -<span lang="EN-US"> offers integrations to Jira, Zendesk, and VSO</span></li>
 </ul><p xmlns="http://www.w3.org/1999/xhtml">All of these products run in the cloud and all of them support platform-independent web services. Therefore, it was quite simple to integrate them. The following image shows the integration of the different tools:</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2015/01/ALMIntegration.png?mw=800" />
+  <img src="{{site.baseurl}}/images/blog/2015/01/ALMIntegration.png?mw=800" />
 </p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">Read more about how we build and run our brand new web client for time cockpit <a href="http://www.timecockpit.com/blog/2014/12/30/How-We-Build-and-Run-Time-Cockpit-Web-Preview" target="_blank">in this blog article</a>.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Demo</h2><p xmlns="http://www.w3.org/1999/xhtml">During my session at OOP I will demonstrate setting up an ALM system with most parts of our current toolset. It will cover:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Creation of a new VSO project environment for source code control, project management, and automated build</li>
   <li>Integration of the VSO project with Microsoft Azure for continuous delivery</li>
