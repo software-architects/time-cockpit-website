@@ -34,4 +34,232 @@ permalink: /blog/2012/12/20/Windows-Azure-Table-Service---An-Example
   <li>Asynchronous write and query operations using .NET's new task programming model (async/await)</li>
   <li>Access to table services without schema (i.e. consuming table data in XML format)</li>
   <li>Shared access signatures for table services</li>
-</ul>{% highlight javascript %}using Microsoft.WindowsAzure;&#xA;using Microsoft.WindowsAzure.StorageClient;&#xA;using System;&#xA;using System.Collections.Generic;&#xA;using System.Data.Services.Client;&#xA;using System.Linq;&#xA;using System.Threading;&#xA;using System.Threading.Tasks;&#xA;using System.Xml.Linq;&#xA;&#xA;namespace ConsoleApplication1&#xA;{&#xA;    public class LogEntry : TableServiceEntity&#xA;    {&#xA;        public string Message { get; set; }&#xA;    }&#xA;&#xA;    public class DynamicEntry : TableServiceEntity&#xA;    {&#xA;        internal Dictionary&lt;string,&gt; values = new Dictionary&lt;string,&gt;();&#xA;    }&#xA;&#xA;    public class Program&#xA;    {&#xA;        private static AutoResetEvent signal = new AutoResetEvent(false);&#xA;&#xA;        private static readonly XNamespace AtomNamespace = &quot;http://www.w3.org/2005/Atom&quot;;&#xA;        private static readonly XNamespace AstoriaDataNamespace = &quot;http://schemas.microsoft.com/ado/2007/08/dataservices&quot;;&#xA;        private static readonly XNamespace AstoriaMetadataNamespace = &quot;http://schemas.microsoft.com/ado/2007/08/dataservices/metadata&quot;;&#xA;&#xA;        static void Main(string[] args)&#xA;        {&#xA;            var prog = new Program();&#xA;            &#xA;            var tableClient = prog.CreateClientWithNameAndKey();&#xA;            prog.SimpleWriteSample(tableClient);&#xA;            prog.SimpleWriteSampleAsync(tableClient);&#xA;            signal.WaitOne();&#xA;&#xA;            tableClient = prog.CreateClientWithSas();&#xA;            prog.SasAccessSample(tableClient);&#xA;&#xA;            prog.SchemalessAccess(tableClient);&#xA;&#xA;            Console.ReadKey();&#xA;        }&#xA;&#xA;        private CloudTableClient CreateClientWithNameAndKey()&#xA;        {&#xA;            var account = new CloudStorageAccount(&#xA;                new StorageCredentialsAccountAndKey(&quot;prodotnetvie&quot;, &quot;ENTER YOUR KEY HERE&quot;), true);&#xA;            return account.CreateCloudTableClient();&#xA;        }&#xA;&#xA;        private CloudTableClient CreateClientWithSas()&#xA;        {&#xA;            var serverClient = this.CreateClientWithNameAndKey();&#xA;&#xA;            SharedAccessTablePolicy policy = new SharedAccessTablePolicy()&#xA;            {&#xA;                SharedAccessExpiryTime = DateTime.UtcNow.AddMinutes(30),&#xA;                Permissions = SharedAccessTablePermissions.Add&#xA;                    | SharedAccessTablePermissions.Query&#xA;                    | SharedAccessTablePermissions.Update&#xA;                    | SharedAccessTablePermissions.Delete&#xA;            };&#xA;&#xA;            var table = serverClient.GetTableReference(&quot;SyncTable&quot;);&#xA;&#xA;            // Generate the SAS token. No access policy identifier is used which&#xA;            // makes it a non-revocable token&#xA;            // limiting the table SAS access to only the request a specific partition&#xA;            string sasToken = table.GetSharedAccessSignature(&#xA;                policy   /* access policy */,&#xA;                null     /* access policy identifier */,&#xA;                &quot;X&quot; /* start partition key */,&#xA;                &quot;1&quot;     /* start row key */,&#xA;                &quot;X&quot; /* end partition key */,&#xA;                &quot;2&quot;     /* end row key */);&#xA;&#xA;            // You will need at least version 1.7.1 of the Azure sdk&#xA;            var sasCredentials = new StorageCredentialsSharedAccessSignature(sasToken);&#xA;            // Create the CloudTableClient using the shared access signature as the credentials&#xA;            return new CloudTableClient(serverClient.BaseUri, sasCredentials);&#xA;        }&#xA;&#xA;        private void SimpleWriteSample(CloudTableClient tableClient)&#xA;        {&#xA;            var context = tableClient.GetDataServiceContext();&#xA;            if (tableClient.CreateTableIfNotExist(&quot;SyncTable&quot;))&#xA;            {&#xA;                // Add some demo data&#xA;                for (int i = 0; i &lt; 2000; i++)&#xA;                {&#xA;                    context.AddObject(&quot;SyncTable&quot;, new LogEntry() { PartitionKey = &quot;X&quot;, RowKey = i.ToString(), Message = string.Format(&quot;Message {0}&quot;, i) });&#xA;                    if ((i + 1) % 100 == 0)&#xA;                    {&#xA;                        context.SaveChangesWithRetries(SaveChangesOptions.Batch);&#xA;                    }&#xA;                }&#xA;            }&#xA;&#xA;            // Note that the following line would NOT return all rows because of&#xA;            // continuation logic of table storage.&#xA;            // var logs = context&#xA;            //  .CreateQuery&lt;logentry&gt;(&quot;SyncTable&quot;)&#xA;            //  .Where(l =&gt; l.PartitionKey == &quot;X&quot;)&#xA;            //  .ToArray();&#xA;&#xA;            // You have to use CloudTableQuery instead.&#xA;            var logQuery = context&#xA;                .CreateQuery&lt;logentry&gt;(&quot;SyncTable&quot;)&#xA;                .Where(l =&gt; l.PartitionKey == &quot;X&quot;)&#xA;                .AsTableServiceQuery();&#xA;            var logs = logQuery.Execute();&#xA;            Console.WriteLine(logs.Count());&#xA;        }&#xA;&#xA;        private async void SimpleWriteSampleAsync(CloudTableClient tableClient)&#xA;        {&#xA;            var context = tableClient.GetDataServiceContext();&#xA;            if (await Task.Factory.FromAsync&lt;string,&gt;(&#xA;                tableClient.BeginCreateTableIfNotExist,&#xA;                tableClient.EndCreateTableIfNotExist,&#xA;                &quot;SyncTable2&quot;,&#xA;                null))&#xA;            {&#xA;                for (int i = 0; i &lt; 2000; i++)&#xA;                {&#xA;                    context.AddObject(&quot;SyncTable2&quot;, new LogEntry() { PartitionKey = &quot;X&quot;, RowKey = i.ToString(), Message = string.Format(&quot;Message {0}&quot;, i) });&#xA;                    if ((i + 1) % 100 == 0)&#xA;                    {&#xA;                        await Task.Factory.FromAsync&lt;savechangesoptions,&gt;(&#xA;                            context.BeginSaveChangesWithRetries,&#xA;                            context.EndSaveChangesWithRetries,&#xA;                            SaveChangesOptions.Batch,&#xA;                            null);&#xA;                    }&#xA;                }&#xA;            }&#xA;&#xA;            var q = context&#xA;                .CreateQuery&lt;logentry&gt;(&quot;SyncTable2&quot;)&#xA;                .Where(l =&gt; l.PartitionKey == &quot;X&quot;)&#xA;                .AsTableServiceQuery();&#xA;            var segment = await Task.Factory.FromAsync&lt;resultsegment&lt;logentry&gt;&gt;(&#xA;                q.BeginExecuteSegmented,&#xA;                q.EndExecuteSegmented,&#xA;                null);&#xA;            do&#xA;            {&#xA;                Console.WriteLine(segment.Results.Count());&#xA;&#xA;                if (segment.ContinuationToken != null)&#xA;                {&#xA;                    segment = await Task.Factory.FromAsync&lt;resultsegment&lt;logentry&gt;&gt;(&#xA;                        segment.BeginGetNext,&#xA;                        segment.EndGetNext,&#xA;                        null);&#xA;                }&#xA;                else&#xA;                {&#xA;                    break;&#xA;                }&#xA;            }&#xA;            while (true);&#xA;&#xA;            signal.Set();&#xA;        }&#xA;&#xA;        private void SchemalessAccess(CloudTableClient tableClient)&#xA;        {&#xA;            var context = tableClient.GetDataServiceContext();&#xA;            context.ReadingEntity += (s, e) =&gt;&#xA;            {&#xA;                var entity = e.Entity as DynamicEntry;&#xA;                if (entity != null)&#xA;                {&#xA;                    e.Data&#xA;                     .Element(AtomNamespace + &quot;content&quot;)&#xA;                     .Element(AstoriaMetadataNamespace + &quot;properties&quot;)&#xA;                     .Elements()&#xA;                     .Select(p =&gt;&#xA;                      new&#xA;                      {&#xA;                          Name = p.Name.LocalName,&#xA;                          p.Value&#xA;                      })&#xA;                     .ToList()&#xA;                     .ForEach(column =&gt; entity.values[column.Name] = column.Value);&#xA;                }&#xA;            };&#xA;&#xA;            var log = context&#xA;                .CreateQuery&lt;dynamicentry&gt;(&quot;SyncTable&quot;)&#xA;                .Where(l =&gt; l.PartitionKey == &quot;X&quot; &amp;&amp; l.RowKey == &quot;1&quot;)&#xA;                .First();&#xA;&#xA;            Console.WriteLine(log.values[&quot;Message&quot;]);&#xA;        }&#xA;&#xA;        private void SasAccessSample(CloudTableClient tableClient)&#xA;        {&#xA;            var context = tableClient.GetDataServiceContext();&#xA;&#xA;            // Access correct table&#xA;            var logQuery = context&#xA;                .CreateQuery&lt;logentry&gt;(&quot;SyncTable&quot;)&#xA;                .Where(l =&gt; l.PartitionKey == &quot;X&quot; &amp;&amp; l.RowKey == &quot;1&quot;)&#xA;                .AsTableServiceQuery();&#xA;            var logs = logQuery.Execute();&#xA;            Console.WriteLine(logs.Count());&#xA;&#xA;            try&#xA;            {&#xA;                logQuery = context&#xA;                    .CreateQuery&lt;logentry&gt;(&quot;SyncTable&quot;)&#xA;                    .Where(l =&gt; l.PartitionKey == &quot;X&quot; &amp;&amp; l.RowKey == &quot;3&quot;)&#xA;                    .AsTableServiceQuery();&#xA;                logs = logQuery.Execute();&#xA;                Console.WriteLine(logs.Count());&#xA;            }&#xA;            catch&#xA;            {&#xA;                Console.WriteLine(&quot;Exception while accessing table&quot;);&#xA;            }&#xA;        }&#xA;    }&#xA;}{% endhighlight %}
+</ul>{% highlight javascript %}using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.StorageClient;
+using System;
+using System.Collections.Generic;
+using System.Data.Services.Client;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+namespace ConsoleApplication1
+{
+    public class LogEntry : TableServiceEntity
+    {
+        public string Message { get; set; }
+    }
+
+    public class DynamicEntry : TableServiceEntity
+    {
+        internal Dictionary&lt;string,&gt; values = new Dictionary&lt;string,&gt;();
+    }
+
+    public class Program
+    {
+        private static AutoResetEvent signal = new AutoResetEvent(false);
+
+        private static readonly XNamespace AtomNamespace = &quot;http://www.w3.org/2005/Atom&quot;;
+        private static readonly XNamespace AstoriaDataNamespace = &quot;http://schemas.microsoft.com/ado/2007/08/dataservices&quot;;
+        private static readonly XNamespace AstoriaMetadataNamespace = &quot;http://schemas.microsoft.com/ado/2007/08/dataservices/metadata&quot;;
+
+        static void Main(string[] args)
+        {
+            var prog = new Program();
+            
+            var tableClient = prog.CreateClientWithNameAndKey();
+            prog.SimpleWriteSample(tableClient);
+            prog.SimpleWriteSampleAsync(tableClient);
+            signal.WaitOne();
+
+            tableClient = prog.CreateClientWithSas();
+            prog.SasAccessSample(tableClient);
+
+            prog.SchemalessAccess(tableClient);
+
+            Console.ReadKey();
+        }
+
+        private CloudTableClient CreateClientWithNameAndKey()
+        {
+            var account = new CloudStorageAccount(
+                new StorageCredentialsAccountAndKey(&quot;prodotnetvie&quot;, &quot;ENTER YOUR KEY HERE&quot;), true);
+            return account.CreateCloudTableClient();
+        }
+
+        private CloudTableClient CreateClientWithSas()
+        {
+            var serverClient = this.CreateClientWithNameAndKey();
+
+            SharedAccessTablePolicy policy = new SharedAccessTablePolicy()
+            {
+                SharedAccessExpiryTime = DateTime.UtcNow.AddMinutes(30),
+                Permissions = SharedAccessTablePermissions.Add
+                    | SharedAccessTablePermissions.Query
+                    | SharedAccessTablePermissions.Update
+                    | SharedAccessTablePermissions.Delete
+            };
+
+            var table = serverClient.GetTableReference(&quot;SyncTable&quot;);
+
+            // Generate the SAS token. No access policy identifier is used which
+            // makes it a non-revocable token
+            // limiting the table SAS access to only the request a specific partition
+            string sasToken = table.GetSharedAccessSignature(
+                policy   /* access policy */,
+                null     /* access policy identifier */,
+                &quot;X&quot; /* start partition key */,
+                &quot;1&quot;     /* start row key */,
+                &quot;X&quot; /* end partition key */,
+                &quot;2&quot;     /* end row key */);
+
+            // You will need at least version 1.7.1 of the Azure sdk
+            var sasCredentials = new StorageCredentialsSharedAccessSignature(sasToken);
+            // Create the CloudTableClient using the shared access signature as the credentials
+            return new CloudTableClient(serverClient.BaseUri, sasCredentials);
+        }
+
+        private void SimpleWriteSample(CloudTableClient tableClient)
+        {
+            var context = tableClient.GetDataServiceContext();
+            if (tableClient.CreateTableIfNotExist(&quot;SyncTable&quot;))
+            {
+                // Add some demo data
+                for (int i = 0; i &lt; 2000; i++)
+                {
+                    context.AddObject(&quot;SyncTable&quot;, new LogEntry() { PartitionKey = &quot;X&quot;, RowKey = i.ToString(), Message = string.Format(&quot;Message {0}&quot;, i) });
+                    if ((i + 1) % 100 == 0)
+                    {
+                        context.SaveChangesWithRetries(SaveChangesOptions.Batch);
+                    }
+                }
+            }
+
+            // Note that the following line would NOT return all rows because of
+            // continuation logic of table storage.
+            // var logs = context
+            //  .CreateQuery&lt;logentry&gt;(&quot;SyncTable&quot;)
+            //  .Where(l =&gt; l.PartitionKey == &quot;X&quot;)
+            //  .ToArray();
+
+            // You have to use CloudTableQuery instead.
+            var logQuery = context
+                .CreateQuery&lt;logentry&gt;(&quot;SyncTable&quot;)
+                .Where(l =&gt; l.PartitionKey == &quot;X&quot;)
+                .AsTableServiceQuery();
+            var logs = logQuery.Execute();
+            Console.WriteLine(logs.Count());
+        }
+
+        private async void SimpleWriteSampleAsync(CloudTableClient tableClient)
+        {
+            var context = tableClient.GetDataServiceContext();
+            if (await Task.Factory.FromAsync&lt;string,&gt;(
+                tableClient.BeginCreateTableIfNotExist,
+                tableClient.EndCreateTableIfNotExist,
+                &quot;SyncTable2&quot;,
+                null))
+            {
+                for (int i = 0; i &lt; 2000; i++)
+                {
+                    context.AddObject(&quot;SyncTable2&quot;, new LogEntry() { PartitionKey = &quot;X&quot;, RowKey = i.ToString(), Message = string.Format(&quot;Message {0}&quot;, i) });
+                    if ((i + 1) % 100 == 0)
+                    {
+                        await Task.Factory.FromAsync&lt;savechangesoptions,&gt;(
+                            context.BeginSaveChangesWithRetries,
+                            context.EndSaveChangesWithRetries,
+                            SaveChangesOptions.Batch,
+                            null);
+                    }
+                }
+            }
+
+            var q = context
+                .CreateQuery&lt;logentry&gt;(&quot;SyncTable2&quot;)
+                .Where(l =&gt; l.PartitionKey == &quot;X&quot;)
+                .AsTableServiceQuery();
+            var segment = await Task.Factory.FromAsync&lt;resultsegment&lt;logentry&gt;&gt;(
+                q.BeginExecuteSegmented,
+                q.EndExecuteSegmented,
+                null);
+            do
+            {
+                Console.WriteLine(segment.Results.Count());
+
+                if (segment.ContinuationToken != null)
+                {
+                    segment = await Task.Factory.FromAsync&lt;resultsegment&lt;logentry&gt;&gt;(
+                        segment.BeginGetNext,
+                        segment.EndGetNext,
+                        null);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            while (true);
+
+            signal.Set();
+        }
+
+        private void SchemalessAccess(CloudTableClient tableClient)
+        {
+            var context = tableClient.GetDataServiceContext();
+            context.ReadingEntity += (s, e) =&gt;
+            {
+                var entity = e.Entity as DynamicEntry;
+                if (entity != null)
+                {
+                    e.Data
+                     .Element(AtomNamespace + &quot;content&quot;)
+                     .Element(AstoriaMetadataNamespace + &quot;properties&quot;)
+                     .Elements()
+                     .Select(p =&gt;
+                      new
+                      {
+                          Name = p.Name.LocalName,
+                          p.Value
+                      })
+                     .ToList()
+                     .ForEach(column =&gt; entity.values[column.Name] = column.Value);
+                }
+            };
+
+            var log = context
+                .CreateQuery&lt;dynamicentry&gt;(&quot;SyncTable&quot;)
+                .Where(l =&gt; l.PartitionKey == &quot;X&quot; &amp;&amp; l.RowKey == &quot;1&quot;)
+                .First();
+
+            Console.WriteLine(log.values[&quot;Message&quot;]);
+        }
+
+        private void SasAccessSample(CloudTableClient tableClient)
+        {
+            var context = tableClient.GetDataServiceContext();
+
+            // Access correct table
+            var logQuery = context
+                .CreateQuery&lt;logentry&gt;(&quot;SyncTable&quot;)
+                .Where(l =&gt; l.PartitionKey == &quot;X&quot; &amp;&amp; l.RowKey == &quot;1&quot;)
+                .AsTableServiceQuery();
+            var logs = logQuery.Execute();
+            Console.WriteLine(logs.Count());
+
+            try
+            {
+                logQuery = context
+                    .CreateQuery&lt;logentry&gt;(&quot;SyncTable&quot;)
+                    .Where(l =&gt; l.PartitionKey == &quot;X&quot; &amp;&amp; l.RowKey == &quot;3&quot;)
+                    .AsTableServiceQuery();
+                logs = logQuery.Execute();
+                Console.WriteLine(logs.Count());
+            }
+            catch
+            {
+                Console.WriteLine(&quot;Exception while accessing table&quot;);
+            }
+        }
+    }
+}{% endhighlight %}

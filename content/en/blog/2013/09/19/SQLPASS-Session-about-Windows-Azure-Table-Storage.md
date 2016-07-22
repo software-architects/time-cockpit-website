@@ -76,4 +76,368 @@ permalink: /blog/2013/09/19/SQLPASS-Session-about-Windows-Azure-Table-Storage
   </li>
   <li>
     <a href="http://www.windowsazure.com/en-us/support/trust-center/" target="_blank">Windows Azure Trust Center</a> - the number one source if you want detailed information about data security and privacy in Windows Azure</li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">Source Code of the Sample</h2>{% highlight javascript %}using Microsoft.WindowsAzure.Storage;&#xA;using Microsoft.WindowsAzure.Storage.Auth;&#xA;using Microsoft.WindowsAzure.Storage.RetryPolicies;&#xA;using Microsoft.WindowsAzure.Storage.Table;&#xA;using Microsoft.WindowsAzure.Storage.Table.Queryable;&#xA;using System;&#xA;using System.Collections.Generic;&#xA;using System.Configuration;&#xA;using System.Linq;&#xA;using System.Threading.Tasks;&#xA;&#xA;namespace SqlPassTableStorageSample&#xA;{&#xA;    public class Order : TableEntity&#xA;    {&#xA;        public Order()&#xA;        {&#xA;            this.OrderDateTimeUtc = DateTimeOffset.UtcNow;&#xA;        }&#xA;&#xA;        public Order(string partitionKey, string rowKey, DateTimeOffset timestamp, IDictionary&lt;string, EntityProperty&gt; props, string etag)&#xA;            : this()&#xA;        {&#xA;            this.PartitionKey = partitionKey;&#xA;            this.RowKey = rowKey;&#xA;            this.Timestamp = timestamp;&#xA;            this.ETag = etag;&#xA;            this.ReadEntity(props, null);&#xA;        }&#xA;&#xA;        public string CustomerCode { get { return this.PartitionKey; } }&#xA;        public DateTimeOffset OrderDateTimeUtc { get; set; }&#xA;        public int TotalPrice { get; set; }&#xA;        public string EntityType { get { return this.RowKey.Substring(0, 1); } }&#xA;&#xA;        public static string BuildRowKey(string orderId)&#xA;        {&#xA;            // Note that the generated row key for order header starts with the char &quot;O&quot;.&#xA;            // Therefore we can easily filter for all order headers by checking the first&#xA;            // letter of the row key.&#xA;            return string.Format(&quot;O{0}_H&quot;, orderId);&#xA;        }&#xA;    }&#xA;&#xA;    public class OrderLine : TableEntity&#xA;    {&#xA;        public OrderLine()&#xA;        {&#xA;        }&#xA;&#xA;        public OrderLine(string partitionKey, string rowKey, DateTimeOffset timestamp, IDictionary&lt;string, EntityProperty&gt; props, string etag)&#xA;            : this()&#xA;        {&#xA;            this.PartitionKey = partitionKey;&#xA;            this.RowKey = rowKey;&#xA;            this.Timestamp = timestamp;&#xA;            this.ETag = etag;&#xA;            this.ReadEntity(props, null);&#xA;        }&#xA;&#xA;        public string Product { get; set; }&#xA;        public int Amount { get; set; }&#xA;        public int ItemPrice { get; set; }&#xA;        public int TotalPrice { get; set; }&#xA;        public string EntityType { get { return this.RowKey.Substring(0, 1); } }&#xA;&#xA;        public static string BuildRowKey(string orderId, int lineNumber)&#xA;        {&#xA;            // Note that the generated row key for order header starts with the char &quot;L&quot;.&#xA;            // Therefore we can easily filter for all order lines by checking the first&#xA;            // letter of the row key.&#xA;            return string.Format(&quot;L{0}_{1:0000}&quot;, orderId, lineNumber);&#xA;        }&#xA;    }&#xA;&#xA;    class Program&#xA;    {&#xA;        static void Main(string[] args)&#xA;        {&#xA;            // Use the following code to connect to dev storage WITHOUT Fiddler.&#xA;            ////var account = CloudStorageAccount.DevelopmentStorageAccount;&#xA;&#xA;            // Use the following code to connect to dev storage WITH Fiddler.&#xA;            var account = new CloudStorageAccount(&#xA;                new StorageCredentials(&quot;devstoreaccount1&quot;, &quot;Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==&quot;),&#xA;                new Uri(&quot;http://ipv4.fiddler:10000/devstoreaccount1/&quot;, UriKind.Absolute),&#xA;                new Uri(&quot;http://ipv4.fiddler:10001/devstoreaccount1/&quot;, UriKind.Absolute),&#xA;                new Uri(&quot;http://ipv4.fiddler:10002/devstoreaccount1/&quot;, UriKind.Absolute));&#xA;&#xA;            // Use the following code to connect to storage account in the cloud&#xA;            // and read credentials from app.config.&#xA;            ////var credentials = new StorageCredentials(&#xA;            ////    ConfigurationManager.AppSettings[&quot;AccountName&quot;],&#xA;            ////    ConfigurationManager.AppSettings[&quot;AccountPassword&quot;]);&#xA;            ////var account = new CloudStorageAccount(credentials, true);&#xA;            &#xA;            // Create and configure table client &#xA;            var tableClient = account.CreateCloudTableClient();&#xA;            tableClient.RetryPolicy = new ExponentialRetry(TimeSpan.FromSeconds(1), 5);&#xA;&#xA;            // Run demo scenarios&#xA;            ////DropTableAsync(tableClient).Wait();&#xA;            ////CreateTableWithBasicDataManipulationAsync(tableClient).Wait();&#xA;            ////CreateTableWithBatchOperationsAsync(tableClient).Wait();&#xA;            ////QueryScenariosAsync(tableClient).Wait();&#xA;            SharedAccessSignature(tableClient);&#xA;&#xA;            // And now we are done&#xA;            Console.WriteLine(&quot;Done!&quot;);&#xA;            Console.ReadKey();&#xA;        }&#xA;&#xA;        public static async Task DropTableAsync(CloudTableClient tableClient)&#xA;        {&#xA;            Console.WriteLine(&quot;\nScenario: Drop table&quot;);&#xA;&#xA;            var table = tableClient.GetTableReference(&quot;Orders&quot;);&#xA;            if (await table.DeleteIfExistsAsync())&#xA;            {&#xA;                Console.WriteLine(&quot;Table deleted&quot;);&#xA;            }&#xA;        }&#xA;&#xA;        public static async Task CreateTableWithBasicDataManipulationAsync(CloudTableClient tableClient)&#xA;        {&#xA;            Console.WriteLine(&quot;\nScenario: Create table with basic data manipulation&quot;);&#xA;&#xA;            // Create a table.&#xA;            var table = tableClient.GetTableReference(&quot;Orders&quot;);&#xA;            await table.CreateIfNotExistsAsync();&#xA;&#xA;            // Set some demo values&#xA;            var customerCode = &quot;Rainer&quot;;&#xA;            var orderId = Guid.NewGuid().ToString();&#xA;&#xA;            // Add a row with sample data&#xA;            var order = new Order()&#xA;            {&#xA;                PartitionKey = customerCode,                // we partition by customer&#xA;                RowKey = Order.BuildRowKey(orderId),    // guid order number&#xA;                TotalPrice = 100&#xA;            };&#xA;            await table.ExecuteAsync(TableOperation.Insert(order));&#xA;            Console.WriteLine(&quot;New order has been created&quot;);&#xA;&#xA;            // Retrieve a specific row by partition key and row key&#xA;            var result = await table.ExecuteAsync(&#xA;                TableOperation.Retrieve&lt;Order&gt;(customerCode, Order.BuildRowKey(orderId)));&#xA;            var readOrder = (Order)result.Result;           // remember retrieved order, we will &#xA;                                                            // need it later again&#xA;            Console.WriteLine(&quot;Retrieve successful; Order ID = {0}&quot;, readOrder.RowKey);&#xA;&#xA;            // Update a row (this works)&#xA;            order.TotalPrice += 10;&#xA;            await table.ExecuteAsync(TableOperation.Replace(order));&#xA;            Console.WriteLine(&quot;Order has been updated&quot;);&#xA;&#xA;            // Update a row (only works if ETag is specified as shown).&#xA;            // This demos optimistic concurrency. If you do not specify the etag *,&#xA;            // table storage will throw an exception as the underlying data row has&#xA;            // been altered since reading the order in readOrder.&#xA;            readOrder.TotalPrice += 20;&#xA;            readOrder.ETag = order.ETag = &quot;*&quot;;&#xA;            await table.ExecuteAsync(TableOperation.Replace(readOrder));&#xA;&#xA;            // Delete a row&#xA;            await table.ExecuteAsync(TableOperation.Delete(order));&#xA;            Console.WriteLine(&quot;Order has been deleted&quot;);&#xA;        }&#xA;&#xA;        public static async Task CreateTableWithBatchOperationsAsync(CloudTableClient tableClient)&#xA;        {&#xA;            Console.WriteLine(&quot;\nScenario: Create table and execute a batch operation&quot;);&#xA;&#xA;            // Create a table.&#xA;            // Note that we store order headers and order lines in the SAME table.&#xA;            // We even store all order data (headers and lines) or a customer in the&#xA;            // same partition. This makes it fast and easy to retrieve all order data&#xA;            // (headers and lines) of a single customer. Remember: Designing a NoSQL&#xA;            // database is all about designing for certain data access scenarios. Here&#xA;            // we design for a scenario in which it is common to read all order data&#xA;            // for a single customer knowing the customer's code (=partition key).&#xA;            var table = tableClient.GetTableReference(&quot;Orders&quot;);&#xA;            await table.CreateIfNotExistsAsync();&#xA;&#xA;            // Set some demo values&#xA;            var customerCode = &quot;Rainer&quot;;&#xA;            var orderId = Guid.NewGuid().ToString();&#xA;            var totalPrice = 0;&#xA;&#xA;            // Add some order lines. Note that the order lines are not written to the &#xA;            // table immediately. They are collected in a batch operation instead.&#xA;            // Later we can transfer the entire batch in a single REST request to&#xA;            // table storage. That saves money (lower number of transactions) and leads&#xA;            // to better performance (lower latency).&#xA;            var batch = new TableBatchOperation();&#xA;            for (int lineCount = 1; lineCount &lt;= 10; totalPrice += lineCount * 5, lineCount++)&#xA;            {&#xA;                batch.Insert(new OrderLine()&#xA;                {&#xA;                    Product = &quot;Bike&quot;,&#xA;                    Amount = lineCount,&#xA;                    ItemPrice = 5,&#xA;                    TotalPrice = lineCount * 5,&#xA;                    PartitionKey = customerCode,            // we partition by customer&#xA;                    RowKey = OrderLine.BuildRowKey(orderId, lineCount)&#xA;                                                            // build row key from order id and line number&#xA;                });&#xA;            }&#xA;&#xA;            // Add order header&#xA;            batch.Insert(new Order()&#xA;            {&#xA;                TotalPrice = totalPrice,&#xA;                PartitionKey = customerCode,&#xA;                RowKey = Order.BuildRowKey(orderId)&#xA;            });&#xA;&#xA;            // Note that the batch is executed in an atomic transaction&#xA;            await table.ExecuteBatchAsync(batch);&#xA;&#xA;            Console.WriteLine(&quot;New order with order lines has been created&quot;);&#xA;        }&#xA;&#xA;        public static async Task QueryScenariosAsync(CloudTableClient tableClient)&#xA;        {&#xA;            Console.WriteLine(&quot;\nScenario: Querying data (with new IQueryable feature from storage library 2.1)&quot;);&#xA;&#xA;            // Check if table exists&#xA;            var table = tableClient.GetTableReference(&quot;Orders&quot;);&#xA;            if (!await table.ExistsAsync())&#xA;            {&#xA;                return;&#xA;            }&#xA;&#xA;            // Create and execute a simple Linq query. Try running Fiddler to see the&#xA;            // REST requests resulting from that query. You will see that filtering is&#xA;            // done on the server, not on the client. Note that it does NOT&#xA;            // use async API. It blocks the calling thread.&#xA;            (from ol in table.CreateQuery&lt;OrderLine&gt;()&#xA;             where ol.PartitionKey == &quot;Rainer&quot; &#xA;                &amp;&amp; ol.RowKey.CompareTo(&quot;L&quot;) &gt; 0 &amp;&amp; ol.RowKey.CompareTo(&quot;LZ&quot;) &lt; 0&#xA;             select ol)&#xA;                .AsTableQuery()&#xA;                .Execute()&#xA;                .ToList()&#xA;                .ForEach(ol =&gt; Console.WriteLine(&quot;Order Line {0} (Product: '{1}')&quot;, ol.RowKey, ol.Product));&#xA;&#xA;            #region Async segmented query &#xA;            // The following Linq query is executed in segments (i.e. result is delivered in&#xA;            // segments if result set is large). Segmented queries support async execution.&#xA;            var orderQuery = (from o in table.CreateQuery&lt;Order&gt;()&#xA;                              where o.PartitionKey == &quot;Rainer&quot;&#xA;                                &amp;&amp; o.RowKey.CompareTo(&quot;O&quot;) &gt; 0 &amp;&amp; o.RowKey.CompareTo(&quot;OZ&quot;) &lt; 0&#xA;                              select o).AsTableQuery();&#xA;&#xA;            // Loop over all segments&#xA;            var continuationToken = new TableContinuationToken();&#xA;            do&#xA;            {&#xA;                // Get the next segment&#xA;                var segment = await orderQuery.ExecuteSegmentedAsync(continuationToken);&#xA;&#xA;                // Iterate over all items in current segment&#xA;                foreach (var item in segment)&#xA;                {&#xA;                    Console.WriteLine(&quot;Order {0} (Customer: {1})&quot;, item.RowKey, item.CustomerCode);&#xA;                }&#xA;&#xA;                // Store continuation token for retrieving the next segment&#xA;                continuationToken = segment.ContinuationToken;&#xA;            }&#xA;            while (continuationToken != null);&#xA;            #endregion&#xA;&#xA;            // The following query is a dynamic query. It retrieves all order data&#xA;            // (order header and lines) of a customer. The helper function &#xA;            // IterateResultAsync analyzes the result and generates Order or OrderLine&#xA;            // objects depending on the type of entity.&#xA;            var query = table.CreateQuery&lt;DynamicTableEntity&gt;()&#xA;                .Where(e =&gt; e.PartitionKey == &quot;Rainer&quot;)&#xA;                .AsTableQuery();&#xA;            foreach (var item in await IterateResultAsync(query))&#xA;            {&#xA;                Console.WriteLine(&quot;Entity: {0}, CLR Type: {1}&quot;, item.RowKey, item.GetType().Name);&#xA;            }&#xA;        }&#xA;&#xA;        private static async Task&lt;IEnumerable&lt;ITableEntity&gt;&gt; IterateResultAsync(TableQuery&lt;DynamicTableEntity&gt; query)&#xA;        {&#xA;            var result = new List&lt;ITableEntity&gt;();&#xA;            var continuationToken = new TableContinuationToken();&#xA;&#xA;            // Add resolver to query in order to dynamically resolve result type&#xA;            var newQuery = query&#xA;                    .Resolve&lt;DynamicTableEntity, ITableEntity&gt;((pk, rk, ts, props, etag) =&gt;&#xA;                    {&#xA;                        if (rk.StartsWith(&quot;L&quot;))&#xA;                        {&#xA;                            // Generate order line entity&#xA;                            return new OrderLine(pk, rk, ts, props, etag);&#xA;                        }&#xA;                        else&#xA;                        {&#xA;                            // Generate order entity&#xA;                            return new Order(pk, rk, ts, props, etag);&#xA;                        }&#xA;                    });&#xA;&#xA;            // Loop over all segments&#xA;            do&#xA;            {&#xA;                // Get the next segment&#xA;                var segment = await newQuery.ExecuteSegmentedAsync(continuationToken);&#xA;                &#xA;                // Iterate over all items in current segment&#xA;                foreach (var item in segment)&#xA;                {&#xA;                    result.Add(item);&#xA;                }&#xA;&#xA;                // Store continuation token for retrieving the next segment&#xA;                continuationToken = segment.ContinuationToken;&#xA;            }&#xA;            while (continuationToken != null);&#xA;&#xA;            return result;&#xA;        }&#xA;&#xA;        public static void SharedAccessSignature(CloudTableClient tableClient)&#xA;        {&#xA;            Console.WriteLine(&quot;\nScenario: Querying data (with new IQueryable feature from storage library 2.1)&quot;);&#xA;&#xA;            // Check if table exists&#xA;            var table = tableClient.GetTableReference(&quot;Orders&quot;);&#xA;            if (!table.Exists())&#xA;            {&#xA;                return;&#xA;            }&#xA;&#xA;            // Setup a policy that allows querying in the next minute&#xA;            var policy = new SharedAccessTablePolicy()&#xA;            {&#xA;                SharedAccessStartTime = DateTimeOffset.UtcNow,&#xA;                SharedAccessExpiryTime = DateTimeOffset.UtcNow.AddMinutes(1),&#xA;                Permissions = SharedAccessTablePermissions.Query&#xA;            };&#xA;&#xA;            // Limit access to order (not order lines) for customer Rainer&#xA;            var token = table.GetSharedAccessSignature(policy, null, &quot;Rainer&quot;, &quot;O&quot;, &quot;Rainer&quot;, &quot;OZ&quot;);&#xA;            Console.WriteLine(&quot;Token: {0}&quot;, token);&#xA;&#xA;            // Read all order data for customer Rainer -&gt; order lines must not be returned&#xA;            var restrictedClient = new CloudTableClient(&#xA;                tableClient.BaseUri,&#xA;                new StorageCredentials(token));&#xA;            var restrictedTable = restrictedClient.GetTableReference(&quot;Orders&quot;);&#xA;            foreach (var item in restrictedTable.ExecuteQuery(new TableQuery&lt;DynamicTableEntity&gt;())&#xA;                .GroupBy(e =&gt; e.RowKey.Substring(0, 1)))&#xA;            {&#xA;                Console.WriteLine(&quot;Type: {0}, Number of items: {1}&quot;, item.Key, item.Count());&#xA;            }&#xA;        }&#xA;    }&#xA;}{% endhighlight %}
+</ul><h2 xmlns="http://www.w3.org/1999/xhtml">Source Code of the Sample</h2>{% highlight javascript %}using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.RetryPolicies;
+using Microsoft.WindowsAzure.Storage.Table;
+using Microsoft.WindowsAzure.Storage.Table.Queryable;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace SqlPassTableStorageSample
+{
+    public class Order : TableEntity
+    {
+        public Order()
+        {
+            this.OrderDateTimeUtc = DateTimeOffset.UtcNow;
+        }
+
+        public Order(string partitionKey, string rowKey, DateTimeOffset timestamp, IDictionary&lt;string, EntityProperty&gt; props, string etag)
+            : this()
+        {
+            this.PartitionKey = partitionKey;
+            this.RowKey = rowKey;
+            this.Timestamp = timestamp;
+            this.ETag = etag;
+            this.ReadEntity(props, null);
+        }
+
+        public string CustomerCode { get { return this.PartitionKey; } }
+        public DateTimeOffset OrderDateTimeUtc { get; set; }
+        public int TotalPrice { get; set; }
+        public string EntityType { get { return this.RowKey.Substring(0, 1); } }
+
+        public static string BuildRowKey(string orderId)
+        {
+            // Note that the generated row key for order header starts with the char &quot;O&quot;.
+            // Therefore we can easily filter for all order headers by checking the first
+            // letter of the row key.
+            return string.Format(&quot;O{0}_H&quot;, orderId);
+        }
+    }
+
+    public class OrderLine : TableEntity
+    {
+        public OrderLine()
+        {
+        }
+
+        public OrderLine(string partitionKey, string rowKey, DateTimeOffset timestamp, IDictionary&lt;string, EntityProperty&gt; props, string etag)
+            : this()
+        {
+            this.PartitionKey = partitionKey;
+            this.RowKey = rowKey;
+            this.Timestamp = timestamp;
+            this.ETag = etag;
+            this.ReadEntity(props, null);
+        }
+
+        public string Product { get; set; }
+        public int Amount { get; set; }
+        public int ItemPrice { get; set; }
+        public int TotalPrice { get; set; }
+        public string EntityType { get { return this.RowKey.Substring(0, 1); } }
+
+        public static string BuildRowKey(string orderId, int lineNumber)
+        {
+            // Note that the generated row key for order header starts with the char &quot;L&quot;.
+            // Therefore we can easily filter for all order lines by checking the first
+            // letter of the row key.
+            return string.Format(&quot;L{0}_{1:0000}&quot;, orderId, lineNumber);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Use the following code to connect to dev storage WITHOUT Fiddler.
+            ////var account = CloudStorageAccount.DevelopmentStorageAccount;
+
+            // Use the following code to connect to dev storage WITH Fiddler.
+            var account = new CloudStorageAccount(
+                new StorageCredentials(&quot;devstoreaccount1&quot;, &quot;Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==&quot;),
+                new Uri(&quot;http://ipv4.fiddler:10000/devstoreaccount1/&quot;, UriKind.Absolute),
+                new Uri(&quot;http://ipv4.fiddler:10001/devstoreaccount1/&quot;, UriKind.Absolute),
+                new Uri(&quot;http://ipv4.fiddler:10002/devstoreaccount1/&quot;, UriKind.Absolute));
+
+            // Use the following code to connect to storage account in the cloud
+            // and read credentials from app.config.
+            ////var credentials = new StorageCredentials(
+            ////    ConfigurationManager.AppSettings[&quot;AccountName&quot;],
+            ////    ConfigurationManager.AppSettings[&quot;AccountPassword&quot;]);
+            ////var account = new CloudStorageAccount(credentials, true);
+            
+            // Create and configure table client 
+            var tableClient = account.CreateCloudTableClient();
+            tableClient.RetryPolicy = new ExponentialRetry(TimeSpan.FromSeconds(1), 5);
+
+            // Run demo scenarios
+            ////DropTableAsync(tableClient).Wait();
+            ////CreateTableWithBasicDataManipulationAsync(tableClient).Wait();
+            ////CreateTableWithBatchOperationsAsync(tableClient).Wait();
+            ////QueryScenariosAsync(tableClient).Wait();
+            SharedAccessSignature(tableClient);
+
+            // And now we are done
+            Console.WriteLine(&quot;Done!&quot;);
+            Console.ReadKey();
+        }
+
+        public static async Task DropTableAsync(CloudTableClient tableClient)
+        {
+            Console.WriteLine(&quot;\nScenario: Drop table&quot;);
+
+            var table = tableClient.GetTableReference(&quot;Orders&quot;);
+            if (await table.DeleteIfExistsAsync())
+            {
+                Console.WriteLine(&quot;Table deleted&quot;);
+            }
+        }
+
+        public static async Task CreateTableWithBasicDataManipulationAsync(CloudTableClient tableClient)
+        {
+            Console.WriteLine(&quot;\nScenario: Create table with basic data manipulation&quot;);
+
+            // Create a table.
+            var table = tableClient.GetTableReference(&quot;Orders&quot;);
+            await table.CreateIfNotExistsAsync();
+
+            // Set some demo values
+            var customerCode = &quot;Rainer&quot;;
+            var orderId = Guid.NewGuid().ToString();
+
+            // Add a row with sample data
+            var order = new Order()
+            {
+                PartitionKey = customerCode,                // we partition by customer
+                RowKey = Order.BuildRowKey(orderId),    // guid order number
+                TotalPrice = 100
+            };
+            await table.ExecuteAsync(TableOperation.Insert(order));
+            Console.WriteLine(&quot;New order has been created&quot;);
+
+            // Retrieve a specific row by partition key and row key
+            var result = await table.ExecuteAsync(
+                TableOperation.Retrieve&lt;Order&gt;(customerCode, Order.BuildRowKey(orderId)));
+            var readOrder = (Order)result.Result;           // remember retrieved order, we will 
+                                                            // need it later again
+            Console.WriteLine(&quot;Retrieve successful; Order ID = {0}&quot;, readOrder.RowKey);
+
+            // Update a row (this works)
+            order.TotalPrice += 10;
+            await table.ExecuteAsync(TableOperation.Replace(order));
+            Console.WriteLine(&quot;Order has been updated&quot;);
+
+            // Update a row (only works if ETag is specified as shown).
+            // This demos optimistic concurrency. If you do not specify the etag *,
+            // table storage will throw an exception as the underlying data row has
+            // been altered since reading the order in readOrder.
+            readOrder.TotalPrice += 20;
+            readOrder.ETag = order.ETag = &quot;*&quot;;
+            await table.ExecuteAsync(TableOperation.Replace(readOrder));
+
+            // Delete a row
+            await table.ExecuteAsync(TableOperation.Delete(order));
+            Console.WriteLine(&quot;Order has been deleted&quot;);
+        }
+
+        public static async Task CreateTableWithBatchOperationsAsync(CloudTableClient tableClient)
+        {
+            Console.WriteLine(&quot;\nScenario: Create table and execute a batch operation&quot;);
+
+            // Create a table.
+            // Note that we store order headers and order lines in the SAME table.
+            // We even store all order data (headers and lines) or a customer in the
+            // same partition. This makes it fast and easy to retrieve all order data
+            // (headers and lines) of a single customer. Remember: Designing a NoSQL
+            // database is all about designing for certain data access scenarios. Here
+            // we design for a scenario in which it is common to read all order data
+            // for a single customer knowing the customer's code (=partition key).
+            var table = tableClient.GetTableReference(&quot;Orders&quot;);
+            await table.CreateIfNotExistsAsync();
+
+            // Set some demo values
+            var customerCode = &quot;Rainer&quot;;
+            var orderId = Guid.NewGuid().ToString();
+            var totalPrice = 0;
+
+            // Add some order lines. Note that the order lines are not written to the 
+            // table immediately. They are collected in a batch operation instead.
+            // Later we can transfer the entire batch in a single REST request to
+            // table storage. That saves money (lower number of transactions) and leads
+            // to better performance (lower latency).
+            var batch = new TableBatchOperation();
+            for (int lineCount = 1; lineCount &lt;= 10; totalPrice += lineCount * 5, lineCount++)
+            {
+                batch.Insert(new OrderLine()
+                {
+                    Product = &quot;Bike&quot;,
+                    Amount = lineCount,
+                    ItemPrice = 5,
+                    TotalPrice = lineCount * 5,
+                    PartitionKey = customerCode,            // we partition by customer
+                    RowKey = OrderLine.BuildRowKey(orderId, lineCount)
+                                                            // build row key from order id and line number
+                });
+            }
+
+            // Add order header
+            batch.Insert(new Order()
+            {
+                TotalPrice = totalPrice,
+                PartitionKey = customerCode,
+                RowKey = Order.BuildRowKey(orderId)
+            });
+
+            // Note that the batch is executed in an atomic transaction
+            await table.ExecuteBatchAsync(batch);
+
+            Console.WriteLine(&quot;New order with order lines has been created&quot;);
+        }
+
+        public static async Task QueryScenariosAsync(CloudTableClient tableClient)
+        {
+            Console.WriteLine(&quot;\nScenario: Querying data (with new IQueryable feature from storage library 2.1)&quot;);
+
+            // Check if table exists
+            var table = tableClient.GetTableReference(&quot;Orders&quot;);
+            if (!await table.ExistsAsync())
+            {
+                return;
+            }
+
+            // Create and execute a simple Linq query. Try running Fiddler to see the
+            // REST requests resulting from that query. You will see that filtering is
+            // done on the server, not on the client. Note that it does NOT
+            // use async API. It blocks the calling thread.
+            (from ol in table.CreateQuery&lt;OrderLine&gt;()
+             where ol.PartitionKey == &quot;Rainer&quot; 
+                &amp;&amp; ol.RowKey.CompareTo(&quot;L&quot;) &gt; 0 &amp;&amp; ol.RowKey.CompareTo(&quot;LZ&quot;) &lt; 0
+             select ol)
+                .AsTableQuery()
+                .Execute()
+                .ToList()
+                .ForEach(ol =&gt; Console.WriteLine(&quot;Order Line {0} (Product: '{1}')&quot;, ol.RowKey, ol.Product));
+
+            #region Async segmented query 
+            // The following Linq query is executed in segments (i.e. result is delivered in
+            // segments if result set is large). Segmented queries support async execution.
+            var orderQuery = (from o in table.CreateQuery&lt;Order&gt;()
+                              where o.PartitionKey == &quot;Rainer&quot;
+                                &amp;&amp; o.RowKey.CompareTo(&quot;O&quot;) &gt; 0 &amp;&amp; o.RowKey.CompareTo(&quot;OZ&quot;) &lt; 0
+                              select o).AsTableQuery();
+
+            // Loop over all segments
+            var continuationToken = new TableContinuationToken();
+            do
+            {
+                // Get the next segment
+                var segment = await orderQuery.ExecuteSegmentedAsync(continuationToken);
+
+                // Iterate over all items in current segment
+                foreach (var item in segment)
+                {
+                    Console.WriteLine(&quot;Order {0} (Customer: {1})&quot;, item.RowKey, item.CustomerCode);
+                }
+
+                // Store continuation token for retrieving the next segment
+                continuationToken = segment.ContinuationToken;
+            }
+            while (continuationToken != null);
+            #endregion
+
+            // The following query is a dynamic query. It retrieves all order data
+            // (order header and lines) of a customer. The helper function 
+            // IterateResultAsync analyzes the result and generates Order or OrderLine
+            // objects depending on the type of entity.
+            var query = table.CreateQuery&lt;DynamicTableEntity&gt;()
+                .Where(e =&gt; e.PartitionKey == &quot;Rainer&quot;)
+                .AsTableQuery();
+            foreach (var item in await IterateResultAsync(query))
+            {
+                Console.WriteLine(&quot;Entity: {0}, CLR Type: {1}&quot;, item.RowKey, item.GetType().Name);
+            }
+        }
+
+        private static async Task&lt;IEnumerable&lt;ITableEntity&gt;&gt; IterateResultAsync(TableQuery&lt;DynamicTableEntity&gt; query)
+        {
+            var result = new List&lt;ITableEntity&gt;();
+            var continuationToken = new TableContinuationToken();
+
+            // Add resolver to query in order to dynamically resolve result type
+            var newQuery = query
+                    .Resolve&lt;DynamicTableEntity, ITableEntity&gt;((pk, rk, ts, props, etag) =&gt;
+                    {
+                        if (rk.StartsWith(&quot;L&quot;))
+                        {
+                            // Generate order line entity
+                            return new OrderLine(pk, rk, ts, props, etag);
+                        }
+                        else
+                        {
+                            // Generate order entity
+                            return new Order(pk, rk, ts, props, etag);
+                        }
+                    });
+
+            // Loop over all segments
+            do
+            {
+                // Get the next segment
+                var segment = await newQuery.ExecuteSegmentedAsync(continuationToken);
+                
+                // Iterate over all items in current segment
+                foreach (var item in segment)
+                {
+                    result.Add(item);
+                }
+
+                // Store continuation token for retrieving the next segment
+                continuationToken = segment.ContinuationToken;
+            }
+            while (continuationToken != null);
+
+            return result;
+        }
+
+        public static void SharedAccessSignature(CloudTableClient tableClient)
+        {
+            Console.WriteLine(&quot;\nScenario: Querying data (with new IQueryable feature from storage library 2.1)&quot;);
+
+            // Check if table exists
+            var table = tableClient.GetTableReference(&quot;Orders&quot;);
+            if (!table.Exists())
+            {
+                return;
+            }
+
+            // Setup a policy that allows querying in the next minute
+            var policy = new SharedAccessTablePolicy()
+            {
+                SharedAccessStartTime = DateTimeOffset.UtcNow,
+                SharedAccessExpiryTime = DateTimeOffset.UtcNow.AddMinutes(1),
+                Permissions = SharedAccessTablePermissions.Query
+            };
+
+            // Limit access to order (not order lines) for customer Rainer
+            var token = table.GetSharedAccessSignature(policy, null, &quot;Rainer&quot;, &quot;O&quot;, &quot;Rainer&quot;, &quot;OZ&quot;);
+            Console.WriteLine(&quot;Token: {0}&quot;, token);
+
+            // Read all order data for customer Rainer -&gt; order lines must not be returned
+            var restrictedClient = new CloudTableClient(
+                tableClient.BaseUri,
+                new StorageCredentials(token));
+            var restrictedTable = restrictedClient.GetTableReference(&quot;Orders&quot;);
+            foreach (var item in restrictedTable.ExecuteQuery(new TableQuery&lt;DynamicTableEntity&gt;())
+                .GroupBy(e =&gt; e.RowKey.Substring(0, 1)))
+            {
+                Console.WriteLine(&quot;Type: {0}, Number of items: {1}&quot;, item.Key, item.Count());
+            }
+        }
+    }
+}{% endhighlight %}

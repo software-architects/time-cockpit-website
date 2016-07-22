@@ -119,7 +119,22 @@ permalink: /blog/2009/10/13/SQL-Champ---Quiz
       <p dir="ltr">1. SELECT<br /> 2. SELECT, INSERT (if used with INSERT...SELECT syntax)<br /> 3. SELECT, INSERT, UPDATE, DELETE<br /> 4. None. TOP is new in SQL Server 2008</p>
       <p class="DecoratorRight">Parentheses that delimit expression in TOP is required in INSERT, UPDATE, and DELETE statements. For backward compatibility, TOP expression without parentheses in SELECT statements is supported, but Microsoft does not recommend this.</p>
       <p dir="ltr">The correct answer is <em>SELECT, INSERT, UPDATE, DELETE</em>. In SQL Server 2000 TOP was only supported in SELECT statements. Since SQL Server 2005 you can use TOP also with INSERT, UPDATE and DELETE. Here is an example for the use of TOP in a DELETE statement:</p>
-      {% highlight javascript %}use tempdb;  &#xA;&#xA;create table Orders ( OrderId int, CustId int, Revenue money );  &#xA;&#xA;insert into Orders ( OrderId, CustId, Revenue )  &#xA;select 1, 1, 5000 union all  &#xA;select 2, 1, 1000 union all  &#xA;select 3, 2, 500 union all  &#xA;select 4, 2, 100 union all  &#xA;select 5, 3, 50 union all  &#xA;select 6, 3, 10;  &#xA;&#xA;while exists ( select 1 from Orders where CustId = 1 )  &#xA;  delete top(1) from Orders where CustId = 1;  &#xA;&#xA;select * from Orders;{% endhighlight %}
+      {% highlight javascript %}use tempdb;  
+
+create table Orders ( OrderId int, CustId int, Revenue money );  
+
+insert into Orders ( OrderId, CustId, Revenue )  
+select 1, 1, 5000 union all  
+select 2, 1, 1000 union all  
+select 3, 2, 500 union all  
+select 4, 2, 100 union all  
+select 5, 3, 50 union all  
+select 6, 3, 10;  
+
+while exists ( select 1 from Orders where CustId = 1 )  
+  delete top(1) from Orders where CustId = 1;  
+
+select * from Orders;{% endhighlight %}
       <p dir="ltr">You may ask yourself why someone would write such a strange script to delete all orders of a certain customer. Imagine the table <span class="InlineCode">Orders</span> containing a very large amount of rows. If you would delete all orders of customer 1 in a single <span class="InlineCode">delete</span> statement this would lead to a very large transaction. It could be hard to handle it (e.g. disk space for transaction log could be critical, stopping the transaction could take a long time, etc.). With <span class="InlineCode">delete top(n)</span> you can split the large transaction into multiple smaller ones.</p>
     </div>
   </div>

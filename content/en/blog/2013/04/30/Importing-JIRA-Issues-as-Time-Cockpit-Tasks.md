@@ -21,9 +21,171 @@ permalink: /blog/2013/04/30/Importing-JIRA-Issues-as-Time-Cockpit-Tasks
     <strong>JiraStatus</strong> (text property) contains the current human-readable status of the issue (e.g. Fixed).</li>
   <li>
     <strong>JiraLink</strong> (text property, maximum length 500) contains a hyperlink to the issue in JIRA's web frontend.</li>
-</ul><p xmlns="http://www.w3.org/1999/xhtml">To make additional use of the new properties (besides filtering or in interactive queries) the <a href="http://help.timecockpit.com/?topic=html/b24c40b5-05ce-4d71-8e62-751382eabd0e.htm" target="_blank">lists</a> and <a href="http://help.timecockpit.com/?topic=html/e50f3f06-9cfd-4dc2-bdeb-c56039045465.htm" target="_blank">forms</a> would have to be changed accordingly. This would for example allow to add an <em>UrlCell</em> to the form/list which shows a hyperlink to quickly jump into JIRA when working in time cockpit.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Simple JIRA Queries in IronPython</h2><p xmlns="http://www.w3.org/1999/xhtml">The <a href="https://developer.atlassian.com/display/JIRADEV/JIRA+REST+APIs" target="_blank">REST API provided by JIRA</a> can be accessed using .NET's <a href="http://msdn.microsoft.com/library/system.web.aspx" target="_blank">System.Web</a>, <a href="http://msdn.microsoft.com/library/system.net.aspx" target="_blank">System.Net</a> and <a href="http://json.codeplex.com/" target="_blank">Json.NET</a> which are all provided within time cockpit's scripting environment. The following sample contains two simple classes representing a JIRA issue (with all the fields relevant for this use-case) as well as the API access itself. It only uses basic authentication which requires a username and password which should be changed to <a href="http://en.wikipedia.org/wiki/OAuth" target="_blank">OAuth</a> for more critical production scenarios.</p>{% highlight javascript %}# JIRA API&#xA;class Issue(object):&#xA;    def __init__(self, key=None, type=None, summary=None, link=None, status=None, updated=None, timeOriginalEstimate=None, subTaskKeys=None):&#xA;        self.Key = key&#xA;        self.Type = type&#xA;        self.Summary = summary&#xA;        self.Link = link&#xA;        self.Status = status&#xA;        self.Updated = updated&#xA;        self.TimeOriginalEstimate = timeOriginalEstimate&#xA;        self.SubTaskKeys = subTaskKeys&#xA;&#xA;class Jira(object):&#xA;    def __init__(self, repository, username, password):&#xA;        from System import Uri&#xA;        self.repository = Uri(repository)&#xA;        self.username = username&#xA;        self.password = password&#xA;        self.requestedFields = [ &quot;summary&quot;, &quot;issuetype&quot;, &quot;status&quot;, &quot;updated&quot;, &quot;timeoriginalestimate&quot;, &quot;subtasks&quot; ]&#xA;&#xA;    def search(self, jql):&#xA;        clr.AddReference(&quot;System.Web&quot;)&#xA;        from System.Web import HttpUtility&#xA;        from System.Net import HttpWebRequest&#xA;        from System.IO import StreamReader&#xA;        clr.AddReference(&quot;Newtonsoft.Json&quot;)&#xA;        from Newtonsoft.Json import JsonTextReader&#xA;        from Newtonsoft.Json.Linq import JObject&#xA;        from System import Decimal&#xA;        import Newtonsoft.Json&#xA;        clr.ImportExtensions(Newtonsoft.Json.Linq)&#xA;        usernamepw = Convert.ToBase64String(Encoding.UTF8.GetBytes(String.Format(&quot;{0}:{1}&quot;, self.username, self.password)))&#xA;&#xA;        fieldsparam = String.Join(&quot;,&quot;, self.requestedFields)&#xA;        requestUri = String.Format(&quot;{0}rest/api/2/search?jql={1}&amp;fields={2}&quot;, self.repository.AbsoluteUri, HttpUtility.UrlEncode(jql), fieldsparam)&#xA;        Logger.Write(LogLevel.Verbose, &quot;Jira.Search: {0}&quot;, requestUri)&#xA;&#xA;        request = HttpWebRequest.Create(requestUri)&#xA;        request.ContentType = &quot;application/json&quot;&#xA;&#xA;        request.Headers.Add(&quot;Authorization&quot;, &quot;Basic &quot; + usernamepw)&#xA;&#xA;        request.Method = &quot;GET&quot;&#xA;        with request.GetResponse() as response:&#xA;            with StreamReader(response.GetResponseStream()) as sr:&#xA;                with JsonTextReader(sr) as jr:&#xA;                    result = JObject.Load(jr)&#xA;                    issues = result[&quot;issues&quot;]&#xA;&#xA;                    items = list()&#xA;                    for issue in issues:&#xA;                        item = Issue()&#xA;                        item.Key = Newtonsoft.Json.Linq.Extensions.Value[String](issue[&quot;key&quot;])&#xA;                        fields = issue[&quot;fields&quot;]&#xA;                        item.Updated = Newtonsoft.Json.Linq.Extensions.Value[DateTime](fields[&quot;updated&quot;])&#xA;&#xA;                        # transform seconds to hours&#xA;                        estimate = Newtonsoft.Json.Linq.Extensions.Value[System.Object](fields[&quot;timeoriginalestimate&quot;])&#xA;&#xA;                        if estimate is not None:&#xA;                            estimate = Newtonsoft.Json.Linq.Extensions.Value[Decimal](fields[&quot;timeoriginalestimate&quot;])&#xA;                            estimate = estimate / (60.0 * 60.0)&#xA;&#xA;                        item.TimeOriginalEstimate = estimate&#xA;                        status = fields[&quot;status&quot;]&#xA;                        item.Status = Newtonsoft.Json.Linq.Extensions.Value[String](status[&quot;name&quot;])&#xA;                        item.Summary = Newtonsoft.Json.Linq.Extensions.Value[String](fields[&quot;summary&quot;])&#xA;                        type = fields[&quot;issuetype&quot;]&#xA;                        item.Type = Newtonsoft.Json.Linq.Extensions.Value[String](type[&quot;name&quot;])&#xA;                        item.Link = self.repository.ToString() + &quot;browse/&quot; + item.Key&#xA;&#xA;                        subTasks = fields[&quot;subtasks&quot;]&#xA;                        item.SubTaskKeys = System.Linq.Enumerable.Cast[JObject](subTasks).Select(lambda t: Newtonsoft.Json.Linq.Extensions.Value[String](t[&quot;key&quot;])).ToArray[String]()&#xA;                        items.Add(item)&#xA;&#xA;                    return items;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Note that the <em>Jira</em> class currently only supports a single method <em>search</em> accepting a <a href="https://confluence.atlassian.com/display/JIRA/Advanced+Searching" target="_blank">JQL query</a> and returning a list of matching <em>Issue</em> instances. It is implemented by first building a get request containing the query, setting the authentication, getting the result and parsing it through Json.NET.</p><h2 xmlns="http://www.w3.org/1999/xhtml">One-Way Syncing the Data</h2><p xmlns="http://www.w3.org/1999/xhtml">The basic workflow of the core import functionality consists of the following steps:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+</ul><p xmlns="http://www.w3.org/1999/xhtml">To make additional use of the new properties (besides filtering or in interactive queries) the <a href="http://help.timecockpit.com/?topic=html/b24c40b5-05ce-4d71-8e62-751382eabd0e.htm" target="_blank">lists</a> and <a href="http://help.timecockpit.com/?topic=html/e50f3f06-9cfd-4dc2-bdeb-c56039045465.htm" target="_blank">forms</a> would have to be changed accordingly. This would for example allow to add an <em>UrlCell</em> to the form/list which shows a hyperlink to quickly jump into JIRA when working in time cockpit.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Simple JIRA Queries in IronPython</h2><p xmlns="http://www.w3.org/1999/xhtml">The <a href="https://developer.atlassian.com/display/JIRADEV/JIRA+REST+APIs" target="_blank">REST API provided by JIRA</a> can be accessed using .NET's <a href="http://msdn.microsoft.com/library/system.web.aspx" target="_blank">System.Web</a>, <a href="http://msdn.microsoft.com/library/system.net.aspx" target="_blank">System.Net</a> and <a href="http://json.codeplex.com/" target="_blank">Json.NET</a> which are all provided within time cockpit's scripting environment. The following sample contains two simple classes representing a JIRA issue (with all the fields relevant for this use-case) as well as the API access itself. It only uses basic authentication which requires a username and password which should be changed to <a href="http://en.wikipedia.org/wiki/OAuth" target="_blank">OAuth</a> for more critical production scenarios.</p>{% highlight javascript %}# JIRA API
+class Issue(object):
+    def __init__(self, key=None, type=None, summary=None, link=None, status=None, updated=None, timeOriginalEstimate=None, subTaskKeys=None):
+        self.Key = key
+        self.Type = type
+        self.Summary = summary
+        self.Link = link
+        self.Status = status
+        self.Updated = updated
+        self.TimeOriginalEstimate = timeOriginalEstimate
+        self.SubTaskKeys = subTaskKeys
+
+class Jira(object):
+    def __init__(self, repository, username, password):
+        from System import Uri
+        self.repository = Uri(repository)
+        self.username = username
+        self.password = password
+        self.requestedFields = [ &quot;summary&quot;, &quot;issuetype&quot;, &quot;status&quot;, &quot;updated&quot;, &quot;timeoriginalestimate&quot;, &quot;subtasks&quot; ]
+
+    def search(self, jql):
+        clr.AddReference(&quot;System.Web&quot;)
+        from System.Web import HttpUtility
+        from System.Net import HttpWebRequest
+        from System.IO import StreamReader
+        clr.AddReference(&quot;Newtonsoft.Json&quot;)
+        from Newtonsoft.Json import JsonTextReader
+        from Newtonsoft.Json.Linq import JObject
+        from System import Decimal
+        import Newtonsoft.Json
+        clr.ImportExtensions(Newtonsoft.Json.Linq)
+        usernamepw = Convert.ToBase64String(Encoding.UTF8.GetBytes(String.Format(&quot;{0}:{1}&quot;, self.username, self.password)))
+
+        fieldsparam = String.Join(&quot;,&quot;, self.requestedFields)
+        requestUri = String.Format(&quot;{0}rest/api/2/search?jql={1}&amp;fields={2}&quot;, self.repository.AbsoluteUri, HttpUtility.UrlEncode(jql), fieldsparam)
+        Logger.Write(LogLevel.Verbose, &quot;Jira.Search: {0}&quot;, requestUri)
+
+        request = HttpWebRequest.Create(requestUri)
+        request.ContentType = &quot;application/json&quot;
+
+        request.Headers.Add(&quot;Authorization&quot;, &quot;Basic &quot; + usernamepw)
+
+        request.Method = &quot;GET&quot;
+        with request.GetResponse() as response:
+            with StreamReader(response.GetResponseStream()) as sr:
+                with JsonTextReader(sr) as jr:
+                    result = JObject.Load(jr)
+                    issues = result[&quot;issues&quot;]
+
+                    items = list()
+                    for issue in issues:
+                        item = Issue()
+                        item.Key = Newtonsoft.Json.Linq.Extensions.Value[String](issue[&quot;key&quot;])
+                        fields = issue[&quot;fields&quot;]
+                        item.Updated = Newtonsoft.Json.Linq.Extensions.Value[DateTime](fields[&quot;updated&quot;])
+
+                        # transform seconds to hours
+                        estimate = Newtonsoft.Json.Linq.Extensions.Value[System.Object](fields[&quot;timeoriginalestimate&quot;])
+
+                        if estimate is not None:
+                            estimate = Newtonsoft.Json.Linq.Extensions.Value[Decimal](fields[&quot;timeoriginalestimate&quot;])
+                            estimate = estimate / (60.0 * 60.0)
+
+                        item.TimeOriginalEstimate = estimate
+                        status = fields[&quot;status&quot;]
+                        item.Status = Newtonsoft.Json.Linq.Extensions.Value[String](status[&quot;name&quot;])
+                        item.Summary = Newtonsoft.Json.Linq.Extensions.Value[String](fields[&quot;summary&quot;])
+                        type = fields[&quot;issuetype&quot;]
+                        item.Type = Newtonsoft.Json.Linq.Extensions.Value[String](type[&quot;name&quot;])
+                        item.Link = self.repository.ToString() + &quot;browse/&quot; + item.Key
+
+                        subTasks = fields[&quot;subtasks&quot;]
+                        item.SubTaskKeys = System.Linq.Enumerable.Cast[JObject](subTasks).Select(lambda t: Newtonsoft.Json.Linq.Extensions.Value[String](t[&quot;key&quot;])).ToArray[String]()
+                        items.Add(item)
+
+                    return items;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Note that the <em>Jira</em> class currently only supports a single method <em>search</em> accepting a <a href="https://confluence.atlassian.com/display/JIRA/Advanced+Searching" target="_blank">JQL query</a> and returning a list of matching <em>Issue</em> instances. It is implemented by first building a get request containing the query, setting the authentication, getting the result and parsing it through Json.NET.</p><h2 xmlns="http://www.w3.org/1999/xhtml">One-Way Syncing the Data</h2><p xmlns="http://www.w3.org/1999/xhtml">The basic workflow of the core import functionality consists of the following steps:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Get all time cockpit projects which have a <em>JiraProject</em> name set.</li>
   <li>For each found project:
 
 <ul><li>Get the maximum last updated JIRA timestamp of the tasks related to the current project.</li><li>Query all JIRA issues for the current project that have changed since the last import.</li><li>Insert or update a task in time cockpit for each JIRA issue.</li></ul></li>
-</ul><p xmlns="http://www.w3.org/1999/xhtml">Of course there are some more details in the sample like transaction handling, exception handling, logging, batch-based selection of existing tasks and checks which avoid updating tasks if the corresponding issue only has changes in fields not relevant for us.</p>{% highlight javascript %}commit = True&#xA;timeDelta = 0.01&#xA;&#xA;jira = Jira(&quot;https://....atlassian.net/&quot;, &quot;...&quot;, &quot;...&quot;)&#xA;jiraProjects = dc.Select(&quot;From P In Project Where :IsNullOrEmpty(P.JiraProject) = False Select P&quot;)&#xA;&#xA;for jiraProject in jiraProjects:&#xA;    dc.BeginTransaction()&#xA;    try:&#xA;        jiraName = jiraProject.JiraProject&#xA;        Logger.Write(LogLevel.Information, &quot;JiraImport: Handling project '{0}'&quot;, jiraName)&#xA;        projectUuid = jiraProject.ProjectUuid&#xA;&#xA;        lastUpdated = dc.SelectSingleWithParams({ &quot;Query&quot;: &quot;From T In Task Where T.Project = @ProjectUuid Select New With { .LastUpdated = Max(T.JiraUpdated) }&quot;, &quot;@ProjectUuid&quot;: projectUuid }).LastUpdated&#xA;        if lastUpdated is None:&#xA;            lastUpdated = DateTime(1970, 1, 1)&#xA;        &#xA;        jqlAdditionalCondition = String.Format(&quot; and updated &gt;= '{0}' order by updated asc&quot;, lastUpdated.ToString(&quot;yyyy-MM-dd HH:mm&quot;, CultureInfo.InvariantCulture))&#xA;        jql = String.Format(&quot;project='{0}'{1}&quot;, jiraName, jqlAdditionalCondition)&#xA;        issues = jira.search(jql).ToDictionary(lambda i: i.Key)&#xA;&#xA;        if issues.Any():&#xA;            query = String.Format(&quot;From T In Task.Include(*) Where T.Project = @ProjectUuid And T.Code In ({0}) Select T&quot;, String.Join(&quot;, &quot;, issues.Select(lambda i: String.Format('&quot;{0}&quot;', i.Key)).ToArray()))&#xA;            tasks = dc.SelectWithParams({ &quot;Query&quot;: query, &quot;@ProjectUuid&quot;: projectUuid }).GroupBy(lambda t: t.Code).ToDictionary(lambda g: g.Key, lambda g: g.Single())&#xA;&#xA;            newIssues = issues.Keys.Except(tasks.Keys).ToArray()&#xA;            updatedIssues = issues.Keys.Except(newIssues).ToArray()&#xA;        &#xA;            Logger.Write(LogLevel.Information, &quot;JiraImport: {0} new issues, {1} updated issues for query {2}&quot;, newIssues.Length, updatedIssues.Length, jql)&#xA;        &#xA;            for key in newIssues:&#xA;                issue = issues[key]&#xA;                task = dc.CreateTask()&#xA;                task.APP_BudgetInHours = issue.TimeOriginalEstimate&#xA;                task.APP_Code = issue.Key&#xA;                task.APP_Project = jiraProject&#xA;                task.USR_JiraLink = issue.Link&#xA;                task.USR_JiraStatus = issue.Status&#xA;                task.USR_JiraType = issue.Type&#xA;                task.USR_JiraUpdated = issue.Updated&#xA;                task.APP_Description = issue.Summary&#xA;                Logger.Write(LogLevel.Information, &quot;JiraImport: Adding task {0}&quot;, key)&#xA;                dc.SaveObject(task)&#xA;&#xA;            for key in updatedIssues:&#xA;                changed = False&#xA;                task = tasks[key]&#xA;                issue = issues[key]&#xA;&#xA;                if task.APP_BudgetInHours &lt;&gt; issue.TimeOriginalEstimate:&#xA;                    if (task.APP_BudgetInHours is None and issue.TimeOriginalEstimate is not None) or (task.APP_BudgetInHours is not None and issue.TimeOriginalEstimate is None) or (abs(task.APP_BudgetInHours - issue.TimeOriginalEstimate) &gt; timeDelta):&#xA;                        Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;TimeOriginalEstimate&quot;)&#xA;                        task.APP_BudgetInHours = issue.TimeOriginalEstimate&#xA;                        changed = True&#xA;                if task.USR_JiraLink &lt;&gt; issue.Link:&#xA;                    Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;Link&quot;)&#xA;                    task.USR_JiraLink = issue.Link&#xA;                    changed = True&#xA;                if task.USR_JiraStatus &lt;&gt; issue.Status:&#xA;                    Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;Status&quot;)&#xA;                    task.USR_JiraStatus = issue.Status&#xA;                    changed = True&#xA;                if task.USR_JiraType &lt;&gt; issue.Type:&#xA;                    Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;Type&quot;)&#xA;                    task.USR_JiraType = issue.Type&#xA;                    changed = True&#xA;                if task.USR_JiraUpdated &lt;&gt; issue.Updated:&#xA;                    Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;Updated&quot;)&#xA;                    task.USR_JiraUpdated = issue.Updated&#xA;                    changed = True&#xA;                if task.APP_Description &lt;&gt; issue.Summary:&#xA;                    Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;Summary&quot;)&#xA;                    task.APP_Description = issue.Summary&#xA;                    changed = True&#xA;&#xA;                if changed:&#xA;                    Logger.Write(LogLevel.Information, &quot;JiraImport: Updating task {0}&quot;, key)&#xA;                    dc.SaveObject(task)&#xA;                else:&#xA;                    Logger.Write(LogLevel.Information, &quot;JiraImport: Skipping unchanged task {0}&quot;, key)&#xA;&#xA;        if commit:&#xA;            dc.TryCommitTransaction()&#xA;        else:&#xA;            dc.TryRollbackTransaction()&#xA;    except System.Exception, e:&#xA;        dc.TryRollbackTransaction()&#xA;        Logger.Write(LogLevel.Warning, &quot;JiraImport: Exception while handling {0}: {1}\r\n{2}&quot;, jiraProject.JiraProject, e.Message, e.StackTrace){% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Wrap-Up</h2><p xmlns="http://www.w3.org/1999/xhtml">The shown example can be put together to form a script which can be <a href="http://help.timecockpit.com/?topic=html/7c78b76a-2526-4408-accc-ccae19bbca45.htm" target="_blank">scheduled</a> or a time cockpit action which can be interactively executed. This ensures that your JIRA issues are usually just there when you need to book times on them or you can trigger an import for the few corner cases where you need an issue to be available earlier than the next import.</p><p xmlns="http://www.w3.org/1999/xhtml">There are lots of things that can be improved or adapted for production use (e.g. most installations currently only return 50 items per query which means that the query would have to be run in a loop until no new items are discovered) but this article should give an overview of what is possible.</p>
+</ul><p xmlns="http://www.w3.org/1999/xhtml">Of course there are some more details in the sample like transaction handling, exception handling, logging, batch-based selection of existing tasks and checks which avoid updating tasks if the corresponding issue only has changes in fields not relevant for us.</p>{% highlight javascript %}commit = True
+timeDelta = 0.01
+
+jira = Jira(&quot;https://....atlassian.net/&quot;, &quot;...&quot;, &quot;...&quot;)
+jiraProjects = dc.Select(&quot;From P In Project Where :IsNullOrEmpty(P.JiraProject) = False Select P&quot;)
+
+for jiraProject in jiraProjects:
+    dc.BeginTransaction()
+    try:
+        jiraName = jiraProject.JiraProject
+        Logger.Write(LogLevel.Information, &quot;JiraImport: Handling project '{0}'&quot;, jiraName)
+        projectUuid = jiraProject.ProjectUuid
+
+        lastUpdated = dc.SelectSingleWithParams({ &quot;Query&quot;: &quot;From T In Task Where T.Project = @ProjectUuid Select New With { .LastUpdated = Max(T.JiraUpdated) }&quot;, &quot;@ProjectUuid&quot;: projectUuid }).LastUpdated
+        if lastUpdated is None:
+            lastUpdated = DateTime(1970, 1, 1)
+        
+        jqlAdditionalCondition = String.Format(&quot; and updated &gt;= '{0}' order by updated asc&quot;, lastUpdated.ToString(&quot;yyyy-MM-dd HH:mm&quot;, CultureInfo.InvariantCulture))
+        jql = String.Format(&quot;project='{0}'{1}&quot;, jiraName, jqlAdditionalCondition)
+        issues = jira.search(jql).ToDictionary(lambda i: i.Key)
+
+        if issues.Any():
+            query = String.Format(&quot;From T In Task.Include(*) Where T.Project = @ProjectUuid And T.Code In ({0}) Select T&quot;, String.Join(&quot;, &quot;, issues.Select(lambda i: String.Format('&quot;{0}&quot;', i.Key)).ToArray()))
+            tasks = dc.SelectWithParams({ &quot;Query&quot;: query, &quot;@ProjectUuid&quot;: projectUuid }).GroupBy(lambda t: t.Code).ToDictionary(lambda g: g.Key, lambda g: g.Single())
+
+            newIssues = issues.Keys.Except(tasks.Keys).ToArray()
+            updatedIssues = issues.Keys.Except(newIssues).ToArray()
+        
+            Logger.Write(LogLevel.Information, &quot;JiraImport: {0} new issues, {1} updated issues for query {2}&quot;, newIssues.Length, updatedIssues.Length, jql)
+        
+            for key in newIssues:
+                issue = issues[key]
+                task = dc.CreateTask()
+                task.APP_BudgetInHours = issue.TimeOriginalEstimate
+                task.APP_Code = issue.Key
+                task.APP_Project = jiraProject
+                task.USR_JiraLink = issue.Link
+                task.USR_JiraStatus = issue.Status
+                task.USR_JiraType = issue.Type
+                task.USR_JiraUpdated = issue.Updated
+                task.APP_Description = issue.Summary
+                Logger.Write(LogLevel.Information, &quot;JiraImport: Adding task {0}&quot;, key)
+                dc.SaveObject(task)
+
+            for key in updatedIssues:
+                changed = False
+                task = tasks[key]
+                issue = issues[key]
+
+                if task.APP_BudgetInHours &lt;&gt; issue.TimeOriginalEstimate:
+                    if (task.APP_BudgetInHours is None and issue.TimeOriginalEstimate is not None) or (task.APP_BudgetInHours is not None and issue.TimeOriginalEstimate is None) or (abs(task.APP_BudgetInHours - issue.TimeOriginalEstimate) &gt; timeDelta):
+                        Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;TimeOriginalEstimate&quot;)
+                        task.APP_BudgetInHours = issue.TimeOriginalEstimate
+                        changed = True
+                if task.USR_JiraLink &lt;&gt; issue.Link:
+                    Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;Link&quot;)
+                    task.USR_JiraLink = issue.Link
+                    changed = True
+                if task.USR_JiraStatus &lt;&gt; issue.Status:
+                    Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;Status&quot;)
+                    task.USR_JiraStatus = issue.Status
+                    changed = True
+                if task.USR_JiraType &lt;&gt; issue.Type:
+                    Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;Type&quot;)
+                    task.USR_JiraType = issue.Type
+                    changed = True
+                if task.USR_JiraUpdated &lt;&gt; issue.Updated:
+                    Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;Updated&quot;)
+                    task.USR_JiraUpdated = issue.Updated
+                    changed = True
+                if task.APP_Description &lt;&gt; issue.Summary:
+                    Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;Summary&quot;)
+                    task.APP_Description = issue.Summary
+                    changed = True
+
+                if changed:
+                    Logger.Write(LogLevel.Information, &quot;JiraImport: Updating task {0}&quot;, key)
+                    dc.SaveObject(task)
+                else:
+                    Logger.Write(LogLevel.Information, &quot;JiraImport: Skipping unchanged task {0}&quot;, key)
+
+        if commit:
+            dc.TryCommitTransaction()
+        else:
+            dc.TryRollbackTransaction()
+    except System.Exception, e:
+        dc.TryRollbackTransaction()
+        Logger.Write(LogLevel.Warning, &quot;JiraImport: Exception while handling {0}: {1}\r\n{2}&quot;, jiraProject.JiraProject, e.Message, e.StackTrace){% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Wrap-Up</h2><p xmlns="http://www.w3.org/1999/xhtml">The shown example can be put together to form a script which can be <a href="http://help.timecockpit.com/?topic=html/7c78b76a-2526-4408-accc-ccae19bbca45.htm" target="_blank">scheduled</a> or a time cockpit action which can be interactively executed. This ensures that your JIRA issues are usually just there when you need to book times on them or you can trigger an import for the few corner cases where you need an issue to be available earlier than the next import.</p><p xmlns="http://www.w3.org/1999/xhtml">There are lots of things that can be improved or adapted for production use (e.g. most installations currently only return 50 items per query which means that the query would have to be run in a loop until no new items are discovered) but this article should give an overview of what is possible.</p>

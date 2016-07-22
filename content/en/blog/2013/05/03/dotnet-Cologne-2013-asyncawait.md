@@ -9,16 +9,441 @@ lang: en
 permalink: /blog/2013/05/03/dotnet-Cologne-2013-asyncawait
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">This year at <a href="http://dotnet-cologne.de/" target="_blank">dotnet Cologne</a> I have proposed a 60 minutes live-coding talk about <em>async/await</em>. It was really accepted and I even got the large ballroom. Wow, live coding in front of a huge crowd of developers. This will be awesome. In this blog I post the sample that I am going to develop on stage (at least approximately; let's see if I have some ad hoc ideas on stage).</p><h2 xmlns="http://www.w3.org/1999/xhtml">The Starting Point</h2><p xmlns="http://www.w3.org/1999/xhtml">We start from a very simple class simulating a sensor:</p>{% highlight javascript %}using System;&#xA;using System.Net;&#xA;using System.Threading;&#xA;&#xA;namespace AsyncAwaitDemo&#xA;{&#xA;    public class SyncHeatSensor&#xA;    {&#xA;        /// &lt;summary&gt;&#xA;        /// Flag indicating whether the sensor is connected.&#xA;        /// &lt;/summary&gt;&#xA;        private bool isConnected = false;&#xA;&#xA;        public void Connect(IPAddress address)&#xA;        {&#xA;            if (address == null)&#xA;            {&#xA;                throw new ArgumentNullException(&quot;address&quot;);&#xA;            }&#xA;&#xA;            if (this.isConnected)&#xA;            {&#xA;                throw new InvalidOperationException(&quot;Already connected&quot;);&#xA;            }&#xA;&#xA;            // Simulate connect&#xA;            Thread.Sleep(3000);&#xA;&#xA;            this.isConnected = true;&#xA;        }&#xA;&#xA;        public void UploadFirmware(byte[] firmware)&#xA;        {&#xA;            if (firmware == null)&#xA;            {&#xA;                throw new ArgumentNullException(&quot;firmeware&quot;);&#xA;            }&#xA;&#xA;            if (!this.isConnected)&#xA;            {&#xA;                throw new InvalidOperationException(&quot;Not connected&quot;);&#xA;            }&#xA;&#xA;            for (var i = 0; i &lt; 10; i++)&#xA;            {&#xA;                // Simulate uploading of a chunk of data&#xA;                Thread.Sleep(200);&#xA;            }&#xA;        }&#xA;&#xA;        public bool TryDisconnect()&#xA;        {&#xA;            if (!this.isConnected)&#xA;            {&#xA;                return false;&#xA;            }&#xA;&#xA;            // Simulate disconnect&#xA;            Thread.Sleep(500);&#xA;&#xA;            this.isConnected = false;&#xA;            return true;&#xA;        }&#xA;    }&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The user interface is very simple - just a button:</p>{% highlight javascript %}&lt;Window x:Class=&quot;AsyncAwaitDemo.MainWindow&quot;&#xA;        xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&#xA;        xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&#xA;        Title=&quot;MainWindow&quot; Height=&quot;350&quot; Width=&quot;525&quot;&gt;&#xA;    &lt;Window.Resources&gt;&#xA;        &lt;Style TargetType=&quot;Button&quot;&gt;&#xA;            &lt;Setter Property=&quot;Margin&quot; Value=&quot;3&quot; /&gt;&#xA;        &lt;/Style&gt;&#xA;    &lt;/Window.Resources&gt;&#xA;    &lt;StackPanel&gt;&#xA;        &lt;Button Command=&quot;{Binding Path=ConnectAndUpdateSync}&quot;&gt;Connect to sensor and upload firmware&lt;/Button&gt;&#xA;    &lt;/StackPanel&gt;&#xA;&lt;/Window&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Of course the UI logic is implemented in a ViewModel class:</p><p xmlns="http://www.w3.org/1999/xhtml">
+<p xmlns="http://www.w3.org/1999/xhtml">This year at <a href="http://dotnet-cologne.de/" target="_blank">dotnet Cologne</a> I have proposed a 60 minutes live-coding talk about <em>async/await</em>. It was really accepted and I even got the large ballroom. Wow, live coding in front of a huge crowd of developers. This will be awesome. In this blog I post the sample that I am going to develop on stage (at least approximately; let's see if I have some ad hoc ideas on stage).</p><h2 xmlns="http://www.w3.org/1999/xhtml">The Starting Point</h2><p xmlns="http://www.w3.org/1999/xhtml">We start from a very simple class simulating a sensor:</p>{% highlight javascript %}using System;
+using System.Net;
+using System.Threading;
+
+namespace AsyncAwaitDemo
+{
+    public class SyncHeatSensor
+    {
+        /// &lt;summary&gt;
+        /// Flag indicating whether the sensor is connected.
+        /// &lt;/summary&gt;
+        private bool isConnected = false;
+
+        public void Connect(IPAddress address)
+        {
+            if (address == null)
+            {
+                throw new ArgumentNullException(&quot;address&quot;);
+            }
+
+            if (this.isConnected)
+            {
+                throw new InvalidOperationException(&quot;Already connected&quot;);
+            }
+
+            // Simulate connect
+            Thread.Sleep(3000);
+
+            this.isConnected = true;
+        }
+
+        public void UploadFirmware(byte[] firmware)
+        {
+            if (firmware == null)
+            {
+                throw new ArgumentNullException(&quot;firmeware&quot;);
+            }
+
+            if (!this.isConnected)
+            {
+                throw new InvalidOperationException(&quot;Not connected&quot;);
+            }
+
+            for (var i = 0; i &lt; 10; i++)
+            {
+                // Simulate uploading of a chunk of data
+                Thread.Sleep(200);
+            }
+        }
+
+        public bool TryDisconnect()
+        {
+            if (!this.isConnected)
+            {
+                return false;
+            }
+
+            // Simulate disconnect
+            Thread.Sleep(500);
+
+            this.isConnected = false;
+            return true;
+        }
+    }
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The user interface is very simple - just a button:</p>{% highlight javascript %}&lt;Window x:Class=&quot;AsyncAwaitDemo.MainWindow&quot;
+        xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        Title=&quot;MainWindow&quot; Height=&quot;350&quot; Width=&quot;525&quot;&gt;
+    &lt;Window.Resources&gt;
+        &lt;Style TargetType=&quot;Button&quot;&gt;
+            &lt;Setter Property=&quot;Margin&quot; Value=&quot;3&quot; /&gt;
+        &lt;/Style&gt;
+    &lt;/Window.Resources&gt;
+    &lt;StackPanel&gt;
+        &lt;Button Command=&quot;{Binding Path=ConnectAndUpdateSync}&quot;&gt;Connect to sensor and upload firmware&lt;/Button&gt;
+    &lt;/StackPanel&gt;
+&lt;/Window&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Of course the UI logic is implemented in a ViewModel class:</p><p xmlns="http://www.w3.org/1999/xhtml">
   <f:function name="Composite.Web.Html.SyntaxHighlighter" xmlns:f="http://www.composite.net/ns/function/1.0">
     <f:param name="SourceCode" value="using System.Windows;&#xA;&#xA;namespace AsyncAwaitDemo&#xA;{&#xA;    public partial class MainWindow : Window&#xA;    {&#xA;        public MainWindow()&#xA;        {&#xA;            InitializeComponent();&#xA;            this.DataContext = new MainWindowViewModel();&#xA;        }&#xA;    }&#xA;}" xmlns:f="http://www.composite.net/ns/function/1.0" />
     <f:param name="CodeType" value="c#" xmlns:f="http://www.composite.net/ns/function/1.0" />
   </f:function>
-  {% highlight javascript %}using System;&#xA;using System.ComponentModel;&#xA;using System.Linq;&#xA;using System.Net;&#xA;using System.Runtime.CompilerServices;&#xA;using System.Threading;&#xA;using System.Windows;&#xA;using System.Windows.Input;&#xA;&#xA;namespace AsyncAwaitDemo&#xA;{&#xA;    public class MainWindowViewModel : INotifyPropertyChanged&#xA;    {&#xA;        private SyncHeatSensor syncSensor = new SyncHeatSensor();&#xA;&#xA;        public MainWindowViewModel()&#xA;        {&#xA;            this.InternalConnectAndUpdateSync = new DelegateCommand(&#xA;                this.ConnectSync,&#xA;                () =&gt; true);&#xA;        }&#xA;&#xA;        private void ConnectSync()&#xA;        {&#xA;            var address = Dns.GetHostAddresses(&quot;localhost&quot;);&#xA;            this.syncSensor.Connect(address.FirstOrDefault());&#xA;            this.syncSensor.UploadFirmware(new byte[] { 0, 1, 2 });&#xA;            this.syncSensor.TryDisconnect();&#xA;            MessageBox.Show(&quot;Successfully updated&quot;);&#xA;        }&#xA;&#xA;        private DelegateCommand InternalConnectAndUpdateSync;&#xA;        public ICommand ConnectAndUpdateSync&#xA;        {&#xA;            get&#xA;            {&#xA;                return this.InternalConnectAndUpdateSync;&#xA;            }&#xA;        }&#xA;&#xA;        public void RaisePropertyChanged([CallerMemberName]string propertyName = null)&#xA;        {&#xA;            if (this.PropertyChanged != null)&#xA;            {&#xA;                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));&#xA;            }&#xA;        }&#xA;&#xA;        public event PropertyChangedEventHandler PropertyChanged;&#xA;    }&#xA;}{% endhighlight %}
-</p><p xmlns="http://www.w3.org/1999/xhtml">The unit test for the synchronous version is also very basic. However, it will be enough to demonstrate the basic idea of async unit tests later.</p>{% highlight javascript %}using AsyncAwaitDemo;&#xA;using Microsoft.VisualStudio.TestTools.UnitTesting;&#xA;using System.Linq;&#xA;using System.Net;&#xA;using System.Threading.Tasks;&#xA;&#xA;namespace AsyncUnitTest&#xA;{&#xA;    [TestClass]&#xA;    public class TestAsyncSensor&#xA;    {&#xA;        [TestMethod]&#xA;        public void TestConnectDisconnect()&#xA;        {&#xA;            var sensor = new SyncHeatSensor();&#xA;            sensor.Connect(Dns.GetHostAddresses(&quot;localhost&quot;).First());&#xA;            Assert.IsTrue(sensor.TryDisconnect());&#xA;        }&#xA;    }&#xA;}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Moving to an Async API</h2><p xmlns="http://www.w3.org/1999/xhtml">Here is the async version of the sensor class using best-practices for async APIs:</p>{% highlight javascript %}using System;&#xA;using System.Net;&#xA;using System.Threading;&#xA;using System.Threading.Tasks;&#xA;&#xA;namespace AsyncAwaitDemo&#xA;{&#xA;    public class AsyncHeatSensor&#xA;    {&#xA;        private bool isConnected = false;&#xA;        private object workInProgressLockObject = new object();&#xA;&#xA;        public Task ConnectAsync(IPAddress address)&#xA;        {&#xA;            // Note that parameters are checked before the task is scheduled.&#xA;            if (address == null)&#xA;            {&#xA;                throw new ArgumentNullException(&quot;address&quot;);&#xA;            }&#xA;&#xA;            return Task.Run(() =&gt;&#xA;                {&#xA;                    // Note that method calls are serialized using this lock statement.&#xA;                    // If you want to specify a lock timeout, use Monitor.TryEnter(...)&#xA;                    // instead of lock(...).&#xA;                    lock (this.workInProgressLockObject)&#xA;                    {&#xA;                        if (this.isConnected)&#xA;                        {&#xA;                            throw new InvalidOperationException(&quot;Already connected&quot;);&#xA;                        }&#xA;&#xA;                        // Simulate connect&#xA;                        Thread.Sleep(3000);&#xA;&#xA;                        this.isConnected = true;&#xA;                    }&#xA;                });&#xA;        }&#xA;&#xA;        public Task UploadFirmwareAsync(byte[] firmware, CancellationToken ct, IProgress&lt;int&gt; progress)&#xA;        {&#xA;            if (firmware == null)&#xA;            {&#xA;                throw new ArgumentNullException(&quot;firmeware&quot;);&#xA;            }&#xA;&#xA;            return Task.Run(() =&gt;&#xA;                {&#xA;                    lock (this.workInProgressLockObject)&#xA;                    {&#xA;                        if (!this.isConnected)&#xA;                        {&#xA;                            throw new InvalidOperationException(&quot;Not connected&quot;);&#xA;                        }&#xA;&#xA;                        // Simulate upload in chunks.&#xA;                        for (var i = 1; i &lt;= 10; i++)&#xA;                        {&#xA;                            // Note that we throw an exception if cancellation has been requested.&#xA;                            ct.ThrowIfCancellationRequested();&#xA;&#xA;                            // Simulate uploading of a chunk of data&#xA;                            Thread.Sleep(200);&#xA;&#xA;                            // Report progress&#xA;                            progress.Report(i * 10);&#xA;                        }&#xA;                    }&#xA;                }, ct);&#xA;        }&#xA;&#xA;        public Task&lt;bool&gt; TryDisconnectAsync()&#xA;        {&#xA;            return Task.Run(() =&gt;&#xA;            {&#xA;                lock (this.workInProgressLockObject)&#xA;                {&#xA;                    if (!this.isConnected)&#xA;                    {&#xA;                        return false;&#xA;                    }&#xA;&#xA;                    // Simulate disconnect&#xA;                    Thread.Sleep(500);&#xA;&#xA;                    this.isConnected = false;&#xA;                    return true;&#xA;                }&#xA;            });&#xA;        }&#xA;    }&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">In the ViewModel we can use async/await to make the code more readable:</p>{% highlight javascript %}using System;&#xA;using System.ComponentModel;&#xA;using System.Linq;&#xA;using System.Net;&#xA;using System.Runtime.CompilerServices;&#xA;using System.Threading;&#xA;using System.Windows;&#xA;using System.Windows.Input;&#xA;&#xA;namespace AsyncAwaitDemo&#xA;{&#xA;    public class MainWindowViewModel : INotifyPropertyChanged&#xA;    {&#xA;        private SyncHeatSensor syncSensor = new SyncHeatSensor();&#xA;        private AsyncHeatSensor asyncSensor = new AsyncHeatSensor();&#xA;&#xA;        private Action&lt;string&gt; stateNavigator;&#xA;        private CancellationTokenSource cts;&#xA;&#xA;        public MainWindowViewModel(Action&lt;string&gt; stateNavigator)&#xA;        {&#xA;            this.stateNavigator = stateNavigator;&#xA;&#xA;            this.InternalConnectAndUpdateSync = new DelegateCommand(&#xA;                this.ConnectSync,&#xA;                () =&gt; !this.IsUpdating);&#xA;&#xA;            this.InternalConnectAndUpdateAsync = new DelegateCommand(&#xA;                this.ConnectAsync,&#xA;                () =&gt; !this.IsUpdating);&#xA;            this.InternalCancelConnectAndUpdateAsync = new DelegateCommand(&#xA;                () =&gt; { if (this.cts != null) this.cts.Cancel(); },&#xA;                () =&gt; this.IsUpdating);&#xA;        }&#xA;&#xA;        private void ConnectSync()&#xA;        {&#xA;            var address = Dns.GetHostAddresses(&quot;localhost&quot;);&#xA;            this.syncSensor.Connect(address.FirstOrDefault());&#xA;            this.syncSensor.UploadFirmware(new byte[] { 0, 1, 2 });&#xA;            this.syncSensor.TryDisconnect();&#xA;            MessageBox.Show(&quot;Successfully updated&quot;);&#xA;        }&#xA;&#xA;        private async void ConnectAsync()&#xA;        {&#xA;            this.IsUpdating = true;&#xA;            this.cts = new CancellationTokenSource();&#xA;            this.stateNavigator(&quot;Updating&quot;);&#xA;            var ip = await Dns.GetHostAddressesAsync(&quot;localhost&quot;);&#xA;            await this.asyncSensor.ConnectAsync(ip.FirstOrDefault());&#xA;            var success = false;&#xA;            try&#xA;            {&#xA;                await this.asyncSensor.UploadFirmwareAsync(&#xA;                    new byte[] { 0, 1, 2 }, &#xA;                    this.cts.Token, &#xA;                    new Progress&lt;int&gt;(p =&gt; this.Progress = p));&#xA;                success = true;&#xA;            }&#xA;            catch (OperationCanceledException)&#xA;            {&#xA;            }&#xA;&#xA;            await this.asyncSensor.TryDisconnectAsync();&#xA;            this.stateNavigator(success ? &quot;Updated&quot; : &quot;Cancelled&quot;);&#xA;            this.IsUpdating = false;&#xA;            if (success)&#xA;            {&#xA;                MessageBox.Show(&quot;Successfully updated&quot;);&#xA;            }&#xA;        }&#xA;&#xA;        private DelegateCommand InternalConnectAndUpdateSync;&#xA;        public ICommand ConnectAndUpdateSync&#xA;        {&#xA;            get&#xA;            {&#xA;                return this.InternalConnectAndUpdateSync;&#xA;            }&#xA;        }&#xA;&#xA;        private DelegateCommand InternalConnectAndUpdateAsync;&#xA;        public ICommand ConnectAndUpdateAsync&#xA;        {&#xA;            get&#xA;            {&#xA;                return this.InternalConnectAndUpdateAsync;&#xA;            }&#xA;        }&#xA;&#xA;        private DelegateCommand InternalCancelConnectAndUpdateAsync;&#xA;        public ICommand CancelConnectAndUpdateAsync&#xA;        {&#xA;            get&#xA;            {&#xA;                return this.InternalCancelConnectAndUpdateAsync;&#xA;            }&#xA;        }&#xA;&#xA;        private bool IsUpdatingValue;&#xA;        public bool IsUpdating&#xA;        {&#xA;            get&#xA;            {&#xA;                return this.IsUpdatingValue;&#xA;            }&#xA;&#xA;            set&#xA;            {&#xA;                if (this.IsUpdatingValue != value)&#xA;                {&#xA;                    this.IsUpdatingValue = value;&#xA;                    this.RaisePropertyChanged();&#xA;                    this.InternalConnectAndUpdateAsync.RaiseCanExecuteChanged();&#xA;                    this.InternalCancelConnectAndUpdateAsync.RaiseCanExecuteChanged();&#xA;                }&#xA;            }&#xA;        }&#xA;&#xA;        private int ProgressValue;&#xA;        public int Progress&#xA;        {&#xA;            get&#xA;            {&#xA;                return this.ProgressValue;&#xA;            }&#xA;&#xA;            set&#xA;            {&#xA;                if (this.ProgressValue != value)&#xA;                {&#xA;                    this.ProgressValue = value;&#xA;                    this.RaisePropertyChanged();&#xA;                }&#xA;            }&#xA;        }&#xA;&#xA;        public void RaisePropertyChanged([CallerMemberName]string propertyName = null)&#xA;        {&#xA;            if (this.PropertyChanged != null)&#xA;            {&#xA;                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));&#xA;            }&#xA;        }&#xA;&#xA;        public event PropertyChangedEventHandler PropertyChanged;&#xA;    }&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">In the UI I use visual states:</p><p xmlns="http://www.w3.org/1999/xhtml">
+  {% highlight javascript %}using System;
+using System.ComponentModel;
+using System.Linq;
+using System.Net;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Windows;
+using System.Windows.Input;
+
+namespace AsyncAwaitDemo
+{
+    public class MainWindowViewModel : INotifyPropertyChanged
+    {
+        private SyncHeatSensor syncSensor = new SyncHeatSensor();
+
+        public MainWindowViewModel()
+        {
+            this.InternalConnectAndUpdateSync = new DelegateCommand(
+                this.ConnectSync,
+                () =&gt; true);
+        }
+
+        private void ConnectSync()
+        {
+            var address = Dns.GetHostAddresses(&quot;localhost&quot;);
+            this.syncSensor.Connect(address.FirstOrDefault());
+            this.syncSensor.UploadFirmware(new byte[] { 0, 1, 2 });
+            this.syncSensor.TryDisconnect();
+            MessageBox.Show(&quot;Successfully updated&quot;);
+        }
+
+        private DelegateCommand InternalConnectAndUpdateSync;
+        public ICommand ConnectAndUpdateSync
+        {
+            get
+            {
+                return this.InternalConnectAndUpdateSync;
+            }
+        }
+
+        public void RaisePropertyChanged([CallerMemberName]string propertyName = null)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+    }
+}{% endhighlight %}
+</p><p xmlns="http://www.w3.org/1999/xhtml">The unit test for the synchronous version is also very basic. However, it will be enough to demonstrate the basic idea of async unit tests later.</p>{% highlight javascript %}using AsyncAwaitDemo;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+
+namespace AsyncUnitTest
+{
+    [TestClass]
+    public class TestAsyncSensor
+    {
+        [TestMethod]
+        public void TestConnectDisconnect()
+        {
+            var sensor = new SyncHeatSensor();
+            sensor.Connect(Dns.GetHostAddresses(&quot;localhost&quot;).First());
+            Assert.IsTrue(sensor.TryDisconnect());
+        }
+    }
+}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Moving to an Async API</h2><p xmlns="http://www.w3.org/1999/xhtml">Here is the async version of the sensor class using best-practices for async APIs:</p>{% highlight javascript %}using System;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace AsyncAwaitDemo
+{
+    public class AsyncHeatSensor
+    {
+        private bool isConnected = false;
+        private object workInProgressLockObject = new object();
+
+        public Task ConnectAsync(IPAddress address)
+        {
+            // Note that parameters are checked before the task is scheduled.
+            if (address == null)
+            {
+                throw new ArgumentNullException(&quot;address&quot;);
+            }
+
+            return Task.Run(() =&gt;
+                {
+                    // Note that method calls are serialized using this lock statement.
+                    // If you want to specify a lock timeout, use Monitor.TryEnter(...)
+                    // instead of lock(...).
+                    lock (this.workInProgressLockObject)
+                    {
+                        if (this.isConnected)
+                        {
+                            throw new InvalidOperationException(&quot;Already connected&quot;);
+                        }
+
+                        // Simulate connect
+                        Thread.Sleep(3000);
+
+                        this.isConnected = true;
+                    }
+                });
+        }
+
+        public Task UploadFirmwareAsync(byte[] firmware, CancellationToken ct, IProgress&lt;int&gt; progress)
+        {
+            if (firmware == null)
+            {
+                throw new ArgumentNullException(&quot;firmeware&quot;);
+            }
+
+            return Task.Run(() =&gt;
+                {
+                    lock (this.workInProgressLockObject)
+                    {
+                        if (!this.isConnected)
+                        {
+                            throw new InvalidOperationException(&quot;Not connected&quot;);
+                        }
+
+                        // Simulate upload in chunks.
+                        for (var i = 1; i &lt;= 10; i++)
+                        {
+                            // Note that we throw an exception if cancellation has been requested.
+                            ct.ThrowIfCancellationRequested();
+
+                            // Simulate uploading of a chunk of data
+                            Thread.Sleep(200);
+
+                            // Report progress
+                            progress.Report(i * 10);
+                        }
+                    }
+                }, ct);
+        }
+
+        public Task&lt;bool&gt; TryDisconnectAsync()
+        {
+            return Task.Run(() =&gt;
+            {
+                lock (this.workInProgressLockObject)
+                {
+                    if (!this.isConnected)
+                    {
+                        return false;
+                    }
+
+                    // Simulate disconnect
+                    Thread.Sleep(500);
+
+                    this.isConnected = false;
+                    return true;
+                }
+            });
+        }
+    }
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">In the ViewModel we can use async/await to make the code more readable:</p>{% highlight javascript %}using System;
+using System.ComponentModel;
+using System.Linq;
+using System.Net;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Windows;
+using System.Windows.Input;
+
+namespace AsyncAwaitDemo
+{
+    public class MainWindowViewModel : INotifyPropertyChanged
+    {
+        private SyncHeatSensor syncSensor = new SyncHeatSensor();
+        private AsyncHeatSensor asyncSensor = new AsyncHeatSensor();
+
+        private Action&lt;string&gt; stateNavigator;
+        private CancellationTokenSource cts;
+
+        public MainWindowViewModel(Action&lt;string&gt; stateNavigator)
+        {
+            this.stateNavigator = stateNavigator;
+
+            this.InternalConnectAndUpdateSync = new DelegateCommand(
+                this.ConnectSync,
+                () =&gt; !this.IsUpdating);
+
+            this.InternalConnectAndUpdateAsync = new DelegateCommand(
+                this.ConnectAsync,
+                () =&gt; !this.IsUpdating);
+            this.InternalCancelConnectAndUpdateAsync = new DelegateCommand(
+                () =&gt; { if (this.cts != null) this.cts.Cancel(); },
+                () =&gt; this.IsUpdating);
+        }
+
+        private void ConnectSync()
+        {
+            var address = Dns.GetHostAddresses(&quot;localhost&quot;);
+            this.syncSensor.Connect(address.FirstOrDefault());
+            this.syncSensor.UploadFirmware(new byte[] { 0, 1, 2 });
+            this.syncSensor.TryDisconnect();
+            MessageBox.Show(&quot;Successfully updated&quot;);
+        }
+
+        private async void ConnectAsync()
+        {
+            this.IsUpdating = true;
+            this.cts = new CancellationTokenSource();
+            this.stateNavigator(&quot;Updating&quot;);
+            var ip = await Dns.GetHostAddressesAsync(&quot;localhost&quot;);
+            await this.asyncSensor.ConnectAsync(ip.FirstOrDefault());
+            var success = false;
+            try
+            {
+                await this.asyncSensor.UploadFirmwareAsync(
+                    new byte[] { 0, 1, 2 }, 
+                    this.cts.Token, 
+                    new Progress&lt;int&gt;(p =&gt; this.Progress = p));
+                success = true;
+            }
+            catch (OperationCanceledException)
+            {
+            }
+
+            await this.asyncSensor.TryDisconnectAsync();
+            this.stateNavigator(success ? &quot;Updated&quot; : &quot;Cancelled&quot;);
+            this.IsUpdating = false;
+            if (success)
+            {
+                MessageBox.Show(&quot;Successfully updated&quot;);
+            }
+        }
+
+        private DelegateCommand InternalConnectAndUpdateSync;
+        public ICommand ConnectAndUpdateSync
+        {
+            get
+            {
+                return this.InternalConnectAndUpdateSync;
+            }
+        }
+
+        private DelegateCommand InternalConnectAndUpdateAsync;
+        public ICommand ConnectAndUpdateAsync
+        {
+            get
+            {
+                return this.InternalConnectAndUpdateAsync;
+            }
+        }
+
+        private DelegateCommand InternalCancelConnectAndUpdateAsync;
+        public ICommand CancelConnectAndUpdateAsync
+        {
+            get
+            {
+                return this.InternalCancelConnectAndUpdateAsync;
+            }
+        }
+
+        private bool IsUpdatingValue;
+        public bool IsUpdating
+        {
+            get
+            {
+                return this.IsUpdatingValue;
+            }
+
+            set
+            {
+                if (this.IsUpdatingValue != value)
+                {
+                    this.IsUpdatingValue = value;
+                    this.RaisePropertyChanged();
+                    this.InternalConnectAndUpdateAsync.RaiseCanExecuteChanged();
+                    this.InternalCancelConnectAndUpdateAsync.RaiseCanExecuteChanged();
+                }
+            }
+        }
+
+        private int ProgressValue;
+        public int Progress
+        {
+            get
+            {
+                return this.ProgressValue;
+            }
+
+            set
+            {
+                if (this.ProgressValue != value)
+                {
+                    this.ProgressValue = value;
+                    this.RaisePropertyChanged();
+                }
+            }
+        }
+
+        public void RaisePropertyChanged([CallerMemberName]string propertyName = null)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+    }
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">In the UI I use visual states:</p><p xmlns="http://www.w3.org/1999/xhtml">
   <f:function name="Composite.Web.Html.SyntaxHighlighter" xmlns:f="http://www.composite.net/ns/function/1.0">
     <f:param name="SourceCode" value="&lt;Window x:Class=&quot;AsyncAwaitDemo.MainWindow&quot;&#xA;        xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&#xA;        xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&#xA;        Title=&quot;MainWindow&quot; Height=&quot;350&quot; Width=&quot;525&quot;&gt;&#xA;    &lt;VisualStateManager.VisualStateGroups&gt;&#xA;        &lt;VisualStateGroup Name=&quot;ConnectingStates&quot;&gt;&#xA;            &lt;VisualState Name=&quot;Initial&quot;&gt;&#xA;            &lt;/VisualState&gt;&#xA;            &lt;VisualState Name=&quot;Updating&quot;&gt;&#xA;                &lt;Storyboard&gt;&#xA;                    &lt;ColorAnimationUsingKeyFrames Storyboard.TargetName=&quot;Indicator&quot;&#xA;                                                  Storyboard.TargetProperty=&quot;Color&quot;&#xA;                                                  RepeatBehavior=&quot;Forever&quot; &gt;&#xA;                        &lt;DiscreteColorKeyFrame Value=&quot;Green&quot; KeyTime=&quot;00:00:00.5&quot; /&gt;&#xA;                        &lt;DiscreteColorKeyFrame Value=&quot;Red&quot; KeyTime=&quot;00:00:01.0&quot; /&gt;&#xA;                    &lt;/ColorAnimationUsingKeyFrames&gt;&#xA;                    &lt;ObjectAnimationUsingKeyFrames Storyboard.TargetName=&quot;CancelButton&quot;&#xA;                                                   Storyboard.TargetProperty=&quot;Visibility&quot;&gt;&#xA;                        &lt;DiscreteObjectKeyFrame Value=&quot;{x:Static Visibility.Visible}&quot; KeyTime=&quot;00:00:00&quot; /&gt;&#xA;                    &lt;/ObjectAnimationUsingKeyFrames&gt;&#xA;                &lt;/Storyboard&gt;&#xA;            &lt;/VisualState&gt;&#xA;            &lt;VisualState Name=&quot;Cancelled&quot;&gt;&#xA;                &lt;Storyboard&gt;&#xA;                    &lt;ColorAnimation Storyboard.TargetName=&quot;Indicator&quot;&#xA;                                    Storyboard.TargetProperty=&quot;Color&quot;&#xA;                                    To=&quot;Red&quot;&#xA;                                    Duration=&quot;0&quot; /&gt;&#xA;                &lt;/Storyboard&gt;&#xA;            &lt;/VisualState&gt;&#xA;            &lt;VisualState Name=&quot;Updated&quot;&gt;&#xA;                &lt;Storyboard&gt;&#xA;                    &lt;ColorAnimation Storyboard.TargetName=&quot;Indicator&quot;&#xA;                                    Storyboard.TargetProperty=&quot;Color&quot;&#xA;                                    To=&quot;Green&quot;&#xA;                                    Duration=&quot;0&quot; /&gt;&#xA;                &lt;/Storyboard&gt;&#xA;            &lt;/VisualState&gt;&#xA;        &lt;/VisualStateGroup&gt;&#xA;    &lt;/VisualStateManager.VisualStateGroups&gt;&#xA;    &lt;Window.Resources&gt;&#xA;        &lt;Style TargetType=&quot;Button&quot;&gt;&#xA;            &lt;Setter Property=&quot;Margin&quot; Value=&quot;3&quot; /&gt;&#xA;        &lt;/Style&gt;&#xA;    &lt;/Window.Resources&gt;&#xA;    &lt;StackPanel&gt;&#xA;        &lt;Button Command=&quot;{Binding Path=ConnectAndUpdateSync}&quot;&gt;Connect to sensor and upload firmware&lt;/Button&gt;&#xA;&#xA;        &lt;Grid Margin=&quot;0, 20, 0, 0&quot;&gt;&#xA;            &lt;Grid.RowDefinitions&gt;&#xA;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#xA;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#xA;            &lt;/Grid.RowDefinitions&gt;&#xA;            &lt;Grid.ColumnDefinitions&gt;&#xA;                &lt;ColumnDefinition Width=&quot;Auto&quot; /&gt;&#xA;                &lt;ColumnDefinition Width=&quot;*&quot; /&gt;&#xA;            &lt;/Grid.ColumnDefinitions&gt;&#xA;            &lt;Ellipse Name=&quot;ConnectionIndicator&quot; Width=&quot;50&quot; Height=&quot;50&quot;&gt;&#xA;                &lt;Ellipse.Fill&gt;&#xA;                    &lt;SolidColorBrush Color=&quot;Gray&quot; x:Name=&quot;Indicator&quot; /&gt;&#xA;                &lt;/Ellipse.Fill&gt;&#xA;            &lt;/Ellipse&gt;&#xA;            &lt;ProgressBar Minimum=&quot;0&quot; Maximum=&quot;100&quot; Value=&quot;{Binding Path=Progress}&quot; &#xA;                         MinHeight=&quot;20&quot; MinWidth=&quot;200&quot; Grid.Row=&quot;1&quot; Margin=&quot;3&quot; /&gt;&#xA;            &lt;Button Command=&quot;{Binding Path=ConnectAndUpdateAsync}&quot; Grid.Column=&quot;1&quot;&gt;Connect and Update&lt;/Button&gt;&#xA;            &lt;Button Name=&quot;CancelButton&quot; Command=&quot;{Binding Path=CancelConnectAndUpdateAsync}&quot; Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;&#xA;                    Visibility=&quot;Hidden&quot;&gt;Cancel&lt;/Button&gt;&#xA;        &lt;/Grid&gt;&#xA;    &lt;/StackPanel&gt;&#xA;&lt;/Window&gt;" xmlns:f="http://www.composite.net/ns/function/1.0" />
     <f:param name="CodeType" value="xml" xmlns:f="http://www.composite.net/ns/function/1.0" />
   </f:function>
-  {% highlight javascript %}using System.Windows;&#xA;&#xA;namespace AsyncAwaitDemo&#xA;{&#xA;    public partial class MainWindow : Window&#xA;    {&#xA;        public MainWindow()&#xA;        {&#xA;            InitializeComponent();&#xA;            this.DataContext = new MainWindowViewModel(&#xA;                targetState =&gt; VisualStateManager.GoToElementState(App.Current.MainWindow, targetState, false));&#xA;        }&#xA;    }&#xA;}{% endhighlight %}
-</p><p xmlns="http://www.w3.org/1999/xhtml">Visual Studio 2012 allows you to also use async/await in unit tests. Note how the unit test functions returns a <em>Task</em>.</p>{% highlight javascript %}using AsyncAwaitDemo;&#xA;using Microsoft.VisualStudio.TestTools.UnitTesting;&#xA;using System.Linq;&#xA;using System.Net;&#xA;using System.Threading.Tasks;&#xA;&#xA;namespace AsyncUnitTest&#xA;{&#xA;    [TestClass]&#xA;    public class TestAsyncSensor&#xA;    {&#xA;        [TestMethod]&#xA;        public void TestConnectDisconnect()&#xA;        {&#xA;            var sensor = new SyncHeatSensor();&#xA;            sensor.Connect(Dns.GetHostAddresses(&quot;localhost&quot;).First());&#xA;            Assert.IsTrue(sensor.TryDisconnect());&#xA;        }&#xA;&#xA;        [TestMethod]&#xA;        public async Task TestConnectDisconnectAsync()&#xA;        {&#xA;            var sensor = new AsyncHeatSensor();&#xA;            await sensor.ConnectAsync((await Dns.GetHostAddressesAsync(&quot;localhost&quot;)).First());&#xA;            Assert.IsTrue(await sensor.TryDisconnectAsync());&#xA;        }&#xA;    }&#xA;}{% endhighlight %}
+  {% highlight javascript %}using System.Windows;
+
+namespace AsyncAwaitDemo
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+            this.DataContext = new MainWindowViewModel(
+                targetState =&gt; VisualStateManager.GoToElementState(App.Current.MainWindow, targetState, false));
+        }
+    }
+}{% endhighlight %}
+</p><p xmlns="http://www.w3.org/1999/xhtml">Visual Studio 2012 allows you to also use async/await in unit tests. Note how the unit test functions returns a <em>Task</em>.</p>{% highlight javascript %}using AsyncAwaitDemo;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+
+namespace AsyncUnitTest
+{
+    [TestClass]
+    public class TestAsyncSensor
+    {
+        [TestMethod]
+        public void TestConnectDisconnect()
+        {
+            var sensor = new SyncHeatSensor();
+            sensor.Connect(Dns.GetHostAddresses(&quot;localhost&quot;).First());
+            Assert.IsTrue(sensor.TryDisconnect());
+        }
+
+        [TestMethod]
+        public async Task TestConnectDisconnectAsync()
+        {
+            var sensor = new AsyncHeatSensor();
+            await sensor.ConnectAsync((await Dns.GetHostAddressesAsync(&quot;localhost&quot;)).First());
+            Assert.IsTrue(await sensor.TryDisconnectAsync());
+        }
+    }
+}{% endhighlight %}

@@ -66,7 +66,10 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
 <ul><li>Tip: You could integrate this step in your corporate's build process and even treat StyleCop warnings as errors. With this you can make sure that developers do not forget to write code documentation XML.</li></ul></li>
   <li>Add documentation header to class:
 
-{% highlight javascript %}/// &lt;summary&gt;&#xA;/// Represents a reader for SWIFT files&#xA;/// &lt;/summary&gt;&#xA;/// &lt;typeparam name=&quot;T&quot;&gt;Parameter type that should be used for reading files&lt;/typeparam&gt;{% endhighlight %}</li>
+{% highlight javascript %}/// &lt;summary&gt;
+/// Represents a reader for SWIFT files
+/// &lt;/summary&gt;
+/// &lt;typeparam name=&quot;T&quot;&gt;Parameter type that should be used for reading files&lt;/typeparam&gt;{% endhighlight %}</li>
   <li> Run StyleCop on the project using <em>Tools / Run StyleCop</em>. Note that StyleCop tells you that you have forgotten the period at the end of the summary text.
 
 <ul><li>Correct that error by adding the period</li></ul></li>
@@ -82,7 +85,97 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
     </ul>
   </li>
   <li>Add and correct the code documentation so that the class file looks like this:</li>
-</ul>{% highlight javascript %}namespace CSharpCodeDoc&#xA;{&#xA; using System;&#xA; using System.Collections.Generic;&#xA; using System.IO;&#xA;&#xA; /// &lt;summary&gt;&#xA; /// Represents a reader for SWIFT files.&#xA; /// &lt;/summary&gt;&#xA; /// &lt;typeparam name=&quot;T&quot;&gt;Parameter type that should be used for reading files.&lt;/typeparam&gt;&#xA; public class SwiftFileReader&lt;T&gt; : TextReader&#xA; {&#xA;  /// &lt;summary&gt;&#xA;  /// Internal helper object used for locking.&#xA;  /// &lt;/summary&gt;&#xA;  private static object lockObject;&#xA;&#xA;  /// &lt;summary&gt;&#xA;  /// Initializes static members of the SwiftFileReader class.&#xA;  /// &lt;/summary&gt;&#xA;  static SwiftFileReader()&#xA;  {&#xA;   lockObject = new object();&#xA;  }&#xA;&#xA;  /// &lt;summary&gt;&#xA;  /// Initializes a new instance of the &lt;see cref=&quot;SwiftFileReader{T}&quot;/&gt; class.&#xA;  /// &lt;/summary&gt;&#xA;  public SwiftFileReader()&#xA;   : this(TimeSpan.FromMinutes(1))&#xA;  {&#xA;  }&#xA;&#xA;  /// &lt;summary&gt;&#xA;  /// Initializes a new instance of the &lt;see cref=&quot;SwiftFileReader{T}&quot;/&gt; class.&#xA;  /// &lt;/summary&gt;&#xA;  /// &lt;param name=&quot;timeout&quot;&gt;Timeout for reading (see &lt;see cref=&quot;Timeout&quot;/&gt;).&lt;/param&gt;&#xA;  public SwiftFileReader(TimeSpan timeout)&#xA;  {&#xA;   this.Timeout = timeout;&#xA;  }&#xA;&#xA;  /// &lt;summary&gt;&#xA;  /// Gets or sets the timeout for reading.&#xA;  /// &lt;/summary&gt;&#xA;  /// &lt;value&gt;Timeout for reading.&lt;/value&gt;&#xA;  public TimeSpan Timeout { get; set; }&#xA;&#xA;  /// &lt;summary&gt;&#xA;  /// Gets the size of the file.&#xA;  /// &lt;/summary&gt;&#xA;  /// &lt;value&gt;Size of the file.&lt;/value&gt;&#xA;  public int Size { get; private set; }&#xA;&#xA;  /// &lt;summary&gt;&#xA;  /// Gets a value indicating whether this instance has reached limit.&#xA;  /// &lt;/summary&gt;&#xA;  /// &lt;value&gt;Returns &lt;c&gt;true&lt;/c&gt; if this instance has reached limit; otherwise, &lt;c&gt;false&lt;/c&gt;.&#xA;  /// &lt;/value&gt;&#xA;  public bool HasReachedLimit { get; private set; }&#xA;&#xA;  /// &lt;summary&gt;&#xA;  /// Converts the content of the file.&#xA;  /// &lt;/summary&gt;&#xA;  /// &lt;typeparam name=&quot;TDest&quot;&gt;Type of resulting objects.&lt;/typeparam&gt;&#xA;  /// &lt;param name=&quot;sizeLimit&quot;&gt;The size limit for the result.&lt;/param&gt;&#xA;  /// &lt;returns&gt;&#xA;  /// &lt;para&gt;Returns the file's content as an enumerable.&lt;/para&gt;&#xA;  /// &lt;para&gt;The result contains max. &lt;paramref name=&quot;sizeLimit&quot;/&gt; objects.&lt;/para&gt;&#xA;  /// &lt;/returns&gt;&#xA;  public IEnumerable&lt;TDest&gt; ConvertFileContent&lt;TDest&gt;(int sizeLimit)&#xA;  {&#xA;   throw new NotImplementedException();&#xA;  }&#xA;&#xA;  /// &lt;summary&gt;&#xA;  /// Reads all characters from the current position to the end of the TextReader and returns them as one string.&#xA;  /// &lt;/summary&gt;&#xA;  /// &lt;returns&gt;&#xA;  /// A string containing all characters from the current position to the end of the TextReader.&#xA;  /// &lt;/returns&gt;&#xA;  /// &lt;exception cref=&quot;T:System.IO.IOException&quot;&gt;An I/O error occurs. &lt;/exception&gt;&#xA;  /// &lt;exception cref=&quot;T:System.ObjectDisposedException&quot;&gt;The &lt;see cref=&quot;T:System.IO.TextReader&quot;/&gt; is closed. &lt;/exception&gt;&#xA;  /// &lt;exception cref=&quot;T:System.OutOfMemoryException&quot;&gt;There is insufficient memory to allocate a buffer for the returned string. &lt;/exception&gt;&#xA;  /// &lt;exception cref=&quot;T:System.ArgumentOutOfRangeException&quot;&gt;The number of characters in the next line is larger than &lt;see cref=&quot;F:System.Int32.MaxValue&quot;/&gt;&lt;/exception&gt;&#xA;  public override string ReadToEnd()&#xA;  {&#xA;   return base.ReadToEnd();&#xA;  }&#xA; }&#xA;}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}namespace CSharpCodeDoc
+{
+ using System;
+ using System.Collections.Generic;
+ using System.IO;
+
+ /// &lt;summary&gt;
+ /// Represents a reader for SWIFT files.
+ /// &lt;/summary&gt;
+ /// &lt;typeparam name=&quot;T&quot;&gt;Parameter type that should be used for reading files.&lt;/typeparam&gt;
+ public class SwiftFileReader&lt;T&gt; : TextReader
+ {
+  /// &lt;summary&gt;
+  /// Internal helper object used for locking.
+  /// &lt;/summary&gt;
+  private static object lockObject;
+
+  /// &lt;summary&gt;
+  /// Initializes static members of the SwiftFileReader class.
+  /// &lt;/summary&gt;
+  static SwiftFileReader()
+  {
+   lockObject = new object();
+  }
+
+  /// &lt;summary&gt;
+  /// Initializes a new instance of the &lt;see cref=&quot;SwiftFileReader{T}&quot;/&gt; class.
+  /// &lt;/summary&gt;
+  public SwiftFileReader()
+   : this(TimeSpan.FromMinutes(1))
+  {
+  }
+
+  /// &lt;summary&gt;
+  /// Initializes a new instance of the &lt;see cref=&quot;SwiftFileReader{T}&quot;/&gt; class.
+  /// &lt;/summary&gt;
+  /// &lt;param name=&quot;timeout&quot;&gt;Timeout for reading (see &lt;see cref=&quot;Timeout&quot;/&gt;).&lt;/param&gt;
+  public SwiftFileReader(TimeSpan timeout)
+  {
+   this.Timeout = timeout;
+  }
+
+  /// &lt;summary&gt;
+  /// Gets or sets the timeout for reading.
+  /// &lt;/summary&gt;
+  /// &lt;value&gt;Timeout for reading.&lt;/value&gt;
+  public TimeSpan Timeout { get; set; }
+
+  /// &lt;summary&gt;
+  /// Gets the size of the file.
+  /// &lt;/summary&gt;
+  /// &lt;value&gt;Size of the file.&lt;/value&gt;
+  public int Size { get; private set; }
+
+  /// &lt;summary&gt;
+  /// Gets a value indicating whether this instance has reached limit.
+  /// &lt;/summary&gt;
+  /// &lt;value&gt;Returns &lt;c&gt;true&lt;/c&gt; if this instance has reached limit; otherwise, &lt;c&gt;false&lt;/c&gt;.
+  /// &lt;/value&gt;
+  public bool HasReachedLimit { get; private set; }
+
+  /// &lt;summary&gt;
+  /// Converts the content of the file.
+  /// &lt;/summary&gt;
+  /// &lt;typeparam name=&quot;TDest&quot;&gt;Type of resulting objects.&lt;/typeparam&gt;
+  /// &lt;param name=&quot;sizeLimit&quot;&gt;The size limit for the result.&lt;/param&gt;
+  /// &lt;returns&gt;
+  /// &lt;para&gt;Returns the file's content as an enumerable.&lt;/para&gt;
+  /// &lt;para&gt;The result contains max. &lt;paramref name=&quot;sizeLimit&quot;/&gt; objects.&lt;/para&gt;
+  /// &lt;/returns&gt;
+  public IEnumerable&lt;TDest&gt; ConvertFileContent&lt;TDest&gt;(int sizeLimit)
+  {
+   throw new NotImplementedException();
+  }
+
+  /// &lt;summary&gt;
+  /// Reads all characters from the current position to the end of the TextReader and returns them as one string.
+  /// &lt;/summary&gt;
+  /// &lt;returns&gt;
+  /// A string containing all characters from the current position to the end of the TextReader.
+  /// &lt;/returns&gt;
+  /// &lt;exception cref=&quot;T:System.IO.IOException&quot;&gt;An I/O error occurs. &lt;/exception&gt;
+  /// &lt;exception cref=&quot;T:System.ObjectDisposedException&quot;&gt;The &lt;see cref=&quot;T:System.IO.TextReader&quot;/&gt; is closed. &lt;/exception&gt;
+  /// &lt;exception cref=&quot;T:System.OutOfMemoryException&quot;&gt;There is insufficient memory to allocate a buffer for the returned string. &lt;/exception&gt;
+  /// &lt;exception cref=&quot;T:System.ArgumentOutOfRangeException&quot;&gt;The number of characters in the next line is larger than &lt;see cref=&quot;F:System.Int32.MaxValue&quot;/&gt;&lt;/exception&gt;
+  public override string ReadToEnd()
+  {
+   return base.ReadToEnd();
+  }
+ }
+}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Enable the generation of a code documentation XML file in the project's property window (<em>Build</em> tab) in Visual Studio.</li>
   <li>Build your solution using the <em>Debug</em> configuration.</li>
   <li>Create a <em>Sandcastle Help File Builder</em> project named <span class="InlineCode">CSharpCodeDoc.</span></li>
@@ -93,22 +186,76 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
 </ol><p xmlns="http://www.w3.org/1999/xhtml">Lab step by step description:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Add file <span class="InlineCode">UsageSamples.cs</span>with C# example code to your project:
 
-{% highlight javascript %}namespace CSharpCodeDoc&#xA;{&#xA; public static class UsageSamples&#xA; {&#xA;#region SwiftReaderClassSample&#xA;  public static void ReadSwiftUsingSwiftReader()&#xA;  {&#xA;   using (var reader = new SwiftFileReader&lt;object&gt;())&#xA;   {&#xA;    // ToDo: Show how to use the reader here.&#xA;   }&#xA;  }&#xA;#endregion&#xA; }&#xA;}{% endhighlight %}</li>
+{% highlight javascript %}namespace CSharpCodeDoc
+{
+ public static class UsageSamples
+ {
+#region SwiftReaderClassSample
+  public static void ReadSwiftUsingSwiftReader()
+  {
+   using (var reader = new SwiftFileReader&lt;object&gt;())
+   {
+    // ToDo: Show how to use the reader here.
+   }
+  }
+#endregion
+ }
+}{% endhighlight %}</li>
   <li>Change <em>Build Action</em> of <span class="InlineCode">UsageSamples.cs</span> from <em>Compile</em> to <em>None</em>.</li>
   <li>Change documentation of class <span class="InlineCode">SwiftFileReader&lt;T&gt;</span>as follows:
 
 <ul><li>Note how the previously created example code is referenced.</li></ul></li>
-</ul>{% highlight javascript %}/// &lt;summary&gt;&#xA;/// Represents a reader for SWIFT files.&#xA;/// &lt;/summary&gt;&#xA;/// &lt;typeparam name=&quot;T&quot;&gt;Parameter type that should be used for reading files.&lt;/typeparam&gt;&#xA;/// &lt;example&gt;&#xA;/// The following example shows how to use the &lt;see cref=&quot;SwiftFileReader{T}&quot;/&gt; class:&#xA;/// &lt;code source=&quot;..\CSharpCodeDoc\UsageSamples.cs&quot; region=&quot;SwiftReaderClassSample&quot; lang=&quot;C#&quot; /&gt;&#xA;/// &lt;/example&gt;&#xA;public class SwiftFileReader&lt;T&gt; : TextReader&#xA;{ [...] }{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}/// &lt;summary&gt;
+/// Represents a reader for SWIFT files.
+/// &lt;/summary&gt;
+/// &lt;typeparam name=&quot;T&quot;&gt;Parameter type that should be used for reading files.&lt;/typeparam&gt;
+/// &lt;example&gt;
+/// The following example shows how to use the &lt;see cref=&quot;SwiftFileReader{T}&quot;/&gt; class:
+/// &lt;code source=&quot;..\CSharpCodeDoc\UsageSamples.cs&quot; region=&quot;SwiftReaderClassSample&quot; lang=&quot;C#&quot; /&gt;
+/// &lt;/example&gt;
+public class SwiftFileReader&lt;T&gt; : TextReader
+{ [...] }{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Exclude the property <span class="InlineCode">Size</span> from documentation by adding an <span class="InlineCode">exclude</span> element:</li>
-</ul>{% highlight javascript %}/// &lt;summary&gt;&#xA;/// Gets the size of the file.&#xA;/// &lt;/summary&gt;&#xA;/// &lt;value&gt;Size of the file.&lt;/value&gt;&#xA;/// &lt;exclude /&gt;&#xA;public int Size { get; private set; }{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}/// &lt;summary&gt;
+/// Gets the size of the file.
+/// &lt;/summary&gt;
+/// &lt;value&gt;Size of the file.&lt;/value&gt;
+/// &lt;exclude /&gt;
+public int Size { get; private set; }{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Add a paragraph to the <span class="InlineCode">return</span> section of the documentation for the method <span class="InlineCode">ConvertFileContent</span>:
 
 <ul><li>Note how the <span class="InlineCode">see langword</span> element is used.</li></ul></li>
-</ul>{% highlight javascript %}/// &lt;returns&gt;&#xA;/// &lt;para&gt;Returns the file's content as an enumerable.&lt;/para&gt;&#xA;/// &lt;para&gt;The result contains max. &lt;paramref name=&quot;sizeLimit&quot;/&gt; objects.&lt;/para&gt;&#xA;/// &lt;para&gt;Result will never be &lt;see langword=&quot;null&quot;/&gt;.&lt;/para&gt;&#xA;/// &lt;/returns&gt;&#xA;public IEnumerable&lt;TDest&gt; ConvertFileContent&lt;TDest&gt;(int sizeLimit){% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}/// &lt;returns&gt;
+/// &lt;para&gt;Returns the file's content as an enumerable.&lt;/para&gt;
+/// &lt;para&gt;The result contains max. &lt;paramref name=&quot;sizeLimit&quot;/&gt; objects.&lt;/para&gt;
+/// &lt;para&gt;Result will never be &lt;see langword=&quot;null&quot;/&gt;.&lt;/para&gt;
+/// &lt;/returns&gt;
+public IEnumerable&lt;TDest&gt; ConvertFileContent&lt;TDest&gt;(int sizeLimit){% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Add a method <span class="InlineCode">Dec</span> with two overloads and add documentation to the <span class="InlineCode">overloads</span> section in the documentation:</li>
-</ul>{% highlight javascript %}/// &lt;summary&gt;Decrements the number by 1.&lt;/summary&gt;&#xA;/// &lt;overloads&gt;This method has two overloads.&lt;/overloads&gt;&#xA;public void Dec()&#xA;{&#xA;}&#xA;&#xA;/// &lt;summary&gt;Decrements the number by amount.&lt;/summary&gt;&#xA;/// &lt;param name=&quot;amount&quot;&gt;The amount to decrement it by.&lt;/param&gt;&#xA;public void Dec(int amount)&#xA;{&#xA;}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}/// &lt;summary&gt;Decrements the number by 1.&lt;/summary&gt;
+/// &lt;overloads&gt;This method has two overloads.&lt;/overloads&gt;
+public void Dec()
+{
+}
+
+/// &lt;summary&gt;Decrements the number by amount.&lt;/summary&gt;
+/// &lt;param name=&quot;amount&quot;&gt;The amount to decrement it by.&lt;/param&gt;
+public void Dec(int amount)
+{
+}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Add file <span class="InlineCode">NamespaceDoc.cs</span> with documentation for your namespace to your project:</li>
-</ul>{% highlight javascript %}namespace CSharpCodeDoc&#xA;{&#xA; using System.Runtime.CompilerServices;&#xA; &#xA; /// &lt;summary&gt;&#xA; /// Contains sample classes for code documentation.&#xA; /// &lt;/summary&gt;&#xA; [CompilerGenerated]&#xA; internal class NamespaceDoc&#xA; {&#xA; }&#xA;}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}namespace CSharpCodeDoc
+{
+ using System.Runtime.CompilerServices;
+ 
+ /// &lt;summary&gt;
+ /// Contains sample classes for code documentation.
+ /// &lt;/summary&gt;
+ [CompilerGenerated]
+ internal class NamespaceDoc
+ {
+ }
+}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Build your project and make sure that there are no errors.</li>
   <li>Run StyleCop on your project and make sure that there are not errors or warnings.</li>
   <li>Build your SHFB project and view the generated CHM file. Especially note how the changes you have done to your documentation during this lab changed the resulting compiled help file.</li>
@@ -126,7 +273,69 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
 
 <ul><li>Option: You can open it you favorite XML editor instead</li></ul></li>
   <li>Define the content of the file as follows (<strong><em>don't forget to replace the GUID in the topic id with your guid</em></strong>):</li>
-</ul>{% highlight javascript %}&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xA;&lt;topic id=&quot;b7b0a984-7cab-4ab7-ba17-39618dfb6feb&quot; revisionNumber=&quot;1&quot;&gt;&#xA;  &lt;developerConceptualDocument xmlns=&quot;http://ddue.schemas.microsoft.com/authoring/2003/5&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;&#xA;    &#xA;    &lt;summary&gt;&#xA;      &lt;para&gt;SWIFT reader library&lt;/para&gt;&#xA;    &lt;/summary&gt;&#xA;    &#xA;    &lt;introduction&gt;&#xA;      &lt;para&gt;This class libary supports loading of SWIFT documents.&lt;/para&gt;&#xA;      &lt;autoOutline /&gt;&#xA;    &lt;/introduction&gt;&#xA;&#xA;    &lt;section address=&quot;Introduction&quot;&gt;&#xA;      &lt;title&gt;Introduction&lt;/title&gt;&#xA;      &lt;content&gt;&#xA;        &lt;para&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam &#xA;        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, &#xA;        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. &#xA;        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit &#xA;        amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy &#xA;        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. &#xA;        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd &#xA;        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&lt;/para&gt;&#xA;        &lt;alert class=&quot;note&quot;&gt;&#xA;          &lt;para&gt;This is just a placeholder text.&lt;/para&gt;&#xA;        &lt;/alert&gt;&#xA;      &lt;/content&gt;&#xA;    &lt;/section&gt;&#xA;&#xA;    &lt;section address=&quot;UsageSample&quot;&gt;&#xA;      &lt;title&gt;How to use&lt;/title&gt;&#xA;      &lt;content&gt;&#xA;        &lt;para&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam &#xA;        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, &#xA;        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.&lt;/para&gt;&#xA;        &lt;code language=&quot;C#&quot;&gt;&#xA;          &lt;![CDATA[&#xA;var myobj = new SwiftFileReader&lt;object&gt;();&#xA;// do something with myobj&#xA;myobj.Dispose();&#xA;          ]]&gt;&#xA;        &lt;/code&gt;&#xA;        &lt;code language=&quot;VB.NET&quot;&gt;&#xA;          &lt;![CDATA[&#xA;Dim myobj = New SwiftFileReader(Of Object)()&#xA;' do something with myobj&#xA;myobj.Dispose()&#xA;          ]]&gt;&#xA;        &lt;/code&gt;&#xA;        &lt;para&gt;Don't forget what we have said in &lt;link xlink:href=&quot;#Introduction&quot;&gt;Introduction&lt;/link&gt;&lt;/para&gt;&#xA;      &lt;/content&gt;&#xA;    &lt;/section&gt;&#xA;&#xA;    &lt;relatedTopics&gt;&#xA;      &lt;externalLink&gt;&#xA;          &lt;linkText&gt;Homepage of Rainer&lt;/linkText&gt;&#xA;          &lt;linkAlternateText&gt;time cockpit&lt;/linkAlternateText&gt;&#xA;          &lt;linkUri&gt;http://www.timecockpit.com&lt;/linkUri&gt;&#xA;      &lt;/externalLink&gt;&#xA;    &lt;/relatedTopics&gt;&#xA;  &lt;/developerConceptualDocument&gt;&#xA;&lt;/topic&gt;{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;topic id=&quot;b7b0a984-7cab-4ab7-ba17-39618dfb6feb&quot; revisionNumber=&quot;1&quot;&gt;
+  &lt;developerConceptualDocument xmlns=&quot;http://ddue.schemas.microsoft.com/authoring/2003/5&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+    
+    &lt;summary&gt;
+      &lt;para&gt;SWIFT reader library&lt;/para&gt;
+    &lt;/summary&gt;
+    
+    &lt;introduction&gt;
+      &lt;para&gt;This class libary supports loading of SWIFT documents.&lt;/para&gt;
+      &lt;autoOutline /&gt;
+    &lt;/introduction&gt;
+
+    &lt;section address=&quot;Introduction&quot;&gt;
+      &lt;title&gt;Introduction&lt;/title&gt;
+      &lt;content&gt;
+        &lt;para&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam 
+        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, 
+        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
+        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit 
+        amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy 
+        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd 
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&lt;/para&gt;
+        &lt;alert class=&quot;note&quot;&gt;
+          &lt;para&gt;This is just a placeholder text.&lt;/para&gt;
+        &lt;/alert&gt;
+      &lt;/content&gt;
+    &lt;/section&gt;
+
+    &lt;section address=&quot;UsageSample&quot;&gt;
+      &lt;title&gt;How to use&lt;/title&gt;
+      &lt;content&gt;
+        &lt;para&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam 
+        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, 
+        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.&lt;/para&gt;
+        &lt;code language=&quot;C#&quot;&gt;
+          &lt;![CDATA[
+var myobj = new SwiftFileReader&lt;object&gt;();
+// do something with myobj
+myobj.Dispose();
+          ]]&gt;
+        &lt;/code&gt;
+        &lt;code language=&quot;VB.NET&quot;&gt;
+          &lt;![CDATA[
+Dim myobj = New SwiftFileReader(Of Object)()
+' do something with myobj
+myobj.Dispose()
+          ]]&gt;
+        &lt;/code&gt;
+        &lt;para&gt;Don't forget what we have said in &lt;link xlink:href=&quot;#Introduction&quot;&gt;Introduction&lt;/link&gt;&lt;/para&gt;
+      &lt;/content&gt;
+    &lt;/section&gt;
+
+    &lt;relatedTopics&gt;
+      &lt;externalLink&gt;
+          &lt;linkText&gt;Homepage of Rainer&lt;/linkText&gt;
+          &lt;linkAlternateText&gt;time cockpit&lt;/linkAlternateText&gt;
+          &lt;linkUri&gt;http://www.timecockpit.com&lt;/linkUri&gt;
+      &lt;/externalLink&gt;
+    &lt;/relatedTopics&gt;
+  &lt;/developerConceptualDocument&gt;
+&lt;/topic&gt;{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Preview help content in SHFB by pressing F5.</li>
   <li>Add code snippets file using SHFB's <em>Project Explorer</em><ul><li>Right-click project name, select <em>Add / New Item / Code Snippet</em></li><li>Add <span class="InlineCode">Code Snippets.snippets</span></li></ul></li>
   <li>Open code snippets file in SHFB with a double click; note how the code snippets are defined (we will not change the generated sample code here).</li>
@@ -140,7 +349,50 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
     </ul>
   </li>
   <li>Define the content of the file as follows (<strong><em>don't forget to replace the GUID in the topic id with your guid</em></strong>):</li>
-</ul>{% highlight javascript %}&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xA;&lt;topic id=&quot;7e268ef9-b888-4094-bca8-1d51c95f6382&quot; revisionNumber=&quot;1&quot;&gt;&#xA;  &lt;developerConceptualDocument xmlns=&quot;http://ddue.schemas.microsoft.com/authoring/2003/5&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;&#xA;&#xA;    &lt;summary&gt;&#xA;      &lt;para&gt;Details about using the library&lt;/para&gt;&#xA;    &lt;/summary&gt;&#xA;&#xA;    &lt;introduction&gt;&#xA;      &lt;para&gt;This document shows how to use the library&lt;/para&gt;&#xA;    &lt;/introduction&gt;&#xA;&#xA;    &lt;section address=&quot;Overview&quot;&gt;&#xA;      &lt;title&gt;Overview&lt;/title&gt;&#xA;      &lt;content&gt;&#xA;        &lt;para&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam &#xA;        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, &#xA;        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. &#xA;        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit &#xA;        amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy &#xA;        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. &#xA;        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd &#xA;        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&lt;/para&gt;&#xA;        &lt;para&gt;Note how we use &#xA;        &lt;codeEntityReference qualifyHint=&quot;true&quot;&gt;T:CSharpCodeDoc.SwiftFileReader`1&lt;/codeEntityReference&gt;&#xA;        in the examples below. Isn't that cool??&lt;/para&gt;&#xA;      &lt;/content&gt;&#xA;    &lt;/section&gt;&#xA;&#xA;    &lt;section address=&quot;Examples&quot;&gt;&#xA;      &lt;title&gt;Examples&lt;/title&gt;&#xA;      &lt;content&gt;&#xA;        &lt;para&gt;Here you see some examples&lt;/para&gt;&#xA;        &lt;codeReference&gt;ClassDefinition#Define&lt;/codeReference&gt;&#xA;      &lt;/content&gt;&#xA;    &lt;/section&gt;&#xA;&#xA;    &lt;relatedTopics&gt;&#xA;      &lt;link xlink:href=&quot;b7b0a984-7cab-4ab7-ba17-39618dfb6feb&quot;/&gt;&#xA;      &lt;codeEntityReference&gt;T:CSharpCodeDoc.SwiftFileReader`1&lt;/codeEntityReference&gt;&#xA;      &lt;codeEntityReference&gt;M:CSharpCodeDoc.SwiftFileReader`1.Dec&lt;/codeEntityReference&gt;&#xA;    &lt;/relatedTopics&gt;&#xA;  &lt;/developerConceptualDocument&gt;&#xA;&lt;/topic&gt;{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;topic id=&quot;7e268ef9-b888-4094-bca8-1d51c95f6382&quot; revisionNumber=&quot;1&quot;&gt;
+  &lt;developerConceptualDocument xmlns=&quot;http://ddue.schemas.microsoft.com/authoring/2003/5&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+
+    &lt;summary&gt;
+      &lt;para&gt;Details about using the library&lt;/para&gt;
+    &lt;/summary&gt;
+
+    &lt;introduction&gt;
+      &lt;para&gt;This document shows how to use the library&lt;/para&gt;
+    &lt;/introduction&gt;
+
+    &lt;section address=&quot;Overview&quot;&gt;
+      &lt;title&gt;Overview&lt;/title&gt;
+      &lt;content&gt;
+        &lt;para&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam 
+        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, 
+        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
+        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit 
+        amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy 
+        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd 
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&lt;/para&gt;
+        &lt;para&gt;Note how we use 
+        &lt;codeEntityReference qualifyHint=&quot;true&quot;&gt;T:CSharpCodeDoc.SwiftFileReader`1&lt;/codeEntityReference&gt;
+        in the examples below. Isn't that cool??&lt;/para&gt;
+      &lt;/content&gt;
+    &lt;/section&gt;
+
+    &lt;section address=&quot;Examples&quot;&gt;
+      &lt;title&gt;Examples&lt;/title&gt;
+      &lt;content&gt;
+        &lt;para&gt;Here you see some examples&lt;/para&gt;
+        &lt;codeReference&gt;ClassDefinition#Define&lt;/codeReference&gt;
+      &lt;/content&gt;
+    &lt;/section&gt;
+
+    &lt;relatedTopics&gt;
+      &lt;link xlink:href=&quot;b7b0a984-7cab-4ab7-ba17-39618dfb6feb&quot;/&gt;
+      &lt;codeEntityReference&gt;T:CSharpCodeDoc.SwiftFileReader`1&lt;/codeEntityReference&gt;
+      &lt;codeEntityReference&gt;M:CSharpCodeDoc.SwiftFileReader`1.Dec&lt;/codeEntityReference&gt;
+    &lt;/relatedTopics&gt;
+  &lt;/developerConceptualDocument&gt;
+&lt;/topic&gt;{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Preview help content in SHFB by pressing F5.</li>
   <li>Download the following image into your SHFB project directory:
 <br /><img width="500" height="375" src="{{site.baseurl}}/content/images/blog/2010/12/Microsoft Help And Sandcastle (1).png" class="   mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused" /></li>
@@ -148,7 +400,10 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
   <li>Click on the image in SHFB's <em>Project Explorer</em> and change <em>BuildAction</em> to <em>Image</em> in bitmap properties.</li>
   <li>Change <em>ImageId</em> to <em>TitleImage</em> in bitmap properties.</li>
   <li>Add image to <span class="InlineCode">Introduction</span> section in <span class="InlineCode">Overview.aml</span>:</li>
-</ul>{% highlight javascript %}&lt;mediaLink&gt;&#xA;&lt;caption&gt;Title&lt;/caption&gt;&#xA;&lt;image placement=&quot;center&quot; xlink:href=&quot;TitleImage&quot;/&gt;&#xA;&lt;/mediaLink&gt;{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}&lt;mediaLink&gt;
+&lt;caption&gt;Title&lt;/caption&gt;
+&lt;image placement=&quot;center&quot; xlink:href=&quot;TitleImage&quot;/&gt;
+&lt;/mediaLink&gt;{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Preview help content in SHFB by pressing F5.</li>
   <li>Build your SHFB project and view the generated CHM file. Especially note how the changes you have done to your documentation during this lab changed the resulting compiled help file. </li>
 </ul>

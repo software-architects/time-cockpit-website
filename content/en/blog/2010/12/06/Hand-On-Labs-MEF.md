@@ -19,18 +19,93 @@ permalink: /blog/2010/12/06/Hand-On-Labs-MEF
   <li>The application will ask the user for a string, apply a set of string operations on that string and output the result. The string operations should be extensible. A user should be able to copy an assembly into the program's directory and the application should automatically pick up the assembly and apply all operations that it contains. Therefore the first thing we need is a contract that all string operation parts have to implement.
 
 <ul><li>Add a new class library project called <span class="InlineCode">OperatorContract</span> to your solution.</li><li>Add the following interface to the newly created project:</li></ul></li>
-</ul>{% highlight javascript %}namespace OperatorContract&#xA;{&#xA; public interface IStringOperator&#xA; {&#xA;  string PerformOperation(string input);&#xA; }&#xA;}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}namespace OperatorContract
+{
+ public interface IStringOperator
+ {
+  string PerformOperation(string input);
+ }
+}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Now add an implemenation of <span class="InlineCode">IStringOperator</span> to the command line project <span class="InlineCode">DirectoryCatalogDemo</span>.
 
 <ul><li>Add a reference to <span class="InlineCode">System.ComponentModel.Composition</span> to the command line project <span class="InlineCode">DirectoryCatalogDemo</span>.</li><li>Add the following class to the project:</li></ul></li>
-</ul>{% highlight javascript %}using System.ComponentModel.Composition;&#xA;using OperatorContract;&#xA;&#xA;namespace DirectoryCatalogDemo&#xA;{&#xA; [Export(typeof(IStringOperator))]&#xA; public class UppercaseOperator : IStringOperator&#xA; {&#xA;  public string PerformOperation(string input)&#xA;  {&#xA;   return input.ToUpper();&#xA;  }&#xA; }&#xA;}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}using System.ComponentModel.Composition;
+using OperatorContract;
+
+namespace DirectoryCatalogDemo
+{
+ [Export(typeof(IStringOperator))]
+ public class UppercaseOperator : IStringOperator
+ {
+  public string PerformOperation(string input)
+  {
+   return input.ToUpper();
+  }
+ }
+}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Next you have to implement the <span class="InlineCode">Program</span> class as follows (note especially how MEF is used to load operators into the member <span class="InlineCode">Program.operators</span> using the <span class="InlineCode">ComposeParts</span> method):</li>
-</ul>{% highlight javascript %}using System;&#xA;using System.ComponentModel.Composition;&#xA;using System.ComponentModel.Composition.Hosting;&#xA;using System.Linq;&#xA;using OperatorContract;&#xA;&#xA;namespace DirectoryCatalogDemo&#xA;{&#xA; public class Program&#xA; {&#xA;  [ImportMany(AllowRecomposition = true)]&#xA;  private IStringOperator[] operators;&#xA;&#xA;  static void Main(string[] args)&#xA;  {&#xA;   new Program().Run();&#xA;  }&#xA;&#xA;  void Run()&#xA;  {&#xA;   DirectoryCatalog directoryCatalog;&#xA;   var container = new CompositionContainer(&#xA;    new AggregateCatalog(&#xA;     new AssemblyCatalog(typeof(Program).Assembly),&#xA;     directoryCatalog = new DirectoryCatalog(&quot;.&quot;)&#xA;    ));&#xA;   container.ComposeParts(this);&#xA;&#xA;   var userInput = string.Empty;&#xA;   do&#xA;   {&#xA;    Console.Write(&quot;Please enter a string (quit to exit program): &quot;);&#xA;    userInput = Console.ReadLine();&#xA;    if (userInput != &quot;quit&quot;)&#xA;    {&#xA;     directoryCatalog.Refresh();&#xA;     Console.WriteLine(this.operators.Aggregate&lt;IStringOperator, string&gt;(userInput, (agg, op) =&gt; op.PerformOperation(agg)));&#xA;    }&#xA;   }&#xA;   while (userInput != &quot;quit&quot;);&#xA;  }&#xA; }&#xA;}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}using System;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.Linq;
+using OperatorContract;
+
+namespace DirectoryCatalogDemo
+{
+ public class Program
+ {
+  [ImportMany(AllowRecomposition = true)]
+  private IStringOperator[] operators;
+
+  static void Main(string[] args)
+  {
+   new Program().Run();
+  }
+
+  void Run()
+  {
+   DirectoryCatalog directoryCatalog;
+   var container = new CompositionContainer(
+    new AggregateCatalog(
+     new AssemblyCatalog(typeof(Program).Assembly),
+     directoryCatalog = new DirectoryCatalog(&quot;.&quot;)
+    ));
+   container.ComposeParts(this);
+
+   var userInput = string.Empty;
+   do
+   {
+    Console.Write(&quot;Please enter a string (quit to exit program): &quot;);
+    userInput = Console.ReadLine();
+    if (userInput != &quot;quit&quot;)
+    {
+     directoryCatalog.Refresh();
+     Console.WriteLine(this.operators.Aggregate&lt;IStringOperator, string&gt;(userInput, (agg, op) =&gt; op.PerformOperation(agg)));
+    }
+   }
+   while (userInput != &quot;quit&quot;);
+  }
+ }
+}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Build and run your program. Currently the program will only find the <span class="InlineCode">UppercaseOperator</span> part because no other implementations of <span class="InlineCode">IStringOperator</span> can be found. However, the application would already load additional operators from assemblies that are present in the application's directory. Next we will create a new operator and add it by just copying the assembly.</li>
   <li>Create a new class library project <span class="InlineCode">ReverseStringOperator</span>.
 
 <ul><li>Add a reference to <span class="InlineCode">System.ComponentModel.Composition</span> to the class library.</li><li>Add the following class to the project:</li></ul></li>
-</ul>{% highlight javascript %}using System.ComponentModel.Composition;&#xA;using System.Linq;&#xA;using OperatorContract;&#xA;&#xA;namespace ReverseStringOperator&#xA;{&#xA; [Export(typeof(IStringOperator))]&#xA; public class ReverseStringOperator : IStringOperator&#xA; {&#xA;  public string PerformOperation(string input)&#xA;  {&#xA;   return new string(input.Reverse().ToArray());&#xA;  }&#xA; }&#xA;}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}using System.ComponentModel.Composition;
+using System.Linq;
+using OperatorContract;
+
+namespace ReverseStringOperator
+{
+ [Export(typeof(IStringOperator))]
+ public class ReverseStringOperator : IStringOperator
+ {
+  public string PerformOperation(string input)
+  {
+   return new string(input.Reverse().ToArray());
+  }
+ }
+}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Build your solution.</li>
   <li>Run the command line application. Try it - the behavior must not have changed because the new operator is unknown by now.</li>
   <li>Copy the assembly with the <span class="InlineCode">ReverseStringOperator</span> into the program's directory without stopping the application. Try it - the string must be turned to uppercase <em>and</em> be reversed now.</li>
@@ -39,18 +114,149 @@ permalink: /blog/2010/12/06/Hand-On-Labs-MEF
   <li>Add the following class to your command line project <span class="InlineCode">DirectoryCatalogDemo</span>:
 
 <ul><li>Note the <span class="InlineCode">Export</span> attributes on the methods instead of the classes.</li></ul></li>
-</ul>{% highlight javascript %}using System.ComponentModel.Composition;&#xA;using System.Linq;&#xA;&#xA;namespace DirectoryCatalogDemo&#xA;{&#xA; public static class FuncationalOperators&#xA; {&#xA;  [Export(&quot;FuncationOperator&quot;)]&#xA;  public static string UppercaseString(string input)&#xA;  {&#xA;   return input.ToUpper();&#xA;  }&#xA;&#xA;  [Export(&quot;FuncationOperator&quot;)]&#xA;  public static string ReverseString(string input)&#xA;  {&#xA;   return new string(input.Reverse().ToArray());&#xA;  }&#xA; }&#xA;}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}using System.ComponentModel.Composition;
+using System.Linq;
+
+namespace DirectoryCatalogDemo
+{
+ public static class FuncationalOperators
+ {
+  [Export(&quot;FuncationOperator&quot;)]
+  public static string UppercaseString(string input)
+  {
+   return input.ToUpper();
+  }
+
+  [Export(&quot;FuncationOperator&quot;)]
+  public static string ReverseString(string input)
+  {
+   return new string(input.Reverse().ToArray());
+  }
+ }
+}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Change the implementation of the <span class="InlineCode">Program</span> class as follows (new/changed lines are written in italic):</li>
-</ul>{% highlight javascript %}using System;&#xA;using System.ComponentModel.Composition;&#xA;using System.ComponentModel.Composition.Hosting;&#xA;using System.Linq;&#xA;using OperatorContract;&#xA;&#xA;namespace DirectoryCatalogDemo&#xA;{&#xA; public class Program&#xA; {&#xA;  [ImportMany(AllowRecomposition = true)]&#xA;  private IStringOperator[] operators;&#xA;&#xA;  [ImportMany(&quot;FuncationOperator&quot;, AllowRecomposition = true)]&#xA;  private Func&lt;string, string&gt;[] funcationalOperators;&#xA;&#xA;  static void Main(string[] args)&#xA;  {&#xA;   new Program().Run();&#xA;  }&#xA;&#xA;  void Run()&#xA;  {&#xA;   DirectoryCatalog directoryCatalog;&#xA;   var container = new CompositionContainer(&#xA;    new AggregateCatalog(&#xA;     new AssemblyCatalog(typeof(Program).Assembly),&#xA;     directoryCatalog = new DirectoryCatalog(&quot;.&quot;)&#xA;    ));&#xA;   container.ComposeParts(this);&#xA;&#xA;   var userInput = string.Empty;&#xA;   do&#xA;   {&#xA;    Console.Write(&quot;Please enter a string (quit to exit program): &quot;);&#xA;    userInput = Console.ReadLine();&#xA;    if (userInput != &quot;quit&quot;)&#xA;    {&#xA;     directoryCatalog.Refresh();&#xA;     Console.WriteLine(&quot;Operators from classes: {0}&quot;, &#xA;      this.operators.Aggregate&lt;IStringOperator, string&gt;(userInput, (agg, op) =&gt; op.PerformOperation(agg)));&#xA;     Console.WriteLine(&quot;Funcational operators: {0}&quot;,&#xA;      this.funcationalOperators.Aggregate&lt;Func&lt;string, string&gt;, string&gt;(userInput, (agg, op) =&gt; op(agg)));&#xA;    }&#xA;   }&#xA;   while (userInput != &quot;quit&quot;);&#xA;  }&#xA; }&#xA;}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}using System;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.Linq;
+using OperatorContract;
+
+namespace DirectoryCatalogDemo
+{
+ public class Program
+ {
+  [ImportMany(AllowRecomposition = true)]
+  private IStringOperator[] operators;
+
+  [ImportMany(&quot;FuncationOperator&quot;, AllowRecomposition = true)]
+  private Func&lt;string, string&gt;[] funcationalOperators;
+
+  static void Main(string[] args)
+  {
+   new Program().Run();
+  }
+
+  void Run()
+  {
+   DirectoryCatalog directoryCatalog;
+   var container = new CompositionContainer(
+    new AggregateCatalog(
+     new AssemblyCatalog(typeof(Program).Assembly),
+     directoryCatalog = new DirectoryCatalog(&quot;.&quot;)
+    ));
+   container.ComposeParts(this);
+
+   var userInput = string.Empty;
+   do
+   {
+    Console.Write(&quot;Please enter a string (quit to exit program): &quot;);
+    userInput = Console.ReadLine();
+    if (userInput != &quot;quit&quot;)
+    {
+     directoryCatalog.Refresh();
+     Console.WriteLine(&quot;Operators from classes: {0}&quot;, 
+      this.operators.Aggregate&lt;IStringOperator, string&gt;(userInput, (agg, op) =&gt; op.PerformOperation(agg)));
+     Console.WriteLine(&quot;Funcational operators: {0}&quot;,
+      this.funcationalOperators.Aggregate&lt;Func&lt;string, string&gt;, string&gt;(userInput, (agg, op) =&gt; op(agg)));
+    }
+   }
+   while (userInput != &quot;quit&quot;);
+  }
+ }
+}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Compile and test the application. As you can see MEF correctly exports and imports the methods just as expected.</li>
 </ul><h2 xmlns="http://www.w3.org/1999/xhtml">Hands-On Lab 2: Part Lifecycle Sample</h2><p xmlns="http://www.w3.org/1999/xhtml">Prerequisites:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Visual Studio 2010</li>
 </ul><p xmlns="http://www.w3.org/1999/xhtml">Lab step by step description:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Create a new command line project called <span class="InlineCode">LifeCycleDemo</span>.</li>
   <li>Add an exported class to the project as follows:</li>
-</ul>{% highlight javascript %}[Export]&#xA;public class DisposableObject : IDisposable&#xA;{&#xA; private bool disposed = false;&#xA;&#xA; public DisposableObject()&#xA; {&#xA;  Trace.WriteLine(string.Format(&quot;Creating object {0}&quot;, this.GetHashCode()));&#xA; }&#xA;&#xA; public void Dispose()&#xA; {&#xA;  Trace.WriteLine(string.Format(&quot;Disposing object {0}&quot;, this.GetHashCode()));&#xA;  this.disposed = true;&#xA; }&#xA;&#xA; public void DoSomething()&#xA; {&#xA;  if (this.disposed)&#xA;  {&#xA;   throw new InvalidOperationException();&#xA;  }&#xA;&#xA;  // Here we have to do something with this object&#xA; }&#xA;}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}[Export]
+public class DisposableObject : IDisposable
+{
+ private bool disposed = false;
+
+ public DisposableObject()
+ {
+  Trace.WriteLine(string.Format(&quot;Creating object {0}&quot;, this.GetHashCode()));
+ }
+
+ public void Dispose()
+ {
+  Trace.WriteLine(string.Format(&quot;Disposing object {0}&quot;, this.GetHashCode()));
+  this.disposed = true;
+ }
+
+ public void DoSomething()
+ {
+  if (this.disposed)
+  {
+   throw new InvalidOperationException();
+  }
+
+  // Here we have to do something with this object
+ }
+}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Change the implementation of the <span class="InlineCode">Program</span> class as follows:</li>
-</ul>{% highlight javascript %}public class Program : IPartImportsSatisfiedNotification&#xA;{&#xA; [Import(RequiredCreationPolicy = CreationPolicy.NonShared)]&#xA; public Lazy&lt;DisposableObject&gt; mefObject1;&#xA;&#xA; [Import(RequiredCreationPolicy = CreationPolicy.NonShared)]&#xA; public Lazy&lt;DisposableObject&gt; mefObject2;&#xA;&#xA; static void Main(string[] args)&#xA; {&#xA;  new Program().Run();&#xA; }&#xA;&#xA; private void Run()&#xA; {&#xA;  var catalog = new AssemblyCatalog(typeof(DisposableObject).Assembly);&#xA;  var container = new CompositionContainer(catalog);&#xA;&#xA;  Trace.WriteLine(&quot;Start composing&quot;);&#xA;  container.ComposeParts(this);&#xA;&#xA;  Trace.WriteLine(&quot;Accessing lazy object&quot;);&#xA;  this.mefObject1.Value.DoSomething();&#xA;  this.mefObject2.Value.DoSomething();&#xA;&#xA;  container.ReleaseExports(new[] { this.mefObject1, this.mefObject2 });&#xA;&#xA;  Trace.WriteLine(&quot;Start composing&quot;);&#xA;  container.ComposeParts(this);&#xA;&#xA;  Trace.WriteLine(&quot;Accessing lazy object again&quot;);&#xA;  this.mefObject1.Value.DoSomething();&#xA;  this.mefObject2.Value.DoSomething();&#xA; }&#xA;&#xA; public void OnImportsSatisfied()&#xA; {&#xA;  Trace.WriteLine(&quot;Imports are satisfied&quot;);&#xA; }&#xA;}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}public class Program : IPartImportsSatisfiedNotification
+{
+ [Import(RequiredCreationPolicy = CreationPolicy.NonShared)]
+ public Lazy&lt;DisposableObject&gt; mefObject1;
+
+ [Import(RequiredCreationPolicy = CreationPolicy.NonShared)]
+ public Lazy&lt;DisposableObject&gt; mefObject2;
+
+ static void Main(string[] args)
+ {
+  new Program().Run();
+ }
+
+ private void Run()
+ {
+  var catalog = new AssemblyCatalog(typeof(DisposableObject).Assembly);
+  var container = new CompositionContainer(catalog);
+
+  Trace.WriteLine(&quot;Start composing&quot;);
+  container.ComposeParts(this);
+
+  Trace.WriteLine(&quot;Accessing lazy object&quot;);
+  this.mefObject1.Value.DoSomething();
+  this.mefObject2.Value.DoSomething();
+
+  container.ReleaseExports(new[] { this.mefObject1, this.mefObject2 });
+
+  Trace.WriteLine(&quot;Start composing&quot;);
+  container.ComposeParts(this);
+
+  Trace.WriteLine(&quot;Accessing lazy object again&quot;);
+  this.mefObject1.Value.DoSomething();
+  this.mefObject2.Value.DoSomething();
+ }
+
+ public void OnImportsSatisfied()
+ {
+  Trace.WriteLine(&quot;Imports are satisfied&quot;);
+ }
+}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Build your project.</li>
   <li>Run your project in the debugger and try to reconstruct the following important points:
 

@@ -43,7 +43,15 @@ permalink: /blog/2010/12/07/Hands-On-Labs-Visual-Studio-IDE
   <li>Implement the method <span class="InlineCode">TestIsEven</span>as follows:
 
 <ul><li>Tip: Use <span class="InlineCode">for</span> snippet to generate the loop's code.</li></ul></li>
-</ul>{% highlight javascript %}[TestMethod]&#xA;public void TestIsEven()&#xA;{&#xA; for (int i = 0; i &lt; 10; i++)&#xA; {&#xA;  bool isEven = MathUtilities.IsEven(i);&#xA;  Assert.AreEqual(i % 2 == 0, isEven);&#xA; }&#xA;}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}[TestMethod]
+public void TestIsEven()
+{
+ for (int i = 0; i &lt; 10; i++)
+ {
+  bool isEven = MathUtilities.IsEven(i);
+  Assert.AreEqual(i % 2 == 0, isEven);
+ }
+}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Resolve the missing <span class="InlineCode">using</span> statement by setting the cursor on <span class="InlineCode">MathUtilities</span> and pressing Ctrl + .</li>
   <li>Generate the code for <span class="InlineCode">IsEven</span> by setting the cursor on <span class="InlineCode">IsEven</span> and pressing Ctrl + .</li>
   <li>Navigate to the generated code by using the <em>Go To Definition</em> feature (F12).</li>

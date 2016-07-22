@@ -21,13 +21,77 @@ permalink: /blog/2013/02/27/BASTA-Spring-2013-Custom-OData-Providers
     <f:param name="SourceCode" value="using System;&#xA;using System.Collections.Generic;&#xA;using System.Linq;&#xA;&#xA;namespace CustomLinqProvider&#xA;{&#xA;    public class Customer&#xA;    {&#xA;        public int CustomerID { get; set; }&#xA;        public string CompanyName { get; set; }&#xA;        public string ContactPersonFirstName { get; set; }&#xA;        public string ContactPersonLastName { get; set; }&#xA;&#xA;        public override string ToString()&#xA;        {&#xA;            return string.Format(&quot;{0}, {1} {2}, {3}&quot;, this.CustomerID, this.ContactPersonFirstName, this.ContactPersonLastName, this.CompanyName);&#xA;        }&#xA;&#xA;        public static IReadOnlyList&lt;Customer&gt; GenerateDemoCustomers(int firstCustomerID = 0, int numberOfCustomers = 100)&#xA;        {&#xA;            var rand = new Random();&#xA;            return Enumerable.Range(firstCustomerID, numberOfCustomers)&#xA;                .Select(i =&gt; new Customer()&#xA;                {&#xA;                    CustomerID = i,&#xA;                    ContactPersonLastName = DemoNames.LastNames[rand.Next(DemoNames.LastNames.Count)],&#xA;                    ContactPersonFirstName = DemoNames.FirstNames[rand.Next(DemoNames.FirstNames.Count)],&#xA;                    CompanyName = string.Format(&#xA;                        &quot;{0} {1} {2}&quot;,&#xA;                        DemoNames.CompanyNamesPart1[rand.Next(DemoNames.CompanyNamesPart1.Count)],&#xA;                        DemoNames.CompanyNamesPart2[rand.Next(DemoNames.CompanyNamesPart2.Count)],&#xA;                        DemoNames.CompanyNamesPart3[rand.Next(DemoNames.CompanyNamesPart3.Count)])&#xA;                })&#xA;                .ToArray();&#xA;        }&#xA;    }&#xA;}" xmlns:f="http://www.composite.net/ns/function/1.0" />
     <f:param name="CodeType" value="c#" xmlns:f="http://www.composite.net/ns/function/1.0" />
   </f:function>
-  {% highlight javascript %}using System.Collections.Generic;&#xA;&#xA;namespace CustomLinqProvider&#xA;{&#xA;    /// &lt;summary&gt;&#xA;    /// Contains some common names used to generate customer demo data&#xA;    /// &lt;/summary&gt;&#xA;    public static class DemoNames&#xA;    {&#xA;        public static readonly IReadOnlyList&lt;string&gt; LastNames = new [] {&#xA;            &quot;Smith&quot;, &quot;Johnson&quot;, &quot;Williams&quot;, &quot;Jones&quot;, &quot;Brown&quot;, &quot;Davis&quot;, &quot;Miller&quot;, &quot;Wilson&quot;, &quot;Moore&quot;, &quot;Taylor&quot; /*, ...*/&#xA;        };&#xA;&#xA;        public static readonly IReadOnlyList&lt;string&gt; FirstNames = new[] {&#xA;            &quot;Jack&quot;, &quot;Lewis&quot;, &quot;Riley&quot;, &quot;James&quot;, &quot;Logan&quot; /*, ...*/&#xA;        };&#xA;&#xA;        public static readonly IReadOnlyList&lt;string&gt; CompanyNamesPart1 = new[] { &#xA;            &quot;Corina&quot;, &quot;Amelia&quot;, &quot;Menno&quot;, &quot;Malthe&quot;, &quot;Hartwing&quot;, &quot;Marlen&quot; /*, ...*/ };&#xA;        public static readonly IReadOnlyList&lt;string&gt; CompanyNamesPart2 = new[] { &#xA;            &quot;Construction&quot;, &quot;Engineering&quot;, &quot;Consulting&quot;, &quot;Trading&quot;, &quot;Metal Construction&quot;, &quot;Publishers&quot;  /*, ...*/ };&#xA;        public static readonly IReadOnlyList&lt;string&gt; CompanyNamesPart3 = new[] {&#xA;            &quot;Ltd&quot;, &quot;Limited&quot;, &quot;Corporation&quot;, &quot;Limited Company&quot;, &quot;Joint Venture&quot;, &quot;Ltd.&quot;, &quot;Cooperative&quot; };&#xA;    }&#xA;}{% endhighlight %}
+  {% highlight javascript %}using System.Collections.Generic;
+
+namespace CustomLinqProvider
+{
+    /// &lt;summary&gt;
+    /// Contains some common names used to generate customer demo data
+    /// &lt;/summary&gt;
+    public static class DemoNames
+    {
+        public static readonly IReadOnlyList&lt;string&gt; LastNames = new [] {
+            &quot;Smith&quot;, &quot;Johnson&quot;, &quot;Williams&quot;, &quot;Jones&quot;, &quot;Brown&quot;, &quot;Davis&quot;, &quot;Miller&quot;, &quot;Wilson&quot;, &quot;Moore&quot;, &quot;Taylor&quot; /*, ...*/
+        };
+
+        public static readonly IReadOnlyList&lt;string&gt; FirstNames = new[] {
+            &quot;Jack&quot;, &quot;Lewis&quot;, &quot;Riley&quot;, &quot;James&quot;, &quot;Logan&quot; /*, ...*/
+        };
+
+        public static readonly IReadOnlyList&lt;string&gt; CompanyNamesPart1 = new[] { 
+            &quot;Corina&quot;, &quot;Amelia&quot;, &quot;Menno&quot;, &quot;Malthe&quot;, &quot;Hartwing&quot;, &quot;Marlen&quot; /*, ...*/ };
+        public static readonly IReadOnlyList&lt;string&gt; CompanyNamesPart2 = new[] { 
+            &quot;Construction&quot;, &quot;Engineering&quot;, &quot;Consulting&quot;, &quot;Trading&quot;, &quot;Metal Construction&quot;, &quot;Publishers&quot;  /*, ...*/ };
+        public static readonly IReadOnlyList&lt;string&gt; CompanyNamesPart3 = new[] {
+            &quot;Ltd&quot;, &quot;Limited&quot;, &quot;Corporation&quot;, &quot;Limited Company&quot;, &quot;Joint Venture&quot;, &quot;Ltd.&quot;, &quot;Cooperative&quot; };
+    }
+}{% endhighlight %}
 </p><p xmlns="http://www.w3.org/1999/xhtml">Publishing generated customer demo data with OData is really simple. Here is the code you need for it:</p><p xmlns="http://www.w3.org/1999/xhtml">
   <f:function name="Composite.Web.Html.SyntaxHighlighter" xmlns:f="http://www.composite.net/ns/function/1.0">
     <f:param name="SourceCode" value="&#xA;&#xA;&lt;%@ ServiceHost Language=&quot;C#&quot; Factory=&quot;System.Data.Services.DataServiceHostFactory, Microsoft.Data.Services, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&quot; Service=&quot;CustomODataService.CustomerReflectionService&quot; %&gt;" xmlns:f="http://www.composite.net/ns/function/1.0" />
     <f:param name="CodeType" value="xml" xmlns:f="http://www.composite.net/ns/function/1.0" />
   </f:function>
-  {% highlight javascript %}using IQToolkit;&#xA;using CustomLinqProvider;&#xA;using System.Data.Services;&#xA;using System.Data.Services.Common;&#xA;using System.Linq;&#xA;using System.ServiceModel;&#xA;&#xA;namespace CustomODataService&#xA;{&#xA;    /// &lt;summary&gt;&#xA;    /// Implements a context class that contain queryables which we want to expose using OData&#xA;    /// &lt;/summary&gt;&#xA;    public class CustomerReflectionContext &#xA;    {&#xA;        public IQueryable&lt;Customer&gt; Customer&#xA;        {&#xA;            get&#xA;            {&#xA;                // Generate 1000 customers and return queryable so that user can query the&#xA;                // generated data.&#xA;                return CustomLinqProvider.Customer&#xA;                    .GenerateDemoCustomers(numberOfCustomers: 100)&#xA;                    .AsQueryable();&#xA;            }&#xA;        }&#xA;    }&#xA;    [ServiceBehavior(IncludeExceptionDetailInFaults = true)]&#xA;    public class CustomerReflectionService : DataService&lt;CustomerReflectionContext&gt;&#xA;    {&#xA;        // This method is called only once to initialize service-wide policies.&#xA;        public static void InitializeService(DataServiceConfiguration config)&#xA;        {&#xA;            // TODO: set rules to indicate which entity sets and service operations are visible, updatable, etc.&#xA;            // Examples:&#xA;            config.SetEntitySetAccessRule(&quot;*&quot;, EntitySetRights.AllRead);&#xA;            // config.SetServiceOperationAccessRule(&quot;MyServiceOperation&quot;, ServiceOperationRights.All);&#xA;            config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V2;&#xA;            config.UseVerboseErrors = true;&#xA;        }&#xA;    }&#xA;}{% endhighlight %}
+  {% highlight javascript %}using IQToolkit;
+using CustomLinqProvider;
+using System.Data.Services;
+using System.Data.Services.Common;
+using System.Linq;
+using System.ServiceModel;
+
+namespace CustomODataService
+{
+    /// &lt;summary&gt;
+    /// Implements a context class that contain queryables which we want to expose using OData
+    /// &lt;/summary&gt;
+    public class CustomerReflectionContext 
+    {
+        public IQueryable&lt;Customer&gt; Customer
+        {
+            get
+            {
+                // Generate 1000 customers and return queryable so that user can query the
+                // generated data.
+                return CustomLinqProvider.Customer
+                    .GenerateDemoCustomers(numberOfCustomers: 100)
+                    .AsQueryable();
+            }
+        }
+    }
+    [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
+    public class CustomerReflectionService : DataService&lt;CustomerReflectionContext&gt;
+    {
+        // This method is called only once to initialize service-wide policies.
+        public static void InitializeService(DataServiceConfiguration config)
+        {
+            // TODO: set rules to indicate which entity sets and service operations are visible, updatable, etc.
+            // Examples:
+            config.SetEntitySetAccessRule(&quot;*&quot;, EntitySetRights.AllRead);
+            // config.SetServiceOperationAccessRule(&quot;MyServiceOperation&quot;, ServiceOperationRights.All);
+            config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V2;
+            config.UseVerboseErrors = true;
+        }
+    }
+}{% endhighlight %}
 </p><p xmlns="http://www.w3.org/1999/xhtml">You can immediately try your OData service in the browser (click to enlarge the image):</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
   <f:param name="MediaImage" value="MediaArchive:3e7d87b1-e2d9-4b08-9d7b-47c3cab2b1c8" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ThumbnailMaxWidth" value="350" xmlns:f="http://www.composite.net/ns/function/1.0" />
@@ -45,8 +109,106 @@ permalink: /blog/2013/02/27/BASTA-Spring-2013-Custom-OData-Providers
     <f:param name="SourceCode" value="using System;&#xA;using System.Linq.Expressions;&#xA;using System.Reflection;&#xA;&#xA;namespace CustomLinqProvider&#xA;{&#xA;    /// &lt;summary&gt;&#xA;    /// Simple visitor that extracts &quot;Take&quot; and &quot;Skip&quot; clauses from expression tree&#xA;    /// &lt;/summary&gt;&#xA;    internal class AnalyzeQueryVisitor : ExpressionVisitor&#xA;    {&#xA;        public AnalyzeQueryVisitor()&#xA;        {&#xA;            this.Take = 100;&#xA;            this.Skip = 0;&#xA;        }&#xA;&#xA;        public int Take { get; private set; }&#xA;        public int Skip { get; private set; }&#xA;&#xA;        protected override Expression VisitMethodCall(MethodCallExpression m)&#xA;        {&#xA;            switch (m.Method.Name)&#xA;            {&#xA;                case &quot;Take&quot;:&#xA;                    this.Take = (int)(m.Arguments[1] as ConstantExpression).Value;&#xA;                    break;&#xA;                case &quot;Skip&quot;:&#xA;                    this.Skip = (int)(m.Arguments[1] as ConstantExpression).Value;&#xA;                    break;&#xA;                case &quot;OrderBy&quot;:&#xA;                    // We do not check/consider order by yet.&#xA;                    break;&#xA;                default:&#xA;                    throw new CustomLinqProviderException(&quot;Method not supported!&quot;);&#xA;            }&#xA;&#xA;            return base.VisitMethodCall(m);&#xA;        }&#xA;    }&#xA;}" xmlns:f="http://www.composite.net/ns/function/1.0" />
     <f:param name="CodeType" value="c#" xmlns:f="http://www.composite.net/ns/function/1.0" />
   </f:function>
-  {% highlight javascript %}using System;&#xA;using System.Runtime.Serialization;&#xA;&#xA;namespace CustomLinqProvider&#xA;{&#xA;    [Serializable]&#xA;    public class CustomLinqProviderException : NotSupportedException&#xA;    {&#xA;        public CustomLinqProviderException()&#xA;            : base()&#xA;        {&#xA;        }&#xA;&#xA;        public CustomLinqProviderException(string message)&#xA;            : base(message)&#xA;        {&#xA;        }&#xA;&#xA;        protected CustomLinqProviderException(SerializationInfo info, StreamingContext context)&#xA;            : base(info, context)&#xA;        {&#xA;        }&#xA;&#xA;        public CustomLinqProviderException(string message, Exception innerException)&#xA;            : base(message, innerException)&#xA;        {&#xA;        }&#xA;    }&#xA;}{% endhighlight %}
-</p><p xmlns="http://www.w3.org/1999/xhtml">Of course you do not absolutely need OData to make use of the LINQ provider. You can use it directly in your C# app, too. You can easily try it e.g. in a unit test:</p>{% highlight javascript %}using IQToolkit;&#xA;using Microsoft.VisualStudio.TestTools.UnitTesting;&#xA;using CustomLinqProvider;&#xA;using System.Linq;&#xA;&#xA;namespace CustomODataProvider.Test&#xA;{&#xA;    [TestClass]&#xA;    public class LinqProviderTest&#xA;    {&#xA;        [TestMethod]&#xA;        public void TestSuccessfullQueries()&#xA;        {&#xA;            var provider = new DemoCustomerProvider();&#xA;&#xA;            var result = new Query&lt;Customer&gt;(provider).ToArray();&#xA;            Assert.AreEqual(100, result.Length);&#xA;            Assert.AreEqual(0, result[0].CustomerID);&#xA;&#xA;            result = new Query&lt;Customer&gt;(provider).Skip(100).ToArray();&#xA;            Assert.AreEqual(100, result.Length);&#xA;            Assert.AreEqual(100, result[0].CustomerID);&#xA;&#xA;            result = new Query&lt;Customer&gt;(provider).Skip(100).Take(10).ToArray();&#xA;            Assert.AreEqual(10, result.Length);&#xA;            Assert.AreEqual(100, result[0].CustomerID);&#xA;        }&#xA;&#xA;        [TestMethod]&#xA;        public void TestIllegalQuery()&#xA;        {&#xA;            var provider = new DemoCustomerProvider();&#xA;            bool exception = false;&#xA;            try&#xA;            {&#xA;                new Query&lt;Customer&gt;(provider).Where(c =&gt; c.CustomerID == 5).ToArray();&#xA;            }&#xA;            catch (CustomLinqProviderException)&#xA;            {&#xA;                exception = true;&#xA;            }&#xA;&#xA;            Assert.IsTrue(exception);&#xA;        }&#xA;    }&#xA;}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Using the LINQ Provider in OData</h2><p xmlns="http://www.w3.org/1999/xhtml">Now that we have the optimized LINQ provider, we can back our OData service with it:</p>{% highlight javascript %}/// &lt;summary&gt;&#xA;/// Implements a context class that contain queryables which we want to expose using OData&#xA;/// &lt;/summary&gt;&#xA;public class CustomerReflectionContext &#xA;{&#xA;    //public IQueryable&lt;Customer&gt; Customer&#xA;    //{&#xA;    //  get&#xA;    //  {&#xA;    //      // Generate 1000 customers and return queryable so that user can query the&#xA;    //      // generated data.&#xA;    //      return CustomLinqProvider.Customer&#xA;    //          .GenerateDemoCustomers(numberOfCustomers: 100)&#xA;    //          .AsQueryable();&#xA;    //  }&#xA;    //}&#xA;&#xA;    public IQueryable&lt;Customer&gt; Customer&#xA;    {&#xA;        get&#xA;        {&#xA;            // Use custom linq provider to generate exactly the number of customers we need&#xA;            return new Query&lt;Customer&gt;(new DemoCustomerProvider());&#xA;        }&#xA;    }&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">It you query the OData service with a <em>$top</em> clause now, the service will only generated the request number of customer objects in the background.</p><p xmlns="http://www.w3.org/1999/xhtml">Unfortunately we have lost functionality with our customer LINQ provider, too. If you decide to go for a customer provider, you have to deal with all possible LINQ functions yourself. In our case we only allow <em>$top</em> and <em>$skip</em>. In all other cases we throw an exception (click to enlarge image):</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
+  {% highlight javascript %}using System;
+using System.Runtime.Serialization;
+
+namespace CustomLinqProvider
+{
+    [Serializable]
+    public class CustomLinqProviderException : NotSupportedException
+    {
+        public CustomLinqProviderException()
+            : base()
+        {
+        }
+
+        public CustomLinqProviderException(string message)
+            : base(message)
+        {
+        }
+
+        protected CustomLinqProviderException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
+        {
+        }
+
+        public CustomLinqProviderException(string message, Exception innerException)
+            : base(message, innerException)
+        {
+        }
+    }
+}{% endhighlight %}
+</p><p xmlns="http://www.w3.org/1999/xhtml">Of course you do not absolutely need OData to make use of the LINQ provider. You can use it directly in your C# app, too. You can easily try it e.g. in a unit test:</p>{% highlight javascript %}using IQToolkit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using CustomLinqProvider;
+using System.Linq;
+
+namespace CustomODataProvider.Test
+{
+    [TestClass]
+    public class LinqProviderTest
+    {
+        [TestMethod]
+        public void TestSuccessfullQueries()
+        {
+            var provider = new DemoCustomerProvider();
+
+            var result = new Query&lt;Customer&gt;(provider).ToArray();
+            Assert.AreEqual(100, result.Length);
+            Assert.AreEqual(0, result[0].CustomerID);
+
+            result = new Query&lt;Customer&gt;(provider).Skip(100).ToArray();
+            Assert.AreEqual(100, result.Length);
+            Assert.AreEqual(100, result[0].CustomerID);
+
+            result = new Query&lt;Customer&gt;(provider).Skip(100).Take(10).ToArray();
+            Assert.AreEqual(10, result.Length);
+            Assert.AreEqual(100, result[0].CustomerID);
+        }
+
+        [TestMethod]
+        public void TestIllegalQuery()
+        {
+            var provider = new DemoCustomerProvider();
+            bool exception = false;
+            try
+            {
+                new Query&lt;Customer&gt;(provider).Where(c =&gt; c.CustomerID == 5).ToArray();
+            }
+            catch (CustomLinqProviderException)
+            {
+                exception = true;
+            }
+
+            Assert.IsTrue(exception);
+        }
+    }
+}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Using the LINQ Provider in OData</h2><p xmlns="http://www.w3.org/1999/xhtml">Now that we have the optimized LINQ provider, we can back our OData service with it:</p>{% highlight javascript %}/// &lt;summary&gt;
+/// Implements a context class that contain queryables which we want to expose using OData
+/// &lt;/summary&gt;
+public class CustomerReflectionContext 
+{
+    //public IQueryable&lt;Customer&gt; Customer
+    //{
+    //  get
+    //  {
+    //      // Generate 1000 customers and return queryable so that user can query the
+    //      // generated data.
+    //      return CustomLinqProvider.Customer
+    //          .GenerateDemoCustomers(numberOfCustomers: 100)
+    //          .AsQueryable();
+    //  }
+    //}
+
+    public IQueryable&lt;Customer&gt; Customer
+    {
+        get
+        {
+            // Use custom linq provider to generate exactly the number of customers we need
+            return new Query&lt;Customer&gt;(new DemoCustomerProvider());
+        }
+    }
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">It you query the OData service with a <em>$top</em> clause now, the service will only generated the request number of customer objects in the background.</p><p xmlns="http://www.w3.org/1999/xhtml">Unfortunately we have lost functionality with our customer LINQ provider, too. If you decide to go for a customer provider, you have to deal with all possible LINQ functions yourself. In our case we only allow <em>$top</em> and <em>$skip</em>. In all other cases we throw an exception (click to enlarge image):</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
   <f:param name="MediaImage" value="MediaArchive:1f5b3e71-b0e4-4be5-a77d-6b04231d4bfa" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ThumbnailMaxWidth" value="350" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ThumbnailMaxHeight" value="235" xmlns:f="http://www.composite.net/ns/function/1.0" />
@@ -55,13 +217,266 @@ permalink: /blog/2013/02/27/BASTA-Spring-2013-Custom-OData-Providers
     <f:param name="SourceCode" value="using System;&#xA;using System.Data.Services;&#xA;using System.Data.Services.Common;&#xA;using System.Data.Services.Providers;&#xA;using CustomODataService.CustomDataServiceBase;&#xA;using System.Threading;&#xA;using CustomLinqProvider;&#xA;using System.Reflection;&#xA;using System.Linq;&#xA;using IQToolkit;&#xA;&#xA;namespace CustomODataService&#xA;{&#xA;    public class CustomerServiceDataContext : IGenericDataServiceContext&#xA;    {&#xA;        public IQueryable GetQueryable(ResourceSet set)&#xA;        {&#xA;            if (set.Name == &quot;Customer&quot;)&#xA;            {&#xA;                return new Query&lt;Customer&gt;(new DemoCustomerProvider());&#xA;            }&#xA;&#xA;            return null;&#xA;        }&#xA;    }&#xA;}" xmlns:f="http://www.composite.net/ns/function/1.0" />
     <f:param name="CodeType" value="c#" xmlns:f="http://www.composite.net/ns/function/1.0" />
   </f:function>
-  {% highlight javascript %}using System.Data.Services.Providers;&#xA;using System.Linq;&#xA;&#xA;namespace CustomODataService.CustomDataServiceBase&#xA;{&#xA;    /// &lt;summary&gt;&#xA;    /// Acts as the interface for data service contexts used for a custom data service&#xA;    /// &lt;/summary&gt;&#xA;    public interface IGenericDataServiceContext&#xA;    {&#xA;        /// &lt;summary&gt;&#xA;        /// Creates a queryable for the specified resource set&#xA;        /// &lt;/summary&gt;&#xA;        /// &lt;param name=&quot;set&quot;&gt;Resource set for which the queryable should be created&lt;/param&gt;&#xA;        IQueryable GetQueryable(ResourceSet set);&#xA;    }&#xA;}{% endhighlight %}
-</p><p xmlns="http://www.w3.org/1999/xhtml">Next we have to somehow inform the OData runtime about which types and properties our class can provide. This is done using OData's <em>ResourceSet</em> and <em>ResourceType</em> objects in combination with the interface <em>IDataServiceMetadataProvider</em>. Note that I have kept the following implementation consciously simple. It should demonstrate the concept without you having to worry about use-case-specific implementation details.</p>{% highlight javascript %}using System;&#xA;using System.Collections.Generic;&#xA;using System.Data.Services.Providers;&#xA;using System.Reflection;&#xA;using System.Linq;&#xA;&#xA;namespace CustomODataService.CustomDataServiceBase&#xA;{&#xA;    public class CustomDataServiceMetadataProvider : IDataServiceMetadataProvider&#xA;    {&#xA;        private Dictionary&lt;string, ResourceType&gt; resourceTypes = new Dictionary&lt;string, ResourceType&gt;();&#xA;        private Dictionary&lt;string, ResourceSet&gt; resourceSets = new Dictionary&lt;string, ResourceSet&gt;();&#xA;&#xA;        /// &lt;summary&gt;&#xA;        /// Add a resource type&#xA;        /// &lt;/summary&gt;&#xA;        /// &lt;param name=&quot;type&quot;&gt;Type to add&lt;/param&gt;&#xA;        public void AddResourceType(ResourceType type)&#xA;        {&#xA;            type.SetReadOnly();&#xA;            resourceTypes.Add(type.FullName, type);&#xA;        }&#xA;&#xA;        /// &lt;summary&gt;&#xA;        /// Adds the resource set.&#xA;        /// &lt;/summary&gt;&#xA;        /// &lt;param name=&quot;set&quot;&gt;The set.&lt;/param&gt;&#xA;        public void AddResourceSet(ResourceSet set)&#xA;        {&#xA;            set.SetReadOnly();&#xA;            resourceSets.Add(set.Name, set);&#xA;        }&#xA;&#xA;        public static IDataServiceMetadataProvider BuildDefaultMetadataForClass&lt;TEntity&gt;(string namespaceName)&#xA;        {&#xA;            // Add resource type for class TEntity&#xA;            var productType = new ResourceType(&#xA;                typeof(TEntity),&#xA;                ResourceTypeKind.EntityType,&#xA;                null, // BaseType &#xA;                namespaceName, // Namespace &#xA;                typeof(TEntity).Name,&#xA;                false // Abstract? &#xA;            );&#xA;&#xA;            // use reflection to get all primitive properties&#xA;            foreach (var property in typeof(TEntity)&#xA;                    .GetProperties(BindingFlags.Public | BindingFlags.Instance)&#xA;                    .Where(pi =&gt; pi.DeclaringType == typeof(TEntity) &amp;&amp; (pi.PropertyType.IsPrimitive || pi.PropertyType == typeof(string))))&#xA;            {&#xA;                var resourceProperty = new ResourceProperty(&#xA;                    property.Name,&#xA;                    // For simplicity let's assume that the property with postfix ID is the key property&#xA;                    ResourcePropertyKind.Primitive | (property.Name.EndsWith(&quot;ID&quot;) ? ResourcePropertyKind.Key : 0),&#xA;                    ResourceType.GetPrimitiveResourceType(property.PropertyType));&#xA;                productType.AddProperty(resourceProperty);&#xA;            }&#xA;&#xA;            // Build metadata object&#xA;            var metadata = new CustomDataServiceMetadataProvider();&#xA;            metadata.AddResourceType(productType);&#xA;            metadata.AddResourceSet(new ResourceSet(typeof(TEntity).Name, productType));&#xA;            return metadata;&#xA;        }&#xA;&#xA;        #region Implementation of IDataServiceMetadataProvider&#xA;        public string ContainerName&#xA;        {&#xA;            get { return &quot;Container&quot;; }&#xA;        }&#xA;&#xA;        public string ContainerNamespace&#xA;        {&#xA;            get { return &quot;Namespace&quot;; }&#xA;        }&#xA;&#xA;        public IEnumerable&lt;ResourceType&gt; GetDerivedTypes(ResourceType resourceType)&#xA;        {&#xA;            // We don't support type inheritance yet &#xA;            yield break;&#xA;        }&#xA;&#xA;        public ResourceAssociationSet GetResourceAssociationSet(ResourceSet resourceSet, ResourceType resourceType, ResourceProperty resourceProperty)&#xA;        {&#xA;            throw new NotImplementedException(&quot;No relationships.&quot;);&#xA;        }&#xA;&#xA;        public bool HasDerivedTypes(ResourceType resourceType)&#xA;        {&#xA;            // We don’t support inheritance yet &#xA;            return false;&#xA;        }&#xA;&#xA;        public IEnumerable&lt;ResourceSet&gt; ResourceSets&#xA;        {&#xA;            get { return this.resourceSets.Values; }&#xA;        }&#xA;&#xA;        public IEnumerable&lt;ServiceOperation&gt; ServiceOperations&#xA;        {&#xA;            // No service operations yet &#xA;            get { yield break; }&#xA;        }&#xA;&#xA;        public bool TryResolveResourceSet(string name, out ResourceSet resourceSet)&#xA;        {&#xA;            return resourceSets.TryGetValue(name, out resourceSet);&#xA;        }&#xA;&#xA;        public bool TryResolveResourceType(string name, out ResourceType resourceType)&#xA;        {&#xA;            return resourceTypes.TryGetValue(name, out resourceType);&#xA;        }&#xA;&#xA;        public bool TryResolveServiceOperation(string name, out ServiceOperation serviceOperation)&#xA;        {&#xA;            // No service operations are supported yet &#xA;            serviceOperation = null;&#xA;            return false;&#xA;        }&#xA;&#xA;        public IEnumerable&lt;ResourceType&gt; Types&#xA;        {&#xA;            get { return this.resourceTypes.Values; }&#xA;        }&#xA;        #endregion&#xA;    }&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">We are still missing a class that connects our <em>CustomerServiceDataContext</em> class with OData. This is done using OData's <em>IDataServiceQueryProvider</em> interface. It has to be able to generate an <em>IQueryable</em> for every resource set that we have added to our metadata (see above). Our sample implementation of <em>IDataServiceQueryProvider</em> is again kept simple.</p>{% highlight javascript %}using System;&#xA;using System.Collections.Generic;&#xA;using System.Data.Services.Providers;&#xA;using System.Linq;&#xA;&#xA;namespace CustomODataService.CustomDataServiceBase&#xA;{&#xA;    public class CustomDataServiceProvider : IDataServiceQueryProvider&#xA;    {&#xA;        private IGenericDataServiceContext currentDataSource;&#xA;        private IDataServiceMetadataProvider metadata;&#xA;&#xA;        public CustomDataServiceProvider(IDataServiceMetadataProvider metadata, IGenericDataServiceContext dataSource)&#xA;        {&#xA;            this.metadata = metadata;&#xA;            this.currentDataSource = dataSource;&#xA;        }&#xA;&#xA;        public object CurrentDataSource&#xA;        {&#xA;            get { return currentDataSource; }&#xA;            set { currentDataSource = value as IGenericDataServiceContext; }&#xA;        }&#xA;&#xA;        public IQueryable GetQueryRootForResourceSet(ResourceSet resourceSet)&#xA;        {&#xA;            return currentDataSource.GetQueryable(resourceSet);&#xA;        }&#xA;&#xA;        public ResourceType GetResourceType(object target)&#xA;        {&#xA;            var type = target.GetType();&#xA;            return metadata.Types.Single(t =&gt; t.InstanceType == type);&#xA;        }&#xA;&#xA;        #region Implementation of IDataServiceQueryProvider&#xA;        public bool IsNullPropagationRequired&#xA;        {&#xA;            get { return true; }&#xA;        }&#xA;&#xA;        public object GetOpenPropertyValue(object target, string propertyName)&#xA;        {&#xA;            throw new NotImplementedException();&#xA;        }&#xA;&#xA;        public IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; GetOpenPropertyValues(object target)&#xA;        {&#xA;            throw new NotImplementedException();&#xA;        }&#xA;&#xA;        public object GetPropertyValue(object target, ResourceProperty resourceProperty)&#xA;        {&#xA;            throw new NotImplementedException();&#xA;        }&#xA;&#xA;        public object InvokeServiceOperation(ServiceOperation serviceOperation, object[] parameters)&#xA;        {&#xA;            throw new NotImplementedException();&#xA;        }&#xA;        #endregion&#xA;    }&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">That's it. We have all prerequisites to setup our fully customizable OData service. Note how the .NET interface <em>IServiceProvider</em> is used to link our service with the previously created implementations of <em>IDataServiceMetadataProvider</em> and <em><em>IDataServiceQueryProvider</em></em>.</p><p xmlns="http://www.w3.org/1999/xhtml">
+  {% highlight javascript %}using System.Data.Services.Providers;
+using System.Linq;
+
+namespace CustomODataService.CustomDataServiceBase
+{
+    /// &lt;summary&gt;
+    /// Acts as the interface for data service contexts used for a custom data service
+    /// &lt;/summary&gt;
+    public interface IGenericDataServiceContext
+    {
+        /// &lt;summary&gt;
+        /// Creates a queryable for the specified resource set
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;set&quot;&gt;Resource set for which the queryable should be created&lt;/param&gt;
+        IQueryable GetQueryable(ResourceSet set);
+    }
+}{% endhighlight %}
+</p><p xmlns="http://www.w3.org/1999/xhtml">Next we have to somehow inform the OData runtime about which types and properties our class can provide. This is done using OData's <em>ResourceSet</em> and <em>ResourceType</em> objects in combination with the interface <em>IDataServiceMetadataProvider</em>. Note that I have kept the following implementation consciously simple. It should demonstrate the concept without you having to worry about use-case-specific implementation details.</p>{% highlight javascript %}using System;
+using System.Collections.Generic;
+using System.Data.Services.Providers;
+using System.Reflection;
+using System.Linq;
+
+namespace CustomODataService.CustomDataServiceBase
+{
+    public class CustomDataServiceMetadataProvider : IDataServiceMetadataProvider
+    {
+        private Dictionary&lt;string, ResourceType&gt; resourceTypes = new Dictionary&lt;string, ResourceType&gt;();
+        private Dictionary&lt;string, ResourceSet&gt; resourceSets = new Dictionary&lt;string, ResourceSet&gt;();
+
+        /// &lt;summary&gt;
+        /// Add a resource type
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;type&quot;&gt;Type to add&lt;/param&gt;
+        public void AddResourceType(ResourceType type)
+        {
+            type.SetReadOnly();
+            resourceTypes.Add(type.FullName, type);
+        }
+
+        /// &lt;summary&gt;
+        /// Adds the resource set.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;set&quot;&gt;The set.&lt;/param&gt;
+        public void AddResourceSet(ResourceSet set)
+        {
+            set.SetReadOnly();
+            resourceSets.Add(set.Name, set);
+        }
+
+        public static IDataServiceMetadataProvider BuildDefaultMetadataForClass&lt;TEntity&gt;(string namespaceName)
+        {
+            // Add resource type for class TEntity
+            var productType = new ResourceType(
+                typeof(TEntity),
+                ResourceTypeKind.EntityType,
+                null, // BaseType 
+                namespaceName, // Namespace 
+                typeof(TEntity).Name,
+                false // Abstract? 
+            );
+
+            // use reflection to get all primitive properties
+            foreach (var property in typeof(TEntity)
+                    .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                    .Where(pi =&gt; pi.DeclaringType == typeof(TEntity) &amp;&amp; (pi.PropertyType.IsPrimitive || pi.PropertyType == typeof(string))))
+            {
+                var resourceProperty = new ResourceProperty(
+                    property.Name,
+                    // For simplicity let's assume that the property with postfix ID is the key property
+                    ResourcePropertyKind.Primitive | (property.Name.EndsWith(&quot;ID&quot;) ? ResourcePropertyKind.Key : 0),
+                    ResourceType.GetPrimitiveResourceType(property.PropertyType));
+                productType.AddProperty(resourceProperty);
+            }
+
+            // Build metadata object
+            var metadata = new CustomDataServiceMetadataProvider();
+            metadata.AddResourceType(productType);
+            metadata.AddResourceSet(new ResourceSet(typeof(TEntity).Name, productType));
+            return metadata;
+        }
+
+        #region Implementation of IDataServiceMetadataProvider
+        public string ContainerName
+        {
+            get { return &quot;Container&quot;; }
+        }
+
+        public string ContainerNamespace
+        {
+            get { return &quot;Namespace&quot;; }
+        }
+
+        public IEnumerable&lt;ResourceType&gt; GetDerivedTypes(ResourceType resourceType)
+        {
+            // We don't support type inheritance yet 
+            yield break;
+        }
+
+        public ResourceAssociationSet GetResourceAssociationSet(ResourceSet resourceSet, ResourceType resourceType, ResourceProperty resourceProperty)
+        {
+            throw new NotImplementedException(&quot;No relationships.&quot;);
+        }
+
+        public bool HasDerivedTypes(ResourceType resourceType)
+        {
+            // We don’t support inheritance yet 
+            return false;
+        }
+
+        public IEnumerable&lt;ResourceSet&gt; ResourceSets
+        {
+            get { return this.resourceSets.Values; }
+        }
+
+        public IEnumerable&lt;ServiceOperation&gt; ServiceOperations
+        {
+            // No service operations yet 
+            get { yield break; }
+        }
+
+        public bool TryResolveResourceSet(string name, out ResourceSet resourceSet)
+        {
+            return resourceSets.TryGetValue(name, out resourceSet);
+        }
+
+        public bool TryResolveResourceType(string name, out ResourceType resourceType)
+        {
+            return resourceTypes.TryGetValue(name, out resourceType);
+        }
+
+        public bool TryResolveServiceOperation(string name, out ServiceOperation serviceOperation)
+        {
+            // No service operations are supported yet 
+            serviceOperation = null;
+            return false;
+        }
+
+        public IEnumerable&lt;ResourceType&gt; Types
+        {
+            get { return this.resourceTypes.Values; }
+        }
+        #endregion
+    }
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">We are still missing a class that connects our <em>CustomerServiceDataContext</em> class with OData. This is done using OData's <em>IDataServiceQueryProvider</em> interface. It has to be able to generate an <em>IQueryable</em> for every resource set that we have added to our metadata (see above). Our sample implementation of <em>IDataServiceQueryProvider</em> is again kept simple.</p>{% highlight javascript %}using System;
+using System.Collections.Generic;
+using System.Data.Services.Providers;
+using System.Linq;
+
+namespace CustomODataService.CustomDataServiceBase
+{
+    public class CustomDataServiceProvider : IDataServiceQueryProvider
+    {
+        private IGenericDataServiceContext currentDataSource;
+        private IDataServiceMetadataProvider metadata;
+
+        public CustomDataServiceProvider(IDataServiceMetadataProvider metadata, IGenericDataServiceContext dataSource)
+        {
+            this.metadata = metadata;
+            this.currentDataSource = dataSource;
+        }
+
+        public object CurrentDataSource
+        {
+            get { return currentDataSource; }
+            set { currentDataSource = value as IGenericDataServiceContext; }
+        }
+
+        public IQueryable GetQueryRootForResourceSet(ResourceSet resourceSet)
+        {
+            return currentDataSource.GetQueryable(resourceSet);
+        }
+
+        public ResourceType GetResourceType(object target)
+        {
+            var type = target.GetType();
+            return metadata.Types.Single(t =&gt; t.InstanceType == type);
+        }
+
+        #region Implementation of IDataServiceQueryProvider
+        public bool IsNullPropagationRequired
+        {
+            get { return true; }
+        }
+
+        public object GetOpenPropertyValue(object target, string propertyName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; GetOpenPropertyValues(object target)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetPropertyValue(object target, ResourceProperty resourceProperty)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object InvokeServiceOperation(ServiceOperation serviceOperation, object[] parameters)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+    }
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">That's it. We have all prerequisites to setup our fully customizable OData service. Note how the .NET interface <em>IServiceProvider</em> is used to link our service with the previously created implementations of <em>IDataServiceMetadataProvider</em> and <em><em>IDataServiceQueryProvider</em></em>.</p><p xmlns="http://www.w3.org/1999/xhtml">
   <f:function name="Composite.Web.Html.SyntaxHighlighter" xmlns:f="http://www.composite.net/ns/function/1.0">
     <f:param name="SourceCode" value="&#xA;&#xA;&lt;%@ ServiceHost Language=&quot;C#&quot; Factory=&quot;System.Data.Services.DataServiceHostFactory, Microsoft.Data.Services, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&quot; Service=&quot;CustomODataService.CustomerService&quot; %&gt;&#xA;" xmlns:f="http://www.composite.net/ns/function/1.0" />
     <f:param name="CodeType" value="xml" xmlns:f="http://www.composite.net/ns/function/1.0" />
   </f:function>
-  {% highlight javascript %}using System;&#xA;using System.Data.Services;&#xA;using System.Data.Services.Common;&#xA;using System.Data.Services.Providers;&#xA;using CustomODataService.CustomDataServiceBase;&#xA;using System.Threading;&#xA;using CustomLinqProvider;&#xA;using System.Reflection;&#xA;using System.Linq;&#xA;using IQToolkit;&#xA;&#xA;namespace CustomODataService&#xA;{&#xA;    public class CustomerService : DataService&lt;object&gt;, IServiceProvider&#xA;    {&#xA;        private readonly IDataServiceMetadataProvider customerMetadata;&#xA;        private readonly CustomDataServiceProvider dataSource;&#xA;&#xA;        public CustomerService()&#xA;        {&#xA;            this.customerMetadata = CustomDataServiceMetadataProvider.BuildDefaultMetadataForClass&lt;Customer&gt;(&quot;DefaultNamespace&quot;);&#xA;            this.dataSource = new CustomDataServiceProvider(this.customerMetadata, new CustomerServiceDataContext());&#xA;        }&#xA;&#xA;        public static void InitializeService(DataServiceConfiguration config)&#xA;        {&#xA;            // Enable read for all entities&#xA;            config.SetEntitySetAccessRule(&quot;*&quot;, EntitySetRights.AllRead);&#xA;&#xA;            // Various other settings&#xA;            config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V2;&#xA;            config.DataServiceBehavior.AcceptProjectionRequests = false;&#xA;        }&#xA;&#xA;        public object GetService(Type serviceType)&#xA;        {&#xA;            if (serviceType == typeof(IDataServiceMetadataProvider))&#xA;            {&#xA;                return this.customerMetadata;&#xA;            }&#xA;            else if (serviceType == typeof(IDataServiceQueryProvider))&#xA;            {&#xA;                return this.dataSource;&#xA;            }&#xA;&#xA;            return null;&#xA;        }&#xA;    }&#xA;}{% endhighlight %}
+  {% highlight javascript %}using System;
+using System.Data.Services;
+using System.Data.Services.Common;
+using System.Data.Services.Providers;
+using CustomODataService.CustomDataServiceBase;
+using System.Threading;
+using CustomLinqProvider;
+using System.Reflection;
+using System.Linq;
+using IQToolkit;
+
+namespace CustomODataService
+{
+    public class CustomerService : DataService&lt;object&gt;, IServiceProvider
+    {
+        private readonly IDataServiceMetadataProvider customerMetadata;
+        private readonly CustomDataServiceProvider dataSource;
+
+        public CustomerService()
+        {
+            this.customerMetadata = CustomDataServiceMetadataProvider.BuildDefaultMetadataForClass&lt;Customer&gt;(&quot;DefaultNamespace&quot;);
+            this.dataSource = new CustomDataServiceProvider(this.customerMetadata, new CustomerServiceDataContext());
+        }
+
+        public static void InitializeService(DataServiceConfiguration config)
+        {
+            // Enable read for all entities
+            config.SetEntitySetAccessRule(&quot;*&quot;, EntitySetRights.AllRead);
+
+            // Various other settings
+            config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V2;
+            config.DataServiceBehavior.AcceptProjectionRequests = false;
+        }
+
+        public object GetService(Type serviceType)
+        {
+            if (serviceType == typeof(IDataServiceMetadataProvider))
+            {
+                return this.customerMetadata;
+            }
+            else if (serviceType == typeof(IDataServiceQueryProvider))
+            {
+                return this.dataSource;
+            }
+
+            return null;
+        }
+    }
+}{% endhighlight %}
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">Further Readings</h2><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Alex D. James: <a href="http://blogs.msdn.com/b/alexj/archive/2010/01/07/data-service-providers-getting-started.aspx" target="_blank">Custom Data Service Providers</a> (Blog)</li>
   <li>MSDN: <a href="http://msdn.microsoft.com/en-us/library/ee960143.aspx" title="Custom Data Service Providers (MSDN)" target="_blank">Custom Data Service Providers</a></li>

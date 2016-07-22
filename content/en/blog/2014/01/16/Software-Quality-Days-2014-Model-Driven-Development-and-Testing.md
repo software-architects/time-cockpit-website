@@ -57,7 +57,60 @@ permalink: /blog/2014/01/16/Software-Quality-Days-2014-Model-Driven-Development-
   <f:param name="ThumbnailMaxHeight" value="500" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ImageMaxWidth" value="1024" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ImageMaxHeight" value="1024" xmlns:f="http://www.composite.net/ns/function/1.0" />
-</f:function><p xmlns="http://www.w3.org/1999/xhtml">Next we wanted to demo the power of PEX and Code Digger in a slightly more complex scenario. Here is the code we used (don't analyze the logic, it does not have any deeper meening):</p>{% highlight javascript %}public class Bill&#xA;{&#xA;&#x9;public Bill(Region outsideEU, decimal amount, string supplier)&#xA;&#x9;{&#xA;&#x9;&#x9;this.Region = outsideEU;&#xA;&#x9;&#x9;this.Amount = amount;&#xA;&#x9;&#x9;this.Supplier = supplier;&#xA;&#x9;}&#xA;&#xA;&#x9;public Region Region { get; private set; }&#xA;&#xA;&#x9;public decimal Amount { get; private set; }&#xA;&#xA;&#x9;public string Supplier { get; private set; }&#xA;&#xA;&#x9;public bool ValidateSupplier()&#xA;&#x9;{&#xA;&#x9;&#x9;Contract.Ensures(Contract.OldValue(this.Region) == this.Region);&#xA;&#x9;&#x9;Contract.Ensures(Contract.OldValue(this.Amount) == this.Amount);&#xA;&#x9;&#x9;Contract.Ensures(Contract.OldValue(this.Supplier) == this.Supplier);&#xA;&#xA;&#x9;&#x9;if (this.Region == Region.ASIA)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;// internal bills are always ok.&#xA;&#x9;&#x9;&#x9;if (this.Supplier == &quot;INTERNAL&quot;)&#xA;&#x9;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;&#x9;return true;&#xA;&#x9;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;&#x9;if (this.Amount &gt; 150.00m)&#xA;&#x9;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;&#x9;// supplier required if amount &gt; 150 outside of EU&#xA;&#x9;&#x9;&#x9;&#x9;if (this.Supplier.Length == 0)&#xA;&#x9;&#x9;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;// if no supplier is available -&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;return false;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;&#x9;return true;&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;else if (this.Region == Region.US)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;this.Amount = -this.Amount;&#xA;&#x9;&#x9;&#x9;return true;&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;else if (this.Region == Region.EU &amp;&amp; this.Supplier.Length &gt; 0)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;return true;&#xA;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;return false;&#xA;&#x9;}&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Trying to come up with interesting test cases for the <em>ValidateSupplier</em> method would not be super easy. We let PEX do the math (click on image to enlarge):</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
+</f:function><p xmlns="http://www.w3.org/1999/xhtml">Next we wanted to demo the power of PEX and Code Digger in a slightly more complex scenario. Here is the code we used (don't analyze the logic, it does not have any deeper meening):</p>{% highlight javascript %}public class Bill
+{
+    public Bill(Region outsideEU, decimal amount, string supplier)
+    {
+        this.Region = outsideEU;
+        this.Amount = amount;
+        this.Supplier = supplier;
+    }
+
+    public Region Region { get; private set; }
+
+    public decimal Amount { get; private set; }
+
+    public string Supplier { get; private set; }
+
+    public bool ValidateSupplier()
+    {
+        Contract.Ensures(Contract.OldValue(this.Region) == this.Region);
+        Contract.Ensures(Contract.OldValue(this.Amount) == this.Amount);
+        Contract.Ensures(Contract.OldValue(this.Supplier) == this.Supplier);
+
+        if (this.Region == Region.ASIA)
+        {
+            // internal bills are always ok.
+            if (this.Supplier == &quot;INTERNAL&quot;)
+            {
+                return true;
+            }
+
+            if (this.Amount &gt; 150.00m)
+            {
+                // supplier required if amount &gt; 150 outside of EU
+                if (this.Supplier.Length == 0)
+                {
+                    // if no supplier is available -&gt;
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        else if (this.Region == Region.US)
+        {
+            this.Amount = -this.Amount;
+            return true;
+        }
+        else if (this.Region == Region.EU &amp;&amp; this.Supplier.Length &gt; 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Trying to come up with interesting test cases for the <em>ValidateSupplier</em> method would not be super easy. We let PEX do the math (click on image to enlarge):</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
   <f:param name="MediaImage" value="MediaArchive:13d3184f-ca8e-474c-bf32-996082e7d896" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ThumbnailMaxWidth" value="500" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ThumbnailMaxHeight" value="500" xmlns:f="http://www.composite.net/ns/function/1.0" />

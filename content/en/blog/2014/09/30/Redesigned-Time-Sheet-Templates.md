@@ -30,7 +30,26 @@ permalink: /blog/2014/09/30/Redesigned-Time-Sheet-Templates
 </p><p xmlns="http://www.w3.org/1999/xhtml">The perfect place for templates really depends on your screen size and the amount of templates you have. Therefore time cockpit gives you the freedom to arrange your tabs as you like. Of course time cockpit will remember the placement and put the Templates tab were you left it when you restart the application.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Script Template Sources</h2><h3 xmlns="http://www.w3.org/1999/xhtml">TCQL Template Sources</h3><p xmlns="http://www.w3.org/1999/xhtml">Time cockpit has been offering the option to generate time sheet templates from <a href="http://help.timecockpit.com/?topic=html/a7465f29-c739-4a14-bf5b-09821133dd9a.htm" target="_blank">TCQL queries</a> for quite a while. Here are some example for what you could do with that functionality:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Imagine that you import customer orders as time cockpit projects. Each project has a start and an end date. You could display a time sheet template for each project active on the currently selected date in the graphical time sheet calendar.</li>
   <li>You could generate time sheet templates based on time sheet records entered in the last 15 days as it is likely that you will create similar bookings again (e.g. because you work on your current projects over the course of multiple days).</li>
-</ul><p xmlns="http://www.w3.org/1999/xhtml">Let's look at the TCQL code for the latter of the two:</p>{% highlight javascript %}/*&#xA;The following TCQL query returns all project/location combinations for which&#xA;time sheet records exist in the last 15 days. It is used to generate time&#xA;sheet templates as it is likely that you will pick one of these projects&#xA;for your next time sheet.&#xA;*/&#xA;From T In APP_Timesheet.Include('Task.Project.Customer').Include('Project.Customer')&#xA;Where&#xA;&#x9;/* Current user */&#xA;&#x9;T.APP_UserDetail.APP_UserDetailUuid = Environment.CurrentUser.UserDetailUuid&#xA;&#x9;/* Time sheets of the last 15 days */&#xA; &#x9;And T.APP_BeginTime &gt;= :AddDays(:Today(), -15)&#xA;Select New With&#xA;{&#xA;&#x9;T.APP_Project,&#xA; &#x9;T.APP_Location,&#xA;&#x9;.ResultTitle = :DisplayValue(T.APP_Project),&#xA;&#x9;.ResultSortOrder = :DisplayValue(T.APP_Project),&#xA;&#x9;.NumberOfItems = Count() /* Just to enforce distinct project/location combinations */&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">If you develop your own TCQL query for template generation, it is good practice to first try the query in time cockpit's administration module as shown in the following screenshot:</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
+</ul><p xmlns="http://www.w3.org/1999/xhtml">Let's look at the TCQL code for the latter of the two:</p>{% highlight javascript %}/*
+The following TCQL query returns all project/location combinations for which
+time sheet records exist in the last 15 days. It is used to generate time
+sheet templates as it is likely that you will pick one of these projects
+for your next time sheet.
+*/
+From T In APP_Timesheet.Include('Task.Project.Customer').Include('Project.Customer')
+Where
+    /* Current user */
+    T.APP_UserDetail.APP_UserDetailUuid = Environment.CurrentUser.UserDetailUuid
+    /* Time sheets of the last 15 days */
+     And T.APP_BeginTime &gt;= :AddDays(:Today(), -15)
+Select New With
+{
+    T.APP_Project,
+     T.APP_Location,
+    .ResultTitle = :DisplayValue(T.APP_Project),
+    .ResultSortOrder = :DisplayValue(T.APP_Project),
+    .NumberOfItems = Count() /* Just to enforce distinct project/location combinations */
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">If you develop your own TCQL query for template generation, it is good practice to first try the query in time cockpit's administration module as shown in the following screenshot:</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
   <f:param name="MediaImage" value="MediaArchive:89a4e1e4-eb76-4665-b19a-12d0f231013b" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ThumbnailMaxWidth" value="800" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ThumbnailMaxHeight" value="800" xmlns:f="http://www.composite.net/ns/function/1.0" />
@@ -46,7 +65,61 @@ permalink: /blog/2014/09/30/Redesigned-Time-Sheet-Templates
 </ul><p xmlns="http://www.w3.org/1999/xhtml">Once you have created and tested the TCQL query for your templates, you can add it to the list of templates using the menu item <em>Timesheet Templates</em> in time cockpit's <em>Management</em> module:</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2014/09/Templates05.png" />
 </p><h3 xmlns="http://www.w3.org/1999/xhtml">Script Sources</h3><p xmlns="http://www.w3.org/1999/xhtml">Script sources are new in the latest version of time cockpit. They work similarly to the TCQL templates sources described above. The difference is that you create a Python script to generate time sheet templates instead of a TCQL query. As you might know, time cockpit's scripting engine is very powerful when it comes to accessing external data. COM, databases, REST web APIs, all those data exchange technologies are available. Therefore, script sources enable you to create time sheet templates based on any internal or external data.</p><h3 xmlns="http://www.w3.org/1999/xhtml">Script Source Example: Outlook Tasks</h3><p xmlns="http://www.w3.org/1999/xhtml">Let's look at an example. The following script creates time sheet templates based on your Outlook tasks. If you completed an Outlook task today, it is likely that you have to create a corresponding time sheet record. Therefore it makes perfect sense to suggest time sheet templates for Outlook tasks.</p><p xmlns="http://www.w3.org/1999/xhtml">
-  {% highlight javascript %}# Use Outlook's COM object model to access tasks&#xA;clr.AddReference(&quot;Microsoft.Office.Interop.Outlook&quot;)&#xA;from Microsoft.Office.Interop.Outlook import *&#xA;from System.Collections.Generic import List&#xA;&#xA;# A script template source has to consist of exactly one method.&#xA;def getTimesheets(templateQueryContext):&#xA;&#x9;def EnumerateFolders(folder, condition):&#xA;&#x9;&#x9;for email in folder.Items.Restrict(condition):&#xA;&#x9;&#x9;&#x9;entity = modelEntity.CreateEntityObject()&#xA;&#x9;&#x9;&#x9;status = &quot;OPEN&quot; if email.TaskCompletedDate == DateTime(4501, 1, 1) else &quot;DONE&quot;&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;entity.Description = email.Subject&#xA;&#x9;&#x9;&#x9;entity.ResultTitle = status + &quot;: &quot; + email.Subject&#xA;&#x9;&#x9;&#x9;entity.ResultSortOrder = status + &quot;: &quot; + email.Subject&#xA;&#x9;&#x9;&#x9;result.Add(entity)&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;for childFolder in folder.Folders:&#xA;&#x9;&#x9;&#x9;EnumerateFolders(childFolder, condition)&#xA;&#x9;&#xA;&#x9;# Setup a data structure that holds the templates' data&#xA;&#x9;modelEntity = ModelEntity({ &quot;Name&quot;: &quot;Result&quot; })&#xA;&#x9;modelEntity.Properties.Add(TextProperty({ &quot;Name&quot;: &quot;Description&quot; }))&#xA;&#x9;modelEntity.Properties.Add(TextProperty({ &quot;Name&quot;: &quot;ResultTitle&quot; }))&#xA;&#x9;modelEntity.Properties.Add(TextProperty({ &quot;Name&quot;: &quot;ResultSortOrder&quot; }))&#xA;&#x9;&#xA;&#x9;# Create a helper variable that will receive the resulting templates&#xA;&#x9;result = List[EntityObject]()&#xA;&#x9;&#xA;&#x9;date = templateQueryContext.BeginTime.ToString(&quot;d&quot;)&#xA;&#x9;&#xA;&#x9;# Create an Outlook application object&#xA;&#x9;application = ApplicationClass()&#xA;&#x9;&#xA;&#x9;# Enumerate over all tasks and create templates from it&#xA;&#x9;taskFolder = application.Session.GetDefaultFolder(OlDefaultFolders.olFolderTasks)&#xA;&#x9;condition = &quot;([Complete] = true and [DateCompleted] = '&quot; + date + &quot;') or ([Complete] = false and [DueDate] &lt;= '&quot; + date + &quot;')&quot;&#xA;&#x9;&#xA;&#x9;for task in taskFolder.Items.Restrict(condition):&#xA;&#x9;&#x9;entity = modelEntity.CreateEntityObject()&#xA;&#x9;&#x9;status = &quot;OPEN&quot; if task.Status == 0 else &quot;DONE&quot;&#xA;&#x9;&#xA;&#x9;&#x9;entity.Description = task.Subject&#xA;&#x9;&#x9;entity.ResultTitle = status + &quot;: &quot; + task.Subject&#xA;&#x9;&#x9;entity.ResultSortOrder = status + &quot;: &quot; + task.Subject&#xA;&#x9;&#x9;result.Add(entity)&#xA;&#x9;&#xA;&#x9;# Enumerate over tasks based on emails&#xA;&#x9;emailFolder = application.Session.GetDefaultFolder(OlDefaultFolders.olFolderInbox)&#xA;&#x9;condition = &quot;[TaskDueDate] = '&quot; + date + &quot;' or [TaskCompletedDate] = '&quot; + date + &quot;'&quot;&#xA;&#x9;&#xA;&#x9;EnumerateFolders(emailFolder, condition)&#xA;&#x9;&#xA;&#x9;# Return the result&#xA;&#x9;templateQueryContext.Templates = result{% endhighlight %}If you are not familiar with programming Outlook, you find more information in <a href="http://msdn.microsoft.com/en-us/library/office/ff866465(v=office.15).aspx" target="_blank">Microsoft's Developer Network</a>.</p><p xmlns="http://www.w3.org/1999/xhtml">Note that the method creating the templates receives one parameter: <em>templateQueryContext</em>. This object has the following properties:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+  {% highlight javascript %}# Use Outlook's COM object model to access tasks
+clr.AddReference(&quot;Microsoft.Office.Interop.Outlook&quot;)
+from Microsoft.Office.Interop.Outlook import *
+from System.Collections.Generic import List
+
+# A script template source has to consist of exactly one method.
+def getTimesheets(templateQueryContext):
+    def EnumerateFolders(folder, condition):
+        for email in folder.Items.Restrict(condition):
+            entity = modelEntity.CreateEntityObject()
+            status = &quot;OPEN&quot; if email.TaskCompletedDate == DateTime(4501, 1, 1) else &quot;DONE&quot;
+            
+            entity.Description = email.Subject
+            entity.ResultTitle = status + &quot;: &quot; + email.Subject
+            entity.ResultSortOrder = status + &quot;: &quot; + email.Subject
+            result.Add(entity)
+            
+        for childFolder in folder.Folders:
+            EnumerateFolders(childFolder, condition)
+    
+    # Setup a data structure that holds the templates' data
+    modelEntity = ModelEntity({ &quot;Name&quot;: &quot;Result&quot; })
+    modelEntity.Properties.Add(TextProperty({ &quot;Name&quot;: &quot;Description&quot; }))
+    modelEntity.Properties.Add(TextProperty({ &quot;Name&quot;: &quot;ResultTitle&quot; }))
+    modelEntity.Properties.Add(TextProperty({ &quot;Name&quot;: &quot;ResultSortOrder&quot; }))
+    
+    # Create a helper variable that will receive the resulting templates
+    result = List[EntityObject]()
+    
+    date = templateQueryContext.BeginTime.ToString(&quot;d&quot;)
+    
+    # Create an Outlook application object
+    application = ApplicationClass()
+    
+    # Enumerate over all tasks and create templates from it
+    taskFolder = application.Session.GetDefaultFolder(OlDefaultFolders.olFolderTasks)
+    condition = &quot;([Complete] = true and [DateCompleted] = '&quot; + date + &quot;') or ([Complete] = false and [DueDate] &lt;= '&quot; + date + &quot;')&quot;
+    
+    for task in taskFolder.Items.Restrict(condition):
+        entity = modelEntity.CreateEntityObject()
+        status = &quot;OPEN&quot; if task.Status == 0 else &quot;DONE&quot;
+    
+        entity.Description = task.Subject
+        entity.ResultTitle = status + &quot;: &quot; + task.Subject
+        entity.ResultSortOrder = status + &quot;: &quot; + task.Subject
+        result.Add(entity)
+    
+    # Enumerate over tasks based on emails
+    emailFolder = application.Session.GetDefaultFolder(OlDefaultFolders.olFolderInbox)
+    condition = &quot;[TaskDueDate] = '&quot; + date + &quot;' or [TaskCompletedDate] = '&quot; + date + &quot;'&quot;
+    
+    EnumerateFolders(emailFolder, condition)
+    
+    # Return the result
+    templateQueryContext.Templates = result{% endhighlight %}If you are not familiar with programming Outlook, you find more information in <a href="http://msdn.microsoft.com/en-us/library/office/ff866465(v=office.15).aspx" target="_blank">Microsoft's Developer Network</a>.</p><p xmlns="http://www.w3.org/1999/xhtml">Note that the method creating the templates receives one parameter: <em>templateQueryContext</em>. This object has the following properties:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>
     <em>DataContext</em>: Current <a href="http://help.timecockpit.com/?topic=html/192adccd-0d7d-1feb-0805-6e74ba296c9c.htm" target="_blank">DataContext</a> (server or client). Use this data context if you need to load time cockpit data in your script.</li>
   <li>

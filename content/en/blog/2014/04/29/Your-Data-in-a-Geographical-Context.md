@@ -1,9 +1,7 @@
 ---
 layout: blog
 title: Your Data in a Geographical Context
-teaser: Agreed, data is what drives most businesses. However, having a lot of data at your disposal often does not give you much insight. Data gains value with its presentation.
-
-In this article, we explain how to set your data in a geographical context. We use Microsoft Excel, PowerPivot and PowerViewer to create an interactive map that lets you browse your data.
+teaser: Agreed, data is what drives most businesses. However, having a lot of data at your disposal often does not give you much insight. Data gains value with its presentation.  In this article, we explain how to set your data in a geographical context. We use Microsoft Excel, PowerPivot and PowerViewer to create an interactive map that lets you browse your data.
 author: Alexander Huber
 date: 2014-04-29
 bannerimage: 

@@ -1,8 +1,7 @@
 ---
 layout: blog
 title: Video -  Introduction to OData Web APIs
-teaser: OData is based on REST but adds necessary standards for fully fledged data APIs. Metadata, URI-based query language, standardized data representation formats (JSON and XML), OData has it all. 
-This is an introduction to OData. If you have never used OData and you wonder whether it is relevant for you, this talk could be interesting for you.
+teaser: OData is based on REST but adds necessary standards for fully fledged data APIs. Metadata, URI-based query language, standardized data representation formats (JSON and XML), OData has it all.  This is an introduction to OData. If you have never used OData and you wonder whether it is relevant for you, this talk could be interesting for you.
 author: Rainer Stropek
 date: 2014-06-05
 bannerimage: 

@@ -16,4 +16,275 @@ permalink: /blog/2010/11/12/Custom-SSIS-Data-Source-For-Loading-Azure-Tables-Int
   <li>This is just a sample.</li>
   <li>The code has not been tested.</li>
   <li>If you want to use this stuff you have to compile and deploy it. Check out the post-build actions in the project to see which DLLs you have to copy to which folders in order to make them run.</li>
-</ol><p xmlns="http://www.w3.org/1999/xhtml">Let's start by demonstrating how the resulting component works inside SSIS. For this I have created this very short video:</p><embed width="480" height="385" src="https://www.youtube.com/v/xTgpCZBwUlA?fs=1&amp;hl=de_DE" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" xmlns="http://www.w3.org/1999/xhtml" /><p xmlns="http://www.w3.org/1999/xhtml">Now let's take a look at the source code.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Reading an Azure Table without a fixed class</h2><p xmlns="http://www.w3.org/1999/xhtml">The first problem that has to be solved is to read data from an Azure table without knowing it's schema at compile time. There is an <a href="http://social.msdn.microsoft.com/Forums/en-US/windowsazure/thread/481afa1b-03a9-42d9-ae79-9d5dc33b9297/" target="_blank">excellent post</a> covering that in the Azure Community pages. I took the sourcecode shown there and extended/modified it a little bit so that it fits to what I needed.</p><p xmlns="http://www.w3.org/1999/xhtml">First class is just a helper representing a column in the table store (Column.cs):</p>{% highlight javascript %}using System;&#xA;using Microsoft.SqlServer.Dts.Runtime.Wrapper;&#xA;&#xA;namespace TableStorageSsisSource&#xA;{&#xA; public class Column&#xA; {&#xA;  public Column(string columnName, string typeName, string valueAsString)&#xA;  {&#xA;   this.ColumnName = columnName;&#xA;   this.ClrType = Column.GetType(typeName);&#xA;   this.DtsType = Column.GetSsisType(typeName);&#xA;   this.Value = Column.GetValue(this.DtsType, valueAsString);&#xA;  }&#xA;&#xA;  public string ColumnName { get; private set; }&#xA;  public Type ClrType { get; private set; }&#xA;  public DataType DtsType { get; private set; }&#xA;  public object Value { get; private set; }&#xA;&#xA;  private static Type GetType(string type)&#xA;  {&#xA;   switch (type)&#xA;   {&#xA;    case &quot;Edm.String&quot;: return typeof(string);&#xA;    case &quot;Edm.Int32&quot;: return typeof(int);&#xA;    case &quot;Edm.Int64&quot;: return typeof(long);&#xA;    case &quot;Edm.Double&quot;: return typeof(double);&#xA;    case &quot;Edm.Boolean&quot;: return typeof(bool);&#xA;    case &quot;Edm.DateTime&quot;: return typeof(DateTime);&#xA;    case &quot;Edm.Binary&quot;: return typeof(byte[]);&#xA;    case &quot;Edm.Guid&quot;: return typeof(Guid);&#xA;    default: throw new NotSupportedException(string.Format(&quot;Unsupported data type {0}&quot;, type));&#xA;   }&#xA;  }&#xA;&#xA;  private static DataType GetSsisType(string type)&#xA;  {&#xA;   switch (type)&#xA;   {&#xA;    case &quot;Edm.String&quot;: return DataType.DT_NTEXT;&#xA;    case &quot;Edm.Binary&quot;: return DataType.DT_IMAGE;&#xA;    case &quot;Edm.Int32&quot;: return DataType.DT_I4;&#xA;    case &quot;Edm.Int64&quot;: return DataType.DT_I8;&#xA;    case &quot;Edm.Boolean&quot;: return DataType.DT_BOOL;&#xA;    case &quot;Edm.DateTime&quot;: return DataType.DT_DATE;&#xA;    case &quot;Edm.Guid&quot;: return DataType.DT_GUID;&#xA;    case &quot;Edm.Double&quot;: return DataType.DT_R8;&#xA;    default: throw new NotSupportedException(string.Format(&quot;Unsupported data type {0}&quot;, type));&#xA;   }&#xA;  }&#xA;&#xA;  private static object GetValue(DataType dtsType, string valueAsString)&#xA;  {&#xA;   switch (dtsType)&#xA;   {&#xA;    case DataType.DT_NTEXT: return valueAsString;&#xA;    case DataType.DT_IMAGE: return Convert.FromBase64String(valueAsString);&#xA;    case DataType.DT_BOOL: return bool.Parse(valueAsString);&#xA;    case DataType.DT_DATE: return DateTime.Parse(valueAsString);&#xA;    case DataType.DT_GUID: return new Guid(valueAsString);&#xA;    case DataType.DT_I2: return Int32.Parse(valueAsString);&#xA;    case DataType.DT_I4: return Int64.Parse(valueAsString);&#xA;    case DataType.DT_R8: return double.Parse(valueAsString);&#xA;    default: throw new NotSupportedException(string.Format(&quot;Unsupported data type {0}&quot;, dtsType));&#xA;   }&#xA;  }&#xA; }&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Second class represents a row inside the table store (without strong schema; GenericEntity.cs):</p>{% highlight javascript %}using System.Collections.Generic;&#xA;using Microsoft.WindowsAzure.StorageClient;&#xA;&#xA;namespace TableStorageSsisSource&#xA;{&#xA;    public class GenericEntity : TableServiceEntity&#xA;    {&#xA;        private Dictionary&lt;string, Column&gt; properties = new Dictionary&lt;string, Column&gt;();&#xA;&#xA;        public Column this[string key]&#xA;        {&#xA;            get&#xA;            {&#xA;                if (this.properties.ContainsKey(key))&#xA;                {&#xA;                    return this.properties[key];&#xA;                }&#xA;                else&#xA;                {&#xA;                    return null;&#xA;                }&#xA;            }&#xA;&#xA;            set&#xA;            {&#xA;                this.properties[key] = value;&#xA;            }&#xA;        }&#xA;&#xA;        public IEnumerable&lt;Column&gt; GetProperties()&#xA;        {&#xA;            return this.properties.Values;&#xA;        }&#xA;&#xA;        public void SetProperties(IEnumerable&lt;Column&gt; properties)&#xA;        {&#xA;            foreach (var property in properties)&#xA;            {&#xA;                this[property.ColumnName] = property;&#xA;            }&#xA;        }&#xA;    }   &#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Last but not least we need a context class that interprets the AtomPub format and builds the generic content objects (GenericTableContent.cs):</p>{% highlight javascript %}using System;&#xA;using System.Data.Services.Client;&#xA;using System.Linq;&#xA;using System.Xml.Linq;&#xA;using Microsoft.WindowsAzure;&#xA;using Microsoft.WindowsAzure.StorageClient;&#xA;&#xA;namespace TableStorageSsisSource&#xA;{&#xA; public class GenericTableContext : TableServiceContext&#xA; {&#xA;  public GenericTableContext(string baseAddress, StorageCredentials credentials)&#xA;   : base(baseAddress, credentials)&#xA;  {&#xA;   this.IgnoreMissingProperties = true;&#xA;   this.ReadingEntity += new EventHandler&lt;ReadingWritingEntityEventArgs&gt;(GenericTableContext_ReadingEntity);&#xA;  }&#xA;&#xA;  public GenericEntity GetFirstOrDefault(string tableName)&#xA;  {&#xA;   return this.CreateQuery&lt;GenericEntity&gt;(tableName).FirstOrDefault();&#xA;  }&#xA;&#xA;  private static readonly XNamespace AtomNamespace = &quot;http://www.w3.org/2005/Atom&quot;;&#xA;  private static readonly XNamespace AstoriaDataNamespace = &quot;http://schemas.microsoft.com/ado/2007/08/dataservices&quot;;&#xA;  private static readonly XNamespace AstoriaMetadataNamespace = &quot;http://schemas.microsoft.com/ado/2007/08/dataservices/metadata&quot;;&#xA;&#xA;  private void GenericTableContext_ReadingEntity(object sender, ReadingWritingEntityEventArgs e)&#xA;  {&#xA;   var entity = e.Entity as GenericEntity;&#xA;   if (entity != null)&#xA;   {&#xA;    e.Data&#xA;     .Element(AtomNamespace + &quot;content&quot;)&#xA;     .Element(AstoriaMetadataNamespace + &quot;properties&quot;)&#xA;     .Elements()&#xA;     .Select(p =&gt;&#xA;      new&#xA;      {&#xA;       Name = p.Name.LocalName,&#xA;       IsNull = string.Equals(&quot;true&quot;, p.Attribute(AstoriaMetadataNamespace + &quot;null&quot;) == null ? null : p.Attribute(AstoriaMetadataNamespace + &quot;null&quot;).Value, StringComparison.OrdinalIgnoreCase),&#xA;       TypeName = p.Attribute(AstoriaMetadataNamespace + &quot;type&quot;) == null ? null : p.Attribute(AstoriaMetadataNamespace + &quot;type&quot;).Value,&#xA;       p.Value&#xA;      })&#xA;     .Select(dp =&gt; new Column(dp.Name, dp.TypeName, dp.Value.ToString()))&#xA;     .ToList()&#xA;     .ForEach(column =&gt; entity[column.ColumnName] = column);&#xA;   }&#xA;  }&#xA; }&#xA;}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">The Custom SSIS Data Source</h2><p xmlns="http://www.w3.org/1999/xhtml">The custom SSIS data source is quite simple (TableStorageSsisSource.cs):</p>{% highlight javascript %}using System.Collections.Generic;&#xA;using Microsoft.SqlServer.Dts.Pipeline;&#xA;using Microsoft.SqlServer.Dts.Pipeline.Wrapper;&#xA;using Microsoft.WindowsAzure;&#xA;&#xA;namespace TableStorageSsisSource&#xA;{&#xA; [DtsPipelineComponent(DisplayName = &quot;Azure Table Storage Source&quot;, ComponentType = ComponentType.SourceAdapter)]&#xA; public class TableStorageSsisSource : PipelineComponent&#xA; {&#xA;  public override void ProvideComponentProperties()&#xA;  {&#xA;   // Reset the component.&#xA;   base.RemoveAllInputsOutputsAndCustomProperties();&#xA;   ComponentMetaData.RuntimeConnectionCollection.RemoveAll();&#xA;&#xA;   // Add output&#xA;   IDTSOutput100 output = ComponentMetaData.OutputCollection.New();&#xA;   output.Name = &quot;Output&quot;;&#xA;&#xA;   // Properties&#xA;   var storageConnectionStringProperty = this.ComponentMetaData.CustomPropertyCollection.New();&#xA;   storageConnectionStringProperty.Name = &quot;StorageConnectionString&quot;;&#xA;   storageConnectionStringProperty.Description = &quot;Azure storage connection string&quot;;&#xA;   storageConnectionStringProperty.Value = &quot;UseDevelopmentStorage=true&quot;;&#xA;&#xA;   var tableNameProperty = this.ComponentMetaData.CustomPropertyCollection.New();&#xA;   tableNameProperty.Name = &quot;TableName&quot;;&#xA;   tableNameProperty.Description = &quot;Name of the source table&quot;;&#xA;   tableNameProperty.Value = string.Empty;&#xA;  }&#xA;&#xA;  public override IDTSCustomProperty100 SetComponentProperty(string propertyName, object propertyValue)&#xA;  {&#xA;   var resultingColumn = base.SetComponentProperty(propertyName, propertyValue);&#xA;&#xA;   var storageConnectionString = (string)this.ComponentMetaData.CustomPropertyCollection[&quot;StorageConnectionString&quot;].Value;&#xA;   var tableName = (string)this.ComponentMetaData.CustomPropertyCollection[&quot;TableName&quot;].Value;&#xA;&#xA;   if (!string.IsNullOrEmpty(storageConnectionString) &amp;&amp; !string.IsNullOrEmpty(tableName))&#xA;   {&#xA;    var cloudStorageAccount = CloudStorageAccount.Parse(storageConnectionString);&#xA;    var context = new GenericTableContext(cloudStorageAccount.TableEndpoint.AbsoluteUri, cloudStorageAccount.Credentials);&#xA;    var firstRow = context.GetFirstOrDefault(tableName);&#xA;    if (firstRow != null)&#xA;    {&#xA;     var output = this.ComponentMetaData.OutputCollection[0];&#xA;     foreach (var column in firstRow.GetProperties())&#xA;     {&#xA;      var newOutputCol = output.OutputColumnCollection.New();&#xA;      newOutputCol.Name = column.ColumnName;&#xA;      newOutputCol.SetDataTypeProperties(column.DtsType, 0, 0, 0, 0);&#xA;     }&#xA;    }&#xA;   }&#xA;&#xA;   return resultingColumn;&#xA;  }&#xA;&#xA;  private List&lt;ColumnInfo&gt; columnInformation;&#xA;  private GenericTableContext context;&#xA;  private struct ColumnInfo&#xA;  {&#xA;   public int BufferColumnIndex;&#xA;   public string ColumnName;&#xA;  }&#xA;&#xA;  public override void PreExecute()&#xA;  {&#xA;   this.columnInformation = new List&lt;ColumnInfo&gt;();&#xA;   IDTSOutput100 output = ComponentMetaData.OutputCollection[0];&#xA;&#xA;   var cloudStorageAccount = CloudStorageAccount.Parse((string)this.ComponentMetaData.CustomPropertyCollection[&quot;StorageConnectionString&quot;].Value);&#xA;   context = new GenericTableContext(cloudStorageAccount.TableEndpoint.AbsoluteUri, cloudStorageAccount.Credentials);&#xA;&#xA;   foreach (IDTSOutputColumn100 col in output.OutputColumnCollection)&#xA;   {&#xA;    ColumnInfo ci = new ColumnInfo();&#xA;    ci.BufferColumnIndex = BufferManager.FindColumnByLineageID(output.Buffer, col.LineageID);&#xA;    ci.ColumnName = col.Name;&#xA;    columnInformation.Add(ci);&#xA;   }&#xA;  }&#xA;&#xA;  public override void PrimeOutput(int outputs, int[] outputIDs, PipelineBuffer[] buffers)&#xA;  {&#xA;   IDTSOutput100 output = ComponentMetaData.OutputCollection[0];&#xA;   PipelineBuffer buffer = buffers[0];&#xA;&#xA;   foreach (var item in this.context.CreateQuery&lt;GenericEntity&gt;((string)this.ComponentMetaData.CustomPropertyCollection[&quot;TableName&quot;].Value))&#xA;   {&#xA;    buffer.AddRow();&#xA;&#xA;    for (int x = 0; x &lt; columnInformation.Count; x++)&#xA;    {&#xA;     var ci = (ColumnInfo)columnInformation[x];&#xA;     var value = item[ci.ColumnName].Value;&#xA;     if (value != null)&#xA;     {&#xA;      buffer[ci.BufferColumnIndex] = value;&#xA;     }&#xA;     else&#xA;     {&#xA;      buffer.SetNull(ci.BufferColumnIndex);&#xA;     }&#xA;    }&#xA;   }&#xA;&#xA;   buffer.SetEndOfRowset();&#xA;  }&#xA; }&#xA;}{% endhighlight %}
+</ol><p xmlns="http://www.w3.org/1999/xhtml">Let's start by demonstrating how the resulting component works inside SSIS. For this I have created this very short video:</p><embed width="480" height="385" src="https://www.youtube.com/v/xTgpCZBwUlA?fs=1&amp;hl=de_DE" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" xmlns="http://www.w3.org/1999/xhtml" /><p xmlns="http://www.w3.org/1999/xhtml">Now let's take a look at the source code.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Reading an Azure Table without a fixed class</h2><p xmlns="http://www.w3.org/1999/xhtml">The first problem that has to be solved is to read data from an Azure table without knowing it's schema at compile time. There is an <a href="http://social.msdn.microsoft.com/Forums/en-US/windowsazure/thread/481afa1b-03a9-42d9-ae79-9d5dc33b9297/" target="_blank">excellent post</a> covering that in the Azure Community pages. I took the sourcecode shown there and extended/modified it a little bit so that it fits to what I needed.</p><p xmlns="http://www.w3.org/1999/xhtml">First class is just a helper representing a column in the table store (Column.cs):</p>{% highlight javascript %}using System;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+namespace TableStorageSsisSource
+{
+ public class Column
+ {
+  public Column(string columnName, string typeName, string valueAsString)
+  {
+   this.ColumnName = columnName;
+   this.ClrType = Column.GetType(typeName);
+   this.DtsType = Column.GetSsisType(typeName);
+   this.Value = Column.GetValue(this.DtsType, valueAsString);
+  }
+
+  public string ColumnName { get; private set; }
+  public Type ClrType { get; private set; }
+  public DataType DtsType { get; private set; }
+  public object Value { get; private set; }
+
+  private static Type GetType(string type)
+  {
+   switch (type)
+   {
+    case &quot;Edm.String&quot;: return typeof(string);
+    case &quot;Edm.Int32&quot;: return typeof(int);
+    case &quot;Edm.Int64&quot;: return typeof(long);
+    case &quot;Edm.Double&quot;: return typeof(double);
+    case &quot;Edm.Boolean&quot;: return typeof(bool);
+    case &quot;Edm.DateTime&quot;: return typeof(DateTime);
+    case &quot;Edm.Binary&quot;: return typeof(byte[]);
+    case &quot;Edm.Guid&quot;: return typeof(Guid);
+    default: throw new NotSupportedException(string.Format(&quot;Unsupported data type {0}&quot;, type));
+   }
+  }
+
+  private static DataType GetSsisType(string type)
+  {
+   switch (type)
+   {
+    case &quot;Edm.String&quot;: return DataType.DT_NTEXT;
+    case &quot;Edm.Binary&quot;: return DataType.DT_IMAGE;
+    case &quot;Edm.Int32&quot;: return DataType.DT_I4;
+    case &quot;Edm.Int64&quot;: return DataType.DT_I8;
+    case &quot;Edm.Boolean&quot;: return DataType.DT_BOOL;
+    case &quot;Edm.DateTime&quot;: return DataType.DT_DATE;
+    case &quot;Edm.Guid&quot;: return DataType.DT_GUID;
+    case &quot;Edm.Double&quot;: return DataType.DT_R8;
+    default: throw new NotSupportedException(string.Format(&quot;Unsupported data type {0}&quot;, type));
+   }
+  }
+
+  private static object GetValue(DataType dtsType, string valueAsString)
+  {
+   switch (dtsType)
+   {
+    case DataType.DT_NTEXT: return valueAsString;
+    case DataType.DT_IMAGE: return Convert.FromBase64String(valueAsString);
+    case DataType.DT_BOOL: return bool.Parse(valueAsString);
+    case DataType.DT_DATE: return DateTime.Parse(valueAsString);
+    case DataType.DT_GUID: return new Guid(valueAsString);
+    case DataType.DT_I2: return Int32.Parse(valueAsString);
+    case DataType.DT_I4: return Int64.Parse(valueAsString);
+    case DataType.DT_R8: return double.Parse(valueAsString);
+    default: throw new NotSupportedException(string.Format(&quot;Unsupported data type {0}&quot;, dtsType));
+   }
+  }
+ }
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Second class represents a row inside the table store (without strong schema; GenericEntity.cs):</p>{% highlight javascript %}using System.Collections.Generic;
+using Microsoft.WindowsAzure.StorageClient;
+
+namespace TableStorageSsisSource
+{
+    public class GenericEntity : TableServiceEntity
+    {
+        private Dictionary&lt;string, Column&gt; properties = new Dictionary&lt;string, Column&gt;();
+
+        public Column this[string key]
+        {
+            get
+            {
+                if (this.properties.ContainsKey(key))
+                {
+                    return this.properties[key];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+            set
+            {
+                this.properties[key] = value;
+            }
+        }
+
+        public IEnumerable&lt;Column&gt; GetProperties()
+        {
+            return this.properties.Values;
+        }
+
+        public void SetProperties(IEnumerable&lt;Column&gt; properties)
+        {
+            foreach (var property in properties)
+            {
+                this[property.ColumnName] = property;
+            }
+        }
+    }   
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Last but not least we need a context class that interprets the AtomPub format and builds the generic content objects (GenericTableContent.cs):</p>{% highlight javascript %}using System;
+using System.Data.Services.Client;
+using System.Linq;
+using System.Xml.Linq;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.StorageClient;
+
+namespace TableStorageSsisSource
+{
+ public class GenericTableContext : TableServiceContext
+ {
+  public GenericTableContext(string baseAddress, StorageCredentials credentials)
+   : base(baseAddress, credentials)
+  {
+   this.IgnoreMissingProperties = true;
+   this.ReadingEntity += new EventHandler&lt;ReadingWritingEntityEventArgs&gt;(GenericTableContext_ReadingEntity);
+  }
+
+  public GenericEntity GetFirstOrDefault(string tableName)
+  {
+   return this.CreateQuery&lt;GenericEntity&gt;(tableName).FirstOrDefault();
+  }
+
+  private static readonly XNamespace AtomNamespace = &quot;http://www.w3.org/2005/Atom&quot;;
+  private static readonly XNamespace AstoriaDataNamespace = &quot;http://schemas.microsoft.com/ado/2007/08/dataservices&quot;;
+  private static readonly XNamespace AstoriaMetadataNamespace = &quot;http://schemas.microsoft.com/ado/2007/08/dataservices/metadata&quot;;
+
+  private void GenericTableContext_ReadingEntity(object sender, ReadingWritingEntityEventArgs e)
+  {
+   var entity = e.Entity as GenericEntity;
+   if (entity != null)
+   {
+    e.Data
+     .Element(AtomNamespace + &quot;content&quot;)
+     .Element(AstoriaMetadataNamespace + &quot;properties&quot;)
+     .Elements()
+     .Select(p =&gt;
+      new
+      {
+       Name = p.Name.LocalName,
+       IsNull = string.Equals(&quot;true&quot;, p.Attribute(AstoriaMetadataNamespace + &quot;null&quot;) == null ? null : p.Attribute(AstoriaMetadataNamespace + &quot;null&quot;).Value, StringComparison.OrdinalIgnoreCase),
+       TypeName = p.Attribute(AstoriaMetadataNamespace + &quot;type&quot;) == null ? null : p.Attribute(AstoriaMetadataNamespace + &quot;type&quot;).Value,
+       p.Value
+      })
+     .Select(dp =&gt; new Column(dp.Name, dp.TypeName, dp.Value.ToString()))
+     .ToList()
+     .ForEach(column =&gt; entity[column.ColumnName] = column);
+   }
+  }
+ }
+}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">The Custom SSIS Data Source</h2><p xmlns="http://www.w3.org/1999/xhtml">The custom SSIS data source is quite simple (TableStorageSsisSource.cs):</p>{% highlight javascript %}using System.Collections.Generic;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.WindowsAzure;
+
+namespace TableStorageSsisSource
+{
+ [DtsPipelineComponent(DisplayName = &quot;Azure Table Storage Source&quot;, ComponentType = ComponentType.SourceAdapter)]
+ public class TableStorageSsisSource : PipelineComponent
+ {
+  public override void ProvideComponentProperties()
+  {
+   // Reset the component.
+   base.RemoveAllInputsOutputsAndCustomProperties();
+   ComponentMetaData.RuntimeConnectionCollection.RemoveAll();
+
+   // Add output
+   IDTSOutput100 output = ComponentMetaData.OutputCollection.New();
+   output.Name = &quot;Output&quot;;
+
+   // Properties
+   var storageConnectionStringProperty = this.ComponentMetaData.CustomPropertyCollection.New();
+   storageConnectionStringProperty.Name = &quot;StorageConnectionString&quot;;
+   storageConnectionStringProperty.Description = &quot;Azure storage connection string&quot;;
+   storageConnectionStringProperty.Value = &quot;UseDevelopmentStorage=true&quot;;
+
+   var tableNameProperty = this.ComponentMetaData.CustomPropertyCollection.New();
+   tableNameProperty.Name = &quot;TableName&quot;;
+   tableNameProperty.Description = &quot;Name of the source table&quot;;
+   tableNameProperty.Value = string.Empty;
+  }
+
+  public override IDTSCustomProperty100 SetComponentProperty(string propertyName, object propertyValue)
+  {
+   var resultingColumn = base.SetComponentProperty(propertyName, propertyValue);
+
+   var storageConnectionString = (string)this.ComponentMetaData.CustomPropertyCollection[&quot;StorageConnectionString&quot;].Value;
+   var tableName = (string)this.ComponentMetaData.CustomPropertyCollection[&quot;TableName&quot;].Value;
+
+   if (!string.IsNullOrEmpty(storageConnectionString) &amp;&amp; !string.IsNullOrEmpty(tableName))
+   {
+    var cloudStorageAccount = CloudStorageAccount.Parse(storageConnectionString);
+    var context = new GenericTableContext(cloudStorageAccount.TableEndpoint.AbsoluteUri, cloudStorageAccount.Credentials);
+    var firstRow = context.GetFirstOrDefault(tableName);
+    if (firstRow != null)
+    {
+     var output = this.ComponentMetaData.OutputCollection[0];
+     foreach (var column in firstRow.GetProperties())
+     {
+      var newOutputCol = output.OutputColumnCollection.New();
+      newOutputCol.Name = column.ColumnName;
+      newOutputCol.SetDataTypeProperties(column.DtsType, 0, 0, 0, 0);
+     }
+    }
+   }
+
+   return resultingColumn;
+  }
+
+  private List&lt;ColumnInfo&gt; columnInformation;
+  private GenericTableContext context;
+  private struct ColumnInfo
+  {
+   public int BufferColumnIndex;
+   public string ColumnName;
+  }
+
+  public override void PreExecute()
+  {
+   this.columnInformation = new List&lt;ColumnInfo&gt;();
+   IDTSOutput100 output = ComponentMetaData.OutputCollection[0];
+
+   var cloudStorageAccount = CloudStorageAccount.Parse((string)this.ComponentMetaData.CustomPropertyCollection[&quot;StorageConnectionString&quot;].Value);
+   context = new GenericTableContext(cloudStorageAccount.TableEndpoint.AbsoluteUri, cloudStorageAccount.Credentials);
+
+   foreach (IDTSOutputColumn100 col in output.OutputColumnCollection)
+   {
+    ColumnInfo ci = new ColumnInfo();
+    ci.BufferColumnIndex = BufferManager.FindColumnByLineageID(output.Buffer, col.LineageID);
+    ci.ColumnName = col.Name;
+    columnInformation.Add(ci);
+   }
+  }
+
+  public override void PrimeOutput(int outputs, int[] outputIDs, PipelineBuffer[] buffers)
+  {
+   IDTSOutput100 output = ComponentMetaData.OutputCollection[0];
+   PipelineBuffer buffer = buffers[0];
+
+   foreach (var item in this.context.CreateQuery&lt;GenericEntity&gt;((string)this.ComponentMetaData.CustomPropertyCollection[&quot;TableName&quot;].Value))
+   {
+    buffer.AddRow();
+
+    for (int x = 0; x &lt; columnInformation.Count; x++)
+    {
+     var ci = (ColumnInfo)columnInformation[x];
+     var value = item[ci.ColumnName].Value;
+     if (value != null)
+     {
+      buffer[ci.BufferColumnIndex] = value;
+     }
+     else
+     {
+      buffer.SetNull(ci.BufferColumnIndex);
+     }
+    }
+   }
+
+   buffer.SetEndOfRowset();
+  }
+ }
+}{% endhighlight %}

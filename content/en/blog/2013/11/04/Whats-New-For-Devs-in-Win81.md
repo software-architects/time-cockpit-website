@@ -43,17 +43,171 @@ permalink: /blog/2013/11/04/Whats-New-For-Devs-in-Win81
   <li>A "Hero" image to visually "pimp" my app</li>
   <li>A list of hives that I get from my Azure Mobile Services backend</li>
   <li>A detail form of the currently selected hive</li>
-</ul><p xmlns="http://www.w3.org/1999/xhtml">The following code snippet from <em>MainPage.xaml</em> shows how I use the new hub control. BTW - note how I use the new <em><a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.frameworkelement.requestedtheme" target="_blank">RequestedTheme</a></em> attribute to switch the theme to "light". You could even switch between dark and light theme for a specific part of your control tree.</p>{% highlight javascript %}&lt;Page ... RequestedTheme=&quot;Light&quot;&gt;&#xA;    ...&#xA;    &lt;Grid Background=&quot;{StaticResource MainWindowBackgroundBrush}&quot;&gt;&#xA;        &lt;!-- Use the new hub control --&gt;&#xA;        &lt;Hub&gt;&#xA;            &lt;!-- Page title --&gt;&#xA;            &lt;Hub.Header&gt;&#xA;                &lt;TextBlock Text=&quot;Honey Bee Hive Manager&quot; ... /&gt;&#xA;            &lt;/Hub.Header&gt;&#xA;            &#xA;            &lt;!-- Add hero image --&gt;&#xA;            &lt;HubSection Width=&quot;1000&quot;&gt;&#xA;                &lt;HubSection.Background&gt;&#xA;                    &lt;ImageBrush ImageSource=&quot;Assets/Hero.jpg&quot; ... /&gt;&#xA;                &lt;/HubSection.Background&gt;&#xA;            &lt;/HubSection&gt;&#xA;&#xA;            &lt;!-- List of bee hives --&gt;&#xA;            &lt;HubSection Header=&quot;Hives&quot;&gt;&#xA;                &lt;DataTemplate&gt;&#xA;                    ...&#xA;                &lt;/DataTemplate&gt;&#xA;            &lt;/HubSection&gt;&#xA;            &#xA;            &lt;!-- Details for selected hive --&gt;&#xA;            &lt;HubSection Visibility=&quot;{Binding Path=HiveDetailsVisible}&quot; Header=&quot;Hive Details&quot; ...&gt;&#xA;                &lt;DataTemplate&gt;&#xA;                    ...&#xA;                &lt;/DataTemplate&gt;&#xA;            &lt;/HubSection&gt;&#xA;        &lt;/Hub&gt;&#xA;    &lt;/Grid&gt;&#xA;&lt;/Page&gt;{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">MVVM - Model-View-ViewModel</h3><p xmlns="http://www.w3.org/1999/xhtml">Of course I separate view and logic for the view ("ViewModel") into two separate classes. The ViewModel could be reused on different platforms (e.g. WPF, Silverlight, with <a href="http://www.xamarin.com" target="_blank">Xamarin</a> even Android or iOS) to a large degree.</p><p xmlns="http://www.w3.org/1999/xhtml">During my session I pointed out a specific feature regarding MVVM: The ability to use an instance of the ViewModel in Visual Studio to support the visual design of your app. Additionally having access to the ViewModel in Visual Studio greatly enhances your Intellisense experience. Here is the relevant code snippet (look for the XML namespace <em>d</em>):</p>{% highlight javascript %}&lt;Page ...&#xA;    x:Class=&quot;HiveManager.MainPage&quot;&#xA;    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&#xA;    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&#xA;    xmlns:local=&quot;using:HiveManager&quot;&#xA;    xmlns:d=&quot;http://schemas.microsoft.com/expression/blend/2008&quot;&#xA;    ...&#xA;    mc:Ignorable=&quot;d&quot; &#xA;    RequestedTheme=&quot;Light&quot;&#xA;    d:DataContext=&quot;{d:DesignInstance Type=local:MainPageViewModel, IsDesignTimeCreatable=True}&quot;&gt;&#xA;    ...&#xA;&lt;/Page&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">BTW - while playing around with my sample, did you notice Intellisense for the <em>StaticResource</em> markup extension? That's an awesome new feature in VS2013! If you like it, try F12 (go to definition). Yes, it finally works even in XAML <strong>and</strong> even for built-in styles like e.g. <em>HeaderTextBlockStyle</em> :-)</p><p xmlns="http://www.w3.org/1999/xhtml">
+</ul><p xmlns="http://www.w3.org/1999/xhtml">The following code snippet from <em>MainPage.xaml</em> shows how I use the new hub control. BTW - note how I use the new <em><a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.frameworkelement.requestedtheme" target="_blank">RequestedTheme</a></em> attribute to switch the theme to "light". You could even switch between dark and light theme for a specific part of your control tree.</p>{% highlight javascript %}&lt;Page ... RequestedTheme=&quot;Light&quot;&gt;
+    ...
+    &lt;Grid Background=&quot;{StaticResource MainWindowBackgroundBrush}&quot;&gt;
+        &lt;!-- Use the new hub control --&gt;
+        &lt;Hub&gt;
+            &lt;!-- Page title --&gt;
+            &lt;Hub.Header&gt;
+                &lt;TextBlock Text=&quot;Honey Bee Hive Manager&quot; ... /&gt;
+            &lt;/Hub.Header&gt;
+            
+            &lt;!-- Add hero image --&gt;
+            &lt;HubSection Width=&quot;1000&quot;&gt;
+                &lt;HubSection.Background&gt;
+                    &lt;ImageBrush ImageSource=&quot;Assets/Hero.jpg&quot; ... /&gt;
+                &lt;/HubSection.Background&gt;
+            &lt;/HubSection&gt;
+
+            &lt;!-- List of bee hives --&gt;
+            &lt;HubSection Header=&quot;Hives&quot;&gt;
+                &lt;DataTemplate&gt;
+                    ...
+                &lt;/DataTemplate&gt;
+            &lt;/HubSection&gt;
+            
+            &lt;!-- Details for selected hive --&gt;
+            &lt;HubSection Visibility=&quot;{Binding Path=HiveDetailsVisible}&quot; Header=&quot;Hive Details&quot; ...&gt;
+                &lt;DataTemplate&gt;
+                    ...
+                &lt;/DataTemplate&gt;
+            &lt;/HubSection&gt;
+        &lt;/Hub&gt;
+    &lt;/Grid&gt;
+&lt;/Page&gt;{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">MVVM - Model-View-ViewModel</h3><p xmlns="http://www.w3.org/1999/xhtml">Of course I separate view and logic for the view ("ViewModel") into two separate classes. The ViewModel could be reused on different platforms (e.g. WPF, Silverlight, with <a href="http://www.xamarin.com" target="_blank">Xamarin</a> even Android or iOS) to a large degree.</p><p xmlns="http://www.w3.org/1999/xhtml">During my session I pointed out a specific feature regarding MVVM: The ability to use an instance of the ViewModel in Visual Studio to support the visual design of your app. Additionally having access to the ViewModel in Visual Studio greatly enhances your Intellisense experience. Here is the relevant code snippet (look for the XML namespace <em>d</em>):</p>{% highlight javascript %}&lt;Page ...
+    x:Class=&quot;HiveManager.MainPage&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    xmlns:local=&quot;using:HiveManager&quot;
+    xmlns:d=&quot;http://schemas.microsoft.com/expression/blend/2008&quot;
+    ...
+    mc:Ignorable=&quot;d&quot; 
+    RequestedTheme=&quot;Light&quot;
+    d:DataContext=&quot;{d:DesignInstance Type=local:MainPageViewModel, IsDesignTimeCreatable=True}&quot;&gt;
+    ...
+&lt;/Page&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">BTW - while playing around with my sample, did you notice Intellisense for the <em>StaticResource</em> markup extension? That's an awesome new feature in VS2013! If you like it, try F12 (go to definition). Yes, it finally works even in XAML <strong>and</strong> even for built-in styles like e.g. <em>HeaderTextBlockStyle</em> :-)</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2013/11/StaticResourceIntellisense.png?mw=600&amp;mh=600" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">
   <span style="color: rgb(37, 160, 218); font-size: 15px; line-height: 15px;" data-mce-style="color: #25a0da; font-size: 15px; line-height: 15px;">The new</span>
   <em style="color: rgb(37, 160, 218); font-size: 15px; line-height: 15px;" data-mce-style="color: #25a0da; font-size: 15px; line-height: 15px;">CommandBar</em>
   <span style="color: rgb(37, 160, 218); font-size: 15px; line-height: 15px;" data-mce-style="color: #25a0da; font-size: 15px; line-height: 15px;">, Flyouts</span>
-</p><p xmlns="http://www.w3.org/1999/xhtml">Like the <em>Hub</em> control makes it easy to build navigation, the <em>CommandBar</em> greatly simplifies adding app bars to your app. In Windows 8.1, the amount of XAML you have to write has reduced massively compared to the previous version. Here is a code snippet that adds a command bar to our app:</p>{% highlight javascript %}&lt;Page ...&gt;&#xA;    &lt;!-- Use the new command bar of win 8.1 to add an app bar --&gt;&#xA;    &lt;Page.BottomAppBar&gt;&#xA;        &lt;CommandBar&gt;&#xA;            &lt;AppBarButton x:Uid=&quot;Add&quot; Icon=&quot;Add&quot; Label=&quot;Add&quot; /&gt;&#xA;            &lt;CommandBar.SecondaryCommands&gt;&#xA;                &lt;AppBarButton Icon=&quot;Bullets&quot; Label=&quot;Generate Demo Data&quot;&gt;&#xA;                    &lt;!-- Notice the use of an attached flyout --&gt;&#xA;                    &lt;AppBarButton.Flyout&gt;&#xA;                        &lt;Flyout&gt;&#xA;                            &lt;StackPanel&gt;&#xA;                                &lt;TextBlock Text=&quot;Note that generating demo data will delete all existing data. Proceed?&quot; /&gt;&#xA;                                &lt;Button Content=&quot;Yes&quot; Command=&quot;{Binding Path=GenerateDemoDataCommand}&quot; /&gt;&#xA;                            &lt;/StackPanel&gt;&#xA;                        &lt;/Flyout&gt;&#xA;                    &lt;/AppBarButton.Flyout&gt;&#xA;                &lt;/AppBarButton&gt;&#xA;            &lt;/CommandBar.SecondaryCommands&gt;&#xA;        &lt;/CommandBar&gt;&#xA;    &lt;/Page.BottomAppBar&gt;&#xA;&#xA;    &lt;Grid Background=&quot;{StaticResource MainWindowBackgroundBrush}&quot;&gt;&#xA;        ...&#xA;    &lt;/Grid&gt;&#xA;&lt;/Page&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">This sample code also shows another feature of Windows 8.1: Flyouts. They are very handy for confirmation messages as the one showed above. They can even contain more complex UI (e.g. check boxes, etc.). Here you see the flyout in action:</p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><p xmlns="http://www.w3.org/1999/xhtml">Like the <em>Hub</em> control makes it easy to build navigation, the <em>CommandBar</em> greatly simplifies adding app bars to your app. In Windows 8.1, the amount of XAML you have to write has reduced massively compared to the previous version. Here is a code snippet that adds a command bar to our app:</p>{% highlight javascript %}&lt;Page ...&gt;
+    &lt;!-- Use the new command bar of win 8.1 to add an app bar --&gt;
+    &lt;Page.BottomAppBar&gt;
+        &lt;CommandBar&gt;
+            &lt;AppBarButton x:Uid=&quot;Add&quot; Icon=&quot;Add&quot; Label=&quot;Add&quot; /&gt;
+            &lt;CommandBar.SecondaryCommands&gt;
+                &lt;AppBarButton Icon=&quot;Bullets&quot; Label=&quot;Generate Demo Data&quot;&gt;
+                    &lt;!-- Notice the use of an attached flyout --&gt;
+                    &lt;AppBarButton.Flyout&gt;
+                        &lt;Flyout&gt;
+                            &lt;StackPanel&gt;
+                                &lt;TextBlock Text=&quot;Note that generating demo data will delete all existing data. Proceed?&quot; /&gt;
+                                &lt;Button Content=&quot;Yes&quot; Command=&quot;{Binding Path=GenerateDemoDataCommand}&quot; /&gt;
+                            &lt;/StackPanel&gt;
+                        &lt;/Flyout&gt;
+                    &lt;/AppBarButton.Flyout&gt;
+                &lt;/AppBarButton&gt;
+            &lt;/CommandBar.SecondaryCommands&gt;
+        &lt;/CommandBar&gt;
+    &lt;/Page.BottomAppBar&gt;
+
+    &lt;Grid Background=&quot;{StaticResource MainWindowBackgroundBrush}&quot;&gt;
+        ...
+    &lt;/Grid&gt;
+&lt;/Page&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">This sample code also shows another feature of Windows 8.1: Flyouts. They are very handy for confirmation messages as the one showed above. They can even contain more complex UI (e.g. check boxes, etc.). Here you see the flyout in action:</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2013/11/Flyout.png" />
-</p><h3 xmlns="http://www.w3.org/1999/xhtml">Behavior SDK</h3><p xmlns="http://www.w3.org/1999/xhtml">In some areas, WinRT has a built-in mechanism for triggering ViewModel-code in response to user interaction. The <em>Click</em> event of a <em>Button</em> is one example that you are probably familiar with. Instead of writing code in the View which more-or-less just forwards the event to a ViewModel-method, you use a binding in the <em>Command</em> property referring to an implementation of <em>ICommand</em>. My sample includes this way of data binding in multiple places. Here is a short XAML snippet that shows what I mean:</p>{% highlight javascript %}&lt;Flyout&gt;&#xA;    &lt;StackPanel&gt;&#xA;        &lt;TextBlock Text=&quot;Note that generating demo data will delete all existing data. Proceed?&quot; /&gt;&#xA;        &lt;Button Content=&quot;Yes&quot; Command=&quot;{Binding Path=GenerateDemoDataCommand}&quot; /&gt;&#xA;    &lt;/StackPanel&gt;&#xA;&lt;/Flyout&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">To simplify the implementation of the ViewModel, I built a <em>DelegateCommand</em> helper class. Note that in practise you do not need to implement it yourself. Use an MVVM framework like <a href="http://prismwindowsruntime.codeplex.com/" target="_blank">Prism</a>, <a href="http://mvvmlight.codeplex.com/" target="_blank">MVVMLight</a>, etc. instead.</p>{% highlight javascript %}using System;&#xA;using System.Windows.Input;&#xA;&#xA;namespace HiveManager&#xA;{&#xA;    public class DelegateCommand : ICommand&#xA;    {&#xA;        private Action execute;&#xA;        private Func&lt;bool&gt; canExecute;&#xA;&#xA;        public DelegateCommand(Action execute, Func&lt;bool&gt; canExecute)&#xA;        {&#xA;            this.execute = execute;&#xA;            this.canExecute = canExecute;&#xA;        }&#xA;&#xA;        public bool CanExecute(object parameter)&#xA;        {&#xA;            if (this.canExecute != null)&#xA;            {&#xA;                return this.canExecute();&#xA;            }&#xA;&#xA;            return true;&#xA;        }&#xA;&#xA;        public void RaiseCanExecuteChanged()&#xA;        {&#xA;            if (this.CanExecuteChanged != null)&#xA;            {&#xA;                this.CanExecuteChanged(this, EventArgs.Empty);&#xA;            }&#xA;        }&#xA;&#xA;        public event EventHandler CanExecuteChanged;&#xA;&#xA;        public void Execute(object parameter)&#xA;        {&#xA;            if (this.execute != null)&#xA;            {&#xA;                this.execute();&#xA;            }&#xA;        }&#xA;    }&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Inside the ViewModel, I use the <em>DelegateCommand</em> to create an <em>ICommand</em> property for data binding:</p>{% highlight javascript %}using ...&#xA;&#xA;namespace HiveManager&#xA;{&#xA;    public class MainPageViewModel : INotifyPropertyChanged&#xA;    {&#xA;        public MainPageViewModel()&#xA;        {&#xA;            ...&#xA;            this.GenerateDemoDataCommand = new DelegateCommand(this.GenerateDemoData, () =&gt; true);&#xA;            this.TakePictureAndUploadCommand = new DelegateCommand(this.TakePictureAndUpload, () =&gt; true);&#xA;        }&#xA;&#xA;        public ICommand GenerateDemoDataCommand { get; private set; } &#xA;&#xA;        private async void GenerateDemoData()&#xA;        {&#xA;            ...&#xA;        }&#xA;&#xA;        public ICommand TakePictureAndUploadCommand { get; private set; }&#xA;&#xA;        public async void TakePictureAndUpload()&#xA;        {&#xA;            ...&#xA;        }&#xA;&#xA;        ...&#xA;    }&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">If you want to call a ViewModel-method in response to an event other than <em>Button.Click</em>, many people write code in the view's code behind file. In WPF there has been a better way for quite a long time: Behaviors. Behaviors are objects that you attach to a UI element. They catch a specified event and perform an action that you specify (e.g. calling a method in the ViewModel). Visual Studio 2013 comes with a Behavior SDK for Windows Store apps. So finally you can program in this nice way in your Windows Store apps, too.</p><p xmlns="http://www.w3.org/1999/xhtml">
+</p><h3 xmlns="http://www.w3.org/1999/xhtml">Behavior SDK</h3><p xmlns="http://www.w3.org/1999/xhtml">In some areas, WinRT has a built-in mechanism for triggering ViewModel-code in response to user interaction. The <em>Click</em> event of a <em>Button</em> is one example that you are probably familiar with. Instead of writing code in the View which more-or-less just forwards the event to a ViewModel-method, you use a binding in the <em>Command</em> property referring to an implementation of <em>ICommand</em>. My sample includes this way of data binding in multiple places. Here is a short XAML snippet that shows what I mean:</p>{% highlight javascript %}&lt;Flyout&gt;
+    &lt;StackPanel&gt;
+        &lt;TextBlock Text=&quot;Note that generating demo data will delete all existing data. Proceed?&quot; /&gt;
+        &lt;Button Content=&quot;Yes&quot; Command=&quot;{Binding Path=GenerateDemoDataCommand}&quot; /&gt;
+    &lt;/StackPanel&gt;
+&lt;/Flyout&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">To simplify the implementation of the ViewModel, I built a <em>DelegateCommand</em> helper class. Note that in practise you do not need to implement it yourself. Use an MVVM framework like <a href="http://prismwindowsruntime.codeplex.com/" target="_blank">Prism</a>, <a href="http://mvvmlight.codeplex.com/" target="_blank">MVVMLight</a>, etc. instead.</p>{% highlight javascript %}using System;
+using System.Windows.Input;
+
+namespace HiveManager
+{
+    public class DelegateCommand : ICommand
+    {
+        private Action execute;
+        private Func&lt;bool&gt; canExecute;
+
+        public DelegateCommand(Action execute, Func&lt;bool&gt; canExecute)
+        {
+            this.execute = execute;
+            this.canExecute = canExecute;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            if (this.canExecute != null)
+            {
+                return this.canExecute();
+            }
+
+            return true;
+        }
+
+        public void RaiseCanExecuteChanged()
+        {
+            if (this.CanExecuteChanged != null)
+            {
+                this.CanExecuteChanged(this, EventArgs.Empty);
+            }
+        }
+
+        public event EventHandler CanExecuteChanged;
+
+        public void Execute(object parameter)
+        {
+            if (this.execute != null)
+            {
+                this.execute();
+            }
+        }
+    }
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Inside the ViewModel, I use the <em>DelegateCommand</em> to create an <em>ICommand</em> property for data binding:</p>{% highlight javascript %}using ...
+
+namespace HiveManager
+{
+    public class MainPageViewModel : INotifyPropertyChanged
+    {
+        public MainPageViewModel()
+        {
+            ...
+            this.GenerateDemoDataCommand = new DelegateCommand(this.GenerateDemoData, () =&gt; true);
+            this.TakePictureAndUploadCommand = new DelegateCommand(this.TakePictureAndUpload, () =&gt; true);
+        }
+
+        public ICommand GenerateDemoDataCommand { get; private set; } 
+
+        private async void GenerateDemoData()
+        {
+            ...
+        }
+
+        public ICommand TakePictureAndUploadCommand { get; private set; }
+
+        public async void TakePictureAndUpload()
+        {
+            ...
+        }
+
+        ...
+    }
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">If you want to call a ViewModel-method in response to an event other than <em>Button.Click</em>, many people write code in the view's code behind file. In WPF there has been a better way for quite a long time: Behaviors. Behaviors are objects that you attach to a UI element. They catch a specified event and perform an action that you specify (e.g. calling a method in the ViewModel). Visual Studio 2013 comes with a Behavior SDK for Windows Store apps. So finally you can program in this nice way in your Windows Store apps, too.</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2013/11/BehaviorsSDK.png?mw=600&amp;mh=600" />
-</p><p xmlns="http://www.w3.org/1999/xhtml">The screen shot above shows how you add a reference to the new Behavior SDK. The following XAML snippet shows how I use it in my sample to trigger authentication when the app has been loaded:</p>{% highlight javascript %}&lt;Page ...&gt;&#xA;    ...&#xA;    &lt;!-- User behavior SDK to let user authenticate immediately after app startup --&gt;&#xA;    &lt;Interactivity:Interaction.Behaviors&gt;&#xA;        &lt;Core:EventTriggerBehavior EventName=&quot;Loaded&quot;&gt;&#xA;            &lt;Core:CallMethodAction MethodName=&quot;Authenticate&quot; TargetObject=&quot;{Binding}&quot; /&gt;&#xA;        &lt;/Core:EventTriggerBehavior&gt;&#xA;    &lt;/Interactivity:Interaction.Behaviors&gt;&#xA;    ...&#xA;&lt;/Page&gt;{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">Authentication</h3><p xmlns="http://www.w3.org/1999/xhtml">The authentication itself is provided by <a href="http://www.windowsazure.com/en-us/develop/mobile/" target="_blank">Windows Azure Mobile Services</a>. If you want this kind of authentication in your app, too, you have to follow these steps:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+</p><p xmlns="http://www.w3.org/1999/xhtml">The screen shot above shows how you add a reference to the new Behavior SDK. The following XAML snippet shows how I use it in my sample to trigger authentication when the app has been loaded:</p>{% highlight javascript %}&lt;Page ...&gt;
+    ...
+    &lt;!-- User behavior SDK to let user authenticate immediately after app startup --&gt;
+    &lt;Interactivity:Interaction.Behaviors&gt;
+        &lt;Core:EventTriggerBehavior EventName=&quot;Loaded&quot;&gt;
+            &lt;Core:CallMethodAction MethodName=&quot;Authenticate&quot; TargetObject=&quot;{Binding}&quot; /&gt;
+        &lt;/Core:EventTriggerBehavior&gt;
+    &lt;/Interactivity:Interaction.Behaviors&gt;
+    ...
+&lt;/Page&gt;{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">Authentication</h3><p xmlns="http://www.w3.org/1999/xhtml">The authentication itself is provided by <a href="http://www.windowsazure.com/en-us/develop/mobile/" target="_blank">Windows Azure Mobile Services</a>. If you want this kind of authentication in your app, too, you have to follow these steps:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>
     <p>Perform the necessary steps to register for a developer API key for your selected authentication provider (e.g. Facebook, Google, Microsoft Account). In my case, I use a Microsoft Account for authentication. Therefore I had to go to Microsoft's <a href="http://msdn.microsoft.com/en-us/live//default.aspx" target="_blank">Live Connect Developer Center</a>, register, and create an account for my app. You have to do similar things if you choose Facebook or Google.</p>
   </li>
@@ -72,14 +226,224 @@ permalink: /blog/2013/11/04/Whats-New-For-Devs-in-Win81
       <img src="{{site.baseurl}}/content/images/blog/2013/11/AzureMobileServicesNuGet.png?mw=600&amp;mh=600" />
     </p>
   </li>
-</ul><p xmlns="http://www.w3.org/1999/xhtml">If you have successfully completed above steps, it is really simple to add authentication code to your ViewModel:</p>{% highlight javascript %}private MobileServiceUser user = null;&#xA;&#xA;public bool IsAuthenticated&#xA;{&#xA;    get&#xA;    {&#xA;        return this.user != null;&#xA;    }&#xA;}&#xA;&#xA;public async void Authenticate()&#xA;{&#xA;    while (user == null)&#xA;    {&#xA;        try&#xA;        {&#xA;            this.user = await App.MobileService.LoginAsync(MobileServiceAuthenticationProvider.MicrosoftAccount);&#xA;            this.RaisePropertyChanged(&quot;IsAuthenticated&quot;);&#xA;            this.RefreshHives();&#xA;        }&#xA;        catch (InvalidOperationException)&#xA;        {&#xA;            this.user = null;&#xA;        }&#xA;    }&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The behavior in the XAML file will trigger the <em>Authenticate</em> method in the ViewModel whenever the <em>Loaded</em> event of the <em>Page</em> will occur. As a result, your user is presented with the typical login screen for Microsoft Accounts. Subsequent calls to the mobile services referenced by <em>App.MobileService</em> will automatically pass the identity of the user via the corresponding REST calls. If all this is new for you, I encourage you to download an HTTP debugger like <em><a href="http://fiddler2.com/" target="_blank">Fiddler</a></em> and watch the HTTP traffic. Here is a screenshot of the Mobile Services traffic in Fiddler (click to enlarge):</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
+</ul><p xmlns="http://www.w3.org/1999/xhtml">If you have successfully completed above steps, it is really simple to add authentication code to your ViewModel:</p>{% highlight javascript %}private MobileServiceUser user = null;
+
+public bool IsAuthenticated
+{
+    get
+    {
+        return this.user != null;
+    }
+}
+
+public async void Authenticate()
+{
+    while (user == null)
+    {
+        try
+        {
+            this.user = await App.MobileService.LoginAsync(MobileServiceAuthenticationProvider.MicrosoftAccount);
+            this.RaisePropertyChanged(&quot;IsAuthenticated&quot;);
+            this.RefreshHives();
+        }
+        catch (InvalidOperationException)
+        {
+            this.user = null;
+        }
+    }
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The behavior in the XAML file will trigger the <em>Authenticate</em> method in the ViewModel whenever the <em>Loaded</em> event of the <em>Page</em> will occur. As a result, your user is presented with the typical login screen for Microsoft Accounts. Subsequent calls to the mobile services referenced by <em>App.MobileService</em> will automatically pass the identity of the user via the corresponding REST calls. If all this is new for you, I encourage you to download an HTTP debugger like <em><a href="http://fiddler2.com/" target="_blank">Fiddler</a></em> and watch the HTTP traffic. Here is a screenshot of the Mobile Services traffic in Fiddler (click to enlarge):</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
   <f:param name="MediaImage" value="MediaArchive:a1be2b1b-f28e-424f-a427-25668f6428ed" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ThumbnailMaxWidth" value="600" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ThumbnailMaxHeight" value="600" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ImageMaxWidth" value="1000" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ImageMaxHeight" value="1000" xmlns:f="http://www.composite.net/ns/function/1.0" />
-</f:function><h3 xmlns="http://www.w3.org/1999/xhtml">Data Access Using Windows Azure Mobile Services Tables</h3><p xmlns="http://www.w3.org/1999/xhtml">The data itself is stored in Mobile Services tables. In our simple example it is just one table. The following class shows its structure:</p>{% highlight javascript %}using Newtonsoft.Json;&#xA;using System;&#xA;&#xA;namespace HiveManager&#xA;{&#xA;    public class Hive&#xA;    {&#xA;        public int Id { get; set; }&#xA;&#xA;        [JsonProperty(PropertyName = &quot;name&quot;)]&#xA;        public string Name { get; set; }&#xA;&#xA;        [JsonProperty(PropertyName = &quot;imageUri&quot;)]&#xA;        public string ImageUri { get; set; }&#xA;&#xA;        [JsonProperty(PropertyName = &quot;lat&quot;)]&#xA;        public double Lat { get; set; }&#xA;&#xA;        [JsonProperty(PropertyName = &quot;long&quot;)]&#xA;        public double Long { get; set; }&#xA;&#xA;        [JsonProperty(PropertyName = &quot;constructionDate&quot;)]&#xA;        public DateTimeOffset ConstructionDate { get; set; }&#xA;&#xA;        public enum HiveForms { Bienenkiste, Dadant }&#xA;&#xA;        [JsonProperty(PropertyName = &quot;hiveForm&quot;)]&#xA;        public HiveForms HiveForm { get; set; }&#xA;    }&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The code used to retrieve hive data rows via REST is simple:</p>{% highlight javascript %}private IEnumerable&lt;Hive&gt; HivesValue;&#xA;public IEnumerable&lt;Hive&gt; Hives&#xA;{&#xA;    get&#xA;    {&#xA;        return this.HivesValue;&#xA;    }&#xA;&#xA;    set&#xA;    {&#xA;        if (this.HivesValue != value)&#xA;        {&#xA;            this.HivesValue = value;&#xA;            this.RaisePropertyChanged();&#xA;        }&#xA;    }&#xA;}&#xA;&#xA;public async void RefreshHives()&#xA;{&#xA;    // Use mobile service api to query hives&#xA;    var table = App.MobileService.GetTable&lt;Hive&gt;();&#xA;    if (!string.IsNullOrEmpty(this.QueryText))&#xA;    {&#xA;        // Respect current query text&#xA;        this.Hives = await table.Where(h =&gt; h.Name == this.QueryText).ToCollectionAsync(); ;&#xA;    }&#xA;    else&#xA;    {&#xA;        this.Hives = await table.ToCollectionAsync();&#xA;    }&#xA;}{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">In-app Search</h3><p xmlns="http://www.w3.org/1999/xhtml">You might have noticed that the <em>RefreshHives</em> method contains a <em>Where</em> clause (again, I recommend to check out the corresponding HTTP traffic in Fiddler for people who are new with REST). The reason for this is that our app supports in-app search. This is also new to Windows 8.1. Before, Microsoft encouraged all developers to add search capabilities only by supporting the WinRT <em>Search Contract</em>. You can still do that. However, Microsoft added special support for in-app search with the new <em>SearchBox</em> control.</p><p xmlns="http://www.w3.org/1999/xhtml">Here is a XAML snippet that shows how to add the <em>SearchBox</em> to your app (note the use of behaviors to trigger <em>RefreshHives</em> whenever the <em>QuerySubmitted</em> event occurs:</p>{% highlight javascript %}&lt;HubSection Header=&quot;Hives&quot;&gt;&#xA;    &lt;DataTemplate&gt;&#xA;        &lt;Grid HorizontalAlignment=&quot;Stretch&quot; Width=&quot;400&quot;&gt;&#xA;            &lt;Grid.RowDefinitions&gt;&#xA;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#xA;                &lt;RowDefinition Height=&quot;*&quot; /&gt;&#xA;            &lt;/Grid.RowDefinitions&gt;&#xA;            &lt;!-- Add in-app search capabilities --&gt;&#xA;            &lt;SearchBox HorizontalAlignment=&quot;Stretch&quot; SuggestionsRequested=&quot;SuggestionsRequested&quot;&#xA;                       QueryText=&quot;{Binding Path=QueryText, Mode=TwoWay}&quot; SearchHistoryEnabled=&quot;False&quot;&gt;&#xA;                &lt;Interactivity:Interaction.Behaviors&gt;&#xA;                    &lt;Core:EventTriggerBehavior EventName=&quot;QuerySubmitted&quot;&gt;&#xA;                        &lt;Core:CallMethodAction MethodName=&quot;RefreshHives&quot; TargetObject=&quot;{Binding}&quot; /&gt;&#xA;                    &lt;/Core:EventTriggerBehavior&gt;&#xA;                &lt;/Interactivity:Interaction.Behaviors&gt;&#xA;            &lt;/SearchBox&gt;&#xA;&#xA;            &lt;ListView x:Name=&quot;ImagesGrid&quot; ItemsSource=&quot;{Binding Source={StaticResource Hives}}&quot;  SelectionMode=&quot;Single&quot;&#xA;                  SelectedItem=&quot;{Binding Path=SelectedHive, Mode=TwoWay}&quot; Grid.Row=&quot;1&quot;&gt;&#xA;                ...&#xA;            &lt;/ListView&gt;&#xA;        &lt;/Grid&gt;&#xA;    &lt;/DataTemplate&gt;&#xA;&lt;/HubSection&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">To keep the sample simple, I added one little function to the view's code behind:</p>{% highlight javascript %}public async void SuggestionsRequested(object pane, SearchBoxSuggestionsRequestedEventArgs ea)&#xA;{&#xA;    // Use deferral object to indicate that the request is NOT completed when the&#xA;    // event handler exits. It will continue until the async request completes.&#xA;    var deferral = ea.Request.GetDeferral();&#xA;    try&#xA;    {&#xA;        ea.Request.SearchSuggestionCollection.AppendQuerySuggestions(await this.ViewModel.QueryHiveNames(ea.QueryText));&#xA;    }&#xA;    finally&#xA;    {&#xA;        deferral.Complete();&#xA;    }&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The core search logic can be found in the ViewModel:</p>{% highlight javascript %}public async Task&lt;IEnumerable&lt;string&gt;&gt; QueryHiveNames(string queryString)&#xA;{&#xA;    if (!string.IsNullOrEmpty(queryString))&#xA;    {&#xA;        // Query string is not empty --&gt; Lookup hives async using web request&#xA;        return await App.MobileService.GetTable&lt;Hive&gt;()&#xA;            .Where(h =&gt; h.Name.StartsWith(queryString))&#xA;            .Select(h =&gt; h.Name)&#xA;            .ToCollectionAsync();&#xA;    }&#xA;&#xA;    // Query string is empty --&gt; return empty result&#xA;    return Enumerable.Empty&lt;string&gt;();&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Here is how the search looks like in our app:</p><p xmlns="http://www.w3.org/1999/xhtml">
+</f:function><h3 xmlns="http://www.w3.org/1999/xhtml">Data Access Using Windows Azure Mobile Services Tables</h3><p xmlns="http://www.w3.org/1999/xhtml">The data itself is stored in Mobile Services tables. In our simple example it is just one table. The following class shows its structure:</p>{% highlight javascript %}using Newtonsoft.Json;
+using System;
+
+namespace HiveManager
+{
+    public class Hive
+    {
+        public int Id { get; set; }
+
+        [JsonProperty(PropertyName = &quot;name&quot;)]
+        public string Name { get; set; }
+
+        [JsonProperty(PropertyName = &quot;imageUri&quot;)]
+        public string ImageUri { get; set; }
+
+        [JsonProperty(PropertyName = &quot;lat&quot;)]
+        public double Lat { get; set; }
+
+        [JsonProperty(PropertyName = &quot;long&quot;)]
+        public double Long { get; set; }
+
+        [JsonProperty(PropertyName = &quot;constructionDate&quot;)]
+        public DateTimeOffset ConstructionDate { get; set; }
+
+        public enum HiveForms { Bienenkiste, Dadant }
+
+        [JsonProperty(PropertyName = &quot;hiveForm&quot;)]
+        public HiveForms HiveForm { get; set; }
+    }
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The code used to retrieve hive data rows via REST is simple:</p>{% highlight javascript %}private IEnumerable&lt;Hive&gt; HivesValue;
+public IEnumerable&lt;Hive&gt; Hives
+{
+    get
+    {
+        return this.HivesValue;
+    }
+
+    set
+    {
+        if (this.HivesValue != value)
+        {
+            this.HivesValue = value;
+            this.RaisePropertyChanged();
+        }
+    }
+}
+
+public async void RefreshHives()
+{
+    // Use mobile service api to query hives
+    var table = App.MobileService.GetTable&lt;Hive&gt;();
+    if (!string.IsNullOrEmpty(this.QueryText))
+    {
+        // Respect current query text
+        this.Hives = await table.Where(h =&gt; h.Name == this.QueryText).ToCollectionAsync(); ;
+    }
+    else
+    {
+        this.Hives = await table.ToCollectionAsync();
+    }
+}{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">In-app Search</h3><p xmlns="http://www.w3.org/1999/xhtml">You might have noticed that the <em>RefreshHives</em> method contains a <em>Where</em> clause (again, I recommend to check out the corresponding HTTP traffic in Fiddler for people who are new with REST). The reason for this is that our app supports in-app search. This is also new to Windows 8.1. Before, Microsoft encouraged all developers to add search capabilities only by supporting the WinRT <em>Search Contract</em>. You can still do that. However, Microsoft added special support for in-app search with the new <em>SearchBox</em> control.</p><p xmlns="http://www.w3.org/1999/xhtml">Here is a XAML snippet that shows how to add the <em>SearchBox</em> to your app (note the use of behaviors to trigger <em>RefreshHives</em> whenever the <em>QuerySubmitted</em> event occurs:</p>{% highlight javascript %}&lt;HubSection Header=&quot;Hives&quot;&gt;
+    &lt;DataTemplate&gt;
+        &lt;Grid HorizontalAlignment=&quot;Stretch&quot; Width=&quot;400&quot;&gt;
+            &lt;Grid.RowDefinitions&gt;
+                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+                &lt;RowDefinition Height=&quot;*&quot; /&gt;
+            &lt;/Grid.RowDefinitions&gt;
+            &lt;!-- Add in-app search capabilities --&gt;
+            &lt;SearchBox HorizontalAlignment=&quot;Stretch&quot; SuggestionsRequested=&quot;SuggestionsRequested&quot;
+                       QueryText=&quot;{Binding Path=QueryText, Mode=TwoWay}&quot; SearchHistoryEnabled=&quot;False&quot;&gt;
+                &lt;Interactivity:Interaction.Behaviors&gt;
+                    &lt;Core:EventTriggerBehavior EventName=&quot;QuerySubmitted&quot;&gt;
+                        &lt;Core:CallMethodAction MethodName=&quot;RefreshHives&quot; TargetObject=&quot;{Binding}&quot; /&gt;
+                    &lt;/Core:EventTriggerBehavior&gt;
+                &lt;/Interactivity:Interaction.Behaviors&gt;
+            &lt;/SearchBox&gt;
+
+            &lt;ListView x:Name=&quot;ImagesGrid&quot; ItemsSource=&quot;{Binding Source={StaticResource Hives}}&quot;  SelectionMode=&quot;Single&quot;
+                  SelectedItem=&quot;{Binding Path=SelectedHive, Mode=TwoWay}&quot; Grid.Row=&quot;1&quot;&gt;
+                ...
+            &lt;/ListView&gt;
+        &lt;/Grid&gt;
+    &lt;/DataTemplate&gt;
+&lt;/HubSection&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">To keep the sample simple, I added one little function to the view's code behind:</p>{% highlight javascript %}public async void SuggestionsRequested(object pane, SearchBoxSuggestionsRequestedEventArgs ea)
+{
+    // Use deferral object to indicate that the request is NOT completed when the
+    // event handler exits. It will continue until the async request completes.
+    var deferral = ea.Request.GetDeferral();
+    try
+    {
+        ea.Request.SearchSuggestionCollection.AppendQuerySuggestions(await this.ViewModel.QueryHiveNames(ea.QueryText));
+    }
+    finally
+    {
+        deferral.Complete();
+    }
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The core search logic can be found in the ViewModel:</p>{% highlight javascript %}public async Task&lt;IEnumerable&lt;string&gt;&gt; QueryHiveNames(string queryString)
+{
+    if (!string.IsNullOrEmpty(queryString))
+    {
+        // Query string is not empty --&gt; Lookup hives async using web request
+        return await App.MobileService.GetTable&lt;Hive&gt;()
+            .Where(h =&gt; h.Name.StartsWith(queryString))
+            .Select(h =&gt; h.Name)
+            .ToCollectionAsync();
+    }
+
+    // Query string is empty --&gt; return empty result
+    return Enumerable.Empty&lt;string&gt;();
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Here is how the search looks like in our app:</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2013/11/Search.png" />
 </p><h3 xmlns="http://www.w3.org/1999/xhtml">New and Enhanced Controls</h3><p xmlns="http://www.w3.org/1999/xhtml">Windows 8.1 comes with quite some enhancements concerning controls used to implement forms. First you can now add a label to an input control just by settings its <em>Header</em> property. Additionally, many input controls support the <em>PlaceholderText</em> property to add a watermark. Last but not least, Windows 8.1 gives us a date and a time picker control :-) Here you see a screenshot with header, placeholder, and date picker:</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2013/11/Form.png" />
-</p><p xmlns="http://www.w3.org/1999/xhtml">During my session, I demonstrated these new features. Here is the XAML snippet that I used:</p>{% highlight javascript %}&lt;!-- Details for selected hive --&gt;&#xA;&lt;HubSection Margin=&quot;80,0,0,0&quot; Visibility=&quot;{Binding Path=HiveDetailsVisible}&quot; Header=&quot;Hive Details&quot;&gt;&#xA;    &lt;DataTemplate&gt;&#xA;        &lt;StackPanel Width=&quot;400&quot;&gt;&#xA;            &lt;!-- Note usage of new Header and PlaceholderText properties --&gt;&#xA;            &lt;TextBox Header=&quot;Hive Name&quot; Text=&quot;{Binding Path=SelectedHive.Name}&quot; PlaceholderText=&quot;Enter hive name here...&quot; /&gt;&#xA;            &lt;TextBox Header=&quot;Image URI&quot; Text=&quot;{Binding Path=SelectedHive.ImageUri}&quot; PlaceholderText=&quot;Enter URI to image here...&quot; /&gt;&#xA;            &lt;Button Content=&quot;Take picture and upload image&quot; Command=&quot;{Binding Path=TakePictureAndUploadCommand}&quot; /&gt;&#xA;            &lt;DatePicker Header=&quot;Construction Date&quot; Date=&quot;{Binding Path=SelectedHive.ConstructionDate}&quot;&#xA;                        CalendarIdentifier=&quot;GregorianCalendar&quot; DayFormat=&quot;{}{day.integer}&quot; /&gt;&#xA;            &lt;ComboBox Header=&quot;Hive Form&quot; PlaceholderText=&quot;Select hive form...&quot; &#xA;                      ItemsSource=&quot;{Binding Path=HiveForms}&quot;&#xA;                      SelectedItem=&quot;{Binding Path=SelectedHive.HiveForm, Mode=TwoWay}&quot; /&gt;&#xA;&#xA;            &lt;!-- Comment: Map is generated in code for demo purposes --&gt;&#xA;            &lt;ContentControl Content=&quot;{Binding Path=HiveMap.Value}&quot; MinHeight=&quot;400&quot; Margin=&quot;0, 10, 0, 10&quot; MinWidth=&quot;400&quot;&#xA;                            HorizontalAlignment=&quot;Stretch&quot; VerticalAlignment=&quot;Stretch&quot; HorizontalContentAlignment=&quot;Stretch&quot;&#xA;                            VerticalContentAlignment=&quot;Stretch&quot;/&gt;&#xA;        &lt;/StackPanel&gt;&#xA;    &lt;/DataTemplate&gt;&#xA;&lt;/HubSection&gt;{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">Bonus: Mobile Services Custom API, Blob Storage</h3><p xmlns="http://www.w3.org/1999/xhtml">As you might have noticed, my app uses image URIs. In practice, it would be very unlikely that a user would be willing to upload his photos to a public webserver and copy/paste URIs to his photos into our app. To solve this problem, I have sketched a solution allowing the user to take a photo with his Windows 8.1 tablet and upload it to <em>Windows Azure Blob Storage</em>.</p><p xmlns="http://www.w3.org/1999/xhtml">The challenge with Blob Storage is security. Of course it would not be ok to give write access to our blob storage account to everybody. Unfortunately, blob storage does not support federated identity (e.g. Microsoft Account) like Mobile Services. The solution are <em>Shared Access Signatures</em> (SAS). SAS are digitally signed URIs that enable the retriever of the URI to read and/or write to a blob for a certain amount of time (typically just enough time that is necessary to upload the content).</p><p xmlns="http://www.w3.org/1999/xhtml">The problem is that getting the SAS cannot be done inside our app because it requires admin access to the blob storage account. We need a service in the cloud generating the SAS. Luckily Mobile Services support custom APIs which can be protected by federated identity <strong>and</strong> can access the blob API in order to generate an SAS.</p><p xmlns="http://www.w3.org/1999/xhtml">Here is the JavaScript code I used to generate the SAS in an Azure Mobile Services custom API. Enter it directly in the Azure portal in the API menu of your mobile service:</p>{% highlight javascript %}var azure = require('azure');&#xA;var qs = require('querystring');&#xA;&#xA;exports.get = function(request, response) {&#xA;    var accountName = '...yourAccountName...';&#xA;    var accountKey = '...yourAccountKey...';&#xA;    var containerName = 'images';&#xA;    var host = accountName + '.blob.core.windows.net';&#xA;    var imageName = request.query.imageName;&#xA;&#xA;    var blobService = azure.createBlobService(accountName, accountKey, host);&#xA;    var sharedAccessPolicy = {&#xA;        AccessPolicy: {&#xA;            Permissions: azure.Constants.BlobConstants.SharedAccessPermissions.WRITE,&#xA;            Expiry: new Date(new Date().getTime() + 5 * 60 * 1000)&#xA;        }};&#xA;&#xA;    // Generate the upload URL with SAS for the new image.&#xA;    var sasQueryUrl = &#xA;        blobService.generateSharedAccessSignature(containerName, &#xA;            imageName, sharedAccessPolicy);&#xA;&#xA;    // Set the query string.&#xA;    var sasQueryString = qs.stringify(sasQueryUrl.queryString);&#xA;&#xA;    // Set the full path on the new new item, &#xA;    // which is used for data binding on the client. &#xA;    var imageUri = sasQueryUrl.baseUrl + sasQueryUrl.path;&#xA;    &#xA;    response.send(statusCodes.OK, { 'sasQueryString': sasQueryString, 'imageUri': imageUri });&#xA;};{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Once you have your custom API up and running, it is easy to call it from your app and use the SAS to upload the image:</p>{% highlight javascript %}public async void TakePictureAndUpload()&#xA;{&#xA;    var camera = new CameraCaptureUI();&#xA;    camera.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Jpeg;&#xA;    var media = await camera.CaptureFileAsync(CameraCaptureUIMode.Photo);&#xA;    var imageName = &quot;image_&quot; + Guid.NewGuid().ToString().Replace(&quot;-&quot;, &quot;&quot;) + &quot;.jpg&quot;;&#xA;&#xA;    var parameters = new Dictionary&lt;string, string&gt;();&#xA;    parameters.Add(&quot;imageName&quot;, imageName);&#xA;    var resultJson = await App.MobileService.InvokeApiAsync(&quot;getsasforimage&quot;, HttpMethod.Get, parameters);&#xA;    var result = JsonConvert.DeserializeObject&lt;SharedAccessSignatureInformation&gt;(resultJson.ToString());&#xA;&#xA;    if (!string.IsNullOrEmpty(result.SasQueryString.ToString()))&#xA;    {&#xA;        // Get the new image as a stream.&#xA;        using (var fileStream = await media.OpenReadAsync())&#xA;        {&#xA;            var uploader = new BackgroundUploader();&#xA;            uploader.Method = &quot;PUT&quot;;&#xA;            var targetUri = new Uri(result.ImageUri + &quot;?&quot; + result.SasQueryString, UriKind.Absolute);&#xA;            var upload = await uploader.CreateUploadFromStreamAsync(targetUri, fileStream);&#xA;            var operation = await upload.StartAsync();&#xA;        }&#xA;    }&#xA;&#xA;    // Todo: Change ImageUri of hive to new image in the cloud&#xA;}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Feedback? Questions?</h2><p xmlns="http://www.w3.org/1999/xhtml">I hope that you find my content useful and relevant. Feel free to use the comments section below to give feedback or ask questions.</p>
+</p><p xmlns="http://www.w3.org/1999/xhtml">During my session, I demonstrated these new features. Here is the XAML snippet that I used:</p>{% highlight javascript %}&lt;!-- Details for selected hive --&gt;
+&lt;HubSection Margin=&quot;80,0,0,0&quot; Visibility=&quot;{Binding Path=HiveDetailsVisible}&quot; Header=&quot;Hive Details&quot;&gt;
+    &lt;DataTemplate&gt;
+        &lt;StackPanel Width=&quot;400&quot;&gt;
+            &lt;!-- Note usage of new Header and PlaceholderText properties --&gt;
+            &lt;TextBox Header=&quot;Hive Name&quot; Text=&quot;{Binding Path=SelectedHive.Name}&quot; PlaceholderText=&quot;Enter hive name here...&quot; /&gt;
+            &lt;TextBox Header=&quot;Image URI&quot; Text=&quot;{Binding Path=SelectedHive.ImageUri}&quot; PlaceholderText=&quot;Enter URI to image here...&quot; /&gt;
+            &lt;Button Content=&quot;Take picture and upload image&quot; Command=&quot;{Binding Path=TakePictureAndUploadCommand}&quot; /&gt;
+            &lt;DatePicker Header=&quot;Construction Date&quot; Date=&quot;{Binding Path=SelectedHive.ConstructionDate}&quot;
+                        CalendarIdentifier=&quot;GregorianCalendar&quot; DayFormat=&quot;{}{day.integer}&quot; /&gt;
+            &lt;ComboBox Header=&quot;Hive Form&quot; PlaceholderText=&quot;Select hive form...&quot; 
+                      ItemsSource=&quot;{Binding Path=HiveForms}&quot;
+                      SelectedItem=&quot;{Binding Path=SelectedHive.HiveForm, Mode=TwoWay}&quot; /&gt;
+
+            &lt;!-- Comment: Map is generated in code for demo purposes --&gt;
+            &lt;ContentControl Content=&quot;{Binding Path=HiveMap.Value}&quot; MinHeight=&quot;400&quot; Margin=&quot;0, 10, 0, 10&quot; MinWidth=&quot;400&quot;
+                            HorizontalAlignment=&quot;Stretch&quot; VerticalAlignment=&quot;Stretch&quot; HorizontalContentAlignment=&quot;Stretch&quot;
+                            VerticalContentAlignment=&quot;Stretch&quot;/&gt;
+        &lt;/StackPanel&gt;
+    &lt;/DataTemplate&gt;
+&lt;/HubSection&gt;{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">Bonus: Mobile Services Custom API, Blob Storage</h3><p xmlns="http://www.w3.org/1999/xhtml">As you might have noticed, my app uses image URIs. In practice, it would be very unlikely that a user would be willing to upload his photos to a public webserver and copy/paste URIs to his photos into our app. To solve this problem, I have sketched a solution allowing the user to take a photo with his Windows 8.1 tablet and upload it to <em>Windows Azure Blob Storage</em>.</p><p xmlns="http://www.w3.org/1999/xhtml">The challenge with Blob Storage is security. Of course it would not be ok to give write access to our blob storage account to everybody. Unfortunately, blob storage does not support federated identity (e.g. Microsoft Account) like Mobile Services. The solution are <em>Shared Access Signatures</em> (SAS). SAS are digitally signed URIs that enable the retriever of the URI to read and/or write to a blob for a certain amount of time (typically just enough time that is necessary to upload the content).</p><p xmlns="http://www.w3.org/1999/xhtml">The problem is that getting the SAS cannot be done inside our app because it requires admin access to the blob storage account. We need a service in the cloud generating the SAS. Luckily Mobile Services support custom APIs which can be protected by federated identity <strong>and</strong> can access the blob API in order to generate an SAS.</p><p xmlns="http://www.w3.org/1999/xhtml">Here is the JavaScript code I used to generate the SAS in an Azure Mobile Services custom API. Enter it directly in the Azure portal in the API menu of your mobile service:</p>{% highlight javascript %}var azure = require('azure');
+var qs = require('querystring');
+
+exports.get = function(request, response) {
+    var accountName = '...yourAccountName...';
+    var accountKey = '...yourAccountKey...';
+    var containerName = 'images';
+    var host = accountName + '.blob.core.windows.net';
+    var imageName = request.query.imageName;
+
+    var blobService = azure.createBlobService(accountName, accountKey, host);
+    var sharedAccessPolicy = {
+        AccessPolicy: {
+            Permissions: azure.Constants.BlobConstants.SharedAccessPermissions.WRITE,
+            Expiry: new Date(new Date().getTime() + 5 * 60 * 1000)
+        }};
+
+    // Generate the upload URL with SAS for the new image.
+    var sasQueryUrl = 
+        blobService.generateSharedAccessSignature(containerName, 
+            imageName, sharedAccessPolicy);
+
+    // Set the query string.
+    var sasQueryString = qs.stringify(sasQueryUrl.queryString);
+
+    // Set the full path on the new new item, 
+    // which is used for data binding on the client. 
+    var imageUri = sasQueryUrl.baseUrl + sasQueryUrl.path;
+    
+    response.send(statusCodes.OK, { 'sasQueryString': sasQueryString, 'imageUri': imageUri });
+};{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Once you have your custom API up and running, it is easy to call it from your app and use the SAS to upload the image:</p>{% highlight javascript %}public async void TakePictureAndUpload()
+{
+    var camera = new CameraCaptureUI();
+    camera.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Jpeg;
+    var media = await camera.CaptureFileAsync(CameraCaptureUIMode.Photo);
+    var imageName = &quot;image_&quot; + Guid.NewGuid().ToString().Replace(&quot;-&quot;, &quot;&quot;) + &quot;.jpg&quot;;
+
+    var parameters = new Dictionary&lt;string, string&gt;();
+    parameters.Add(&quot;imageName&quot;, imageName);
+    var resultJson = await App.MobileService.InvokeApiAsync(&quot;getsasforimage&quot;, HttpMethod.Get, parameters);
+    var result = JsonConvert.DeserializeObject&lt;SharedAccessSignatureInformation&gt;(resultJson.ToString());
+
+    if (!string.IsNullOrEmpty(result.SasQueryString.ToString()))
+    {
+        // Get the new image as a stream.
+        using (var fileStream = await media.OpenReadAsync())
+        {
+            var uploader = new BackgroundUploader();
+            uploader.Method = &quot;PUT&quot;;
+            var targetUri = new Uri(result.ImageUri + &quot;?&quot; + result.SasQueryString, UriKind.Absolute);
+            var upload = await uploader.CreateUploadFromStreamAsync(targetUri, fileStream);
+            var operation = await upload.StartAsync();
+        }
+    }
+
+    // Todo: Change ImageUri of hive to new image in the cloud
+}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Feedback? Questions?</h2><p xmlns="http://www.w3.org/1999/xhtml">I hope that you find my content useful and relevant. Feel free to use the comments section below to give feedback or ask questions.</p>

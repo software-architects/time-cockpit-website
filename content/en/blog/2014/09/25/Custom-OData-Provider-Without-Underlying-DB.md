@@ -9,4 +9,143 @@ lang: en
 permalink: /blog/2014/09/25/Custom-OData-Provider-Without-Underlying-DB
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">Today I will do my <a href="http://www.software-architects.com/devblog/2014/09/12/10-OData-FAQs" target="_blank">OData session</a> at <a href="http://basta.net/2014/sessions/custom-odata-providers-mit-aspnet-web-api" target="_blank">BASTA conference in Mainz</a>. This time I have a bit more time so I will add a demo of creating a custom OData provider without any underlying database. The result is generated based on the OData query on the fly. In this blog article I share the code.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">You can download the entire source code from <a href="https://github.com/rstropek/Samples/tree/master/CustomODataProvider" target="_blank">my GitHub Samples repository</a>.</p><h2 xmlns="http://www.w3.org/1999/xhtml">The OData Controller</h2><p xmlns="http://www.w3.org/1999/xhtml">Let's start with the important part of the sample: The <em>ODataController</em>.</p>{% highlight javascript %}using Microsoft.OData.Core.UriParser.Semantic;&#xA;using Microsoft.OData.Core.UriParser.TreeNodeKinds;&#xA;using System;&#xA;using System.Collections.Generic;&#xA;using System.Linq;&#xA;using System.Text;&#xA;using System.Web.Http;&#xA;using System.Web.OData;&#xA;using System.Web.OData.Query;&#xA;using System.Web.OData.Routing;&#xA;&#xA;namespace CustomODataProvider.Provider.Controller&#xA;{&#xA;&#x9;[ODataRoutePrefix(&quot;Customers&quot;)]&#xA;&#x9;public class CustomerController : ODataController&#xA;&#x9;{&#xA;&#x9;&#x9;// Helpers for generating customer names&#xA;&#x9;&#x9;private readonly char[] letters1 = &quot;aeiou&quot;.ToArray();&#xA;&#x9;&#x9;private readonly char[] letters2 = &quot;bcdfgklmnpqrstvw&quot;.ToArray();&#xA;&#x9;&#x9;private Random random = new Random();&#xA;&#xA;&#x9;&#x9;private const int pageSize = 100;&#xA;&#xA;&#x9;&#x9;[EnableQuery(AllowedQueryOptions = AllowedQueryOptions.Filter | AllowedQueryOptions.Top | AllowedQueryOptions.Skip | AllowedQueryOptions.OrderBy)]&#xA;&#x9;&#x9;[ODataRoute]&#xA;&#x9;&#x9;public IHttpActionResult Get(ODataQueryOptions&lt;Customer&gt; options)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;// Calculate number of results based on $top&#xA;&#x9;&#x9;&#x9;var numberOfResults = pageSize;&#xA;&#x9;&#x9;&#x9;if (options.Top != null)&#xA;&#x9;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;&#x9;numberOfResults = options.Top.Value;&#xA;&#x9;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;&#x9;// Analyze $filter&#xA;&#x9;&#x9;&#x9;string equalFilter = null;&#xA;&#x9;&#x9;&#x9;if (options.Filter != null)&#xA;&#x9;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;&#x9;// We only support a single &quot;eq&quot; filter&#xA;&#x9;&#x9;&#x9;&#x9;var binaryOperator = options.Filter.FilterClause.Expression as BinaryOperatorNode;&#xA;&#x9;&#x9;&#x9;&#x9;if (binaryOperator == null || binaryOperator.OperatorKind != BinaryOperatorKind.Equal)&#xA;&#x9;&#x9;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;return InternalServerError();&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;// One side has to be a reference to CustomerName property, the other side has to be a constant&#xA;&#x9;&#x9;&#x9;&#x9;var propertyAccess = binaryOperator.Left as SingleValuePropertyAccessNode ?? binaryOperator.Right as SingleValuePropertyAccessNode;&#xA;&#x9;&#x9;&#x9;&#x9;var constant = binaryOperator.Left as ConstantNode ?? binaryOperator.Right as ConstantNode;&#xA;&#x9;&#x9;&#x9;&#x9;if (propertyAccess == null || propertyAccess.Property.Name != &quot;CustomerName&quot; || constant == null)&#xA;&#x9;&#x9;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;return InternalServerError();&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;// Save equal filter value&#xA;&#x9;&#x9;&#x9;&#x9;equalFilter = constant.Value.ToString();&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;// Return between 1 and 2 rows (CustomerName is not a primary key)&#xA;&#x9;&#x9;&#x9;&#x9;numberOfResults = Math.Min(random.Next(1, 3), numberOfResults);&#xA;&#x9;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;&#x9;// Generate result&#xA;&#x9;&#x9;&#x9;var result = new List&lt;Customer&gt;();&#xA;&#x9;&#x9;&#x9;for (var i = 0; i &lt; numberOfResults; i++)&#xA;&#x9;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;&#x9;result.Add(new Customer() { CustomerID = Guid.NewGuid(), CustomerName = equalFilter ?? GenerateCustomerName() });&#xA;&#x9;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;&#x9;return Ok(result.AsQueryable());&#xA;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;private string GenerateCustomerName()&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;var length = random.Next(5, 8);&#xA;&#x9;&#x9;&#x9;var result = new StringBuilder(length);&#xA;&#x9;&#x9;&#x9;for (var i = 0; i &lt; length; i++)&#xA;&#x9;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;&#x9;var letter = (i % 2 == 0 ? letters1[random.Next(letters1.Length)] : letters2[random.Next(letters2.Length)]).ToString();&#xA;&#x9;&#x9;&#x9;&#x9;result.Append(i == 0 ? letter.ToUpper() : letter);&#xA;&#x9;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;&#x9;return result.ToString();&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Configuration the OData Endpoint</h2>{% highlight javascript %}using Microsoft.OData.Edm;&#xA;using System.Net.Http.Formatting;&#xA;using System.Web.Http;&#xA;using System.Web.OData.Builder;&#xA;using System.Web.OData.Extensions;&#xA;using System.Web.OData.Routing.Conventions;&#xA;&#xA;namespace CustomODataProvider.Provider&#xA;{&#xA;&#x9;public static class ODataConfiguration&#xA;&#x9;{&#xA;&#x9;&#x9;public static void RegisterOData(HttpConfiguration config)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;config.Formatters.Clear();&#xA;&#x9;&#x9;&#x9;config.Formatters.Add(new JsonMediaTypeFormatter());&#xA;&#xA;&#x9;&#x9;&#x9;var routeConventions = ODataRoutingConventions.CreateDefault();&#xA;&#x9;&#x9;&#x9;config.MapODataServiceRoute(&quot;odata&quot;, &quot;odata&quot;, GetModel());&#xA;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;private static IEdmModel GetModel()&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;var modelBuilder = new ODataConventionModelBuilder();&#xA;&#x9;&#x9;&#x9;modelBuilder.EntitySet&lt;Customer&gt;(&quot;Customers&quot;);&#xA;&#x9;&#x9;&#x9;return modelBuilder.GetEdmModel();&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">The Self Host</h2>{% highlight javascript %}using CustomODataProvider.Provider;&#xA;using Microsoft.Owin.Hosting;&#xA;using Owin;&#xA;using System;&#xA;using System.Web.Http;&#xA;&#xA;namespace CustomODataProvider.Hosting&#xA;{&#xA;&#x9;class Program&#xA;&#x9;{&#xA;&#x9;&#x9;static void Main(string[] args)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;using (WebApp.Start&lt;Startup&gt;(&quot;http://localhost:5000&quot;)) &#xA;&#x9;&#x9;&#x9;{ &#xA;&#x9;&#x9;&#x9;&#x9;Console.WriteLine( &quot;Server ready... Press Enter to quit.&quot;); &#xA;&#x9;&#x9;&#x9;&#x9;Console.ReadLine(); &#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#xA;&#x9;public class Startup&#xA;&#x9;{&#xA;&#x9;&#x9;public void Configuration(IAppBuilder app)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;var config = new HttpConfiguration();&#xA;&#x9;&#x9;&#x9;ODataConfiguration.RegisterOData(config);&#xA;&#x9;&#x9;&#x9;app.UseWebApi(config);&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;}{% endhighlight %}
+<p xmlns="http://www.w3.org/1999/xhtml">Today I will do my <a href="http://www.software-architects.com/devblog/2014/09/12/10-OData-FAQs" target="_blank">OData session</a> at <a href="http://basta.net/2014/sessions/custom-odata-providers-mit-aspnet-web-api" target="_blank">BASTA conference in Mainz</a>. This time I have a bit more time so I will add a demo of creating a custom OData provider without any underlying database. The result is generated based on the OData query on the fly. In this blog article I share the code.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">You can download the entire source code from <a href="https://github.com/rstropek/Samples/tree/master/CustomODataProvider" target="_blank">my GitHub Samples repository</a>.</p><h2 xmlns="http://www.w3.org/1999/xhtml">The OData Controller</h2><p xmlns="http://www.w3.org/1999/xhtml">Let's start with the important part of the sample: The <em>ODataController</em>.</p>{% highlight javascript %}using Microsoft.OData.Core.UriParser.Semantic;
+using Microsoft.OData.Core.UriParser.TreeNodeKinds;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Web.Http;
+using System.Web.OData;
+using System.Web.OData.Query;
+using System.Web.OData.Routing;
+
+namespace CustomODataProvider.Provider.Controller
+{
+    [ODataRoutePrefix(&quot;Customers&quot;)]
+    public class CustomerController : ODataController
+    {
+        // Helpers for generating customer names
+        private readonly char[] letters1 = &quot;aeiou&quot;.ToArray();
+        private readonly char[] letters2 = &quot;bcdfgklmnpqrstvw&quot;.ToArray();
+        private Random random = new Random();
+
+        private const int pageSize = 100;
+
+        [EnableQuery(AllowedQueryOptions = AllowedQueryOptions.Filter | AllowedQueryOptions.Top | AllowedQueryOptions.Skip | AllowedQueryOptions.OrderBy)]
+        [ODataRoute]
+        public IHttpActionResult Get(ODataQueryOptions&lt;Customer&gt; options)
+        {
+            // Calculate number of results based on $top
+            var numberOfResults = pageSize;
+            if (options.Top != null)
+            {
+                numberOfResults = options.Top.Value;
+            }
+
+            // Analyze $filter
+            string equalFilter = null;
+            if (options.Filter != null)
+            {
+                // We only support a single &quot;eq&quot; filter
+                var binaryOperator = options.Filter.FilterClause.Expression as BinaryOperatorNode;
+                if (binaryOperator == null || binaryOperator.OperatorKind != BinaryOperatorKind.Equal)
+                {
+                    return InternalServerError();
+                }
+
+                // One side has to be a reference to CustomerName property, the other side has to be a constant
+                var propertyAccess = binaryOperator.Left as SingleValuePropertyAccessNode ?? binaryOperator.Right as SingleValuePropertyAccessNode;
+                var constant = binaryOperator.Left as ConstantNode ?? binaryOperator.Right as ConstantNode;
+                if (propertyAccess == null || propertyAccess.Property.Name != &quot;CustomerName&quot; || constant == null)
+                {
+                    return InternalServerError();
+                }
+
+                // Save equal filter value
+                equalFilter = constant.Value.ToString();
+
+                // Return between 1 and 2 rows (CustomerName is not a primary key)
+                numberOfResults = Math.Min(random.Next(1, 3), numberOfResults);
+            }
+
+            // Generate result
+            var result = new List&lt;Customer&gt;();
+            for (var i = 0; i &lt; numberOfResults; i++)
+            {
+                result.Add(new Customer() { CustomerID = Guid.NewGuid(), CustomerName = equalFilter ?? GenerateCustomerName() });
+            }
+
+            return Ok(result.AsQueryable());
+        }
+
+        private string GenerateCustomerName()
+        {
+            var length = random.Next(5, 8);
+            var result = new StringBuilder(length);
+            for (var i = 0; i &lt; length; i++)
+            {
+                var letter = (i % 2 == 0 ? letters1[random.Next(letters1.Length)] : letters2[random.Next(letters2.Length)]).ToString();
+                result.Append(i == 0 ? letter.ToUpper() : letter);
+            }
+
+            return result.ToString();
+        }
+    }
+}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Configuration the OData Endpoint</h2>{% highlight javascript %}using Microsoft.OData.Edm;
+using System.Net.Http.Formatting;
+using System.Web.Http;
+using System.Web.OData.Builder;
+using System.Web.OData.Extensions;
+using System.Web.OData.Routing.Conventions;
+
+namespace CustomODataProvider.Provider
+{
+    public static class ODataConfiguration
+    {
+        public static void RegisterOData(HttpConfiguration config)
+        {
+            config.Formatters.Clear();
+            config.Formatters.Add(new JsonMediaTypeFormatter());
+
+            var routeConventions = ODataRoutingConventions.CreateDefault();
+            config.MapODataServiceRoute(&quot;odata&quot;, &quot;odata&quot;, GetModel());
+        }
+
+        private static IEdmModel GetModel()
+        {
+            var modelBuilder = new ODataConventionModelBuilder();
+            modelBuilder.EntitySet&lt;Customer&gt;(&quot;Customers&quot;);
+            return modelBuilder.GetEdmModel();
+        }
+    }
+}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">The Self Host</h2>{% highlight javascript %}using CustomODataProvider.Provider;
+using Microsoft.Owin.Hosting;
+using Owin;
+using System;
+using System.Web.Http;
+
+namespace CustomODataProvider.Hosting
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            using (WebApp.Start&lt;Startup&gt;(&quot;http://localhost:5000&quot;)) 
+            { 
+                Console.WriteLine( &quot;Server ready... Press Enter to quit.&quot;); 
+                Console.ReadLine(); 
+            }
+        }
+    }
+
+    public class Startup
+    {
+        public void Configuration(IAppBuilder app)
+        {
+            var config = new HttpConfiguration();
+            ODataConfiguration.RegisterOData(config);
+            app.UseWebApi(config);
+        }
+    }
+}{% endhighlight %}

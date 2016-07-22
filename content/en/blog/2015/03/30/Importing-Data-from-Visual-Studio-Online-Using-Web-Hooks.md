@@ -58,8 +58,119 @@ permalink: /blog/2015/03/30/Importing-Data-from-Visual-Studio-Online-Using-Web-H
   <f:param name="ImageMaxWidth" value="1920" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ImageMaxHeight" value="1024" xmlns:f="http://www.composite.net/ns/function/1.0" />
 </f:function><p xmlns="http://www.w3.org/1999/xhtml">And that's basically it. Whenever a work item is created in VSO the web hook posts a JSON message to the message queue. </p><h3 xmlns="http://www.w3.org/1999/xhtml">
-  {% highlight javascript %}{&#xA;    &quot;id&quot;:&quot;416a5d89-9a7d-4116-a476-e1b53b0a7989&quot;,&#xA;    &quot;eventType&quot;:&quot;workitem.created&quot;,&#xA;    &quot;publisherId&quot;:&quot;tfs&quot;,&#xA;    &quot;message&quot;:null,&#xA;    &quot;detailedMessage&quot;:null,&#xA;    &quot;resource&quot;:{&#xA;        &quot;id&quot;:99,&#xA;        &quot;rev&quot;:2,&#xA;        &quot;fields&quot;:{&#xA;            &quot;System.AreaPath&quot;:&quot;customer.TimeCockpit&quot;,&#xA;            &quot;System.TeamProject&quot;:&quot;customer.TimeCockpit&quot;,&#xA;            &quot;System.IterationPath&quot;:&quot;customer.TimeCockpit&quot;,&#xA;            &quot;System.WorkItemType&quot;:&quot;Product Backlog Item&quot;,&#xA;            &quot;System.State&quot;:&quot;New&quot;,&#xA;            &quot;System.Reason&quot;:&quot;New backlog item&quot;,&#xA;            &quot;System.CreatedDate&quot;:&quot;2015-03-25T14:13:33.74Z&quot;,&#xA;            &quot;System.CreatedBy&quot;:&quot;Alexander Huber &lt;alexander.huber@software-architects.at&gt;&quot;,&#xA;            &quot;System.ChangedDate&quot;:&quot;2015-03-25T14:13:34.247Z&quot;,&#xA;            &quot;System.ChangedBy&quot;:&quot;Alexander Huber &lt;alexander.huber@software-architects.at&gt;&quot;,&#xA;            &quot;System.Title&quot;:&quot;US2&quot;,&#xA;            &quot;Microsoft.VSTS.Common.BacklogPriority&quot;:999968378.0,&#xA;            &quot;WEF_6FEC0B85A7B44F0A9E5C593CFB2B9923_Kanban.Column&quot;:&quot;New&quot;,&#xA;            &quot;WEF_6FEC0B85A7B44F0A9E5C593CFB2B9923_Kanban.Column.Done&quot;:false&#xA;        },&#xA;        &quot;_links&quot;:{&#xA;            &quot;self&quot;:{&#xA;                &quot;href&quot;:&quot;https://timecockpit.visualstudio.com/DefaultCollection/_apis/wit/workItems/99&quot;&#xA;            },&#xA;            &quot;workItemUpdates&quot;:{&#xA;                &quot;href&quot;:&quot;https://timecockpit.visualstudio.com/DefaultCollection/_apis/wit/workItems/99/updates&quot;&#xA;            },&#xA;            &quot;workItemRevisions&quot;:{&#xA;                &quot;href&quot;:&quot;https://timecockpit.visualstudio.com/DefaultCollection/_apis/wit/workItems/99/revisions&quot;&#xA;            },&#xA;            &quot;workItemHistory&quot;:{&#xA;                &quot;href&quot;:&quot;https://timecockpit.visualstudio.com/DefaultCollection/_apis/wit/workItems/99/history&quot;&#xA;            },&#xA;            &quot;html&quot;:{&#xA;                &quot;href&quot;:&quot;https://timecockpit.visualstudio.com/web/wi.aspx?pcguid=788898a5-293e-4f98-95ec-76745e3546b0&amp;id=99&quot;&#xA;            },&#xA;            &quot;workItemType&quot;:{&#xA;                &quot;href&quot;:&quot;https://timecockpit.visualstudio.com/DefaultCollection/5433c2ed-09b4-4c16-93e1-08b440c6f9b1/_apis/wit/workItemTypes/Product%20Backlog%20Item&quot;&#xA;            },&#xA;            &quot;fields&quot;:{&#xA;                &quot;href&quot;:&quot;https://timecockpit.visualstudio.com/DefaultCollection/_apis/wit/fields&quot;&#xA;            }&#xA;        },&#xA;        &quot;url&quot;:&quot;https://timecockpit.visualstudio.com/DefaultCollection/_apis/wit/workItems/99&quot;&#xA;    },&#xA;    &quot;resourceVersion&quot;:&quot;1.0&quot;,&#xA;    &quot;resourceContainers&quot;:{&#xA;        &quot;collection&quot;:{&#xA;            &quot;id&quot;:&quot;788898a5-293e-4f98-95ec-76745e3546b0&quot;&#xA;        },&#xA;        &quot;account&quot;:{&#xA;            &quot;id&quot;:&quot;95d4d3b2-7815-4e93-a7be-b8f353767e88&quot;&#xA;        },&#xA;        &quot;project&quot;:{&#xA;            &quot;id&quot;:&quot;5433c2ed-09b4-4c16-93e1-08b440c6f9b1&quot;&#xA;        }&#xA;    },&#xA;    &quot;createdDate&quot;:&quot;2015-03-25T14:13:33.5133467Z&quot;&#xA;}{% endhighlight %}Processing a Web Hook Message</h3><p xmlns="http://www.w3.org/1999/xhtml">As mentioned earlier, there are different types of web jobs. To process the message that was posted by the web hook we use a web job that runs continuously. Whenever the web job discovers a new entry in the message queue, it picks up the message and processes it. </p><p xmlns="http://www.w3.org/1999/xhtml">As for the console application that is continuously run by the web job, we want to share three code snippets that help you get started. First, you need to configure the credentials that are used to connect to the Microsoft Azure Storage account that contains the queue receiving the web hook messages. The credentials are configured in your <em>App.config</em> file and may look like the following:</p><p xmlns="http://www.w3.org/1999/xhtml">
-  {% highlight javascript %}&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xA;&lt;configuration&gt;&#xA;&#x9;&lt;connectionStrings&gt;&#xA;&#x9;&#x9;&lt;!-- The format of the connection string is &quot;DefaultEndpointsProtocol=https;AccountName=NAME;AccountKey=KEY&quot; --&gt;&#xA;&#x9;&#x9;&lt;!-- For local execution, the value can be set either in this config file or through environment variables --&gt;&#xA;&#x9;&#x9;&lt;add name=&quot;AzureWebJobsDashboard&quot; connectionString=&quot;DefaultEndpointsProtocol=https;AccountName=XXX;AccountKey=XXX&quot; /&gt;&#xA;&#x9;&#x9;&lt;add name=&quot;AzureWebJobsStorage&quot; connectionString=&quot;DefaultEndpointsProtocol=https;AccountName=XXX;AccountKey=XXX&quot; /&gt;&#xA;&#x9;&lt;/connectionStrings&gt;&#xA;&#x9;...&#xA;&lt;/configuration&gt;{% endhighlight %}Next, we need to tell the web job that it should listen for changes in the message queue and run the actual functions that process the message. The heavily lifting is done by the  <em>JobHost<strong>.</strong></em> The <em>JobHost</em> is configured in the <em>main</em> method of our console application that we use to process the web hook messages and uses the connection strings from our <em>App.config</em> file.</p>{% highlight javascript %}using System;&#xA;using System.Collections.Generic;&#xA;using System.Linq;&#xA;using System.Text;&#xA;using System.Threading.Tasks;&#xA;using Microsoft.Azure.WebJobs;&#xA;&#xA;class Program&#xA;{&#xA;&#x9;static void Main()&#xA;&#x9;{&#xA;&#x9;&#x9;var config = new JobHostConfiguration();&#xA;&#x9;&#x9;config.Queues.BatchSize = 1; // no concurrent invocation&#xA;&#x9;&#x9;var host = new JobHost(config);&#xA;&#x9;&#x9;host.RunAndBlock();&#xA;&#x9;}&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Last, we need to tell the <em>JobHost</em> what method to run when a new JSON message is discovered in the message queue. You can call the function that does the processing whatever you like, but it needs to fulfill the following two requirements:</p><ol xmlns="http://www.w3.org/1999/xhtml">
+  {% highlight javascript %}{
+    &quot;id&quot;:&quot;416a5d89-9a7d-4116-a476-e1b53b0a7989&quot;,
+    &quot;eventType&quot;:&quot;workitem.created&quot;,
+    &quot;publisherId&quot;:&quot;tfs&quot;,
+    &quot;message&quot;:null,
+    &quot;detailedMessage&quot;:null,
+    &quot;resource&quot;:{
+        &quot;id&quot;:99,
+        &quot;rev&quot;:2,
+        &quot;fields&quot;:{
+            &quot;System.AreaPath&quot;:&quot;customer.TimeCockpit&quot;,
+            &quot;System.TeamProject&quot;:&quot;customer.TimeCockpit&quot;,
+            &quot;System.IterationPath&quot;:&quot;customer.TimeCockpit&quot;,
+            &quot;System.WorkItemType&quot;:&quot;Product Backlog Item&quot;,
+            &quot;System.State&quot;:&quot;New&quot;,
+            &quot;System.Reason&quot;:&quot;New backlog item&quot;,
+            &quot;System.CreatedDate&quot;:&quot;2015-03-25T14:13:33.74Z&quot;,
+            &quot;System.CreatedBy&quot;:&quot;Alexander Huber &lt;alexander.huber@software-architects.at&gt;&quot;,
+            &quot;System.ChangedDate&quot;:&quot;2015-03-25T14:13:34.247Z&quot;,
+            &quot;System.ChangedBy&quot;:&quot;Alexander Huber &lt;alexander.huber@software-architects.at&gt;&quot;,
+            &quot;System.Title&quot;:&quot;US2&quot;,
+            &quot;Microsoft.VSTS.Common.BacklogPriority&quot;:999968378.0,
+            &quot;WEF_6FEC0B85A7B44F0A9E5C593CFB2B9923_Kanban.Column&quot;:&quot;New&quot;,
+            &quot;WEF_6FEC0B85A7B44F0A9E5C593CFB2B9923_Kanban.Column.Done&quot;:false
+        },
+        &quot;_links&quot;:{
+            &quot;self&quot;:{
+                &quot;href&quot;:&quot;https://timecockpit.visualstudio.com/DefaultCollection/_apis/wit/workItems/99&quot;
+            },
+            &quot;workItemUpdates&quot;:{
+                &quot;href&quot;:&quot;https://timecockpit.visualstudio.com/DefaultCollection/_apis/wit/workItems/99/updates&quot;
+            },
+            &quot;workItemRevisions&quot;:{
+                &quot;href&quot;:&quot;https://timecockpit.visualstudio.com/DefaultCollection/_apis/wit/workItems/99/revisions&quot;
+            },
+            &quot;workItemHistory&quot;:{
+                &quot;href&quot;:&quot;https://timecockpit.visualstudio.com/DefaultCollection/_apis/wit/workItems/99/history&quot;
+            },
+            &quot;html&quot;:{
+                &quot;href&quot;:&quot;https://timecockpit.visualstudio.com/web/wi.aspx?pcguid=788898a5-293e-4f98-95ec-76745e3546b0&amp;id=99&quot;
+            },
+            &quot;workItemType&quot;:{
+                &quot;href&quot;:&quot;https://timecockpit.visualstudio.com/DefaultCollection/5433c2ed-09b4-4c16-93e1-08b440c6f9b1/_apis/wit/workItemTypes/Product%20Backlog%20Item&quot;
+            },
+            &quot;fields&quot;:{
+                &quot;href&quot;:&quot;https://timecockpit.visualstudio.com/DefaultCollection/_apis/wit/fields&quot;
+            }
+        },
+        &quot;url&quot;:&quot;https://timecockpit.visualstudio.com/DefaultCollection/_apis/wit/workItems/99&quot;
+    },
+    &quot;resourceVersion&quot;:&quot;1.0&quot;,
+    &quot;resourceContainers&quot;:{
+        &quot;collection&quot;:{
+            &quot;id&quot;:&quot;788898a5-293e-4f98-95ec-76745e3546b0&quot;
+        },
+        &quot;account&quot;:{
+            &quot;id&quot;:&quot;95d4d3b2-7815-4e93-a7be-b8f353767e88&quot;
+        },
+        &quot;project&quot;:{
+            &quot;id&quot;:&quot;5433c2ed-09b4-4c16-93e1-08b440c6f9b1&quot;
+        }
+    },
+    &quot;createdDate&quot;:&quot;2015-03-25T14:13:33.5133467Z&quot;
+}{% endhighlight %}Processing a Web Hook Message</h3><p xmlns="http://www.w3.org/1999/xhtml">As mentioned earlier, there are different types of web jobs. To process the message that was posted by the web hook we use a web job that runs continuously. Whenever the web job discovers a new entry in the message queue, it picks up the message and processes it. </p><p xmlns="http://www.w3.org/1999/xhtml">As for the console application that is continuously run by the web job, we want to share three code snippets that help you get started. First, you need to configure the credentials that are used to connect to the Microsoft Azure Storage account that contains the queue receiving the web hook messages. The credentials are configured in your <em>App.config</em> file and may look like the following:</p><p xmlns="http://www.w3.org/1999/xhtml">
+  {% highlight javascript %}&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;configuration&gt;
+    &lt;connectionStrings&gt;
+        &lt;!-- The format of the connection string is &quot;DefaultEndpointsProtocol=https;AccountName=NAME;AccountKey=KEY&quot; --&gt;
+        &lt;!-- For local execution, the value can be set either in this config file or through environment variables --&gt;
+        &lt;add name=&quot;AzureWebJobsDashboard&quot; connectionString=&quot;DefaultEndpointsProtocol=https;AccountName=XXX;AccountKey=XXX&quot; /&gt;
+        &lt;add name=&quot;AzureWebJobsStorage&quot; connectionString=&quot;DefaultEndpointsProtocol=https;AccountName=XXX;AccountKey=XXX&quot; /&gt;
+    &lt;/connectionStrings&gt;
+    ...
+&lt;/configuration&gt;{% endhighlight %}Next, we need to tell the web job that it should listen for changes in the message queue and run the actual functions that process the message. The heavily lifting is done by the  <em>JobHost<strong>.</strong></em> The <em>JobHost</em> is configured in the <em>main</em> method of our console application that we use to process the web hook messages and uses the connection strings from our <em>App.config</em> file.</p>{% highlight javascript %}using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs;
+
+class Program
+{
+    static void Main()
+    {
+        var config = new JobHostConfiguration();
+        config.Queues.BatchSize = 1; // no concurrent invocation
+        var host = new JobHost(config);
+        host.RunAndBlock();
+    }
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Last, we need to tell the <em>JobHost</em> what method to run when a new JSON message is discovered in the message queue. You can call the function that does the processing whatever you like, but it needs to fulfill the following two requirements:</p><ol xmlns="http://www.w3.org/1999/xhtml">
   <li>The method that processes the message needs to be <em>static</em> (at the time of writing).</li>
   <li>The method that processes the message needs to have a parameter that is decorated with the <em>QueueTrigger</em> attribute.</li>
-</ol>{% highlight javascript %}public static void ProcessQueueMessage([QueueTrigger(&quot;vso-work-item&quot;)] string message, TextWriter log)&#xA;{&#xA;&#x9;var command = JObject.Parse(message);&#xA;&#x9;if (command.Property(&quot;eventType&quot;) == null)&#xA;&#x9;{&#xA;&#x9;&#x9;Console.Error.WriteLine(&quot;Could not determine event type for message: {0}&quot;, message);&#xA;&#x9;&#x9;return;&#xA;&#x9;}&#xA;&#xA;&#x9;var eventType = (string)command[&quot;eventType&quot;];&#xA;&#x9;var url = string.Empty;&#xA;&#x9;switch (eventType)&#xA;&#x9;{&#xA;&#x9;&#x9;case &quot;workitem.created&quot;:&#xA;&#x9;&#x9;&#x9;CreateWorkItem(command, log);&#xA;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;case &quot;workitem.updated&quot;:&#xA;&#x9;&#x9;&#x9;UpdateWorkItem(command, log);&#xA;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;default:&#xA;&#x9;&#x9;&#x9;Console.Error.WriteLine(&quot;Unexpected event type {1} for message: {0}&quot;, message, eventType);&#xA;&#x9;&#x9;&#x9;break;&#xA;&#x9;}&#xA;}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The above listing shows some sample code that can be used to process a VSO web hook message. The most imporant part of the code is the <em>QueueTrigger</em> attribute. As mentioned earlier, it tells the <em>JobHost</em> to execute it whenever it discovers a new message in the message queue. Also note that in the attribute you tell the JobHost which queue it should actually listen to.</p><p xmlns="http://www.w3.org/1999/xhtml">Of course the processing of the JSON message depends on the given use case. As for our integration scenario, we parse the JSON message and decide whether the message represents an update or a create. If the message represents a create operation, we create a corrensponding task in time cockpit. If the message represents an update operation, we update the given task in time cockpit with the values from VSO. </p>
+</ol>{% highlight javascript %}public static void ProcessQueueMessage([QueueTrigger(&quot;vso-work-item&quot;)] string message, TextWriter log)
+{
+    var command = JObject.Parse(message);
+    if (command.Property(&quot;eventType&quot;) == null)
+    {
+        Console.Error.WriteLine(&quot;Could not determine event type for message: {0}&quot;, message);
+        return;
+    }
+
+    var eventType = (string)command[&quot;eventType&quot;];
+    var url = string.Empty;
+    switch (eventType)
+    {
+        case &quot;workitem.created&quot;:
+            CreateWorkItem(command, log);
+            break;
+        case &quot;workitem.updated&quot;:
+            UpdateWorkItem(command, log);
+            break;
+        default:
+            Console.Error.WriteLine(&quot;Unexpected event type {1} for message: {0}&quot;, message, eventType);
+            break;
+    }
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The above listing shows some sample code that can be used to process a VSO web hook message. The most imporant part of the code is the <em>QueueTrigger</em> attribute. As mentioned earlier, it tells the <em>JobHost</em> to execute it whenever it discovers a new message in the message queue. Also note that in the attribute you tell the JobHost which queue it should actually listen to.</p><p xmlns="http://www.w3.org/1999/xhtml">Of course the processing of the JSON message depends on the given use case. As for our integration scenario, we parse the JSON message and decide whether the message represents an update or a create. If the message represents a create operation, we create a corrensponding task in time cockpit. If the message represents an update operation, we update the given task in time cockpit with the values from VSO. </p>
