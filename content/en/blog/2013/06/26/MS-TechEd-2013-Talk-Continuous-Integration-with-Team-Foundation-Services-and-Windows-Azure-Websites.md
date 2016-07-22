@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: MS TechEd 2013 Talk, Continuous Integration with Team Foundation Services and Windows Azure Websites
+teaser: At Microsoft TechEd 2013 I do a session about Continuous Integration with Team Foundation Services and Windows Azure Websites. In this blog article you find the source code and a video of the sample.
 author: Rainer Stropek
+date: 2013-26-26
 bannerimage: 
-permalink: /2013/06/26/MS-TechEd-2013-Talk-Continuous-Integration-with-Team-Foundation-Services-and-Windows-Azure-Websites
+permalink: /blog/2013/06/26/MS-TechEd-2013-Talk-Continuous-Integration-with-Team-Foundation-Services-and-Windows-Azure-Websites
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">At <a href="http://channel9.msdn.com/Events/TechEd/Europe/2013/WAD-B302" target="_blank">Microsoft TechEd 2013</a> I do a session about <em>Continuous Integration with Team Foundation Services and Windows Azure Websites</em>. In this blog article you find the source code and a video of the sample. The sample covers the following topics:</p><ul xmlns="http://www.w3.org/1999/xhtml">
@@ -16,5 +18,5 @@ permalink: /2013/06/26/MS-TechEd-2013-Talk-Continuous-Integration-with-Team-Foun
     <a href="http://www.slideshare.net/rstropek/wad-b302-stropekv03" title="MS TechEd 2013: Continuous Integration with Team Foundation Services and Windows Azure Websites" target="_blank">MS TechEd 2013: Continuous Integration with Team Foundation Services and Windows Azure Websites</a>
   </strong> from <strong><a href="http://www.slideshare.net/rstropek" target="_blank">Rainer Stropek</a></strong></div><h2 xmlns="http://www.w3.org/1999/xhtml">Sample Code</h2><p xmlns="http://www.w3.org/1999/xhtml">
   <strong>
-    <a href="{{site.baseurl}}/images/blog/2013/06/BeeInMyGarden.zip" target="_blank">Download the entire sample</a> (ZIP File)</strong>
+    <a href="{{site.baseurl}}/content/images/blog/2013/06/BeeInMyGarden.zip" target="_blank">Download the entire sample</a> (ZIP File)</strong>
 </p>

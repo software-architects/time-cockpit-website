@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Cloudconf 2013 Berlin, Windows Azure Active Directory
+teaser: Yesterday I was speaker at the Cloudconf 2013 in Berlin. My first session was about Windows Azure Websites. The second one was an introduction into Windows Azure Active Directory. I recorded the second session (German). Here it is.
 author: Rainer Stropek
+date: 2013-23-05
 bannerimage: 
-permalink: /2013/12/05/Cloudconf-2013-Berlin-Windows-Azure-Active-Directory
+permalink: /blog/2013/12/05/Cloudconf-2013-Berlin-Windows-Azure-Active-Directory
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">Yesterday I was speaker at the <a href="http://www.cloudconf.de/" target="_blank">Cloudconf 2013</a> in Berlin. My first session was about Windows Azure Websites. The second one was an introduction into Windows Azure Active Directory. I recorded the second session (German). Here is the German abstract of my WAAD session:</p><div style="margin-left: 2em" data-mce-style="margin-left: 2em;" xmlns="http://www.w3.org/1999/xhtml">

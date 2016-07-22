@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Microsoft Imagine Cup in St. Petersburg
+teaser: Currently I am at the worldwide finals of Microsoft’s Imagine Cup in St. Petersburg/Russia. It is my first time to Imagine Cup and I am deeply impressed. I was invited to come to St. Petersburg as a mentor for two teams of students, one from India (Y’nots) and one from Austria (Zeppelin Studio). Both teams did a great job presenting their projects in front of the judges yesterday. Congratulations!
 author: Rainer Stropek
+date: 2013-49-10
 bannerimage: 
-permalink: /2013/07/10/Microsoft-Imagine-Cup-in-St-Petersburg
+permalink: /blog/2013/07/10/Microsoft-Imagine-Cup-in-St-Petersburg
 ---
 
 <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">

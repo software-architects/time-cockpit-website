@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: What's New In Version December 2013
+teaser: In this release of time cockpit we have improved the new reporting features.
 author: Karin Huber
+date: 2013-20-29
 bannerimage: 
-permalink: /2013/11/29/Whats-New-In-Version-December-2013
+permalink: /blog/2013/11/29/Whats-New-In-Version-December-2013
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">In this release of time cockpit we have mainly improved the new reporting feature.</p><p xmlns="http://www.w3.org/1999/xhtml">
@@ -17,5 +19,5 @@ permalink: /2013/11/29/Whats-New-In-Version-December-2013
 </ul><p xmlns="http://www.w3.org/1999/xhtml">
   <a href="http://www.timecockpit.com/blog/2013/11/27/Reporting-Preview-Improvements" title="New Reporting Features in Time Cockpit">Read more about the new reporting features ...</a>
 </p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">Please be aware that this is just a preview and not yet feature complete. So if you have feedback, suggestions, or problems we would love to hear your feedback at <a href="mailto:support@timecockpit.com">support@timecockpit.com</a>.</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2013/11/Reporting/ReporingConfigurationSmall.png" alt="Report Configuration" title="Report Configuration" />
+  <img src="{{site.baseurl}}/content/images/blog/2013/11/Reporting/ReporingConfigurationSmall.png" alt="Report Configuration" title="Report Configuration" />
 </p>

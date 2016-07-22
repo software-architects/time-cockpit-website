@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Version 1.5 is Available 
+teaser: This new version of time cockpit is available for a few days now. The main focus of this version was to improve the new features of version 1.4  and fix some bugs.
 author: Karin Huber
+date: 2010-46-25
 bannerimage: 
-permalink: /2010/11/25/Version-15-is-Available-
+permalink: /blog/2010/11/25/Version-15-is-Available-
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">This new version of time cockpit is available for a few days now. The main focus of this version was to improve the new features of version 1.4  and fix some bugs.</p><p xmlns="http://www.w3.org/1999/xhtml">Please note that all users in a tenant have to switch to the new version as soon as the first user in the tenant installs this version, because users with older versions will not be able to sync their data with the server anymore. They can continue to use time cockpit, track their signals and work locally on their pc but as long as their client version is older as the server version no synchronization with the server is possible.</p><h2 xmlns="http://www.w3.org/1999/xhtml">What's changed</h2><ul xmlns="http://www.w3.org/1999/xhtml">

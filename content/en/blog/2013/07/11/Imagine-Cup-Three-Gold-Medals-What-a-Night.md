@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Imagine Cup, Three Gold Medals, What a Night!
+teaser: Today was the day of the truth. How would my Indian and Austrian mentees score in Microsoft's Imagine Cup. Finally it was a huge success for all of us. We can celebrate three gold medals.
 author: Rainer Stropek
+date: 2013-41-11
 bannerimage: 
-permalink: /2013/07/11/Imagine-Cup-Three-Gold-Medals-What-a-Night
+permalink: /blog/2013/07/11/Imagine-Cup-Three-Gold-Medals-What-a-Night
 ---
 
 <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">

@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Agile and Scrum in Mission-Critical Projects
+teaser: Last week I learned a lesson about the agile approach in such critical projects the hard way. I had an accident with my mountain bike. I fell directly on my shoulder and I immediately knew that it wasn’t just a bruise. X-ray and CAT scanner showed that it was a complex fracture. Now what has that to do with agile development? It turned out that the shoulder surgery I needed would be agile.
 author: Rainer Stropek
+date: 2014-58-18
 bannerimage: 
-permalink: /2014/05/18/Agile-and-Scrum-in-Mission-Critical-Projects
+permalink: /blog/2014/05/18/Agile-and-Scrum-in-Mission-Critical-Projects
 ---
 
 <div class="imageCaption" xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2014/05/ShoulderXRay.jpg" />Image source: <a href="https://www.flickr.com/photos/dok1/6555922825/" target="_blank">https://www.flickr.com/photos/dok1/6555922825/</a>, under <a href="https://creativecommons.org/licenses/by/2.0/deed.de" target="_blank">Creative Commons</a> License
+  <img src="{{site.baseurl}}/content/images/blog/2014/05/ShoulderXRay.jpg" />Image source: <a href="https://www.flickr.com/photos/dok1/6555922825/" target="_blank">https://www.flickr.com/photos/dok1/6555922825/</a>, under <a href="https://creativecommons.org/licenses/by/2.0/deed.de" target="_blank">Creative Commons</a> License
 <br />
 Although this is not my own shoulder, my X-Ray image looks very similar as I now have 9 screws in my arm, too.</div><h2 xmlns="http://www.w3.org/1999/xhtml">Agile is Often a Hard Sell in Mission-Critical Projects</h2><p xmlns="http://www.w3.org/1999/xhtml">In our business we have different kinds of projects. All of them are important to our customers, otherwise they won‘t do them. But let‘s face it, not all of them are mission-critical. If the introduction of time cockpit in a customer‘s organization would fail (has never happened before, just a thought experiment), the team might not be as efficient as it could be, invoices might be delayed, customers might receive inaccurate project reports. But at the end of the day business would continue. On the other hand we have customers who bet the farm on us. One-product companies who rely 100% on our libraries, products, technologies, and knowledge.</p><p xmlns="http://www.w3.org/1999/xhtml">In such critical projects, an agile approach like Scrum or Kanban is often a hard sell. If a project is really, really important, customers want to reduce risk. With its iterative nature and its missing big design upfront, agile development isn’t very appealing to them at first sight.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Agile Shoulder Surgery, Are You Serious?!</h2><p xmlns="http://www.w3.org/1999/xhtml">Last week I learned a lesson about the agile approach in such critical projects the hard way. I had an accident with my mountain bike. I fell directly on my shoulder and I immediately knew that it wasn’t just a bruise. X-ray and CAT scanner showed that it was a complex fracture. Now what has that to do with agile development? It turned out that the shoulder surgery I needed would be agile.</p><p xmlns="http://www.w3.org/1999/xhtml">Before I was brought to the theater, I talked to the doctor who would do the surgery. He made a few points very clear to me:</p><ol xmlns="http://www.w3.org/1999/xhtml">
   <li>Although we had all the images, he wasn’t completely sure what he will find when opening my shoulder. So he had limited knowledge about the circumstances of the project.</li>

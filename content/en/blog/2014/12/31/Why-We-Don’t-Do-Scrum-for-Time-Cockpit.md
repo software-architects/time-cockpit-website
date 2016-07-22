@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Why We Don’t Do Scrum for Time Cockpit
+teaser: We did Scrum years ago for the initial development of time cockpit. Granted, there were times where we managed to do Scrum nearly by the book but sometimes we got a bit lazy. Nevertheless, it worked perfectly fine for us. Today, we don’t do Scrum anymore. In this blog article I want to describe why we turned away from it and how we manage our development process today.
 author: Rainer Stropek
-bannerimage: /images/blog/2014/12/5141328136_16d8f73ee7_b.jpg
-permalink: /2014/12/31/Why-We-Don’t-Do-Scrum-for-Time-Cockpit
+date: 2014-14-31
+bannerimage: /content/images/blog/2014/12/5141328136_16d8f73ee7_b.jpg
+permalink: /blog/2014/12/31/Why-We-Don’t-Do-Scrum-for-Time-Cockpit
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2014/12/5141328136_16d8f73ee7_b.jpg" />
+  <img src="{{site.baseurl}}/content/images/blog/2014/12/5141328136_16d8f73ee7_b.jpg" />
 </p><p class="imageCaption" xmlns="http://www.w3.org/1999/xhtml">Image source: <a href="https://flic.kr/p/8QjDJy" target="_blank">https://flic.kr/p/8QjDJy</a>, under <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License</p><p xmlns="http://www.w3.org/1999/xhtml">We did Scrum years ago for the initial development of time cockpit. Granted, there were times where we managed to do Scrum nearly by the book but sometimes we got a bit lazy. Nevertheless, it worked perfectly fine for us. Now we don’t do Scrum anymore. In this blog article I want to describe why we turned away from it and how we manage our development process today.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">If Scrum is new for you, I recommend reading the <a href="http://www.scrumguides.org/" target="_blank">Scrum Guide</a> which is available for free.</p><h2 xmlns="http://www.w3.org/1999/xhtml">What Scrum is Good For</h2><p xmlns="http://www.w3.org/1999/xhtml">Regularly, customers in the software development industry ask us to do consulting work independent of time cockpit. Sometimes they need technical advice and sometimes they have just problems with their business processes. Over the years I have recommended Scrum to many development teams during that consulting workshops.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">The reason is that in my opinion Scrum is a great solution for teams with all or some of the following problems:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>The team builds infrequent, big releases. Rolling them out is a pain.</li>
   <li>Developers tend to start working on many different topics but struggle to complete them (and I really mean <em>complete</em> including documentation, tests, etc.).</li>

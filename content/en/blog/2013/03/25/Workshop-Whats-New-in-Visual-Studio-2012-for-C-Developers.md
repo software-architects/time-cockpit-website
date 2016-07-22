@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Workshop, What's New in Visual Studio 2012 for C++ Developers
+teaser: For a Microsoft event we have been hired to do a full-day workshop about news in Visual Studio 2012 for C++ developers. The workshop took place at Microsoft's Innovation Center in Vienna last Friday. In this blog article you find the slides and the samples that I have used in the workshop
 author: Philipp Aumayr
+date: 2013-47-25
 bannerimage: 
-permalink: /2013/03/25/Workshop-Whats-New-in-Visual-Studio-2012-for-C-Developers
+permalink: /blog/2013/03/25/Workshop-Whats-New-in-Visual-Studio-2012-for-C-Developers
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">For a Microsoft event we have been hired to do a full-day workshop about news in <strong>Visual Studio 2012 for C++ developers</strong>. The workshop took place at Microsoft's Innovation Center in Vienna last Friday. In this blog article you find the slides and the samples that I have used in the workshop.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Overview</h2><p xmlns="http://www.w3.org/1999/xhtml">On the one hand I covered language-related features (C++ 11) and on the other hand I talked about enhancements in the Visual Studio IDE. Here is a list of topics I touched during the workshop day:</p><ul xmlns="http://www.w3.org/1999/xhtml">
@@ -17,4 +19,4 @@ permalink: /2013/03/25/Workshop-Whats-New-in-Visual-Studio-2012-for-C-Developers
   <strong>
     <a href="http://de.slideshare.net/rstropek/vcpp2012-full-styled" title="What's New in Visual Studio 2012 for C++ Developers" target="_blank">What's New in Visual Studio 2012 for C++ Developers</a>
   </strong> from <strong>Philipp Aumayr</strong></div><h2 xmlns="http://www.w3.org/1999/xhtml">Samples</h2><p xmlns="http://www.w3.org/1999/xhtml">
-  <a href="{{site.baseurl}}/images/blog/2013/03/VC2012.zip" title="Samples for C++ workshop" target="_blank">Download the samples (ZIP-File)</a>.</p>
+  <a href="{{site.baseurl}}/content/images/blog/2013/03/VC2012.zip" title="Samples for C++ workshop" target="_blank">Download the samples (ZIP-File)</a>.</p>

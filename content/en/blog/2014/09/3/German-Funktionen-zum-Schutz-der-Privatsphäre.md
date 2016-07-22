@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: (German) Funktionen zum Schutz der Privatsphäre
+teaser: Das Risiko für Konflikte bei erstmaliger Einführung einer Projektzeiterfassung ist nicht zu unterschätzen. Information der Mitarbeiter ist ein Schlüssel zum Erfolg. Ein wichtiges Thema dabei ist die Wahrung der Privatsphäre. In diesem Blogartikel geben wir einen Überblick, welche Funktionen time cockpit diesbezüglich enthält.
 author: Rainer Stropek
+date: 2014-40-03
 bannerimage: 
-permalink: /2014/09/3/German-Funktionen-zum-Schutz-der-Privatsphäre
+permalink: /blog/2014/09/3/German-Funktionen-zum-Schutz-der-Privatsphäre
 ---
 
 <div class="imageCaption" xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2014/09/8521624548_2a1489aa94_k.jpg" />Image source: <a href="https://flic.kr/p/dZ2y6b" target="_blank">https://flic.kr/p/aX4XeR</a>, under <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons</a> License</div><p xmlns="http://www.w3.org/1999/xhtml">Das Risiko von Konflikten bei erstmaliger Einführung einer Projektzeiterfassung in einem Team ist nicht zu unterschätzen. Information der Mitarbeiter ist ein Schlüssel zum Erfolg. Ein wichtiges Thema dabei ist die Wahrung der Privatsphäre. In diesem Blogartikel geben wir einen Überblick, welche Funktionen time cockpit diesbezüglich enthält.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Arten von Daten</h2><p xmlns="http://www.w3.org/1999/xhtml">In time cockpit unterscheiden wir zwei Grundtypen von Daten:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+  <img src="{{site.baseurl}}/content/images/blog/2014/09/8521624548_2a1489aa94_k.jpg" />Image source: <a href="https://flic.kr/p/dZ2y6b" target="_blank">https://flic.kr/p/aX4XeR</a>, under <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons</a> License</div><p xmlns="http://www.w3.org/1999/xhtml">Das Risiko von Konflikten bei erstmaliger Einführung einer Projektzeiterfassung in einem Team ist nicht zu unterschätzen. Information der Mitarbeiter ist ein Schlüssel zum Erfolg. Ein wichtiges Thema dabei ist die Wahrung der Privatsphäre. In diesem Blogartikel geben wir einen Überblick, welche Funktionen time cockpit diesbezüglich enthält.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Arten von Daten</h2><p xmlns="http://www.w3.org/1999/xhtml">In time cockpit unterscheiden wir zwei Grundtypen von Daten:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Stamm- und Bewegungsdaten</li>
   <li>Signaldaten</li>
 </ul><h3 xmlns="http://www.w3.org/1999/xhtml">Stamm- und Bewegungsdaten</h3><p xmlns="http://www.w3.org/1999/xhtml">
@@ -27,9 +29,9 @@ permalink: /2014/09/3/German-Funktionen-zum-Schutz-der-Privatsphäre
   <f:param name="ImageMaxWidth" value="1280" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ImageMaxHeight" value="1024" xmlns:f="http://www.composite.net/ns/function/1.0" />
 </f:function><p xmlns="http://www.w3.org/1999/xhtml">Eine Beschreibung des Einrichtens von time cockpit finden Sie in unserer <a href="http://help.timecockpit.com/?topic=html/252608c7-8762-4745-ad68-b495fbf0a17f.htm" target="_blank">Onlinehilfe</a>. Die Eingabe des Signaldatenpassworts ist dort ebenfalls beschrieben.</p><h3 xmlns="http://www.w3.org/1999/xhtml">Pausieren der Aufzeichnung</h3><p xmlns="http://www.w3.org/1999/xhtml">Falls Sie auf Ihrem PC eine Aufgabe erledigen, die keinesfalls aufgezeichnet werden soll, können Sie die Aufzeichnung pausieren. Klicken Sie dazu mit der rechten Maustaste auf das time cockpit Icon in der Statusleiste und wählen Sie "Pausieren". Sobald das time cockpit Icon grau geworden ist, ist die Aufzeichnung gestoppt.</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2014/09/PauseTracking.png" />
+  <img src="{{site.baseurl}}/content/images/blog/2014/09/PauseTracking.png" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">Nach Abschluss der Arbeit können sie die Signaltracker wieder starten.</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2014/09/ResumeTracking.png" />
+  <img src="{{site.baseurl}}/content/images/blog/2014/09/ResumeTracking.png" />
 </p><h3 xmlns="http://www.w3.org/1999/xhtml">Permanentes Beenden der Aufzeichnung</h3><p xmlns="http://www.w3.org/1999/xhtml">Falls Sie alle oder einige Signal Tracker dauerhaft beenden möchten, können Sie das in time cockpit Einstellen. Beendete Signal Tracker werden auch nach einem Neustart Ihres Computers nicht automatisch gestartet.</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
   <f:param name="MediaImage" value="MediaArchive:e6a29509-9287-4d5f-b75c-b9b59238ecdf" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ThumbnailMaxWidth" value="300" xmlns:f="http://www.composite.net/ns/function/1.0" />
@@ -37,5 +39,5 @@ permalink: /2014/09/3/German-Funktionen-zum-Schutz-der-Privatsphäre
   <f:param name="ImageMaxWidth" value="1280" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ImageMaxHeight" value="1024" xmlns:f="http://www.composite.net/ns/function/1.0" />
 </f:function><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">Tipp für Administratoren: Standardmäßig sind die Signal Tracker nach der Installation von time cockpit gestartet. Benutzer können sie gegebenenfalls abschalten ("opt-out"). Falls Sie die Signal Tracker standardmäßig gestoppt haben möchten ("opt-in"), können Sie dies durch eine Einstellung in der Windows Registry steuern (<a href="http://help.timecockpit.com/?topic=html/93de1e41-f31c-41e4-968b-44166e8be97b.htm#SignalTrackerAutostart" target="_blank">Details siehe Onlinehilfe</a>).</p><h3 xmlns="http://www.w3.org/1999/xhtml">Löschen von nicht mehr benötigten Signaldaten</h3><p xmlns="http://www.w3.org/1999/xhtml">Signaldaten sollen Sie bei der nachträglichen Erfassung Ihrer Arbeitszeiten unterstützen. Wenn Sie die Arbeitszeiten erfasst haben und die Signaldaten daher nicht mehr brauchen, können Sie diese mit wenigen Klicks unwiederbringlich löschen.</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2014/09/DeleteSignalData.png" />
+  <img src="{{site.baseurl}}/content/images/blog/2014/09/DeleteSignalData.png" />
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">Weitere Fragen?</h2><p xmlns="http://www.w3.org/1999/xhtml">Haben Sie weitere Fragen zum Thema Datenschutz und Privatsphäre in time cockpit? <a href="http://www.timecockpit.com/de/hilfe-support/kontakt" target="_blank">Kontaktieren Sie uns</a>, wir beantworten Ihre Fragen gerne.</p>

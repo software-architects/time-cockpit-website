@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: What's New in Version May 2014
+teaser: Years ago when we defined the cornerstones of time cockpit, we decided that extensibility should be a major unique selling proposition of our time tracking software. This month, we are very proud that we can publish the first public preview of a major keystone of our technological strategy: Say hello to time cockpit's new OData Web API.
 author: Karin Huber
+date: 2014-24-30
 bannerimage: 
-permalink: /2014/04/30/Whats-New-in-Version-May-2014
+permalink: /blog/2014/04/30/Whats-New-in-Version-May-2014
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">The new version May 2014 (1.24) is downwards compatible to version March 2013 (1.10) and later. You can use all of these versions in a single account simultaneously.<br /></p><h2 xmlns="http://www.w3.org/1999/xhtml">Time Cockpit OData API</h2><p xmlns="http://www.w3.org/1999/xhtml">Years ago when we defined the cornerstones of time cockpit, we decided that extensibility should be a major unique selling proposition of our time tracking software. This month, we are very proud that we can publish the first public preview of a major keystone of our technological strategy: Say hello to time cockpit's new <em>OData Web API</em>.</p><p xmlns="http://www.w3.org/1999/xhtml">OData is a standard that can connect application like time cockpit or Excel with SaaS services like time cockpit running in the cloud. It is available on many different platforms and it works perfectly for smart clients like time cockpit's offline-enabled full client as well as for thin clients running in the browser. Find more information on how to use the brand new OData API at the following sources:</p><ul xmlns="http://www.w3.org/1999/xhtml">
@@ -19,5 +21,5 @@ permalink: /2014/04/30/Whats-New-in-Version-May-2014
   <li>
     <a href="http://help.timecockpit.com" title="time cockpit help" target="_blank">help.timecockpit.com</a> - Detailed information on how to use, configure and customize time cockpit, samples for integration with other software, documentation of the .NET and OData API, etc.</li>
 </ul><p xmlns="http://www.w3.org/1999/xhtml">To make it easier for you to find the information you are looking for, we have added search functionality to the time cockpit website in the top right corner. Use the new search box to search for information in the time cockpit website as well as in the help website.</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img title="Time Cockpit Website Search" src="{{site.baseurl}}/images/blog/2014/04/time-cockpit-search.png" alt="Time Cockpit Website Search" />
+  <img title="Time Cockpit Website Search" src="{{site.baseurl}}/content/images/blog/2014/04/time-cockpit-search.png" alt="Time Cockpit Website Search" />
 </p><h3 xmlns="http://www.w3.org/1999/xhtml">Full Client</h3><p xmlns="http://www.w3.org/1999/xhtml">This month we focused on the OData Web API mentioned above. Therefore we did not change very much in the full client. The new version contains some minor bug fixes. Additionally, the OData Web API documentation has been added to the offline help.</p>

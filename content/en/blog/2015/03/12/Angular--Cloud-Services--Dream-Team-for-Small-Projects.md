@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Angular + Cloud Services = Dream Team for Small Projects
+teaser: For one of my private hobbies (keeping honey bees), I recently needed a simple registration form. It should just ask for a few data items, use a captcha to protect from spam, save the registrations in a DB, and send me notification emails. Within a few hours everything was up and running. In this blog post I share the code and describe the cloud components you can use to rapidly solve such a requirement.
 author: Rainer Stropek
-bannerimage: /images/blog/2015/03/RegisterThumb.jpg
-permalink: /2015/03/12/Angular--Cloud-Services--Dream-Team-for-Small-Projects
+date: 2015-46-12
+bannerimage: /content/images/blog/2015/03/RegisterThumb.jpg
+permalink: /blog/2015/03/12/Angular--Cloud-Services--Dream-Team-for-Small-Projects
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">For one of my private hobbies (keeping honey bees), I recently needed a simple registration form. It should just ask for a few data items, use a <a href="http://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA</a> to protect from spam, save the registrations in a DB, and send me a notification email. Within a few hours everything was up and running. In this blog post I share the code and describe the cloud components you can use to rapidly solve such a requirement.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Necessary Components</h2><p xmlns="http://www.w3.org/1999/xhtml">First, I made a list of components I would need to solve this problem.</p><ul xmlns="http://www.w3.org/1999/xhtml">

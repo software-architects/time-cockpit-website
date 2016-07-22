@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Workshop about Agile Development and Scrum
+teaser: Last week I did a workshop for a customer on agile software development and scrum. In this blog post I publish the slides that I have used.
 author: Rainer Stropek
+date: 2013-17-29
 bannerimage: 
-permalink: /2013/04/29/Workshop-about-Agile-Development-and-Scrum
+permalink: /blog/2013/04/29/Workshop-about-Agile-Development-and-Scrum
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">Last week I did a workshop for a customer on agile software development and scrum. In this blog post I publish the slides that I have used.</p><iframe src="http://de.slideshare.net/slideshow/embed_code/20180699?rel=0" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" xmlns="http://www.w3.org/1999/xhtml"></iframe><div style="margin-bottom:5px" data-mce-style="margin-bottom: 5px;" xmlns="http://www.w3.org/1999/xhtml">

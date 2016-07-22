@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Setting Up Team Leader / Member Permissions in Time Cockpit
+teaser: A common scenario in time cockpit is assigning different permissions to team leaders and team members. Team leaders should see all time sheet records of all members whereas team members should only see their own records. In this blog post you learn how you can set up this logic in time cockpit within a few minutes.
 author: Rainer Stropek
+date: 2014-44-14
 bannerimage: 
-permalink: /2014/07/14/Setting-Up-Team-Leader--Member-Permissions-in-Time-Cockpit
+permalink: /blog/2014/07/14/Setting-Up-Team-Leader--Member-Permissions-in-Time-Cockpit
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">A common scenario in time cockpit is assigning different permissions to team leaders and team members. Team leaders should see all time sheet records of all members whereas team members should only see their own records. In this blog post you learn how you can set up this logic in time cockpit within a few minutes.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Requirement</h2><p xmlns="http://www.w3.org/1999/xhtml">This is the scenario that I want to implement in this blog post:</p><ol xmlns="http://www.w3.org/1999/xhtml">
@@ -20,6 +22,6 @@ permalink: /2014/07/14/Setting-Up-Team-Leader--Member-Permissions-in-Time-Cockpi
 
 <ol><li>Create a new form for <em>APP_Department</em>.</li><li>Create a new list for <em>APP_Department</em>.</li><li>Set the new form and list as the new UI for the <em>APP_Department</em> entity.</li></ol></li>
   <li>Create a set containing all departments that the current user is leader of. Here is the <a href="http://help.timecockpit.com/?topic=html/a7465f29-c739-4a14-bf5b-09821133dd9a.htm" target="_blank">TCQL</a> statement that is shown in the video above:</li>
-</ol>{% highlight javascript}From D In TeamLeader&#xA;Where D.TeamLeaderUser.UserDetailUuid = Environment.CurrentUser.UserDetailUuid&#xA;Select New With { D.Department.Code }{% endhighlight javascript }<ol xmlns="http://www.w3.org/1999/xhtml">
+</ol>{% highlight javascript}From D In TeamLeader&#xA;Where D.TeamLeaderUser.UserDetailUuid = Environment.CurrentUser.UserDetailUuid&#xA;Select New With { D.Department.Code }{% endhighlight %}<ol xmlns="http://www.w3.org/1999/xhtml">
   <li>Define the read/write permissions in the <em>APP_Timesheet</em> entity. Here is the <a href="http://help.timecockpit.com/?topic=html/28e3e0bd-6bd7-4435-930b-69671817bf95.htm" target="_blank">TCQL expression</a> that is shown in the video for the <em>write</em> permission:</li>
-</ol>{% highlight javascript}Current.UserDetail.UserDetailUuid = Environment.CurrentUser.UserDetailUuid&#xA; Or Current.UserDetail.Department.Code In Set('DepartmentsLedByMe', 'Code')&#xA; Or 'Admin' In Set('CurrentUserRoles', 'Code'){% endhighlight javascript }<h2 xmlns="http://www.w3.org/1999/xhtml">Questions</h2><p xmlns="http://www.w3.org/1999/xhtml">In case of questions contact us at <a href="mailto:support@timecockpit.com">support@timecockpit.com</a>.</p>
+</ol>{% highlight javascript}Current.UserDetail.UserDetailUuid = Environment.CurrentUser.UserDetailUuid&#xA; Or Current.UserDetail.Department.Code In Set('DepartmentsLedByMe', 'Code')&#xA; Or 'Admin' In Set('CurrentUserRoles', 'Code'){% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Questions</h2><p xmlns="http://www.w3.org/1999/xhtml">In case of questions contact us at <a href="mailto:support@timecockpit.com">support@timecockpit.com</a>.</p>

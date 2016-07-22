@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Wie passen Fixpreis-Projekte und agile Softwareentwicklung zusammen
+teaser: Haben wir nicht alle in Projektmanagement-Kursen gelernt, dass Fixpreis-Projekte nicht notwendigerweise ein Vorteil für den Käufer sind? Waren nicht diese Probleme genau der Grund warum agile Projektmanagement-Prinzipien erfunden wurden? Trotzdem ist es eine Tatsache, dass viele Kunden noch immer auf Fixpreis-Projekte bestehen. In diesem Blogartikel möchte ich unseren Ansatz mit Ihnen teilen, wie fixe Preise und agile Entwicklung zusammenpassen.
 author: Rainer Stropek
-bannerimage: /images/blog/2014/11/2085887252_06b49ee29d_b.jpg
-permalink: /de/2014/11/30/Wie-passen-Fixpreis-Projekte-und-agile-Softwareentwicklung-zusammen
+date: 2014-56-30
+bannerimage: /content/images/blog/2014/11/2085887252_06b49ee29d_b.jpg
+permalink: /de/blog/2014/11/30/Wie-passen-Fixpreis-Projekte-und-agile-Softwareentwicklung-zusammen
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2014/11/2085887252_06b49ee29d_b.jpg" />
+  <img src="{{site.baseurl}}/content/images/blog/2014/11/2085887252_06b49ee29d_b.jpg" />
 </p><p class="imageCaption" xmlns="http://www.w3.org/1999/xhtml">Image source: <a href="https://flic.kr/p/4bjHBj" target="_blank">https://flic.kr/p/4bjHBj</a>, under <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Creative Commons</a> License</p><p xmlns="http://www.w3.org/1999/xhtml">Haben wir nicht alle in Projektmanagement-Kursen gelernt, dass Fixpreis-Projekte nicht notwendigerweise ein Vorteil für den Käufer sind? Waren nicht diese Probleme genau der Grund warum agile Projektmanagement-Prinzipien erfunden wurden? Trotzdem ist es eine Tatsache, dass viele Kunden noch immer auf Fixpreis-Projekte bestehen. In diesem Blogartikel möchte ich unseren Ansatz mit Ihnen teilen, wie fixe Preise und agile Entwicklung zusammenpassen.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Der Mythos von Risiko-Reduzierung und Fixpreis-Verträgen</h2><p xmlns="http://www.w3.org/1999/xhtml">Viele Software-Projekte scheitern. Zumindest werden viele von den Kunden  aus einer Reihe von Gründen als Misserfolg angesehen:</p><ol xmlns="http://www.w3.org/1999/xhtml">
   <li>Das Projektbudget wurde überschritten.</li>
   <li>Der Zeitplan hat nicht gehalten.</li>

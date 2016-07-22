@@ -1,14 +1,16 @@
 ---
 layout: blog
 title: First IT-Visions Information Day in Linz
+teaser: On January, 25th the first IT-Visions information day has taken place in Linz. Roman Schacherl, Raphael Schwarz and Rainer Stropek were talking about what's new in .NET, ASP.NET and Visual Studio 2015, in Microsoft Azure, in mobile development and Universal Windows Platform.
 author: Rainer Stropek
-bannerimage: /images/blog/2016/01/it-visions-logo.gif
-permalink: /2016/01/31/First-IT-Visions-Information-Day-in-Linz
+date: 2016-45-31
+bannerimage: /content/images/blog/2016/01/it-visions-logo.gif
+permalink: /blog/2016/01/31/First-IT-Visions-Information-Day-in-Linz
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
   <a href="http://www.it-visions.at/" target="_blank">
-    <img class="floatRight" src="{{site.baseurl}}/images/blog/2016/01/it-visions-logo-small.png?mw=260&amp;mh=45" />
+    <img class="floatRight" src="{{site.baseurl}}/content/images/blog/2016/01/it-visions-logo-small.png?mw=260&amp;mh=45" />
   </a>On January, 25th the first <a href="http://www.it-visions.at/" target="_blank">IT-Visions</a> information day has taken place in Linz. Roman Schacherl, Raphael Schwarz (codeworx) and Rainer Stropek were talking about what's new in .NET, ASP.NET and Visual Studio 2015, in Microsoft Azure, in mobile development and Universal Windows Platform.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Download Slides and Samples
 <br /></h2><table class="infoTable" style="width: 100%;" data-mce-style="width: 100%;" xmlns="http://www.w3.org/1999/xhtml">
   <thead>
@@ -23,7 +25,7 @@ permalink: /2016/01/31/First-IT-Visions-Information-Day-in-Linz
 <br />
  Raphael Schwarz, <a href="http://codeworx.at/" target="_blank">codeworx</a></td>
       <td>
-        <a href="{{site.baseurl}}/images/blog/2016/01/visual-studio-2015-NET-4-6-NET-Core.pdf" target="_blank">Download Slides</a>
+        <a href="{{site.baseurl}}/content/images/blog/2016/01/visual-studio-2015-NET-4-6-NET-Core.pdf" target="_blank">Download Slides</a>
       </td>
     </tr>
     <tr>
@@ -31,7 +33,7 @@ permalink: /2016/01/31/First-IT-Visions-Information-Day-in-Linz
 <br />
  Rainer Stropek, <a href="http://www.timecockpit.com/" target="_blank">software architects gmbh</a></td>
       <td>
-        <a href="{{site.baseurl}}/images/blog/2016/01/neues-in-microsoft-azure.pdf" target="_blank">Download Slides</a>
+        <a href="{{site.baseurl}}/content/images/blog/2016/01/neues-in-microsoft-azure.pdf" target="_blank">Download Slides</a>
       </td>
     </tr>
     <tr>
@@ -39,7 +41,7 @@ permalink: /2016/01/31/First-IT-Visions-Information-Day-in-Linz
 <br />
  Roman Schacherl, <a href="http://softaware.at/" target="_blank">softaware gmbh</a></td>
       <td>
-        <a href="{{site.baseurl}}/images/blog/2016/01/windows-10-fuer-developer.pdf" target="_blank">Download Slides</a>
+        <a href="{{site.baseurl}}/content/images/blog/2016/01/windows-10-fuer-developer.pdf" target="_blank">Download Slides</a>
       </td>
     </tr>
     <tr>

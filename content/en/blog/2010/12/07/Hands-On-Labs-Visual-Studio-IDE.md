@@ -1,14 +1,16 @@
 ---
 layout: blog
 title: Hands-On Labs Visual Studio IDE
+teaser: This week I will be one of the speakers at BASTA On Tour in Munich. One of the topics I am going to speak about is the Managed Extensibility Framework (MEF). In this blog post I want to share my slides and summarize the hands-on labs that I am going to go through with the participants.
 author: Rainer Stropek
+date: 2010-07-07
 bannerimage: 
-permalink: /2010/12/07/Hands-On-Labs-Visual-Studio-IDE
+permalink: /blog/2010/12/07/Hands-On-Labs-Visual-Studio-IDE
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">This week I will be one of the speakers at <a href="http://basta-on-tour.de/csharp2010/" target="_blank"><span>BASTA On Tour</span></a> in Munich. One of the topics I am going to speak about is the Managed Extensibility Framework (MEF). In this blog post I want to share my slides and summarize the hands-on labs that I am going to go through with the participants.</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>
-    <a href="{{site.baseurl}}/images/blog/2010/12/Visual Studio 2010 IDE.pdf" target="_blank">Download Slides</a> (PDF)</li>
+    <a href="{{site.baseurl}}/content/images/blog/2010/12/Visual Studio 2010 IDE.pdf" target="_blank">Download Slides</a> (PDF)</li>
 </ul><h2 xmlns="http://www.w3.org/1999/xhtml">Hands-On Lab 1: Directory Catalog Sample</h2><p xmlns="http://www.w3.org/1999/xhtml">Prerequisites:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Visual Studio 2010</li>
   <li>Download and install the latest version of the <a href="http://www.microsoft.com/downloads/en/details.aspx?familyid=752CB725-969B-4732-A383-ED5740F02E93&amp;displaylang=en" target="_blank">Visual Studio 2010 and .NET Framework 4 Training Kit</a></li>
@@ -40,7 +42,7 @@ permalink: /2010/12/07/Hands-On-Labs-Visual-Studio-IDE
   <li>Implement the method <span class="InlineCode">TestIsEven</span>as follows:
 
 <ul><li>Tip: Use <span class="InlineCode">for</span> snippet to generate the loop's code.</li></ul></li>
-</ul>{% highlight javascript}[TestMethod]&#xA;public void TestIsEven()&#xA;{&#xA; for (int i = 0; i &lt; 10; i++)&#xA; {&#xA;  bool isEven = MathUtilities.IsEven(i);&#xA;  Assert.AreEqual(i % 2 == 0, isEven);&#xA; }&#xA;}{% endhighlight javascript }<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript}[TestMethod]&#xA;public void TestIsEven()&#xA;{&#xA; for (int i = 0; i &lt; 10; i++)&#xA; {&#xA;  bool isEven = MathUtilities.IsEven(i);&#xA;  Assert.AreEqual(i % 2 == 0, isEven);&#xA; }&#xA;}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Resolve the missing <span class="InlineCode">using</span> statement by setting the cursor on <span class="InlineCode">MathUtilities</span> and pressing Ctrl + .</li>
   <li>Generate the code for <span class="InlineCode">IsEven</span> by setting the cursor on <span class="InlineCode">IsEven</span> and pressing Ctrl + .</li>
   <li>Navigate to the generated code by using the <em>Go To Definition</em> feature (F12).</li>

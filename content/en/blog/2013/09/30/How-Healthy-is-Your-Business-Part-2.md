@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: How Healthy is Your Business? (Part 2)
+teaser: What time tracking-related KPIs can tell you about your business’ healthy - Many companies use KPIs to manage their performance. The first part was an introduction into KPIs including tips and trick about successful performance management projects. In this second part we will show examples of KPIs related to time tracking.
 author: Rainer Stropek
+date: 2013-24-30
 bannerimage: 
-permalink: /2013/09/30/How-Healthy-is-Your-Business-Part-2
+permalink: /blog/2013/09/30/How-Healthy-is-Your-Business-Part-2
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2013/09/TimeCockpitBreit1.jpg" />
+  <img src="{{site.baseurl}}/content/images/blog/2013/09/TimeCockpitBreit1.jpg" />
   <br />
 </p><p xmlns="http://www.w3.org/1999/xhtml">In the <a href="http://www.timecockpit.com/blog/2013/09/30/How-Healthy-is-Your-Business-Part-1">first part of this article</a> I covered general information and tips for KPI systems. In the second part I list examples for KPIs that are related to a project time tracking product like <em>time cockpit</em>. If you are a service company and you think about KPIs, I hope this list can inspire you during brainstorming about KPIs relevant for your business.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Types of KPIs</h2><h3 xmlns="http://www.w3.org/1999/xhtml">Absolute Numbers</h3><p xmlns="http://www.w3.org/1999/xhtml">You can express KPIs as absolute numbers. Examples:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Revenue</li>

@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Schwarze Schwäne, es gibt sie wirklich
+teaser: In time cockpit Umsetzungsprojekten lernen wir viele verschiedene Firmenkulturen kennen. Zwei wichtige Themen kommen aber bei fast allen unserer Kunden auf den Tisch: Datensicherheit und Arbeitszeitregelungen. Ein großer Teil des Projektaufwands fließt in diese beiden Themen. Muss das so sein? Gibt es erfolgreiche Beispiele von komplett anderen, neuen Ansätzen?
 author: Rainer Stropek
-bannerimage: /images/blog/2016/03/black-swans-small.jpg
-permalink: /de/2016/03/31/Schwarze-Schwäne-es-gibt-sie-wirklich
+date: 2016-30-31
+bannerimage: /content/images/blog/2016/03/black-swans-small.jpg
+permalink: /de/blog/2016/03/31/Schwarze-Schwäne-es-gibt-sie-wirklich
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2016/03/black-swans.jpg" />
+  <img src="{{site.baseurl}}/content/images/blog/2016/03/black-swans.jpg" />
 </p><p class="imageCaption" xmlns="http://www.w3.org/1999/xhtml">Bildquelle: <a href="https://flic.kr/p/bBHv54" target="_blank">https://flic.kr/p/bBHv54</a>, <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Creative Commons</a> License</p><p xmlns="http://www.w3.org/1999/xhtml">In time cockpit Umsetzungsprojekten lernen wir viele verschiedene Firmenkulturen kennen. Speziell in Westeuropäischen Ländern wie Deutschland und Österreich kommen aber zwei wichtige Themen bei fast allen unserer Kunden auf den Tisch: Datensicherheit und Arbeitszeitregelungen. Üblicherweise fließt ein großer Teil des Projektaufwands in diese beiden Themen. Muss das so sein? Gibt es erfolgreiche Beispiele von komplett anderen, neuen Ansätzen?</p><h2 xmlns="http://www.w3.org/1999/xhtml">Alle Daten müssen geschützt werden! 
 <br /></h2><p xmlns="http://www.w3.org/1999/xhtml">Unsere Kunden und Interessenten betonen üblicherweise, wie wichtig ihnen Datensicherheit ist. Hier sind einige Aussagen, die wir oft hören:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Wir verwenden keine Cloud-basierten Services, damit unsere Zeiterfassungs- und Projektdaten nicht in die Hände von externen Serviceanbieter kommen.</li>
@@ -27,7 +29,7 @@ permalink: /de/2016/03/31/Schwarze-Schwäne-es-gibt-sie-wirklich
   <a href="http://www.softaware.at/" target="_blank">Softaware</a> ist einer unserer engsten Partner und ein langjähriger time cockpit Kunde. Das softaware team ist in Österreich zuhause und besteht aus 12 Personen. Softaware entwickelt individuelle Softwarelösungen für mittlere und große Kunden basierend auf Microsoft Technologien. Die Firmengründer haben eine große Leidenschaft für Technologie. Softwarequalität und Cutting-Edge Technologien sind zwei ihrer wichtigsten Werte.</p><p xmlns="http://www.w3.org/1999/xhtml">Im letzten Jahr hat sich softaware entschieden, den Kommunikationsprozess mit ihren Kunden fundamental zu ändern. Sie haben ein Projekttagebuch erstellt, das es Kunden erlaubt, live auf die Backend Systeme von softaware zuzugreifen. Der Projektfortschritt und die investierten Ressourcen sind für den Kunden jederzeit transparent. Es gibt kein Jonglieren von Aufwand zwischen Projekten und Tasks am Ende des Monats. Durch das Projekttagebuch will softaware Kunden stärker in den Umsetzungsprozess integrieren und Vertrauen durch Transparenz schaffen. Roman Schacherl, Mitgründer und Geschäftsführer von softaware, erzählt:</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">
   <em>"Wir wollen eine faire Partnerschaft mit unseren Kunden und Transparenz ist dafür notwendig. Trotzdem ist es immer wieder eine Herausforderung. Wenn wir zwei Tage für einen Task schätzen aber schon nach sechs Stunden fertig sind - wie gehen wir damit um? Die Antwort ist einfach: wir verrechnen sechs Stunden. Das sieht im ersten Moment nach einem finanziellen Nachteil aus, aber langfristig zahlt sich das aus."</em>
 </p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2015/05/SoftwareDiary.png" />
+  <img src="{{site.baseurl}}/content/images/blog/2015/05/SoftwareDiary.png" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">Wenn Sie wissen wollen, wie softaware das Projekttagebuch mit Hilfe von time cockpit als einem der Backend-Systeme umgesetzt hat, lesen Sie dazu unseren Blog Artikel <a href="~/blog/2015/05/31/Differentiate-with-Transparency" target="_blank">Differentiate with Transparency</a>.<br /></p><h2 xmlns="http://www.w3.org/1999/xhtml">Was machen wir bei time cockpit
 <br /></h2><p xmlns="http://www.w3.org/1999/xhtml">Transparenz ist ein wichtiger Wert in unserer Firma. Hier sind einige Beispiele für die Konsequenzen:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>
@@ -52,5 +54,5 @@ permalink: /de/2016/03/31/Schwarze-Schwäne-es-gibt-sie-wirklich
  In unserer <a href="https://help.timecockpit.com/" title="time cockpit Documentation" target="_blank">online Dokumentation</a>, in <a href="~/de/blog">unserem Blog</a> und auf Konferenzvorträgen beschreiben wir im Detail, auf welchen cloudbasierten Services time cockpit aufbaut und welche Datacenter wir nutzen.
 <br /></li>
 </ul><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">Wir sehen Nachvollziehbarkeit als Grundvoraussetzung für Transparenz.</p><p xmlns="http://www.w3.org/1999/xhtml">Durch den Einsatz von professionellen SaaS-Lösungen für Work Item Management, Quellcodeverwaltung, Build-Automatisierung, Continous Deployment, Support und ähnlichem können wir sicherstellen, dass keine "heimlichen" Änderungen gemacht werden oder "versteckte" Kommunikation im Hintergrund stattfindet.</p><p xmlns="http://www.w3.org/1999/xhtml">Als ich diesen Blog-Artikel geschrieben habe, ist mir aufgefallen, dass wir bisher nur selten öffentlich über die interne Kostenstruktur von time cockpit gesprochen haben. Darum habe ich die Zahlen aus dem letzten Kalenderjahr hergenommen und die folgende Infografik daraus erstellt. Ich hoffe, Sie finden die Informationen interessant. Wenn Sie die interaktive Version sehen wollen, öffnen Sie die Infografik <a href="https://magic.piktochart.com/output/12397821-where-your-money-went-2015">Where Your Money Went 2015</a>. <br /></p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2016/03/where-your-money-went-2015.png" />
+  <img src="{{site.baseurl}}/content/images/blog/2016/03/where-your-money-went-2015.png" />
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">Fragen? Feedback?</h2><p xmlns="http://www.w3.org/1999/xhtml">Haben Sie Fragen zu unseren Technologien, Prozessen, unserem Team oder ähnlichem? Kontaktieren Sie uns unter <a href="mailto:support@timecockpit.com">support@timecockpit.com</a>. Wir freuen uns darauf, von Ihnen zu hören!</p>

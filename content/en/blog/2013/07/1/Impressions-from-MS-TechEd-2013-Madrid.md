@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Impressions from MS TechEd 2013 Madrid
+teaser: Some photos I took at MS TechEd 2013 in Madrid
 author: Rainer Stropek
+date: 2013-44-01
 bannerimage: 
-permalink: /2013/07/1/Impressions-from-MS-TechEd-2013-Madrid
+permalink: /blog/2013/07/1/Impressions-from-MS-TechEd-2013-Madrid
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">Here are some photos I took at MS TechEd 2013 in Madrid. Click on an image to enlarge and scroll through them.</p><p xmlns="http://www.w3.org/1999/xhtml">If you are interested in my talk, you find more information in this <a href="http://www.software-architects.com/devblog/2013/06/26/MS-TechEd-2013-Talk-Continuous-Integration-with-Team-Foundation-Services-and-Windows-Azure-Websites" target="_blank">blog post</a>.</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">

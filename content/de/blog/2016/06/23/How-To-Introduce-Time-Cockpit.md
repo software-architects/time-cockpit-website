@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: How To Introduce Time Cockpit
+teaser: It has been 6 and a half years now since we have gone live with time cockpit back in 2010. In these years,  we have served various company types. In this article we want to share our experience when introducing time cockpit.
 author: Alexander Huber
-bannerimage: /images/blog/2016/06/how to introduce tc - gears.jpg
-permalink: /de/2016/06/23/How-To-Introduce-Time-Cockpit
+date: 2016-02-23
+bannerimage: /content/images/blog/2016/06/how to introduce tc - gears.jpg
+permalink: /de/blog/2016/06/23/How-To-Introduce-Time-Cockpit
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">It has been 6 and a half years now since we have gone live with time cockpit back in 2010. Over the years we have served various companies with different sizes and in different industries. In this article we want to share a high level checklist of questions you should ask yourself if you want to introduce time cockpit.</p><h2 xmlns="http://www.w3.org/1999/xhtml">What's Time Cockpit About

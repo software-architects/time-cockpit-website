@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Black Swans Do Exist
+teaser: In our time cockpit implementation projects, we get in touch with very different company cultures. However, we have to deal with two critical topics in most customer projects we do in Western Europe countries like Germany and Austria: Data security and working time regulations. Typically, a large fraction of the customizing effort is invested in these two aspects of time cockpit.  Does it have to be like that? Are there successful examples of completely different approaches?
 author: Rainer Stropek
-bannerimage: /images/blog/2016/03/black-swans-small.jpg
-permalink: /2016/03/31/Black-Swans-Do-Exist
+date: 2016-30-31
+bannerimage: /content/images/blog/2016/03/black-swans-small.jpg
+permalink: /blog/2016/03/31/Black-Swans-Do-Exist
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2016/03/black-swans.jpg" />
+  <img src="{{site.baseurl}}/content/images/blog/2016/03/black-swans.jpg" />
 </p><p class="imageCaption" xmlns="http://www.w3.org/1999/xhtml">Image source: <a href="https://flic.kr/p/bBHv54" target="_blank">https://flic.kr/p/bBHv54</a>, <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Creative Commons</a> License</p><p xmlns="http://www.w3.org/1999/xhtml">In time cockpit implementation projects, we get in touch with very different company cultures. In Western European countries like Germany and Austria we always have to deal with two critical topics: Data security and working time regulations. Typically, a large fraction of the customizing effort is invested in these two aspects of time cockpit. Customers take this for granted, they are used to it. But does it always have to be like that? Are there successful examples of completely different approaches?</p><h2 xmlns="http://www.w3.org/1999/xhtml">All our Data has to be Protected!
 <br /></h2><p xmlns="http://www.w3.org/1999/xhtml">When we first speak with customers and prospects, they typically emphasize how important data security is. Here are some examples of things we hear:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>We don't use cloud-based SaaS because our time tracking and project data must not get into the hands of external service providers.</li>
@@ -26,7 +28,7 @@ permalink: /2016/03/31/Black-Swans-Do-Exist
   <a href="http://www.softaware.at/" target="_blank">Softaware</a> is one of our closest partners and a long-term time cockpit user. The softaware team is based in Austria and currently consists of 12 people. They create custom software solutions for medium and large customers based on Microsoft-technology. The softaware founders are passionate about technology. Software quality and innovation based on cutting-edge technology are two of their most important values.</p><p xmlns="http://www.w3.org/1999/xhtml">Last year, softaware decided to fundamentally change the communication with customers during projects. They created a "Project Diary" that allows customers to directly look into softaware's backend systems. Invested effort and project progress is fully transparent for the customers. No more juggling around effort between projects and tasks at the end of the month, no more hiding of technical challenges slowing down projects, etc. With the Project Diary, softaware wants to raise the involvement of stakeholders and to build trust based on transparency. Roman Schacherl, co-founder and CEO of softaware, describes:</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">
   <em>"Our ambition is a fair partnership with our customers, and transparency is mandatory. Nevertheless, it is a day-to-day challenge: “we’ve estimated 2 days but then finished in 6 hours – what to do?” The answer is easy: earn money for 6 hours. It might be a financial drawback first, but in the long term you’ll win."</em>
 </p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2015/05/SoftwareDiary.png" />
+  <img src="{{site.baseurl}}/content/images/blog/2015/05/SoftwareDiary.png" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">If you want to learn more about softaware's project diary and how they used time cockpit as one of its backend systems, read our blog article <a href="~/blog/2015/05/31/Differentiate-with-Transparency" target="_blank">Differentiate with Transparency</a>.<br /></p><h2 xmlns="http://www.w3.org/1999/xhtml">What We do at Time Cockpit</h2><p xmlns="http://www.w3.org/1999/xhtml">Transparency is an important value in our company, too. Here are some concrete examples of consequences:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>
     <strong>Sharing knowledge with the community is very important for us</strong>
@@ -50,5 +52,5 @@ permalink: /2016/03/31/Black-Swans-Do-Exist
  In our online help, our blog and our conference talks we describe in detail which cloud services our software is based on, which data center we use, etc. We think that this openness is an important trust-building factor.
 <br /></li>
 </ul><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">We see traceability as an important enabler of transparency.</p><p xmlns="http://www.w3.org/1999/xhtml">By using professional SaaS-solutions for work item management, source control, build automation, continuous deployment, support, etc. we can ensure that "secret" changes are made or "silent" communication takes place in the background.</p><p xmlns="http://www.w3.org/1999/xhtml">While writing this blog article, I realized that we rarely speak about our internal cost structure in public. It is not a secret, so I took our numbers for the last calendar year and created the following infographic. I hope you find it interesting. If you want to see the interactive version, open the infographic <a href="https://magic.piktochart.com/output/12397821-where-your-money-went-2015">Where Your Money Went 2015</a>. <br /></p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2016/03/where-your-money-went-2015.png" />
+  <img src="{{site.baseurl}}/content/images/blog/2016/03/where-your-money-went-2015.png" />
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">Questions? Feedback?</h2><p xmlns="http://www.w3.org/1999/xhtml">Do you have questions about our technology, our processes, our team or something like this? Feel free to contact us at <a href="mailto:support@timecockpit.com">support@timecockpit.com</a>. We are looking forward to having a chat with you!</p>

@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Eight Anti-Patterns for Optimization Projects
+teaser: Technical optimization projects are part of our daily business in software development. Additionally, with time cockpit, we are often involved in projects for optimizing team performance and productivity. In this blog article I would like to summarize my learnings about what differentiates successful optimization projects from failures.
 author: Rainer Stropek
-bannerimage: /images/blog/2015/03/optimizeThumb.jpg
-permalink: /2015/03/29/Eight-Anti-Patterns-for-Optimization-Projects
+date: 2015-29-29
+bannerimage: /content/images/blog/2015/03/optimizeThumb.jpg
+permalink: /blog/2015/03/29/Eight-Anti-Patterns-for-Optimization-Projects
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2015/03/optimize.jpg" style="width: 100%;" />
+  <img src="{{site.baseurl}}/content/images/blog/2015/03/optimize.jpg" style="width: 100%;" />
 </p><p class="imageCaption" xmlns="http://www.w3.org/1999/xhtml">Image source: <a href="https://flic.kr/p/9TJPp3" target="_blank">https://flic.kr/p/9TJPp3</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons</a> License</p><p xmlns="http://www.w3.org/1999/xhtml">Technical optimization projects are part of our daily business in software development. Additionally, with time cockpit we are often involved in projects for optimizing team performance and productivity. In this blog article I would like to summarize my learnings about what differentiates successful optimization projects from failures.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Content</h2><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>
     <a href="#TechOrg">Technical vs. Organizational Optimization</a>

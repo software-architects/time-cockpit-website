@@ -9,7 +9,7 @@ permalink: /
     <div class="col-sm-4 frontpageMainItem" onclick="javascript:document.location.href='{{site.baseurl}}/tour/grafischer-kalender/';">
       <h2>Graphical Calendar</h2>
       <p class="textaligncenter">
-        <img title="Time tracking calendar" alt="The calendar helps you to easily book your time. Green and yellow bars indicate booked and unbooked time." src="{{site.baseurl}}/images/home/time-tracking-calendar.png" />
+        <img title="Time tracking calendar" alt="The calendar helps you to easily book your time. Green and yellow bars indicate booked and unbooked time." src="{{site.baseurl}}/content/images/home/time-tracking-calendar.png" />
       </p>
       <p>Be more productive by tracking your time in a graphical calendar. Green and yellow bars left to the time sheet entries indicate booked and unbooked time.</p>
       <p class="textalignleft">
@@ -19,7 +19,7 @@ permalink: /
     <div class="col-sm-4 frontpageMainItem" onclick="javascript:document.location.href='{{site.baseurl}}/tour/aktivitaeten-aufzeichnen/';">
       <h2>Activity Tracking</h2>
       <p class="textaligncenter">
-        <img title="Activity trackers in time cockpit" alt="Time cockpit tracks your activites to simplify time tracking." src="{{site.baseurl}}/images/home/logged-activities-for-time-tracking.png" />
+        <img title="Activity trackers in time cockpit" alt="Time cockpit tracks your activites to simplify time tracking." src="{{site.baseurl}}/content/images/home/logged-activities-for-time-tracking.png" />
       </p>
       <p>Turn on time cockpit's signal tracker to automatically get a log of your work done on your PC. Transform the signals into time sheet entries with one double-click.</p>
       <p class="textalignleft">
@@ -29,7 +29,7 @@ permalink: /
     <div class="col-sm-4 frontpageMainItem" onclick="javascript:document.location.href='{{site.baseurl}}/tour/erweiterbarkeit/';">
       <h2>Extensibility</h2>
       <p class="textaligncenter">
-        <img title="Customize time cockpit" alt="Customize lists and forms, add new properties and relations to the data model and access all data in Iron Python or .NET." src="{{site.baseurl}}/images/home/extensible-time-tracking.png" />
+        <img title="Customize time cockpit" alt="Customize lists and forms, add new properties and relations to the data model and access all data in Iron Python or .NET." src="{{site.baseurl}}/content/images/home/extensible-time-tracking.png" />
       </p>
       <p>Tailor time tracking to your organizational structure and processes. Add tables and properties, customize lists and forms and access all data with IronPython or .NET.</p>
       <p class="textalignleft">

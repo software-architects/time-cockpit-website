@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Fehler in der Signaldarstellung
+teaser: Leider haben wir diese Woche einen unerfreulichen Fehler in time cockpit gefunden: im Jänner 2015 werden die Signalbahnen nicht dargstellt. Die Signaldetails auf der rechten Seite werden korrekt angezeigt, aber die Bahnen neben den Zeitbuchungen fehlen. Wir haben den Fehler bereits behoben. Die korrigierte Version steht zum Download zur Verfügung.
 author: Rainer Stropek
-bannerimage: /images/blog/2015/01/missing-signal-lanes-preview.png
-permalink: /de/2015/01/8/Fehler-in-der-Signaldarstellung
+date: 2015-44-08
+bannerimage: /content/images/blog/2015/01/missing-signal-lanes-preview.png
+permalink: /de/blog/2015/01/8/Fehler-in-der-Signaldarstellung
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">Leider haben wir diese Woche einen unerfreulichen Fehler in time cockpit gefunden: im Jänner 2015 werden die Signalbahnen nicht dargstellt. Die Signaldetails auf der rechten Seite werden korrekt angezeigt, aber die Bahnen neben den Zeitbuchungen fehlen.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">Wir haben den Fehler bereits im Full-Client und im Browser-Client korrigiert. <strong>Wir möchten  uns für alle Unannehmlichkeiten, die Ihnen dadurch entstanden sind, entschuldigen.</strong> Wenn Sie Fragen zu dem Problem haben, zögern Sie nicht uns unter <a href="mailto:support@timecockpit.com">support@timecockpit.com</a> zu kontaktieren.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Problem Description</h2><p xmlns="http://www.w3.org/1999/xhtml">This error occurs in all versions of time cockpit before 1.32.3362.7 (released yesterday). It is related to the <em>selected month</em> in the calendar. If you switch to December 2014, the signal lanes will be displayed correctly and in February 2015 they will work again.</p><p xmlns="http://www.w3.org/1999/xhtml">The following image shows the problem (click to enlarge). While the signal details are displayed on the right, the signal lanes (orange rectangle) are missing.</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">

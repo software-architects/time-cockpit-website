@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: What's New in Version September 2014
+teaser: This month we have focused heavily on performance. The first batch of improvements that affects the performance when working directly on the Server is already integrated in the September version.
 author: Karin Huber
+date: 2014-40-29
 bannerimage: 
-permalink: /2014/08/29/Whats-New-in-Version-September-2014
+permalink: /blog/2014/08/29/Whats-New-in-Version-September-2014
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">The new version September 2014 (1.28) is downwards compatible to version March 2013 (1.10) and later. You can use all of these versions in a single account simultaneously.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Changes in the New Version</h2><h3 xmlns="http://www.w3.org/1999/xhtml">Multi-Key Import

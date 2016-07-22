@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Windows Azure Storage
+teaser: The Windows Azure platform offers different mechanisms to store data permanently. In this article I would like to introduce the storage types of Windows Azure and demonstrate their use by showing an example application.
 author: Rainer Stropek
+date: 2010-38-25
 bannerimage: 
-permalink: /2010/10/25/Windows-Azure-Storage
+permalink: /blog/2010/10/25/Windows-Azure-Storage
 ---
 
 <p class="sf_postTitle" xmlns="http://www.w3.org/1999/xhtml">The Windows Azure platform offers different mechanisms to store data permanently. In this article I would like to introduce the storage types of Windows Azure and demonstrate their use by showing an example application.</p><div class="sf_postContent" id="ctl00_ctl00_ContentArea_Content_BlogPosts1_ctl00_ctl00_pnlContent" xmlns="http://www.w3.org/1999/xhtml">
@@ -176,7 +178,7 @@ Used to implement optimistic locking.</li>
     <f:param name="CodeType" value="c#" xmlns:f="http://www.composite.net/ns/function/1.0" />
   </f:function>
   <p>With these changes we have a reference to the Azure blob container that should receive our blobs and we can create the blob inside our worker process (I will not repeat the whole worker class here, just the necessary lines for creating the blob):</p>
-  {% highlight javascript}CloudBlob blob;&#xA;(blob = connection.ConfirmationContainer&#xA; .GetBlobReference(messagePayload.RowKey))&#xA; .UploadText(string.Format(&quot;Order {0} accepted!&quot;, messagePayload.RowKey));&#xA;// In practise we would retrieve a shared access signature (i.e. URL) for the blob here&#xA;// using blob.GetSharedAccessSignature and send the URL to the customer. {% endhighlight javascript }
+  {% highlight javascript}CloudBlob blob;&#xA;(blob = connection.ConfirmationContainer&#xA; .GetBlobReference(messagePayload.RowKey))&#xA; .UploadText(string.Format(&quot;Order {0} accepted!&quot;, messagePayload.RowKey));&#xA;// In practise we would retrieve a shared access signature (i.e. URL) for the blob here&#xA;// using blob.GetSharedAccessSignature and send the URL to the customer. {% endhighlight %}
   <h2>Recap And Summary</h2>
   <p>The sample showed how to build an application that uses all parts of Windows Azure Storage. The application itself can run in Azure but it needs not.</p>
   <p>We used a queue and table storage to separate order processing (worker) from receiving orders (web). This scales better than doing all the work in the web role. However, do we really get the most from what Azure is offering in terms of scalability and performance? No, our sample just scraches the surface. Here are a few tips for you if you want to make our sample even more scalable (possible I will create another blog post about that some times later):</p>

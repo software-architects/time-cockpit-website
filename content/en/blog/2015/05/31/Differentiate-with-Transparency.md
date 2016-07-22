@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Differentiate with Transparency
+teaser: Granted, time tracking is not one of our customers' favorite tasks. However, it has to be done for accounting, because of legal obligations, etc. But does it have to be like this? Is it possible to differentiate from ones competition with an outstanding time tracking organization and software? Our partner softaware believes in that and has built a "Software Diary". It uses time cockpit behind the scenes.
 author: Rainer Stropek
-bannerimage: /images/blog/2015/05/SoftwareDiaryThumbnail.png
-permalink: /2015/05/31/Differentiate-with-Transparency
+date: 2015-56-31
+bannerimage: /content/images/blog/2015/05/SoftwareDiaryThumbnail.png
+permalink: /blog/2015/05/31/Differentiate-with-Transparency
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2015/05/SoftwareDiary.png" />
+  <img src="{{site.baseurl}}/content/images/blog/2015/05/SoftwareDiary.png" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">Granted, time tracking is not one of the favorite tasks of our customer. However, there are various reasons why most of us do not come around time tracking (see also article about <a href="~/blog/2013/06/25/Six-Reasons-for-Time-Tracking-in-Agile-Projects" target="_blank">six reasons for time tracking in agile projects</a>). Here are some examples:<br /></p><ol xmlns="http://www.w3.org/1999/xhtml">
   <li>Time tracking might be a legal obligation in your country.</li>
   <li>It helps you to learn from the past. If you track the time spent on a given task, it might help you to better estimate similar tasks in the future.</li>
@@ -37,7 +39,7 @@ permalink: /2015/05/31/Differentiate-with-Transparency
 </div><h3 xmlns="http://www.w3.org/1999/xhtml">Video</h3><p xmlns="http://www.w3.org/1999/xhtml">A picture is worth a thousand words. So here is a short video in which Roman introduces <em>Software Diary</em>:</p><div class="videoWrapper" xmlns="http://www.w3.org/1999/xhtml">
   <iframe width="1280" height="720" src="https://www.youtube.com/embed/zkWfS-LbW4Y?rel=0" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 </div><h3 xmlns="http://www.w3.org/1999/xhtml">Technical Implementation</h3><p xmlns="http://www.w3.org/1999/xhtml">For financial data like time sheet records and invoices, <em>Software Diary</em> accesses time cockpi's <em>OData Web API</em> behind the scenes. Accessing time cockpit live removes the need for a storing this data, importing it, scheduling the import process, etc.</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2015/05/SoftwareDiaryTechnicalArchitecture.png" />
+  <img src="{{site.baseurl}}/content/images/blog/2015/05/SoftwareDiaryTechnicalArchitecture.png" />
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">Organizational Consequences</h2><p xmlns="http://www.w3.org/1999/xhtml">No question, what softaware has built is impressive from a technical standpoint. However, we think it is groundbreaking from an organizational perspective.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">This level of transparency needs a very mature project management.</p><p xmlns="http://www.w3.org/1999/xhtml">Here are some examples:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Giving the user live access to time tracking data means that there is no chance to shift efforts from here to there at the end of the month.</li>
   <li>Not keeping time sheets up to date for weeks is no longer an option.

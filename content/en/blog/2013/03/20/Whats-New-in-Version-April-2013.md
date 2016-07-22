@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: What's New in Version April 2013
+teaser: In version April 2013 we have focused on the formatting profiles in the time sheet calendar. Until now we only showed a color legend in the navigation bar on the left side, but there is much more information we can display so we decided to change the color legend to a bar chart.
 author: Karin Huber
+date: 2013-19-20
 bannerimage: 
-permalink: /2013/03/20/Whats-New-in-Version-April-2013
+permalink: /blog/2013/03/20/Whats-New-in-Version-April-2013
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">In version April 2013 we have focused on improving the formatting profiles in the time sheet calendar. Until now we only showed a color legend in the navigation bar on the left side, but there is much more information we can display so we decided to change the color legend to a bar chart.</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">

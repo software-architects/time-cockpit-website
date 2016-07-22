@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Sourcecode Review Criteria
+teaser: Customers regularly hire me to do code reviews for software projects. Over the years I put together my personal checklist. In this blog article I share a summary of it with you. Note that the checklist is in German. However, the article contains a link to auto-translate it in English.
 author: Rainer Stropek
+date: 2013-00-05
 bannerimage: 
-permalink: /2013/11/05/Sourcecode-Review-Criteria
+permalink: /blog/2013/11/05/Sourcecode-Review-Criteria
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">

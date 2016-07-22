@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: How We Build and Run Time Cockpit Web Preview
+teaser: Last month we proudly launched the first public preview of the upcoming HTML5 client for time cockpit. When we started developing the new platform many months ago, we also decided that we had to rethink our entire build and operation processes. In this blog article I invite you to take a look behind the scenes of time cockpit web development. Additionally, I want to summarize our lessons learned.
 author: Rainer Stropek
-bannerimage: /images/blog/2014/12/Clouds.jpg
-permalink: /2014/12/30/How-We-Build-and-Run-Time-Cockpit-Web-Preview
+date: 2014-31-30
+bannerimage: /content/images/blog/2014/12/Clouds.jpg
+permalink: /blog/2014/12/30/How-We-Build-and-Run-Time-Cockpit-Web-Preview
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2014/12/Clouds.jpg" />
+  <img src="{{site.baseurl}}/content/images/blog/2014/12/Clouds.jpg" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">Last month we proudly launched the first public preview of the upcoming HTML5 client for time cockpit. When we started developing the new platform many months ago, we decided that we had to rethink our entire build and operation processes. In this blog article I invite you to take a look behind the scenes of time cockpit web development. Additionally, I want to summarize our lessons learned.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Where We Started</h2><h3 xmlns="http://www.w3.org/1999/xhtml">On-Premise TFS</h3><p xmlns="http://www.w3.org/1999/xhtml">Before we started developing the time cockpit web preview (plus underlying web services), our development process relied on an on-premise <a href="http://msdn.microsoft.com/en-us/vstudio/ff637362.aspx" target="_blank">Microsoft Team Foundation Server</a> (TFS). It had been the workhorse for time cockpit development for years. We customized it to a great extent (e.g. custom build process) in order to automate as many processes as possible.</p><p xmlns="http://www.w3.org/1999/xhtml">Functionally, we were happy with our TFS. However, we were not happy with the time necessary to keep our TFS up and running. We are software developers and we want to focus on building time cockpit. Caring for an on-premise TFS server had been a task nobody in our team was passionate for.</p><h3 xmlns="http://www.w3.org/1999/xhtml">Microsoft Azure Cloud Services</h3><p xmlns="http://www.w3.org/1999/xhtml">As you might know, time cockpit had been running in Microsoft’s cloud platform Azure since the very first days. At that time, <a href="http://azure.microsoft.com/en-us/services/cloud-services/" target="_blank">Cloud Services</a> were the technology of choice for running web sites and services on Azure.</p><p xmlns="http://www.w3.org/1999/xhtml">Azure Cloud Services enabled us to forget about installing, maintaining, and running the web server clusters for time cockpit. Over the years, Cloud Services have proven to be extremely stable and reliable. However, there are drawbacks, too. The topic that we dislike most is deployment time.</p><h2 xmlns="http://www.w3.org/1999/xhtml">What We Wanted to Change</h2><p xmlns="http://www.w3.org/1999/xhtml">Moving from WPF, Silverlight, and XAML to plugin-free web technology is a major milestone for us. So we decided that we want to take the opportunity and bring our development process to a next level as well.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">We defined three major goals for next generation time cockpit web development:</p><ol xmlns="http://www.w3.org/1999/xhtml">
   <li>
     <strong>Get rid of the on-premise TFS.</strong>
@@ -17,7 +19,7 @@ permalink: /2014/12/30/How-We-Build-and-Run-Time-Cockpit-Web-Preview
     <strong>Switch</strong> from Azure Cloud Services <strong>to <a href="http://azure.microsoft.com/en-us/services/websites/" target="_blank">Azure Websites</a> and enhance continuous deployment.</strong></li>
   <li>Start using innovative quality assurance methods like <strong>Data Driven Quality (DDQ) and Test-in-Production (TiP)</strong>.</li>
 </ol><p xmlns="http://www.w3.org/1999/xhtml">Following our <a href="http://en.wikipedia.org/wiki/Kanban_(development)" target="_blank">Kanban</a>-way of working, we decided to aim at achieving the above goals step by step. The following diagram shows the structure of time cockpit’s development and production environment as it is today. We are still continuously improving it. The following paragraphs describe different aspects of the diagram in more details.</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2014/12/InfoDiagramBuild.png" />
+  <img src="{{site.baseurl}}/content/images/blog/2014/12/InfoDiagramBuild.png" />
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">Moving Source Control and Build to the Cloud</h2><p xmlns="http://www.w3.org/1999/xhtml">Admittedly, we don’t like running servers. Therefore, we love ready-made platforms that allow us to focus on our core job: building the world’s greatest time tracking platform. We decided to give up our on-premise TFS in favor of Microsoft’s cloud service Visual Studio Online. In the project we had to make some hard decisions:</p><ol xmlns="http://www.w3.org/1999/xhtml">
   <li>
     <strong>We did not migrate TFS history.</strong>

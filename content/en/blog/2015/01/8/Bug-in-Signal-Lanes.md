@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Bug in Signal Lanes
+teaser: Unfortunately, we found a very unpleasant bug in time cockpit this week: in January 2015, the signal lanes are not shown. The signal details on the right side are displayed correctly but the lanes next to the time sheet entries are missing. We have already created a fix that is available for download.
 author: Rainer Stropek
-bannerimage: /images/blog/2015/01/missing-signal-lanes-preview.png
-permalink: /2015/01/8/Bug-in-Signal-Lanes
+date: 2015-44-08
+bannerimage: /content/images/blog/2015/01/missing-signal-lanes-preview.png
+permalink: /blog/2015/01/8/Bug-in-Signal-Lanes
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">Unfortunately, we found a very unpleasant bug in time cockpit this week: in January 2015, the signal lanes are not shown. The signal details on the right side are displayed correctly but the lanes next to the time sheet entries are missing.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">We have already fixed the problem in time cockpit's full and browser clients. <strong>We want to apologize for any inconvenience the bug has caused to you.</strong> If you have any questions regarding the problem or the fix we provided, don't hesitate to contact us at <a href="mailto:support@timecockpit.com">support@timecockpit.com</a>.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Problem Description</h2><p xmlns="http://www.w3.org/1999/xhtml">This error occurs in all versions of time cockpit before 1.32.3362.7 (released yesterday). It is related to the <em>selected month</em> in the calendar. If you switch to December 2014, the signal lanes will be displayed correctly and in February 2015 they will work again.</p><p xmlns="http://www.w3.org/1999/xhtml">The following image shows the problem (click to enlarge). While the signal details are displayed on the right, the signal lanes (orange rectangle) are missing.</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">

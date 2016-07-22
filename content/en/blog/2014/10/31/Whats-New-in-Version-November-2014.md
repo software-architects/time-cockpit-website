@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: What's New in Version November 2014
+teaser: This month we are announcing the next important step in our movement towards HTML and JavaScript: We present the first public preview of time cockpit's OpenID Connect endpoint for authentication and authorization. Additionally we have improved validation consistency and disabled SSL 3.0 support to prevent POODLE attacks.
 author: Karin Huber
-bannerimage: /images/blog/2014/10/time-cockpit-november-2014.png
-permalink: /2014/10/31/Whats-New-in-Version-November-2014
+date: 2014-47-31
+bannerimage: /content/images/blog/2014/10/time-cockpit-november-2014.png
+permalink: /blog/2014/10/31/Whats-New-in-Version-November-2014
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">The new version November 2014 (1.30) is downwards compatible to version March 2013 (1.10) and later. You can use all of these versions in a single account simultaneously.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Changes in the New Version</h2><h3 xmlns="http://www.w3.org/1999/xhtml">OAuth2 and OpenID Connect</h3><p xmlns="http://www.w3.org/1999/xhtml">This month we are announcing the next important step in our movement towards HTML and JavaScript: We present the first public preview of time cockpit's <a href="http://openid.net/connect/" target="_blank">OpenID Connect</a> endpoint for authentication and authorization. Until now, time cockpit has used a custom token format, custom authorization flow, etc. As always we open our own APIs for our customers, too. So with the change we present today, you can use the OpenID Connect standard instead. We also published an updated version of our OData Web API that can consume the tokens you get from the new authorization endpoint.</p><p xmlns="http://www.w3.org/1999/xhtml">

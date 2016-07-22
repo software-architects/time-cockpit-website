@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Was ist neu in der Version Mai 2016
+teaser: Dieses Monat haben wir uns auf zwei Themen konzentriert: die einfachere Eingabe von Datum und Zeit sowie die Erweiterbarkeit des HTML5 Clients. Die Verbesserungen für die Eingabe von Datum und Zeit stehen bereits in der neuen Version zur Verfügung. Es gibt jetzt ein Reihe von Shortcuts für die Eingabe. Die Erweiterbarkeit des HTML5 Clients wird uns noch einen weiteren Monat beschäftigen, bevor wir dieses Feature deployen können - dann wird es möglich sein, eigene HTML5 Applikationen zum Menü von time cockpit hinzuzufügen.
 author: Karin Huber
-bannerimage: /images/blog/2016/04/time-cockpit-may-2016.png
-permalink: /de/2016/05/1/Was-ist-neu-in-der-Version-Mai-2016
+date: 2016-29-01
+bannerimage: /content/images/blog/2016/04/time-cockpit-may-2016.png
+permalink: /de/blog/2016/05/1/Was-ist-neu-in-der-Version-Mai-2016
 ---
 
 <h2 xmlns="http://www.w3.org/1999/xhtml">Überblick
@@ -22,7 +24,7 @@ permalink: /de/2016/05/1/Was-ist-neu-in-der-Version-Mai-2016
   </li>
 </ul><h2 xmlns="http://www.w3.org/1999/xhtml">
   <a name="date-input" id="date-input" class="mce-item-anchor"></a>Eingabe von Datum und Zeit</h2><p xmlns="http://www.w3.org/1999/xhtml">Dieses Monat haben wir es wessentlich einfacher gemacht, Datums- und Zeitwerte einzugeben. Wir bieten nun eine Reihe neuer Shortcuts an, um gültige Datumswerte zu erfassen.</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2016/04/date-and-time-input.gif" />
+  <img src="{{site.baseurl}}/content/images/blog/2016/04/date-and-time-input.gif" />
 </p><h3 xmlns="http://www.w3.org/1999/xhtml">Datumswerte
 <br /></h3><p xmlns="http://www.w3.org/1999/xhtml">
   <strong>Nur Tag</strong>: wenn Sie nur eine oder zwei Ziffern eingeben, nehmen wir an, dass das aktuelle Monat gemeint ist.</p><table class="infoTable" xmlns="http://www.w3.org/1999/xhtml">
@@ -193,9 +195,9 @@ permalink: /de/2016/05/1/Was-ist-neu-in-der-Version-Mai-2016
   </tbody>
 </table><h2 xmlns="http://www.w3.org/1999/xhtml">
   <a name="tooltips" id="tooltips" class="mce-item-anchor"></a>Tooltips im Kalender</h2><p xmlns="http://www.w3.org/1999/xhtml">Es gab bereits Tooltips im Zeiterfassungskalender, aber diese waren nicht allzu hübsch und außerdem wurden sie in manchen Browsern auch nicht richtig dargestellt. Daher haben wir das Layout für Tooltips dieses Monat überarbeitet. Im Tooltip werden die Beschreibung und die Fußzeile, so wie sie im ausgewählten <a href="https://help.timecockpit.com/?topic=html/95b1ce59-c4ec-461a-ba9b-cb978295c3de.htm" title="Formatprofile im Zeitbuchungskalender" target="_blank">Formatprofil</a> definiert sind, angezeigt.</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2016/04/tooltips.png" />
+  <img src="{{site.baseurl}}/content/images/blog/2016/04/tooltips.png" />
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">
   <a name="permissions" id="permissions" class="mce-item-anchor"></a>Verbesserungen bei Berechtigungen</h2><p xmlns="http://www.w3.org/1999/xhtml">Beim Erstellen von neuen Elementen gab es noch Probleme mit Insert- und Update-Berechtigungen. In manchen Szenarien war es nicht möglich neue Elemente zu erstellen, obwohl ein Benutzer Insert-Berechtigungen hatte. In der neuen Version werden Insert- und Update-Berechtigungen nun richtig abgebildet. Wenn eine Berechtigung fehlt, wird diese in der Fußzeile der Editierform angezeigt. Bewegen Sie den Mauszeiger über das rote Kästchen mit der Anzahl der Fehlermeldungen, um alle Fehler angezeigt zu bekommen.</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2016/04/write-permission.png" />
+  <img src="{{site.baseurl}}/content/images/blog/2016/04/write-permission.png" />
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">
   <a name="extensibility" id="extensibility" class="mce-item-anchor"></a>Erweiterbarkeit des HTML5 Clients</h2><p xmlns="http://www.w3.org/1999/xhtml">Dieses Monat haben wir viel Aufwand investiert, um den HTML5 Client um eigene Module erweiterbar zu machen. Sie werden bald in der Lage sein, Ihre eigenen Applikationen im Menü zu verlinken. Dise werden dann im Bereich unter dem Menü angezeigt so wie auch der Zeitbuchungskalender oder Listen.</p><p xmlns="http://www.w3.org/1999/xhtml">Wir sind noch nicht soweit, dass wir dieses Feature schon ausliefern können, aber wir würden uns freuen, wenn Sie uns über Ihre Anforderungen in diesem Bereich berichten. Wenn Sie time cockpit um eigene Applikationen erweitern möchten oder von uns Erweiterungen bauen lassen möchten, kontaktieren Sie uns unter <a href="mailto:support@timecockpit.com">support@timecockpit.com</a>. Wir würden gerne hören was Sie brauchen, um mehr aus time cockpit machen zu können.</p>

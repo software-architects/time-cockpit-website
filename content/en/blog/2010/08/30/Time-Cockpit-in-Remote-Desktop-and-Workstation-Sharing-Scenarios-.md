@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Time Cockpit in Remote Desktop and Workstation Sharing Scenarios 
+teaser: Upon popular request I would like to explain the current possibilities and limitations of time cockpit in advanced multi-user scenarios like using Remote Desktop Services or sharing workstations (using user switching).
 author: Simon Opelt
+date: 2010-50-30
 bannerimage: 
-permalink: /2010/08/30/Time-Cockpit-in-Remote-Desktop-and-Workstation-Sharing-Scenarios-
+permalink: /blog/2010/08/30/Time-Cockpit-in-Remote-Desktop-and-Workstation-Sharing-Scenarios-
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">Upon popular request I would like to explain the current possibilities and limitations of time cockpit in advanced multi-user scenarios like using <a href="http://en.wikipedia.org/wiki/Remote_Desktop_Services" target="_blank">Remote Desktop Services</a> or sharing workstations (using <a href="http://en.wikipedia.org/wiki/Fast_user_switching" target="_blank">user switching</a>).</p><p xmlns="http://www.w3.org/1999/xhtml">Besides the basic features (creating several users in one account, setting up multiple devices per user...) different scenarios of concurrent sessions on one pc, workstation or server are possible. The basic rule is if you are using different windows accounts (domain or local) everything should work as expected.</p><p xmlns="http://www.w3.org/1999/xhtml">After installing time cockpit on a machine (running a Windows server or client operating system) every user can set up time cockpit using completely independent configurations and database file locations. Multiple users can be logged in and running time cockpit at the same time. There are only a few minor limitations which may apply:</p><ul xmlns="http://www.w3.org/1999/xhtml">

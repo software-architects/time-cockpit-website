@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: BASTA 2014, C# Fitness
+teaser: Tomorrow I will do a full-day workshop about C# at BASTA Germany. Over the years, the workshop has become a tradition and I am really looking forward to it. In this blog article I publish slides, code samples, and important links for attendees.
 author: Rainer Stropek
+date: 2014-14-21
 bannerimage: 
-permalink: /2014/09/21/BASTA-2014-C-Fitness
+permalink: /blog/2014/09/21/BASTA-2014-C-Fitness
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">Tomorrow I will do a full-day workshop about <a href="http://basta.net/2014/sessions/c-fitness" target="_blank">C# at BASTA Germany</a>. Over the years, the workshop has become a tradition and I am really looking forward to it. In this blog article I publish slides, code samples, and important links for attendees. Here is the workshop's abstract (German):</p><div style="margin-left: 2em" xmlns="http://www.w3.org/1999/xhtml">
@@ -60,4 +62,4 @@ permalink: /2014/09/21/BASTA-2014-C-Fitness
   <li>
     <a href="https://github.com/rstropek/Samples/tree/master/ProfilingWorkshop/PiWithMonteCarlo.TestDriver" target="_blank">Command line</a> and <a href="https://github.com/rstropek/Samples/tree/master/ProfilingWorkshop/PiWithMonteCarloUI" target="_blank">WPF test drivers</a> for previous sample</li>
   <li>Memory leak hunting sample <a href="https://github.com/rstropek/Samples/tree/master/WpfMemoryLeakHunting/SampleWithLeaks" target="_blank">with leaks</a> and <a href="https://github.com/rstropek/Samples/tree/master/WpfMemoryLeakHunting/SampleWithoutLeaks" target="_blank">without leaks</a></li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">NuGet</h2><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">Here you can <a href="{{site.baseurl}}/images/blog/2014/09/NuGet.pdf" target="_blank">download the NuGet slide deck</a> I use during the workshop.</p>
+</ul><h2 xmlns="http://www.w3.org/1999/xhtml">NuGet</h2><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">Here you can <a href="{{site.baseurl}}/content/images/blog/2014/09/NuGet.pdf" target="_blank">download the NuGet slide deck</a> I use during the workshop.</p>

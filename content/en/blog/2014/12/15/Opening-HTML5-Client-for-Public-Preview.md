@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Opening HTML5 Client for Public Preview
+teaser: Today is an exciting day for the entire time cockpit team. We are opening up a first public preview of our brand new HTML5 client for time cockpit. Try it, play with it, and tell us what you think. Please be aware that it is an early preview and not production-ready. There will be errors, you will miss important features, we continue to work hard on it. However, we hope that the preview will already provide value to some of you and that you will share your thoughts with us.
 author: Rainer Stropek
-bannerimage: /images/blog/2014/12/15467456315_977b4fa0a0_k.jpg
-permalink: /2014/12/15/Opening-HTML5-Client-for-Public-Preview
+date: 2014-00-15
+bannerimage: /content/images/blog/2014/12/15467456315_977b4fa0a0_k.jpg
+permalink: /blog/2014/12/15/Opening-HTML5-Client-for-Public-Preview
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2014/12/15467456315_977b4fa0a0_k.jpg" />
+  <img src="{{site.baseurl}}/content/images/blog/2014/12/15467456315_977b4fa0a0_k.jpg" />
 </p><p class="imageCaption" xmlns="http://www.w3.org/1999/xhtml">Image source: <a href="https://flic.kr/p/pyNKTi" target="_blank">https://flic.kr/p/pyNKTi</a>, under <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Creative Commons</a> License</p><p xmlns="http://www.w3.org/1999/xhtml">
   <strong>Today is an exciting day for the entire time cockpit team. We are opening up a first public preview of our brand new HTML5 client for time cockpit. Try it, play with it, and tell us what you think. Please be aware that it is an early preview and not production-ready. There will be errors, you will miss important features, but we continue to work hard on it. However, we hope that the preview will already provide value to some of you and that you will <a href="#Feedback">share your thoughts with us</a>.</strong>
 </p><p xmlns="http://www.w3.org/1999/xhtml">In this blog article I want to give you some background information about the current preview release. Where are we standing? What’s covered? What are the next steps? The text will help you to understand what you can expect now and in the upcoming weeks.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">You don’t want to read, you just want to give it a try? Well, here you are: <a href="https://web.timecockpit.com/" target="_blank">https://web.timecockpit.com</a>. You can use your usual time cockpit credentials to log in.</p><div class="videoWrapper" xmlns="http://www.w3.org/1999/xhtml">
@@ -49,5 +51,5 @@ permalink: /2014/12/15/Opening-HTML5-Client-for-Public-Preview
   <li>ImageCells can be displayed in lists.</li>
 </ul><h2 xmlns="http://www.w3.org/1999/xhtml">
   <a id="Feedback" name="Feedback" class="mce-item-anchor"></a>Feedback</h2><p xmlns="http://www.w3.org/1999/xhtml">One of the most important reasons why we publish this preview is to get feedback from you. To make that process easier, we added the visual feedback tool <a href="https://usersnap.com/" target="_blank">Usersnap</a> to the HTML5 preview. Feel free to use it to report bugs or suggest improvements. The following animated image shows how this is done:</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2014/12/output_sZKXxT.gif" />
+  <img src="{{site.baseurl}}/content/images/blog/2014/12/output_sZKXxT.gif" />
 </p>

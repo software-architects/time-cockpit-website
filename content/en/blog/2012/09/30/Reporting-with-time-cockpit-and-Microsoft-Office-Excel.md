@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Reporting with time cockpit and Microsoft Office Excel
+teaser: Time cockpit contains some powerful functions to export data to Microsoft Office Excel. Learn how you use this feature for reporting purposes.
 author: Rainer Stropek
-bannerimage: /images/tour/reporting/excel_export.png
-permalink: /2012/09/30/Reporting-with-time-cockpit-and-Microsoft-Office-Excel
+date: 2012-06-30
+bannerimage: /content/images/tour/reporting/excel_export.png
+permalink: /blog/2012/09/30/Reporting-with-time-cockpit-and-Microsoft-Office-Excel
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">Microsoft Office Excel is the prevailing spreadsheet software today. Time cockpit accommodates this by offering powerful features for exporting data to Excel in the full client as well as in the online browser client. In this article you learn how you use them to implement reports based on time cockpit data. The article covers the following topics:</p><ul xmlns="http://www.w3.org/1999/xhtml">
@@ -36,11 +38,11 @@ permalink: /2012/09/30/Reporting-with-time-cockpit-and-Microsoft-Office-Excel
   <a id="ExportTemplates"></a>Export Templates</h2><p xmlns="http://www.w3.org/1999/xhtml">Time cockpit offers advanced support for reporting scenarios. As shown before, you could create your report by exporting data to Excel files and referencing them in a central report file with Excel pivot tables. As an alternative you can create a <em>template</em> file for exporting data from time cockpit. Here are the steps that you need to follow to create a template file:</p><ol xmlns="http://www.w3.org/1999/xhtml">
   <li>Create a new Excel worksheet.</li>
   <li>Add template headers and formulas for the columns that you want time cockpit to export. Use the <em>Time Cockpit Query Language (TCQL)</em> for the formulas. If you want to learn more about TCQL, check the <em>References</em> section at the end of this article for related links to the time cockpit online help. The following screenshot shows an example of how you add the formulas to your template worksheet:
-<br /><img src="{{site.baseurl}}/images/blog/2012/09/TcqlInExcel.png" alt="TCQL Formulas in the Template" title="TCQL Formulas in the Template" /></li>
+<br /><img src="{{site.baseurl}}/content/images/blog/2012/09/TcqlInExcel.png" alt="TCQL Formulas in the Template" title="TCQL Formulas in the Template" /></li>
   <li>After you specified all columns with their formulas, you have to mark the row with the formulas with the name <em>TemplateRow</em>. Note that <em>TemplateRow</em> must not contain the row with the column headers. If you change your template file afterwards and you need to change the definition of <em>TemplateRow</em>, you can use Excel's <em>Name Manager</em> (Ctrl + F3) for that. The following screenshot shows how you set the name in Excel:
-<br /><img src="{{site.baseurl}}/images/blog/2012/09/TemplateRowInExcel.png" alt="Set the name of the cells with the TCQL formulas to TemplateRow." title="Set the name of the cells with the TCQL formulas to TemplateRow." /></li>
+<br /><img src="{{site.baseurl}}/content/images/blog/2012/09/TemplateRowInExcel.png" alt="Set the name of the cells with the TCQL formulas to TemplateRow." title="Set the name of the cells with the TCQL formulas to TemplateRow." /></li>
   <li>Add additional worksheets with e.g. pivot tables or charts. They can reference the template worksheet that you created in step 3. It is a good practise to reference the source without restricting the number of rows. This is necessary because the number of rows that you export from time cockpit may vary from export to export. The following screenshot shows how you create such a reference in Excel. Note that the Excel formula does only contain a column letter but no row restriction (i.e. <em>$A:$N</em> instead of <em>$A$1:$G$17</em>).
-<br /><img src="{{site.baseurl}}/images/blog/2012/09/ReferencingTemplate.png" alt="Reference your template row without row limit as the number of exported data rows may vary from export to export." title="Reference your template row without row limit as the number of exported data rows may vary from export to export." /></li>
+<br /><img src="{{site.baseurl}}/content/images/blog/2012/09/ReferencingTemplate.png" alt="Reference your template row without row limit as the number of exported data rows may vary from export to export." title="Reference your template row without row limit as the number of exported data rows may vary from export to export." /></li>
   <li>In most cases it is a good idea to enable auto-refreshing for the data connections (already described above).</li>
   <li>Save your template as a regular Excel <em>.xlsx</em> file. Note that you have to close the template file before you can use it in time cockpit.</li>
 </ol><p xmlns="http://www.w3.org/1999/xhtml">Now that you have created your template file, you can use it in time cockpit when exporting data. The following screenshot shows how to do that. Note that time cockpit saves the template files that you have used in the past. In subsequent exports you just have to choose from the list of recently used template files. Did you recognize that the <em>Destination File</em> field is empty? If you leave it empty time cockpit will create a temporary file for you and will open it in Excel immediately.</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">

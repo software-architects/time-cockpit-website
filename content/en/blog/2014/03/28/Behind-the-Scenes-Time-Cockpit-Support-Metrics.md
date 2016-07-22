@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Behind the Scenes, Time Cockpit Support Metrics
+teaser: Support is an important aspect when offering software as a service. We use Zendesk for managing our support work. Want to know how we are doing?
 author: Rainer Stropek
+date: 2014-25-28
 bannerimage: 
-permalink: /2014/03/28/Behind-the-Scenes-Time-Cockpit-Support-Metrics
+permalink: /blog/2014/03/28/Behind-the-Scenes-Time-Cockpit-Support-Metrics
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">Support is an important aspect when offering software as a service. After all, SaaS is not only about selling a piece of software but also providing a great overall usage experience. We use <a href="http://www.zendesk.com" target="_blank">Zendesk</a> for managing our support work. Want to know how we are doing? Here are some facts from Q1/2014.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Channels</h2><ul xmlns="http://www.w3.org/1999/xhtml">

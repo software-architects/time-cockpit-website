@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Time Tracking Fitness Test
+teaser: Did you ever ask yourself how you are doing in terms of time tracking compared to other people? This test unveils your time tracking fitness level. Try it. It's fun and you might get ideas how you could enhance your existing time tracking practice.
 author: Rainer Stropek
+date: 2014-29-30
 bannerimage: 
-permalink: /2014/06/30/Time-Tracking-Fitness-Test
+permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">Did you ever ask yourself how you are doing in terms of time tracking compared to other people? This test unveils your time tracking fitness level. Try it. It's fun and you might get ideas how you could enhance your existing time tracking practice.<br /></p><div id="app" xmlns="http://www.w3.org/1999/xhtml"></div><script id="errorView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
@@ -19,7 +21,7 @@ permalink: /2014/06/30/Time-Tracking-Fitness-Test
   <div id="content"></div>
 </script><script id="welcomeView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
   <p>
-    <img src="{{site.baseurl}}/images/blog/2014/06/P1010036.jpg" />
+    <img src="{{site.baseurl}}/content/images/blog/2014/06/P1010036.jpg" />
   </p>
   <p>    
    Welcome to the <em>time tracking fitness test</em>. Answer <em>10 simple questions</em>    

@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Shearing Layers - Time Cockpit Case Study
+teaser: A few months ago I wrote a blog article about the concept of "Shearing Layers" in architecture and software development. I submitted a longer, German version of the article for OBJEKTspektrum, a well-known German magazine about IT management and software engineering. It was accepted and is included in this month's issue. For a limited amount of time it is also available online.
 author: Rainer Stropek
-bannerimage: /images/blog/2015/04/selexyz_dominicanen_bookstore_small.jpg
-permalink: /2015/04/30/Shearing-Layers---Time-Cockpit-Case-Study
+date: 2015-56-30
+bannerimage: /content/images/blog/2015/04/selexyz_dominicanen_bookstore_small.jpg
+permalink: /blog/2015/04/30/Shearing-Layers---Time-Cockpit-Case-Study
 ---
 
 <div class="floatRight" xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2015/04/selexyz_dominicanen_bookstore.jpg" style="width: 100%;" data-mce-style="width: 100%;" />
+  <img src="{{site.baseurl}}/content/images/blog/2015/04/selexyz_dominicanen_bookstore.jpg" style="width: 100%;" data-mce-style="width: 100%;" />
   <br />
   <p class="imageCaption">Image source: <a href="https://flic.kr/p/rqmzA5" target="_blank">https://flic.kr/p/rqmzA5</a>, <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Creative Commons</a> License</p>
 </div><p xmlns="http://www.w3.org/1999/xhtml">A few months ago I wrote <a href="http://www.timecockpit.com/blog/2014/10/27/Slow-Movers-and-Agile-Speed-Junkies---You-Need-Both-to-Succeed" target="_blank">a blog article about the concept of "Shearing Layers"</a> in architecture and software development. I submitted a longer, German version of the article for <a href="http://www.sigs-datacom.de/fachzeitschriften/objektspektrum.html" target="_blank">OBJEKTspektrum</a>, a well-known German magazine about IT management and software engineering. It was accepted and is included in <a href="http://www.sigs-datacom.de/fachzeitschriften/objektspektrum/aktuelle-ausgabe.html" target="_blank">this month's issue</a>.</p><h2 xmlns="http://www.w3.org/1999/xhtml">German Abstract</h2><div style="margin-left: 2em" data-mce-style="margin-left: 2em" xmlns="http://www.w3.org/1999/xhtml">

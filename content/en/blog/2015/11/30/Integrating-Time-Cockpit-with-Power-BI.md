@@ -1,19 +1,21 @@
 ---
 layout: blog
 title: Integrating Time Cockpit with Power BI
+teaser: Time cockpit is a great platform for managing time- and project-related data. Microsoft’s Power BI shines when it comes to data visualization and interactive dashboards. Wouldn’t it be nice to integrate both systems to get the best of both worlds? For this month’s newsletter, we have created a sample showing how simple it is to connect both systems’ web APIs. Watch the video in the blog article to find out how the integration sample works. Additionally, the blog article contains links to the sample code. Feel free to use it as a starting point for exporting your time cockpit data to Power BI.
 author: Rainer Stropek
-bannerimage: /images/blog/2015/11/power-bi.png
-permalink: /2015/11/30/Integrating-Time-Cockpit-with-Power-BI
+date: 2015-20-30
+bannerimage: /content/images/blog/2015/11/power-bi.png
+permalink: /blog/2015/11/30/Integrating-Time-Cockpit-with-Power-BI
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2015/11/power-bi-time-cockpit-1.png?mw=900" />
+  <img src="{{site.baseurl}}/content/images/blog/2015/11/power-bi-time-cockpit-1.png?mw=900" />
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">Data Analysis and Reporting in Time Cockpit</h2><p xmlns="http://www.w3.org/1999/xhtml">Time cockpit contains different functionalities to analyze your time-tracking data:</p><ol xmlns="http://www.w3.org/1999/xhtml">
   <li>You can use time cockpit’s list engine to explore data in a highly customizable grid. It supports interactive filtering, sorting, grouping including subtotals and totals, hyperlinks to other lists, etc.</li>
   <li>If you prefer Excel, you can export lists into an Excel file and use e.g. Pivot Tables to create reports and charts.</li>
   <li>Some of customers have implemented Data Warehouses where they integrate data from different sources including time cockpit. They use specialized data analysis and reporting tools with it.</li>
 </ol><h2 xmlns="http://www.w3.org/1999/xhtml">Power BI</h2><p xmlns="http://www.w3.org/1999/xhtml">In the last months, Microsoft has strongly invested in a SaaS tool for self-service data analysis called <a href="https://powerbi.microsoft.com/en-us/" target="_blank">Power BI</a>. It contains a full client for data analysis professionals as well as a web client that end users can use to create interactive reports and dashboards.</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2015/11/power-bi-time-cockpit-2.png?mw=900" />
+  <img src="{{site.baseurl}}/content/images/blog/2015/11/power-bi-time-cockpit-2.png?mw=900" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">Power BI’s web client is integrated in Microsoft’s <a href="https://products.office.com/de-AT/" target="_blank">Office 365</a> offering. All you need to use it is a browser. Therefore, it is platform-independent.</p><p xmlns="http://www.w3.org/1999/xhtml">To start, you can make use of Power BI’s free pricing tier. Compared to the professional edition, it is a bit limited in terms of functionality and storage. However, it is a great option to get started and evaluate whether Power BI provides value for you.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Integrating Time Cockpit Power BI</h2><p xmlns="http://www.w3.org/1999/xhtml">You have two options how to use Power BI together with time cockpit:</p><ol xmlns="http://www.w3.org/1999/xhtml">
   <li>Time cockpit offers an OData-compliant web service layer. Power BI’s full client can handle OData. Therefore, you can access time cockpit live using this protocol. We have written about this option in the past.</li>
   <li>If you want to use Power BI’s web client, you need to export your time cockpit data into a Power BI Dataset. This gives you great performance as Power BI can optimize the data for online analysis (OLAP) and not – like time cockpit has to – for supporting operational business processes (OLTP).</li>

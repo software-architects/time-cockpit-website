@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: Technologieplauscherl - .NET on Linux, Docker, and Azure
+teaser: Today I will do a session at a local user group called Technologieplauscherl. It is an informal meeting of people interested in technology. The topic I am going to speak about is Microsoft .NET and its new relationship with Linux, open source, and Docker.
 author: Rainer Stropek
-bannerimage: /images/blog/2015/08/techplauscherl-00-yeoman.png
-permalink: /2015/08/20/Technologieplauscherl---NET-on-Linux-Docker-and-Azure
+date: 2015-07-20
+bannerimage: /content/images/blog/2015/08/techplauscherl-00-yeoman.png
+permalink: /blog/2015/08/20/Technologieplauscherl---NET-on-Linux-Docker-and-Azure
 ---
 
 <h2 xmlns="http://www.w3.org/1999/xhtml">Introduction</h2><p xmlns="http://www.w3.org/1999/xhtml">Today I will do a session at a local user group called <em><a href="http://technologieplauscherl.at/" target="_blank">Technologieplauscherl</a></em>. It is an informal meeting of people interested in technology. The topic I am going to speak about is Microsoft .NET and its new relationship with Linux, open source, and Docker. In this blog article I provide important links and the sample code I am going to show so that the attendees can follow along or play with .NET on Linux at home using this article as a starting point.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Microsoft .NET and Linux - What has Changed?</h2><p xmlns="http://www.w3.org/1999/xhtml">I have been working with .NET for decades. Until recently, .NET has meant you had to use Windows. With the rise of the cloud (in particular Microsoft's <a href="http://azure.microsoft.com" target="_blank">Azure</a> cloud), Microsoft started to really embrace the idea of open source. Additionally, Microsoft started to fall in love with the idea of platform independence. Some people thought that this is just an episode - but in the last months, Microsoft has proven that they are serious. Here are some examples:</p><ul xmlns="http://www.w3.org/1999/xhtml">
@@ -22,13 +24,13 @@ permalink: /2015/08/20/Technologieplauscherl---NET-on-Linux-Docker-and-Azure
 </ul><p xmlns="http://www.w3.org/1999/xhtml">If you want to try the sample I show at <em>Technologieplauscherl</em>, here is my story book for the demo:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Open a terminal window on your Linux box.</li>
   <li>Use <em>dnvm</em>, the .NET version manager, to install the .NET runtime you would like to use. For my demos I will use Mono as the CoreCLR is still too unstable. If you read that in a few months, you will probably be able to use the CoreCLR version already.
-<br /><img src="{{site.baseurl}}/images/blog/2015/08/techplauscherl-01-dnvm.png" /></li>
+<br /><img src="{{site.baseurl}}/content/images/blog/2015/08/techplauscherl-01-dnvm.png" /></li>
   <li>Run <em>yo aspnet</em> and create a console application.
-<br /><img src="{{site.baseurl}}/images/blog/2015/08/techplauscherl-02-yeoman.png" /></li>
+<br /><img src="{{site.baseurl}}/content/images/blog/2015/08/techplauscherl-02-yeoman.png" /></li>
   <li>Use <em>Code</em> to open the folder with the console app and make yourself familiar with the code.</li>
   <li>Run <em>dnu restore</em> in the folder with the console app to restore the library that the app depends on.</li>
   <li>Run <em>dnx . run</em> to execute your console app. You should see <em>Hello World</em>.
-<br /><img src="{{site.baseurl}}/images/blog/2015/08/techplauscherl-03-dnu-dnx.png" /></li>
+<br /><img src="{{site.baseurl}}/content/images/blog/2015/08/techplauscherl-03-dnu-dnx.png" /></li>
 </ul><p xmlns="http://www.w3.org/1999/xhtml">Voila, .NET on Linux :-)</p><h2 xmlns="http://www.w3.org/1999/xhtml">Demo 2 - Web Application</h2><p xmlns="http://www.w3.org/1999/xhtml">Next, we want to try a more complex program, an ASP.NET web application with server- and client-side code:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Run <em>yo aspnet</em> and create a <em>Web Application Basic</em>.</li>
   <li>Use <em>Code</em> to open the folder with the console app and make yourself familiar with the code.</li>

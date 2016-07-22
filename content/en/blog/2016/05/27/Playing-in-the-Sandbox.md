@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Playing in the Sandbox
+teaser: Do you have customized time cockpit or plan to customize it? If yes, you should continue reading, because in this article we show you how you can get your own, private time cockpit test system where you can play around with things without influencing your time cockpit production environment.
 author: Alexander Huber
-bannerimage: /images/blog/2016/05/sandbox-small.jpg
-permalink: /2016/05/27/Playing-in-the-Sandbox
+date: 2016-29-27
+bannerimage: /content/images/blog/2016/05/sandbox-small.jpg
+permalink: /blog/2016/05/27/Playing-in-the-Sandbox
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2016/05/sandbox.jpg" />
+  <img src="{{site.baseurl}}/content/images/blog/2016/05/sandbox.jpg" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">Do you have customized time cockpit or plan to customize it? If yes, you should continue reading, because in this article we show you how you can get your own, private time cockpit test system where you can play around with things without influencing your time cockpit production environment.
 		</p><h2 xmlns="http://www.w3.org/1999/xhtml">Why Do You Need a Sandbox? <br /></h2><p xmlns="http://www.w3.org/1999/xhtml">A time cockpit test system (we call it a <em>sandbox</em>) lets you test and play with your customizations <span style="text-decoration: underline;" data-mce-style="text-decoration: underline;">before</span> you transfer them to your production time cockpit. In the following we describe some use cases where a sandbox would mitigate the risk of harming your time cockpit production system:
 		</p><ul xmlns="http://www.w3.org/1999/xhtml">

@@ -1,9 +1,13 @@
 ---
 layout: blog
 title: What's New In Version September 2013
+teaser: This month we continue the spate of performance and productivity improvements for time cockpit. We have focused on lists and the customization module. 
+
+Time cockpit now provides shortcuts for opening forms not only as dialogs but also as tabs. This makes it much easier to deal with large forms as they can use nearly the entire screen. Additionally you can open a list and a form side by side so you still see the overview in the list while editing a data row. Such scenarios are very helpful especially for typical back office work like preparing timesheet data for invoicing, effort analysis in project management, etc.
 author: Karin Huber
+date: 2013-25-29
 bannerimage: 
-permalink: /2013/08/29/Whats-New-In-Version-September-2013
+permalink: /blog/2013/08/29/Whats-New-In-Version-September-2013
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">This month we continue the spate of performance and productivity improvements for time cockpit. We have focused on lists and the customization module:</p><ul xmlns="http://www.w3.org/1999/xhtml">

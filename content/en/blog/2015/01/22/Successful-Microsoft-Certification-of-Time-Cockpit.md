@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Successful Microsoft Certification of Time Cockpit
+teaser: Our company has been a Microsoft partner for many years. Each January, we have to renew our certifications. This year we managed to get two competencies.
 author: Rainer Stropek
-bannerimage: /images/blog/2015/01/logo.png
-permalink: /2015/01/22/Successful-Microsoft-Certification-of-Time-Cockpit
+date: 2015-53-22
+bannerimage: /content/images/blog/2015/01/logo.png
+permalink: /blog/2015/01/22/Successful-Microsoft-Certification-of-Time-Cockpit
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2015/01/logo.png" />
+  <img src="{{site.baseurl}}/content/images/blog/2015/01/logo.png" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">Our company has been a Microsoft partner for many years. Each January, we have to renew our certifications. This year we managed to get two competencies. Microsoft is by far our most important technology partner. Therefore we are very happy about being part of the Microsoft Partner Program for another year.</p><h2 xmlns="http://www.w3.org/1999/xhtml">
   <em>Application Development</em> Competency</h2><p xmlns="http://www.w3.org/1999/xhtml">The full client of our time tracking solution <a href="http://www.timecockpit.com" target="_blank">time cockpit</a> has again successfully passed the <em>Windows 8 Platform Ready</em> test. The test verified that time cockpit respects the rules defined by Microsoft for being fully compatible with Windows 8.</p><h2 xmlns="http://www.w3.org/1999/xhtml">
   <em>Cloud Platform</em> Competency</h2><p xmlns="http://www.w3.org/1999/xhtml">Our company was "born in the cloud". That means that we have been delivering all our software products as cloud-services (Software-as-a-Service, SaaS) from the very first day. By proving our knowledge through</p><ul xmlns="http://www.w3.org/1999/xhtml">

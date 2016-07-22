@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: BASTA 2014, Video-Interview about Windows Azure
+teaser: At BASTA 2014 I gave an interview about the current state of the Microsoft Windows Azure Platform (German). Here you can watch it. I would love to hear your feedback.
 author: Rainer Stropek
+date: 2014-14-27
 bannerimage: 
-permalink: /2014/02/27/BASTA-2014-Video-Interview-about-Windows-Azure
+permalink: /blog/2014/02/27/BASTA-2014-Video-Interview-about-Windows-Azure
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">At <a href="http://www.basta.net" target="_blank">BASTA 2014</a> I gave an interview about the current state of the Microsoft Windows Azure Platform (German). Here you can watch it. I would love to hear your feedback.</p><div class="videoWrapper" xmlns="http://www.w3.org/1999/xhtml">

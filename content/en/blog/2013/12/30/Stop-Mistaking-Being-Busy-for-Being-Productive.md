@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Stop Mistaking Being Busy for Being Productive
+teaser: At the current time of the year, many people are thinking about their New Year’s resolutions. Beside classics like “eat more vegetables” or “go to the gym more often”, you could add one for your job: Stop thinking you are productive if you are just busy.
 author: Rainer Stropek
+date: 2013-03-30
 bannerimage: 
-permalink: /2013/12/30/Stop-Mistaking-Being-Busy-for-Being-Productive
+permalink: /blog/2013/12/30/Stop-Mistaking-Being-Busy-for-Being-Productive
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2013/12/HamsterWheel.jpg" />
+  <img src="{{site.baseurl}}/content/images/blog/2013/12/HamsterWheel.jpg" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">Image by <a href="http://www.flickr.com/photos/31199363@N02/" target="_blank">Martin de la Iglesia</a>, <a href="http://flic.kr/p/6Rkaen" target="_blank">view original photo on Flickr</a>, under <a href="http://creativecommons.org/licenses/by/2.0/deed.de" target="_blank">Creative Commons License</a></p><h2 xmlns="http://www.w3.org/1999/xhtml">Introduction</h2><p xmlns="http://www.w3.org/1999/xhtml">At the current time of the year, many people are thinking about their New Year’s resolutions. Beside classics like “eat more vegetables” or “go to the gym more often”, you could add one for your job: <em>Stop thinking you are productive if you are just busy</em>.</p><p xmlns="http://www.w3.org/1999/xhtml">Projects involving <em>time cockpit</em> or our <a href="http://en.wikipedia.org/wiki/Rapid_application_development" target="_blank">RAD</a> framework <em>CoFX</em> (<em>Cockpit Framework</em>) usually go hand in hand with consulting regarding project management, agile methods like Scrum, coaching about development processes, etc. Recently I recapped my consulting work of the previous year. In this blog article I would like to share three experiences that reveal that many teams mistake being busy for high productivity.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Raise Productivity by Reducing Waste</h2><p xmlns="http://www.w3.org/1999/xhtml">What is the core idea of agile development? It’s <em>reducing waste</em>. Do not produce things that nobody needs regardless whether it’s a function in your software, a piece of documentation nobody will read, a detailed specification for a feature that will never be implemented because it is not high enough in the priority list, etc.</p><p xmlns="http://www.w3.org/1999/xhtml">In the last year I have seen numerous teams producing lots of “waste” although they said they were using agile methods like Scrum. Here are some examples:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Functional specifications with dozens of very detailed use cases which literally nobody in the development team reads.</li>
   <li>Product planning meeting for software product being 75% complete: First customer surveys revealed that the missing 25% are the most important ones for end customers preventing them to roll out the existing parts of the software.</li>

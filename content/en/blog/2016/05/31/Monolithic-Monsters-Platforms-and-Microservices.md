@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Monolithic Monsters, Platforms, and Microservices
+teaser: In the last decade, requirements for business software have changed drastically. First, monolithic industry solutions had to become platforms to enable tailoring to customer-specific needs. Next, architectural changes were necessary to fully use the advantages of cloud computing. Today, software products have to become Microservices that can be combined by customers into larger systems. This article summarized this evolution of business software and describes how our strategy for time cockpit fits in.
 author: Rainer Stropek
-bannerimage: /images/blog/2016/05/broken-concrete-small.jpg
-permalink: /2016/05/31/Monolithic-Monsters-Platforms-and-Microservices
+date: 2016-19-31
+bannerimage: /content/images/blog/2016/05/broken-concrete-small.jpg
+permalink: /blog/2016/05/31/Monolithic-Monsters-Platforms-and-Microservices
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2016/05/broken-concrete.jpg" />
+  <img src="{{site.baseurl}}/content/images/blog/2016/05/broken-concrete.jpg" />
 </p><p class="imageCaption" xmlns="http://www.w3.org/1999/xhtml">Image source: <a href="https://flic.kr/p/6Du7DL" target="_blank">https://flic.kr/p/6Du7DL</a>, <a href="https://creativecommons.org/licenses/by-nc/2.0/" target="_blank">Creative Commons</a> License</p><p xmlns="http://www.w3.org/1999/xhtml">In the last decade, requirements for business software have changed drastically. First, monolithic industry solutions had to become platforms to enable tailoring to customer-specific needs. Next, architectural changes were necessary to fully use the advantages of cloud computing. Today, software products have to become Microservices that can be combined by customers into larger systems. This article summarized this evolution of business software and describes how our strategy for time cockpit fits in.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Monolithic Monsters</h2><p xmlns="http://www.w3.org/1999/xhtml">Two decades ago, software products used to be large, feature-rich, monolithic systems. Specialized software vendors were competing by offering holistic solutions for certain branches, often referred to as “industry solutions”. Over time, the solutions that were widely used, became unmanageable monsters with an endless number of configuration options and extensibility points. As a customer, you always got the whole system with all its complexity even if you needed just a part of it.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Platforms Instead of Ready-Made Products</h2><p xmlns="http://www.w3.org/1999/xhtml">Once it became clear that adding more and more features and options to a product is a dead-end street, vendors of commercial off-the-shelf started to build platform-products. These platforms provide a basic set of ready-made functionality. Additionally, they had mature extensibility mechanisms like for instance</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>customizable data models,</li>
   <li>APIs (based on e.g. .NET, Java, COM) with logic specific for the domain for which the software has been built,</li>

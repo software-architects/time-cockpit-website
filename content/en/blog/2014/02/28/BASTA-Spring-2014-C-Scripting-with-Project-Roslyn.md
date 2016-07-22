@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: BASTA Spring 2014, C# Scripting with Project Roslyn
+teaser: At BASTA Spring 2014 I did a presentation about C# Scripting with Project Roslyn. Here you find the slides and the sample code.
 author: Rainer Stropek
+date: 2014-44-28
 bannerimage: 
-permalink: /2014/02/28/BASTA-Spring-2014-C-Scripting-with-Project-Roslyn
+permalink: /blog/2014/02/28/BASTA-Spring-2014-C-Scripting-with-Project-Roslyn
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">At <a href="http://www.basta.net" target="_blank">BASTA Spring 2014</a> conference I did a presentation about C# Scripting with Project Roslyn. Here you find the slides and the sample code.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Slides</h2><div class="videoWrapper" xmlns="http://www.w3.org/1999/xhtml">

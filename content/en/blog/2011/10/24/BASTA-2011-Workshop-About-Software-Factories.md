@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: BASTA 2011, Workshop About Software Factories
+teaser: Ok, I feel ashamed. Already more than three weeks have passed since BASTA 2011 has ended - and I did not publish my slides and samples yet. However, today I finally found the time to write this blog post.
 author: Rainer Stropek
+date: 2011-05-24
 bannerimage: 
-permalink: /2011/10/24/BASTA-2011-Workshop-About-Software-Factories
+permalink: /blog/2011/10/24/BASTA-2011-Workshop-About-Software-Factories
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">Ok, I feel ashamed. Already more than three weeks have passed since BASTA 2011 has ended - and I did not publish my slides and samples yet. However, today I finally found the time to write this blog post.</p><p xmlns="http://www.w3.org/1999/xhtml">My BASTA week started with a full-day workshop about software factories. I covered the following topics:</p><ol xmlns="http://www.w3.org/1999/xhtml">
@@ -22,4 +24,4 @@ permalink: /2011/10/24/BASTA-2011-Workshop-About-Software-Factories
   <li>Scripting with Dynamic Language Runtime (DLR)</li>
   <li>Generating professional documentation with Sandcastle</li>
 </ol><p xmlns="http://www.w3.org/1999/xhtml">In the workshop I demonstrated the use of the technologies mentioned above in a single continuous example. It enabled domain-specific modelling using XAML. The application used the model to offer a WPF-based user interface that is extensible using modules (using MEF). Additionally it is scripting-enabled (Python). On the level of source-code the sample follows the framework design guidelines of Microsoft (completely StyleCop and Code Analysis warning free).</p><p xmlns="http://www.w3.org/1999/xhtml">
-  <a href="{{site.baseurl}}/images/blog/2011/10/BASTA 2011 - Der Weg zur CSharp-Softwarefabrik.pdf">Download the slides</a> for the workshop (German). You can also download the complete <a href="{{site.baseurl}}/images/blog/2011/10/SoftwareFactoryFinishedSample.zip">sample code</a> that I developed during the workshop.</p>
+  <a href="{{site.baseurl}}/content/images/blog/2011/10/BASTA 2011 - Der Weg zur CSharp-Softwarefabrik.pdf">Download the slides</a> for the workshop (German). You can also download the complete <a href="{{site.baseurl}}/content/images/blog/2011/10/SoftwareFactoryFinishedSample.zip">sample code</a> that I developed during the workshop.</p>

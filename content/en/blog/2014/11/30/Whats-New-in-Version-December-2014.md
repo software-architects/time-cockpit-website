@@ -1,9 +1,11 @@
 ---
 layout: blog
 title: What's New in Version December 2014
+teaser: Time cockpit got a new log file format which makes troubleshooting much easier. Additionally, we extended our implementation of script source lists to get enable optimizations in time cockpit's web client.
 author: Karin Huber
-bannerimage: /images/blog/2014/11/time-cockpit-december-2014.png
-permalink: /2014/11/30/Whats-New-in-Version-December-2014
+date: 2014-33-30
+bannerimage: /content/images/blog/2014/11/time-cockpit-december-2014.png
+permalink: /blog/2014/11/30/Whats-New-in-Version-December-2014
 ---
 
 <p class="showcase" xmlns="http://www.w3.org/1999/xhtml">The new version December 2014 (1.31) is downwards compatible to version March 2013 (1.10) and later. You can use all of these versions in a single account simultaneously.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Changes in the New Version</h2><h3 xmlns="http://www.w3.org/1999/xhtml">New Method <em>getResultModelEntity</em> in Script Source Lists</h3><p xmlns="http://www.w3.org/1999/xhtml">In preparation for our HTML 5 time cockpit client we had to extend Script Source Lists. They now require an additional method <em>getResultModelEntity</em>. It has to return a model entity that specifies how the result of the list will look like.</p><p xmlns="http://www.w3.org/1999/xhtml">All Script Source Lists that are part of time cockpit's standard data model have been updated accordingly in the new version. If you want your custom lists with Python script code to work in the new HTML 5 client, please <a href="~/blog/2014/11/27/Why-You-Need-to-Sign-Your-Custom-Code">add the new method to your Python script</a>. If you need help please contact us at <a href="mailto:support@timecockpit.com">support@timecockpit.com</a>.</p><p xmlns="http://www.w3.org/1999/xhtml">

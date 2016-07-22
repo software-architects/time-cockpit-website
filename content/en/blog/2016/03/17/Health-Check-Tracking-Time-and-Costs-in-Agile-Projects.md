@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Health Check, Tracking Time and Costs in Agile Projects
+teaser: In business life, managers usually want to know upfront how long a project will take and how much it will cost. Essentially, they ask us to predict the future. However, life is what happens to you while you’re busy making plans. Nevertheless, agile must not mean chaos and blind flight, though. At time cockpit, we have developed best practices for keeping track of time and costs in agile projects. . In this blog article I summarize the most important aspects.
 author: Rainer Stropek
-bannerimage: /images/blog/2016/03/budget-small.jpg
-permalink: /2016/03/17/Health-Check-Tracking-Time-and-Costs-in-Agile-Projects
+date: 2016-22-17
+bannerimage: /content/images/blog/2016/03/budget-small.jpg
+permalink: /blog/2016/03/17/Health-Check-Tracking-Time-and-Costs-in-Agile-Projects
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2016/03/budget.jpg" />
+  <img src="{{site.baseurl}}/content/images/blog/2016/03/budget.jpg" />
 </p><p class="imageCaption" xmlns="http://www.w3.org/1999/xhtml">Image source: <a href="https://flic.kr/p/s7aUff" target="_blank">https://flic.kr/p/s7aUff</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 		</p><h2 xmlns="http://www.w3.org/1999/xhtml">Future is Not Predictable
 		</h2><p xmlns="http://www.w3.org/1999/xhtml">In business life, managers usually want to know upfront how long a project will take and how much it will cost. Essentially, they ask us to predict the future. As humans, we like to assume predictable environments. They make us feel safe. However, as John Lennon has put it: Life is what happens to you while you’re busy making plans.

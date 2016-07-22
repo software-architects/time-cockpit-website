@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Protect Against Frankenstein With Design-to-Cost
+teaser: Although software is intangible, it ages. As a consequence, every software company will at some point need to make significant investments to redesign and modernize existing applications. In such projects, costs and available resources are important for design decisions. Without a design-to-cost approach, redesign projects often are stopped before they are finished. Frankenstein software is the result. Read more about how to use the design-to-cost approach to protect against Frankenstein.
 author: Rainer Stropek
-bannerimage: /images/blog/2016/01/frankenstein-small.jpg
-permalink: /2016/01/29/Protect-Against-Frankenstein-With-Design-to-Cost
+date: 2016-31-29
+bannerimage: /content/images/blog/2016/01/frankenstein-small.jpg
+permalink: /blog/2016/01/29/Protect-Against-Frankenstein-With-Design-to-Cost
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}/images/blog/2016/01/frankenstein.jpg" />
+  <img src="{{site.baseurl}}/content/images/blog/2016/01/frankenstein.jpg" />
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">Software Ages!</h2><p xmlns="http://www.w3.org/1999/xhtml">Although software is intangible, it ages. Even if you never touch it, people will less and less want to work with it over time. It is necessary to invest in a software product to keep it up to date technologically and from a requirements point of view. As a consequence, software company regularly start refactoring projects to modernize their applications. I regularly get engaged in software architecture workshops that should pave the way for such projects. Over the years, these projects have taught me a lessen:</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">Without a <strong>design-to-cost</strong> approach, redesign projects lead to inconsistent "Frankenstein" software containing numerous different solutions for similar problems.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Beware of Inconsistent Monsters!</h2><p xmlns="http://www.w3.org/1999/xhtml">Why? Because considering costs as an important non-functional requirement, projects are often stopped before they can be completed. Typical reasons are budget cuts, lack of resources, stakeholders demanding new features instead of refactorings, etc. If you stop a refactoring project half-way, you have a massively inconsistent software (e.g. using plain SQL for data access vs. using Entity Framework). Do that multiple times and Frankenstein is born. Your software will be hard to maintain, extend and support.</p><p xmlns="http://www.w3.org/1999/xhtml">Here are some examples I have seen in real-world customer projects in the last 12 months:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Three entirely different data access technologies in a single monolithic application (ADO.NET, custom OR-mapper, Entity Framework)</li>
   <li>Three different UI-technologies in a rather small business application (WinForms, WPF, embedded web browser)</li>

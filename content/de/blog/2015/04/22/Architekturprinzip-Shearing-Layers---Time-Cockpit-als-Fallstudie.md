@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Architekturprinzip "Shearing Layers" - Time Cockpit als Fallstudie
+teaser: Vor ein paar Monaten habe ich einen Blogartikel über das Konzept der "Shearing Layers" in Architektur und Software Engineering geschrieben. Eine ausführlichere Version habe ich beim OBJEKTspektrum-Magazin eingereicht. Der Vorschlag wurde angenommen und der Artikel wurde dieses Monat veröffentlicht. Für kurze Zeit steht er kostenlos online zum Lesen zur Verfügung.
 author: Rainer Stropek
-bannerimage: /images/blog/2015/04/selexyz_dominicanen_bookstore_small.jpg
-permalink: /de/2015/04/22/Architekturprinzip-Shearing-Layers---Time-Cockpit-als-Fallstudie
+date: 2015-00-22
+bannerimage: /content/images/blog/2015/04/selexyz_dominicanen_bookstore_small.jpg
+permalink: /de/blog/2015/04/22/Architekturprinzip-Shearing-Layers---Time-Cockpit-als-Fallstudie
 ---
 
 <div class="floatRight" xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2015/04/selexyz_dominicanen_bookstore.jpg" style="width: 100%;" data-mce-style="width: 100%;" />
+  <img src="{{site.baseurl}}/content/images/blog/2015/04/selexyz_dominicanen_bookstore.jpg" style="width: 100%;" data-mce-style="width: 100%;" />
   <br />
   <p class="imageCaption">Image source: <a href="https://flic.kr/p/rqmzA5" target="_blank">https://flic.kr/p/rqmzA5</a>, <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Creative Commons</a> License</p>
 </div><p xmlns="http://www.w3.org/1999/xhtml">Vor ein paar Monaten habe ich einen <a href="http://www.timecockpit.com/blog/2014/10/27/Slow-Movers-and-Agile-Speed-Junkies---You-Need-Both-to-Succeed" target="_blank">Blogartikel über das Konzept der "Shearing Layers"</a> in Architektur und Software Engineering geschrieben. Eine ausführlichere Version habe ich beim deutschen <a href="http://www.sigs-datacom.de/fachzeitschriften/objektspektrum.html" target="_blank">OBJEKTspektrum-Magazin</a> eingereicht. Der Vorschlag wurde angenommen und der Artikel wurde <a href="http://www.sigs-datacom.de/fachzeitschriften/objektspektrum/aktuelle-ausgabe.html" target="_blank">dieses Monat veröffentlicht</a>.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Zusammenfassung des Inhalts

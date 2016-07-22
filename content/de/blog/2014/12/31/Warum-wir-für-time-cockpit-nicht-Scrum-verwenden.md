@@ -1,13 +1,15 @@
 ---
 layout: blog
 title: Warum wir für time cockpit nicht Scrum verwenden
+teaser: Für die initiale Entwicklung von time cockpit vor einigen Jahren haben wir Scrum verwendet. Es gab Zeiten, in denen wir Scrum tatsächlich nahezu wie im Lehrbuch leben konnte, aber mit der Zeit wurden wir etwas nachlässig. Trotzdem funktionierte es ziemlich gut für uns. Jetzt verwenden wir Scrum nicht mehr. In diesem Blogartikel möchte ich beschreiben, warum wir uns davon abgewendet haben und wie wir unsere Entwicklungsprozesse heute managen. 
 author: Rainer Stropek
-bannerimage: /images/blog/2014/12/5141328136_16d8f73ee7_b.jpg
-permalink: /de/2014/12/31/Warum-wir-für-time-cockpit-nicht-Scrum-verwenden
+date: 2014-14-31
+bannerimage: /content/images/blog/2014/12/5141328136_16d8f73ee7_b.jpg
+permalink: /de/blog/2014/12/31/Warum-wir-für-time-cockpit-nicht-Scrum-verwenden
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">
-  <img src="{{site.baseurl}}images/blog/2014/12/5141328136_16d8f73ee7_b.jpg" />
+  <img src="{{site.baseurl}}/content/images/blog/2014/12/5141328136_16d8f73ee7_b.jpg" />
 </p><p class="imageCaption" xmlns="http://www.w3.org/1999/xhtml">Image source: <a href="https://flic.kr/p/8QjDJy" target="_blank">https://flic.kr/p/8QjDJy</a>, under <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License</p><p xmlns="http://www.w3.org/1999/xhtml">Für die initiale Entwicklung von time cockpit vor einigen Jahren haben wir Scrum verwendet. Es gab Zeiten, in denen wir Scrum tatsächlich nahezu wie im Lehrbuch leben konnte, aber mit der Zeit wurden wir etwas nachlässig. Trotzdem funktionierte es ziemlich gut für uns. Jetzt verwenden wir Scrum nicht mehr. In diesem Blogartikel möchte ich beschreiben, warum wir uns davon abgewendet haben und wie wir unsere Entwicklungsprozesse heute managen. </p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">Wenn Scrum neu für Sie ist, empfehle ich Ihnen den kostenlos verfügbaren <a href="http://www.scrumguides.org/" target="_blank">Scrum Guide</a>.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Wofür Scrum gut ist</h2><p xmlns="http://www.w3.org/1999/xhtml">Oft fragen uns Kunden in der Softwarebranche nach Beratungstätigkeiten unabhängig von time cockpit. Manchmal brauchen sie technischen Rat und manchmal haben sie nur Probleme mit ihren Business-Prozessen. Über die Jahre habe ich Scrum sehr vielen Entwicklungsteams während solcher Beratungs-Workshops weiterempfohlen.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">Scrum ist meiner Meinung nach eine großartige Lösung für Teams ist mit zumindest einigen der folgenden Probleme:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Das Team baut unregelmäßig große Versionen. Diese auszurollen ist eine Qual.</li>
   <li>Entwickler tendieren dazu, viele verschiedene Themen anzufangen, kämpfen aber mit der Fertigstellung (und ich meine wirklich Fertigstellung inkl. Dokumentation, Tests, usw.).</li>
