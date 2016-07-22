@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: We Have Moved to a New Office Location
-teaser: It feels like yesterday when we moved into our first single-room office in the Techcenter Linz a few years ago. Meanwhile our team has grown rapidly. Therefore, some month ago we decided it was time to change. No sooner said than done: We decided to look for a new home for the time cockpit team.
+teaser: It feels like yesterday when we moved into our first single-room office in the Techcenter Linz a few years ago. Meanwhile our team has grown rapidly. Therefore, some month ago we decided it was time to change. No sooner said than done -  We decided to look for a new home for the time cockpit team.
 author: Rainer Stropek
-date: 2014-30-30
+date: 2014-07-30
 bannerimage: 
+lang: en
 permalink: /blog/2014/07/30/We-Have-Moved-to-a-New-Office-Location
 ---
 

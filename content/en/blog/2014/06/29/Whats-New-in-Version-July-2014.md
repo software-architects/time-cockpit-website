@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version July 2014
 teaser: This month we have added various productivity functions to time cockpit. Among others you can now book vacations, sick leaves and compensatory time directly in the time tracking calendar.
 author: Karin Huber
-date: 2014-15-29
+date: 2014-06-29
 bannerimage: 
+lang: en
 permalink: /blog/2014/06/29/Whats-New-in-Version-July-2014
 ---
 

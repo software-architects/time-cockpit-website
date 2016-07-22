@@ -5,6 +5,7 @@ teaser: In January, we finally migrated all our production databases in Microsof
 author: Rainer Stropek
 date: 2016-01-31
 bannerimage: /content/images/blog/2016/01/db-usage-chart-small.png
+lang: en
 permalink: /blog/2016/01/31/Hello-Database-Pools
 ---
 

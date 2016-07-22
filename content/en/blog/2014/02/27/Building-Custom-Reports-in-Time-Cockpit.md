@@ -3,8 +3,9 @@ layout: blog
 title: Building Custom Reports in Time Cockpit
 teaser: The latest version of time cockpit adds the ability to create custom reports with Microsoft's Reporting Services tools. Watch a short video about this new feature and read about the details.
 author: Rainer Stropek
-date: 2014-30-27
+date: 2014-02-27
 bannerimage: 
+lang: en
 permalink: /blog/2014/02/27/Building-Custom-Reports-in-Time-Cockpit
 ---
 

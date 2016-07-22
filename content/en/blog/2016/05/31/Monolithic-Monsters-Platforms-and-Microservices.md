@@ -3,8 +3,9 @@ layout: blog
 title: Monolithic Monsters, Platforms, and Microservices
 teaser: In the last decade, requirements for business software have changed drastically. First, monolithic industry solutions had to become platforms to enable tailoring to customer-specific needs. Next, architectural changes were necessary to fully use the advantages of cloud computing. Today, software products have to become Microservices that can be combined by customers into larger systems. This article summarized this evolution of business software and describes how our strategy for time cockpit fits in.
 author: Rainer Stropek
-date: 2016-19-31
+date: 2016-05-31
 bannerimage: /content/images/blog/2016/05/broken-concrete-small.jpg
+lang: en
 permalink: /blog/2016/05/31/Monolithic-Monsters-Platforms-and-Microservices
 ---
 

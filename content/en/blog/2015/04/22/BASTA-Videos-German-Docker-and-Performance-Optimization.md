@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: BASTA Videos (German), Docker and Performance Optimization
+title: BASTA Videos (German) -  Docker and Performance Optimization
 teaser: At BASTA Spring 2015 some of my session were recorded. The recordings about Docker for software developers and .NET performance optimization tips and tricks are now online. Here are the links and videos.
 author: Rainer Stropek
-date: 2015-54-22
+date: 2015-04-22
 bannerimage: /content/images/blog/2015/02/BASTA_SE_15_Speakerbutton_300x250_cropped.png
+lang: en
 permalink: /blog/2015/04/22/BASTA-Videos-German-Docker-and-Performance-Optimization
 ---
 

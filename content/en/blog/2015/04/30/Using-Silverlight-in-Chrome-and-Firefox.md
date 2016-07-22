@@ -3,8 +3,9 @@ layout: blog
 title: Using Silverlight in Chrome and Firefox
 teaser: While Microsoft will support Silverlight until 2021, Google will remove support already this year. If you want to use Silverlight in the new release of Google Chrome (v42), you have to enable it. In this blog article we describe how this can be done.
 author: Rainer Stropek
-date: 2015-45-30
+date: 2015-04-30
 bannerimage: /content/images/blog/2015/04/Silverlight.png
+lang: en
 permalink: /blog/2015/04/30/Using-Silverlight-in-Chrome-and-Firefox
 ---
 

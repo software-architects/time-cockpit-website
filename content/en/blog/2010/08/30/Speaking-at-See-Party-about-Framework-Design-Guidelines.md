@@ -3,8 +3,9 @@ layout: blog
 title: Speaking at See# Party about Framework Design Guidelines
 teaser: On saturday I had the opportunity to speak about Framework Design Guidelines at the conference See# Party in Switzerland. Here are the key topics that I covered in my session.
 author: Rainer Stropek
-date: 2010-53-30
+date: 2010-08-30
 bannerimage: 
+lang: en
 permalink: /blog/2010/08/30/Speaking-at-See-Party-about-Framework-Design-Guidelines
 ---
 

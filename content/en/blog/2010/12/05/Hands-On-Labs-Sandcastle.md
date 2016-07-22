@@ -3,8 +3,9 @@ layout: blog
 title: Hands-On Labs Sandcastle
 teaser: This week I will be one of the speakers at BASTA On Tour in Munich. One of the topics I am going to speak about is code documentation with Sandcastle. In this blog post I want to share my slides and summarize the hands-on labs that I am going to go through with the participants.
 author: Rainer Stropek
-date: 2010-11-05
+date: 2010-12-05
 bannerimage: 
+lang: en
 permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
 ---
 

@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: BASTA 2014, C# Fitness
+title: BASTA 2014 -  C# Fitness
 teaser: Tomorrow I will do a full-day workshop about C# at BASTA Germany. Over the years, the workshop has become a tradition and I am really looking forward to it. In this blog article I publish slides, code samples, and important links for attendees.
 author: Rainer Stropek
-date: 2014-14-21
+date: 2014-09-21
 bannerimage: 
+lang: en
 permalink: /blog/2014/09/21/BASTA-2014-C-Fitness
 ---
 

@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Workshop, What's New in Visual Studio 2012 for C++ Developers
+title: Workshop -  What's New in Visual Studio 2012 for C++ Developers
 teaser: For a Microsoft event we have been hired to do a full-day workshop about news in Visual Studio 2012 for C++ developers. The workshop took place at Microsoft's Innovation Center in Vienna last Friday. In this blog article you find the slides and the samples that I have used in the workshop
 author: Philipp Aumayr
-date: 2013-47-25
+date: 2013-03-25
 bannerimage: 
+lang: en
 permalink: /blog/2013/03/25/Workshop-Whats-New-in-Visual-Studio-2012-for-C-Developers
 ---
 

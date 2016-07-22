@@ -3,8 +3,9 @@ layout: blog
 title: Improved Performance for Lists in Version March 2013
 teaser: In version 1.10 we have modified most lists in time cockpit for better performance. If you have built Microsoft Excel export templates you may have to update them to fit together with the new lists.
 author: Karin Huber
-date: 2013-11-13
+date: 2013-03-13
 bannerimage: 
+lang: en
 permalink: /blog/2013/03/13/Improved-Performance-for-Lists-in-Version-March-2013
 ---
 

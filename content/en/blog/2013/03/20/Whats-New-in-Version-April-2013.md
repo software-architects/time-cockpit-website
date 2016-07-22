@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version April 2013
 teaser: In version April 2013 we have focused on the formatting profiles in the time sheet calendar. Until now we only showed a color legend in the navigation bar on the left side, but there is much more information we can display so we decided to change the color legend to a bar chart.
 author: Karin Huber
-date: 2013-19-20
+date: 2013-03-20
 bannerimage: 
+lang: en
 permalink: /blog/2013/03/20/Whats-New-in-Version-April-2013
 ---
 

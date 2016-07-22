@@ -3,8 +3,9 @@ layout: blog
 title: Global Azure Bootcamp 2016 - Nachlese
 teaser: Am Samstag fand das Global Azure Bootcamp in Linz im Wissensturm statt. Mit 111 Teilnehmerinnen und Teilnehmern haben wir unser Ziel mehr als erreicht. Wir sagen Danke an alle Personen, die zum Gelingen des Tages beigetragen haben. In diesem Blogartikel stelle ich Vortragsunterlagen und Fotos vom Event zur Verfügung.
 author: Rainer Stropek
-date: 2016-12-18
+date: 2016-04-18
 bannerimage: /content/images/blog/2016/04/GAB-2016-logo-400x270.png
+lang: en
 permalink: /blog/2016/04/18/Global-Azure-Bootcamp-2016---Nachlese
 ---
 

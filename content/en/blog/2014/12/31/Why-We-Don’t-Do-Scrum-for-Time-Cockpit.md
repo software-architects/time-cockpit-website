@@ -3,8 +3,10 @@ layout: blog
 title: Why We Don’t Do Scrum for Time Cockpit
 teaser: We did Scrum years ago for the initial development of time cockpit. Granted, there were times where we managed to do Scrum nearly by the book but sometimes we got a bit lazy. Nevertheless, it worked perfectly fine for us. Today, we don’t do Scrum anymore. In this blog article I want to describe why we turned away from it and how we manage our development process today.
 author: Rainer Stropek
-date: 2014-14-31
+date: 2014-12-31
 bannerimage: /content/images/blog/2014/12/5141328136_16d8f73ee7_b.jpg
+lang: en
+ref: /de/blog/2014/12/31/Warum-wir-für-time-cockpit-nicht-Scrum-verwenden
 permalink: /blog/2014/12/31/Why-We-Don’t-Do-Scrum-for-Time-Cockpit
 ---
 

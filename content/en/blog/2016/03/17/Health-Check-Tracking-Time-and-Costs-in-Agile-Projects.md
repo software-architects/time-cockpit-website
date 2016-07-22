@@ -1,10 +1,12 @@
 ---
 layout: blog
-title: Health Check, Tracking Time and Costs in Agile Projects
+title: Health Check -  Tracking Time and Costs in Agile Projects
 teaser: In business life, managers usually want to know upfront how long a project will take and how much it will cost. Essentially, they ask us to predict the future. However, life is what happens to you while you’re busy making plans. Nevertheless, agile must not mean chaos and blind flight, though. At time cockpit, we have developed best practices for keeping track of time and costs in agile projects. . In this blog article I summarize the most important aspects.
 author: Rainer Stropek
-date: 2016-22-17
+date: 2016-03-17
 bannerimage: /content/images/blog/2016/03/budget-small.jpg
+lang: en
+ref: /de/blog/2016/03/23/Gesundheitscheck-Aufwand-und-Kosten-in-agilen-Projekten
 permalink: /blog/2016/03/17/Health-Check-Tracking-Time-and-Costs-in-Agile-Projects
 ---
 

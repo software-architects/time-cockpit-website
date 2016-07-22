@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: WebTech 2013, Interview about TypeScript
+title: WebTech 2013 -  Interview about TypeScript
 teaser: Yesterday at the WebTech 2013 conference in Munich I did an interview with Corinna Kern from Software and Support Media. Here is the video (German).
 author: Rainer Stropek
-date: 2013-27-31
+date: 2013-10-31
 bannerimage: 
+lang: en
 permalink: /blog/2013/10/31/WebTech-2013-Interview-about-TypeScript
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: Debugging and Interactive Development of Time Cockpit Python Scripts
 teaser: It is easy to create small scripts to automate tasks or extend time cockpit's functionality. When the requirements and scripts grow more complex step-debugging and a REPL are desirable features we do not (yet) provide within time cockpit. This post shows how these features can be set up using Visual Studio or other development environments.
 author: Simon Opelt
-date: 2012-18-17
+date: 2012-12-17
 bannerimage: 
+lang: en
 permalink: /blog/2012/12/17/Debugging-and-Interactive-Development-of-Time-Cockpit-Python-Scripts
 ---
 

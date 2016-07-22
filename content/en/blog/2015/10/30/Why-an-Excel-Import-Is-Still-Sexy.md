@@ -3,8 +3,9 @@ layout: blog
 title: Why an Excel Import Is Still Sexy
 teaser: It is true, there are lots of ways to get data in and out of time cockpit, the most advanced one being the OData Web API. Still, there are scenarios where an Excel import plays strong. First, you do not need to have any programming skills to import data. Time cockpit can generate an empty sample file. You just need to fill the file with your data and let time cockpit do the rest. And let’s be honest, Excel is ubiquitous and nearly everyone knows how to work with it. In this blog article I describe scenarios in which many time cockpit customers use our Excel importing feature.
 author: Alexander Huber
-date: 2015-45-30
+date: 2015-10-30
 bannerimage: /content/images/blog/2015/09/Sexy_Importer.png
+lang: en
 permalink: /blog/2015/10/30/Why-an-Excel-Import-Is-Still-Sexy
 ---
 

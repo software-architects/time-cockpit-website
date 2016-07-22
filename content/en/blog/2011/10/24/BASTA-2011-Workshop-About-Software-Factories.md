@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: BASTA 2011, Workshop About Software Factories
+title: BASTA 2011 -  Workshop About Software Factories
 teaser: Ok, I feel ashamed. Already more than three weeks have passed since BASTA 2011 has ended - and I did not publish my slides and samples yet. However, today I finally found the time to write this blog post.
 author: Rainer Stropek
-date: 2011-05-24
+date: 2011-10-24
 bannerimage: 
+lang: en
 permalink: /blog/2011/10/24/BASTA-2011-Workshop-About-Software-Factories
 ---
 

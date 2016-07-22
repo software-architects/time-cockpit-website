@@ -3,8 +3,9 @@ layout: blog
 title: Google Latitude will be Retiring on August 9th
 teaser: Google has decided that they will be retiring Google Latitude on August 9th. Unfortunately, this will break the location history feature we have introduced in time cockpit version June 2013.
 author: Karin Huber
-date: 2013-36-18
+date: 2013-07-18
 bannerimage: 
+lang: en
 permalink: /blog/2013/07/18/Google-Latitude-will-be-Retiring-on-August-9th
 ---
 

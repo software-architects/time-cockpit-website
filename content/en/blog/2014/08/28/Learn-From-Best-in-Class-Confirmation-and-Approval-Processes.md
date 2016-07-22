@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Learn From Best in Class, Confirmation and Approval Processes
+title: Learn From Best in Class -  Confirmation and Approval Processes
 teaser: On the first sight, time tracking is a seemingly trival process. Start time, end time, describe what you did - that's it, isn't it? As teams grow, accompanying processes for confirmation and approval become more and more important. Read about what the best in class companies are doing.
 author: Rainer Stropek
-date: 2014-46-28
+date: 2014-08-28
 bannerimage: 
+lang: en
 permalink: /blog/2014/08/28/Learn-From-Best-in-Class-Confirmation-and-Approval-Processes
 ---
 

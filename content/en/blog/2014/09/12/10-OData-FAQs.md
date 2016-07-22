@@ -3,8 +3,9 @@ layout: blog
 title: 10 OData FAQs
 teaser: Today will have a talk about OData at NRWConf conference in Wuppertal, Germany. It will be code-only talk so I thought it might be useful to provide some of the information I will cover in my session in a blog article. However, I have written quite some OData related article in my blog before. So this one has to be a bit different. I decided to answer some questions I regularly get when talking with people about OData.
 author: Rainer Stropek
-date: 2014-01-12
+date: 2014-09-12
 bannerimage: 
+lang: en
 permalink: /blog/2014/09/12/10-OData-FAQs
 ---
 

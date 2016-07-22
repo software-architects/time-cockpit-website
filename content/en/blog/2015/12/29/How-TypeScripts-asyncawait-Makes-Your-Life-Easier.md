@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: How TypeScript's async/await Makes Your Life Easier
-teaser: Many of our customers use Node.js to extend time cockpit. They automate routine tasks, implement interfaces to other systems, or even write powerful web apps on top of time cockpit's OData web api. We have good news for you: TypeScript's new async/await feature makes your life much easier.
+teaser: Many of our customers use Node.js to extend time cockpit. They automate routine tasks, implement interfaces to other systems, or even write powerful web apps on top of time cockpit's OData web api. We have good news for you -  TypeScript's new async/await feature makes your life much easier.
 author: Rainer Stropek
-date: 2015-22-29
+date: 2015-12-29
 bannerimage: /content/images/blog/2015/12/time-cockpit-typescript-async-await.png
+lang: en
 permalink: /blog/2015/12/29/How-TypeScripts-asyncawait-Makes-Your-Life-Easier
 ---
 

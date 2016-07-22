@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: Keep Your Inbox Empty With Todoist
-teaser: Like most people, I have often been struggling with my email inbox. From time to time I tried to catch up with inbox but within days I reached the same mess as before. Finally, the book "Getting Things Done" by David Allen was the trigger to change my habits. There was one advice that changed my way of working: Free your mind and collect everything externally.
+teaser: Like most people, I have often been struggling with my email inbox. From time to time I tried to catch up with inbox but within days I reached the same mess as before. Finally, the book "Getting Things Done" by David Allen was the trigger to change my habits. There was one advice that changed my way of working -  Free your mind and collect everything externally.
 author: Karin Huber
-date: 2015-00-30
+date: 2015-04-30
 bannerimage: /content/images/blog/2015/04/to-do-small.jpg
+lang: en
 permalink: /blog/2015/04/30/Keep-Your-Inbox-Empty-With-Todoist
 ---
 

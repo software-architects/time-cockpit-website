@@ -3,8 +3,9 @@ layout: blog
 title: Location Data in Time Cockpit - A Wish Comes True
 teaser: From the very first day of our time cockpit project we wanted to support knowledge workers who travel a lot. Finally this vision has become reality. The latest time cockpit version makes booking your time sheet records for business travels a piece of cake.
 author: Rainer Stropek
-date: 2013-14-31
+date: 2013-05-31
 bannerimage: 
+lang: en
 permalink: /blog/2013/05/31/Location-Data-in-Time-Cockpit---A-Wish-Comes-True
 ---
 

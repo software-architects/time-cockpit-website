@@ -3,8 +3,9 @@ layout: blog
 title: Getting Real Work Done
 teaser: It is a well-known fact that constant interruptions can have quite negative consequences on your productivity. Instead of being able to concentrate on the important tasks you planned for a certain day, you are kept busy by phone calls, ad-hoc meetings, incoming emails, social media notifications, etc. As a knowledge worker, I struggle with this problem, too. As an entrepreneur building a project time tracking software, I am constantly looking for ways to cope with it. In this blog article I want to share some of my current thoughts on the topic of productivity and interruptions.
 author: Rainer Stropek
-date: 2013-42-22
+date: 2013-10-22
 bannerimage: 
+lang: en
 permalink: /blog/2013/10/22/Getting-Real-Work-Done
 ---
 

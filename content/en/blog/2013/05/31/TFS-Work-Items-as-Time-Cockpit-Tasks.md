@@ -4,8 +4,9 @@ title: TFS Work Items as Time Cockpit Tasks
 teaser: If you are using Team Foundation Server for your daily development and planning work time cockpit can provide you with some information from TFS via the signal trackers (e.g. checked in code).
 Using python scripting and the TFS client SDK you can also query the work items for your projects and store them as time cockpit tasks. This will allow you keep track of your working time based on TFS projects and work items.
 author: Simon Opelt
-date: 2013-49-31
+date: 2013-05-31
 bannerimage: 
+lang: en
 permalink: /blog/2013/05/31/TFS-Work-Items-as-Time-Cockpit-Tasks
 ---
 

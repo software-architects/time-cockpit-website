@@ -3,8 +3,9 @@ layout: blog
 title: WPF CheckBox With Confirmation Message
 teaser: During BASTA Austria I have been asked a WPF question. How can I implement a confirmation question that is asked whenever a user checks a CheckBox?
 author: Rainer Stropek
-date: 2012-50-19
+date: 2012-11-19
 bannerimage: 
+lang: en
 permalink: /blog/2012/11/19/WPF-CheckBox-With-Confirmation-Message
 ---
 

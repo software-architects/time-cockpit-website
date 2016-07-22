@@ -3,8 +3,9 @@ layout: blog
 title: Video and Sample for Azure Mobile Services + TypeScript + AngularJS Talk
 teaser: I regularly do talks about developing with Windows Azure Mobile Services, TypeScript, and AngularJS. Today I am speaker at the .NET user group in Vienna. For this talk I updated my sample to the latest version of AngularJS and TypeScript. Additionally I recorded the talk (German).
 author: Rainer Stropek
-date: 2014-31-18
+date: 2014-02-18
 bannerimage: 
+lang: en
 permalink: /blog/2014/02/18/Video-and-Sample-for-Azure-Mobile-Services--TypeScript--AngularJS-Talk
 ---
 

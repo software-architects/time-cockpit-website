@@ -3,8 +3,10 @@ layout: blog
 title: What's New in Version June 2015
 teaser: May has been the second month in a row where we focused our development efforts predominantly on the new HTML5 time tracking calendar. We think the calendar has reached a state where it provides real value even for productive time booking. Give it a try, we would love to hear your feedback.
 author: Karin Huber
-date: 2015-46-29
+date: 2015-05-29
 bannerimage: /content/images/blog/2015/05/time-cockpit-june-2015.png
+lang: en
+ref: /de/blog/2015/05/29/Was-ist-neu-in-der-Version-Juni-2015
 permalink: /blog/2015/05/29/Whats-New-in-Version-June-2015
 ---
 

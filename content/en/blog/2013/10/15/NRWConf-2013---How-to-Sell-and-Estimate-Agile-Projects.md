@@ -3,8 +3,9 @@ layout: blog
 title: NRWConf 2013 - How to Sell and Estimate Agile Projects
 teaser: Last week I travelled to Wuppertal to participate in the community conference NRWConf 2013. With time cockpit we have been sponsors and speakers for this event for years. In this blog article I publish some photos from NRWConf as well as the slide deck for my talk about effort estimation in agile projects.
 author: Rainer Stropek
-date: 2013-36-15
+date: 2013-10-15
 bannerimage: 
+lang: en
 permalink: /blog/2013/10/15/NRWConf-2013---How-to-Sell-and-Estimate-Agile-Projects
 ---
 

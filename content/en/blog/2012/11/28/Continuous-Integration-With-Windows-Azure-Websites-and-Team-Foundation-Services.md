@@ -3,8 +3,9 @@ layout: blog
 title: Continuous Integration With Windows Azure Websites and Team Foundation Services
 teaser: Windows Azure Websites (WAWS) is a great PaaS service in Microsoft's Cloud Computing platform Windows Azure. It makes it very easy to create, run, and scale web sites or web APIs. The new Team Foundation Services integrate perfectly with WAWS and make it possible to setup a continuous integration environment in the cloud within minutes.
 author: Rainer Stropek
-date: 2012-41-28
+date: 2012-11-28
 bannerimage: 
+lang: en
 permalink: /blog/2012/11/28/Continuous-Integration-With-Windows-Azure-Websites-and-Team-Foundation-Services
 ---
 

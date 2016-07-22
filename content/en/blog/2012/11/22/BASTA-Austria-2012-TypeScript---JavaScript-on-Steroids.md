@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: BASTA Austria 2012, TypeScript - JavaScript on Steroids
+title: BASTA Austria 2012 -  TypeScript - JavaScript on Steroids
 teaser: At BASTA Austria 2012 I did a session about TypeScript. I introduced the new language and showed demos in the browser (with jQuery, require.js, etc.) and on the server (with node.js).
 author: Rainer Stropek
-date: 2012-25-22
+date: 2012-11-22
 bannerimage: 
+lang: en
 permalink: /blog/2012/11/22/BASTA-Austria-2012-TypeScript---JavaScript-on-Steroids
 ---
 

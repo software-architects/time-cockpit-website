@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: What's New in Version March 2013
-teaser: We are pleased to announce the new version March 2013 of time cockpit. In this version we have focused primarily on the following three goals: make it easy to import data from other data sources, allow to maintain the data model in multiple languages, make lists more expressive by adding charts to visualize information
+teaser: We are pleased to announce the new version March 2013 of time cockpit. In this version we have focused primarily on the following three goals -  make it easy to import data from other data sources, allow to maintain the data model in multiple languages, make lists more expressive by adding charts to visualize information
 author: Karin Huber
-date: 2013-09-28
+date: 2013-02-28
 bannerimage: 
+lang: en
 permalink: /blog/2013/02/28/Whats-New-in-Version-March-2013
 ---
 

@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: BASTA 2013, C# Workshop
+title: BASTA 2013 -  C# Workshop
 teaser: Meine Vorträge auf der BASTA 2013 starten heute mit einem ganztägigen C# Workshop. In diesem Blogartikel stelle ich Unterlagen und Links, die ich dabei verwende, zur Verfügung
 author: Rainer Stropek
-date: 2013-24-23
+date: 2013-09-23
 bannerimage: 
+lang: en
 permalink: /blog/2013/09/23/BASTA-2013-C-Workshop
 ---
 

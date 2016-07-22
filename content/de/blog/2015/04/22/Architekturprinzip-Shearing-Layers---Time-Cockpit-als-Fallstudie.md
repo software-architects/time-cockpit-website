@@ -3,8 +3,9 @@ layout: blog
 title: Architekturprinzip "Shearing Layers" - Time Cockpit als Fallstudie
 teaser: Vor ein paar Monaten habe ich einen Blogartikel über das Konzept der "Shearing Layers" in Architektur und Software Engineering geschrieben. Eine ausführlichere Version habe ich beim OBJEKTspektrum-Magazin eingereicht. Der Vorschlag wurde angenommen und der Artikel wurde dieses Monat veröffentlicht. Für kurze Zeit steht er kostenlos online zum Lesen zur Verfügung.
 author: Rainer Stropek
-date: 2015-00-22
+date: 2015-04-22
 bannerimage: /content/images/blog/2015/04/selexyz_dominicanen_bookstore_small.jpg
+lang: de
 permalink: /de/blog/2015/04/22/Architekturprinzip-Shearing-Layers---Time-Cockpit-als-Fallstudie
 ---
 

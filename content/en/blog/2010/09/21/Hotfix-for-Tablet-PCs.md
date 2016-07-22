@@ -3,8 +3,9 @@ layout: blog
 title: Hotfix for Tablet PCs
 teaser: On tablet pc's and on pc's which have the service 'Tablet PC Input Service' activated the following exception may occur when viewing a list.
 author: Karin Huber
-date: 2010-51-21
+date: 2010-09-21
 bannerimage: 
+lang: en
 permalink: /blog/2010/09/21/Hotfix-for-Tablet-PCs
 ---
 

@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: Staff Vacation Calendar with Time Cockpit and Office 365
-teaser: In this article, we will show how you can connect time cockpit with Office 365 to view all the vacations of your employees in one single Sharepoint/Outlook calendar. This approach has two big benefits: First, you do not need to manage vacations in multiple systems and second, you can take advantage of the strength of both, time cockpit and Office 365.
+teaser: In this article, we will show how you can connect time cockpit with Office 365 to view all the vacations of your employees in one single Sharepoint/Outlook calendar. This approach has two big benefits -  First, you do not need to manage vacations in multiple systems and second, you can take advantage of the strength of both, time cockpit and Office 365.
 author: Alexander Huber
-date: 2015-33-30
+date: 2015-09-30
 bannerimage: /content/images/blog/2015/09/OutookIntegrationSmall.png
+lang: en
 permalink: /blog/2015/09/30/Staff-Vacation-Calendar-with-Time-Cockpit-and-Office-365
 ---
 

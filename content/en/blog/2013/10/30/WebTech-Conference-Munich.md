@@ -3,8 +3,9 @@ layout: blog
 title: WebTech Conference Munich
 teaser: Today I am here at the WebTech Conference in Munich speaking about cloud computing and web technologies. In this blog post you find some photos and links to the material that I will use during my sessions.
 author: Rainer Stropek
-date: 2013-09-30
+date: 2013-10-30
 bannerimage: 
+lang: en
 permalink: /blog/2013/10/30/WebTech-Conference-Munich
 ---
 

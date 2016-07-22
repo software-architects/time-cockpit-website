@@ -3,8 +3,9 @@ layout: blog
 title: Importing Data from SharePoint Lists via IronPython
 teaser: Using just around 100 lines of code, basic customer master data can be imported from SharePoint to time cockpit. This can be achieved by using IronPython, the .net BCL and the SharePoint 2010 REST interface.
 author: Simon Opelt
-date: 2012-00-31
+date: 2012-10-31
 bannerimage: 
+lang: en
 permalink: /blog/2012/10/31/Importing-Data-from-SharePoint-Lists-via-IronPython
 ---
 

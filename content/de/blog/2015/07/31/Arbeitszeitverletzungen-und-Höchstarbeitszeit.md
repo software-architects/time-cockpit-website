@@ -3,8 +3,9 @@ layout: blog
 title: Arbeitszeitverletzungen und Höchstarbeitszeit
 teaser: Time cockpit bietet seit dieser Version Funktionen zur automatischen Prüfung von Regeln für Höchstarbeitszeit. Für Österreich und Deutschland sind einige der wichtigsten Prüfungen vorkonfiguriert. Spezifische Höchstarbeitszeitgrenzen für gewisse Länder, Branchen oder Betriebsvereinbarungen können konfiguriert werden. Damit unterstützt Sie time cockpit bei der Vermeidung von Überschreitungen der Höchstarbeitszeit bzw. Nicht-Einhaltung der Arbeitsruhezeiten. Lesen Sie mehr über die neue time cockpit Funktion.
 author: Alexander Huber
-date: 2015-56-31
+date: 2015-07-31
 bannerimage: /content/images/blog/2015/07/keyboard_350.png
+lang: de
 permalink: /de/blog/2015/07/31/Arbeitszeitverletzungen-und-Höchstarbeitszeit
 ---
 

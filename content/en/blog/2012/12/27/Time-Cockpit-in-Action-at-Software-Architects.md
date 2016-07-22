@@ -3,8 +3,9 @@ layout: blog
 title: Time Cockpit in Action at Software Architects
 teaser: Month by month we portray customers who successfully use time cockpit for managing their services business. For our initial newsletter in 2013 we decided to write about how we use time cockpit for our own consulting business.
 author: Rainer Stropek
-date: 2012-55-27
+date: 2012-12-27
 bannerimage: 
+lang: en
 permalink: /blog/2012/12/27/Time-Cockpit-in-Action-at-Software-Architects
 ---
 

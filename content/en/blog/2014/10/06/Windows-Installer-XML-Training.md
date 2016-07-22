@@ -3,8 +3,9 @@ layout: blog
 title: Windows Installer XML Training
 teaser: This week I will do another one of my Windows Installer XML (WiX) trainings in Germany. In this blog article I summarize the prerequisites that participants need in order to follow along the samples.
 author: Rainer Stropek
-date: 2014-16-06
+date: 2014-10-06
 bannerimage: 
+lang: en
 permalink: /blog/2014/10/06/Windows-Installer-XML-Training
 ---
 

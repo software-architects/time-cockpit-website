@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: BASTA Austria 2012, Parallel and Async Programming in C#
+title: BASTA Austria 2012 -  Parallel and Async Programming in C#
 teaser: At BASTA Austria 2012 I did a workshop about parallel and async programming in C#. In this blog article you find the material (slides)
 author: Rainer Stropek
-date: 2012-04-22
+date: 2012-11-22
 bannerimage: 
+lang: en
 permalink: /blog/2012/11/22/BASTA-Austria-2012-Parallel-and-Async-Programming-in-C
 ---
 

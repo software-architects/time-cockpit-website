@@ -3,8 +3,9 @@ layout: blog
 title: Minimize, Maximize, and Close Button is Missing
 teaser: When running time cockpit in Windows 8 the minimize, maximize, and close button is missing.
 author: Karin Huber
-date: 2012-05-22
+date: 2012-11-22
 bannerimage: 
+lang: en
 permalink: /blog/2012/11/22/Minimize-Maximize-and-Close-Button-is-Missing
 ---
 

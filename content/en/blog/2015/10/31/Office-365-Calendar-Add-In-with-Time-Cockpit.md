@@ -3,8 +3,9 @@ layout: blog
 title: Office 365 Calendar Add-In with Time Cockpit
 teaser: Office 365 makes it quite easy to create add-ins using HTML and JavaScript. Time cockpit also offers an easy-to-use API for these web technologies. In this blog article I walk you through a short sample that demonstrates how to create an Outlook calendar add-in accessing time cockpit's project database.
 author: Rainer Stropek
-date: 2015-53-31
+date: 2015-10-31
 bannerimage: /content/images/blog/2015/10/office-logo.png
+lang: en
 permalink: /blog/2015/10/31/Office-365-Calendar-Add-In-with-Time-Cockpit
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Zeiterfassung mit time cockpit, 30 Tage kostenlos testen
+title: Zeiterfassung mit time cockpit -  30 Tage kostenlos testen
 permalink: /de/create-trial-account/
 ---
 

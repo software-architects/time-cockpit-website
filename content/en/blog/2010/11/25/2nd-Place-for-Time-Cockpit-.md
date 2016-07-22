@@ -3,8 +3,9 @@ layout: blog
 title: 2nd Place for Time Cockpit 
 teaser: This year the Softwarepark Hagenberg Award was presented the 4th time to promote innovative software developments of exceptional quality. We are proud to announce that time cockpit has reached the 2nd place.
 author: Karin Huber
-date: 2010-47-25
+date: 2010-11-25
 bannerimage: 
+lang: en
 permalink: /blog/2010/11/25/2nd-Place-for-Time-Cockpit-
 ---
 

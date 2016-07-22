@@ -3,8 +3,9 @@ layout: blog
 title: Angular + Cloud Services = Dream Team for Small Projects
 teaser: For one of my private hobbies (keeping honey bees), I recently needed a simple registration form. It should just ask for a few data items, use a captcha to protect from spam, save the registrations in a DB, and send me notification emails. Within a few hours everything was up and running. In this blog post I share the code and describe the cloud components you can use to rapidly solve such a requirement.
 author: Rainer Stropek
-date: 2015-46-12
+date: 2015-03-12
 bannerimage: /content/images/blog/2015/03/RegisterThumb.jpg
+lang: en
 permalink: /blog/2015/03/12/Angular--Cloud-Services--Dream-Team-for-Small-Projects
 ---
 

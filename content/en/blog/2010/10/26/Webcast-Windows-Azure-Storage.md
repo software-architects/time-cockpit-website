@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Webcast, Windows Azure Storage
+title: Webcast -  Windows Azure Storage
 teaser: Yesterday I wrote a tutorial that demonstrates how to use the different storage technologies of the Microsoft Windows Azure Platform (see article Windows Azure Storage in my blog). Some people do not like to read long tutorials, they prefer watching a how-to-video. Therefore I created a series of videos that show how to use SQL Azure, Windows Azure Table Storage, Queues and Blob Storage.
 author: Rainer Stropek
-date: 2010-36-26
+date: 2010-10-26
 bannerimage: 
+lang: en
 permalink: /blog/2010/10/26/Webcast-Windows-Azure-Storage
 ---
 

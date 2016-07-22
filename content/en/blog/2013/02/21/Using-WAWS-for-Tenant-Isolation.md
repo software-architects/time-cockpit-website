@@ -3,8 +3,9 @@ layout: blog
 title: Using WAWS for Tenant Isolation
 teaser: I had the chance to do two sessions at Microsoft MVP Summit 2013 in Redmond/Bellevue. In this blog article I share the thoughts + code of my second talk about Windows Azure Websites.
 author: Rainer Stropek
-date: 2013-06-21
+date: 2013-02-21
 bannerimage: 
+lang: en
 permalink: /blog/2013/02/21/Using-WAWS-for-Tenant-Isolation
 ---
 

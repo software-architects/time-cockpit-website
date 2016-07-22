@@ -3,8 +3,9 @@ layout: blog
 title: Customizing Lists and Forms in Time Cockpit
 teaser: Extensibility is an important aspect of time cockpit and its underlying framework CoFX. In this article I share a training slide deck that I use in CoFX trainings to describe how to customize and extend lists and forms in time cockpit.
 author: Rainer Stropek
-date: 2012-18-01
+date: 2012-10-01
 bannerimage: 
+lang: en
 permalink: /blog/2012/10/01/Customizing-Lists-and-Forms-in-Time-Cockpit
 ---
 

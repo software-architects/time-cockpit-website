@@ -3,8 +3,9 @@ layout: blog
 title: Webcast and videos to learn about Azure
 teaser: During the last few weeks I have done a few workshops and trainings about the Windows Azure Platform all across Austria. For those people who could not attend I have put together some important dates for webcasts in which you can learn about Windows Azure. Additionally I would like to point you to a webcast recording about getting started with the Windows Azure November 2010 release.
 author: Rainer Stropek
-date: 2010-21-02
+date: 2010-12-02
 bannerimage: 
+lang: en
 permalink: /blog/2010/12/02/Webcast-and-videos-to-learn-about-Azure
 ---
 

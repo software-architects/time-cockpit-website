@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Time Cockpit Customization, A slightly advanced List 
+title: Time Cockpit Customization -  A slightly advanced List 
 teaser: The other day, a friend of mine asked me for a list containing the time he began work, when he went home, the hours he spent working and the seconds he was on break. At first I thought about implementing a python script to do it, but it turns out that our custom query language, TCQL, has enough power built-in to do it. We can therefore solve this by creating a list definition.
 author: Philipp Aumayr
-date: 2011-30-17
+date: 2011-03-17
 bannerimage: 
+lang: en
 permalink: /blog/2011/03/17/Time-Cockpit-Customization-A-slightly-advanced-List-
 ---
 

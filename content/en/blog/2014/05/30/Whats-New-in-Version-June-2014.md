@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version June 2014
 teaser: This month we improved sync handling in time cockpit's full client and added support for booking compensatory time. The June 2014 version is fully compatible down to version March 2013 (1.10) so team members need not to upgrade all at the same time.
 author: Rainer Stropek
-date: 2014-55-30
+date: 2014-05-30
 bannerimage: 
+lang: en
 permalink: /blog/2014/05/30/Whats-New-in-Version-June-2014
 ---
 

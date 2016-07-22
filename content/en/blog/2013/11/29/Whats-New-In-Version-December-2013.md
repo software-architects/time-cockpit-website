@@ -3,8 +3,9 @@ layout: blog
 title: What's New In Version December 2013
 teaser: In this release of time cockpit we have improved the new reporting features.
 author: Karin Huber
-date: 2013-20-29
+date: 2013-11-29
 bannerimage: 
+lang: en
 permalink: /blog/2013/11/29/Whats-New-In-Version-December-2013
 ---
 

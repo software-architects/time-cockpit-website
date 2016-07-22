@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: BASTA 2014, Video-Interview about Windows Azure
+title: BASTA 2014 -  Video-Interview about Windows Azure
 teaser: At BASTA 2014 I gave an interview about the current state of the Microsoft Windows Azure Platform (German). Here you can watch it. I would love to hear your feedback.
 author: Rainer Stropek
-date: 2014-14-27
+date: 2014-02-27
 bannerimage: 
+lang: en
 permalink: /blog/2014/02/27/BASTA-2014-Video-Interview-about-Windows-Azure
 ---
 

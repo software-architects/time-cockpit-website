@@ -3,8 +3,9 @@ layout: blog
 title: Location-based Time Tracking with Time Cockpit - a Practical Example
 teaser: Of course we are using our own software for internal time tracking, too. In this short video I show how location-based time tracking in time cockpit helps me keeping my time sheet up to date while travelling to customers all across Europe.
 author: Rainer Stropek
-date: 2013-48-30
+date: 2013-06-30
 bannerimage: 
+lang: en
 permalink: /blog/2013/06/30/Location-based-Time-Tracking-with-Time-Cockpit---a-Practical-Example
 ---
 

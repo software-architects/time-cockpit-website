@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version October 2014
 teaser: As announced last month, we have made more performance improvements this month. This time we have focused on the client database. If it takes some time to open the time sheet form in the calendar in your environment, the new version may improve the loading time significantly.
 author: Karin Huber
-date: 2014-40-30
+date: 2014-09-30
 bannerimage: /content/images/blog/2014/09/time-cockpit-october-2014.png
+lang: en
 permalink: /blog/2014/09/30/Whats-New-in-Version-October-2014
 ---
 

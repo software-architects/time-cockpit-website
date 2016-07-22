@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: What's New in Version July 2016
-teaser: More and more users are using the new HTML5 client of time cockpit. We love that :-) To smoothen the transition, we did a lot of polishing in the HTML5 user interface this month. Examples are better keyboard handling, better performance of the forms engine and auto-sizing of grid columns. In this blog article we describe all enhancements that we rolled out this month.
+teaser: More and more users are using the new HTML5 client of time cockpit. We love that  - -) To smoothen the transition, we did a lot of polishing in the HTML5 user interface this month. Examples are better keyboard handling, better performance of the forms engine and auto-sizing of grid columns. In this blog article we describe all enhancements that we rolled out this month.
 author: Karin Huber
-date: 2016-37-29
+date: 2016-06-29
 bannerimage: /content/images/blog/2016/06/time-cockpit-july-2016.png
+lang: en
 permalink: /blog/2016/06/29/Whats-New-in-Version-July-2016
 ---
 

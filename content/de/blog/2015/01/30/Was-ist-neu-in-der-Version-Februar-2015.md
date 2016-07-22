@@ -3,8 +3,9 @@ layout: blog
 title: Was ist neu in der Version Februar 2015
 teaser: Dieses Monat haben wir uns auf Verbesserungen im Bereich der Fehlerdiagnose und im Zeitbuchungskalender fokusiert. Sie können uns Ihre Log-Dateien jetzt viel einfacher schicken, die Performance bei der Verwendung von Musterbuchungen ist nun besser, die Signalbahnen sind im Kalender hervorgehoben u.v.m.
 author: Karin Huber
-date: 2015-13-30
+date: 2015-01-30
 bannerimage: /content/images/blog/2015/01/time-cockpit-february-2015.png
+lang: de
 permalink: /de/blog/2015/01/30/Was-ist-neu-in-der-Version-Februar-2015
 ---
 

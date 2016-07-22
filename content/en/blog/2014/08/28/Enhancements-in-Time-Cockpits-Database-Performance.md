@@ -3,8 +3,9 @@ layout: blog
 title: Enhancements in Time Cockpit's Database Performance
 teaser: We find it important to continuously improve time cockpit's performance. This has to go side by side with new features. In August, we focused on possible improvements in our database access layer. You will see first results in the September release and even more in the next one scheduled for October. Read more about what we changed.
 author: Rainer Stropek
-date: 2014-39-28
+date: 2014-08-28
 bannerimage: 
+lang: en
 permalink: /blog/2014/08/28/Enhancements-in-Time-Cockpits-Database-Performance
 ---
 

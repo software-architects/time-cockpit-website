@@ -3,8 +3,9 @@ layout: blog
 title: Global Azure Bootcamp - Web Apps Session
 teaser: This Saturday, the Global Azure Bootcamp (GAB) will take place. We organize the local even in Austria. I will do a session about Azure App Services Web Apps. In this blog article I publish the recording of this session.
 author: Rainer Stropek
-date: 2015-35-23
+date: 2015-04-23
 bannerimage: 
+lang: en
 permalink: /blog/2015/04/23/Global-Azure-Bootcamp---Web-Apps-Session
 ---
 

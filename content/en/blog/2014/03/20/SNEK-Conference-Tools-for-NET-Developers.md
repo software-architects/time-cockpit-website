@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: SNEK Conference, Tools for .NET Developers
+title: SNEK Conference -  Tools for .NET Developers
 teaser: Next weekend I will be speaker at the SQL Server and .NET Developer Conference (SNEK) in Nürnberg (Germany). One of the talks will be focused on tools for .NET developers. In this blog article I summarize what I am going to show.
 author: Rainer Stropek
-date: 2014-13-20
+date: 2014-03-20
 bannerimage: 
+lang: en
 permalink: /blog/2014/03/20/SNEK-Conference-Tools-for-NET-Developers
 ---
 

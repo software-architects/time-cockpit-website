@@ -3,8 +3,9 @@ layout: blog
 title: Don't Let Agile and Open Source Stress You Out
 teaser: In the last few months, I have recognized a rising problem in software development teams on the Microsoft platform. They are panting as they try to keep up with new release of the components and tools they use. Every day new announcements arrive. A constant fear from getting out-of-date forces them to follow the respective team blogs, twitter accounts, news sites, etc. This is not only consuming more and more time. It also places mental stress on development teams.
 author: Rainer Stropek
-date: 2015-25-27
+date: 2015-02-27
 bannerimage: /content/images/blog/2015/02/relax.jpg
+lang: en
 permalink: /blog/2015/02/27/Dont-Let-Agile-and-Open-Source-Stress-You-Out
 ---
 

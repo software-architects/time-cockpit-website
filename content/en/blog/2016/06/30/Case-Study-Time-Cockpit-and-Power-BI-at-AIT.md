@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Case Study, Time Cockpit and Power BI at AIT
+title: Case Study -  Time Cockpit and Power BI at AIT
 teaser: Microsoft Power BI is getting more and more attention in the market. We get questions about integrating time cockpit with Power BI frequently. AIT, one of our long-term time cockpit customers, shared some of their time cockpit-related Power BI dashboards with us. Read what they have built and how they use the dashboards to manage their team.
 author: Rainer Stropek
-date: 2016-51-30
+date: 2016-06-30
 bannerimage: /content/images/blog/2016/06/sales-dashboard-small.png
+lang: en
 permalink: /blog/2016/06/30/Case-Study-Time-Cockpit-and-Power-BI-at-AIT
 ---
 

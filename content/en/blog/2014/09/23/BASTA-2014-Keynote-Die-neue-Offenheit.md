@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: BASTA 2014 Keynote, Die neue Offenheit
+title: BASTA 2014 Keynote -  Die neue Offenheit
 teaser: Gleich geht es auf der BASTA 2014 in Mainz auf die große Bühne für die Keynote. Hier eine Zusammenfassung einiger meiner Gedanken zum Thema neue Offenheit bei Microsoft.
 author: Rainer Stropek
-date: 2014-12-23
+date: 2014-09-23
 bannerimage: 
+lang: en
 permalink: /blog/2014/09/23/BASTA-2014-Keynote-Die-neue-Offenheit
 ---
 

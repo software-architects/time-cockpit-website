@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: NRWConf, Docker on Azure for Devs
+title: NRWConf -  Docker on Azure for Devs
 teaser: Today I will do a session about Docker on Azure for software developers at NRWConf 2015 in Wuppertal (Germany). For that talk I updated my slides and samples so they run with latest version of ASP.NET 5 (beta 7). Here are the updated slides and a link to the sample code.
 author: Rainer Stropek
-date: 2015-00-09
+date: 2015-10-09
 bannerimage: /content/images/blog/2015/09/Docker_(container_engine)_logo_small.png
+lang: en
 permalink: /blog/2015/10/09/NRWConf-Docker-on-Azure-for-Devs
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version August 2014
 teaser: This month we deliver performance improvements in several parts of time cockpit. Additionally, we included a workaround for a bug in Microsoft's garbage collector that some time cockpit customers had to struggle with.
 author: Karin Huber
-date: 2014-13-30
+date: 2014-07-30
 bannerimage: 
+lang: en
 permalink: /blog/2014/07/30/Whats-New-in-Version-August-2014
 ---
 

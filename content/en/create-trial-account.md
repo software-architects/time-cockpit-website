@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Time Tracking with Time Cockpit, Try 30 Days for Free
+title: Time Tracking with Time Cockpit -  Try 30 Days for Free
 permalink: /create-trial-account/
 ---
 

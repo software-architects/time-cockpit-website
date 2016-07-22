@@ -3,8 +3,9 @@ layout: blog
 title: Profiling of DB-Related C# Applications
 teaser: At BASTA 2014 I will do a full-day C# workshop. One of the topics will be profiling. In this blog article I share the code of my demo and describe the scenario I will cover.
 author: Rainer Stropek
-date: 2014-55-22
+date: 2014-09-22
 bannerimage: 
+lang: en
 permalink: /blog/2014/09/22/Profiling-of-DB-Related-C-Applications
 ---
 

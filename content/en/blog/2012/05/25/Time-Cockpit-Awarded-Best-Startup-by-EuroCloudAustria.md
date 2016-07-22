@@ -3,8 +3,9 @@ layout: blog
 title: Time Cockpit Awarded Best Startup by EuroCloud.Austria
 teaser: We are happy to announce that time cockpit won the first place in the EuroCloud.Austria "startup" category. time cockpit will therefore compete in the European Awards.
 author: Philipp Aumayr
-date: 2012-03-25
+date: 2012-05-25
 bannerimage: 
+lang: en
 permalink: /blog/2012/05/25/Time-Cockpit-Awarded-Best-Startup-by-EuroCloudAustria
 ---
 

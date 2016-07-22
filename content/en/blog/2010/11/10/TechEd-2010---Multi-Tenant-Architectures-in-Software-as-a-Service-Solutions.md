@@ -3,8 +3,9 @@ layout: blog
 title: TechEd 2010 - Multi-Tenant Architectures in Software-as-a-Service Solutions
 teaser: Today I will do a session at Microsoft TechEd Europe 2010 in Berlin. In the next few paragraphs I want to quickly summarize the introduction of the talk for those of you who are interested but did not make it to Berlin.
 author: Rainer Stropek
-date: 2010-32-10
+date: 2010-11-10
 bannerimage: 
+lang: en
 permalink: /blog/2010/11/10/TechEd-2010---Multi-Tenant-Architectures-in-Software-as-a-Service-Solutions
 ---
 

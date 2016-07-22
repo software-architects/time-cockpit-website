@@ -3,8 +3,9 @@ layout: blog
 title: WPF and Prism Workshop at BASTA Austria
 teaser: In this article you can view the slides for my WPF & Prism Workshop at BASTA Austria. Additionally you can download the sample code.
 author: Rainer Stropek
-date: 2012-07-19
+date: 2012-11-19
 bannerimage: 
+lang: en
 permalink: /blog/2012/11/19/WPF-and-Prism-Workshop-at-BASTA-Austria
 ---
 

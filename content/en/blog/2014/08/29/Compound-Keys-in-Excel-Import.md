@@ -3,8 +3,9 @@ layout: blog
 title: Compound Keys in Excel Import
 teaser: In the September version of time cockpit we have improved the importer for Excel and CSV files. It now supports compound keys. See a video demonstrating the new functionality.
 author: Rainer Stropek
-date: 2014-11-29
+date: 2014-08-29
 bannerimage: 
+lang: en
 permalink: /blog/2014/08/29/Compound-Keys-in-Excel-Import
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: Windows Azure Workshop at OOP 2011
 teaser: Today I will do a workshop about the Windows Azure Platform at OOP 2011. In this blog post I want to summarize the most important resources that I have used in the workshop.
 author: Rainer Stropek
-date: 2011-56-24
+date: 2011-01-24
 bannerimage: 
+lang: en
 permalink: /blog/2011/01/24/Windows-Azure-Workshop-at-OOP-2011
 ---
 

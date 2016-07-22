@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Time Tracking with Time Cockpit, Case Studies
+title: Time Tracking with Time Cockpit -  Case Studies
 permalink: /solutions/case-studies/
 ---
 

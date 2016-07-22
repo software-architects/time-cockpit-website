@@ -3,8 +3,9 @@ layout: blog
 title: Exploring C++ Inheritance (1 of 2)
 teaser: Quite a while ago - still working with Rarebyte - I was designing a class library for game related stuff. Naively ensured that OOP was the only real solution to scaling software, we did a lot of (multiple) inheritance and packed stuff into the library, most of what we never needed anyhow. At one point the question came up on how this was implemented and if we actually knew what this (multiple inheritance especially) meant to the data structures. With self-competence I garbled something about function pointers and tables and a hidden pointer in every object etc. What it meant exactly, I didn't know.
 author: Philipp Aumayr
-date: 2013-33-17
+date: 2013-05-17
 bannerimage: 
+lang: en
 permalink: /blog/2013/05/17/Exploring-C-Inheritance-1-of-2
 ---
 

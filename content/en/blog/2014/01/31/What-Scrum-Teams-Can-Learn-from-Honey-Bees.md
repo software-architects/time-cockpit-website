@@ -3,8 +3,9 @@ layout: blog
 title: What Scrum Teams Can Learn from Honey Bees
 teaser: One of my hobbies in my private live is beekeeping. A colony of honey bees is a fascinating superorganism. Bees have perfected the principle of self-organization for millions of years. So what can we learn from these masters?
 author: Rainer Stropek
-date: 2014-20-31
+date: 2014-01-31
 bannerimage: 
+lang: en
 permalink: /blog/2014/01/31/What-Scrum-Teams-Can-Learn-from-Honey-Bees
 ---
 

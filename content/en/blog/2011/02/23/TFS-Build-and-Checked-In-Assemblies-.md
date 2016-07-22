@@ -3,8 +3,9 @@ layout: blog
 title: TFS Build and Checked-In Assemblies 
 teaser: Even though our core dev team is quite small, time cockpit's code base has grown quite a bit. It has grown in such a way, that having all of the code in one solution file and working with it from a day-to-day basis is not a feasible solution. As we have three different areas we work on, Data Layer (DL), Signal Trackers (ST) and the User Interface (UI) itself, we have created seperated solutions for each area. This would work fine just as it is, but the problem is, that ST depends on DL and the UI depends on the ST and DL Layers.
 author: Philipp Aumayr
-date: 2011-56-23
+date: 2011-02-23
 bannerimage: 
+lang: en
 permalink: /blog/2011/02/23/TFS-Build-and-Checked-In-Assemblies-
 ---
 

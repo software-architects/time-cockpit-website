@@ -3,8 +3,9 @@ layout: blog
 title: ADO.NET 4.5 Async Data Reader and IAsyncHttpHandler
 teaser: In cloud computing scenarios latencies between the application and database server are usually higher compared to an on premise scenario. With the rise of node.js I/O driven web hosts are becoming more familiar and ADO.Net 4.5 aids this by providing Async methods to I/O bound functions. 
 author: Philipp Aumayr
-date: 2012-44-22
+date: 2012-11-22
 bannerimage: 
+lang: en
 permalink: /blog/2012/11/22/ADONET-45-Async-Data-Reader-and-IAsyncHttpHandler
 ---
 

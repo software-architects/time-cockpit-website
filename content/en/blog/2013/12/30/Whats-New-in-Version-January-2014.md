@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version January 2014
 teaser: December 2013 has primarily been a planning month for us. We defined the topics in which we want to invest in 2014. Nevertheless, in version January 2014 we deliver improvements in the areas reporting and programmable actions. In this article you can read about the enhancements and the results of our planning for 2014.
 author: Karin Huber
-date: 2013-36-30
+date: 2013-12-30
 bannerimage: 
+lang: en
 permalink: /blog/2013/12/30/Whats-New-in-Version-January-2014
 ---
 

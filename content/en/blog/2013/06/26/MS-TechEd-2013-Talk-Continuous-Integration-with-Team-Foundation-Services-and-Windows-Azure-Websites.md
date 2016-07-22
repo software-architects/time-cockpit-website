@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: MS TechEd 2013 Talk, Continuous Integration with Team Foundation Services and Windows Azure Websites
+title: MS TechEd 2013 Talk -  Continuous Integration with Team Foundation Services and Windows Azure Websites
 teaser: At Microsoft TechEd 2013 I do a session about Continuous Integration with Team Foundation Services and Windows Azure Websites. In this blog article you find the source code and a video of the sample.
 author: Rainer Stropek
-date: 2013-26-26
+date: 2013-06-26
 bannerimage: 
+lang: en
 permalink: /blog/2013/06/26/MS-TechEd-2013-Talk-Continuous-Integration-with-Team-Foundation-Services-and-Windows-Azure-Websites
 ---
 

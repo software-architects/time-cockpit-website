@@ -3,8 +3,10 @@ layout: blog
 title: What's New in Version April 2015
 teaser: In the HTML5 Client we have added support for a large number of advanced configuration options for lists, forms and cells. The list of not fully supported features is still long but lists and forms are becoming more and more usable even for more complex customer scenarios.
 author: Karin Huber
-date: 2015-38-31
+date: 2015-03-31
 bannerimage: /content/images/blog/2015/03/time-cockpit-april-2015.png
+lang: en
+ref: /de/blog/2015/03/31/Was-ist-neu-in-der-Version-April-2015
 permalink: /blog/2015/03/31/Whats-New-in-Version-April-2015
 ---
 

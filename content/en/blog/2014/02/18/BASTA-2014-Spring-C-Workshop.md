@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: BASTA 2014 Spring, C# Workshop
+title: BASTA 2014 Spring -  C# Workshop
 teaser: At BASTA 2014 Spring conference I will do a full-day C# workshop again. This time we have over 90 registrations, wow! This huge interest in the workshop is awesome. In this blog article I summarize important resources for the workshop. Use them to follow the samples or recall the topics after the workshop.
 author: Rainer Stropek
-date: 2014-20-18
+date: 2014-02-18
 bannerimage: 
+lang: en
 permalink: /blog/2014/02/18/BASTA-2014-Spring-C-Workshop
 ---
 

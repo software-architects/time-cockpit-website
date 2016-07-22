@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: ALM Days, Unit Testing with Stubs, Shims, and MS Fakes
+title: ALM Days -  Unit Testing with Stubs, Shims, and MS Fakes
 teaser: At ALM Days my second talk is about unit testing with Microsoft Fakes, Stubs, and Shims. Here is the sample that I am going to use.
 author: Rainer Stropek
-date: 2014-55-25
+date: 2014-02-25
 bannerimage: 
+lang: en
 permalink: /blog/2014/02/25/ALM-Days-Unit-Testing-with-Stubs-Shims-and-MS-Fakes
 ---
 

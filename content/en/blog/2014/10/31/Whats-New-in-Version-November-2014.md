@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: What's New in Version November 2014
-teaser: This month we are announcing the next important step in our movement towards HTML and JavaScript: We present the first public preview of time cockpit's OpenID Connect endpoint for authentication and authorization. Additionally we have improved validation consistency and disabled SSL 3.0 support to prevent POODLE attacks.
+teaser: This month we are announcing the next important step in our movement towards HTML and JavaScript -  We present the first public preview of time cockpit's OpenID Connect endpoint for authentication and authorization. Additionally we have improved validation consistency and disabled SSL 3.0 support to prevent POODLE attacks.
 author: Karin Huber
-date: 2014-47-31
+date: 2014-10-31
 bannerimage: /content/images/blog/2014/10/time-cockpit-november-2014.png
+lang: en
 permalink: /blog/2014/10/31/Whats-New-in-Version-November-2014
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: Custom OData Provider for Windows Azure 
 teaser: Beside working on time cockpit I also do some consulting work regarding .NET in general and the Microsoft Windows Azure Platform in particular. In that context I had the chance to work as a coach in an Azure evaluation project at Austria's leading real estate search engine. Based on the research we did in this project I came up with the idea to build a custom OData provider that optimizes the way that real estate search requests are handled. It shows how sharding can be used in Winodws Azure to massively improve performance while raising costs moderately. In this blog post I would like to show you the architecture of the solution. You will see how I have built the provider and how the possibilities of the Windows Azure platform helped me to create an elastic solution that is able to handle high loads.
 author: Rainer Stropek
-date: 2011-44-16
+date: 2011-02-16
 bannerimage: 
+lang: en
 permalink: /blog/2011/02/16/Custom-OData-Provider-for-Windows-Azure-
 ---
 

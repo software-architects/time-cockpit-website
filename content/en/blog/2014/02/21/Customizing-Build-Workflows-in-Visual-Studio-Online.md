@@ -3,8 +3,9 @@ layout: blog
 title: Customizing Build Workflows in Visual Studio Online
 teaser: At TechEd 2013 I did a talk about build in the cloud. For ALM Days next week, Microsoft invited me to do an updated version of this session. So I brought my samples up-to-date and switched to Git. In this blog post I describe what I will demo during the session.
 author: Rainer Stropek
-date: 2014-10-21
+date: 2014-02-21
 bannerimage: 
+lang: en
 permalink: /blog/2014/02/21/Customizing-Build-Workflows-in-Visual-Studio-Online
 ---
 

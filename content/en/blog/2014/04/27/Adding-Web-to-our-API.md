@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: Adding "Web" to our API
-teaser: This month, we are very proud that we can publish the first public preview of a major keystone of our next generation web strategy: Say hello to time cockpit's new OData Web API.
+teaser: This month, we are very proud that we can publish the first public preview of a major keystone of our next generation web strategy -  Say hello to time cockpit's new OData Web API.
 author: Rainer Stropek
-date: 2014-29-27
+date: 2014-04-27
 bannerimage: 
+lang: en
 permalink: /blog/2014/04/27/Adding-Web-to-our-API
 ---
 

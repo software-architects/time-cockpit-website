@@ -3,8 +3,9 @@ layout: blog
 title: Time Cockpit 2010 SP1
 teaser: Today we will release SP1 for time cockpit 2010. In this blog we would like to summarize the changes in this program version. Note that the setup for time cockpit 2010 SP1 can be used to install a new, fresh copy of time cockpit and to update an existing installation of time cockpit 2010.
 author: Rainer Stropek
-date: 2010-16-22
+date: 2010-07-22
 bannerimage: 
+lang: en
 permalink: /blog/2010/07/22/Time-Cockpit-2010-SP1
 ---
 

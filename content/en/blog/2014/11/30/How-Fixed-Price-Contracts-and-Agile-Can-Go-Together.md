@@ -3,8 +3,10 @@ layout: blog
 title: How Fixed-Price Contracts and Agile Can Go Together
 teaser: Haven't we all learned in project management courses that fixed-price contracts are not necessarily an advantage for the buyer-side? Weren't these problems the very reason why agile project management principles have been invented? However, it is a matter of fact that many customers still insist on fixed project prices. In this blog article I want to share our approach of making fixed-price and agile go together.
 author: Rainer Stropek
-date: 2014-56-30
+date: 2014-11-30
 bannerimage: /content/images/blog/2014/11/2085887252_06b49ee29d_b.jpg
+lang: en
+ref: /de/blog/2014/11/30/Wie-passen-Fixpreis-Projekte-und-agile-Softwareentwicklung-zusammen
 permalink: /blog/2014/11/30/How-Fixed-Price-Contracts-and-Agile-Can-Go-Together
 ---
 

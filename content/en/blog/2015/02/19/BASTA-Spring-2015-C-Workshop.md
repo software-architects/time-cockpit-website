@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: BASTA Spring 2015, C# Workshop
-teaser: Spring time is BASTA time :-) For many years I have had the possibility to open the German BASTA conference with a full-day C# workshop on Monday. This year I will focus on C# 6 news, Roslyn, and related NuGet "gold" nuggets. In this blog article I share my slides and code samples with you.
+title: BASTA Spring 2015 -  C# Workshop
+teaser: Spring time is BASTA time  - -) For many years I have had the possibility to open the German BASTA conference with a full-day C# workshop on Monday. This year I will focus on C# 6 news, Roslyn, and related NuGet "gold" nuggets. In this blog article I share my slides and code samples with you.
 author: Rainer Stropek
-date: 2015-47-19
+date: 2015-02-19
 bannerimage: /content/images/blog/2015/02/BASTA_SE_15_Speakerbutton_300x250_cropped.png
+lang: en
 permalink: /blog/2015/02/19/BASTA-Spring-2015-C-Workshop
 ---
 

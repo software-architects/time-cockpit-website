@@ -3,8 +3,9 @@ layout: blog
 title: Importing JIRA Issues as Time Cockpit Tasks
 teaser: Time cockpit allows you to assign time bookings to tasks and projects. If you are using JIRA for planning and bug tracking, this article shows you how to import issues from JIRA into time cockpit in order to use them for time booking. This can be achieved by using the REST API provided by JIRA and a small python script in time cockpit.
 author: Simon Opelt
-date: 2013-23-30
+date: 2013-04-30
 bannerimage: 
+lang: en
 permalink: /blog/2013/04/30/Importing-JIRA-Issues-as-Time-Cockpit-Tasks
 ---
 

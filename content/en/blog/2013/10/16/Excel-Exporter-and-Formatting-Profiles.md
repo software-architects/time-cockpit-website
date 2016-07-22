@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: Excel Exporter and Formatting Profiles
-teaser: In the current version of time cockpit, there is a bug in the excel exporter when using conditional formatting in an excel template file. Precisely, when using a conditional format that spans a full row or column instead of a sub-region of a worksheet. The root cause of this is in the way that the [usually more than awesome] ClosedXML (http://closedxml.codeplex.com/) library handles ranges with covering all rows or all columns. In some of those cases, ClosedXML tries to apply something to every cell in that (semi-infinite) range.
+teaser: In the current version of time cockpit, there is a bug in the excel exporter when using conditional formatting in an excel template file. Precisely, when using a conditional format that spans a full row or column instead of a sub-region of a worksheet. The root cause of this is in the way that the [usually more than awesome] ClosedXML (http - //closedxml.codeplex.com/) library handles ranges with covering all rows or all columns. In some of those cases, ClosedXML tries to apply something to every cell in that (semi-infinite) range.
 author: Philipp Aumayr
-date: 2013-30-16
+date: 2013-10-16
 bannerimage: 
+lang: en
 permalink: /blog/2013/10/16/Excel-Exporter-and-Formatting-Profiles
 ---
 

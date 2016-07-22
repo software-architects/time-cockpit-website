@@ -3,8 +3,9 @@ layout: blog
 title: Time Cockpit in Remote Desktop and Workstation Sharing Scenarios 
 teaser: Upon popular request I would like to explain the current possibilities and limitations of time cockpit in advanced multi-user scenarios like using Remote Desktop Services or sharing workstations (using user switching).
 author: Simon Opelt
-date: 2010-50-30
+date: 2010-08-30
 bannerimage: 
+lang: en
 permalink: /blog/2010/08/30/Time-Cockpit-in-Remote-Desktop-and-Workstation-Sharing-Scenarios-
 ---
 

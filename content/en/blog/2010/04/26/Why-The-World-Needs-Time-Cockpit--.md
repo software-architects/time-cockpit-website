@@ -3,8 +3,9 @@ layout: blog
 title: Why The World Needs Time Cockpit ... 
 teaser: Naturally most services companies do not primarily provide physical goods. They supply skills, ingenuity and experience with the help of their service suppliers – people! Employees and especially their time is the most valuable asset in service companies. People working in this industry make their living from selling their work time. They have the crucial need to track what and for how long they work on specific tasks because this, at the end of the day, determines their costs to a great deal and in many cases even directly influences their sales revenue. 
 author: Rainer Stropek
-date: 2010-34-26
+date: 2010-04-26
 bannerimage: 
+lang: en
 permalink: /blog/2010/04/26/Why-The-World-Needs-Time-Cockpit--
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: Powerworkshop C# 4 at BASTA Spring 2011
 teaser:  Tomorrow I will do a power workshop about C# 4 at BASTA Spring 2011 in Darmstadt.
 author: Rainer Stropek
-date: 2011-16-20
+date: 2011-02-20
 bannerimage: 
+lang: en
 permalink: /blog/2011/02/20/Powerworkshop-C-4-at-BASTA-Spring-2011
 ---
 

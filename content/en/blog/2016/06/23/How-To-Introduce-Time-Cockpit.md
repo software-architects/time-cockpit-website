@@ -3,8 +3,10 @@ layout: blog
 title: How To Introduce Time Cockpit
 teaser: It has been 6 and a half years now since we have gone live with time cockpit back in 2010. In these years,  we have served various company types. In this article we want to share our experience when introducing time cockpit.
 author: Alexander Huber
-date: 2016-02-23
+date: 2016-06-23
 bannerimage: /content/images/blog/2016/06/how to introduce tc - gears.jpg
+lang: en
+ref: /de/blog/2016/06/23/How-To-Introduce-Time-Cockpit
 permalink: /blog/2016/06/23/How-To-Introduce-Time-Cockpit
 ---
 

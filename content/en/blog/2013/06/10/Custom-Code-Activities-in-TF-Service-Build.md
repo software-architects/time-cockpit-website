@@ -3,8 +3,9 @@ layout: blog
 title: Custom Code Activities in TF Service Build
 teaser: Recently, Microsoft launched their hosted Team Foundation Service which includes the ability to use customized workflows including custom code activities. Last week, I gave the feature a spin and here’s a few things that I tripped over.
 author: Philipp Aumayr
-date: 2013-23-10
+date: 2013-06-10
 bannerimage: 
+lang: en
 permalink: /blog/2013/06/10/Custom-Code-Activities-in-TF-Service-Build
 ---
 

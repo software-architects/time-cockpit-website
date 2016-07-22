@@ -3,8 +3,9 @@ layout: blog
 title: Protect Against Frankenstein With Design-to-Cost
 teaser: Although software is intangible, it ages. As a consequence, every software company will at some point need to make significant investments to redesign and modernize existing applications. In such projects, costs and available resources are important for design decisions. Without a design-to-cost approach, redesign projects often are stopped before they are finished. Frankenstein software is the result. Read more about how to use the design-to-cost approach to protect against Frankenstein.
 author: Rainer Stropek
-date: 2016-31-29
+date: 2016-01-29
 bannerimage: /content/images/blog/2016/01/frankenstein-small.jpg
+lang: en
 permalink: /blog/2016/01/29/Protect-Against-Frankenstein-With-Design-to-Cost
 ---
 

@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: BASTA Spring 2013, C# Powerworkshop
+title: BASTA Spring 2013 -  C# Powerworkshop
 teaser: Auf der BASTA 2013 Spring Konferenz habe ich einen ganztägigen Workshop zum Thema C# mit Schwerpunkt auf parallele und asynchrone Programmierung gehalten. In diesem Blogartikel gibt es die Slides und Samples zum Download.
 author: Rainer Stropek
-date: 2013-09-25
+date: 2013-02-25
 bannerimage: 
+lang: en
 permalink: /blog/2013/02/25/BASTA-Spring-2013-C-Powerworkshop
 ---
 

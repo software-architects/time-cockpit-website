@@ -3,8 +3,10 @@ layout: blog
 title: Project Reporting in Agile Projects
 teaser: At software architects we live and breathe agile development. Agile principles have been our constant companion for many years now.  Over the years we have developed a solid practice for reporting in agile projects. 
 author: Rainer Stropek
-date: 2013-25-30
+date: 2013-08-30
 bannerimage: 
+lang: en
+ref: /de/blog/2013/08/30/Projektreporting-in-agilen-Projekten
 permalink: /blog/2013/08/30/Project-Reporting-in-Agile-Projects
 ---
 

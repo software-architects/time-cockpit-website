@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: What's New in Version May 2014
-teaser: Years ago when we defined the cornerstones of time cockpit, we decided that extensibility should be a major unique selling proposition of our time tracking software. This month, we are very proud that we can publish the first public preview of a major keystone of our technological strategy: Say hello to time cockpit's new OData Web API.
+teaser: Years ago when we defined the cornerstones of time cockpit, we decided that extensibility should be a major unique selling proposition of our time tracking software. This month, we are very proud that we can publish the first public preview of a major keystone of our technological strategy -  Say hello to time cockpit's new OData Web API.
 author: Karin Huber
-date: 2014-24-30
+date: 2014-04-30
 bannerimage: 
+lang: en
 permalink: /blog/2014/04/30/Whats-New-in-Version-May-2014
 ---
 

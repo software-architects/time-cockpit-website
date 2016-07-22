@@ -3,8 +3,10 @@ layout: blog
 title: What's New in Version February 2015
 teaser: This month we have put our focus on better error diagnostics and minor improvements in the time sheet calendar. It has become much easier to send us your log files, performance for booking with time sheet templates has been improved, signal lanes are highlighted, etc.
 author: Karin Huber
-date: 2015-13-30
+date: 2015-01-30
 bannerimage: /content/images/blog/2015/01/time-cockpit-february-2015.png
+lang: en
+ref: /de/blog/2015/01/30/Was-ist-neu-in-der-Version-Februar-2015
 permalink: /blog/2015/01/30/Whats-New-in-Version-February-2015
 ---
 

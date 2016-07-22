@@ -3,8 +3,9 @@ layout: blog
 title: Agile and Scrum in Mission-Critical Projects
 teaser: Last week I learned a lesson about the agile approach in such critical projects the hard way. I had an accident with my mountain bike. I fell directly on my shoulder and I immediately knew that it wasn’t just a bruise. X-ray and CAT scanner showed that it was a complex fracture. Now what has that to do with agile development? It turned out that the shoulder surgery I needed would be agile.
 author: Rainer Stropek
-date: 2014-58-18
+date: 2014-05-18
 bannerimage: 
+lang: en
 permalink: /blog/2014/05/18/Agile-and-Scrum-in-Mission-Critical-Projects
 ---
 

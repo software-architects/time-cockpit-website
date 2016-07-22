@@ -3,8 +3,9 @@ layout: blog
 title: Importing Data from Visual Studio Online Using Web Hooks
 teaser: We at software architects adapt time cockpit to the needs of our customers every day. Most of our customers have well established processes or tools in place which drive their business. Time cockpit offers multiple options for integrating with upstream systems like Visual Studio Online (VSO), Jira, or Dynamics NAV. Today we want to describe how you can connect time cockpit to VSO using web hooks.
 author: Alexander Huber
-date: 2015-43-30
+date: 2015-03-30
 bannerimage: /content/images/blog/2015/03/webhooks_550.png
+lang: en
 permalink: /blog/2015/03/30/Importing-Data-from-Visual-Studio-Online-Using-Web-Hooks
 ---
 

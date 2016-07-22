@@ -3,8 +3,9 @@ layout: blog
 title: How We Build and Run Time Cockpit Web Preview
 teaser: Last month we proudly launched the first public preview of the upcoming HTML5 client for time cockpit. When we started developing the new platform many months ago, we also decided that we had to rethink our entire build and operation processes. In this blog article I invite you to take a look behind the scenes of time cockpit web development. Additionally, I want to summarize our lessons learned.
 author: Rainer Stropek
-date: 2014-31-30
+date: 2014-12-30
 bannerimage: /content/images/blog/2014/12/Clouds.jpg
+lang: en
 permalink: /blog/2014/12/30/How-We-Build-and-Run-Time-Cockpit-Web-Preview
 ---
 

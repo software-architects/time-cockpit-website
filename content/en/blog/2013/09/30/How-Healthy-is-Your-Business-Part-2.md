@@ -3,8 +3,9 @@ layout: blog
 title: How Healthy is Your Business? (Part 2)
 teaser: What time tracking-related KPIs can tell you about your business’ healthy - Many companies use KPIs to manage their performance. The first part was an introduction into KPIs including tips and trick about successful performance management projects. In this second part we will show examples of KPIs related to time tracking.
 author: Rainer Stropek
-date: 2013-24-30
+date: 2013-09-30
 bannerimage: 
+lang: en
 permalink: /blog/2013/09/30/How-Healthy-is-Your-Business-Part-2
 ---
 

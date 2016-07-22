@@ -3,8 +3,9 @@ layout: blog
 title: Wir werden größer
 teaser: 2014 war ein erfolgreiches Jahr für uns. Wir konnten einen Umsatzrekord verbuchen, unser Team vergrößern und die langjährige Partnerschaft mit der Firma softaware formalisieren.
 author: Rainer Stropek
-date: 2015-46-27
+date: 2015-01-27
 bannerimage: /content/images/blog/2015/01/Blog_20150109_1.jpg
+lang: de
 permalink: /de/blog/2015/01/27/Wir-werden-größer
 ---
 

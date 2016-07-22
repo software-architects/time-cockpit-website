@@ -3,8 +3,9 @@ layout: blog
 title: Opening HTML5 Client for Public Preview
 teaser: Today is an exciting day for the entire time cockpit team. We are opening up a first public preview of our brand new HTML5 client for time cockpit. Try it, play with it, and tell us what you think. Please be aware that it is an early preview and not production-ready. There will be errors, you will miss important features, we continue to work hard on it. However, we hope that the preview will already provide value to some of you and that you will share your thoughts with us.
 author: Rainer Stropek
-date: 2014-00-15
+date: 2014-12-15
 bannerimage: /content/images/blog/2014/12/15467456315_977b4fa0a0_k.jpg
+lang: en
 permalink: /blog/2014/12/15/Opening-HTML5-Client-for-Public-Preview
 ---
 

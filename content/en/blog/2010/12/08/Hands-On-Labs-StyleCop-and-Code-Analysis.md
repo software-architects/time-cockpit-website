@@ -3,8 +3,9 @@ layout: blog
 title: Hands-On Labs StyleCop and Code Analysis
 teaser: This week I will be one of the speakers at BASTA On Tour in Munich. One of the topics I am going to speak about is the Managed Extensibility Framework (MEF). In this blog post I want to share my slides and summarize the hands-on labs that I am going to go through with the participants.
 author: Rainer Stropek
-date: 2010-00-08
+date: 2010-12-08
 bannerimage: 
+lang: en
 permalink: /blog/2010/12/08/Hands-On-Labs-StyleCop-and-Code-Analysis
 ---
 

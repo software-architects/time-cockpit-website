@@ -3,8 +3,9 @@ layout: blog
 title: BIG DAYS 2011 - Parallel Programming 
 teaser: At the BIG>DAYS 2011, the largest roadshow of Microsoft in Austria with approx. 1,700 visitors, I do a session about parallel programming together with Andreas Schabus. In the session we start with the basics of parallel programming in .NET 4 and C# 4. Based on that we discuss the importance of parallel programming in Windows Azure and do demos for scaling out compute tasks into the cloud as well as a demo for parallel querying using the concept of horizontal sharding in the SQL Azure database layer.
 author: Rainer Stropek
-date: 2011-41-28
+date: 2011-03-28
 bannerimage: 
+lang: en
 permalink: /blog/2011/03/28/BIG-DAYS-2011---Parallel-Programming-
 ---
 

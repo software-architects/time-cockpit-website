@@ -3,8 +3,9 @@ layout: blog
 title: Time Tracking Fitness Test
 teaser: Did you ever ask yourself how you are doing in terms of time tracking compared to other people? This test unveils your time tracking fitness level. Try it. It's fun and you might get ideas how you could enhance your existing time tracking practice.
 author: Rainer Stropek
-date: 2014-29-30
+date: 2014-06-30
 bannerimage: 
+lang: en
 permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
 ---
 

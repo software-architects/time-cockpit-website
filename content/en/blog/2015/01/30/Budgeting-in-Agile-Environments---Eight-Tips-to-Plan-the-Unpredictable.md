@@ -3,8 +3,10 @@ layout: blog
 title: Budgeting in Agile Environments - Eight Tips to Plan the Unpredictable
 teaser: In many companies, each year starts with planning. Planning the financial aspects of your business is one part of that process. In this blog article I would like to share our thoughts about creating and continuously controlling our budget. Of course, time cockpit plays an important role in our budgeting process.
 author: Rainer Stropek
-date: 2015-35-30
+date: 2015-01-30
 bannerimage: /content/images/blog/2015/01/4675779231_5f18d43e31_b.jpg
+lang: en
+ref: /de/blog/2015/01/30/Budgetierung-in-agilen-Umgebungen---Acht-Tipps-um-das-Unvorhersagbare-zu-planen
 permalink: /blog/2015/01/30/Budgeting-in-Agile-Environments---Eight-Tips-to-Plan-the-Unpredictable
 ---
 

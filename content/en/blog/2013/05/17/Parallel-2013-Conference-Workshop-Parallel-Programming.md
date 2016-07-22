@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Parallel 2013 Conference, Workshop Parallel Programming
+title: Parallel 2013 Conference -  Workshop Parallel Programming
 teaser: On May 17th I did a workshop on parallel programming at parallel 2013 conference in Karlsruhe. The attendees asked me to publish some of the live coding samples I did. In this blog you can find the samples.
 author: Rainer Stropek
-date: 2013-39-17
+date: 2013-05-17
 bannerimage: 
+lang: en
 permalink: /blog/2013/05/17/Parallel-2013-Conference-Workshop-Parallel-Programming
 ---
 

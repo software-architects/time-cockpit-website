@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version February 2014
 teaser: In this release of time cockpit we focused on sync and Excel importer. Time cockpit now provides better information about synchronization conflicts and allows you to easily resolve them. We also redesigned the sync dialog making it cleaner and easier to understand. Finally, we improved the Excel importer to support not only importing new records, but also updating existing ones.
 author: Alexander Huber
-date: 2014-26-29
+date: 2014-01-29
 bannerimage: 
+lang: en
 permalink: /blog/2014/01/29/Whats-New-in-Version-February-2014
 ---
 

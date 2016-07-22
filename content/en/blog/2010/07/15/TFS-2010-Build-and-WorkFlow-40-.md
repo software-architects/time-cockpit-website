@@ -3,8 +3,9 @@ layout: blog
 title: TFS 2010 Build and WorkFlow 4.0 
 teaser: After having released time cockpit 1.0, we decided to finally upgrade to Team Foundation Server 2010. The upgrade seemed to have worked without any problem and day-to-day work continued as normal with checkins, branching and merging working at least as good as before. If you read of the changes between TFS 2008 and TFS 2010 (here) you may have noticed that TFS Build 2010 is based on WorkFlow 4.0 (WF4).
 author: Philipp Aumayr
-date: 2010-20-15
+date: 2010-07-15
 bannerimage: 
+lang: en
 permalink: /blog/2010/07/15/TFS-2010-Build-and-WorkFlow-40-
 ---
 

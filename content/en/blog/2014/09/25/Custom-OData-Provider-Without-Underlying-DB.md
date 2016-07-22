@@ -3,8 +3,9 @@ layout: blog
 title: Custom OData Provider Without Underlying DB
 teaser: Today I will do my OData session at BASTA conference in Mainz again. This time I have a bit more time so I will add a demo of creating a custom OData provider without any underlying database. The result is generated based on the OData query on the fly. In this blog article I share the code.
 author: Rainer Stropek
-date: 2014-03-25
+date: 2014-09-25
 bannerimage: 
+lang: en
 permalink: /blog/2014/09/25/Custom-OData-Provider-Without-Underlying-DB
 ---
 

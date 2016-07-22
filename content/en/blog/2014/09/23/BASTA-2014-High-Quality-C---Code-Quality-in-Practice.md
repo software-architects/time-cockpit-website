@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: BASTA 2014, High Quality C# - Code Quality in Practice
+title: BASTA 2014 -  High Quality C# - Code Quality in Practice
 teaser: Today I will do a session at German BASTA Conference about C# code quality. In this blog I want to share my slides and the samples I am using.
 author: Rainer Stropek
-date: 2014-54-23
+date: 2014-09-23
 bannerimage: 
+lang: en
 permalink: /blog/2014/09/23/BASTA-2014-High-Quality-C---Code-Quality-in-Practice
 ---
 

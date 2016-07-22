@@ -3,8 +3,9 @@ layout: blog
 title: Updated samples for Windows Installer XML (WiX)
 teaser: In my GitHub Samples repository I share all my newer samples and slide decks for trainings and workshops. In the last days I added new samples on Windows Installer XML (WiX) and updated Readme so the samples are easier to understand.
 author: Rainer Stropek
-date: 2015-41-14
+date: 2015-01-14
 bannerimage: 
+lang: en
 permalink: /blog/2015/01/14/Updated-samples-for-Windows-Installer-XML-WiX
 ---
 

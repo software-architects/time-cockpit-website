@@ -3,8 +3,9 @@ layout: blog
 title: Creating User Note Signals at Arbitrary Points in Time
 teaser: Time cockpit allows you to take notes during your daily work. Such a note often acts as a reminder for a certain action, task switch or event that is not automatically tracked but important for your time booking. Notes are typically created for the current point in time. This article shows how you can configure time cockpit to allow arbitrary timestamps in user notes.
 author: Simon Opelt
-date: 2013-00-21
+date: 2013-06-21
 bannerimage: 
+lang: en
 permalink: /blog/2013/06/21/Creating-User-Note-Signals-at-Arbitrary-Points-in-Time
 ---
 

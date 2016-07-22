@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version December 2014
 teaser: Time cockpit got a new log file format which makes troubleshooting much easier. Additionally, we extended our implementation of script source lists to get enable optimizations in time cockpit's web client.
 author: Karin Huber
-date: 2014-33-30
+date: 2014-11-30
 bannerimage: /content/images/blog/2014/11/time-cockpit-december-2014.png
+lang: en
 permalink: /blog/2014/11/30/Whats-New-in-Version-December-2014
 ---
 

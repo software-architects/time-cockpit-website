@@ -3,8 +3,9 @@ layout: blog
 title: Compensatory Time Off in Time Cockpit
 teaser: Recently, a customer asked us how to book compensatory time off in the time sheet calendar of time cockpit without affecting a users actual hours of work. Here is what we came up with...
 author: Alexander Huber
-date: 2013-19-16
+date: 2013-01-16
 bannerimage: 
+lang: en
 permalink: /blog/2013/01/16/Compensatory-Time-Off-in-Time-Cockpit
 ---
 

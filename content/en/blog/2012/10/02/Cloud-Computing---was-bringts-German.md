@@ -3,8 +3,9 @@ layout: blog
 title: Cloud Computing - was bringt's? (German)
 teaser: Am 27. September 2012 durfte ich gemeinsam mit Thomas Rümmler von AIT einen Vortrag zum oben genannten Thema auf dem 2. Symposium für Software Architektur und effiziente Entwicklung variantenreicher Systeme der Technischen Akademie Esslingen (Stuttgart) halten. In diesem Blogartikel finden Sie die Slides und den Text für das Tagungshandbuch)
 author: Rainer Stropek
-date: 2012-19-02
+date: 2012-10-02
 bannerimage: 
+lang: en
 permalink: /blog/2012/10/02/Cloud-Computing---was-bringts-German
 ---
 

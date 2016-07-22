@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Techorama, Docker for Software Developers
+title: Techorama -  Docker for Software Developers
 teaser: At Techorama conference in Belgium I do a session for developers who heard about Docker and wonder why it would be relevant for them. What is different about Docker? Why could it be useful for web developers? How can it be used on Azure? It is a Docker intro session in which I demo the application of Docker in web development scenarios. In this blog post I share my slides and samples.
 author: Rainer Stropek
-date: 2015-10-12
+date: 2015-05-12
 bannerimage: /content/images/blog/2015/05/Brussels-Atomium-cropped.jpg
+lang: en
 permalink: /blog/2015/05/12/Techorama-Docker-for-Software-Developers
 ---
 

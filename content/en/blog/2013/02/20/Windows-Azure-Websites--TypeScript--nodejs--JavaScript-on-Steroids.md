@@ -3,8 +3,9 @@ layout: blog
 title: Windows Azure Websites + TypeScript + node.js = JavaScript on Steroids
 teaser: I had the opportunity to do two sessions at MVP Summit 2013 in Redmond/Bellevue. The first one covered TypeScript. In this blog article I summarize my main points and share the demo code.
 author: Rainer Stropek
-date: 2013-19-20
+date: 2013-02-20
 bannerimage: 
+lang: en
 permalink: /blog/2013/02/20/Windows-Azure-Websites--TypeScript--nodejs--JavaScript-on-Steroids
 ---
 

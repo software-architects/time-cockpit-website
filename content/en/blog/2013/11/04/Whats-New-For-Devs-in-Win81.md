@@ -3,8 +3,9 @@ layout: blog
 title: What's New For Devs in Win8.1
 teaser: One of our partners, IT-Visions, invited me to speak at their VS2013/Win8.1 What's New event in Munich today. Of course I am happy to participate. During the session I will demo new features from VS2013, Windows Store app development, and Windows Azure Mobile Services.
 author: Rainer Stropek
-date: 2013-59-04
+date: 2013-11-04
 bannerimage: 
+lang: en
 permalink: /blog/2013/11/04/Whats-New-For-Devs-in-Win81
 ---
 

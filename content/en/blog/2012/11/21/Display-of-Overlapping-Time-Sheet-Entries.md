@@ -3,8 +3,9 @@ layout: blog
 title: Display of Overlapping Time Sheet Entries
 teaser: In the new version of time cockpit for winter 2012/2013 we will fix the display of overlapping time sheet entries. See screenshots of the new version.
 author: Karin Huber
-date: 2012-53-21
+date: 2012-11-21
 bannerimage: 
+lang: en
 permalink: /blog/2012/11/21/Display-of-Overlapping-Time-Sheet-Entries
 ---
 

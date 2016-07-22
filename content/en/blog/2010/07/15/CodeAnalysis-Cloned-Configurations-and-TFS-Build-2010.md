@@ -3,8 +3,9 @@ layout: blog
 title: CodeAnalysis, Cloned Configurations and TFS Build 2010
 teaser: In case you are stumbling across a problem where your build does not succeed because the result file for code analysis cannot be found (Unable to read Code Analysis output report. Make sure that the directory is writable (default is the project output directory) be sure to not have any <CodeAnalysisLogFile> entries in your project build files.
 author: Philipp Aumayr
-date: 2010-19-15
+date: 2010-07-15
 bannerimage: 
+lang: en
 permalink: /blog/2010/07/15/CodeAnalysis-Cloned-Configurations-and-TFS-Build-2010
 ---
 

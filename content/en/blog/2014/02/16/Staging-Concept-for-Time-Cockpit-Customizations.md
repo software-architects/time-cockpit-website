@@ -3,8 +3,9 @@ layout: blog
 title: Staging Concept for Time Cockpit Customizations
 teaser: One of the unique possibilities of time cockpit is its extensibility. You can adapt the data model, lists, forms, export and import formats, reports, etc. to your needs. A question that we often get is how to test customizations before putting them into production. In this blog post I would like to show you some options you have.
 author: Rainer Stropek
-date: 2014-00-16
+date: 2014-02-16
 bannerimage: 
+lang: en
 permalink: /blog/2014/02/16/Staging-Concept-for-Time-Cockpit-Customizations
 ---
 

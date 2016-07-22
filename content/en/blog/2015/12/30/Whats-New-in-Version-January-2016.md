@@ -3,8 +3,10 @@ layout: blog
 title: What's New in Version January 2016
 teaser: This month our main focus was adding responsive design to our HTML5 client. Our goal is to make time cockpit's web client usable on phone, tablets and in desktop browsers. We have not reached our final goal yet but we have made significant progress this month. Try it and tell us what you think.
 author: Rainer Stropek
-date: 2015-05-30
+date: 2015-12-30
 bannerimage: /content/images/blog/2015/12/time-cockpit-january-2016.png
+lang: en
+ref: /de/blog/2015/12/30/Was-ist-neu-in-der-Version-Jänner-2016
 permalink: /blog/2015/12/30/Whats-New-in-Version-January-2016
 ---
 

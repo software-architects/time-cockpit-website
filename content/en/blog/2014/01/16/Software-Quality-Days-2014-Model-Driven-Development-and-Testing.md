@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Software Quality Days 2014, Model Driven Development and Testing
-teaser: Yesterday we represented Microsoft and their Team Foundation Server in the Tools Challenge at the Software Quality Days 2014 in Vienna. The topic was Model Driven Development and Testing. The  great news: We won :-) Read more about what we have demonstrated during the challenge.
+title: Software Quality Days 2014 -  Model Driven Development and Testing
+teaser: Yesterday we represented Microsoft and their Team Foundation Server in the Tools Challenge at the Software Quality Days 2014 in Vienna. The topic was Model Driven Development and Testing. The  great news -  We won  - -) Read more about what we have demonstrated during the challenge.
 author: Rainer Stropek
-date: 2014-22-16
+date: 2014-01-16
 bannerimage: 
+lang: en
 permalink: /blog/2014/01/16/Software-Quality-Days-2014-Model-Driven-Development-and-Testing
 ---
 

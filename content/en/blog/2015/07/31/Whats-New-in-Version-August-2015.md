@@ -1,10 +1,12 @@
 ---
 layout: blog
 title: What's New in Version August 2015
-teaser: We have lots of new features and improvements in time cockpit this month: A new feature for monitoring working time violations, lots of enhancements in the HTML5 preview including full support for reports, and a bunch of performance optimizations for Full and HTML5 client.
+teaser: We have lots of new features and improvements in time cockpit this month -  A new feature for monitoring working time violations, lots of enhancements in the HTML5 preview including full support for reports, and a bunch of performance optimizations for Full and HTML5 client.
 author: Karin Huber
-date: 2015-56-31
+date: 2015-07-31
 bannerimage: /content/images/blog/2015/07/time-cockpit-august-2015.png
+lang: en
+ref: /de/blog/2015/07/31/Was-ist-neu-in-der-Version-August-2015
 permalink: /blog/2015/07/31/Whats-New-in-Version-August-2015
 ---
 

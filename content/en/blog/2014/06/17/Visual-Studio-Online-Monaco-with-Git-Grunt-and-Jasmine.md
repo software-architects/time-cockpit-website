@@ -3,8 +3,9 @@ layout: blog
 title: Visual Studio Online "Monaco" with Git, Grunt, and Jasmine
 teaser: I have already posted an end-to-end sample showing Visual Studio "Monaco" with TypeScript and AngularJS in the past. For an event in Graz (Austria) I created an additional sample showing how to use Git, Grunt, and Jasmine unit testing with "Monaco".
 author: Rainer Stropek
-date: 2014-11-17
+date: 2014-06-17
 bannerimage: 
+lang: en
 permalink: /blog/2014/06/17/Visual-Studio-Online-Monaco-with-Git-Grunt-and-Jasmine
 ---
 

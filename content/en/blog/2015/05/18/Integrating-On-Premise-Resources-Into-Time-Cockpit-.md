@@ -3,8 +3,9 @@ layout: blog
 title: Integrating On-Premise Resources Into Time Cockpit 
 teaser: In last month’s blog article I described how to import data from Visual Studio Online into time cockpit. In contrast to the usual pull approach, I showed how to import data into time cockpit with Webhooks using a push approach. In this article I want to talk about how to integrate on premise systems like Microsoft Dynamics Navision or CRM with time cockpit using Hybrid Connections.
 author: Alexander Huber
-date: 2015-38-18
+date: 2015-05-18
 bannerimage: /content/images/blog/2015/05/Hybrid Connection Architecture.png
+lang: en
 permalink: /blog/2015/05/18/Integrating-On-Premise-Resources-Into-Time-Cockpit-
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: Integrating Time Cockpit with Power BI
 teaser: Time cockpit is a great platform for managing time- and project-related data. Microsoft’s Power BI shines when it comes to data visualization and interactive dashboards. Wouldn’t it be nice to integrate both systems to get the best of both worlds? For this month’s newsletter, we have created a sample showing how simple it is to connect both systems’ web APIs. Watch the video in the blog article to find out how the integration sample works. Additionally, the blog article contains links to the sample code. Feel free to use it as a starting point for exporting your time cockpit data to Power BI.
 author: Rainer Stropek
-date: 2015-20-30
+date: 2015-11-30
 bannerimage: /content/images/blog/2015/11/power-bi.png
+lang: en
 permalink: /blog/2015/11/30/Integrating-Time-Cockpit-with-Power-BI
 ---
 

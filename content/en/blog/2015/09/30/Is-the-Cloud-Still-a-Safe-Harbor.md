@@ -3,8 +3,9 @@ layout: blog
 title: Is the Cloud Still a Safe Harbor?
 teaser: Data protection is an important topic when it comes to cloud computing. This is true especially for customers in Europe. Recently, discussions about whether cloud services can be considered as safe for European customers got fueled by a critical statement of the advisor to Europe's top court about the Safe Harbor agreement. In this article I want to describe the current situation in Azure concerning EU data protection laws.
 author: Rainer Stropek
-date: 2015-56-30
+date: 2015-09-30
 bannerimage: /content/images/blog/2015/09/lightning-cloud-small.jpg
+lang: en
 permalink: /blog/2015/09/30/Is-the-Cloud-Still-a-Safe-Harbor
 ---
 

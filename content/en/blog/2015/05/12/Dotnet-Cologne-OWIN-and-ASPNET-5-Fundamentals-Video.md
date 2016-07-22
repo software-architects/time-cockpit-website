@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Dotnet Cologne, OWIN and ASP.NET 5 Fundamentals (Video)
+title: Dotnet Cologne -  OWIN and ASP.NET 5 Fundamentals (Video)
 teaser: OWIN decouples ASP.NET web application from a specific web server like IIS. At this year's dotnet Cologne conference I spent an hour speaking about the fundamental ideas of OWIN. Additionally, I showed how the OWIN concepts translate to ASP.NET 5. As this was a code-only talk, I recorded the sessions. In this post you find the video (German).
 author: Rainer Stropek
-date: 2015-25-12
+date: 2015-05-12
 bannerimage: /content/images/blog/2015/05/Dom-Koeln-cropped.jpg
+lang: en
 permalink: /blog/2015/05/12/Dotnet-Cologne-OWIN-and-ASPNET-5-Fundamentals-Video
 ---
 

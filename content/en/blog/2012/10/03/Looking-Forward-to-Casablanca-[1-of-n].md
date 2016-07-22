@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: Looking Forward to Casablanca [1 of n]
-teaser: Those of you who know me, also know my appreciation for c++. Those of you knowing time cockpit will also know that nearly all of it is written in c#/.net with its service hosting infrastructure running in Windows Azure. There is one particular part of time cockpit that will, at some point in the future, receive a native rewrite and due to the nature of it, storing its data in windows azure is a key requirement. Windows Azure, up to now, does not offer a developer story for C++ development, especially considering access to its storage subsystem. This is where Casablanca comes in to play:
+teaser: Those of you who know me, also know my appreciation for c++. Those of you knowing time cockpit will also know that nearly all of it is written in c#/.net with its service hosting infrastructure running in Windows Azure. There is one particular part of time cockpit that will, at some point in the future, receive a native rewrite and due to the nature of it, storing its data in windows azure is a key requirement. Windows Azure, up to now, does not offer a developer story for C++ development, especially considering access to its storage subsystem. This is where Casablanca comes in to play - 
 author: Philipp Aumayr
-date: 2012-22-03
+date: 2012-10-03
 bannerimage: 
+lang: en
 permalink: /blog/2012/10/03/Looking-Forward-to-Casablanca-[1-of-n]
 ---
 

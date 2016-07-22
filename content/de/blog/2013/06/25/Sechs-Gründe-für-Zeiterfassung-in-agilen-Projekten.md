@@ -3,8 +3,9 @@ layout: blog
 title: Sechs Gründe für Zeiterfassung in agilen Projekten
 teaser: Zeiterfassung ist in vielen Projektteams ein kontrovers diskutiertes Thema. Manche – typischerweise die Entwickler – argumentieren, dass Zeiterfassung nicht notwendig wenn nicht sogar ungewollt ist wenn agile Prinzipe verfolgt werden. Sie beziehen sich auf Dokumente wie den Scrum Guide der aussagt, „Scrum berücksichtigt nicht die verwendete Zeit für Sprint Backlog Items. Die verbleibende Arbeit und Zeit sind die einzigen interessanten Variablen“. Auf der anderen Seite dieses Spektrums stehen typischerweise die Manager, die auf detaillierte Zeiterfassung bestehen. Sie arbeiten nach dem berühmten Leitsatz „Was du nicht messen kannst, kannst du nicht lenken.“ Agile ist frisch, es ist neu. Daher scheint die Frage nach Zeiterfassung altmodisch und wird mit der oft kritisierten Wasserfall-Methode in Verbindung gebracht. Trotzdem gibt es eine Menge stichhaltiger Gründe warum man Zeiterfassung auch dann braucht, wenn man sich für den agilen Weg entschieden hat. Sehen wir uns sechs der wichtigsten Gründe einmal an.
 author: Rainer Stropek
-date: 2013-59-25
+date: 2013-06-25
 bannerimage: /content/images/blog/2013/06/Agreement-and-Certainty-Matrix.png
+lang: de
 permalink: /de/blog/2013/06/25/Sechs-Gründe-für-Zeiterfassung-in-agilen-Projekten
 ---
 

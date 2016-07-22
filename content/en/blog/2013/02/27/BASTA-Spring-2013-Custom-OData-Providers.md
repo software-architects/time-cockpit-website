@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: BASTA Spring 2013, Custom OData Providers
+title: BASTA Spring 2013 -  Custom OData Providers
 teaser: At the BASTA Spring 2013 conference I had a session about developing custom OData providers. In this blog article I summarize the most important take aways and publish the source code.
 author: Rainer Stropek
-date: 2013-34-27
+date: 2013-02-27
 bannerimage: 
+lang: en
 permalink: /blog/2013/02/27/BASTA-Spring-2013-Custom-OData-Providers
 ---
 

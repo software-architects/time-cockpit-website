@@ -3,8 +3,9 @@ layout: blog
 title: Sample Code for TypeScript Article in Windows.Developer Magazine
 teaser: I am currently writing an article about TypeScript for the upcoming issue of the German Windows.Developer magazine. It contains a larger code sample demonstrating some key concepts of the new language. 
 author: Rainer Stropek
-date: 2012-06-02
+date: 2012-11-02
 bannerimage: 
+lang: en
 permalink: /blog/2012/11/02/Sample-Code-for-TypeScript-Article-in-WindowsDeveloper-Magazine
 ---
 

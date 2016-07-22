@@ -3,8 +3,9 @@ layout: blog
 title: How Good Are Your Estimation Skills?
 teaser: Estimation is hard, especially in agile projects. At the beginning of a project you do not exactly know what you have to build. Nevertheless, CFOs, project managers, customers, teams that you have to work with, and many other stakeholders want and need estimations. They ask for expected costs, roadmaps, timelines, necessary resources, and so on. The bad news is that people are typically very weak estimators. The good news is that you can improve your estimation skills with training.
 author: Rainer Stropek
-date: 2013-10-19
+date: 2013-07-19
 bannerimage: 
+lang: en
 permalink: /blog/2013/07/19/How-Good-Are-Your-Estimation-Skills
 ---
 

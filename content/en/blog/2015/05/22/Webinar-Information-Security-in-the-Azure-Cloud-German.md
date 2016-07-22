@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Webinar, Information Security in the Azure Cloud (German)
+title: Webinar -  Information Security in the Azure Cloud (German)
 teaser: Today Microsoft Austria and I wanted to do a webinar concerning information security in the Microsoft Azure cloud. Unfortunately there were technical problems with the platform on which the webinar should have taken place. Therefore we had to cancel it. In this blog article I share a video with the content I wanted to present.
 author: Rainer Stropek
-date: 2015-31-22
+date: 2015-05-22
 bannerimage: /content/images/blog/2015/05/Webinar-Informationssicherheit-Titel.png
+lang: en
 permalink: /blog/2015/05/22/Webinar-Information-Security-in-the-Azure-Cloud-German
 ---
 

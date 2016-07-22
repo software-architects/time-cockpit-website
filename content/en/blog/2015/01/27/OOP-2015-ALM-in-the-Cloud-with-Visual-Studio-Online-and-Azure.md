@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: OOP 2015, ALM in the Cloud with Visual Studio Online and Azure
+title: OOP 2015 -  ALM in the Cloud with Visual Studio Online and Azure
 teaser: At OOP 2015 conference, I will do a session about ALM in the cloud. As always I try to show mostly practical samples instead of boring slides. In this blog post I summarize the talk and reference important resources that I will mention.
 author: Rainer Stropek
-date: 2015-33-27
+date: 2015-01-27
 bannerimage: 
+lang: en
 permalink: /blog/2015/01/27/OOP-2015-ALM-in-the-Cloud-with-Visual-Studio-Online-and-Azure
 ---
 

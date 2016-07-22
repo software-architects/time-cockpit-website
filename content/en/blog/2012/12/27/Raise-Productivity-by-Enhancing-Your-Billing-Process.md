@@ -3,8 +3,9 @@ layout: blog
 title: Raise Productivity by Enhancing Your Billing Process
 teaser: If you introduce time tracking in your company you usually want to accomplish certain goals. You might want get more insight into how you spend your time to increase productivity, or maybe you want to monitor the progress of your projects. If you work in a service company, you know that time tracking is important because it is a fundamental part of your billing and calculation processes. Working without time tracking would be like flying blind without instruments. Integrating your time tracking tool with a dedicated invoicing service reduces the number of mistakes and frees you from unnecessary administrative work. In this article you will learn what time cockpit offers for invoicing out of the box and how you can easily integrate it with the online billing system billomat.
 author: Karin Huber
-date: 2012-20-27
+date: 2012-12-27
 bannerimage: 
+lang: en
 permalink: /blog/2012/12/27/Raise-Productivity-by-Enhancing-Your-Billing-Process
 ---
 

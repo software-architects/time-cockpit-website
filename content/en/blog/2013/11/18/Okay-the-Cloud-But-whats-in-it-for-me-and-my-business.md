@@ -3,8 +3,9 @@ layout: blog
 title: Okay, the Cloud. But what's in it for me and my business?
 teaser: I was part of a keynote panel for this year's WebTech Conference in Munich. We discussed the business value of the cloud. In this blog post you find the recording of the keynote.
 author: Rainer Stropek
-date: 2013-16-18
+date: 2013-11-18
 bannerimage: 
+lang: en
 permalink: /blog/2013/11/18/Okay-the-Cloud-But-whats-in-it-for-me-and-my-business
 ---
 

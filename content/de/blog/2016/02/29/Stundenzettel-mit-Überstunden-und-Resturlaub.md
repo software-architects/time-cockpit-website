@@ -3,8 +3,9 @@ layout: blog
 title: Stundenzettel mit Überstunden und Resturlaub
 teaser: Der in time cockpit enthaltene Standard-Stundenzettel wurde in der März-Version um einige Informationen erweitert. Unter anderem finden Sie am Stundenzettel jetzt den aktuellen Stand für Überstunden und Urlaubsanspuch zum Monatsanfang und -ende. Im folgendem Artikel erfahren Sie mehr über die Verbesserungen.
 author: Michael Kubitschka
-date: 2016-10-29
+date: 2016-02-29
 bannerimage: /content/images/blog/2016/02/overtime.png
+lang: de
 permalink: /de/blog/2016/02/29/Stundenzettel-mit-Überstunden-und-Resturlaub
 ---
 

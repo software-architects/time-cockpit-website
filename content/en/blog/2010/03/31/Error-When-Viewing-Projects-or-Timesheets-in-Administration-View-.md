@@ -3,8 +3,9 @@ layout: blog
 title: Error When Viewing Projects or Timesheets in Administration View 
 teaser: Some time cockpit beta users reported problems when viewing projects or timesheets in the administration module. The following exception occured when they tried to open a list of projects or timesheets.
 author: Karin Huber
-date: 2010-39-31
+date: 2010-03-31
 bannerimage: 
+lang: en
 permalink: /blog/2010/03/31/Error-When-Viewing-Projects-or-Timesheets-in-Administration-View-
 ---
 

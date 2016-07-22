@@ -3,8 +3,9 @@ layout: blog
 title: Time Cockpit and Gartner Top 10 Strategic Technology Trends
 teaser: Each year, Gartner publishes their view on top technology trends for the upcoming year. Recently, the trends for 2015 have been published. It turned out that time cockpit is positioned really well. In this blog article we want to describe how our strategy for time cockpit relates to certain trends that Gartner recognized for 2015.
 author: Rainer Stropek
-date: 2014-34-04
+date: 2014-11-04
 bannerimage: /content/images/blog/2014/11/3966991088_42ddac0ec2_o.jpg
+lang: en
 permalink: /blog/2014/11/04/Time-Cockpit-and-Gartner-Top-10-Strategic-Technology-Trends
 ---
 

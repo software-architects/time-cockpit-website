@@ -3,8 +3,9 @@ layout: blog
 title: Version Autumn 2012 is Available 
 teaser: With the new autumn release you can install time cockpit on your pc or access it online via your browser from any pc you like. It is your choice! No matter which version you prefer, time cockpit is always available for you.
 author: Karin Huber
-date: 2012-42-21
+date: 2012-08-21
 bannerimage: 
+lang: en
 permalink: /blog/2012/08/21/Version-Autumn-2012-is-Available-
 ---
 

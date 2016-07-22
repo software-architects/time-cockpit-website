@@ -3,8 +3,9 @@ layout: blog
 title: Projektreporting in agilen Projekten
 teaser: Bei software architects leben und atmen wir agile Entwicklung. In den ersten Tagen unseres Unternehmens, als wir die ersten Stückchen unseres Flagship-Produkts time cockpit bauten, starteten wir mit Scrum. Mit der Zeit sind wir zu Kanban gewechselt, aber die agilen Prinzipien sind seit vielen Jahren unsere ständigen Begleiter. Über die Jahre haben wir eine solide Praxis für das Berichtswesen in agilen Projekten entwickelt. Es versucht, die (scheinbare) Lücke zwischen klassischem Projekt-Management mit starren Voraus-Projektplänen und den sich ständig verändernden Umgebungen in agilen Projekten zu überbrücken. In diesem Artikel möchten wir unsere wichtigsten Erfahrungen teilen.
 author: Rainer Stropek
-date: 2013-25-30
+date: 2013-08-30
 bannerimage: 
+lang: de
 permalink: /de/blog/2013/08/30/Projektreporting-in-agilen-Projekten
 ---
 

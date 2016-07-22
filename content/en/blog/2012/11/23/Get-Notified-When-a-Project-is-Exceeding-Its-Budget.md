@@ -3,8 +3,9 @@ layout: blog
 title: Get Notified When a Project is Exceeding Its Budget
 teaser: In this blog post we show you how to customize time cockpit so that project managers are notified via e-mail if a threshold of hours spent on a project is exceeded.
 author: Alexander Huber
-date: 2012-58-23
+date: 2012-11-23
 bannerimage: 
+lang: en
 permalink: /blog/2012/11/23/Get-Notified-When-a-Project-is-Exceeding-Its-Budget
 ---
 

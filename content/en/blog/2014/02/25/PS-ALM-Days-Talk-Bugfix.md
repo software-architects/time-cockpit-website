@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: PS, ALM Days Talk Bugfix
+title: PS -  ALM Days Talk Bugfix
 teaser: My ALM Days talk about building in the cloud went fine. However, the last demo didn't fully work and I finally ran out of time. That's the risk of a 100% live coding session. The reason was a small mistake that I made while standing on stage. Here is the description of the mistake. Hope it helps you to avoid doing the same.
 author: Rainer Stropek
-date: 2014-44-25
+date: 2014-02-25
 bannerimage: 
+lang: en
 permalink: /blog/2014/02/25/PS-ALM-Days-Talk-Bugfix
 ---
 

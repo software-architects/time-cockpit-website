@@ -3,8 +3,9 @@ layout: blog
 title: Playing in the Sandbox
 teaser: Do you have customized time cockpit or plan to customize it? If yes, you should continue reading, because in this article we show you how you can get your own, private time cockpit test system where you can play around with things without influencing your time cockpit production environment.
 author: Alexander Huber
-date: 2016-29-27
+date: 2016-05-27
 bannerimage: /content/images/blog/2016/05/sandbox-small.jpg
+lang: en
 permalink: /blog/2016/05/27/Playing-in-the-Sandbox
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: SQLPASS Session about Windows Azure Table Storage
 teaser: Today I will do a session in a SQLPASS community meeting in Vienna about Windows Azure Table Storage. The audience mainly consists of SQL experts and I have been invited to describe similarities and differences of SQL Azure and Table Storage. In this article I want to summarize important links that people who are interested in the details could use.
 author: Rainer Stropek
-date: 2013-26-19
+date: 2013-09-19
 bannerimage: 
+lang: en
 permalink: /blog/2013/09/19/SQLPASS-Session-about-Windows-Azure-Table-Storage
 ---
 

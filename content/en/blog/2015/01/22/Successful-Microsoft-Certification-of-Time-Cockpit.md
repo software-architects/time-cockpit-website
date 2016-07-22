@@ -3,8 +3,10 @@ layout: blog
 title: Successful Microsoft Certification of Time Cockpit
 teaser: Our company has been a Microsoft partner for many years. Each January, we have to renew our certifications. This year we managed to get two competencies.
 author: Rainer Stropek
-date: 2015-53-22
+date: 2015-01-22
 bannerimage: /content/images/blog/2015/01/logo.png
+lang: en
+ref: /de/blog/2015/01/22/Erfolgreiche-Zertifizierung-für-time-cockpit
 permalink: /blog/2015/01/22/Successful-Microsoft-Certification-of-Time-Cockpit
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: Importer Improvements
 teaser: Out of the box time cockpit ships with a powerful importer that can import both CSV and Microsoft Excel files. In previous versions the importer could only be used to import new records. In the new version February 2014 we have improved the importer to also support updating existing records.
 author: Alexander Huber
-date: 2014-08-28
+date: 2014-01-28
 bannerimage: 
+lang: en
 permalink: /blog/2014/01/28/Importer-Improvements
 ---
 

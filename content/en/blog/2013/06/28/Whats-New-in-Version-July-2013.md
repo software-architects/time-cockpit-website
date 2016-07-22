@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version July 2013
 teaser: This month we improved the performance of initial synchronization. Especially when you already have collected lots of signals on multiple devices, the initial sync on a new device may take more than an hour. In the July version we managed to increase sync performance for our own time cockpit users (yes, we are eating our own dog food) from nearly one hour to approximately 15 minutes.
 author: Karin Huber
-date: 2013-24-28
+date: 2013-06-28
 bannerimage: 
+lang: en
 permalink: /blog/2013/06/28/Whats-New-in-Version-July-2013
 ---
 

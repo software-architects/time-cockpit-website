@@ -3,8 +3,9 @@ layout: blog
 title: Version 1.4 is Available 
 teaser: Our new version of time cockpit 1.4 is available since 8 November 2010.
 author: Karin Huber
-date: 2010-50-09
+date: 2010-11-09
 bannerimage: 
+lang: en
 permalink: /blog/2010/11/09/Version-14-is-Available-
 ---
 

@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: .NET Infoday, What's New in C# 6?
+title: .NET Infoday -  What's New in C# 6?
 teaser: At IT-Visions' .NET InfoDay 2015 in Graz, my friend Roman Schacherl and I will do a session about new features in C# 6. In this blog article I summarize the content of the talk and make the sample available for download.
 author: Rainer Stropek
-date: 2014-14-04
+date: 2014-12-04
 bannerimage: 
+lang: en
 permalink: /blog/2014/12/04/NET-Infoday-Whats-New-in-C-6
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: AngularJS with TypeScript and Windows Azure Mobile Services
 teaser: In the coming two weeks I will do a series of talks at various conferences in Austria and Germany. I will speak about AngularJS, TypeScript, and Windows Azure Mobile Services. In this blog post I publish the slides and the sample code.
 author: Rainer Stropek
-date: 2013-26-17
+date: 2013-10-17
 bannerimage: 
+lang: en
 permalink: /blog/2013/10/17/AngularJS-with-TypeScript-and-Windows-Azure-Mobile-Services
 ---
 

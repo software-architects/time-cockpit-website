@@ -3,8 +3,9 @@ layout: blog
 title: Python in Time Cockpit 1.7
 teaser: With the release of time cockpit 1.7 we are happy to ship IronPython 2.7.1 as our scripting environment. This release significantly simplifies the use of LINQ by fixing an issue we identified and reported about ten months ago. It is now possible to import, transparently use and chain together calls to extension methods which LINQ heavily relies on.
 author: Simon Opelt
-date: 2012-58-22
+date: 2012-01-22
 bannerimage: 
+lang: en
 permalink: /blog/2012/01/22/Python-in-Time-Cockpit-17
 ---
 

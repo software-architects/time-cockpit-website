@@ -3,8 +3,9 @@ layout: blog
 title: Custom Reporting in Time Cockpit is Final
 teaser: Last month we added the custom report feature as a preview to time cockpit. In this month's release it has become final. Additionally we added support for custom reports in the browser client.
 author: Rainer Stropek
-date: 2014-30-31
+date: 2014-03-31
 bannerimage: 
+lang: en
 permalink: /blog/2014/03/31/Custom-Reporting-in-Time-Cockpit-is-Final
 ---
 

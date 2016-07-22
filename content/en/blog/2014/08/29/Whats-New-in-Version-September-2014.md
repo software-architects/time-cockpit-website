@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version September 2014
 teaser: This month we have focused heavily on performance. The first batch of improvements that affects the performance when working directly on the Server is already integrated in the September version.
 author: Karin Huber
-date: 2014-40-29
+date: 2014-08-29
 bannerimage: 
+lang: en
 permalink: /blog/2014/08/29/Whats-New-in-Version-September-2014
 ---
 

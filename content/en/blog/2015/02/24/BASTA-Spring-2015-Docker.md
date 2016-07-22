@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: BASTA Spring 2015, Docker
+title: BASTA Spring 2015 -  Docker
 teaser: Docker is an important topic for Microsoft especially with the Azure cloud computing platform. As ASP.NET vNext supports Linux, developers can start exploring Docker Containers for running their applications in Linux Azure VMs now. At German BASTA 2015 conference I did an intro-session about Docker on Microsoft Azure.
 author: Rainer Stropek
-date: 2015-45-24
+date: 2015-02-24
 bannerimage: /content/images/blog/2015/02/BASTA_SE_15_Speakerbutton_300x250_cropped.png
+lang: en
 permalink: /blog/2015/02/24/BASTA-Spring-2015-Docker
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version October 2015
 teaser: This month we continued our work on time cockpit's HTML5 client. We added back reference tabs in forms and made navigation in the main menu easier. In addition to that advances in the web client, we fixed issues related to reporting in time cockpit' full client. In this blog article we describe this month's improvements in more details.
 author: Karin Huber
-date: 2015-36-30
+date: 2015-09-30
 bannerimage: /content/images/blog/2015/09/time-cockpit-october-2015.png
+lang: en
 permalink: /blog/2015/09/30/Whats-New-in-Version-October-2015
 ---
 

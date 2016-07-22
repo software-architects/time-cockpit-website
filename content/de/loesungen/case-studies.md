@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Zeiterfassung mit time cockpit, Case Studies
+title: Zeiterfassung mit time cockpit -  Case Studies
 permalink: /de/loesungen/case-studies/
 ---
 

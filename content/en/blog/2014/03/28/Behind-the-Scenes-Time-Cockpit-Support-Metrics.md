@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Behind the Scenes, Time Cockpit Support Metrics
+title: Behind the Scenes -  Time Cockpit Support Metrics
 teaser: Support is an important aspect when offering software as a service. We use Zendesk for managing our support work. Want to know how we are doing?
 author: Rainer Stropek
-date: 2014-25-28
+date: 2014-03-28
 bannerimage: 
+lang: en
 permalink: /blog/2014/03/28/Behind-the-Scenes-Time-Cockpit-Support-Metrics
 ---
 

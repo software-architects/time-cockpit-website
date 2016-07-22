@@ -3,8 +3,9 @@ layout: blog
 title: Scroll Synchronization in WPF and Silverlight
 teaser: Imagine you have two ListBoxes with lots of items. Whenever a user scrolls in one of the two ListBoxes, the other one should be updated, too. What we want to do in this article is to create a simple attached property, that allows us to group scrollable controls.
 author: Karin Huber
-date: 2009-20-13
+date: 2009-10-13
 bannerimage: 
+lang: en
 permalink: /blog/2009/10/13/Scroll-Synchronization-in-WPF-and-Silverlight
 ---
 

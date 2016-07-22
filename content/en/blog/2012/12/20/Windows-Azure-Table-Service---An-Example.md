@@ -3,8 +3,9 @@ layout: blog
 title: Windows Azure Table Service - An Example
 teaser: In September 2012 I did  a session on Microsoft Windows Azure's Table Storage at the Professional .NET 2012 Community Conference in Vienna. In this blog post I would like to publish the video of the talk as well as the sample code I presented during the session.
 author: Rainer Stropek
-date: 2012-11-20
+date: 2012-12-20
 bannerimage: 
+lang: en
 permalink: /blog/2012/12/20/Windows-Azure-Table-Service---An-Example
 ---
 

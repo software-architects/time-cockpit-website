@@ -3,8 +3,9 @@ layout: blog
 title: Windows Azure Storage
 teaser: The Windows Azure platform offers different mechanisms to store data permanently. In this article I would like to introduce the storage types of Windows Azure and demonstrate their use by showing an example application.
 author: Rainer Stropek
-date: 2010-38-25
+date: 2010-10-25
 bannerimage: 
+lang: en
 permalink: /blog/2010/10/25/Windows-Azure-Storage
 ---
 

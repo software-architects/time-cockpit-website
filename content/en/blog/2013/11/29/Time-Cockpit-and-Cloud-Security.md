@@ -3,8 +3,9 @@ layout: blog
 title: Time Cockpit and Cloud Security
 teaser: Nowadays people are on the alert for data security and privacy when it comes to cloud computing. Time cockpit is a SaaS offering in the cloud. In this article we want to describe in detail how we designed, developed, and how we operate time cockpit in order to be secure.
 author: Rainer Stropek
-date: 2013-02-29
+date: 2013-11-29
 bannerimage: 
+lang: en
 permalink: /blog/2013/11/29/Time-Cockpit-and-Cloud-Security
 ---
 

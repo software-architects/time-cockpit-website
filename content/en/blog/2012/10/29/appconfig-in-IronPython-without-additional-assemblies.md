@@ -3,8 +3,9 @@ layout: blog
 title: app.config in IronPython without additional assemblies
 teaser: Third-party .net assemblies can be easily used from IronPython. If the external assembly relies on a companion .exe.config/app.config file, a config for ipy.exe or an IInternalConfigSystem-implementation is required.
 author: Simon Opelt
-date: 2012-32-29
+date: 2012-10-29
 bannerimage: 
+lang: en
 permalink: /blog/2012/10/29/appconfig-in-IronPython-without-additional-assemblies
 ---
 

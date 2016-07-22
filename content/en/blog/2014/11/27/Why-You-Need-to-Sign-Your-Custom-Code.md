@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: Why You Need to Sign Your Custom Code
-teaser: Those of you who use time cockpit’s browser version might have run into the following problem: You open a list, try to execute an action or simply try to save a time sheet entry and time cockpit shows the following message: "Hash could not be verified". Read about the reason for this problem and how to resolve it.
+teaser: Those of you who use time cockpit’s browser version might have run into the following problem -  You open a list, try to execute an action or simply try to save a time sheet entry and time cockpit shows the following message -  "Hash could not be verified". Read about the reason for this problem and how to resolve it.
 author: Alexander Huber
-date: 2014-19-27
+date: 2014-11-27
 bannerimage: /content/images/blog/2014/11/3878741556_53c9155d4b_b.jpg
+lang: en
 permalink: /blog/2014/11/27/Why-You-Need-to-Sign-Your-Custom-Code
 ---
 

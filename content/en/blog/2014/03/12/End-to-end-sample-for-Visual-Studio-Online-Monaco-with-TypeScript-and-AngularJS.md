@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: End-to-end sample for Visual Studio Online "Monaco" with TypeScript and AngularJS
-teaser: In this video I show an end-to-end example for programming with Visual Studio Online "Monaco". Monaco is currently in preview available for Windows Azure Websites. The sample uses TypeScript and AngularJS. Everything is done in the browser: Editing, compiling, package management, etc. The sample accesses an early prototype of the OData provider of time cockpit.
+teaser: In this video I show an end-to-end example for programming with Visual Studio Online "Monaco". Monaco is currently in preview available for Windows Azure Websites. The sample uses TypeScript and AngularJS. Everything is done in the browser -  Editing, compiling, package management, etc. The sample accesses an early prototype of the OData provider of time cockpit.
 author: Rainer Stropek
-date: 2014-17-12
+date: 2014-03-12
 bannerimage: 
+lang: en
 permalink: /blog/2014/03/12/End-to-end-sample-for-Visual-Studio-Online-Monaco-with-TypeScript-and-AngularJS
 ---
 

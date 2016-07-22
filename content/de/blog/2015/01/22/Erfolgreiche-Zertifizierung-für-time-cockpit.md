@@ -3,8 +3,9 @@ layout: blog
 title: Erfolgreiche Zertifizierung für time cockpit
 teaser: Wir sind seit vielen Jahren Microsoft Partner. Jeden Jänner müssen wir unsere Zertifizierung erneuern. Dieses Jahr haben wir uns für zwei Kompetenzen qualifiziert.
 author: Rainer Stropek
-date: 2015-53-22
+date: 2015-01-22
 bannerimage: /content/images/blog/2015/01/logo.png
+lang: de
 permalink: /de/blog/2015/01/22/Erfolgreiche-Zertifizierung-für-time-cockpit
 ---
 

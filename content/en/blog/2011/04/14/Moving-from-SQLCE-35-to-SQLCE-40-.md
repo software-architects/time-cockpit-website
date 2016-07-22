@@ -3,8 +3,9 @@ layout: blog
 title: Moving from SQLCE 3.5 to SQLCE 4.0 
 teaser: So today finally came that day, we put our first steps into moving to SQL Server Compact Edition 4.0 for our offline database. I was delayed by a day by introducing a new way of managing references to third party components in our build system because I didn't want to replace the Version for the assembly in every project file. How I did that is the content of another blog post though.
 author: Philipp Aumayr
-date: 2011-35-14
+date: 2011-04-14
 bannerimage: 
+lang: en
 permalink: /blog/2011/04/14/Moving-from-SQLCE-35-to-SQLCE-40-
 ---
 

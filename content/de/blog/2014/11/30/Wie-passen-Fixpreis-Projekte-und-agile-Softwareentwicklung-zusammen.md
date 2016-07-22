@@ -3,8 +3,9 @@ layout: blog
 title: Wie passen Fixpreis-Projekte und agile Softwareentwicklung zusammen
 teaser: Haben wir nicht alle in Projektmanagement-Kursen gelernt, dass Fixpreis-Projekte nicht notwendigerweise ein Vorteil für den Käufer sind? Waren nicht diese Probleme genau der Grund warum agile Projektmanagement-Prinzipien erfunden wurden? Trotzdem ist es eine Tatsache, dass viele Kunden noch immer auf Fixpreis-Projekte bestehen. In diesem Blogartikel möchte ich unseren Ansatz mit Ihnen teilen, wie fixe Preise und agile Entwicklung zusammenpassen.
 author: Rainer Stropek
-date: 2014-56-30
+date: 2014-11-30
 bannerimage: /content/images/blog/2014/11/2085887252_06b49ee29d_b.jpg
+lang: de
 permalink: /de/blog/2014/11/30/Wie-passen-Fixpreis-Projekte-und-agile-Softwareentwicklung-zusammen
 ---
 

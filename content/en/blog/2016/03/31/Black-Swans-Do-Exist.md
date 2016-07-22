@@ -1,10 +1,12 @@
 ---
 layout: blog
 title: Black Swans Do Exist
-teaser: In our time cockpit implementation projects, we get in touch with very different company cultures. However, we have to deal with two critical topics in most customer projects we do in Western Europe countries like Germany and Austria: Data security and working time regulations. Typically, a large fraction of the customizing effort is invested in these two aspects of time cockpit.  Does it have to be like that? Are there successful examples of completely different approaches?
+teaser: In our time cockpit implementation projects, we get in touch with very different company cultures. However, we have to deal with two critical topics in most customer projects we do in Western Europe countries like Germany and Austria -  Data security and working time regulations. Typically, a large fraction of the customizing effort is invested in these two aspects of time cockpit.  Does it have to be like that? Are there successful examples of completely different approaches?
 author: Rainer Stropek
-date: 2016-30-31
+date: 2016-03-31
 bannerimage: /content/images/blog/2016/03/black-swans-small.jpg
+lang: en
+ref: /de/blog/2016/03/31/Schwarze-Schwäne-es-gibt-sie-wirklich
 permalink: /blog/2016/03/31/Black-Swans-Do-Exist
 ---
 

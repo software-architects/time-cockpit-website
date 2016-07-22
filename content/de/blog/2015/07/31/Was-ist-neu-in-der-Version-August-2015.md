@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: Was ist neu in der Version August 2015
-teaser: Wir haben in diesem Monat viele neue Features und Verbesserungen in time cockpit: Ein neues Feature für die Überwachung von Arbeitszeitverletzungen, viele Verbesserungen in der HTML5 Preview inklusive vollem Support für Berichte und ein Bündel an Performance-Optimierungen für Full- und HTML5 Client.
+teaser: Wir haben in diesem Monat viele neue Features und Verbesserungen in time cockpit -  Ein neues Feature für die Überwachung von Arbeitszeitverletzungen, viele Verbesserungen in der HTML5 Preview inklusive vollem Support für Berichte und ein Bündel an Performance-Optimierungen für Full- und HTML5 Client.
 author: Karin Huber
-date: 2015-56-31
+date: 2015-07-31
 bannerimage: /content/images/blog/2015/07/time-cockpit-august-2015.png
+lang: de
 permalink: /de/blog/2015/07/31/Was-ist-neu-in-der-Version-August-2015
 ---
 

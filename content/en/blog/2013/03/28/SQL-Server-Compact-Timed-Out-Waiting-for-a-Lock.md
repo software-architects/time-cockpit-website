@@ -3,10 +3,11 @@ layout: blog
 title: SQL Server Compact Timed Out Waiting for a Lock
 teaser: First of all, a big thank you to our customers! Since we have added the feature to send error reports via email, we have received lots of information from you. Please keep on sending us your problems with time cockpit, so we can learn what we should improve. We really appreciate your feedback.
 
-We definitely had one frontrunner in your error reports: SQL Server Compact timed out waiting for a lock.
+We definitely had one frontrunner in your error reports -  SQL Server Compact timed out waiting for a lock.
 author: Karin Huber
-date: 2013-49-28
+date: 2013-03-28
 bannerimage: 
+lang: en
 permalink: /blog/2013/03/28/SQL-Server-Compact-Timed-Out-Waiting-for-a-Lock
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: Eight Anti-Patterns for Optimization Projects
 teaser: Technical optimization projects are part of our daily business in software development. Additionally, with time cockpit, we are often involved in projects for optimizing team performance and productivity. In this blog article I would like to summarize my learnings about what differentiates successful optimization projects from failures.
 author: Rainer Stropek
-date: 2015-29-29
+date: 2015-03-29
 bannerimage: /content/images/blog/2015/03/optimizeThumb.jpg
+lang: en
 permalink: /blog/2015/03/29/Eight-Anti-Patterns-for-Optimization-Projects
 ---
 

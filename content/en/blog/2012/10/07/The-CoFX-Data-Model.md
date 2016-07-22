@@ -3,8 +3,9 @@ layout: blog
 title: The CoFX Data Model
 teaser: Extensibility is an important aspect of time cockpit and its underlying framework CoFX. In this article I share a training slide deck that I use in CoFX trainings to describe the CoFX data model.
 author: Rainer Stropek
-date: 2012-06-07
+date: 2012-10-07
 bannerimage: 
+lang: en
 permalink: /blog/2012/10/07/The-CoFX-Data-Model
 ---
 

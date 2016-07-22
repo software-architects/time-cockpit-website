@@ -3,8 +3,10 @@ layout: blog
 title: Six Reasons for Time Tracking in Agile Projects
 teaser: Time tracking in agile projects is a controversially discussed topic in many project teams. Some people – typically the developers – argue that time tracking is at least unnecessary if not unwanted when following agile principles. They refer to documents like the Scrum Guide which says that “Scrum does not consider the time spent working on Sprint Backlog Items. The work remaining and date are the only variables of interest”. On the opposite side of the spectrum there are people – typically managers – who insist on detailed time tracking. They work according to the famous saying “you can’t manage what you can’t measure”. Agile is fresh, it is new. Therefore asking for time tracking might seem old-fashioned and somehow related to the often criticized waterfall model. However, there are a lot of valid reasons why you might still need time tracking even if you decide to work the agile way. Let’s take a look at six of the most important reasons.
 author: Rainer Stropek
-date: 2013-59-25
+date: 2013-06-25
 bannerimage: /content/images/blog/2013/06/Agreement-and-Certainty-Matrix.png
+lang: en
+ref: /de/blog/2013/06/25/Sechs-Gründe-für-Zeiterfassung-in-agilen-Projekten
 permalink: /blog/2013/06/25/Six-Reasons-for-Time-Tracking-in-Agile-Projects
 ---
 

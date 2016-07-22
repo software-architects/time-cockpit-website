@@ -3,8 +3,9 @@ layout: blog
 title: Warum wir für time cockpit nicht Scrum verwenden
 teaser: Für die initiale Entwicklung von time cockpit vor einigen Jahren haben wir Scrum verwendet. Es gab Zeiten, in denen wir Scrum tatsächlich nahezu wie im Lehrbuch leben konnte, aber mit der Zeit wurden wir etwas nachlässig. Trotzdem funktionierte es ziemlich gut für uns. Jetzt verwenden wir Scrum nicht mehr. In diesem Blogartikel möchte ich beschreiben, warum wir uns davon abgewendet haben und wie wir unsere Entwicklungsprozesse heute managen. 
 author: Rainer Stropek
-date: 2014-14-31
+date: 2014-12-31
 bannerimage: /content/images/blog/2014/12/5141328136_16d8f73ee7_b.jpg
+lang: de
 permalink: /de/blog/2014/12/31/Warum-wir-für-time-cockpit-nicht-Scrum-verwenden
 ---
 

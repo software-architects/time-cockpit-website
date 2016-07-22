@@ -3,8 +3,9 @@ layout: blog
 title: No Time to Keep up With Ever-Changing Technology?
 teaser: The software business has been changing at a daunting speed in the last years. Technologies, programming languages, frameworks, project management approaches, etc. we use today have changed so much compared to e.g. five years ago. This is especially true if you are developing on Microsoft's technology stack (e.g. C#, .NET, Visual Studio, TypeScript, Azure) like we do. During workshops and trainings, I often get asked how I find the time to learn all these new technologies. In this blog article I would like to share some thoughts about this topic with you.
 author: Rainer Stropek
-date: 2015-02-30
+date: 2015-12-30
 bannerimage: /content/images/blog/2015/12/change-chance-small.png
+lang: en
 permalink: /blog/2015/12/30/No-Time-to-Keep-up-With-Ever-Changing-Technology
 ---
 

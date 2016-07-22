@@ -3,8 +3,9 @@ layout: blog
 title: Microsoft Azure Sales Training Resources
 teaser: Tomorrow I will do another Microsoft Azure training for sales executives in Vienna. In this blog article I summarize the most important web resources I mention during the training.
 author: Rainer Stropek
-date: 2014-33-17
+date: 2014-09-17
 bannerimage: 
+lang: en
 permalink: /blog/2014/09/17/Microsoft-Azure-Sales-Training-Resources
 ---
 

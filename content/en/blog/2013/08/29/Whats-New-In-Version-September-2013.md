@@ -5,8 +5,9 @@ teaser: This month we continue the spate of performance and productivity improve
 
 Time cockpit now provides shortcuts for opening forms not only as dialogs but also as tabs. This makes it much easier to deal with large forms as they can use nearly the entire screen. Additionally you can open a list and a form side by side so you still see the overview in the list while editing a data row. Such scenarios are very helpful especially for typical back office work like preparing timesheet data for invoicing, effort analysis in project management, etc.
 author: Karin Huber
-date: 2013-25-29
+date: 2013-08-29
 bannerimage: 
+lang: en
 permalink: /blog/2013/08/29/Whats-New-In-Version-September-2013
 ---
 

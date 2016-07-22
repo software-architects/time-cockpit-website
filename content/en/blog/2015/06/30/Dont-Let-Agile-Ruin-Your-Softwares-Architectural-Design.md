@@ -3,8 +3,9 @@ layout: blog
 title: Don't Let Agile Ruin Your Software's Architectural Design
 teaser: Architects call the central idea or concept of a building "parti".  You can think of parti as the big idea behind an architectural design. Without a parti, agile and iterative development can quickly ruin your software's architectural design. Read more about the concept of the parti and how it translates to software.
 author: Rainer Stropek
-date: 2015-02-30
+date: 2015-06-30
 bannerimage: /content/images/blog/2015/06/louvre-lens-parti-thumb.jpg
+lang: en
 permalink: /blog/2015/06/30/Dont-Let-Agile-Ruin-Your-Softwares-Architectural-Design
 ---
 

@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: Schwarze Schwäne, es gibt sie wirklich
-teaser: In time cockpit Umsetzungsprojekten lernen wir viele verschiedene Firmenkulturen kennen. Zwei wichtige Themen kommen aber bei fast allen unserer Kunden auf den Tisch: Datensicherheit und Arbeitszeitregelungen. Ein großer Teil des Projektaufwands fließt in diese beiden Themen. Muss das so sein? Gibt es erfolgreiche Beispiele von komplett anderen, neuen Ansätzen?
+teaser: In time cockpit Umsetzungsprojekten lernen wir viele verschiedene Firmenkulturen kennen. Zwei wichtige Themen kommen aber bei fast allen unserer Kunden auf den Tisch -  Datensicherheit und Arbeitszeitregelungen. Ein großer Teil des Projektaufwands fließt in diese beiden Themen. Muss das so sein? Gibt es erfolgreiche Beispiele von komplett anderen, neuen Ansätzen?
 author: Rainer Stropek
-date: 2016-30-31
+date: 2016-03-31
 bannerimage: /content/images/blog/2016/03/black-swans-small.jpg
+lang: de
 permalink: /de/blog/2016/03/31/Schwarze-Schwäne-es-gibt-sie-wirklich
 ---
 

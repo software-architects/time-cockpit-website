@@ -3,8 +3,9 @@ layout: blog
 title: First IT-Visions Information Day in Linz
 teaser: On January, 25th the first IT-Visions information day has taken place in Linz. Roman Schacherl, Raphael Schwarz and Rainer Stropek were talking about what's new in .NET, ASP.NET and Visual Studio 2015, in Microsoft Azure, in mobile development and Universal Windows Platform.
 author: Rainer Stropek
-date: 2016-45-31
+date: 2016-01-31
 bannerimage: /content/images/blog/2016/01/it-visions-logo.gif
+lang: en
 permalink: /blog/2016/01/31/First-IT-Visions-Information-Day-in-Linz
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: Workshop about Agile Development and Scrum
 teaser: Last week I did a workshop for a customer on agile software development and scrum. In this blog post I publish the slides that I have used.
 author: Rainer Stropek
-date: 2013-17-29
+date: 2013-04-29
 bannerimage: 
+lang: en
 permalink: /blog/2013/04/29/Workshop-about-Agile-Development-and-Scrum
 ---
 

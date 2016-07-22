@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Dotnet Cologne, WPF to Web
+title: Dotnet Cologne -  WPF to Web
 teaser: Changing the UI technology from WPF/Silverlight to HTML/JavaScript in a large project is a real challange especially for a rather small team like ours. At this year's dotnet Cologne conferenceI did a session about the architectural decisions we made. Additionally, I spoke about how we organize the project so that it can run smoothly side by side to our daily business.
 author: Rainer Stropek
-date: 2015-08-12
+date: 2015-05-12
 bannerimage: /content/images/blog/2015/05/Dom-Koeln-cropped.jpg
+lang: en
 permalink: /blog/2015/05/12/Dotnet-Cologne-WPF-to-Web
 ---
 

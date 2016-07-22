@@ -3,8 +3,9 @@ layout: blog
 title: How to Automate Time Cockpit’s Importer
 teaser: If you want to import a single Excel or CSV file, time cockpit's Importer Module probably offers exactly what you need. However, you might need to regularly import multiple files depending on each other (e.g. projects and customers where each project row contains a reference to a customer row). Wouldn't it be nice to have this import automated so you can trigger it with a single click? This is possible using time cockpit's scripting language.
 author: Michael Kubitschka
-date: 2015-25-29
+date: 2015-06-29
 bannerimage: /content/images/blog/2015/06/start-auto-import.jpg
+lang: en
 permalink: /blog/2015/06/29/How-to-Automate-Time-Cockpit’s-Importer
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: Redesigned Time Sheet Templates
 teaser: Time cockpit has had support for time sheet templates for years. For this version we have completely redesigned this concept and added support for scripts. That enables fascinating new possibilities for integrating time cockpit with external systems.
 author: Rainer Stropek
-date: 2014-58-30
+date: 2014-09-30
 bannerimage: /content/images/blog/2014/09/Templates06.png
+lang: en
 permalink: /blog/2014/09/30/Redesigned-Time-Sheet-Templates
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: Setting Up Team Leader / Member Permissions in Time Cockpit
 teaser: A common scenario in time cockpit is assigning different permissions to team leaders and team members. Team leaders should see all time sheet records of all members whereas team members should only see their own records. In this blog post you learn how you can set up this logic in time cockpit within a few minutes.
 author: Rainer Stropek
-date: 2014-44-14
+date: 2014-07-14
 bannerimage: 
+lang: en
 permalink: /blog/2014/07/14/Setting-Up-Team-Leader--Member-Permissions-in-Time-Cockpit
 ---
 

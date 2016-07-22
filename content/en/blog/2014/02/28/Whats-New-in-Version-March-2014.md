@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version March 2014
 teaser: In the last quarter of 2013 we started to add first reporting features to time cockpit. This month we are glad to announce that you are now able to build your own reports with Microsoft Reporting Services and view them in time cockpit.
 author: Karin Huber
-date: 2014-38-28
+date: 2014-02-28
 bannerimage: 
+lang: en
 permalink: /blog/2014/02/28/Whats-New-in-Version-March-2014
 ---
 

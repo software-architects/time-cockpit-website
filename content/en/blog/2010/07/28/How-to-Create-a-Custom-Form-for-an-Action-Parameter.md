@@ -3,8 +3,9 @@ layout: blog
 title: How to Create a Custom Form for an Action Parameter
 teaser: In our last blogpost (see here), we covered how to create actions with parameters. We described how to create an action, how to define exececution conditions and of course, how to create action parameters. As we mentioned in our last blogpost, time cockpit auto-generates a form for each parameter entity that is used with an action. However, it is also possible to define custom forms for action parameters. For creating a customely defined form, the following steps are necessary.
 author: Alexander Huber
-date: 2010-58-28
+date: 2010-07-28
 bannerimage: 
+lang: en
 permalink: /blog/2010/07/28/How-to-Create-a-Custom-Form-for-an-Action-Parameter
 ---
 

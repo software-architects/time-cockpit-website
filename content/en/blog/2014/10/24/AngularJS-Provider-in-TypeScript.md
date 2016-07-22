@@ -3,8 +3,9 @@ layout: blog
 title: AngularJS Provider in TypeScript
 teaser: AngularJS samples written in TypeScript are not that common on the internet. I get frequently asked how to write an AngularJS provider in TypeScript. Here is a "Hello World" sample.
 author: Rainer Stropek
-date: 2014-30-24
+date: 2014-10-24
 bannerimage: 
+lang: en
 permalink: /blog/2014/10/24/AngularJS-Provider-in-TypeScript
 ---
 

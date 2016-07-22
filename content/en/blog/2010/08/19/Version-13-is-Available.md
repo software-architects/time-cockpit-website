@@ -3,8 +3,9 @@ layout: blog
 title: Version 1.3 is Available
 teaser: Version 1.3 contains mainly improvements in display and editing of lists. Please note that all users in a tenant have to switch to the new version as soon as the first user in the tenant installs this version, because users with older versions will not be able to sync their data with the server anymore. If you do not want to force other users to upgrade you may install version 1.2. It does not contain all improvements of version 1.3 but it is compatible with versions 1.0 and 1.1.
 author: Karin Huber
-date: 2010-54-19
+date: 2010-08-19
 bannerimage: 
+lang: en
 permalink: /blog/2010/08/19/Version-13-is-Available
 ---
 

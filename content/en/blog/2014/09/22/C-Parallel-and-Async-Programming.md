@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: C# Parallel and Async Programming
-teaser: At BASTA 2014 I will do a full-day C# workshop. One of the topics will be parallel and async programming. In this blog article I share the code of my demo and describe the scenario I will cover: TPL, async/await, profiling of CPU-bound algorithms.
+teaser: At BASTA 2014 I will do a full-day C# workshop. One of the topics will be parallel and async programming. In this blog article I share the code of my demo and describe the scenario I will cover -  TPL, async/await, profiling of CPU-bound algorithms.
 author: Rainer Stropek
-date: 2014-35-22
+date: 2014-09-22
 bannerimage: 
+lang: en
 permalink: /blog/2014/09/22/C-Parallel-and-Async-Programming
 ---
 

@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: What's New in Version June 2016
-teaser: This month we have put our focus on these two topcis: handling time-off in the time tracking calendar and better usibility of lists. You do not need to leave the time tracking calendar anymore to manage time off like vacation or sick leave. In lists you now have much better grouping functionality, especially when dates are affected.
+teaser: This month we have put our focus on these two topcis -  handling time-off in the time tracking calendar and better usibility of lists. You do not need to leave the time tracking calendar anymore to manage time off like vacation or sick leave. In lists you now have much better grouping functionality, especially when dates are affected.
 author: Karin Huber
 date: 2016-05-31
 bannerimage: /content/images/blog/2016/05/time-cockpit-june-2016.png
+lang: en
 permalink: /blog/2016/05/31/Whats-New-in-Version-June-2016
 ---
 

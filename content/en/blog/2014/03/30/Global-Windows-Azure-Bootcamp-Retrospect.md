@@ -3,8 +3,9 @@ layout: blog
 title: Global Windows Azure Bootcamp Retrospect
 teaser: Yesterday was the day - the Global Windows Azure Bootcamp (GWAB) took place at > 135 locations all around the globe. We organized the Austrian GWAB in Leonding.
 author: Rainer Stropek
-date: 2014-18-30
+date: 2014-03-30
 bannerimage: 
+lang: en
 permalink: /blog/2014/03/30/Global-Windows-Azure-Bootcamp-Retrospect
 ---
 

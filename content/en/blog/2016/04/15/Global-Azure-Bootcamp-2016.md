@@ -3,8 +3,9 @@ layout: blog
 title: Global Azure Bootcamp 2016
 teaser: Morgen ist es soweit, das Global Azure Bootcamp 2016 findet statt. 120 angemeldete Teilnehmerinnen und Teilnehmer, 23 Sessions - wir werden dieses Jahr alle Rekorde aus den Vorjahren sprengen. In diesem Blogartikel fassen wir die wichtigsten Informationen und Links für morgen zusammen.
 author: Rainer Stropek
-date: 2016-02-15
+date: 2016-04-15
 bannerimage: /content/images/blog/2016/04/GAB-2016-logo-400x270.png
+lang: en
 permalink: /blog/2016/04/15/Global-Azure-Bootcamp-2016
 ---
 

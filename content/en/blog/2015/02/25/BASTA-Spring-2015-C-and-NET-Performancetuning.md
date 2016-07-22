@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: BASTA Spring 2015, C# and .NET Performancetuning
+title: BASTA Spring 2015 -  C# and .NET Performancetuning
 teaser: Project completed, application shipped - but customer isn't happy with the performance. What now? At the German BASTA 2015 conference I will do two sessions about performance optimization in .NET applications. In this blog article I share the slides and links to my samples.
 author: Rainer Stropek
-date: 2015-42-25
+date: 2015-02-25
 bannerimage: /content/images/blog/2015/02/BASTA_SE_15_Speakerbutton_300x250_cropped.png
+lang: en
 permalink: /blog/2015/02/25/BASTA-Spring-2015-C-and-NET-Performancetuning
 ---
 

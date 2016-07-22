@@ -3,8 +3,9 @@ layout: blog
 title: Tri-State Check Box in HTML with AngularJS and TypeScript
 teaser: HTML does not support tri-state checkboxes by default. There is an indeterminate attribute to indicate that the value is undefined but there is no way to set a checkbox back to indeterminate through the user interface once it has been checked or unchecked. The following sample shows how to build an AngularJS directive for a tri-state checkbox with TypeScript.
 author: Karin Huber
-date: 2015-10-26
+date: 2015-02-26
 bannerimage: /content/images/blog/2015/02/tri-state-check-box.png
+lang: en
 permalink: /blog/2015/02/26/Tri-State-Check-Box-in-HTML-with-AngularJS-and-TypeScript
 ---
 

@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: Windows Azure Remote Desktop Hint
-teaser: Just a quick heads up: "Administrator" is not the best user name you could try to use for Windows Azure Remote Desktop connections.
+teaser: Just a quick heads up -  "Administrator" is not the best user name you could try to use for Windows Azure Remote Desktop connections.
 author: Simon Opelt
-date: 2011-01-19
+date: 2011-07-19
 bannerimage: 
+lang: en
 permalink: /blog/2011/07/19/Windows-Azure-Remote-Desktop-Hint
 ---
 

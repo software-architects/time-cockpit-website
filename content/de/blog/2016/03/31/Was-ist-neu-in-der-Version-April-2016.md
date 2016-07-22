@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: Was ist neu in der Version April 2016
-teaser: Stück für Stück bringen wir die Features des time cockpit Full Clients in unseren HTML5 Web-Client ein. Dieses Monat haben wir Unterstützung für Berechtigungen auf Feld-Ebene hinzugefügt. Diesen Schritt haben sich mehrere unserer Kunden gewünscht da die fehlende Unterstützung sie davon abgehalten hat, den neuen Web-Client zu verwenden. Zusätzlich zu den Berechtigungen auf Feld-Ebene, habe wir ein brandneues Office 365 Modul zu unserem time cockpit Kalender hinzugefügt: Office 365 Planner Tasks.
+teaser: Stück für Stück bringen wir die Features des time cockpit Full Clients in unseren HTML5 Web-Client ein. Dieses Monat haben wir Unterstützung für Berechtigungen auf Feld-Ebene hinzugefügt. Diesen Schritt haben sich mehrere unserer Kunden gewünscht da die fehlende Unterstützung sie davon abgehalten hat, den neuen Web-Client zu verwenden. Zusätzlich zu den Berechtigungen auf Feld-Ebene, habe wir ein brandneues Office 365 Modul zu unserem time cockpit Kalender hinzugefügt -  Office 365 Planner Tasks.
 author: Rainer Stropek
-date: 2016-16-31
+date: 2016-03-31
 bannerimage: /content/images/blog/2016/03/time-cockpit-april-2016.png
+lang: de
 permalink: /de/blog/2016/03/31/Was-ist-neu-in-der-Version-April-2016
 ---
 

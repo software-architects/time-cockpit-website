@@ -3,8 +3,9 @@ layout: blog
 title: Using LINQ in IronPython 2.6
 teaser: Up until (and including) our beta 2 release time cockpit used IronPython 2.4 for executing scripts. When creating complex scripts we often had to iterate over collections and check for certain conditions or concatenate collections of strings. Whenever possible we try to solve such tasks using TCQL when selecting the source data from the data layer to pass most of the work on to the database.
 author: Simon Opelt
-date: 2010-32-31
+date: 2010-03-31
 bannerimage: 
+lang: en
 permalink: /blog/2010/03/31/Using-LINQ-in-IronPython-26
 ---
 

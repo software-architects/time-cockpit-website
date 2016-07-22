@@ -3,8 +3,9 @@ layout: blog
 title: Budgetierung in agilen Umgebungen - Acht Tipps um das Unvorhersagbare zu planen
 teaser: In vielen Firmen startet das neue Jahr mit Planung. Die Planung der finanziellen Aspekte sind dabei zumeist ein Teil des Prozesses. In diesem Blog-Artikel möchte ich Ihnen unseren Prozess zur Erstellung und laufende Überwachung unseres Budgets vorstellen. Natürlich spielt time cockpit in diesem Prozess bei uns eine wichtige Rolle.
 author: Rainer Stropek
-date: 2015-35-30
+date: 2015-01-30
 bannerimage: /content/images/blog/2015/01/4675779231_5f18d43e31_b.jpg
+lang: de
 permalink: /de/blog/2015/01/30/Budgetierung-in-agilen-Umgebungen---Acht-Tipps-um-das-Unvorhersagbare-zu-planen
 ---
 

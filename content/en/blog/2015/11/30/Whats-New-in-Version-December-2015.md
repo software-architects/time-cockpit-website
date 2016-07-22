@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version December 2015
 teaser: This month we have focused on improving the behavior of lists in the HTML5 client. We added full-text search and significantly improved the grouping behavior. In the full client, we fixed some issues regarding data synchronization and Outlook integration.
 author: Karin Huber
-date: 2015-33-30
+date: 2015-11-30
 bannerimage: /content/images/blog/2015/11/time-cockpit-december-2015.png
+lang: en
 permalink: /blog/2015/11/30/Whats-New-in-Version-December-2015
 ---
 

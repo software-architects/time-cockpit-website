@@ -3,8 +3,9 @@ layout: blog
 title: Session at ADC 2011 - Testing and build automation with Windows Azure
 teaser: Today I will present about testing and build automation with the Windows Azure platform at the Advanced Developer Conference in Munich.
 author: Rainer Stropek
-date: 2011-41-14
+date: 2011-02-14
 bannerimage: 
+lang: en
 permalink: /blog/2011/02/14/Session-at-ADC-2011---Testing-and-build-automation-with-Windows-Azure
 ---
 

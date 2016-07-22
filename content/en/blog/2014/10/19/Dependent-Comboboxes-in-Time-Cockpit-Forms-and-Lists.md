@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: Dependent Comboboxes in Time Cockpit Forms and Lists
-teaser: Comboboxes that depend on each other are a common requirement in time cockpit. Example: Once a customer is selected, the project combobox should only contain the selected customer's projects. Configuring dependent comboboxes isn't complex. This blog article describes how you can do it in custom forms and lists.
+teaser: Comboboxes that depend on each other are a common requirement in time cockpit. Example -  Once a customer is selected, the project combobox should only contain the selected customer's projects. Configuring dependent comboboxes isn't complex. This blog article describes how you can do it in custom forms and lists.
 author: Rainer Stropek
-date: 2014-22-19
+date: 2014-10-19
 bannerimage: /content/images/blog/2014/10/Filtered Combobox.png
+lang: en
 permalink: /blog/2014/10/19/Dependent-Comboboxes-in-Time-Cockpit-Forms-and-Lists
 ---
 

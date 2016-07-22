@@ -3,8 +3,9 @@ layout: blog
 title: New Compensatory Time Off Feature
 teaser: Time cockpit has been able to handle overtime agreements for quite a long time. However, many customers have told us that they would like a function to explicitly book compensatory time so that their time sheet calendar would not be empty on such a day. We added this function to time cockpit in the latest release.
 author: Rainer Stropek
-date: 2014-24-30
+date: 2014-05-30
 bannerimage: 
+lang: en
 permalink: /blog/2014/05/30/New-Compensatory-Time-Off-Feature
 ---
 

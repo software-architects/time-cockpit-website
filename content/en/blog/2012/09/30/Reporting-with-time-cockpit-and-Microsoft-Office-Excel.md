@@ -3,8 +3,9 @@ layout: blog
 title: Reporting with time cockpit and Microsoft Office Excel
 teaser: Time cockpit contains some powerful functions to export data to Microsoft Office Excel. Learn how you use this feature for reporting purposes.
 author: Rainer Stropek
-date: 2012-06-30
+date: 2012-09-30
 bannerimage: /content/images/tour/reporting/excel_export.png
+lang: en
 permalink: /blog/2012/09/30/Reporting-with-time-cockpit-and-Microsoft-Office-Excel
 ---
 

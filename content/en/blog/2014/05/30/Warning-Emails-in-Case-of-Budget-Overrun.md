@@ -3,8 +3,9 @@ layout: blog
 title: Warning Emails in Case of Budget Overrun
 teaser: Regularly, customers ask us how to send emails when certain things happen in time cockpit (e.g. project runs out of budget, user creates time sheet record for a month that has already been billed, etc.). In this blog post we show how this can be done with a few lines of script code and our OData Web API.
 author: Rainer Stropek
-date: 2014-10-30
+date: 2014-05-30
 bannerimage: 
+lang: en
 permalink: /blog/2014/05/30/Warning-Emails-in-Case-of-Budget-Overrun
 ---
 

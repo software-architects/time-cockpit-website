@@ -3,8 +3,9 @@ layout: blog
 title: Telerik Kendo UI vs. AngularJS
 teaser: AngularJS has become a very popular web development framework. Now that Telerik made Kendo UI open source, this framework is a possible alternative for many web developers. Learn about the differences and similarities.
 author: Rainer Stropek
-date: 2014-59-17
+date: 2014-06-17
 bannerimage: 
+lang: en
 permalink: /blog/2014/06/17/Telerik-Kendo-UI-vs-AngularJS
 ---
 

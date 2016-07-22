@@ -3,8 +3,9 @@ layout: blog
 title: SQL Champ - Quiz
 teaser: We invite you to prove your knowledge about certain subjects concerning Microsoft .NET technology by participating in a monthly quiz. This month the quiz is about SQL Server. In this article you can reread the questions. Additionally you get background information about the correct answers.
 author: Rainer Stropek
-date: 2009-49-13
+date: 2009-10-13
 bannerimage: 
+lang: en
 permalink: /blog/2009/10/13/SQL-Champ---Quiz
 ---
 

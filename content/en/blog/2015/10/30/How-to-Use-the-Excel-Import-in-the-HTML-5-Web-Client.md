@@ -3,8 +3,9 @@ layout: blog
 title: How to Use the Excel Import in the HTML 5 Web Client
 teaser: Time cockpit contains a powerful importer for Excel and CSV files. You might have already used it in time cockpit's full client. This month we added the Excel importer to the new HTML5 client. In this article we describe how it works.
 author: Michael Kubitschka
-date: 2015-38-30
+date: 2015-10-30
 bannerimage: /content/images/blog/2015/09/check-importer-results.png
+lang: en
 permalink: /blog/2015/10/30/How-to-Use-the-Excel-Import-in-the-HTML-5-Web-Client
 ---
 

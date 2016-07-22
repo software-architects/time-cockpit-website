@@ -3,8 +3,10 @@ layout: blog
 title: Working Time Violations and Maximum Working Time
 teaser: In the latest version of time cockpit, we added built-in functions for monitoring wage & hour violations. This topic is important for many of our customers as violations can be costly. Time cockpit contains typical rule sets for Austria and Germany out-of-the-box. Customers in different countries or with specific working time rules can configure custom rule sets. Read more about how time cockpit can help you to stay compliant to legal obligations and policies concerning working times.
 author: Alexander Huber
-date: 2015-56-31
+date: 2015-07-31
 bannerimage: /content/images/blog/2015/07/keyboard_350.png
+lang: en
+ref: /de/blog/2015/07/31/Arbeitszeitverletzungen-und-Höchstarbeitszeit
 permalink: /blog/2015/07/31/Working-Time-Violations-and-Maximum-Working-Time
 ---
 

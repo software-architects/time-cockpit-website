@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: Stop Mistaking Being Busy for Being Productive
-teaser: At the current time of the year, many people are thinking about their New Year’s resolutions. Beside classics like “eat more vegetables” or “go to the gym more often”, you could add one for your job: Stop thinking you are productive if you are just busy.
+teaser: At the current time of the year, many people are thinking about their New Year’s resolutions. Beside classics like “eat more vegetables” or “go to the gym more often”, you could add one for your job -  Stop thinking you are productive if you are just busy.
 author: Rainer Stropek
-date: 2013-03-30
+date: 2013-12-30
 bannerimage: 
+lang: en
 permalink: /blog/2013/12/30/Stop-Mistaking-Being-Busy-for-Being-Productive
 ---
 

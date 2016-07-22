@@ -3,8 +3,9 @@ layout: blog
 title: Was ist neu in der Version Juni 2015
 teaser: Der Mai war nun der zweite Monat, in dem wir den Fokus unserer Entwicklungsarbeiten auf den neuen HTML5 Zeitbuchungskalender gelegt haben. Wir glauben, der Kalender hat nun einen Status erreicht, in dem er für das produktive Zeitbuchen eingesetzt werden kann. Wir freuen uns schon auf Ihr Feedback!
 author: Karin Huber
-date: 2015-46-29
+date: 2015-05-29
 bannerimage: /content/images/blog/2015/05/time-cockpit-june-2015.png
+lang: de
 permalink: /de/blog/2015/05/29/Was-ist-neu-in-der-Version-Juni-2015
 ---
 

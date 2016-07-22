@@ -5,6 +5,7 @@ teaser: Last week, a user brought to our attention that there was no example in 
 author: Alexander Huber
 date: 2010-07-26
 bannerimage: 
+lang: en
 permalink: /blog/2010/07/26/How-to-Create-an-Action-That-Takes-Parameters-
 ---
 

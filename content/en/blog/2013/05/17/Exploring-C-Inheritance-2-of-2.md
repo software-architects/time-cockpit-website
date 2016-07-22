@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: Exploring C++ Inheritance (2 of 2)
-teaser: In the first entry discussing C++ inheritance, I covered how basic inheritance works: A hidden pointer to a virtual function pointer table is used to dispatch to the correct method. I pointed out that the addresses of the objects, no matter how I casted them around stayed the same. Now this was pretty straightforward for single inheritance, but you will see why this becomes quite special with multiple inheritance.
+teaser: In the first entry discussing C++ inheritance, I covered how basic inheritance works -  A hidden pointer to a virtual function pointer table is used to dispatch to the correct method. I pointed out that the addresses of the objects, no matter how I casted them around stayed the same. Now this was pretty straightforward for single inheritance, but you will see why this becomes quite special with multiple inheritance.
 author: Philipp Aumayr
-date: 2013-52-17
+date: 2013-05-17
 bannerimage: 
+lang: en
 permalink: /blog/2013/05/17/Exploring-C-Inheritance-2-of-2
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: What's New In Version November 2013
 teaser: In this release of time cockpit, we focused on two things. First, we started to tackle one of our most requested features, reporting. Second, we further progressed improving the combo box in time cockpit. We enhanced the usability of how you manage data in time cockpit.  
 author: Alexander Huber
-date: 2013-16-31
+date: 2013-10-31
 bannerimage: 
+lang: en
 permalink: /blog/2013/10/31/Whats-New-In-Version-November-2013
 ---
 

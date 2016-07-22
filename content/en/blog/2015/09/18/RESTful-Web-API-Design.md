@@ -3,8 +3,9 @@ layout: blog
 title: RESTful Web API Design
 teaser: Yesterday I did a workshop at the Software Architecture Summit in Berlin. More than 60 software architects came to my sessions about RESTful Web API Design. In this blog article I share my slides, code, and links to tools/technologies I mentioned. I hope you find the resources useful.
 author: Rainer Stropek
-date: 2015-46-18
+date: 2015-09-18
 bannerimage: /content/images/blog/2015/09/restful-web-api-design-title-small.png
+lang: en
 permalink: /blog/2015/09/18/RESTful-Web-API-Design
 ---
 

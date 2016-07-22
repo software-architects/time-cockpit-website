@@ -3,8 +3,9 @@ layout: blog
 title: Version 1.5 is Available 
 teaser: This new version of time cockpit is available for a few days now. The main focus of this version was to improve the new features of version 1.4  and fix some bugs.
 author: Karin Huber
-date: 2010-46-25
+date: 2010-11-25
 bannerimage: 
+lang: en
 permalink: /blog/2010/11/25/Version-15-is-Available-
 ---
 

@@ -3,8 +3,10 @@ layout: blog
 title: What's New in Version March 2016
 teaser: In the new version we have focused on two topics. First, we have improved the working time report by adding overtime and remaining vacation entitlement. Second, we have extended the Office 365 integration with the HTML5 time sheet calendar by sent emails.
 author: Karin Huber
-date: 2016-45-29
+date: 2016-02-29
 bannerimage: /content/images/blog/2016/02/time-cockpit-march-2016.png
+lang: en
+ref: /de/blog/2016/02/29/Was-ist-neu-in-der-Version-März-2016
 permalink: /blog/2016/02/29/Whats-New-in-Version-March-2016
 ---
 

@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Neu im Mai 2015, Ein erster Blick auf den HTML Kalender
+title: Neu im Mai 2015 -  Ein erster Blick auf den HTML Kalender
 teaser: Dieses Monat haben wir uns auf den Zeitbuchungskalender in HTML5 fokusiert und wir freuen uns, dass wir eine erste Version zur Verfügung stellen können, in der Zeitbuchungen hinzugefügt, editiert und gelöscht werden können, und in der die Zeitbuchungen bereits entsprechend des ausgewählten Formatprofils eingefärbt werden.
 author: Karin Huber
-date: 2015-00-30
+date: 2015-04-30
 bannerimage: /content/images/blog/2015/04/time-cockpit-may-2015.png
+lang: de
 permalink: /de/blog/2015/04/30/Neu-im-Mai-2015-Ein-erster-Blick-auf-den-HTML-Kalender
 ---
 

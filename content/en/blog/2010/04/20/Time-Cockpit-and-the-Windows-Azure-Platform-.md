@@ -3,8 +3,9 @@ layout: blog
 title: Time Cockpit and the Windows Azure Platform 
 teaser: For the Microsoft Worldwide Partner Conference we have created a video that shows how time cockpit uses the Windows Azure Platform.
 author: Rainer Stropek
-date: 2010-38-20
+date: 2010-04-20
 bannerimage: 
+lang: en
 permalink: /blog/2010/04/20/Time-Cockpit-and-the-Windows-Azure-Platform-
 ---
 

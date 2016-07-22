@@ -3,8 +3,10 @@ layout: blog
 title: Time Report With Overtime and Vacation Entitlement
 teaser: In time cockpit version March 2016 we have enhanced the default time report. Among other improvements we added the remaining vacation entitlement and actual overtime to the report. In this article we will explain the updates and extensions in detail.
 author: Michael Kubitschka
-date: 2016-10-29
+date: 2016-02-29
 bannerimage: /content/images/blog/2016/02/overtime.png
+lang: en
+ref: /de/blog/2016/02/29/Stundenzettel-mit-Überstunden-und-Resturlaub
 permalink: /blog/2016/02/29/Time-Report-With-Overtime-and-Vacation-Entitlement
 ---
 

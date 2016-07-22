@@ -3,8 +3,9 @@ layout: blog
 title: Shearing Layers - Time Cockpit Case Study
 teaser: A few months ago I wrote a blog article about the concept of "Shearing Layers" in architecture and software development. I submitted a longer, German version of the article for OBJEKTspektrum, a well-known German magazine about IT management and software engineering. It was accepted and is included in this month's issue. For a limited amount of time it is also available online.
 author: Rainer Stropek
-date: 2015-56-30
+date: 2015-04-30
 bannerimage: /content/images/blog/2015/04/selexyz_dominicanen_bookstore_small.jpg
+lang: en
 permalink: /blog/2015/04/30/Shearing-Layers---Time-Cockpit-Case-Study
 ---
 

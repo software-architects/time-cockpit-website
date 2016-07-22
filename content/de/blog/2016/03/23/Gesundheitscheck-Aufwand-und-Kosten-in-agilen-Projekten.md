@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Gesundheitscheck, Aufwand und Kosten in agilen Projekten
+title: Gesundheitscheck -  Aufwand und Kosten in agilen Projekten
 teaser: Im Geschäftsleben wollen Manager normalerweise vorab wissen, wie lange ein Projekt dauern wird und was es kosten wird. Im Grunde müssen wir dafür die Zukunft vorhersagen. Doch das Leben ist das was passiert, während man andere Pläne schmiedet. Trotzdem heißt das nicht, dass agile Projekte im Blindflug ablaufen müssen. Wir haben für uns einige best Practices zusammengestellt, um in agilen Projekten den Aufwand und die Kosten im Auge zu behalten. Im diesen Blogartikel finden Sie die wichtigsten Aspekte unserer Lösung.
 author: Rainer Stropek
-date: 2016-22-23
+date: 2016-03-23
 bannerimage: /content/images/blog/2016/03/budget-small.jpg
+lang: de
 permalink: /de/blog/2016/03/23/Gesundheitscheck-Aufwand-und-Kosten-in-agilen-Projekten
 ---
 

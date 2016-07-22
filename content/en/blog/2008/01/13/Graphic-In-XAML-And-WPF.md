@@ -3,8 +3,9 @@ layout: blog
 title: Graphic In XAML And WPF
 teaser: In this article I want to describe the functions of XAML, WPF and Silverlight in the context of graphic. I will use the corporate logo of our new company as the sample for this article because it's XAML implementation uses quite a lot of the graphic functions of XAML.
 author: Rainer Stropek
-date: 2008-59-13
+date: 2008-01-13
 bannerimage: 
+lang: en
 permalink: /blog/2008/01/13/Graphic-In-XAML-And-WPF
 ---
 

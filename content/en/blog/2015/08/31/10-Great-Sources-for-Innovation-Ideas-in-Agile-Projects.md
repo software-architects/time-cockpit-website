@@ -3,8 +3,9 @@ layout: blog
 title: 10 Great Sources for Innovation Ideas in Agile Projects
 teaser: We deliver our software time cockpit as a service (SaaS model). By sending monthly invoices, we regularly remind our customers of the money they pay for our service. Therefore, it is crucial that we continuously show progress and innovation so that customers know what they are paying for. In this blog article I want to talk about 10 great sources we use to get ideas for new features and technologies.
 author: Rainer Stropek
-date: 2015-19-31
+date: 2015-08-31
 bannerimage: /content/images/blog/2015/08/usefull-useless-small.jpg
+lang: en
 permalink: /blog/2015/08/31/10-Great-Sources-for-Innovation-Ideas-in-Agile-Projects
 ---
 

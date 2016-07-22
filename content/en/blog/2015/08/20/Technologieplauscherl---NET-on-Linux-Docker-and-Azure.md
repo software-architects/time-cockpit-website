@@ -3,8 +3,9 @@ layout: blog
 title: Technologieplauscherl - .NET on Linux, Docker, and Azure
 teaser: Today I will do a session at a local user group called Technologieplauscherl. It is an informal meeting of people interested in technology. The topic I am going to speak about is Microsoft .NET and its new relationship with Linux, open source, and Docker.
 author: Rainer Stropek
-date: 2015-07-20
+date: 2015-08-20
 bannerimage: /content/images/blog/2015/08/techplauscherl-00-yeoman.png
+lang: en
 permalink: /blog/2015/08/20/Technologieplauscherl---NET-on-Linux-Docker-and-Azure
 ---
 

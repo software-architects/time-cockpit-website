@@ -3,8 +3,9 @@ layout: blog
 title: Why Should Agile Stop at Software Development?
 teaser: Agile principles have become quite popular in software development. The approach has proven to be successful many times. Frameworks for agile development like Scrum are not at all limited to software development. Still, the agile approach can rarely be found outside of this domain. We think, that’s a pity.
 author: Rainer Stropek
-date: 2014-55-30
+date: 2014-07-30
 bannerimage: 
+lang: en
 permalink: /blog/2014/07/30/Why-Should-Agile-Stop-at-Software-Development
 ---
 

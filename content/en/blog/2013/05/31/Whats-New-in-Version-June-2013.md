@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version June 2013
 teaser: In the newest version of time cockpit we introduce a new signal type for locations. For that we use data collected by the Google Latitude location service.
 author: Karin Huber
-date: 2013-49-31
+date: 2013-05-31
 bannerimage: 
+lang: en
 permalink: /blog/2013/05/31/Whats-New-in-Version-June-2013
 ---
 

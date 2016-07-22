@@ -3,8 +3,9 @@ layout: blog
 title: Was ist neu in der Version März 2016
 teaser: In der neuen Version haben wir uns auf zwei Themen konzentriert. Als erstes haben wir zum Stundenzettel die Überstunden und den Resturlaub hinzugefügt. Und weiters haben wir die Office 365 Integration im HTML5 Kalender um gesendete E-Mails erweitert.
 author: Karin Huber
-date: 2016-45-29
+date: 2016-02-29
 bannerimage: /content/images/blog/2016/02/time-cockpit-march-2016.png
+lang: de
 permalink: /de/blog/2016/02/29/Was-ist-neu-in-der-Version-März-2016
 ---
 

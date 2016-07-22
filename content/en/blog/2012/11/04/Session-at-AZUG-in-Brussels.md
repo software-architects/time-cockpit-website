@@ -3,8 +3,9 @@ layout: blog
 title: Session at AZUG in Brussels
 teaser: On October 25th 2012 I did a session at the Azure user group in Brussels about "Catching The Long Tail With SaaS + Windows Azure". Here you find the slides and the link to the recordings.
 author: Rainer Stropek
-date: 2012-08-04
+date: 2012-11-04
 bannerimage: 
+lang: en
 permalink: /blog/2012/11/04/Session-at-AZUG-in-Brussels
 ---
 

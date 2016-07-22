@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: What's New in Version April 2014
-teaser: For this version we have put the finishing touches to our new reporting feature. We have reached two goals: First, you are now able to add custom reports to every list in time cockpit. The reports are automatically synchronized to all other users in your account, so everybody can open the reports directly in the embedded viewer or as PDF, Excel or Word. Second, we prepared three reports that will help you analyzing time sheet records and invoicing data.
+teaser: For this version we have put the finishing touches to our new reporting feature. We have reached two goals -  First, you are now able to add custom reports to every list in time cockpit. The reports are automatically synchronized to all other users in your account, so everybody can open the reports directly in the embedded viewer or as PDF, Excel or Word. Second, we prepared three reports that will help you analyzing time sheet records and invoicing data.
 author: Karin Huber
-date: 2014-11-31
+date: 2014-03-31
 bannerimage: 
+lang: en
 permalink: /blog/2014/03/31/Whats-New-in-Version-April-2014
 ---
 

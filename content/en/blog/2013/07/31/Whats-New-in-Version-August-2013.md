@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version August 2013
 teaser: This month we have focused on the performance of the time sheet calendar, especially the performance when editing time sheet entries. Until now time cockpit always reloaded all time sheet entries for the selected month after editing, adding or deleting a time sheet entry. Additionally, time cockpit reloaded all time sheet templates, because every change could cause changes in the templates. This was even true when only moving or resizing a time sheet entry in the calendar.
 author: Karin Huber
-date: 2013-33-31
+date: 2013-07-31
 bannerimage: 
+lang: en
 permalink: /blog/2013/07/31/Whats-New-in-Version-August-2013
 ---
 

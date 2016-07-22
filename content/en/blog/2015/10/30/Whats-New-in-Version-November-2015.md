@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version November 2015
 teaser: This month we focused on bringing time cockpit's Excel importer to the HTML 5 web client. It is true, there are other ways to load data into time cockpit which are fancier (see OData Web API). But if you need a pragmatic but powerful way that most users can relate to, you might consider the time cockpit Excel importer for import tasks.
 author: Alexander Huber
-date: 2015-26-30
+date: 2015-10-30
 bannerimage: /content/images/blog/2015/10/time-cockpit-november-2015.png
+lang: en
 permalink: /blog/2015/10/30/Whats-New-in-Version-November-2015
 ---
 

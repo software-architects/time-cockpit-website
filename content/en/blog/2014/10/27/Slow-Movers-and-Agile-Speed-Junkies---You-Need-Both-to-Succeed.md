@@ -3,8 +3,9 @@ layout: blog
 title: Slow Movers and Agile Speed Junkies - You Need Both to Succeed
 teaser: We believe that modern commercial off-the-shelf (COTS) solutions like time cockpit have to develop at different speeds at the same time. There are layers where change has to be very carefully planned and executed slowly. On the other hand there are layers that are constantly moving and change has to happen literally overnight. Architects call this the sheering layers concept. In this article I would like you to introduce you to this idea, provide some tips how you can benefit from it, and finally describe how time cockpit follows this principle.
 author: Rainer Stropek
-date: 2014-33-27
+date: 2014-10-27
 bannerimage: /content/images/blog/2014/10/5240042369_26ab9d312a_b.jpg
+lang: en
 permalink: /blog/2014/10/27/Slow-Movers-and-Agile-Speed-Junkies---You-Need-Both-to-Succeed
 ---
 

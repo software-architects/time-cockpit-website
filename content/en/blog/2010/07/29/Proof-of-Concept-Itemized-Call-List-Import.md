@@ -3,8 +3,9 @@ layout: blog
 title: Proof of Concept Itemized Call List Import
 teaser: In our very successfull webinar this morning we were asked by an attendee if it is possible to import phone calls from a mobile network provider's itemized call list. We really liked the idea (thanks grasgruen.it) and decided to create a prototype/proof of concept implementation of  such an import using IronPython, our own SDK and third party APIs.
 author: Simon Opelt
-date: 2010-55-29
+date: 2010-07-29
 bannerimage: 
+lang: en
 permalink: /blog/2010/07/29/Proof-of-Concept-Itemized-Call-List-Import
 ---
 

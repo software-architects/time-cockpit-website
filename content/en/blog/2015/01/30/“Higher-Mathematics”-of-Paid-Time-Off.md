@@ -3,8 +3,10 @@ layout: blog
 title: “Higher Mathematics” of Paid Time Off
 teaser: Many countries have regulations concerning paid time off (time cockpit uses the term vacation for that). In our home country Austria for instance, employees typically have five weeks of paid vacation. On first sight, calculating the remaining paid vacation should not be too hard. However, if you dig into the details and edge cases, it gets interesting.
 author: Rainer Stropek
-date: 2015-45-30
+date: 2015-01-30
 bannerimage: /content/images/blog/2015/01/5344646082_bd0d8f1b06_o.png
+lang: en
+ref: /de/blog/2015/01/30/Die-höhere-Mathematik-der-Resturlaubsberechnung
 permalink: /blog/2015/01/30/“Higher-Mathematics”-of-Paid-Time-Off
 ---
 

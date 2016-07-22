@@ -3,8 +3,9 @@ layout: blog
 title: Shipping large MSI installers via Azure Blob Storage
 teaser: Recently I did a WiX (Windows Installer XML) and MSI training at a customer in Germany. One of the questions I got asked was how to deliver large MSI installers efficiently to customers via web. The goal was to minimize download time. In this blog article I describe a possible approach.
 author: Rainer Stropek
-date: 2014-40-08
+date: 2014-10-08
 bannerimage: 
+lang: en
 permalink: /blog/2014/10/08/Shipping-large-MSI-installers-via-Azure-Blob-Storage
 ---
 

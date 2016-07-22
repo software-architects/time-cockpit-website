@@ -3,8 +3,9 @@ layout: blog
 title: Was ist neu in der Version Februar 2016
 teaser: Office 365 ist ein sehr erfolgreiches Cloud Service von Microsoft. Millionen von Menschen überall auf der Welt nutzen es für Emails, Dokumenten-Management, Kommunikation usw. Dieses Monat haben wir  zum HTML5 timesheet Zeitbuchungskalender von time cockpit eine Out-of-the-Box Integration mit Office 365 hinzugefügt. Sehen Sie alle Ihre Outlook Termine in time cockpit und verwandeln Sie sie durch einen simplen Doppelklick in Zeitbuchungen.
 author: Rainer Stropek
-date: 2016-25-31
+date: 2016-01-31
 bannerimage: /content/images/blog/2016/01/time-cockpit-february-2016.png
+lang: de
 permalink: /de/blog/2016/01/31/Was-ist-neu-in-der-Version-Februar-2016
 ---
 

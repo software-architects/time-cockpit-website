@@ -3,8 +3,9 @@ layout: blog
 title: Presentation about Business Model Evolution for SaaS (Dublin MS GISV Summit 2012)
 teaser: SaaS is an important trend in the software industry. In this presentation Rainer Stropek from time cockpit speaks about typical challenges that software vendors have to solve to successfully transfer from the classical licensing-based model to a SaaS strategy.
 author: Rainer Stropek
-date: 2012-35-27
+date: 2012-11-27
 bannerimage: 
+lang: en
 permalink: /blog/2012/11/27/Presentation-about-Business-Model-Evolution-for-SaaS-Dublin-MS-GISV-Summit-2012
 ---
 

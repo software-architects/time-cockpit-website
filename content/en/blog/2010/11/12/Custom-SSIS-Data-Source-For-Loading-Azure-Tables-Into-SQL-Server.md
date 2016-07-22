@@ -3,8 +3,9 @@ layout: blog
 title: Custom SSIS Data Source For Loading Azure Tables Into SQL Server
 teaser: Yesterday the wether in Frankfurt was horrible and so my plane from Berlin was late. I missed my connection flight to Linz and had to stay in a hotel in Frankfurt. Therefore I had some time and I used it for implementing a little sample showing how you can use a customer SSIS data source to easily transfer data from Windows Azure Table Storage to SQL Server databases using the ETL tool "SQL Server Integration Services" (SSIS).
 author: Rainer Stropek
-date: 2010-24-12
+date: 2010-11-12
 bannerimage: 
+lang: en
 permalink: /blog/2010/11/12/Custom-SSIS-Data-Source-For-Loading-Azure-Tables-Into-SQL-Server
 ---
 

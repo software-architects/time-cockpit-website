@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: Data Bars in Lists
-teaser: In our next version we will add a new column types for bars to lists. We will support three different types of bars: DataBar, StackedDataBar and BulletGraph.
+teaser: In our next version we will add a new column types for bars to lists. We will support three different types of bars -  DataBar, StackedDataBar and BulletGraph.
 author: Karin Huber
-date: 2012-22-29
+date: 2012-11-29
 bannerimage: 
+lang: en
 permalink: /blog/2012/11/29/Data-Bars-in-Lists
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version September 2015
 teaser: This month, the graphical time sheet calendar of our HTML5 client preview made a huge step forward. We worked hard to add many of the features you love from time cockpit's full client. Additionally, the HTML5 client received a complete makeover. In this blog article we summarize what has changed since last month. We hope you like our work and encourage you to give the new HTML5 client a try. 
 author: Rainer Stropek
-date: 2015-51-31
+date: 2015-08-31
 bannerimage: /content/images/blog/2015/08/time-cockpit-september-2015.png
+lang: en
 permalink: /blog/2015/08/31/Whats-New-in-Version-September-2015
 ---
 

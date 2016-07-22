@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Deep Dive, Performance Improvements Through Permission Refactoring
+title: Deep Dive -  Performance Improvements Through Permission Refactoring
 teaser: Recently, a customer with a heavily customized data model reported performance issues when loading lists of projects. The customer has around 80 users in his account and handles two separate organizations with time cockpit. Each year the users track about 40,000 time sheet entries. On that basis, the customer has custom reports for project controlling and HR.
 author: Alexander Huber
-date: 2015-07-27
+date: 2015-02-27
 bannerimage: /content/images/blog/2015/02/cheetah.jpg
+lang: en
 permalink: /blog/2015/02/27/Deep-Dive-Performance-Improvements-Through-Permission-Refactoring
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: Automated deploying and testing of services in Azure
 teaser: We have been experimenting with automated testing of our services against windows azure lately. Our goal was to deploy a service in the build process, run a unit test, and then undeploy the process. Assuming that you have a hosted service ready (something.cloudapp.net) and a solution with a unit test running locally against a service (running locally, when executing the unit test, there are a few steps one needs to take in order to test against an azure-deployed instance of this.
 author: Philipp Aumayr
-date: 2011-44-14
+date: 2011-02-14
 bannerimage: 
+lang: en
 permalink: /blog/2011/02/14/Automated-deploying-and-testing-of-services-in-Azure
 ---
 

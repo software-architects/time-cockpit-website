@@ -3,8 +3,9 @@ layout: blog
 title: Estimation Quiz - Results
 teaser: Last month we published a quiz in which you can demonstrate your estimation skills. Our article proposed that most of us typically overestimate our knowledge. A lot of people took the test. Do you want to know the results? Here they are.
 author: Rainer Stropek
-date: 2013-02-30
+date: 2013-08-30
 bannerimage: 
+lang: en
 permalink: /blog/2013/08/30/Estimation-Quiz---Results
 ---
 

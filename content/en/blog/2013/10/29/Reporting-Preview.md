@@ -3,8 +3,9 @@ layout: blog
 title: Reporting Preview
 teaser: In the November version of time cockpit we have released a first preview of the upcoming reporting feature. Read what's already in the box and what will come in the following months.
 author: Rainer Stropek
-date: 2013-09-29
+date: 2013-10-29
 bannerimage: 
+lang: en
 permalink: /blog/2013/10/29/Reporting-Preview
 ---
 

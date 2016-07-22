@@ -3,8 +3,9 @@ layout: blog
 title: Import Customers From Microsoft Dynamics CRM Online
 teaser: This sample shows how to import customers from Microsoft CRM into time cockpit using .NET (C#).
 author: Karin Huber
-date: 2012-58-30
+date: 2012-10-30
 bannerimage: 
+lang: en
 permalink: /blog/2012/10/30/Import-Customers-From-Microsoft-Dynamics-CRM-Online
 ---
 

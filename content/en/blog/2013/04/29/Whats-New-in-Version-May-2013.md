@@ -3,8 +3,9 @@ layout: blog
 title: What's New in Version May 2013
 teaser: In this version of time cockpit we made the usage of actions more convenient. All actions that can be executed on a time sheet are now available from the ribbon menu in the time sheet calendar.
 author: Alexander Huber
-date: 2013-58-29
+date: 2013-04-29
 bannerimage: 
+lang: en
 permalink: /blog/2013/04/29/Whats-New-in-Version-May-2013
 ---
 

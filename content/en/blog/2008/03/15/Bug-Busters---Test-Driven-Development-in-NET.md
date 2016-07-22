@@ -3,8 +3,9 @@ layout: blog
 title: Bug Busters - Test Driven Development in .NET
 teaser: In this article Rainer Stropek and Karin Huber show how Test Driven Development (TDD) works in practice. They start with a general overview about quality assurance and testing in software development. After that they implement an end-to-end solution using the TDD philosophy. Karin and Rainer do not only use unit tests for validating the data access and business layer. They also demonstrate how the popular open source tool WatiN can be used to test-driven develop a web user interface. The sample uses Microsoft Visual Studio 2008, C# 3.0, Linq-to-SQL, Linq-to-Objects, Visual Studio Unit Tests, ASP.NET and WatiN.
 author: Rainer Stropek
-date: 2008-02-15
+date: 2008-03-15
 bannerimage: 
+lang: en
 permalink: /blog/2008/03/15/Bug-Busters---Test-Driven-Development-in-NET
 ---
 

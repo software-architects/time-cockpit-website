@@ -3,8 +3,9 @@ layout: blog
 title: DEVcamp 2009 - Baumschule
 teaser: Auf dem DEVcamp 2009 durfte ich einen Vortrag zum Thema "Baumschule" halten. Inhalt waren Syntax Trees im Allgemeinen und Microsoft Expression Trees im Speziellen.
 author: Rainer Stropek
-date: 2009-11-13
+date: 2009-10-13
 bannerimage: 
+lang: en
 permalink: /blog/2009/10/13/DEVcamp-2009---Baumschule
 ---
 

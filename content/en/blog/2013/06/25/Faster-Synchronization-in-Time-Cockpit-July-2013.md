@@ -3,8 +3,9 @@ layout: blog
 title: Faster Synchronization in Time Cockpit July 2013
 teaser: Time cockpit can work online or offline. All changes are synchronized to a local database for offline use. For the next version (July 2013, 1.14) we have dramatically improved the performance when syncing large amounts of signal data, greatly reducing initial synchronization times for new users or devices.
 author: Philipp Aumayr
-date: 2013-00-25
+date: 2013-06-25
 bannerimage: 
+lang: en
 permalink: /blog/2013/06/25/Faster-Synchronization-in-Time-Cockpit-July-2013
 ---
 

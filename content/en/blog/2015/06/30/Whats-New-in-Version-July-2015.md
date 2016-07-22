@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: What's New in Version July 2015
-teaser: This month we have added a much requested feature to the HTML5 time tracking calendar: creating new time sheet entries with drag & drop.
+teaser: This month we have added a much requested feature to the HTML5 time tracking calendar -  creating new time sheet entries with drag & drop.
 author: Karin Huber
-date: 2015-42-30
+date: 2015-06-30
 bannerimage: /content/images/blog/2015/06/time-cockpit-july-2015.png
+lang: en
 permalink: /blog/2015/06/30/Whats-New-in-Version-July-2015
 ---
 

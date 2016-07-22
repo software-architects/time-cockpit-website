@@ -3,8 +3,9 @@ layout: blog
 title: Synchronized Android Call Log Import
 teaser: Time cockpit can assist you in keeping track of your phone calls. By using two simple and free apps you can set up automatic synchronization from your Android phone, to cloud storage, to your desktop and into time cockpit.
 author: Simon Opelt
-date: 2013-22-22
+date: 2013-01-22
 bannerimage: 
+lang: en
 permalink: /blog/2013/01/22/Synchronized-Android-Call-Log-Import
 ---
 

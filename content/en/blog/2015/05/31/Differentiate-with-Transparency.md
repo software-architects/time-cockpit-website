@@ -3,8 +3,9 @@ layout: blog
 title: Differentiate with Transparency
 teaser: Granted, time tracking is not one of our customers' favorite tasks. However, it has to be done for accounting, because of legal obligations, etc. But does it have to be like this? Is it possible to differentiate from ones competition with an outstanding time tracking organization and software? Our partner softaware believes in that and has built a "Software Diary". It uses time cockpit behind the scenes.
 author: Rainer Stropek
-date: 2015-56-31
+date: 2015-05-31
 bannerimage: /content/images/blog/2015/05/SoftwareDiaryThumbnail.png
+lang: en
 permalink: /blog/2015/05/31/Differentiate-with-Transparency
 ---
 

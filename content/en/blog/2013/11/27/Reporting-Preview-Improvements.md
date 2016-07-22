@@ -3,8 +3,9 @@ layout: blog
 title: Reporting Preview Improvements
 teaser: In the December version of time cockpit we have improved the new reporting feature of time cockpit. Read about the new functions and about our plans for the following months.
 author: Karin Huber
-date: 2013-33-27
+date: 2013-11-27
 bannerimage: 
+lang: en
 permalink: /blog/2013/11/27/Reporting-Preview-Improvements
 ---
 

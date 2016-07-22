@@ -3,8 +3,9 @@ layout: blog
 title: Die "höhere Mathematik" der Resturlaubsberechnung
 teaser: In vielen Ländern gibt es gesetzliche Regelungen für bezahlte Abwesenheitszeiten wie Urlaub. In Österreich zum Beispiel haben Angestellte typischerweise fünf Wochen bezahlten Urlaub. Auf den ersten Blick scheint es einfach zu sein, den verfügbaren Resturlaub zu berechnen. Bei Details wie der Änderung des Anstellungsverhältnisses wird die Sache aber dann interessant.
 author: Rainer Stropek
-date: 2015-45-30
+date: 2015-01-30
 bannerimage: /content/images/blog/2015/01/5344646082_bd0d8f1b06_o.png
+lang: de
 permalink: /de/blog/2015/01/30/Die-höhere-Mathematik-der-Resturlaubsberechnung
 ---
 

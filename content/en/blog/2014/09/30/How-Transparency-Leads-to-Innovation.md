@@ -3,8 +3,9 @@ layout: blog
 title: How Transparency Leads to Innovation
 teaser: Last week I was speaker at a large conference in Germany. Although I mainly covered technical topics concerning software development, the most asked questions weren’t around programming. Instead, people complained that their bosses prevent innovation by not allowing them to invest time and money in promising new technologies or methods.  Stop complaining, start making the problem transparent and measurable instead.
 author: Rainer Stropek
-date: 2014-55-30
+date: 2014-09-30
 bannerimage: 
+lang: en
 permalink: /blog/2014/09/30/How-Transparency-Leads-to-Innovation
 ---
 

@@ -3,8 +3,10 @@ layout: blog
 title: We are Growing
 teaser: 2014 has been a successful year for our company. We could raise our revenue to a new all-time record, enlarge our team, and formalize our long-lasting partnership with our friends at softaware.
 author: Rainer Stropek
-date: 2015-46-27
+date: 2015-01-27
 bannerimage: /content/images/blog/2015/01/Blog_20150109_1.jpg
+lang: en
+ref: /de/blog/2015/01/27/Wir-werden-größer
 permalink: /blog/2015/01/27/We-are-Growing
 ---
 

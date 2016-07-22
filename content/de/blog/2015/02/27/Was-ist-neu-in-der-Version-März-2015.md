@@ -3,8 +3,9 @@ layout: blog
 title: Was ist neu in der Version März 2015
 teaser: Die neue Version von time cockpit enthält viele Verbesserungen zur Benutzerfreundlichkeit der HTML5 Preview. Die wichtigste Neuerung sind die Tastaturkürzel, die die Verwendung des Web-Clients viel effizienter machen. Natürlich haben wir auch im Full- und Silverlight-Client wieder Verbesserungen geliefert.
 author: Rainer Stropek
-date: 2015-45-27
+date: 2015-02-27
 bannerimage: /content/images/blog/2015/02/time-cockpit-march-2015.png
+lang: de
 permalink: /de/blog/2015/02/27/Was-ist-neu-in-der-Version-März-2015
 ---
 

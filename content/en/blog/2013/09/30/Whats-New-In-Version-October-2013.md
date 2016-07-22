@@ -3,8 +3,9 @@ layout: blog
 title: What's New In Version October 2013
 teaser: At time cockpit we are in close contact with our customers and we value their feedback. In one of our meetings with customers, we identified potential for performance improvements when it comes to drop-down lists (combo boxes). So we concentrated on optimizing the combo box experience in time cockpit. This is the first step to a more feature-rich combo box. There is more to come.
 author: Alexander Huber
-date: 2013-48-30
+date: 2013-09-30
 bannerimage: 
+lang: en
 permalink: /blog/2013/09/30/Whats-New-In-Version-October-2013
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: MVVM Tutorial from Start to Finish
 teaser: Today I am at the NRWConf, a community event of Microsoft-oriented software developers in the Börse in Wuppertal.Beside presenting our product time cockpit I also do a session about MVVM (Model-View-ViewModel) and data binding with WPF and Silverlight. Because I do the session code-only (no slides!) I have recorded the content last night to enable all participants to repeat the shown sample.
 author: Rainer Stropek
-date: 2010-11-10
+date: 2010-09-10
 bannerimage: 
+lang: en
 permalink: /blog/2010/09/10/MVVM-Tutorial-from-Start-to-Finish
 ---
 

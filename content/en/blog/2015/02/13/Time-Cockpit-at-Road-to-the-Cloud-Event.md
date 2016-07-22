@@ -3,8 +3,10 @@ layout: blog
 title: Time Cockpit at Road to the Cloud Event
 teaser: Yesterday, I was speaker at Microsoft's Road to the Cloud event in Vienna. Microsoft invited me to speak about our learnings from five years time cockpit in the cloud. It was great to see how interested people were about discussing business aspects of cloud computing. 
 author: Rainer Stropek
-date: 2015-20-13
+date: 2015-02-13
 bannerimage: /content/images/blog/2015/02/RoadToTheCloud_Thumbnail.jpg
+lang: en
+ref: /de/blog/2015/02/13/Time-Cockpit-beim-Road-to-the-Cloud-Event
 permalink: /blog/2015/02/13/Time-Cockpit-at-Road-to-the-Cloud-Event
 ---
 

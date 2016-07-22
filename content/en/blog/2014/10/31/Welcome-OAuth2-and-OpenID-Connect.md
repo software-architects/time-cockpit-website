@@ -1,10 +1,11 @@
 ---
 layout: blog
 title: Welcome OAuth2 and OpenID Connect
-teaser: When we did our yearly strategy meeting at the beginning of 2014, we decided to dedicate this year primarily to moving time cockpit to HTML and JavaScript. This decision had huge consequences on important cornerstones of time cockpit's internal structure. The proprietary communication protocols we used in Silverlight are not appropriate for a purely browser-based solution. So we decided to move to platform- and vendor-neutral standards communication standards. Today, we present the next step down that road: Time Cockpit's brand new OpenID Connect endpoint for authentication.
+teaser: When we did our yearly strategy meeting at the beginning of 2014, we decided to dedicate this year primarily to moving time cockpit to HTML and JavaScript. This decision had huge consequences on important cornerstones of time cockpit's internal structure. The proprietary communication protocols we used in Silverlight are not appropriate for a purely browser-based solution. So we decided to move to platform- and vendor-neutral standards communication standards. Today, we present the next step down that road -  Time Cockpit's brand new OpenID Connect endpoint for authentication.
 author: Rainer Stropek
-date: 2014-08-31
+date: 2014-10-31
 bannerimage: /content/images/blog/2014/10/BrickByBrick.jpg
+lang: en
 permalink: /blog/2014/10/31/Welcome-OAuth2-and-OpenID-Connect
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: Testing Time Cockpit's OData Web API with Postman
 teaser: If you want to play with a web api like the one from time cockpit, you need a tool to build and run web requests.  You could use rather low-level tools like curl or Fiddler. Postman is an alternative with a much nicer UI and the possibility to store requests for later use.
 author: Rainer Stropek
-date: 2014-53-05
+date: 2014-11-05
 bannerimage: /content/images/blog/2014/11/01PostmanQuery.png
+lang: en
 permalink: /blog/2014/11/05/Testing-Time-Cockpits-OData-Web-API-with-Postman
 ---
 

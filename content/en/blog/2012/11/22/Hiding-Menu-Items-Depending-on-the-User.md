@@ -3,8 +3,9 @@ layout: blog
 title: Hiding Menu Items Depending on the User
 teaser: One of the key benefits of time cockpit is the customizability. A thing that is often requested but unfortunately still a bit difficult is hiding menu items depending on the current user.
 author: Philipp Aumayr
-date: 2012-16-22
+date: 2012-11-22
 bannerimage: 
+lang: en
 permalink: /blog/2012/11/22/Hiding-Menu-Items-Depending-on-the-User
 ---
 

@@ -3,8 +3,9 @@ layout: blog
 title: Create Dump of MongoDB on Windows using Docker Machine
 teaser: Recently, I have been doing some programming work using the MEAN stack (Mongo, Express, Angular, Node). I use a Windows PC as my dev box and host my Mongo databases on Mongo Labs (mLabs) in Azure. Therefore, I need to create dumps as backups. In this blog article I summarize how I do that with Docker Machine.
 author: Rainer Stropek
-date: 2016-16-10
+date: 2016-04-10
 bannerimage: /content/images/blog/2016/04/filezilla-docker-machine.png
+lang: en
 permalink: /blog/2016/04/10/Create-Dump-of-MongoDB-on-Windows-using-Docker-Machine
 ---
 
