@@ -8,6 +8,10 @@ div.header {
 	z-index: 100;
 	width: 100%;
 
+	> div.container:first-of-type {
+		margin-top: 4px;
+	}
+
 	.navbar {
 		border: none;
 		background-color: transparent;
@@ -77,6 +81,7 @@ div.header {
 		background-color: #222;
 		font-weight: lighter;
 		text-transform: uppercase;
+		box-shadow: none;
 
 		> li > a {
 			line-height: 30px;

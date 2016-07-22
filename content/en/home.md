@@ -1,10 +1,17 @@
 ---
-layout: page
+layout: full-width-page
 title: Time Tracking With Time Cockpit
 permalink: /
 ---
 
-<h1 class="textaligncenter" xmlns="http://www.w3.org/1999/xhtml">Time Tracking With Time Cockpit</h1><div class="container" xmlns="http://www.w3.org/1999/xhtml">
+<div class="tc-banner">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12"></div>
+		</div>
+	</div>
+</div>
+<div class="container">
   <div class="row">
     <div class="col-sm-4 frontpageMainItem" onclick="javascript:document.location.href='{{site.baseurl}}/tour/grafischer-kalender/';">
       <h2>Graphical Calendar</h2>
