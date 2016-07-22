@@ -1,24 +1,14 @@
 ---
-layout: full-width-page
+layout: page
 title: time cockpit - Zeiterfassung
 permalink: /de/
 ---
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-sm-12 tc-banner">
-		</div>
-	</div>
-</div>
-
-<div class="container">
-	<div class="row">
-		<div class="col-sm-12">
 <h1 class="textaligncenter" xmlns="http://www.w3.org/1999/xhtml">Zeiterfassung mit time cockpit</h1><div class="container" xmlns="http://www.w3.org/1999/xhtml">
   <div class="row">
     <div class="col-sm-4 frontpageMainItem" onclick="javascript:document.location.href='{{site.baseurl}}/tour/grafischer-kalender/';">
       <p class="textaligncenter">
-        <img src="{{site.baseurl}}/images/home/zeiterfassung-kalender.png" alt="Der graphische Kalender hilft Ihnen Ihre Zeiterfassung einfacher zu erledigen." title="Zeiterfassung im graphischen Kalender" />
+        <img src="{{site.baseurl}}/content/images/home/zeiterfassung-kalender.png" alt="Der graphische Kalender hilft Ihnen Ihre Zeiterfassung einfacher zu erledigen." title="Zeiterfassung im graphischen Kalender" />
       </p>
       <h2>Grafischer Kalender</h2>
       <p>Mit dem grafischen Kalender erledigen Sie Ihre Zeiterfassung effizienter. Grüne und gelbe Balken neben den Zeitbuchungen zeigen Ihnen gebuchte und nicht gebuchte Zeiten an.<br /></p>
@@ -28,7 +18,7 @@ permalink: /de/
     </div>
     <div class="col-sm-4 frontpageMainItem" onclick="javascript:document.location.href='{{site.baseurl}}/tour/aktivitaeten-aufzeichnen/';">
       <p class="textaligncenter">
-        <img src="{{site.baseurl}}/images/home/aufgezeichnete_aktivitaeten-fuer-zeiterfassung.png" alt="Die Aktivitätstracker protokollieren Ihre Aktivitäten am PC." title="Zeiterfassung mit automatischen Aktivitätstrackern" />
+        <img src="{{site.baseurl}}/content/images/home/aufgezeichnete_aktivitaeten-fuer-zeiterfassung.png" alt="Die Aktivitätstracker protokollieren Ihre Aktivitäten am PC." title="Zeiterfassung mit automatischen Aktivitätstrackern" />
       </p>
       <h2>Aktivitätstracker</h2>
       <p>Verwenden Sie die Aktivitätstracker, um automatisch alle Aktivitäten am PC zu protokollieren. Mit einem Doppelklick können Sie die aufgezeichneten Signale in Buchungen für die Zeiterfassung umwandeln.</p>
@@ -39,7 +29,7 @@ permalink: /de/
     </div>
     <div class="col-sm-4 frontpageMainItem innercol" onclick="javascript:document.location.href='{{site.baseurl}}/tour/erweiterbarkeit/';">
       <p class="textaligncenter">
-        <img src="{{site.baseurl}}/images/home/erweiterbare-zeiterfassung.png" alt="Erweitern Sie Listen und Forms, um die Zeiterfassung an Ihre Bedürfnisse anzupassen." title="Erweiterbare Zeiterfassung" />
+        <img src="{{site.baseurl}}/content/images/home/erweiterbare-zeiterfassung.png" alt="Erweitern Sie Listen und Forms, um die Zeiterfassung an Ihre Bedürfnisse anzupassen." title="Erweiterbare Zeiterfassung" />
       </p>
       <h2>Erweiterbarkeit</h2>
       <p>Passen Sie Ihre Zeiterfassung an die Strukturen und Prozesse in Ihrem Unternehmen an. Fügen Sie Entitäten hinzu, passen Sie Listen und Forms an und greifen Sie auf alle Daten mit Python oder .NET zu.</p>
@@ -145,7 +135,4 @@ permalink: /de/
         <strong>Paul Scholda</strong> von <a href="http://www.ehouse.at" target="_blank">eHouse</a></p>
     </div>
   </div>
-</div>
-		</div>
-	</div>
 </div>
