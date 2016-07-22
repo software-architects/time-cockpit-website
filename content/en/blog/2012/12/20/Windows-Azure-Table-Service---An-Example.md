@@ -60,9 +60,9 @@ namespace ConsoleApplication1
     {
         private static AutoResetEvent signal = new AutoResetEvent(false);
 
-        private static readonly XNamespace AtomNamespace = &quot;http://www.w3.org/2005/Atom&quot;;
-        private static readonly XNamespace AstoriaDataNamespace = &quot;http://schemas.microsoft.com/ado/2007/08/dataservices&quot;;
-        private static readonly XNamespace AstoriaMetadataNamespace = &quot;http://schemas.microsoft.com/ado/2007/08/dataservices/metadata&quot;;
+        private static readonly XNamespace AtomNamespace = "http://www.w3.org/2005/Atom";
+        private static readonly XNamespace AstoriaDataNamespace = "http://schemas.microsoft.com/ado/2007/08/dataservices";
+        private static readonly XNamespace AstoriaMetadataNamespace = "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata";
 
         static void Main(string[] args)
         {
@@ -84,7 +84,7 @@ namespace ConsoleApplication1
         private CloudTableClient CreateClientWithNameAndKey()
         {
             var account = new CloudStorageAccount(
-                new StorageCredentialsAccountAndKey(&quot;prodotnetvie&quot;, &quot;ENTER YOUR KEY HERE&quot;), true);
+                new StorageCredentialsAccountAndKey("prodotnetvie", "ENTER YOUR KEY HERE"), true);
             return account.CreateCloudTableClient();
         }
 
@@ -101,7 +101,7 @@ namespace ConsoleApplication1
                     | SharedAccessTablePermissions.Delete
             };
 
-            var table = serverClient.GetTableReference(&quot;SyncTable&quot;);
+            var table = serverClient.GetTableReference("SyncTable");
 
             // Generate the SAS token. No access policy identifier is used which
             // makes it a non-revocable token
@@ -109,10 +109,10 @@ namespace ConsoleApplication1
             string sasToken = table.GetSharedAccessSignature(
                 policy   /* access policy */,
                 null     /* access policy identifier */,
-                &quot;X&quot; /* start partition key */,
-                &quot;1&quot;     /* start row key */,
-                &quot;X&quot; /* end partition key */,
-                &quot;2&quot;     /* end row key */);
+                "X" /* start partition key */,
+                "1"     /* start row key */,
+                "X" /* end partition key */,
+                "2"     /* end row key */);
 
             // You will need at least version 1.7.1 of the Azure sdk
             var sasCredentials = new StorageCredentialsSharedAccessSignature(sasToken);
@@ -123,12 +123,12 @@ namespace ConsoleApplication1
         private void SimpleWriteSample(CloudTableClient tableClient)
         {
             var context = tableClient.GetDataServiceContext();
-            if (tableClient.CreateTableIfNotExist(&quot;SyncTable&quot;))
+            if (tableClient.CreateTableIfNotExist("SyncTable"))
             {
                 // Add some demo data
                 for (int i = 0; i &lt; 2000; i++)
                 {
-                    context.AddObject(&quot;SyncTable&quot;, new LogEntry() { PartitionKey = &quot;X&quot;, RowKey = i.ToString(), Message = string.Format(&quot;Message {0}&quot;, i) });
+                    context.AddObject("SyncTable", new LogEntry() { PartitionKey = "X", RowKey = i.ToString(), Message = string.Format("Message {0}", i) });
                     if ((i + 1) % 100 == 0)
                     {
                         context.SaveChangesWithRetries(SaveChangesOptions.Batch);
@@ -139,14 +139,14 @@ namespace ConsoleApplication1
             // Note that the following line would NOT return all rows because of
             // continuation logic of table storage.
             // var logs = context
-            //  .CreateQuery&lt;logentry&gt;(&quot;SyncTable&quot;)
-            //  .Where(l =&gt; l.PartitionKey == &quot;X&quot;)
+            //  .CreateQuery&lt;logentry&gt;("SyncTable")
+            //  .Where(l =&gt; l.PartitionKey == "X")
             //  .ToArray();
 
             // You have to use CloudTableQuery instead.
             var logQuery = context
-                .CreateQuery&lt;logentry&gt;(&quot;SyncTable&quot;)
-                .Where(l =&gt; l.PartitionKey == &quot;X&quot;)
+                .CreateQuery&lt;logentry&gt;("SyncTable")
+                .Where(l =&gt; l.PartitionKey == "X")
                 .AsTableServiceQuery();
             var logs = logQuery.Execute();
             Console.WriteLine(logs.Count());
@@ -158,12 +158,12 @@ namespace ConsoleApplication1
             if (await Task.Factory.FromAsync&lt;string,&gt;(
                 tableClient.BeginCreateTableIfNotExist,
                 tableClient.EndCreateTableIfNotExist,
-                &quot;SyncTable2&quot;,
+                "SyncTable2",
                 null))
             {
                 for (int i = 0; i &lt; 2000; i++)
                 {
-                    context.AddObject(&quot;SyncTable2&quot;, new LogEntry() { PartitionKey = &quot;X&quot;, RowKey = i.ToString(), Message = string.Format(&quot;Message {0}&quot;, i) });
+                    context.AddObject("SyncTable2", new LogEntry() { PartitionKey = "X", RowKey = i.ToString(), Message = string.Format("Message {0}", i) });
                     if ((i + 1) % 100 == 0)
                     {
                         await Task.Factory.FromAsync&lt;savechangesoptions,&gt;(
@@ -176,8 +176,8 @@ namespace ConsoleApplication1
             }
 
             var q = context
-                .CreateQuery&lt;logentry&gt;(&quot;SyncTable2&quot;)
-                .Where(l =&gt; l.PartitionKey == &quot;X&quot;)
+                .CreateQuery&lt;logentry&gt;("SyncTable2")
+                .Where(l =&gt; l.PartitionKey == "X")
                 .AsTableServiceQuery();
             var segment = await Task.Factory.FromAsync&lt;resultsegment&lt;logentry&gt;&gt;(
                 q.BeginExecuteSegmented,
@@ -213,8 +213,8 @@ namespace ConsoleApplication1
                 if (entity != null)
                 {
                     e.Data
-                     .Element(AtomNamespace + &quot;content&quot;)
-                     .Element(AstoriaMetadataNamespace + &quot;properties&quot;)
+                     .Element(AtomNamespace + "content")
+                     .Element(AstoriaMetadataNamespace + "properties")
                      .Elements()
                      .Select(p =&gt;
                       new
@@ -228,11 +228,11 @@ namespace ConsoleApplication1
             };
 
             var log = context
-                .CreateQuery&lt;dynamicentry&gt;(&quot;SyncTable&quot;)
-                .Where(l =&gt; l.PartitionKey == &quot;X&quot; &amp;&amp; l.RowKey == &quot;1&quot;)
+                .CreateQuery&lt;dynamicentry&gt;("SyncTable")
+                .Where(l =&gt; l.PartitionKey == "X" &amp;&amp; l.RowKey == "1")
                 .First();
 
-            Console.WriteLine(log.values[&quot;Message&quot;]);
+            Console.WriteLine(log.values["Message"]);
         }
 
         private void SasAccessSample(CloudTableClient tableClient)
@@ -241,8 +241,8 @@ namespace ConsoleApplication1
 
             // Access correct table
             var logQuery = context
-                .CreateQuery&lt;logentry&gt;(&quot;SyncTable&quot;)
-                .Where(l =&gt; l.PartitionKey == &quot;X&quot; &amp;&amp; l.RowKey == &quot;1&quot;)
+                .CreateQuery&lt;logentry&gt;("SyncTable")
+                .Where(l =&gt; l.PartitionKey == "X" &amp;&amp; l.RowKey == "1")
                 .AsTableServiceQuery();
             var logs = logQuery.Execute();
             Console.WriteLine(logs.Count());
@@ -250,15 +250,15 @@ namespace ConsoleApplication1
             try
             {
                 logQuery = context
-                    .CreateQuery&lt;logentry&gt;(&quot;SyncTable&quot;)
-                    .Where(l =&gt; l.PartitionKey == &quot;X&quot; &amp;&amp; l.RowKey == &quot;3&quot;)
+                    .CreateQuery&lt;logentry&gt;("SyncTable")
+                    .Where(l =&gt; l.PartitionKey == "X" &amp;&amp; l.RowKey == "3")
                     .AsTableServiceQuery();
                 logs = logQuery.Execute();
                 Console.WriteLine(logs.Count());
             }
             catch
             {
-                Console.WriteLine(&quot;Exception while accessing table&quot;);
+                Console.WriteLine("Exception while accessing table");
             }
         }
     }

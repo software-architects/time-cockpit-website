@@ -1,14 +1,18 @@
+{% if page.path contains "/de/" %}
+{% assign languagePath = "/de/" %}
+{% assign tryNowText = "Jetzt testen" %}
+{% else %}
+{% assign languagePath = "/" %}
+{% assign tryNowText = "Try it now" %}
+{% endif %}
+
 <div class="header">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6">
-				{% if page.path contains "/de/" %}
-				<a class="site-title" href="{{ site.baseurl }}/de/">{% include timecockpit-logo-white.svg %}</a>
-				{% else %}
-				<a class="site-title" href="{{ site.baseurl }}/">{% include timecockpit-logo-white.svg %}</a>
-				{% endif %}
+			<div class="col-xs-6 col-sm-6">
+				<a class="tc-logo" href="{{ site.baseurl }}{{ languagePath }}">{% include timecockpit-logo-white.svg %}</a>
 			</div>
-			<div class="col-sm-6 header-side-menu text-right">
+			<div class="col-xs-6 col-sm-6 header-side-menu text-right">
 				{% if page.path contains "/de/" %}
 				<a href="{{ site.baseurl }}/">English</a>
 				{% else %}
@@ -58,7 +62,7 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="{{ site.baseurl }}/de/create-trial-account">Jetzt testen</a></li>
+					<li><a class="tc-action-button" href="{{ site.baseurl }}{{ languagePath }}create-trial-account">{{ tryNowText }}<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></a></li>
 				</ul>
 			</div>
 		</div>

@@ -62,15 +62,15 @@ namespace BeeBook.Mobile
         protected abstract IReadOnlyList&lt;string&gt; GenerateSqlDemoDataInserts();
         protected virtual string GenerateSqlNumberOfHives()
         {
-            return &quot;SELECT COUNT(*) FROM Hive;&quot;;
+            return "SELECT COUNT(*) FROM Hive;";
         }
         protected virtual string GenerateSqlGetAllHives()
         {
-            return &quot;SELECT * FROM Hive;&quot;;
+            return "SELECT * FROM Hive;";
         }
         protected virtual string GenerateSqlGetHiveById(int hiveId)
         {
-            return string.Format(&quot;SELECT * FROM Hive WHERE Id = {0};&quot;, hiveId);
+            return string.Format("SELECT * FROM Hive WHERE Id = {0};", hiveId);
         }
 
         public async Task CreateOrUpdateSchema()
@@ -110,10 +110,10 @@ namespace BeeBook.Mobile
                 command.CommandText = this.GenerateSqlGetAllHives();
                 using (var reader = await command.ExecuteReaderAsync())
                 {
-                    var idOrdinal = reader.GetOrdinal(&quot;Id&quot;);
-                    var hiveNameOrdinal = reader.GetOrdinal(&quot;hiveName&quot;);
-                    var latOrdinal  = reader.GetOrdinal(&quot;lat&quot;);
-                    var longOrdinal = reader.GetOrdinal(&quot;long&quot;);
+                    var idOrdinal = reader.GetOrdinal("Id");
+                    var hiveNameOrdinal = reader.GetOrdinal("hiveName");
+                    var latOrdinal  = reader.GetOrdinal("lat");
+                    var longOrdinal = reader.GetOrdinal("long");
                     while (await reader.ReadAsync())
                     {
                         result.Add(new Hive()
@@ -140,10 +140,10 @@ namespace BeeBook.Mobile
                 {
                     if (await reader.ReadAsync())
                     {
-                        var idOrdinal = reader.GetOrdinal(&quot;Id&quot;);
-                        var hiveNameOrdinal = reader.GetOrdinal(&quot;hiveName&quot;);
-                        var latOrdinal = reader.GetOrdinal(&quot;lat&quot;);
-                        var longOrdinal = reader.GetOrdinal(&quot;long&quot;);
+                        var idOrdinal = reader.GetOrdinal("Id");
+                        var hiveNameOrdinal = reader.GetOrdinal("hiveName");
+                        var latOrdinal = reader.GetOrdinal("lat");
+                        var longOrdinal = reader.GetOrdinal("long");
                         result = new Hive()
                         {
                             Id = reader.GetInt32(idOrdinal),
@@ -214,7 +214,7 @@ namespace BeeBook.Mobile
                 this.CheckDisposed();
                 return Path.Combine(
                     System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal),
-                    &quot;hives.db3&quot;);
+                    "hives.db3");
             }
         }
 
@@ -236,34 +236,34 @@ namespace BeeBook.Mobile
             }
 
             // Create connection and open it async
-            this.Connection = new SqliteConnection(string.Format(&quot;Data Source={0}&quot;, this.DatabaseFileLocation));
+            this.Connection = new SqliteConnection(string.Format("Data Source={0}", this.DatabaseFileLocation));
             await this.Connection.OpenAsync();
         }
 
         protected override string GenerateSqlHiveTableCreate()
         {
-            return &quot;CREATE TABLE IF NOT EXISTS Hive ( Id INTEGER CONSTRAINT PK_Hive PRIMARY KEY ASC AUTOINCREMENT, hiveName TEXT, lat REAL, long REAL );&quot;;
+            return "CREATE TABLE IF NOT EXISTS Hive ( Id INTEGER CONSTRAINT PK_Hive PRIMARY KEY ASC AUTOINCREMENT, hiveName TEXT, lat REAL, long REAL );";
         }
 
         protected override IReadOnlyList&lt;string&gt; GenerateSqlDemoDataInserts()
         {
             return new[] {
-                &quot;INSERT INTO Hive ( hiveName, lat, long ) values ( 'Nähe Rapsfeld', 48.279381, 14.239203 )&quot;,
-                &quot;INSERT INTO Hive ( hiveName, lat, long ) values ( 'Kürnbergerwald', 48.285819, 14.2355 )&quot;
+                "INSERT INTO Hive ( hiveName, lat, long ) values ( 'Nähe Rapsfeld', 48.279381, 14.239203 )",
+                "INSERT INTO Hive ( hiveName, lat, long ) values ( 'Kürnbergerwald', 48.285819, 14.2355 )"
             };
         }
 
         protected override string GenerateSqlNumberOfHives()
         {
-            return &quot;SELECT COUNT(*) FROM Hive;&quot;;
+            return "SELECT COUNT(*) FROM Hive;";
         }
         protected override string GenerateSqlGetAllHives()
         {
-            return &quot;SELECT * FROM Hive;&quot;;
+            return "SELECT * FROM Hive;";
         }
         protected override string GenerateSqlGetHiveById(int hiveId)
         {
-            return string.Format(&quot;SELECT * FROM Hive WHERE Id = {0};&quot;, hiveId);
+            return string.Format("SELECT * FROM Hive WHERE Id = {0};", hiveId);
         }
 
     }
@@ -302,7 +302,7 @@ namespace BeeBook.Mobile
             itemTextView.Click += (o, e) =&gt;
             {
                 var hiveDetailsActivity = new Intent(this.inflater.Context, typeof(HiveDetails));
-                hiveDetailsActivity.PutExtra(&quot;Id&quot;, item.Id);
+                hiveDetailsActivity.PutExtra("Id", item.Id);
                 this.inflater.Context.StartActivity(hiveDetailsActivity);
             };
 
@@ -325,11 +325,11 @@ using System.Threading.Tasks;
 
 namespace BeeHive.Mobile
 {
-    [Activity(Label = &quot;BeeHive.Mobile&quot;, MainLauncher = true)]
+    [Activity(Label = "BeeHive.Mobile", MainLauncher = true)]
     public class MainActivity : ListActivity
     {
         private static readonly MobileServiceClient MobileService =
-            new MobileServiceClient(&quot;https://myaccount.azure-mobile.net/&quot;, &quot;mykey&quot;);
+            new MobileServiceClient("https://myaccount.azure-mobile.net/", "mykey");
 
         protected override async void OnCreate(Bundle bundle)
         {
@@ -388,11 +388,11 @@ using System.Threading.Tasks;
 
 namespace BeeHive.Mobile
 {
-    [Activity(Label = &quot;BeeHive.Mobile&quot;, MainLauncher = true)]
+    [Activity(Label = "BeeHive.Mobile", MainLauncher = true)]
     public class MainActivity : ListActivity
     {
         private static readonly MobileServiceClient MobileService =
-            new MobileServiceClient(&quot;https://youraccount.azure-mobile.net/&quot;, &quot;yourkey&quot;);
+            new MobileServiceClient("https://youraccount.azure-mobile.net/", "yourkey");
 
         protected override async void OnCreate(Bundle bundle)
         {
@@ -449,7 +449,7 @@ using BeeHive.Mobile;
 
 namespace BeeBook.Mobile
 {
-    [Activity(Label = &quot;Hive Details&quot;)]
+    [Activity(Label = "Hive Details")]
     public class HiveDetails : Activity
     {
         protected override async void OnCreate(Bundle bundle)
@@ -457,7 +457,7 @@ namespace BeeBook.Mobile
             base.OnCreate(bundle);
             this.SetContentView(Resource.Layout.HiveDetails);
 
-            var hiveId = this.Intent.GetIntExtra(&quot;Id&quot;, -1);
+            var hiveId = this.Intent.GetIntExtra("Id", -1);
             if (hiveId != (-1))
             {
                 var hive = await BeeBookDatabase.Current.GetHiveById(hiveId);
@@ -469,7 +469,7 @@ namespace BeeBook.Mobile
     
                     this.FindViewById&lt;Button&gt;(Resource.Id.DisplayLocation).Click += (s, e) =&gt;
                         {
-                            var uriString = string.Format(&quot;https://maps.google.com/maps?q=loc:{0}+{1}&quot;, hive.Lat, hive.Long);
+                            var uriString = string.Format("https://maps.google.com/maps?q=loc:{0}+{1}", hive.Lat, hive.Long);
                             var uri = Android.Net.Uri.Parse(uriString);
                             var intent = new Intent(Intent.ActionView, uri);
                             this.StartActivity(intent);

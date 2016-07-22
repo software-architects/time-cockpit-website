@@ -231,12 +231,12 @@ private BugBustersDataContext db;
 public void TimeTrackingConstraintsTestInitialize()
 {
     string connString = ConfigurationManager.
-      ConnectionStrings[&quot;TestDatabase&quot;].ConnectionString;
+      ConnectionStrings["TestDatabase"].ConnectionString;
     db = new BugBustersDataContext(ConfigurationManager.
-      ConnectionStrings[&quot;TestDatabase&quot;].ConnectionString);
+      ConnectionStrings["TestDatabase"].ConnectionString);
     db.Connection.Open();
     var cmd = new SqlCommand(ConfigurationManager.
-      AppSettings[&quot;TestDatabaseInitializationScript&quot;], 
+      AppSettings["TestDatabaseInitializationScript"], 
       (SqlConnection)db.Connection);
     cmd.ExecuteNonQuery();
     db.Connection.Close();
@@ -265,7 +265,7 @@ public void AddSingleRow()
     tt.User = db.Users.First();
     tt.StartTime = startTime;
     tt.EndTime = startTime + duration;
-    tt.Comment = &quot;This is a test case generated during unit testing!&quot;;
+    tt.Comment = "This is a test case generated during unit testing!";
     db.SubmitChanges();
 
     Assert.AreEqual(numberOfRecords + 1, db.TimeTrackings.Count());
@@ -292,7 +292,7 @@ public void EndBeforeStart()
     catch (Exception ex)
     {
         Assert.IsInstanceOfType(ex, typeof(ApplicationException));
-        Assert.AreEqual(&quot;StartTime must be lower than EndTime!&quot;, ex.Message);
+        Assert.AreEqual("StartTime must be lower than EndTime!", ex.Message);
         exception = true;
     }
 
@@ -317,7 +317,7 @@ namespace BugBusters.Data
             {
                 if (StartTime &gt;= EndTime)
                     throw new ApplicationException(
-                      &quot;StartTime must be lower than EndTime!&quot;);
+                      "StartTime must be lower than EndTime!");
             }
         }
     }
@@ -387,7 +387,7 @@ private abstract class Screen : IDisposable
     public Screen(string url, bool attach)
     {
         ie = attach ? IE.AttachToIE(Find.ByUrl(url)) : new IE(url);
-        Assert.IsFalse(ie.Html.Contains(&quot;Runtime Error&quot;));
+        Assert.IsFalse(ie.Html.Contains("Runtime Error"));
         if (this is IAssertable)
             ((IAssertable)this).AssertControls();
     }
@@ -405,8 +405,8 @@ private abstract class Screen : IDisposable
     }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Based on this helper class we define <span class="InlineCode">OverviewScreen</span>. A very basic first version (not complete!) looks like this (you can take a look at the complete implementation in the sample code which you can download below):</p><p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">Note the property <span class="InlineCode">LoginFilter</span>. Properties like this make tests a lot easier to read and write!<br /> If you want to build your tests similar to how we do it, you will have to write a lot of those properties. To make life easier we wrote a short but useful C# snippet for creating such properties.<br /> [<a href="{{site.baseurl}}/content/images/blog/2008/03/SnippetForWatiNControlProperty.zip">Download the snippet</a>].</p>{% highlight javascript %}private class OverviewScreen : Screen, IAssertable
 {
-    private const string url = &quot;http:// localhost /BugBustersWeb/Default.aspx&quot;;
-    private const string Control_WindowsLoginFilter = &quot;lstUsers&quot;;
+    private const string url = "http:// localhost /BugBustersWeb/Default.aspx";
+    private const string Control_WindowsLoginFilter = "lstUsers";
     // Constants for all control IDs and other constants that may change often
     // ...
 
@@ -435,15 +435,15 @@ private abstract class Screen : IDisposable
         throw new NotImplementedException();
     }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">After adding the complete implementation of <span class="InlineCode">OverviewScreen</span> including all helper properties we can go on and write the test method. Note that we have still not written a single line of ASP.NET code. We are doing real TDD here! The test code is quite readable, isn't it?</p>{% highlight javascript %}[TestMethod]
-[AspNetDevelopmentServer(&quot;localhost&quot;, @&quot;C:\Data\...\Applications\BugBusters.Web&quot;)]
+[AspNetDevelopmentServer("localhost", @"C:\Data\...\Applications\BugBusters.Web")]
 public void Overview_Launch()
 {
     using (var screen = new OverviewScreen(DevServer))
     {
         // Check that login filter contains the correct number of items 
-        // (number of rows in db plus &quot;All&quot;);
+        // (number of rows in db plus "All");
         Assert.AreEqual(db.Users.Count() + 1, screen.LoginFilter.AllContents.Count);
-        // Check that item &quot;All&quot; is present
+        // Check that item "All" is present
         Assert.IsTrue(screen.LoginFilter.AllContents.Contains
           (OverviewScreen.FilterItem_All));
 
@@ -452,7 +452,7 @@ public void Overview_Launch()
         // Table has to have 8 columns
         Assert.AreEqual(OverviewScreen.NumberOfResultColumns,
             screen.ResultGrid.TableRows[0].Elements.Cast&lt;Element&gt;().
-              Count(elem =&gt; elem.TagName == &quot;TH&quot;));
+              Count(elem =&gt; elem.TagName == "TH"));
     }
 }{% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">
   <img alt="UI unit test failed" src="{{site.baseurl}}/content/images/blog/2008/03/WebTestRunFailedLarge.png" class="  " />
@@ -471,7 +471,7 @@ public void Overview_Filter()
 {
     using (var screen = new OverviewScreen())
     {
-        // iterate over all users in the database plus &quot;All&quot;
+        // iterate over all users in the database plus "All"
         foreach (var user in (new string[] { OverviewScreen.FilterItem_All }).
           Union(from u in db.Users select u.WindowsLogin))
         {
@@ -580,7 +580,7 @@ public void AddEntry_CancelYes()
                 confirm.WaitUntilExists();
                 confirm.CancelButton.Click();
                 screen.ie.WaitForComplete();
-            } {% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">In the second case we simulate a click on "OK" in the confirmation box. The user has to return to the "Overview" screen.</p>{% highlight javascript %}            // click cancel and then YES -&gt; must return to &quot;Overview&quot; screen
+            } {% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">In the second case we simulate a click on "OK" in the confirmation box. The user has to return to the "Overview" screen.</p>{% highlight javascript %}            // click cancel and then YES -&gt; must return to "Overview" screen
             using (new UseDialogOnce(screen.ie.DialogWatcher, confirm))
             {
                 screen.CancelLink.ClickNoWait();

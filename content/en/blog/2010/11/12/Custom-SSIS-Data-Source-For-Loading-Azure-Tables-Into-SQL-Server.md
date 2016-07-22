@@ -40,15 +40,15 @@ namespace TableStorageSsisSource
   {
    switch (type)
    {
-    case &quot;Edm.String&quot;: return typeof(string);
-    case &quot;Edm.Int32&quot;: return typeof(int);
-    case &quot;Edm.Int64&quot;: return typeof(long);
-    case &quot;Edm.Double&quot;: return typeof(double);
-    case &quot;Edm.Boolean&quot;: return typeof(bool);
-    case &quot;Edm.DateTime&quot;: return typeof(DateTime);
-    case &quot;Edm.Binary&quot;: return typeof(byte[]);
-    case &quot;Edm.Guid&quot;: return typeof(Guid);
-    default: throw new NotSupportedException(string.Format(&quot;Unsupported data type {0}&quot;, type));
+    case "Edm.String": return typeof(string);
+    case "Edm.Int32": return typeof(int);
+    case "Edm.Int64": return typeof(long);
+    case "Edm.Double": return typeof(double);
+    case "Edm.Boolean": return typeof(bool);
+    case "Edm.DateTime": return typeof(DateTime);
+    case "Edm.Binary": return typeof(byte[]);
+    case "Edm.Guid": return typeof(Guid);
+    default: throw new NotSupportedException(string.Format("Unsupported data type {0}", type));
    }
   }
 
@@ -56,15 +56,15 @@ namespace TableStorageSsisSource
   {
    switch (type)
    {
-    case &quot;Edm.String&quot;: return DataType.DT_NTEXT;
-    case &quot;Edm.Binary&quot;: return DataType.DT_IMAGE;
-    case &quot;Edm.Int32&quot;: return DataType.DT_I4;
-    case &quot;Edm.Int64&quot;: return DataType.DT_I8;
-    case &quot;Edm.Boolean&quot;: return DataType.DT_BOOL;
-    case &quot;Edm.DateTime&quot;: return DataType.DT_DATE;
-    case &quot;Edm.Guid&quot;: return DataType.DT_GUID;
-    case &quot;Edm.Double&quot;: return DataType.DT_R8;
-    default: throw new NotSupportedException(string.Format(&quot;Unsupported data type {0}&quot;, type));
+    case "Edm.String": return DataType.DT_NTEXT;
+    case "Edm.Binary": return DataType.DT_IMAGE;
+    case "Edm.Int32": return DataType.DT_I4;
+    case "Edm.Int64": return DataType.DT_I8;
+    case "Edm.Boolean": return DataType.DT_BOOL;
+    case "Edm.DateTime": return DataType.DT_DATE;
+    case "Edm.Guid": return DataType.DT_GUID;
+    case "Edm.Double": return DataType.DT_R8;
+    default: throw new NotSupportedException(string.Format("Unsupported data type {0}", type));
    }
   }
 
@@ -80,7 +80,7 @@ namespace TableStorageSsisSource
     case DataType.DT_I2: return Int32.Parse(valueAsString);
     case DataType.DT_I4: return Int64.Parse(valueAsString);
     case DataType.DT_R8: return double.Parse(valueAsString);
-    default: throw new NotSupportedException(string.Format(&quot;Unsupported data type {0}&quot;, dtsType));
+    default: throw new NotSupportedException(string.Format("Unsupported data type {0}", dtsType));
    }
   }
  }
@@ -149,9 +149,9 @@ namespace TableStorageSsisSource
    return this.CreateQuery&lt;GenericEntity&gt;(tableName).FirstOrDefault();
   }
 
-  private static readonly XNamespace AtomNamespace = &quot;http://www.w3.org/2005/Atom&quot;;
-  private static readonly XNamespace AstoriaDataNamespace = &quot;http://schemas.microsoft.com/ado/2007/08/dataservices&quot;;
-  private static readonly XNamespace AstoriaMetadataNamespace = &quot;http://schemas.microsoft.com/ado/2007/08/dataservices/metadata&quot;;
+  private static readonly XNamespace AtomNamespace = "http://www.w3.org/2005/Atom";
+  private static readonly XNamespace AstoriaDataNamespace = "http://schemas.microsoft.com/ado/2007/08/dataservices";
+  private static readonly XNamespace AstoriaMetadataNamespace = "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata";
 
   private void GenericTableContext_ReadingEntity(object sender, ReadingWritingEntityEventArgs e)
   {
@@ -159,15 +159,15 @@ namespace TableStorageSsisSource
    if (entity != null)
    {
     e.Data
-     .Element(AtomNamespace + &quot;content&quot;)
-     .Element(AstoriaMetadataNamespace + &quot;properties&quot;)
+     .Element(AtomNamespace + "content")
+     .Element(AstoriaMetadataNamespace + "properties")
      .Elements()
      .Select(p =&gt;
       new
       {
        Name = p.Name.LocalName,
-       IsNull = string.Equals(&quot;true&quot;, p.Attribute(AstoriaMetadataNamespace + &quot;null&quot;) == null ? null : p.Attribute(AstoriaMetadataNamespace + &quot;null&quot;).Value, StringComparison.OrdinalIgnoreCase),
-       TypeName = p.Attribute(AstoriaMetadataNamespace + &quot;type&quot;) == null ? null : p.Attribute(AstoriaMetadataNamespace + &quot;type&quot;).Value,
+       IsNull = string.Equals("true", p.Attribute(AstoriaMetadataNamespace + "null") == null ? null : p.Attribute(AstoriaMetadataNamespace + "null").Value, StringComparison.OrdinalIgnoreCase),
+       TypeName = p.Attribute(AstoriaMetadataNamespace + "type") == null ? null : p.Attribute(AstoriaMetadataNamespace + "type").Value,
        p.Value
       })
      .Select(dp =&gt; new Column(dp.Name, dp.TypeName, dp.Value.ToString()))
@@ -183,7 +183,7 @@ using Microsoft.WindowsAzure;
 
 namespace TableStorageSsisSource
 {
- [DtsPipelineComponent(DisplayName = &quot;Azure Table Storage Source&quot;, ComponentType = ComponentType.SourceAdapter)]
+ [DtsPipelineComponent(DisplayName = "Azure Table Storage Source", ComponentType = ComponentType.SourceAdapter)]
  public class TableStorageSsisSource : PipelineComponent
  {
   public override void ProvideComponentProperties()
@@ -194,17 +194,17 @@ namespace TableStorageSsisSource
 
    // Add output
    IDTSOutput100 output = ComponentMetaData.OutputCollection.New();
-   output.Name = &quot;Output&quot;;
+   output.Name = "Output";
 
    // Properties
    var storageConnectionStringProperty = this.ComponentMetaData.CustomPropertyCollection.New();
-   storageConnectionStringProperty.Name = &quot;StorageConnectionString&quot;;
-   storageConnectionStringProperty.Description = &quot;Azure storage connection string&quot;;
-   storageConnectionStringProperty.Value = &quot;UseDevelopmentStorage=true&quot;;
+   storageConnectionStringProperty.Name = "StorageConnectionString";
+   storageConnectionStringProperty.Description = "Azure storage connection string";
+   storageConnectionStringProperty.Value = "UseDevelopmentStorage=true";
 
    var tableNameProperty = this.ComponentMetaData.CustomPropertyCollection.New();
-   tableNameProperty.Name = &quot;TableName&quot;;
-   tableNameProperty.Description = &quot;Name of the source table&quot;;
+   tableNameProperty.Name = "TableName";
+   tableNameProperty.Description = "Name of the source table";
    tableNameProperty.Value = string.Empty;
   }
 
@@ -212,8 +212,8 @@ namespace TableStorageSsisSource
   {
    var resultingColumn = base.SetComponentProperty(propertyName, propertyValue);
 
-   var storageConnectionString = (string)this.ComponentMetaData.CustomPropertyCollection[&quot;StorageConnectionString&quot;].Value;
-   var tableName = (string)this.ComponentMetaData.CustomPropertyCollection[&quot;TableName&quot;].Value;
+   var storageConnectionString = (string)this.ComponentMetaData.CustomPropertyCollection["StorageConnectionString"].Value;
+   var tableName = (string)this.ComponentMetaData.CustomPropertyCollection["TableName"].Value;
 
    if (!string.IsNullOrEmpty(storageConnectionString) &amp;&amp; !string.IsNullOrEmpty(tableName))
    {
@@ -248,7 +248,7 @@ namespace TableStorageSsisSource
    this.columnInformation = new List&lt;ColumnInfo&gt;();
    IDTSOutput100 output = ComponentMetaData.OutputCollection[0];
 
-   var cloudStorageAccount = CloudStorageAccount.Parse((string)this.ComponentMetaData.CustomPropertyCollection[&quot;StorageConnectionString&quot;].Value);
+   var cloudStorageAccount = CloudStorageAccount.Parse((string)this.ComponentMetaData.CustomPropertyCollection["StorageConnectionString"].Value);
    context = new GenericTableContext(cloudStorageAccount.TableEndpoint.AbsoluteUri, cloudStorageAccount.Credentials);
 
    foreach (IDTSOutputColumn100 col in output.OutputColumnCollection)
@@ -265,7 +265,7 @@ namespace TableStorageSsisSource
    IDTSOutput100 output = ComponentMetaData.OutputCollection[0];
    PipelineBuffer buffer = buffers[0];
 
-   foreach (var item in this.context.CreateQuery&lt;GenericEntity&gt;((string)this.ComponentMetaData.CustomPropertyCollection[&quot;TableName&quot;].Value))
+   foreach (var item in this.context.CreateQuery&lt;GenericEntity&gt;((string)this.ComponentMetaData.CustomPropertyCollection["TableName"].Value))
    {
     buffer.AddRow();
 

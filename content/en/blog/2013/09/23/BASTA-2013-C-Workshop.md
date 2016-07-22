@@ -9,8 +9,8 @@ lang: en
 permalink: /blog/2013/09/23/BASTA-2013-C-Workshop
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">Meine Vorträge auf der <a href="http://www.basta.net" target="_blank">BASTA 2013</a> starten heute mit einem ganztägigen C# Workshop. In diesem Blogartikel stelle ich Unterlagen und Links, die ich dabei verwende, zur Verfügung.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Slidedeck</h2><p xmlns="http://www.w3.org/1999/xhtml">You can download the entire <a href="{{site.baseurl}}/content/images/blog/2013/09/BASTA 2013 - CSharp Workshop.pdf" target="_blank">slidedeck in PDF</a> format. At the end of the workshop I will also publish the slides in my Slideshare account for online viewing.</p><h2 xmlns="http://www.w3.org/1999/xhtml">NuGet Sample</h2><p xmlns="http://www.w3.org/1999/xhtml">One of the topics we cover in the workshop is NuGet. If you want to follow my sample you can use the following code snippet (.nuspec file) so you do not have to type XML by hand:</p>{% highlight javascript %}&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
-&lt;package xmlns=&quot;http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd&quot;&gt;
+<p xmlns="http://www.w3.org/1999/xhtml">Meine Vorträge auf der <a href="http://www.basta.net" target="_blank">BASTA 2013</a> starten heute mit einem ganztägigen C# Workshop. In diesem Blogartikel stelle ich Unterlagen und Links, die ich dabei verwende, zur Verfügung.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Slidedeck</h2><p xmlns="http://www.w3.org/1999/xhtml">You can download the entire <a href="{{site.baseurl}}/content/images/blog/2013/09/BASTA 2013 - CSharp Workshop.pdf" target="_blank">slidedeck in PDF</a> format. At the end of the workshop I will also publish the slides in my Slideshare account for online viewing.</p><h2 xmlns="http://www.w3.org/1999/xhtml">NuGet Sample</h2><p xmlns="http://www.w3.org/1999/xhtml">One of the topics we cover in the workshop is NuGet. If you want to follow my sample you can use the following code snippet (.nuspec file) so you do not have to type XML by hand:</p>{% highlight javascript %}&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd"&gt;
     &lt;metadata&gt;
         &lt;id&gt;Basta.ToolLib&lt;/id&gt;
         &lt;version&gt;1.0.0&lt;/version&gt;
@@ -21,25 +21,25 @@ permalink: /blog/2013/09/23/BASTA-2013-C-Workshop
         &lt;description&gt;...&lt;/description&gt;
         &lt;releaseNotes&gt;&lt;/releaseNotes&gt;
         &lt;!--&lt;dependencies&gt;
-            &lt;group targetFramework=&quot;.NETFramework4.0&quot;&gt;
-                &lt;dependency id=&quot;Dependency&quot; version=&quot;[1.0.0]&quot; /&gt;
+            &lt;group targetFramework=".NETFramework4.0"&gt;
+                &lt;dependency id="Dependency" version="[1.0.0]" /&gt;
             &lt;/group&gt;
         &lt;/dependencies&gt;--&gt;
         &lt;frameworkAssemblies&gt;
-            &lt;frameworkAssembly assemblyName=&quot;System.ComponentModel.Composition&quot; targetFramework=&quot;net40&quot; /&gt;
+            &lt;frameworkAssembly assemblyName="System.ComponentModel.Composition" targetFramework="net40" /&gt;
         &lt;/frameworkAssemblies&gt;
     &lt;/metadata&gt;
 
     &lt;files&gt;
         &lt;!-- net4 --&gt;
-        &lt;file src=&quot;bin\Debug\ToolsLib.dll&quot; target=&quot;lib\net4&quot; /&gt;
-        &lt;file src=&quot;bin\Debug\ToolsLib.pdb&quot; target=&quot;lib\net4&quot; /&gt;
+        &lt;file src="bin\Debug\ToolsLib.dll" target="lib\net4" /&gt;
+        &lt;file src="bin\Debug\ToolsLib.pdb" target="lib\net4" /&gt;
 
         &lt;!-- include source code  for symbols --&gt;
-        &lt;file src=&quot;*.cs&quot; target=&quot;src\ToolsLib&quot; /&gt;
+        &lt;file src="*.cs" target="src\ToolsLib" /&gt;
 
-        &lt;file src=&quot;content\app.config.transform&quot; target=&quot;content\&quot; /&gt;
-        &lt;file src=&quot;content\Tool1.cs.pp&quot; target=&quot;content\&quot; /&gt;
+        &lt;file src="content\app.config.transform" target="content\" /&gt;
+        &lt;file src="content\Tool1.cs.pp" target="content\" /&gt;
     &lt;/files&gt;
 &lt;/package&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Here are the two (very simple) content files. The first one is <em>Tool1.cs.pp</em>, the second one <em>app.config.transform</em>:</p><p xmlns="http://www.w3.org/1999/xhtml">
   <f:function name="Composite.Web.Html.SyntaxHighlighter" xmlns:f="http://www.composite.net/ns/function/1.0">
@@ -48,7 +48,7 @@ permalink: /blog/2013/09/23/BASTA-2013-C-Workshop
   </f:function>
   {% highlight javascript %}&lt;configuration&gt;
     &lt;appSettings&gt;
-        &lt;add key=&quot;ToolPath&quot; value=&quot;c:\temp&quot; /&gt;
+        &lt;add key="ToolPath" value="c:\temp" /&gt;
     &lt;/appSettings&gt;
 &lt;/configuration&gt;{% endhighlight %}
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">MAF (Managed Addin Framework aka System.Addin)</h2><p xmlns="http://www.w3.org/1999/xhtml">In the morning we will also speak about MEF vs. MAF. The example I use to demonstrate MAF is a modified and upgraded (to .NET 4.5) version of Microsoft's original <a href="http://clraddins.codeplex.com/wikipage?title=Samples&amp;referringTitle=Home" target="_blank">WPF Calculator</a> sample. If you want to play with my version of the sample, you can <a href="{{site.baseurl}}/content/images/blog/2013/09/WPF Calculator.zip" target="_blank">download it here</a>.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Update 2013-09-24: Live-Coding Sample, Missing Answer</h2><p xmlns="http://www.w3.org/1999/xhtml">In the afternoon I have built a <em>async/await</em> WPF application following the MVVM design principle. Some people asked me to publish the live coded sample. <a href="{{site.baseurl}}/content/images/blog/2013/09/AsyncAwaitFullClientUI.zip" target="_blank">Here it is</a>. If you don't want to download the whole sample and you just want to look at the async view model we have built, here is the C# code followed by the XAML view:</p>{% highlight javascript %}using AsyncAwaitFullClientUI.Data;
@@ -148,30 +148,30 @@ namespace AsyncAwaitFullClientUI
             }
         }
     }
-}{% endhighlight %}{% highlight javascript %}&lt;Window x:Class=&quot;AsyncAwaitFullClientUI.MainWindow&quot;
-        xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
-        xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
-        Title=&quot;MainWindow&quot; Height=&quot;350&quot; Width=&quot;525&quot;&gt;
+}{% endhighlight %}{% highlight javascript %}&lt;Window x:Class="AsyncAwaitFullClientUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525"&gt;
     &lt;Grid&gt;
         &lt;Grid.RowDefinitions&gt;
-            &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
-            &lt;RowDefinition Height=&quot;*&quot; /&gt;
+            &lt;RowDefinition Height="Auto" /&gt;
+            &lt;RowDefinition Height="*" /&gt;
         &lt;/Grid.RowDefinitions&gt;
         &lt;Grid.ColumnDefinitions&gt;
-            &lt;ColumnDefinition Width=&quot;Auto&quot; /&gt; &lt;!-- Find sensors button --&gt;
-            &lt;ColumnDefinition Width=&quot;Auto&quot; /&gt; &lt;!-- Cancel button --&gt;
-            &lt;ColumnDefinition Width=&quot;*&quot; /&gt;    &lt;!-- Progress bar --&gt;
+            &lt;ColumnDefinition Width="Auto" /&gt; &lt;!-- Find sensors button --&gt;
+            &lt;ColumnDefinition Width="Auto" /&gt; &lt;!-- Cancel button --&gt;
+            &lt;ColumnDefinition Width="*" /&gt;    &lt;!-- Progress bar --&gt;
         &lt;/Grid.ColumnDefinitions&gt;
         
-        &lt;Button Content=&quot;Find Sensors&quot; Margin=&quot;5&quot;
-                Command=&quot;{Binding Path=FindAllSensorsCommand}&quot;/&gt;
-        &lt;Button Grid.Column=&quot;1&quot; Content=&quot;Cancel&quot; Margin=&quot;5&quot;
-                Command=&quot;{Binding Path=CancelCommand}&quot; /&gt;
-        &lt;ProgressBar Grid.Column=&quot;2&quot; Margin=&quot;5&quot;
-                     Minimum=&quot;0&quot; Maximum=&quot;100&quot; Value=&quot;{Binding Path=Progress}&quot; /&gt;
+        &lt;Button Content="Find Sensors" Margin="5"
+                Command="{Binding Path=FindAllSensorsCommand}"/&gt;
+        &lt;Button Grid.Column="1" Content="Cancel" Margin="5"
+                Command="{Binding Path=CancelCommand}" /&gt;
+        &lt;ProgressBar Grid.Column="2" Margin="5"
+                     Minimum="0" Maximum="100" Value="{Binding Path=Progress}" /&gt;
         
-        &lt;DataGrid Grid.Row=&quot;1&quot; Grid.ColumnSpan=&quot;3&quot; Margin=&quot;5,0,5,5&quot;
-                  ItemsSource=&quot;{Binding Path=Sensors}&quot;/&gt;
+        &lt;DataGrid Grid.Row="1" Grid.ColumnSpan="3" Margin="5,0,5,5"
+                  ItemsSource="{Binding Path=Sensors}"/&gt;
     &lt;/Grid&gt;
 &lt;/Window&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Finally I forgot to answer a question I was asked. Sorry for that. I promised during the workshop I would but time was running and so I didn't remember this todo. Someone asked me how to use <em>await</em> to wait for two tasks which run in parallel. The answer is <em>Task.WhenAll</em>. Here is a code snippet:</p>{% highlight javascript %}using System;
 using System.Threading.Tasks;

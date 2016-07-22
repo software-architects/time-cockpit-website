@@ -9,7 +9,7 @@ lang: en
 permalink: /blog/2010/03/31/Using-LINQ-in-IronPython-26
 ---
 
-<h2 xmlns="http://www.w3.org/1999/xhtml">Update</h2><p xmlns="http://www.w3.org/1999/xhtml">Please see the <a href="~/blog/2012/01/22/Python-in-Time-Cockpit-17" title="updated version of this sample">updated version of this sample</a> for LINQ in more recent IronPython versions!</p><h2 xmlns="http://www.w3.org/1999/xhtml">Original Post</h2><p xmlns="http://www.w3.org/1999/xhtml">Up until (and including) our beta 2 release time cockpit used <a href="http://www.ironpython.net/" target="_blank">IronPython</a> 2.4 for executing scripts. When creating complex scripts we often had to iterate over collections and check for certain conditions or concatenate collections of strings. Whenever possible we try to solve such tasks using TCQL when selecting the source data from the data layer to pass most of the work on to the database.</p><p xmlns="http://www.w3.org/1999/xhtml">But as soon as the task required to operate on a set of <span class="InlineCode">EntityObject</span>s in memory we wanted to use <a href="http://msdn.microsoft.com/en-us/netframework/aa904594.aspx" target="_blank">LINQ</a> because of our daily use of .NET 4. Several times we tried and only partially succeeded when IronPython was unable to bind certain types of generic functions and raised <span class="InlineCode">Microsoft.Scripting.ArgumentTypeException: Multiple targets could match</span>. Most of these issues are resolved by the version bump to IronPython 2.6 and we are now able to write scripts like the following set of examples:</p>{% highlight javascript %}clr.AddReference(&quot;System.Core&quot;)
+<h2 xmlns="http://www.w3.org/1999/xhtml">Update</h2><p xmlns="http://www.w3.org/1999/xhtml">Please see the <a href="~/blog/2012/01/22/Python-in-Time-Cockpit-17" title="updated version of this sample">updated version of this sample</a> for LINQ in more recent IronPython versions!</p><h2 xmlns="http://www.w3.org/1999/xhtml">Original Post</h2><p xmlns="http://www.w3.org/1999/xhtml">Up until (and including) our beta 2 release time cockpit used <a href="http://www.ironpython.net/" target="_blank">IronPython</a> 2.4 for executing scripts. When creating complex scripts we often had to iterate over collections and check for certain conditions or concatenate collections of strings. Whenever possible we try to solve such tasks using TCQL when selecting the source data from the data layer to pass most of the work on to the database.</p><p xmlns="http://www.w3.org/1999/xhtml">But as soon as the task required to operate on a set of <span class="InlineCode">EntityObject</span>s in memory we wanted to use <a href="http://msdn.microsoft.com/en-us/netframework/aa904594.aspx" target="_blank">LINQ</a> because of our daily use of .NET 4. Several times we tried and only partially succeeded when IronPython was unable to bind certain types of generic functions and raised <span class="InlineCode">Microsoft.Scripting.ArgumentTypeException: Multiple targets could match</span>. Most of these issues are resolved by the version bump to IronPython 2.6 and we are now able to write scripts like the following set of examples:</p>{% highlight javascript %}clr.AddReference("System.Core")
 from TimeCockpit.Data import EntityObject
 from System.Linq import Enumerable
 from System import Func
@@ -17,16 +17,16 @@ from System import Int64
 from System import String
 
 # get all projects
-projects = Context.Select(&quot;From P In Project Select P&quot;)
+projects = Context.Select("From P In Project Select P")
 
 # filter (in memory) all projects with a name beginning with T
-resultProjectsWithT = Enumerable.ToList[EntityObject](Enumerable.Where(projects, lambda p: p.ProjectName.StartsWith(&quot;T&quot;)))
+resultProjectsWithT = Enumerable.ToList[EntityObject](Enumerable.Where(projects, lambda p: p.ProjectName.StartsWith("T")))
 
 # sort a collection
 resultSorted = Enumerable.ToList[EntityObject](Enumerable.OrderBy(projects, lambda p: p.StartDate))
 
 # pretty print a list of project names
-print String.Join(&quot;, &quot;, Enumerable.ToArray(Enumerable.Select(resultProjectsWithT, lambda p: p.ProjectName)))
+print String.Join(", ", Enumerable.ToArray(Enumerable.Select(resultProjectsWithT, lambda p: p.ProjectName)))
 
 # determine a minimum and maximum
 func = Func[object, Int64](lambda p: p.StartDate.Ticks)

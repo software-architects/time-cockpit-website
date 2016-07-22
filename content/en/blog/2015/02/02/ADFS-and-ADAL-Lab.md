@@ -51,8 +51,8 @@ namespace WebApp_WSFederation_DotNet
 {
     public partial class Startup
     {
-        private static string realm = ConfigurationManager.AppSettings[&quot;ida:Wtrealm&quot;];
-        private static string metadata = &quot;https://adfs.corp.adfssample.com/federationmetadata/2007-06/federationmetadata.xml&quot;;
+        private static string realm = ConfigurationManager.AppSettings["ida:Wtrealm"];
+        private static string metadata = "https://adfs.corp.adfssample.com/federationmetadata/2007-06/federationmetadata.xml";
 
         public void ConfigureAuth(IAppBuilder app)
         {
@@ -84,28 +84,28 @@ namespace OWIN_ADAL_ADFS_WebMVC
             app.UseActiveDirectoryFederationServicesBearerAuthentication(
                 new ActiveDirectoryFederationServicesBearerAuthenticationOptions
                 {
-                    MetadataEndpoint = ConfigurationManager.AppSettings[&quot;ida:MetadataEndpoint&quot;],
+                    MetadataEndpoint = ConfigurationManager.AppSettings["ida:MetadataEndpoint"],
                     TokenValidationParameters = new TokenValidationParameters()
                     {
-                        ValidAudience = ConfigurationManager.AppSettings[&quot;ida:Audience&quot;]
+                        ValidAudience = ConfigurationManager.AppSettings["ida:Audience"]
                     }
                 });
         }
     }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Next, we build a <strong>WPF</strong> (<em>Windows Presentation Foundation</em>) <strong>full client</strong> using Microsoft's ADAL (<em>Active Directory Authentication Library</em>) <a href="https://msdn.microsoft.com/en-us/library/azure/jj573266.aspx">for .NET</a>:</p>{% highlight javascript %}private async void Button_Click(object sender, RoutedEventArgs e)
 {
-    string authority = &quot;https://adfs.corp.adfssample.com/adfs&quot;;
-    string resourceURI = &quot;https://adfssample.com/OWIN-ADAL-ADFS-WebMVC&quot;;
-    string clientID = &quot;82A2A9DE-131B-4837-8472-EDE0561A0EF6&quot;;
-    string clientReturnURI = &quot;http://anarbitraryreturnuri/&quot;;
+    string authority = "https://adfs.corp.adfssample.com/adfs";
+    string resourceURI = "https://adfssample.com/OWIN-ADAL-ADFS-WebMVC";
+    string clientID = "82A2A9DE-131B-4837-8472-EDE0561A0EF6";
+    string clientReturnURI = "http://anarbitraryreturnuri/";
 
     var ac = new AuthenticationContext(authority, false);
     var ar = await ac.AcquireTokenAsync(resourceURI, clientID, new Uri(clientReturnURI), new AuthorizationParameters(PromptBehavior.Auto, new WindowInteropHelper(this).Handle));
 
     string authHeader = ar.CreateAuthorizationHeader();
     var client = new HttpClient();
-    var request = new HttpRequestMessage(HttpMethod.Get, &quot;https://localhost:44302/api/Values&quot;);
-    request.Headers.TryAddWithoutValidation(&quot;Authorization&quot;, authHeader);
+    var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:44302/api/Values");
+    request.Headers.TryAddWithoutValidation("Authorization", authHeader);
     var response = await client.SendAsync(request);
     string responseString = await response.Content.ReadAsStringAsync();
 
@@ -115,30 +115,30 @@ namespace OWIN_ADAL_ADFS_WebMVC
 </p><p xmlns="http://www.w3.org/1999/xhtml">Last but not least we look at a demo showing how this works in an <strong>ASP.NET MVC app</strong>:</p>{% highlight javascript %}public ActionResult About()
 {
     string authorizationUrl = string.Format(
-        &quot;https://adfs.corp.adfssample.com/adfs/oauth2/authorize?api-version=1.0&amp;response_type=code&amp;client_id={0}&amp;resource={1}&amp;redirect_uri={2}&quot;,
+        "https://adfs.corp.adfssample.com/adfs/oauth2/authorize?api-version=1.0&amp;response_type=code&amp;client_id={0}&amp;resource={1}&amp;redirect_uri={2}",
         clientID,
-        &quot;https://adfssample.com/OWIN-ADAL-ADFS-WebMVC&quot;,
-        &quot;https://localhost:44303/Home/CatchCode&quot;);
+        "https://adfssample.com/OWIN-ADAL-ADFS-WebMVC",
+        "https://localhost:44303/Home/CatchCode");
 
     return new RedirectResult(authorizationUrl);
 }
 
 public async Task&lt;ActionResult&gt; CatchCode(string code)
 {
-    var ac = new AuthenticationContext(&quot;https://adfs.corp.adfssample.com/adfs&quot;, false);
-    var clcred = new ClientCredential(clientID, &quot;asdf&quot;);
-    var ar = await ac.AcquireTokenByAuthorizationCodeAsync(code, new Uri(&quot;https://localhost:44303/Home/CatchCode&quot;), clcred);
+    var ac = new AuthenticationContext("https://adfs.corp.adfssample.com/adfs", false);
+    var clcred = new ClientCredential(clientID, "asdf");
+    var ar = await ac.AcquireTokenByAuthorizationCodeAsync(code, new Uri("https://localhost:44303/Home/CatchCode"), clcred);
             
     string authHeader = ar.CreateAuthorizationHeader();
     var client = new HttpClient();
-    var request = new HttpRequestMessage(HttpMethod.Get, &quot;https://localhost:44302/api/Values&quot;);
-    request.Headers.TryAddWithoutValidation(&quot;Authorization&quot;, authHeader);
+    var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:44302/api/Values");
+    request.Headers.TryAddWithoutValidation("Authorization", authHeader);
     var response = await client.SendAsync(request);
     string responseString = await response.Content.ReadAsStringAsync();
 
     this.ViewBag.Message = responseString;
 
-    return View(&quot;About&quot;);
+    return View("About");
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Note that in this example the web server does the REST call to the service protected by ADFS.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Enter: Identity Server v3</h2><p xmlns="http://www.w3.org/1999/xhtml">As you can see, you can do some interesting things with what Microsoft delivers out-of-the-box. However, a lot is still missing. ADFS does not even implement all OAuth2 flows (e.g. <a href="http://tools.ietf.org/html/rfc6749#section-4.2" target="_blank">implicit grant</a> is missing which would be important for <em>Single Page Apps</em>). ADFS does not implement the new shining star for auth <em>Open ID Connect</em>. Note that you can get all of that by using <em><a href="http://azure.microsoft.com/en-us/services/active-directory/" target="_blank">Microsoft Azure Active Directory</a></em>. However, that's only an option if you are willing to use the public cloud. We have a few large customers who do not want to use offerings like Azure (yet). They need a different solution.</p><a href="https://github.com/IdentityServer/Thinktecture.IdentityServer3" xmlns="http://www.w3.org/1999/xhtml">Identity Server v3</a><em xmlns="http://www.w3.org/1999/xhtml">
   <a href="http://identityserver.github.io/Documentation/docs/configuration/identityProviders.html" target="_blank">Identity Provider</a>
 </em><br xmlns="http://www.w3.org/1999/xhtml" /><h3 xmlns="http://www.w3.org/1999/xhtml">The Server</h3><p xmlns="http://www.w3.org/1999/xhtml">Configuring ADFS as an identity provider in IDServer3 isn't complicated:</p>{% highlight javascript %}using Microsoft.Owin.Security.WsFederation;
@@ -160,8 +160,8 @@ namespace SelfHost
 
             var options = new IdentityServerOptions
             {
-                IssuerUri = &quot;https://idsrv3.com&quot;,
-                SiteName = &quot;Thinktecture IdentityServer3 (self host)&quot;,
+                IssuerUri = "https://idsrv3.com",
+                SiteName = "Thinktecture IdentityServer3 (self host)",
 
                 SigningCertificate = Certificate.Get(),
                 Factory = factory,
@@ -180,12 +180,12 @@ namespace SelfHost
         {
             var adfs = new WsFederationAuthenticationOptions
             {
-                AuthenticationType = &quot;adfs&quot;,
-                Caption = &quot;ADFS&quot;,
+                AuthenticationType = "adfs",
+                Caption = "ADFS",
                 SignInAsAuthenticationType = signInAsType,
 
-                MetadataAddress = &quot;https://adfs.corp.adfssample.com/federationmetadata/2007-06/federationmetadata.xml&quot;,
-                Wtrealm = &quot;urn:idsrv3&quot;
+                MetadataAddress = "https://adfs.corp.adfssample.com/federationmetadata/2007-06/federationmetadata.xml",
+                Wtrealm = "urn:idsrv3"
             };
             app.UseWsFederationAuthentication(adfs);
         }

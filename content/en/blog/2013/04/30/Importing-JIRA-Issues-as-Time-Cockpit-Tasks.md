@@ -39,61 +39,61 @@ class Jira(object):
         self.repository = Uri(repository)
         self.username = username
         self.password = password
-        self.requestedFields = [ &quot;summary&quot;, &quot;issuetype&quot;, &quot;status&quot;, &quot;updated&quot;, &quot;timeoriginalestimate&quot;, &quot;subtasks&quot; ]
+        self.requestedFields = [ "summary", "issuetype", "status", "updated", "timeoriginalestimate", "subtasks" ]
 
     def search(self, jql):
-        clr.AddReference(&quot;System.Web&quot;)
+        clr.AddReference("System.Web")
         from System.Web import HttpUtility
         from System.Net import HttpWebRequest
         from System.IO import StreamReader
-        clr.AddReference(&quot;Newtonsoft.Json&quot;)
+        clr.AddReference("Newtonsoft.Json")
         from Newtonsoft.Json import JsonTextReader
         from Newtonsoft.Json.Linq import JObject
         from System import Decimal
         import Newtonsoft.Json
         clr.ImportExtensions(Newtonsoft.Json.Linq)
-        usernamepw = Convert.ToBase64String(Encoding.UTF8.GetBytes(String.Format(&quot;{0}:{1}&quot;, self.username, self.password)))
+        usernamepw = Convert.ToBase64String(Encoding.UTF8.GetBytes(String.Format("{0}:{1}", self.username, self.password)))
 
-        fieldsparam = String.Join(&quot;,&quot;, self.requestedFields)
-        requestUri = String.Format(&quot;{0}rest/api/2/search?jql={1}&amp;fields={2}&quot;, self.repository.AbsoluteUri, HttpUtility.UrlEncode(jql), fieldsparam)
-        Logger.Write(LogLevel.Verbose, &quot;Jira.Search: {0}&quot;, requestUri)
+        fieldsparam = String.Join(",", self.requestedFields)
+        requestUri = String.Format("{0}rest/api/2/search?jql={1}&amp;fields={2}", self.repository.AbsoluteUri, HttpUtility.UrlEncode(jql), fieldsparam)
+        Logger.Write(LogLevel.Verbose, "Jira.Search: {0}", requestUri)
 
         request = HttpWebRequest.Create(requestUri)
-        request.ContentType = &quot;application/json&quot;
+        request.ContentType = "application/json"
 
-        request.Headers.Add(&quot;Authorization&quot;, &quot;Basic &quot; + usernamepw)
+        request.Headers.Add("Authorization", "Basic " + usernamepw)
 
-        request.Method = &quot;GET&quot;
+        request.Method = "GET"
         with request.GetResponse() as response:
             with StreamReader(response.GetResponseStream()) as sr:
                 with JsonTextReader(sr) as jr:
                     result = JObject.Load(jr)
-                    issues = result[&quot;issues&quot;]
+                    issues = result["issues"]
 
                     items = list()
                     for issue in issues:
                         item = Issue()
-                        item.Key = Newtonsoft.Json.Linq.Extensions.Value[String](issue[&quot;key&quot;])
-                        fields = issue[&quot;fields&quot;]
-                        item.Updated = Newtonsoft.Json.Linq.Extensions.Value[DateTime](fields[&quot;updated&quot;])
+                        item.Key = Newtonsoft.Json.Linq.Extensions.Value[String](issue["key"])
+                        fields = issue["fields"]
+                        item.Updated = Newtonsoft.Json.Linq.Extensions.Value[DateTime](fields["updated"])
 
                         # transform seconds to hours
-                        estimate = Newtonsoft.Json.Linq.Extensions.Value[System.Object](fields[&quot;timeoriginalestimate&quot;])
+                        estimate = Newtonsoft.Json.Linq.Extensions.Value[System.Object](fields["timeoriginalestimate"])
 
                         if estimate is not None:
-                            estimate = Newtonsoft.Json.Linq.Extensions.Value[Decimal](fields[&quot;timeoriginalestimate&quot;])
+                            estimate = Newtonsoft.Json.Linq.Extensions.Value[Decimal](fields["timeoriginalestimate"])
                             estimate = estimate / (60.0 * 60.0)
 
                         item.TimeOriginalEstimate = estimate
-                        status = fields[&quot;status&quot;]
-                        item.Status = Newtonsoft.Json.Linq.Extensions.Value[String](status[&quot;name&quot;])
-                        item.Summary = Newtonsoft.Json.Linq.Extensions.Value[String](fields[&quot;summary&quot;])
-                        type = fields[&quot;issuetype&quot;]
-                        item.Type = Newtonsoft.Json.Linq.Extensions.Value[String](type[&quot;name&quot;])
-                        item.Link = self.repository.ToString() + &quot;browse/&quot; + item.Key
+                        status = fields["status"]
+                        item.Status = Newtonsoft.Json.Linq.Extensions.Value[String](status["name"])
+                        item.Summary = Newtonsoft.Json.Linq.Extensions.Value[String](fields["summary"])
+                        type = fields["issuetype"]
+                        item.Type = Newtonsoft.Json.Linq.Extensions.Value[String](type["name"])
+                        item.Link = self.repository.ToString() + "browse/" + item.Key
 
-                        subTasks = fields[&quot;subtasks&quot;]
-                        item.SubTaskKeys = System.Linq.Enumerable.Cast[JObject](subTasks).Select(lambda t: Newtonsoft.Json.Linq.Extensions.Value[String](t[&quot;key&quot;])).ToArray[String]()
+                        subTasks = fields["subtasks"]
+                        item.SubTaskKeys = System.Linq.Enumerable.Cast[JObject](subTasks).Select(lambda t: Newtonsoft.Json.Linq.Extensions.Value[String](t["key"])).ToArray[String]()
                         items.Add(item)
 
                     return items;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Note that the <em>Jira</em> class currently only supports a single method <em>search</em> accepting a <a href="https://confluence.atlassian.com/display/JIRA/Advanced+Searching" target="_blank">JQL query</a> and returning a list of matching <em>Issue</em> instances. It is implemented by first building a get request containing the query, setting the authentication, getting the result and parsing it through Json.NET.</p><h2 xmlns="http://www.w3.org/1999/xhtml">One-Way Syncing the Data</h2><p xmlns="http://www.w3.org/1999/xhtml">The basic workflow of the core import functionality consists of the following steps:</p><ul xmlns="http://www.w3.org/1999/xhtml">
@@ -104,32 +104,32 @@ class Jira(object):
 </ul><p xmlns="http://www.w3.org/1999/xhtml">Of course there are some more details in the sample like transaction handling, exception handling, logging, batch-based selection of existing tasks and checks which avoid updating tasks if the corresponding issue only has changes in fields not relevant for us.</p>{% highlight javascript %}commit = True
 timeDelta = 0.01
 
-jira = Jira(&quot;https://....atlassian.net/&quot;, &quot;...&quot;, &quot;...&quot;)
-jiraProjects = dc.Select(&quot;From P In Project Where :IsNullOrEmpty(P.JiraProject) = False Select P&quot;)
+jira = Jira("https://....atlassian.net/", "...", "...")
+jiraProjects = dc.Select("From P In Project Where :IsNullOrEmpty(P.JiraProject) = False Select P")
 
 for jiraProject in jiraProjects:
     dc.BeginTransaction()
     try:
         jiraName = jiraProject.JiraProject
-        Logger.Write(LogLevel.Information, &quot;JiraImport: Handling project '{0}'&quot;, jiraName)
+        Logger.Write(LogLevel.Information, "JiraImport: Handling project '{0}'", jiraName)
         projectUuid = jiraProject.ProjectUuid
 
-        lastUpdated = dc.SelectSingleWithParams({ &quot;Query&quot;: &quot;From T In Task Where T.Project = @ProjectUuid Select New With { .LastUpdated = Max(T.JiraUpdated) }&quot;, &quot;@ProjectUuid&quot;: projectUuid }).LastUpdated
+        lastUpdated = dc.SelectSingleWithParams({ "Query": "From T In Task Where T.Project = @ProjectUuid Select New With { .LastUpdated = Max(T.JiraUpdated) }", "@ProjectUuid": projectUuid }).LastUpdated
         if lastUpdated is None:
             lastUpdated = DateTime(1970, 1, 1)
         
-        jqlAdditionalCondition = String.Format(&quot; and updated &gt;= '{0}' order by updated asc&quot;, lastUpdated.ToString(&quot;yyyy-MM-dd HH:mm&quot;, CultureInfo.InvariantCulture))
-        jql = String.Format(&quot;project='{0}'{1}&quot;, jiraName, jqlAdditionalCondition)
+        jqlAdditionalCondition = String.Format(" and updated &gt;= '{0}' order by updated asc", lastUpdated.ToString("yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture))
+        jql = String.Format("project='{0}'{1}", jiraName, jqlAdditionalCondition)
         issues = jira.search(jql).ToDictionary(lambda i: i.Key)
 
         if issues.Any():
-            query = String.Format(&quot;From T In Task.Include(*) Where T.Project = @ProjectUuid And T.Code In ({0}) Select T&quot;, String.Join(&quot;, &quot;, issues.Select(lambda i: String.Format('&quot;{0}&quot;', i.Key)).ToArray()))
-            tasks = dc.SelectWithParams({ &quot;Query&quot;: query, &quot;@ProjectUuid&quot;: projectUuid }).GroupBy(lambda t: t.Code).ToDictionary(lambda g: g.Key, lambda g: g.Single())
+            query = String.Format("From T In Task.Include(*) Where T.Project = @ProjectUuid And T.Code In ({0}) Select T", String.Join(", ", issues.Select(lambda i: String.Format('"{0}"', i.Key)).ToArray()))
+            tasks = dc.SelectWithParams({ "Query": query, "@ProjectUuid": projectUuid }).GroupBy(lambda t: t.Code).ToDictionary(lambda g: g.Key, lambda g: g.Single())
 
             newIssues = issues.Keys.Except(tasks.Keys).ToArray()
             updatedIssues = issues.Keys.Except(newIssues).ToArray()
         
-            Logger.Write(LogLevel.Information, &quot;JiraImport: {0} new issues, {1} updated issues for query {2}&quot;, newIssues.Length, updatedIssues.Length, jql)
+            Logger.Write(LogLevel.Information, "JiraImport: {0} new issues, {1} updated issues for query {2}", newIssues.Length, updatedIssues.Length, jql)
         
             for key in newIssues:
                 issue = issues[key]
@@ -142,7 +142,7 @@ for jiraProject in jiraProjects:
                 task.USR_JiraType = issue.Type
                 task.USR_JiraUpdated = issue.Updated
                 task.APP_Description = issue.Summary
-                Logger.Write(LogLevel.Information, &quot;JiraImport: Adding task {0}&quot;, key)
+                Logger.Write(LogLevel.Information, "JiraImport: Adding task {0}", key)
                 dc.SaveObject(task)
 
             for key in updatedIssues:
@@ -152,35 +152,35 @@ for jiraProject in jiraProjects:
 
                 if task.APP_BudgetInHours &lt;&gt; issue.TimeOriginalEstimate:
                     if (task.APP_BudgetInHours is None and issue.TimeOriginalEstimate is not None) or (task.APP_BudgetInHours is not None and issue.TimeOriginalEstimate is None) or (abs(task.APP_BudgetInHours - issue.TimeOriginalEstimate) &gt; timeDelta):
-                        Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;TimeOriginalEstimate&quot;)
+                        Logger.Write(LogLevel.Verbose, "JiraImport: Changed property for task {0}: {1}", key, "TimeOriginalEstimate")
                         task.APP_BudgetInHours = issue.TimeOriginalEstimate
                         changed = True
                 if task.USR_JiraLink &lt;&gt; issue.Link:
-                    Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;Link&quot;)
+                    Logger.Write(LogLevel.Verbose, "JiraImport: Changed property for task {0}: {1}", key, "Link")
                     task.USR_JiraLink = issue.Link
                     changed = True
                 if task.USR_JiraStatus &lt;&gt; issue.Status:
-                    Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;Status&quot;)
+                    Logger.Write(LogLevel.Verbose, "JiraImport: Changed property for task {0}: {1}", key, "Status")
                     task.USR_JiraStatus = issue.Status
                     changed = True
                 if task.USR_JiraType &lt;&gt; issue.Type:
-                    Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;Type&quot;)
+                    Logger.Write(LogLevel.Verbose, "JiraImport: Changed property for task {0}: {1}", key, "Type")
                     task.USR_JiraType = issue.Type
                     changed = True
                 if task.USR_JiraUpdated &lt;&gt; issue.Updated:
-                    Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;Updated&quot;)
+                    Logger.Write(LogLevel.Verbose, "JiraImport: Changed property for task {0}: {1}", key, "Updated")
                     task.USR_JiraUpdated = issue.Updated
                     changed = True
                 if task.APP_Description &lt;&gt; issue.Summary:
-                    Logger.Write(LogLevel.Verbose, &quot;JiraImport: Changed property for task {0}: {1}&quot;, key, &quot;Summary&quot;)
+                    Logger.Write(LogLevel.Verbose, "JiraImport: Changed property for task {0}: {1}", key, "Summary")
                     task.APP_Description = issue.Summary
                     changed = True
 
                 if changed:
-                    Logger.Write(LogLevel.Information, &quot;JiraImport: Updating task {0}&quot;, key)
+                    Logger.Write(LogLevel.Information, "JiraImport: Updating task {0}", key)
                     dc.SaveObject(task)
                 else:
-                    Logger.Write(LogLevel.Information, &quot;JiraImport: Skipping unchanged task {0}&quot;, key)
+                    Logger.Write(LogLevel.Information, "JiraImport: Skipping unchanged task {0}", key)
 
         if commit:
             dc.TryCommitTransaction()
@@ -188,4 +188,4 @@ for jiraProject in jiraProjects:
             dc.TryRollbackTransaction()
     except System.Exception, e:
         dc.TryRollbackTransaction()
-        Logger.Write(LogLevel.Warning, &quot;JiraImport: Exception while handling {0}: {1}\r\n{2}&quot;, jiraProject.JiraProject, e.Message, e.StackTrace){% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Wrap-Up</h2><p xmlns="http://www.w3.org/1999/xhtml">The shown example can be put together to form a script which can be <a href="http://help.timecockpit.com/?topic=html/7c78b76a-2526-4408-accc-ccae19bbca45.htm" target="_blank">scheduled</a> or a time cockpit action which can be interactively executed. This ensures that your JIRA issues are usually just there when you need to book times on them or you can trigger an import for the few corner cases where you need an issue to be available earlier than the next import.</p><p xmlns="http://www.w3.org/1999/xhtml">There are lots of things that can be improved or adapted for production use (e.g. most installations currently only return 50 items per query which means that the query would have to be run in a loop until no new items are discovered) but this article should give an overview of what is possible.</p>
+        Logger.Write(LogLevel.Warning, "JiraImport: Exception while handling {0}: {1}\r\n{2}", jiraProject.JiraProject, e.Message, e.StackTrace){% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Wrap-Up</h2><p xmlns="http://www.w3.org/1999/xhtml">The shown example can be put together to form a script which can be <a href="http://help.timecockpit.com/?topic=html/7c78b76a-2526-4408-accc-ccae19bbca45.htm" target="_blank">scheduled</a> or a time cockpit action which can be interactively executed. This ensures that your JIRA issues are usually just there when you need to book times on them or you can trigger an import for the few corner cases where you need an issue to be available earlier than the next import.</p><p xmlns="http://www.w3.org/1999/xhtml">There are lots of things that can be improved or adapted for production use (e.g. most installations currently only return 50 items per query which means that the query would have to be run in a loop until no new items are discovered) but this article should give an overview of what is possible.</p>

@@ -47,7 +47,7 @@ permalink: /blog/2013/02/20/Windows-Azure-Websites--TypeScript--nodejs--JavaScri
         public firstName: string;
         public lastName: string;
 
-        constructor (arg: ICustomer = { firstName: &quot;&quot;, lastName: &quot;&quot; }) {
+        constructor (arg: ICustomer = { firstName: "", lastName: "" }) {
             this.firstName = arg.firstName;
             this.lastName = arg.lastName;
         }
@@ -56,41 +56,41 @@ permalink: /blog/2013/02/20/Windows-Azure-Websites--TypeScript--nodejs--JavaScri
           * Returns the full name of the customer
           */
         public fullName() {
-            return this.lastName + &quot;, &quot; + this.firstName;
+            return this.lastName + ", " + this.firstName;
         }
     }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Note that the sample class uses a rather new feature of the TypeScript tooling: <a href="http://blogs.msdn.com/b/typescript/archive/2013/01/21/announcing-typescript-0-8-2.aspx" title="Blog article about TypeScript 0.8.2" target="_blank">JSDoc support</a>.</p><p xmlns="http://www.w3.org/1999/xhtml">If you want to play with my sample, copy the code of the class in the <em>code</em> directory. Compile it using the TypeScript compiler: <em>tsc Customer.ts</em>. Now take a few minutes to take a look at the resulting <em>Customer.js</em> file. I encourage you to open the file in Visual Studio 2012 and play with IntelliSense, syntax checking, syntax highlighting, etc.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Programming Node.js With TypeScript</h2><p xmlns="http://www.w3.org/1999/xhtml">The first practical use of TypeScript that I showed at MVP Summit was using the basic TypeScript module shown above on the server-side with <a href="http://nodejs.org/" title="Node.js Homepage" target="_blank">node.js</a>. Let's assume we want to implement a very simple REST/JSON-based Web API to query customers. Users of our API should able to query a single customer using a URI like <em>http://&lt;myserver&gt;/Customer/99</em> (asking for customer with ID 99). If the user needs all users, she would use a URI like <em>http://&lt;myserver&gt;/Customer</em>. Here is the code that I have developed during my session (copy it into the file <em>server.js</em> in the <em>code</em> directory):</p>{% highlight javascript %}/// &lt;reference path=&quot;../DefinitelyTyped/node/node.d.ts&quot; /&gt;
-/// &lt;reference path=&quot;../DefinitelyTyped/express/express.d.ts&quot; /&gt;
-/// &lt;reference path=&quot;./customer.ts&quot; /&gt;
-import express = module(&quot;express&quot;);
-import crm = module(&quot;customer&quot;);
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Note that the sample class uses a rather new feature of the TypeScript tooling: <a href="http://blogs.msdn.com/b/typescript/archive/2013/01/21/announcing-typescript-0-8-2.aspx" title="Blog article about TypeScript 0.8.2" target="_blank">JSDoc support</a>.</p><p xmlns="http://www.w3.org/1999/xhtml">If you want to play with my sample, copy the code of the class in the <em>code</em> directory. Compile it using the TypeScript compiler: <em>tsc Customer.ts</em>. Now take a few minutes to take a look at the resulting <em>Customer.js</em> file. I encourage you to open the file in Visual Studio 2012 and play with IntelliSense, syntax checking, syntax highlighting, etc.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Programming Node.js With TypeScript</h2><p xmlns="http://www.w3.org/1999/xhtml">The first practical use of TypeScript that I showed at MVP Summit was using the basic TypeScript module shown above on the server-side with <a href="http://nodejs.org/" title="Node.js Homepage" target="_blank">node.js</a>. Let's assume we want to implement a very simple REST/JSON-based Web API to query customers. Users of our API should able to query a single customer using a URI like <em>http://&lt;myserver&gt;/Customer/99</em> (asking for customer with ID 99). If the user needs all users, she would use a URI like <em>http://&lt;myserver&gt;/Customer</em>. Here is the code that I have developed during my session (copy it into the file <em>server.js</em> in the <em>code</em> directory):</p>{% highlight javascript %}/// &lt;reference path="../DefinitelyTyped/node/node.d.ts" /&gt;
+/// &lt;reference path="../DefinitelyTyped/express/express.d.ts" /&gt;
+/// &lt;reference path="./customer.ts" /&gt;
+import express = module("express");
+import crm = module("customer");
 
 var app = express();
 
-app.get(&quot;/customer/:id&quot;, function (req, resp) {
+app.get("/customer/:id", function (req, resp) {
     var customerId = &lt;number&gt;req.params.id;
-    var c = new crm.customer.Customer({ firstName: &quot;Max&quot; + customerId.toString(), lastName: &quot;Muster&quot; });
+    var c = new crm.customer.Customer({ firstName: "Max" + customerId.toString(), lastName: "Muster" });
     console.log(c.fullName()); 
     resp.send(JSON.stringify(c));
 });
 
-app.get(&quot;/customer&quot;, function (req, resp) {
+app.get("/customer", function (req, resp) {
     var customers: crm.customer.Customer [];
     customers = new Array();
     for (var i = 0; i&lt;10; i++) {
-        customers.push(new crm.customer.Customer({ firstName: &quot;Max&quot; + i.toString(), lastName: &quot;Muster&quot; }));
+        customers.push(new crm.customer.Customer({ firstName: "Max" + i.toString(), lastName: "Muster" }));
     }
     resp.send(JSON.stringify(customers));
 });
 
 var port = process.env.PORT || 1337; 
 app.listen(port);{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Before I draw you attention to some details of the code, note that my samples uses the <a href="http://expressjs.com/" title="Express.js Homepage" target="_blank">express.js</a> framework for implementing the Web API. In order to get it, you need a reference to the module in your <em>package.json</em> file. Here is the code (copy it into the <em>code</em> directory):</p>{% highlight javascript %}{
-  &quot;name&quot;: &quot;hello-world&quot;,
-  &quot;description&quot;: &quot;hello world test app&quot;,
-  &quot;version&quot;: &quot;0.0.1&quot;,
-  &quot;private&quot;: true,
-  &quot;dependencies&quot;: {
-    &quot;express&quot;: &quot;3.1.0&quot;
+  "name": "hello-world",
+  "description": "hello world test app",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.1.0"
   }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">After you have copied the <em>package.json</em> file to the directory, you have to run <em>npm install</em> in the directory. It will inspect the <em>package.json</em> file and get the referenced modules from the web. It will place it in the <em>node_modules</em> subdirectory.</p><p xmlns="http://www.w3.org/1999/xhtml">Now let's get back to the code in <em>server.js</em>. You might have noticed the references to <em>node.d.ts</em>, <em>express.d.ts</em>, and <em>customer.ts </em> at the beginning of the file. These references are key to your understanding of the advantages of TypeScript. Types enable the development environment to give you e.g. IntelliSense. We do not only want IntelliSense for our own <em>Customer</em> class, we want it for existing packages like the node.js SDK and express.js, too. However, they are implemented in JavaScript without type information. So where can we get the type information for them? The answer is the <a href="https://github.com/borisyankov/DefinitelyTyped" title="DefinitelyTyped project on github" target="_blank">DefinitelyTyped project on github</a>. It brings type information for all major JavaScript libraries. In order to get it, you do not need to download it manually. Use git instead. Here is how you do that:</p><ol xmlns="http://www.w3.org/1999/xhtml">
   <li>Open a command prompt</li>
@@ -115,7 +115,7 @@ app.listen(port);{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Befor
   <li>IntelliSense and type-safety (to a certain extent) for client-side libraries like JQuery.</li>
   <li>IntelliSense and type-safety for our <em>Customer</em> module because we are going to share the TypeScript code on server and client.</li>
   <li>Re-use the business logic in our <em>Customer</em> class (<em>fullName</em> method) on the client. This is useful in practice for e.g. form validation logic, calculated properties, etc.</li>
-</ol><p xmlns="http://www.w3.org/1999/xhtml">In order to use our <em>Customer</em> TypeScript module, we have to use <a href="http://en.wikipedia.org/wiki/Asynchronous_module_definition" title="AMD on Wikipedia" target="_blank">Asynchronous Module Definition</a> (AMD). We are going to use the <a href="http://requirejs.org/" title="Require.JS Homepage" target="_blank">Require.JS</a> framework to load AMD modules. I will not go into the details of AMD and require.js. If you are interested follow the links. They will bring you the more detailed information on the topic including samples.</p><p xmlns="http://www.w3.org/1999/xhtml">In order to safe time I suggest that you download the pre-built client and open it in Visual Studio 2012: <a href="{{site.baseurl}}/content/images/blog/2013/02/website.zip" title="Source code of the website project" target="_blank">Download Source Code</a>. I will walk you through the interesting parts of the project in a second. You should extract the ZIP file with the source code directly in your <em>code</em> directory so that it contains a subdirectory called <em>website</em> and a helper-file called <em>.gitignore</em>.</p><p xmlns="http://www.w3.org/1999/xhtml">Before you open the downloaded solution in Visual Studio, you should open the file <em>SharedSource.csproj</em> in a text editor like Notepad++. I would like to draw your attention to the <em>PropertyGroup</em> elements for <em>Debug</em> and <em>Release</em> configurations:</p>{% highlight javascript %}  &lt;PropertyGroup Condition=&quot;'$(Configuration)' == 'Debug'&quot;&gt;
+</ol><p xmlns="http://www.w3.org/1999/xhtml">In order to use our <em>Customer</em> TypeScript module, we have to use <a href="http://en.wikipedia.org/wiki/Asynchronous_module_definition" title="AMD on Wikipedia" target="_blank">Asynchronous Module Definition</a> (AMD). We are going to use the <a href="http://requirejs.org/" title="Require.JS Homepage" target="_blank">Require.JS</a> framework to load AMD modules. I will not go into the details of AMD and require.js. If you are interested follow the links. They will bring you the more detailed information on the topic including samples.</p><p xmlns="http://www.w3.org/1999/xhtml">In order to safe time I suggest that you download the pre-built client and open it in Visual Studio 2012: <a href="{{site.baseurl}}/content/images/blog/2013/02/website.zip" title="Source code of the website project" target="_blank">Download Source Code</a>. I will walk you through the interesting parts of the project in a second. You should extract the ZIP file with the source code directly in your <em>code</em> directory so that it contains a subdirectory called <em>website</em> and a helper-file called <em>.gitignore</em>.</p><p xmlns="http://www.w3.org/1999/xhtml">Before you open the downloaded solution in Visual Studio, you should open the file <em>SharedSource.csproj</em> in a text editor like Notepad++. I would like to draw your attention to the <em>PropertyGroup</em> elements for <em>Debug</em> and <em>Release</em> configurations:</p>{% highlight javascript %}  &lt;PropertyGroup Condition="'$(Configuration)' == 'Debug'"&gt;
     &lt;TypeScriptTarget&gt;ES3&lt;/TypeScriptTarget&gt;
     &lt;TypeScriptIncludeComments&gt;true&lt;/TypeScriptIncludeComments&gt;
     &lt;TypeScriptSourceMap&gt;true&lt;/TypeScriptSourceMap&gt;
@@ -123,33 +123,33 @@ app.listen(port);{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Befor
   &lt;/PropertyGroup&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Note the line <em>&lt;TypeScriptModuleKind&gt;AMD&lt;/TypeScriptModuleKind&gt;</em>. This forces Visual Studio to use the <em>--module AMD</em> switch when compiling TypeScript files. Let's take a look at the consequences of this compiler switch. Here is the JavaScript code generated from <em>Customer.ts</em> <em>without</em> the AMD switch:</p>{% highlight javascript %}(function (customer) {
     var Customer = (function () {
         function Customer(arg) {
-            if (typeof arg === &quot;undefined&quot;) { arg = {
-                firstName: &quot;&quot;,
-                lastName: &quot;&quot;
+            if (typeof arg === "undefined") { arg = {
+                firstName: "",
+                lastName: ""
             }; }
             this.firstName = arg.firstName;
             this.lastName = arg.lastName;
         }
         Customer.prototype.fullName = function () {
-            return this.lastName + &quot;, &quot; + this.firstName;
+            return this.lastName + ", " + this.firstName;
         };
         return Customer;
     })();
     customer.Customer = Customer;    
 })(exports.customer || (exports.customer = {}));
-var customer = exports.customer;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Now let's compare that with the JavaScript code when compiled with <em>tsc --module AMD customer.ts</em>:</p>{% highlight javascript %}define([&quot;require&quot;, &quot;exports&quot;], function(require, exports) {
+var customer = exports.customer;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Now let's compare that with the JavaScript code when compiled with <em>tsc --module AMD customer.ts</em>:</p>{% highlight javascript %}define(["require", "exports"], function(require, exports) {
     (function (customer) {
         var Customer = (function () {
             function Customer(arg) {
-                if (typeof arg === &quot;undefined&quot;) { arg = {
-                    firstName: &quot;&quot;,
-                    lastName: &quot;&quot;
+                if (typeof arg === "undefined") { arg = {
+                    firstName: "",
+                    lastName: ""
                 }; }
                 this.firstName = arg.firstName;
                 this.lastName = arg.lastName;
             }
             Customer.prototype.fullName = function () {
-                return this.lastName + &quot;, &quot; + this.firstName;
+                return this.lastName + ", " + this.firstName;
             };
             return Customer;
         })();
@@ -163,7 +163,7 @@ var customer = exports.customer;{% endhighlight %}<p xmlns="http://www.w3.org/19
     <f:param name="ThumbnailMaxHeight" value="157" xmlns:f="http://www.composite.net/ns/function/1.0" />
   </f:function>(click to enlarge)</p><p xmlns="http://www.w3.org/1999/xhtml">Of course we now want to test our application. To do this we add a single line to our <em>server.ts</em> file:</p>{% highlight javascript %}...
 
-app.use(&quot;/&quot;, express.static(__dirname + &quot;/website/&quot;));
+app.use("/", express.static(__dirname + "/website/"));
 
 var port = process.env.PORT || 1337; 
 app.listen(port);{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The important line is the one with <em>app.use(...);</em> It enables access to the static files in the <em>website</em> directory. When you have added the line, don't forget to compile everything (<em>server.ts</em> and the solution in Visual Studio). After that you are ready to test it locally. Run <em>node server.js</em> and open the static website in your favorite browser:</p><p xmlns="http://www.w3.org/1999/xhtml">

@@ -90,7 +90,7 @@ namespace ADL.Wrk
                 }
 
                 // Get assembly from blob store
-                CloudStorageHelper.WriteLog(logContext, string.Format(&quot;Trying to load {0} from blob store&quot;, assemblyName));
+                CloudStorageHelper.WriteLog(logContext, string.Format("Trying to load {0} from blob store", assemblyName));
                 var blobClient = CloudStorageHelper.GetCloudBlobClient(account);
                 var assemblyBlob = blobClient
                     .GetContainerReference(ConfigurationCache.Current.ContainerName)
@@ -98,18 +98,18 @@ namespace ADL.Wrk
                 var binaryAssembly = assemblyBlob.DownloadByteArray();
 
                 // Load assembly needed for geo operations (SQL Server Feature Pack)
-                Assembly.LoadFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, &quot;Microsoft.SqlServer.Types.dll&quot;));
+                Assembly.LoadFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Microsoft.SqlServer.Types.dll"));
                 Assembly.Load(typeof(IObserver&lt;,&gt;).Assembly.FullName);
                 Assembly.Load(typeof(ObservableExtensions).Assembly.FullName);
                 Assembly.Load(typeof(EnumerableEx).Assembly.FullName);
                 var assembly = Assembly.Load(binaryAssembly);
 
                 // Look for startup type (has to implement IStartup)
-                CloudStorageHelper.WriteLog(logContext, &quot;Looking for type in dynamically loaded assembly&quot;);
+                CloudStorageHelper.WriteLog(logContext, "Looking for type in dynamically loaded assembly");
                 var startupType = assembly.GetTypes().Where(t =&gt; (typeName.Length == 0 || t.Name == typeName) &amp;&amp; typeof(IStartup).IsAssignableFrom(t)).FirstOrDefault();
                 if (startupType != null)
                 {
-                    CloudStorageHelper.WriteLog(logContext, string.Format(&quot;Found type {0}&quot;, startupType.FullName));
+                    CloudStorageHelper.WriteLog(logContext, string.Format("Found type {0}", startupType.FullName));
 
                     // Setup logging queue
                     var logQueue = new BlockingCollection&lt;string&gt;(5000);
@@ -123,7 +123,7 @@ namespace ADL.Wrk
 
                     // Create instance of startup type and start Run method in a separate thread
                     var startupObject = Activator.CreateInstance(startupType) as IStartup;
-                    CloudStorageHelper.WriteLog(logContext, &quot;Starting dynamically loaded component async.&quot;);
+                    CloudStorageHelper.WriteLog(logContext, "Starting dynamically loaded component async.");
                     Task.Factory.StartNew(() =&gt;
                         {
                             try
@@ -137,14 +137,14 @@ namespace ADL.Wrk
                                 CloudStorageHelper.WriteLog(CloudStorageHelper.GetCloudTableClient().GetDataServiceContext(), ex);
                             }
                         });
-                    CloudStorageHelper.WriteLog(logContext, &quot;Launched dynamically loaded component async.&quot;);
+                    CloudStorageHelper.WriteLog(logContext, "Launched dynamically loaded component async.");
 
                     // Return true to indicate that worker thread has been started successfully
                     return true;
                 }
                 else
                 {
-                    CloudStorageHelper.WriteLog(logContext, &quot;Did not find a type that implements IStartup&quot;);
+                    CloudStorageHelper.WriteLog(logContext, "Did not find a type that implements IStartup");
                 }
             }
             catch (Exception ex)
@@ -209,7 +209,7 @@ namespace DynamicPropertyBag
                 var test = Expression.TypeIs(x, typeof(T));
                 var target = Expression.Call(
                                   Expression.Convert(x, typeof(T)),
-                                  typeof(T).GetMethod(&quot;GetMember&quot;),
+                                  typeof(T).GetMethod("GetMember"),
                                   Expression.Constant(info.Name));
                 return new System.Dynamic.DynamicMetaObject(target, BindingRestrictions.GetExpressionRestriction(test));
             }
@@ -220,7 +220,7 @@ namespace DynamicPropertyBag
                 var target = Expression.Block(
                     Expression.Call(
                         Expression.Convert(this.Expression, typeof(T)),
-                        typeof(T).GetMethod(&quot;SetMember&quot;),
+                        typeof(T).GetMethod("SetMember"),
                         Expression.Constant(info.Name),
                         Expression.Convert(value.Expression, typeof(object))),
                     Expression.Convert(value.Expression, typeof(object)));
@@ -234,8 +234,8 @@ namespace DynamicPropertyBag
         static void Main(string[] args)
         {
             dynamic myObj = new PropertyBag();
-            myObj.FirstName = &quot;Rainer&quot;;
-            myObj.LastName = &quot;Stropek&quot;;
+            myObj.FirstName = "Rainer";
+            myObj.LastName = "Stropek";
 
             Console.WriteLine(myObj.LastName);
         }

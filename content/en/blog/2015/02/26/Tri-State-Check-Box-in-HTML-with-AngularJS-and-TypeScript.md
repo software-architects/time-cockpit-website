@@ -12,23 +12,23 @@ permalink: /blog/2015/02/26/Tri-State-Check-Box-in-HTML-with-AngularJS-and-TypeS
 <p xmlns="http://www.w3.org/1999/xhtml">HTML does not support tri-state checkboxes by default. There is an indeterminate attribute to indicate that the value is undefined but there is no way to set a checkbox back to indeterminate through the user interface once it has been checked or unchecked. The attribute can only be changed with JavaScript.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Current State in HTML and JavaScript</h2><p xmlns="http://www.w3.org/1999/xhtml">The following screenshot shows how the three states of a checkbox are visualized in Internet Explorer 11. Other browsers visualize the states slightly different.</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2015/02/check-box-states.png" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">This is how the HTML for the tree checkboxes looks like:</p>{% highlight javascript %}&lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
 &lt;head&gt;
     &lt;title&gt;Check Box States&lt;/title&gt;
     &lt;script&gt;
         window.onload = function (e) {
-            document.getElementById(&quot;indeterminateCheckBox&quot;).indeterminate = true;
+            document.getElementById("indeterminateCheckBox").indeterminate = true;
         }
     &lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;input type=&quot;checkbox&quot; id=&quot;indeterminateCheckBox&quot; /&gt; Indeterminate checkbox&lt;/p&gt;
-    &lt;p&gt;&lt;input type=&quot;checkbox&quot; checked=&quot;checked&quot; /&gt; Checked checkbox&lt;/p&gt;
-    &lt;p&gt;&lt;input type=&quot;checkbox&quot; /&gt; Unchecked checkbox&lt;/p&gt;
+    &lt;input type="checkbox" id="indeterminateCheckBox" /&gt; Indeterminate checkbox&lt;/p&gt;
+    &lt;p&gt;&lt;input type="checkbox" checked="checked" /&gt; Checked checkbox&lt;/p&gt;
+    &lt;p&gt;&lt;input type="checkbox" /&gt; Unchecked checkbox&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">As the indeterminate state cannot be set in HTML, it has to be set in the <em>window.onload</em> function with JavaScript and it cannot be set back to indeterminate by a user once it has lost the indeterminate state.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Building the AngularJS TriStateCheckBox Directive</h2><p xmlns="http://www.w3.org/1999/xhtml">The directive offers two properties to bind against: <em>isThreeState</em> and <em>isChecked</em>. The <em>CheckBoxScopeDeclaration</em> class specifies these properties.</p><p xmlns="http://www.w3.org/1999/xhtml">The <em>$scope</em> of the directive of type <em>ICheckBoxScope</em> holds the current values for these two properties. Additionally it offers a function <em>updateState</em>, which is used in the template of the directive to update the <em>isChecked</em> property whenever the checkbox is clicked.</p><p xmlns="http://www.w3.org/1999/xhtml">The linking function of the directive finds the <em>HTMLInputElement</em> for the checkbox. This is required as the indeterminate state of the checkbox can only be set from JavaScript. So it is not possible to do this via data binding. Additionally, it defines the updateState function and adds a <em>$watch</em> listener for the <em>isChecked</em> property. Whenever the value is set to <em>null</em> or <em>undefined</em> and the <em>isThreeState</em> property is set to <em>true</em>, the checkbox is set back to indeterminate state.</p><h2 xmlns="http://www.w3.org/1999/xhtml">
-  {% highlight javascript %}/// &lt;reference path=&quot;../../Scripts/typings/jquery/jquery.d.ts&quot; /&gt;
-/// &lt;reference path=&quot;../../Scripts/typings/angularjs/angular.d.ts&quot; /&gt; 
+  {% highlight javascript %}/// &lt;reference path="../../Scripts/typings/jquery/jquery.d.ts" /&gt;
+/// &lt;reference path="../../Scripts/typings/angularjs/angular.d.ts" /&gt; 
 
 module Samples.Controls {
     /** 
@@ -65,13 +65,13 @@ module Samples.Controls {
         public static Create(): CheckBox {
             var checkBox = new CheckBox();
 
-            checkBox.restrict = &quot;EA&quot;;
-            checkBox.template = &quot;&lt;input type=\&quot;checkbox\&quot; ng-click=\&quot;updateState()\&quot; /&gt;&lt;span ng-transclude&gt;&lt;/span&gt;&quot;;
+            checkBox.restrict = "EA";
+            checkBox.template = "&lt;input type=\"checkbox\" ng-click=\"updateState()\" /&gt;&lt;span ng-transclude&gt;&lt;/span&gt;";
             checkBox.transclude = true;
 
             checkBox.scope = new CheckBoxScopeDeclaration();
-            checkBox.scope.isChecked = &quot;=&quot;;
-            checkBox.scope.isThreeState = &quot;=&quot;;
+            checkBox.scope.isChecked = "=";
+            checkBox.scope.isThreeState = "=";
 
             // Initialize component
             checkBox.link = ($scope: ICheckBoxScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) =&gt; {
@@ -83,7 +83,7 @@ module Samples.Controls {
                 $scope.updateState = () =&gt; checkBox.UpdateState($scope);
 
                 // Update the checked and indeterminate attribute of the checkbox control.
-                $scope.$watch(&quot;isChecked&quot;,
+                $scope.$watch("isChecked",
                     (newValue, oldValue) =&gt; {
                         if (oldValue != newValue) {
                             checkBoxInputElement.indeterminate = $scope.isThreeState &amp;&amp; newValue == null;
@@ -114,26 +114,26 @@ module Samples.Controls {
 		</h2><p xmlns="http://www.w3.org/1999/xhtml">The goal for the directive built with AngularJS and TypeScript was to:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>be able to set all three states directly in HTML without the need for JavaScript</li>
   <li>allow data binding in AngularJS</li>
-</ul><p xmlns="http://www.w3.org/1999/xhtml">The first HTML snippet shows how the directive can be used to set the values in HTML:</p>{% highlight javascript %}&lt;div class=&quot;col-md-4&quot;&gt;
-    &lt;p&gt;&lt;span tri-state-check-box is-three-state=&quot;true&quot; is-checked=&quot;null&quot;&gt;Tri-state check box 1&lt;/span&gt;&lt;/p&gt;
+</ul><p xmlns="http://www.w3.org/1999/xhtml">The first HTML snippet shows how the directive can be used to set the values in HTML:</p>{% highlight javascript %}&lt;div class="col-md-4"&gt;
+    &lt;p&gt;&lt;span tri-state-check-box is-three-state="true" is-checked="null"&gt;Tri-state check box 1&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class=&quot;col-md-4&quot;&gt;
-    &lt;p&gt;&lt;span tri-state-check-box is-three-state=&quot;true&quot; is-checked=&quot;true&quot;&gt;Tri-state check box 2&lt;/span&gt;&lt;/p&gt;
+&lt;div class="col-md-4"&gt;
+    &lt;p&gt;&lt;span tri-state-check-box is-three-state="true" is-checked="true"&gt;Tri-state check box 2&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class=&quot;col-md-4&quot;&gt;
-    &lt;p&gt;&lt;span tri-state-check-box is-three-state=&quot;true&quot; is-checked=&quot;false&quot;&gt;Tri-state check box 3&lt;/span&gt;&lt;/p&gt;
-&lt;/div&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The next snippet shows how data binding works. For each state there is a property in the controller: myBooleanValue1, myBooleanValue2 and myBooleanValue3. Each is bound to a checkbox to change the value and a span tag to display the current value.</p>{% highlight javascript %}&lt;div class=&quot;col-md-4&quot;&gt;
-    &lt;p&gt;&lt;span tri-state-check-box is-three-state=&quot;true&quot; is-checked=&quot;myBooleanValue1&quot;&gt;Tri-state check box 1&lt;/span&gt;&lt;/p&gt;
-    &lt;p&gt;Check box value: &lt;span ng-bind=&quot;myBooleanValue1 == null ? '-' : myBooleanValue1&quot; /&gt;&lt;/p&gt;
+&lt;div class="col-md-4"&gt;
+    &lt;p&gt;&lt;span tri-state-check-box is-three-state="true" is-checked="false"&gt;Tri-state check box 3&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The next snippet shows how data binding works. For each state there is a property in the controller: myBooleanValue1, myBooleanValue2 and myBooleanValue3. Each is bound to a checkbox to change the value and a span tag to display the current value.</p>{% highlight javascript %}&lt;div class="col-md-4"&gt;
+    &lt;p&gt;&lt;span tri-state-check-box is-three-state="true" is-checked="myBooleanValue1"&gt;Tri-state check box 1&lt;/span&gt;&lt;/p&gt;
+    &lt;p&gt;Check box value: &lt;span ng-bind="myBooleanValue1 == null ? '-' : myBooleanValue1" /&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class=&quot;col-md-4&quot;&gt;
-    &lt;p&gt;&lt;span tri-state-check-box is-three-state=&quot;true&quot; is-checked=&quot;myBooleanValue2&quot;&gt;Tri-state check box 2&lt;/span&gt;&lt;/p&gt;
-    &lt;p&gt;Check box value: &lt;span ng-bind=&quot;myBooleanValue2 == null ? '-' : myBooleanValue2&quot; /&gt;&lt;/p&gt;
+&lt;div class="col-md-4"&gt;
+    &lt;p&gt;&lt;span tri-state-check-box is-three-state="true" is-checked="myBooleanValue2"&gt;Tri-state check box 2&lt;/span&gt;&lt;/p&gt;
+    &lt;p&gt;Check box value: &lt;span ng-bind="myBooleanValue2 == null ? '-' : myBooleanValue2" /&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class=&quot;col-md-4&quot;&gt;
-    &lt;p&gt;&lt;span tri-state-check-box is-three-state=&quot;true&quot; is-checked=&quot;myBooleanValue3&quot;&gt;Tri-state check box 3&lt;/span&gt;&lt;/p&gt;
-    &lt;p&gt;Check box value: &lt;span ng-bind=&quot;myBooleanValue3 == null ? '-' : myBooleanValue3&quot; /&gt;&lt;/p&gt;
-&lt;/div&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The controller for the view contains the tree boolean values:</p>{% highlight javascript %}sampleApp.controller(&quot;testCheckBoxController&quot;, ['$scope', function ($scope) {
+&lt;div class="col-md-4"&gt;
+    &lt;p&gt;&lt;span tri-state-check-box is-three-state="true" is-checked="myBooleanValue3"&gt;Tri-state check box 3&lt;/span&gt;&lt;/p&gt;
+    &lt;p&gt;Check box value: &lt;span ng-bind="myBooleanValue3 == null ? '-' : myBooleanValue3" /&gt;&lt;/p&gt;
+&lt;/div&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The controller for the view contains the tree boolean values:</p>{% highlight javascript %}sampleApp.controller("testCheckBoxController", ['$scope', function ($scope) {
     $scope.myBooleanValue1 = null;
     $scope.myBooleanValue2 = true;
     $scope.myBooleanValue3 = false;

@@ -9,11 +9,11 @@ lang: en
 permalink: /blog/2015/03/22/Shades-of-Gray-in-SVG---How-to-Get-a-Sharp-Black-Line
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">In HTML5 the new <a href="https://developer.mozilla.org/de/docs/Web/SVG" target="_blank"><em>&lt;svg&gt;</em></a> element was introduced. It allows you to embed SVG graphics in html. You can build really cool things with svg - from fancy looking interactive charts to games running in the browser. At <a href="http://www.creativebloq.com/design/examples-svg-7112785" target="_blank">http://www.creativebloq.com/design/examples-svg-7112785</a><span data-mce-type="bookmark" id="mce_3_start" data-mce-style="overflow:hidden;line-height:0px" style="overflow:hidden;line-height:0px"> you can find some nice demos.</span> But what if you just want to draw a straight 1px line? Well, that's not that easy. I got lots of different results for different browsers.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Lines in SVG</h2><p xmlns="http://www.w3.org/1999/xhtml">The following svg builds a green rectangle with three vertical black lines:</p>{% highlight javascript %}&lt;svg height=&quot;20&quot; width=&quot;25&quot;&gt;
-    &lt;rect fill=&quot;#bbd435&quot; height=&quot;100%&quot; width=&quot;100%&quot; y=&quot;0&quot; x=&quot;0&quot;&gt;&lt;/rect&gt;
-    &lt;line stroke=&quot;black&quot; stroke-width=&quot;1&quot; y2=&quot;100%&quot; y1=&quot;0&quot; x2=&quot;0&quot; x1=&quot;0&quot;&gt;&lt;/line&gt;
-    &lt;line stroke=&quot;black&quot; stroke-width=&quot;1&quot; y2=&quot;100%&quot; y1=&quot;0&quot; x2=&quot;12&quot; x1=&quot;12&quot;&gt;&lt;/line&gt;
-    &lt;line stroke=&quot;black&quot; stroke-width=&quot;1&quot; y2=&quot;100%&quot; y1=&quot;0&quot; x2=&quot;25&quot; x1=&quot;25&quot;&gt;&lt;/line&gt;
+<p xmlns="http://www.w3.org/1999/xhtml">In HTML5 the new <a href="https://developer.mozilla.org/de/docs/Web/SVG" target="_blank"><em>&lt;svg&gt;</em></a> element was introduced. It allows you to embed SVG graphics in html. You can build really cool things with svg - from fancy looking interactive charts to games running in the browser. At <a href="http://www.creativebloq.com/design/examples-svg-7112785" target="_blank">http://www.creativebloq.com/design/examples-svg-7112785</a><span data-mce-type="bookmark" id="mce_3_start" data-mce-style="overflow:hidden;line-height:0px" style="overflow:hidden;line-height:0px"> you can find some nice demos.</span> But what if you just want to draw a straight 1px line? Well, that's not that easy. I got lots of different results for different browsers.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Lines in SVG</h2><p xmlns="http://www.w3.org/1999/xhtml">The following svg builds a green rectangle with three vertical black lines:</p>{% highlight javascript %}&lt;svg height="20" width="25"&gt;
+    &lt;rect fill="#bbd435" height="100%" width="100%" y="0" x="0"&gt;&lt;/rect&gt;
+    &lt;line stroke="black" stroke-width="1" y2="100%" y1="0" x2="0" x1="0"&gt;&lt;/line&gt;
+    &lt;line stroke="black" stroke-width="1" y2="100%" y1="0" x2="12" x1="12"&gt;&lt;/line&gt;
+    &lt;line stroke="black" stroke-width="1" y2="100%" y1="0" x2="25" x1="25"&gt;&lt;/line&gt;
 &lt;/svg&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">On my PC I got the following results with the browsers IE11, Chrome 41.0.2272.76, and Firefox 36.0.1. The row "Zoom 100%" shows a screenshot of the svg with zoom level 100% in the browser. For the line "Zoom 600%" I have zoomed into this screenshot with <a href="http://www.gimp.org/" target="_blank">Gimp</a> and have taken a screenshot of the zoomed view.</p><table class="table" xmlns="http://www.w3.org/1999/xhtml">
   <thead>
     <tr>
@@ -49,11 +49,11 @@ permalink: /blog/2015/03/22/Shades-of-Gray-in-SVG---How-to-Get-a-Sharp-Black-Lin
       </td>
     </tr>
   </tbody>
-</table><p xmlns="http://www.w3.org/1999/xhtml">The results are very different for these three browsers. The images even get different sizes - IE: 27 x 21px, Chrome: 27 x 22px, and Firefox: 25 x 20px.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Rectangles in SVG</h2><p xmlns="http://www.w3.org/1999/xhtml">The best solution in my scenario was to replace all lines by rectangles with a width of 1px. Additionally, I had to use the shape rendering mode <em>crispEdges</em>. The last rectangle must be placed in row 24 instead of 25 as it exactly fills this pixel row instead of trying to draw a line between two pixel rows.</p>{% highlight javascript %}&lt;svg width=&quot;25&quot; height=&quot;20&quot;&gt;
-    &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;#bbd435&quot;&gt;&lt;/rect&gt;
-    &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;1&quot; height=&quot;100%&quot; fill=&quot;black&quot; shape-rendering=&quot;crispEdges&quot;&gt;&lt;/rect&gt;
-    &lt;rect x=&quot;12&quot; y=&quot;0&quot; width=&quot;1&quot; height=&quot;100%&quot; fill=&quot;black&quot; shape-rendering=&quot;crispEdges&quot;&gt;&lt;/rect&gt;
-    &lt;rect x=&quot;24&quot; y=&quot;0&quot; width=&quot;1&quot; height=&quot;100%&quot; fill=&quot;black&quot; shape-rendering=&quot;crispEdges&quot;&gt;&lt;/rect&gt;
+</table><p xmlns="http://www.w3.org/1999/xhtml">The results are very different for these three browsers. The images even get different sizes - IE: 27 x 21px, Chrome: 27 x 22px, and Firefox: 25 x 20px.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Rectangles in SVG</h2><p xmlns="http://www.w3.org/1999/xhtml">The best solution in my scenario was to replace all lines by rectangles with a width of 1px. Additionally, I had to use the shape rendering mode <em>crispEdges</em>. The last rectangle must be placed in row 24 instead of 25 as it exactly fills this pixel row instead of trying to draw a line between two pixel rows.</p>{% highlight javascript %}&lt;svg width="25" height="20"&gt;
+    &lt;rect x="0" y="0" width="100%" height="100%" fill="#bbd435"&gt;&lt;/rect&gt;
+    &lt;rect x="0" y="0" width="1" height="100%" fill="black" shape-rendering="crispEdges"&gt;&lt;/rect&gt;
+    &lt;rect x="12" y="0" width="1" height="100%" fill="black" shape-rendering="crispEdges"&gt;&lt;/rect&gt;
+    &lt;rect x="24" y="0" width="1" height="100%" fill="black" shape-rendering="crispEdges"&gt;&lt;/rect&gt;
 &lt;/svg&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">This was the only combination of svg elements and attributes that worked for all three browsers on my PC:</p><table class="table" xmlns="http://www.w3.org/1999/xhtml">
   <thead>
     <tr>

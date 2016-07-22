@@ -26,12 +26,12 @@ namespace AsyncAwaitDemo
         {
             if (address == null)
             {
-                throw new ArgumentNullException(&quot;address&quot;);
+                throw new ArgumentNullException("address");
             }
 
             if (this.isConnected)
             {
-                throw new InvalidOperationException(&quot;Already connected&quot;);
+                throw new InvalidOperationException("Already connected");
             }
 
             // Simulate connect
@@ -44,12 +44,12 @@ namespace AsyncAwaitDemo
         {
             if (firmware == null)
             {
-                throw new ArgumentNullException(&quot;firmeware&quot;);
+                throw new ArgumentNullException("firmeware");
             }
 
             if (!this.isConnected)
             {
-                throw new InvalidOperationException(&quot;Not connected&quot;);
+                throw new InvalidOperationException("Not connected");
             }
 
             for (var i = 0; i &lt; 10; i++)
@@ -73,17 +73,17 @@ namespace AsyncAwaitDemo
             return true;
         }
     }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The user interface is very simple - just a button:</p>{% highlight javascript %}&lt;Window x:Class=&quot;AsyncAwaitDemo.MainWindow&quot;
-        xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
-        xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
-        Title=&quot;MainWindow&quot; Height=&quot;350&quot; Width=&quot;525&quot;&gt;
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The user interface is very simple - just a button:</p>{% highlight javascript %}&lt;Window x:Class="AsyncAwaitDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525"&gt;
     &lt;Window.Resources&gt;
-        &lt;Style TargetType=&quot;Button&quot;&gt;
-            &lt;Setter Property=&quot;Margin&quot; Value=&quot;3&quot; /&gt;
+        &lt;Style TargetType="Button"&gt;
+            &lt;Setter Property="Margin" Value="3" /&gt;
         &lt;/Style&gt;
     &lt;/Window.Resources&gt;
     &lt;StackPanel&gt;
-        &lt;Button Command=&quot;{Binding Path=ConnectAndUpdateSync}&quot;&gt;Connect to sensor and upload firmware&lt;/Button&gt;
+        &lt;Button Command="{Binding Path=ConnectAndUpdateSync}"&gt;Connect to sensor and upload firmware&lt;/Button&gt;
     &lt;/StackPanel&gt;
 &lt;/Window&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Of course the UI logic is implemented in a ViewModel class:</p><p xmlns="http://www.w3.org/1999/xhtml">
   <f:function name="Composite.Web.Html.SyntaxHighlighter" xmlns:f="http://www.composite.net/ns/function/1.0">
@@ -114,11 +114,11 @@ namespace AsyncAwaitDemo
 
         private void ConnectSync()
         {
-            var address = Dns.GetHostAddresses(&quot;localhost&quot;);
+            var address = Dns.GetHostAddresses("localhost");
             this.syncSensor.Connect(address.FirstOrDefault());
             this.syncSensor.UploadFirmware(new byte[] { 0, 1, 2 });
             this.syncSensor.TryDisconnect();
-            MessageBox.Show(&quot;Successfully updated&quot;);
+            MessageBox.Show("Successfully updated");
         }
 
         private DelegateCommand InternalConnectAndUpdateSync;
@@ -156,7 +156,7 @@ namespace AsyncUnitTest
         public void TestConnectDisconnect()
         {
             var sensor = new SyncHeatSensor();
-            sensor.Connect(Dns.GetHostAddresses(&quot;localhost&quot;).First());
+            sensor.Connect(Dns.GetHostAddresses("localhost").First());
             Assert.IsTrue(sensor.TryDisconnect());
         }
     }
@@ -177,7 +177,7 @@ namespace AsyncAwaitDemo
             // Note that parameters are checked before the task is scheduled.
             if (address == null)
             {
-                throw new ArgumentNullException(&quot;address&quot;);
+                throw new ArgumentNullException("address");
             }
 
             return Task.Run(() =&gt;
@@ -189,7 +189,7 @@ namespace AsyncAwaitDemo
                     {
                         if (this.isConnected)
                         {
-                            throw new InvalidOperationException(&quot;Already connected&quot;);
+                            throw new InvalidOperationException("Already connected");
                         }
 
                         // Simulate connect
@@ -204,7 +204,7 @@ namespace AsyncAwaitDemo
         {
             if (firmware == null)
             {
-                throw new ArgumentNullException(&quot;firmeware&quot;);
+                throw new ArgumentNullException("firmeware");
             }
 
             return Task.Run(() =&gt;
@@ -213,7 +213,7 @@ namespace AsyncAwaitDemo
                     {
                         if (!this.isConnected)
                         {
-                            throw new InvalidOperationException(&quot;Not connected&quot;);
+                            throw new InvalidOperationException("Not connected");
                         }
 
                         // Simulate upload in chunks.
@@ -289,19 +289,19 @@ namespace AsyncAwaitDemo
 
         private void ConnectSync()
         {
-            var address = Dns.GetHostAddresses(&quot;localhost&quot;);
+            var address = Dns.GetHostAddresses("localhost");
             this.syncSensor.Connect(address.FirstOrDefault());
             this.syncSensor.UploadFirmware(new byte[] { 0, 1, 2 });
             this.syncSensor.TryDisconnect();
-            MessageBox.Show(&quot;Successfully updated&quot;);
+            MessageBox.Show("Successfully updated");
         }
 
         private async void ConnectAsync()
         {
             this.IsUpdating = true;
             this.cts = new CancellationTokenSource();
-            this.stateNavigator(&quot;Updating&quot;);
-            var ip = await Dns.GetHostAddressesAsync(&quot;localhost&quot;);
+            this.stateNavigator("Updating");
+            var ip = await Dns.GetHostAddressesAsync("localhost");
             await this.asyncSensor.ConnectAsync(ip.FirstOrDefault());
             var success = false;
             try
@@ -317,11 +317,11 @@ namespace AsyncAwaitDemo
             }
 
             await this.asyncSensor.TryDisconnectAsync();
-            this.stateNavigator(success ? &quot;Updated&quot; : &quot;Cancelled&quot;);
+            this.stateNavigator(success ? "Updated" : "Cancelled");
             this.IsUpdating = false;
             if (success)
             {
-                MessageBox.Show(&quot;Successfully updated&quot;);
+                MessageBox.Show("Successfully updated");
             }
         }
 
@@ -434,7 +434,7 @@ namespace AsyncUnitTest
         public void TestConnectDisconnect()
         {
             var sensor = new SyncHeatSensor();
-            sensor.Connect(Dns.GetHostAddresses(&quot;localhost&quot;).First());
+            sensor.Connect(Dns.GetHostAddresses("localhost").First());
             Assert.IsTrue(sensor.TryDisconnect());
         }
 
@@ -442,7 +442,7 @@ namespace AsyncUnitTest
         public async Task TestConnectDisconnectAsync()
         {
             var sensor = new AsyncHeatSensor();
-            await sensor.ConnectAsync((await Dns.GetHostAddressesAsync(&quot;localhost&quot;)).First());
+            await sensor.ConnectAsync((await Dns.GetHostAddressesAsync("localhost")).First());
             Assert.IsTrue(await sensor.TryDisconnectAsync());
         }
     }

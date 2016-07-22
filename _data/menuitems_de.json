@@ -62,6 +62,20 @@
 		]
 	},
 	{
+		"title": "Lösungen",
+		"url": "/de/loesungen/",
+		"showInMenu": true,
+		"showInFooter": true,
+		"items": [
+			{
+				"title": "Case Studies",
+				"url": "/de/loesungen/case-studies/",
+				"showInMenu": true,
+				"showInFooter": true
+			}
+		]
+	},
+	{
 		"title": "Preis",
 		"url": "/de/preis/preis/",
 		"showInMenu": true,

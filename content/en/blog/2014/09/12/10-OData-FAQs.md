@@ -91,7 +91,7 @@ permalink: /blog/2014/09/12/10-OData-FAQs
                 .ToArray();
         }
     }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Now think about where this approach would lead us to in a more complex, real-world example. You would likely create dozens or even hundreds of different services to access your database via the web service layer. Each time the client application’s developer wants to add a feature that needs another kind of filtering or sorting, you need to extend and deploy the service layer. In practice, this is often not done. Generic data access functions like <em>get all customers</em> are used and people end up having performance problems because they do not use the database for what it is good at (efficient querying) and transfer an unnecessary large amount of data.</p><p xmlns="http://www.w3.org/1999/xhtml">Wouldn’t it be nice if we had a more generic web service? The approach shown above reminds me a bit of the "good" old times when I had been programming <a href="http://en.wikipedia.org/wiki/DBase" target="_blank">dBase</a> and <a href="http://en.wikipedia.org/wiki/Btrieve" target="_blank">BTrieve</a>. At that time, <a href="http://en.wikipedia.org/wiki/Select_(SQL)" target="_blank">SQL’s SELECT statement</a> was a huge step forward. Why not creating a single web service that accepts something like a SELECT statement? Well, OData does exactly that.</p><p xmlns="http://www.w3.org/1999/xhtml">Here is the code for adding an OData endpoint to our web API:</p>{% highlight javascript %}[ODataRoutePrefix(&quot;Customer&quot;)]
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Now think about where this approach would lead us to in a more complex, real-world example. You would likely create dozens or even hundreds of different services to access your database via the web service layer. Each time the client application’s developer wants to add a feature that needs another kind of filtering or sorting, you need to extend and deploy the service layer. In practice, this is often not done. Generic data access functions like <em>get all customers</em> are used and people end up having performance problems because they do not use the database for what it is good at (efficient querying) and transfer an unnecessary large amount of data.</p><p xmlns="http://www.w3.org/1999/xhtml">Wouldn’t it be nice if we had a more generic web service? The approach shown above reminds me a bit of the "good" old times when I had been programming <a href="http://en.wikipedia.org/wiki/DBase" target="_blank">dBase</a> and <a href="http://en.wikipedia.org/wiki/Btrieve" target="_blank">BTrieve</a>. At that time, <a href="http://en.wikipedia.org/wiki/Select_(SQL)" target="_blank">SQL’s SELECT statement</a> was a huge step forward. Why not creating a single web service that accepts something like a SELECT statement? Well, OData does exactly that.</p><p xmlns="http://www.w3.org/1999/xhtml">Here is the code for adding an OData endpoint to our web API:</p>{% highlight javascript %}[ODataRoutePrefix("Customer")]
 public class CustomerController : ODataController
 {
     private OrderManagementContext context = new OrderManagementContext();
@@ -145,25 +145,25 @@ public class CustomerController : ODataController
     static void Main(string[] args)
     {
         var container = new Container(
-            new Uri(&quot;http://localhost:12345/odata/&quot;, UriKind.Absolute));
+            new Uri("http://localhost:12345/odata/", UriKind.Absolute));
         foreach (var c in container.Customer
-            .Where(c =&gt; c.CountryIsoCode == &quot;AT&quot;))
+            .Where(c =&gt; c.CountryIsoCode == "AT"))
         {
             Console.WriteLine(c.CompanyName);
         }
     }
 }{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">
-  <a id="Functions" name="Functions" class="mce-item-anchor"></a>Is there something like stored procedures or functions to encapsulate logic?</h2><p xmlns="http://www.w3.org/1999/xhtml">Of course there is. You can define actions and functions. They can be unbound, bound to a single entity (e.g. customer), or bound to a collection (e.g. customers).</p><p xmlns="http://www.w3.org/1999/xhtml">Here is an example for a function that is bound to the <em>Customers</em> entity. It should return all customers that have bought at least one product from the category <em>BIKE</em>. This is a rather complex query and therefore it makes sense to encapsulate it in a function.</p>{% highlight javascript %}[ODataRoutePrefix(&quot;Customer&quot;)]
+  <a id="Functions" name="Functions" class="mce-item-anchor"></a>Is there something like stored procedures or functions to encapsulate logic?</h2><p xmlns="http://www.w3.org/1999/xhtml">Of course there is. You can define actions and functions. They can be unbound, bound to a single entity (e.g. customer), or bound to a collection (e.g. customers).</p><p xmlns="http://www.w3.org/1999/xhtml">Here is an example for a function that is bound to the <em>Customers</em> entity. It should return all customers that have bought at least one product from the category <em>BIKE</em>. This is a rather complex query and therefore it makes sense to encapsulate it in a function.</p>{% highlight javascript %}[ODataRoutePrefix("Customer")]
 public class CustomerController : ODataController
 {
     [...]
     [EnableQuery]
-    [ODataRoute(&quot;Default.OrderedBike&quot;)]
+    [ODataRoute("Default.OrderedBike")]
     [HttpGet]
     public IQueryable&lt;customer&gt; OrderedBike()
     {
         return from c in this.context.Customers
-                where c.Orders.Count(o =&gt; o.OrderDetails.Count(od =&gt; od.Product.CategoryCode == &quot;BIKE&quot;) &gt; 0) &gt; 0
+                where c.Orders.Count(o =&gt; o.OrderDetails.Count(od =&gt; od.Product.CategoryCode == "BIKE") &gt; 0) &gt; 0
                 select c;
     }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">You can access this function using the URL <em>http://myserver/odata/Customer/Default.OrderedBike()</em>. The database will handle the complex query with nested sub-selects.</p><p xmlns="http://www.w3.org/1999/xhtml">By the way, did you recognize that <em>OrderedBike</em> returns an <em>IQueryable</em>? Because of that, you can combine the function with additional OData query elements like <em>$filter</em>: <em>http://myserver/odata/Customer/Default.OrderedBike()?$filter=CountryIsoCode eq 'CH'</em>. In this example, the $filter clause is not executed on the client. It is combined with the function’s complex LINQ query so that SQL Server’s powerful query engine is used. The following screenshot shows the query logged by Visual Studio's IntelliTrace:</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
@@ -186,7 +186,7 @@ public class CustomerController : ODataController
 {
     public static void InitializeService(DataServiceConfiguration config)
     {
-        config.SetEntitySetAccessRule(&quot;*&quot;, EntitySetRights.AllRead);
+        config.SetEntitySetAccessRule("*", EntitySetRights.AllRead);
         config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V3;
     }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Just like ASP.NET Web API, WCF Data Services offers many options for securing and extending (e.g. with <a href="http://msdn.microsoft.com/en-us/library/dd744842(v=vs.110).aspx" target="_blank">Interceptors</a>) your OData services. <a href="http://msdn.microsoft.com/en-us/library/dd728284(v=vs.110).aspx" target="_blank">Here</a> you can learn more about it if you are interested.</p><p xmlns="http://www.w3.org/1999/xhtml">You can use Excel to try the OData service:</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
@@ -224,9 +224,9 @@ public async Task&lt;ihttpactionresult&gt; Post([FromBody] Customer customer)
 {
     public static void InitializeService(DataServiceConfiguration config)
     {
-        config.SetEntitySetAccessRule(&quot;*&quot;, EntitySetRights.AllRead);
+        config.SetEntitySetAccessRule("*", EntitySetRights.AllRead);
         // Add the following line to enable writing new customers
-        config.SetEntitySetAccessRule(&quot;Customers&quot;, EntitySetRights.AllRead | EntitySetRights.WriteAppend);
+        config.SetEntitySetAccessRule("Customers", EntitySetRights.AllRead | EntitySetRights.WriteAppend);
         config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V3;
     }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Here you see how we can now add a new customers using the <a href="http://www.telerik.com/fiddler" target="_blank">Fiddler</a>:</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
@@ -244,7 +244,7 @@ public async Task&lt;ihttpactionresult&gt; Post([FromBody] Customer customer)
     app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
     {
         AllowInsecureHttp = true,
-        TokenEndpointPath = new PathString(&quot;/token&quot;),
+        TokenEndpointPath = new PathString("/token"),
         AccessTokenExpireTimeSpan = TimeSpan.FromHours(8),
         Provider = new DummyAuthorizationProvider()
     });
@@ -268,24 +268,24 @@ private class DummyAuthorizationProvider : OAuthAuthorizationServerProvider
             return FinishedTask;
         }
         // Build claims identity
-        var identity = new ClaimsIdentity(&quot;OAuth2&quot;);
-        identity.AddClaim(new Claim(&quot;User&quot;, context.UserName));
-        if (context.UserName == &quot;admin&quot;)
+        var identity = new ClaimsIdentity("OAuth2");
+        identity.AddClaim(new Claim("User", context.UserName));
+        if (context.UserName == "admin")
         {
-            identity.AddClaim(new Claim(&quot;IsAdmin&quot;, &quot;IsAdmin&quot;));
+            identity.AddClaim(new Claim("IsAdmin", "IsAdmin"));
         }
         context.Validated(identity);
         return FinishedTask;
     }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Now we can protect our OData API using the <a href="http://msdn.microsoft.com/en-us/library/system.web.mvc.authorizeattribute(v=vs.118).aspx" target="_blank"><em>Authorize</em></a> attribute or in code by manually inspecting the claims of the user:</p>{% highlight javascript %}[Authorize]
-[ODataRoutePrefix(&quot;Customer&quot;)]
+[ODataRoutePrefix("Customer")]
 public class CustomerController : ODataController
 {
     [...]
     [EnableQuery]
     public IHttpActionResult Get()
     {
-        if (!string.IsNullOrWhiteSpace(((ClaimsPrincipal)Thread.CurrentPrincipal).Claims.FirstOrDefault(c =&gt; c.Type == &quot;IsAdmin&quot;).Value))
+        if (!string.IsNullOrWhiteSpace(((ClaimsPrincipal)Thread.CurrentPrincipal).Claims.FirstOrDefault(c =&gt; c.Type == "IsAdmin").Value))
         {
             return Ok(context.Customers);
         }

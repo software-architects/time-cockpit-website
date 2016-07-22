@@ -71,7 +71,7 @@ void BaseDestroy(Base *_this);{% endhighlight %}
 
 void BasePrint(Base *_this)
 {
-    printf(&quot;Base::print, baseMember = %d\n&quot;, _this-&gt;data.baseMember);
+    printf("Base::print, baseMember = %d\n", _this-&gt;data.baseMember);
 }
 
 void BaseConstruct(Base *_this, int baseMember)
@@ -112,12 +112,12 @@ void DerivedDestroy(Derived *_this);{% endhighlight %}<p xmlns="http://www.w3.or
 
 void DerivedPrint(Derived *_this)
 {
-    printf(&quot;Derived::print, baseMember = %d, derivedMember = %d\n&quot;, _this-&gt;base.baseMember, _this-&gt;data.derivedMember);
+    printf("Derived::print, baseMember = %d, derivedMember = %d\n", _this-&gt;base.baseMember, _this-&gt;data.derivedMember);
 }
 
 void DerivedReadFromFile(Derived *_this)
 {
-    printf(&quot;Derived::readFromFile&quot;);
+    printf("Derived::readFromFile");
 }
 
 void DerivedConstruct(Derived *_this, int baseMember, int derivedMember)

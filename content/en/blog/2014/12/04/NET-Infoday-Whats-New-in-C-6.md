@@ -32,7 +32,7 @@ permalink: /blog/2014/12/04/NET-Infoday-Whats-New-in-C-6
     private static void DoSomethingWithCSharp6()
     {
         // Read theme from application settings and look it up in theme directory
-        var themeConfig = ConfigurationManager.AppSettings[&quot;Theme&quot;].ToLower();
+        var themeConfig = ConfigurationManager.AppSettings["Theme"].ToLower();
         var theme = themes.FirstOrDefault(p =&gt; p.Name == themeConfig);
 
         Console.ForegroundColor = theme.ForegroundColor;
@@ -43,9 +43,9 @@ permalink: /blog/2014/12/04/NET-Infoday-Whats-New-in-C-6
     {
         themes = new List&lt;Theme&gt;()
         {
-            new Theme(&quot;dark&quot;, ConsoleColor.Black, ConsoleColor.White),
-            new Theme(&quot;light&quot;, ConsoleColor.White, ConsoleColor.Black),
-            new Theme(&quot;winter&quot;, ConsoleColor.Gray, ConsoleColor.Gray) // everything's gray in Austrian winter.
+            new Theme("dark", ConsoleColor.Black, ConsoleColor.White),
+            new Theme("light", ConsoleColor.White, ConsoleColor.Black),
+            new Theme("winter", ConsoleColor.Gray, ConsoleColor.Gray) // everything's gray in Austrian winter.
         };
     }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Note line 23. If the <em>app.config</em> file does not contain the <em>Theme</em> setting, we will get a null reference exception.</p><p xmlns="http://www.w3.org/1999/xhtml">
@@ -70,10 +70,10 @@ permalink: /blog/2014/12/04/NET-Infoday-Whats-New-in-C-6
             // Instead of:
             // if (PropertyChanged != null)
             // {
-            //     PropertyChanged(this, new PropertyChangedEventArgs(&quot;Name&quot;));
+            //     PropertyChanged(this, new PropertyChangedEventArgs("Name"));
             // }
             // you can now write:
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(&quot;Name&quot;));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Name"));
         }
     }
 }{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">

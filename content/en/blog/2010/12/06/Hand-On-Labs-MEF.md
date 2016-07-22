@@ -68,22 +68,22 @@ namespace DirectoryCatalogDemo
    var container = new CompositionContainer(
     new AggregateCatalog(
      new AssemblyCatalog(typeof(Program).Assembly),
-     directoryCatalog = new DirectoryCatalog(&quot;.&quot;)
+     directoryCatalog = new DirectoryCatalog(".")
     ));
    container.ComposeParts(this);
 
    var userInput = string.Empty;
    do
    {
-    Console.Write(&quot;Please enter a string (quit to exit program): &quot;);
+    Console.Write("Please enter a string (quit to exit program): ");
     userInput = Console.ReadLine();
-    if (userInput != &quot;quit&quot;)
+    if (userInput != "quit")
     {
      directoryCatalog.Refresh();
      Console.WriteLine(this.operators.Aggregate&lt;IStringOperator, string&gt;(userInput, (agg, op) =&gt; op.PerformOperation(agg)));
     }
    }
-   while (userInput != &quot;quit&quot;);
+   while (userInput != "quit");
   }
  }
 }{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
@@ -121,13 +121,13 @@ namespace DirectoryCatalogDemo
 {
  public static class FuncationalOperators
  {
-  [Export(&quot;FuncationOperator&quot;)]
+  [Export("FuncationOperator")]
   public static string UppercaseString(string input)
   {
    return input.ToUpper();
   }
 
-  [Export(&quot;FuncationOperator&quot;)]
+  [Export("FuncationOperator")]
   public static string ReverseString(string input)
   {
    return new string(input.Reverse().ToArray());
@@ -148,7 +148,7 @@ namespace DirectoryCatalogDemo
   [ImportMany(AllowRecomposition = true)]
   private IStringOperator[] operators;
 
-  [ImportMany(&quot;FuncationOperator&quot;, AllowRecomposition = true)]
+  [ImportMany("FuncationOperator", AllowRecomposition = true)]
   private Func&lt;string, string&gt;[] funcationalOperators;
 
   static void Main(string[] args)
@@ -162,25 +162,25 @@ namespace DirectoryCatalogDemo
    var container = new CompositionContainer(
     new AggregateCatalog(
      new AssemblyCatalog(typeof(Program).Assembly),
-     directoryCatalog = new DirectoryCatalog(&quot;.&quot;)
+     directoryCatalog = new DirectoryCatalog(".")
     ));
    container.ComposeParts(this);
 
    var userInput = string.Empty;
    do
    {
-    Console.Write(&quot;Please enter a string (quit to exit program): &quot;);
+    Console.Write("Please enter a string (quit to exit program): ");
     userInput = Console.ReadLine();
-    if (userInput != &quot;quit&quot;)
+    if (userInput != "quit")
     {
      directoryCatalog.Refresh();
-     Console.WriteLine(&quot;Operators from classes: {0}&quot;, 
+     Console.WriteLine("Operators from classes: {0}", 
       this.operators.Aggregate&lt;IStringOperator, string&gt;(userInput, (agg, op) =&gt; op.PerformOperation(agg)));
-     Console.WriteLine(&quot;Funcational operators: {0}&quot;,
+     Console.WriteLine("Funcational operators: {0}",
       this.funcationalOperators.Aggregate&lt;Func&lt;string, string&gt;, string&gt;(userInput, (agg, op) =&gt; op(agg)));
     }
    }
-   while (userInput != &quot;quit&quot;);
+   while (userInput != "quit");
   }
  }
 }{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
@@ -197,12 +197,12 @@ public class DisposableObject : IDisposable
 
  public DisposableObject()
  {
-  Trace.WriteLine(string.Format(&quot;Creating object {0}&quot;, this.GetHashCode()));
+  Trace.WriteLine(string.Format("Creating object {0}", this.GetHashCode()));
  }
 
  public void Dispose()
  {
-  Trace.WriteLine(string.Format(&quot;Disposing object {0}&quot;, this.GetHashCode()));
+  Trace.WriteLine(string.Format("Disposing object {0}", this.GetHashCode()));
   this.disposed = true;
  }
 
@@ -235,26 +235,26 @@ public class DisposableObject : IDisposable
   var catalog = new AssemblyCatalog(typeof(DisposableObject).Assembly);
   var container = new CompositionContainer(catalog);
 
-  Trace.WriteLine(&quot;Start composing&quot;);
+  Trace.WriteLine("Start composing");
   container.ComposeParts(this);
 
-  Trace.WriteLine(&quot;Accessing lazy object&quot;);
+  Trace.WriteLine("Accessing lazy object");
   this.mefObject1.Value.DoSomething();
   this.mefObject2.Value.DoSomething();
 
   container.ReleaseExports(new[] { this.mefObject1, this.mefObject2 });
 
-  Trace.WriteLine(&quot;Start composing&quot;);
+  Trace.WriteLine("Start composing");
   container.ComposeParts(this);
 
-  Trace.WriteLine(&quot;Accessing lazy object again&quot;);
+  Trace.WriteLine("Accessing lazy object again");
   this.mefObject1.Value.DoSomething();
   this.mefObject2.Value.DoSomething();
  }
 
  public void OnImportsSatisfied()
  {
-  Trace.WriteLine(&quot;Imports are satisfied&quot;);
+  Trace.WriteLine("Imports are satisfied");
  }
 }{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Build your project.</li>

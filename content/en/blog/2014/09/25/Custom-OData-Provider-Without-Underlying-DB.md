@@ -22,12 +22,12 @@ using System.Web.OData.Routing;
 
 namespace CustomODataProvider.Provider.Controller
 {
-    [ODataRoutePrefix(&quot;Customers&quot;)]
+    [ODataRoutePrefix("Customers")]
     public class CustomerController : ODataController
     {
         // Helpers for generating customer names
-        private readonly char[] letters1 = &quot;aeiou&quot;.ToArray();
-        private readonly char[] letters2 = &quot;bcdfgklmnpqrstvw&quot;.ToArray();
+        private readonly char[] letters1 = "aeiou".ToArray();
+        private readonly char[] letters2 = "bcdfgklmnpqrstvw".ToArray();
         private Random random = new Random();
 
         private const int pageSize = 100;
@@ -47,7 +47,7 @@ namespace CustomODataProvider.Provider.Controller
             string equalFilter = null;
             if (options.Filter != null)
             {
-                // We only support a single &quot;eq&quot; filter
+                // We only support a single "eq" filter
                 var binaryOperator = options.Filter.FilterClause.Expression as BinaryOperatorNode;
                 if (binaryOperator == null || binaryOperator.OperatorKind != BinaryOperatorKind.Equal)
                 {
@@ -57,7 +57,7 @@ namespace CustomODataProvider.Provider.Controller
                 // One side has to be a reference to CustomerName property, the other side has to be a constant
                 var propertyAccess = binaryOperator.Left as SingleValuePropertyAccessNode ?? binaryOperator.Right as SingleValuePropertyAccessNode;
                 var constant = binaryOperator.Left as ConstantNode ?? binaryOperator.Right as ConstantNode;
-                if (propertyAccess == null || propertyAccess.Property.Name != &quot;CustomerName&quot; || constant == null)
+                if (propertyAccess == null || propertyAccess.Property.Name != "CustomerName" || constant == null)
                 {
                     return InternalServerError();
                 }
@@ -109,13 +109,13 @@ namespace CustomODataProvider.Provider
             config.Formatters.Add(new JsonMediaTypeFormatter());
 
             var routeConventions = ODataRoutingConventions.CreateDefault();
-            config.MapODataServiceRoute(&quot;odata&quot;, &quot;odata&quot;, GetModel());
+            config.MapODataServiceRoute("odata", "odata", GetModel());
         }
 
         private static IEdmModel GetModel()
         {
             var modelBuilder = new ODataConventionModelBuilder();
-            modelBuilder.EntitySet&lt;Customer&gt;(&quot;Customers&quot;);
+            modelBuilder.EntitySet&lt;Customer&gt;("Customers");
             return modelBuilder.GetEdmModel();
         }
     }
@@ -131,9 +131,9 @@ namespace CustomODataProvider.Hosting
     {
         static void Main(string[] args)
         {
-            using (WebApp.Start&lt;Startup&gt;(&quot;http://localhost:5000&quot;)) 
+            using (WebApp.Start&lt;Startup&gt;("http://localhost:5000")) 
             { 
-                Console.WriteLine( &quot;Server ready... Press Enter to quit.&quot;); 
+                Console.WriteLine( "Server ready... Press Enter to quit."); 
                 Console.ReadLine(); 
             }
         }

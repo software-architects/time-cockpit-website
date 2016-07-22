@@ -9,20 +9,20 @@ lang: en
 permalink: /blog/2012/11/19/WPF-CheckBox-With-Confirmation-Message
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">During <a href="http://www.basta-austria.at" title="Homepage of BASTA Austria" target="_blank">BASTA Austria</a> I have been asked a WPF question. How can I implement a confirmation question that is asked whenever a user checks a CheckBox? Imagine the following dialog:</p><p xmlns="http://www.w3.org/1999/xhtml"> <img src="{{site.baseurl}}/content/images/blog/2012/11/CheckboxConfirmation.png" alt="CheckBox Confirmation Sample Dialog" /></p><p xmlns="http://www.w3.org/1999/xhtml">Our goal is to display an "Are you sure?" message if the user checks "Delete everything!" or hits the "Delete Everything (in Code)" button. There should not be a message box if the user unchecks the "Delete everything!" check box.</p><h2 xmlns="http://www.w3.org/1999/xhtml">XAML Source (Without Confirmation Message)</h2><p xmlns="http://www.w3.org/1999/xhtml">Here you see the XAML source with which we start:</p>{% highlight javascript %}&lt;Window x:Class=&quot;WpfApplication1.MainWindow&quot;
-        xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
-        xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
-        xmlns:i=&quot;http://schemas.microsoft.com/expression/2010/interactivity&quot;  
-        xmlns:local=&quot;clr-namespace:WpfApplication1&quot;
-        Title=&quot;MainWindow&quot; Height=&quot;350&quot; Width=&quot;525&quot;&gt;
+<p xmlns="http://www.w3.org/1999/xhtml">During <a href="http://www.basta-austria.at" title="Homepage of BASTA Austria" target="_blank">BASTA Austria</a> I have been asked a WPF question. How can I implement a confirmation question that is asked whenever a user checks a CheckBox? Imagine the following dialog:</p><p xmlns="http://www.w3.org/1999/xhtml"> <img src="{{site.baseurl}}/content/images/blog/2012/11/CheckboxConfirmation.png" alt="CheckBox Confirmation Sample Dialog" /></p><p xmlns="http://www.w3.org/1999/xhtml">Our goal is to display an "Are you sure?" message if the user checks "Delete everything!" or hits the "Delete Everything (in Code)" button. There should not be a message box if the user unchecks the "Delete everything!" check box.</p><h2 xmlns="http://www.w3.org/1999/xhtml">XAML Source (Without Confirmation Message)</h2><p xmlns="http://www.w3.org/1999/xhtml">Here you see the XAML source with which we start:</p>{% highlight javascript %}&lt;Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"  
+        xmlns:local="clr-namespace:WpfApplication1"
+        Title="MainWindow" Height="350" Width="525"&gt;
     &lt;StackPanel&gt;
-        &lt;CheckBox Content=&quot;Delete everything!&quot; Name=&quot;DeleteEverythingCheckbox&quot; IsChecked=&quot;{Binding Path=CheckboxChecked}&quot;
-                  Margin=&quot;5&quot;&gt;
+        &lt;CheckBox Content="Delete everything!" Name="DeleteEverythingCheckbox" IsChecked="{Binding Path=CheckboxChecked}"
+                  Margin="5"&gt;
         &lt;/CheckBox&gt;
-        &lt;Button Command=&quot;{Binding Path=SetDeleteEverythingCommand}&quot; Margin=&quot;5&quot;&gt;Delete Everything (in Code)&lt;/Button&gt;
+        &lt;Button Command="{Binding Path=SetDeleteEverythingCommand}" Margin="5"&gt;Delete Everything (in Code)&lt;/Button&gt;
         
-        &lt;TextBox IsEnabled=&quot;{Binding ElementName=DeleteEverythingCheckbox, Path=IsChecked}&quot; Text=&quot;Here is some text to edit&quot;
-                 Margin=&quot;5&quot;/&gt;
+        &lt;TextBox IsEnabled="{Binding ElementName=DeleteEverythingCheckbox, Path=IsChecked}" Text="Here is some text to edit"
+                 Margin="5"/&gt;
     &lt;/StackPanel&gt;
 &lt;/Window&gt;
 {% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The code behind file just connects to the view model:</p>{% highlight javascript %}using System.Windows;
@@ -83,7 +83,7 @@ namespace WpfApplication1
     public class ConfirmInvokeCommandAction : TriggerAction&lt;DependencyObject&gt;
     {
         public static readonly DependencyProperty MessageProperty =
-            DependencyProperty.Register(&quot;Message&quot;, typeof(string), typeof(ConfirmInvokeCommandAction), new PropertyMetadata(&quot;Are you sure?&quot;));
+            DependencyProperty.Register("Message", typeof(string), typeof(ConfirmInvokeCommandAction), new PropertyMetadata("Are you sure?"));
 
         public string Message
         {
@@ -96,7 +96,7 @@ namespace WpfApplication1
             var checkBox = this.AssociatedObject as CheckBox;
             if (checkBox != null)
             {
-                if (MessageBox.Show(this.Message, &quot;Alert&quot;, MessageBoxButton.YesNo) == MessageBoxResult.No)
+                if (MessageBox.Show(this.Message, "Alert", MessageBoxButton.YesNo) == MessageBoxResult.No)
                 {
                     checkBox.IsChecked = false;
                 }
@@ -104,25 +104,25 @@ namespace WpfApplication1
         }
     }
 }
-{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">We use an event trigger (mechanism defined in the Expression SDK) to access our <em>TriggerAction</em> in XAML:</p>{% highlight javascript %}&lt;Window x:Class=&quot;WpfApplication1.MainWindow&quot;
-        xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
-        xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
-        xmlns:i=&quot;http://schemas.microsoft.com/expression/2010/interactivity&quot;  
-        xmlns:local=&quot;clr-namespace:WpfApplication1&quot;
-        Title=&quot;MainWindow&quot; Height=&quot;350&quot; Width=&quot;525&quot;&gt;
+{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">We use an event trigger (mechanism defined in the Expression SDK) to access our <em>TriggerAction</em> in XAML:</p>{% highlight javascript %}&lt;Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"  
+        xmlns:local="clr-namespace:WpfApplication1"
+        Title="MainWindow" Height="350" Width="525"&gt;
     &lt;StackPanel&gt;
-        &lt;CheckBox Content=&quot;Delete everything!&quot; Name=&quot;DeleteEverythingCheckbox&quot; IsChecked=&quot;{Binding Path=CheckboxChecked}&quot;
-                  Margin=&quot;5&quot;&gt;
+        &lt;CheckBox Content="Delete everything!" Name="DeleteEverythingCheckbox" IsChecked="{Binding Path=CheckboxChecked}"
+                  Margin="5"&gt;
             &lt;i:Interaction.Triggers&gt;
-                &lt;i:EventTrigger EventName=&quot;Checked&quot;&gt;
-                    &lt;local:ConfirmInvokeCommandAction Message=&quot;Are you sure?&quot; /&gt;
+                &lt;i:EventTrigger EventName="Checked"&gt;
+                    &lt;local:ConfirmInvokeCommandAction Message="Are you sure?" /&gt;
                 &lt;/i:EventTrigger&gt;
             &lt;/i:Interaction.Triggers&gt;
         &lt;/CheckBox&gt;
-        &lt;Button Command=&quot;{Binding Path=SetDeleteEverythingCommand}&quot; Margin=&quot;5&quot;&gt;Delete Everything (in Code)&lt;/Button&gt;
+        &lt;Button Command="{Binding Path=SetDeleteEverythingCommand}" Margin="5"&gt;Delete Everything (in Code)&lt;/Button&gt;
         
-        &lt;TextBox IsEnabled=&quot;{Binding ElementName=DeleteEverythingCheckbox, Path=IsChecked}&quot; Text=&quot;Here is some text to edit&quot;
-                 Margin=&quot;5&quot;/&gt;
+        &lt;TextBox IsEnabled="{Binding ElementName=DeleteEverythingCheckbox, Path=IsChecked}" Text="Here is some text to edit"
+                 Margin="5"/&gt;
     &lt;/StackPanel&gt;
 &lt;/Window&gt;
 {% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Result</h2><p xmlns="http://www.w3.org/1999/xhtml">This does the trick:</p><p xmlns="http://www.w3.org/1999/xhtml">

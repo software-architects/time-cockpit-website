@@ -28,13 +28,13 @@ permalink: /blog/2013/02/21/Using-WAWS-for-Tenant-Isolation
     <f:param name="ThumbnailMaxHeight" value="189" xmlns:f="http://www.composite.net/ns/function/1.0" />
   </f:function> Architecture Diagram (click to enlarge)</p><h2 xmlns="http://www.w3.org/1999/xhtml">Code Walkthrough</h2><p xmlns="http://www.w3.org/1999/xhtml">When a user subscribes to our service, the website queues a tenant creation request using <a href="http://www.windowsazure.com/en-us/home/features/messaging/" title="Azure Service Bus" target="_blank">Azure's Service Bus</a>. This service makes communicating between servers in the cloud a piece of cake. Just as an example, here is the code I used in the sample to enqueue a tenant creation request.</p>{% highlight javascript %}protected void LinkButton1_Click(object sender, EventArgs e)
 {
-    var tenant = string.Format(&quot;tenant{0}&quot;, DateTime.Now.Ticks);
+    var tenant = string.Format("tenant{0}", DateTime.Now.Ticks);
 
     var queueClient = QueueClient.Create(
-        &quot;createtenant&quot;,
+        "createtenant",
         ReceiveMode.ReceiveAndDelete);
     var bm = new BrokeredMessage();
-    bm.Properties[&quot;Tenant&quot;] = tenant;
+    bm.Properties["Tenant"] = tenant;
     queueClient.Send(bm);
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Here is the code for the worker waiting for tenant creation request. I share this code because it demonstrates how you can use e.g. <a href="http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/" title="WAWS Command Line Tools" target="_blank">WAWS's command line tools</a> to automate the creation of websites in Azure.</p>{% highlight javascript %}class Program
 {
@@ -42,9 +42,9 @@ permalink: /blog/2013/02/21/Using-WAWS-for-Tenant-Isolation
     {
         // Create queue if it does not exist already
         var nsm = NamespaceManager.Create();
-        if (!nsm.QueueExists(&quot;createtenant&quot;))
+        if (!nsm.QueueExists("createtenant"))
         {
-            var queue = nsm.CreateQueue(new QueueDescription(&quot;createtenant&quot;)
+            var queue = nsm.CreateQueue(new QueueDescription("createtenant")
             {
                 DefaultMessageTimeToLive = TimeSpan.FromHours(1.0),
                 EnableBatchedOperations = false,
@@ -57,7 +57,7 @@ permalink: /blog/2013/02/21/Using-WAWS-for-Tenant-Isolation
             });
         }
 
-        var queueClient = QueueClient.Create(&quot;createtenant&quot;, ReceiveMode.ReceiveAndDelete);
+        var queueClient = QueueClient.Create("createtenant", ReceiveMode.ReceiveAndDelete);
         while (true)
         {
             // Wait for a tenant creation message
@@ -66,40 +66,40 @@ permalink: /blog/2013/02/21/Using-WAWS-for-Tenant-Isolation
                 if (true)
                 {
                     // Get tenant ID from message
-                    var tenant = msg.Properties[&quot;Tenant&quot;].ToString();
+                    var tenant = msg.Properties["Tenant"].ToString();
 
                     // Create the tenant's database by copying a template
                     CreateTenantDatabase(tenant);
 
                     // Create and configure a website using the command line tool for WAWS
-                    RunProcessAsync(&quot;azure&quot;, string.Format(&quot;site create {0} --git --location \&quot;West US\&quot; &lt; c:\\temp\\CanBeDeleted\\Empty.txt&quot;, tenant)).Wait();
-                    RunProcessAsync(&quot;azure&quot;, string.Format(&quot;site config add tenant={0} {0}&quot;, tenant)).Wait();
+                    RunProcessAsync("azure", string.Format("site create {0} --git --location \"West US\" &lt; c:\\temp\\CanBeDeleted\\Empty.txt", tenant)).Wait();
+                    RunProcessAsync("azure", string.Format("site config add tenant={0} {0}", tenant)).Wait();
 
                     // Copy the website template using git
-                    RunProcessAsync(&quot;git&quot;, &quot;init&quot;, @&quot;C:\temp\CanBeDeleted\template&quot;).Wait();
-                    RunProcessAsync(&quot;git&quot;, &quot;pull https://myuser@erptenantisolationtemplate.scm.azurewebsites.net/ErpTenantIsolationTemplate.git&quot;, @&quot;C:\temp\CanBeDeleted\template&quot;).Wait();
-                    RunProcessAsync(&quot;git&quot;, string.Format(&quot;remote add azure https://myuser@{0}.scm.azurewebsites.net/{0}.git&quot;, tenant), @&quot;C:\temp\CanBeDeleted\template&quot;).Wait();
-                    RunProcessAsync(&quot;git&quot;, &quot;push azure master&quot;, @&quot;C:\temp\CanBeDeleted\template&quot;).Wait();
+                    RunProcessAsync("git", "init", @"C:\temp\CanBeDeleted\template").Wait();
+                    RunProcessAsync("git", "pull https://myuser@erptenantisolationtemplate.scm.azurewebsites.net/ErpTenantIsolationTemplate.git", @"C:\temp\CanBeDeleted\template").Wait();
+                    RunProcessAsync("git", string.Format("remote add azure https://myuser@{0}.scm.azurewebsites.net/{0}.git", tenant), @"C:\temp\CanBeDeleted\template").Wait();
+                    RunProcessAsync("git", "push azure master", @"C:\temp\CanBeDeleted\template").Wait();
 
                     // Cleanup
-                    RunProcessAsync(&quot;cmd&quot;, &quot;/C rd . /s /q&quot;, @&quot;C:\temp\CanBeDeleted\template&quot;).Wait();
+                    RunProcessAsync("cmd", "/C rd . /s /q", @"C:\temp\CanBeDeleted\template").Wait();
                 }
                 else
                 {
-                    Trace.WriteLine(&quot;No tenant creation request, waiting...&quot;);
+                    Trace.WriteLine("No tenant creation request, waiting...");
                 }
         }
     }
 
     private static void CreateTenantDatabase(string tenant)
     {
-        using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings[&quot;ErpDatabase&quot;].ConnectionString))
+        using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ErpDatabase"].ConnectionString))
         {
             conn.Open();
             using (var cmd = conn.CreateCommand())
             {
                 // Create a transactionally consistant copy of the template database
-                cmd.CommandText = string.Format(&quot;CREATE DATABASE {0} AS COPY OF northwind&quot;, tenant);
+                cmd.CommandText = string.Format("CREATE DATABASE {0} AS COPY OF northwind", tenant);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -149,7 +149,7 @@ permalink: /blog/2013/02/21/Using-WAWS-for-Tenant-Isolation
     {
         // Use the ERP's API to connect to the tenant's datbase
         var context = new DataContext();
-        context.Open(ConfigurationManager.ConnectionStrings[&quot;ErpDatabase&quot;].ConnectionString);
+        context.Open(ConfigurationManager.ConnectionStrings["ErpDatabase"].ConnectionString);
             
         // Load the script from the tenant's database
         var scriptSource = context.GetScriptSource(id);
@@ -163,11 +163,11 @@ permalink: /blog/2013/02/21/Using-WAWS-for-Tenant-Isolation
             // Execute the script and give it access the the ERP's API
             var engine = Python.CreateEngine();
             var scope = engine.CreateScope();
-            scope.SetVariable(&quot;Context&quot;, context);
+            scope.SetVariable("Context", context);
             var script = engine.CreateScriptSourceFromString(scriptSource);
             script.Execute(scope);
 
-            return request.CreateResponse(HttpStatusCode.OK, &quot;Success&quot;);
+            return request.CreateResponse(HttpStatusCode.OK, "Success");
         }
         catch (Exception ex)
         {

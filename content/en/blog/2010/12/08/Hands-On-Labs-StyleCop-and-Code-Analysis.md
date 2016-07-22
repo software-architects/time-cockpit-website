@@ -68,9 +68,9 @@ namespace styleCopDemo
     {
      if (agg.Length &gt; 0)
      {
-      agg.Append(&quot;, &quot;);
+      agg.Append(", ");
      }
-     agg.AppendFormat(&quot;{0}: {1}&quot;, item.Key, item.Value.ToString());
+     agg.AppendFormat("{0}: {1}", item.Key, item.Value.ToString());
      return agg;
     }).ToString();
   }
@@ -87,7 +87,7 @@ namespace styleCopDemo
   <li>Correct all warnings appropriately.</li>
   <li>After that your file should look similar to the following implementation:</li>
 </ul>{% highlight javascript %}//-------------------------------------------------------
-// &lt;copyright file=&quot;Bucket.cs&quot; company=&quot;Contoso Ltd.&quot;&gt;
+// &lt;copyright file="Bucket.cs" company="Contoso Ltd."&gt;
 //     Copyright (c) Contoso Ltd. All rights reserved.
 // &lt;/copyright&gt;
 //-------------------------------------------------------
@@ -102,7 +102,7 @@ namespace StyleCopDemo
  /// &lt;summary&gt;
  /// Implements a bucket
  /// &lt;/summary&gt;
- /// &lt;typeparam name=&quot;T&quot;&gt;Type of the elements in the bucket&lt;/typeparam&gt;
+ /// &lt;typeparam name="T"&gt;Type of the elements in the bucket&lt;/typeparam&gt;
  public class Bucket&lt;T&gt;
  {
   /// &lt;summary&gt;
@@ -120,7 +120,7 @@ namespace StyleCopDemo
   /// &lt;summary&gt;
   /// Initializes a new instance of the Bucket class.
   /// &lt;/summary&gt;
-  /// &lt;param name=&quot;data&quot;&gt;The initial data.&lt;/param&gt;
+  /// &lt;param name="data"&gt;The initial data.&lt;/param&gt;
   public Bucket(IEnumerable&lt;Tuple&lt;string, T&gt;&gt; data)
   {
    foreach (var item in data) 
@@ -132,7 +132,7 @@ namespace StyleCopDemo
   /// &lt;summary&gt;
   /// Gets the element at the specified index.
   /// &lt;/summary&gt;
-  /// &lt;param name=&quot;index&quot;&gt;Index of the element to get.&lt;/param&gt;
+  /// &lt;param name="index"&gt;Index of the element to get.&lt;/param&gt;
   /// &lt;value&gt;Element at the specified index.&lt;/value&gt;
   public T this[string index]
   {
@@ -159,10 +159,10 @@ namespace StyleCopDemo
   }
 
   /// &lt;summary&gt;
-  /// Returns a &lt;see cref=&quot;System.String&quot;/&gt; that represents this instance.
+  /// Returns a &lt;see cref="System.String"/&gt; that represents this instance.
   /// &lt;/summary&gt;
   /// &lt;returns&gt;
-  /// A &lt;see cref=&quot;System.String&quot;/&gt; that represents this instance.
+  /// A &lt;see cref="System.String"/&gt; that represents this instance.
   /// &lt;/returns&gt;
   public override string ToString()
   {
@@ -181,10 +181,10 @@ namespace StyleCopDemo
     {
      if (agg.Length &gt; 0)
      {
-      agg.Append(&quot;, &quot;);
+      agg.Append(", ");
      }
 
-     agg.AppendFormat(&quot;{0}: {1}&quot;, item.Key, item.Value.ToString());
+     agg.AppendFormat("{0}: {1}", item.Key, item.Value.ToString());
      return agg;
     }).ToString();
   }
@@ -199,7 +199,7 @@ namespace StyleCopDemo
   <li>Edit <span class="InlineCode">StyleCopDemo</span> project (right-click on project in <em>Solution Explorer</em>, select <em>Edit StyleCopDemo.csproj</em>).</li>
   <li>Scroll to the end of the file. Find the line <span class="InlineCode">&lt;Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" /&gt;</span>.</li>
   <li>Immediately after that line add the following line:</li>
-</ul>{% highlight javascript %}&lt;Import Project=&quot;$(ProgramFiles)\MSBuild\Microsoft\StyleCop\v4.4\Microsoft.StyleCop.targets&quot; /&gt;{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}&lt;Import Project="$(ProgramFiles)\MSBuild\Microsoft\StyleCop\v4.4\Microsoft.StyleCop.targets" /&gt;{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Reload the <span class="InlineCode">StyleCopDemo</span> project (right-click on project in <em>Solution Explorer</em>, select <em>Reload Project</em>).</li>
   <li>Build your project to see that there are no errors and warnings.</li>
   <li>Break a StyleCop rule (e.g. remove the documentation of a method).</li>
@@ -215,8 +215,8 @@ namespace StyleCopDemo
 
 <ul><li>The StyleCop warning should now be an error.</li></ul></li>
   <li>Suppress the warning/error using the <span class="InlineCode">SuppressMessage</span> attribute:</li>
-</ul>{% highlight javascript %}[SuppressMessage(&quot;Microsoft.StyleCop.CSharp.DocumentationRules&quot;, &quot;SA1600:ElementsMustBeDocumented&quot;, 
-  Justification = &quot;No time to write documentation...&quot;)]
+</ul>{% highlight javascript %}[SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", 
+  Justification = "No time to write documentation...")]
 public class Bucket&lt;T&gt;
 {
   ...
@@ -282,7 +282,7 @@ public class Bucket&lt;T&gt;
   {
    lock (this.header)
    {
-    var header = string.Format(&quot;{0}: {1}&quot;, newObj.ItemName, newObj.Values.Count);
+    var header = string.Format("{0}: {1}", newObj.ItemName, newObj.Values.Count);
 
     foreach (var item in newObj.Values)
     {
@@ -309,7 +309,7 @@ public class Bucket&lt;T&gt;
   public void WriteToDatabase(SqlConnection conn, string tenant)
   {
    var cmd = conn.CreateCommand();
-   cmd.CommandText = string.Format(&quot;INSERT INTO Target ( Tenant, Data ) VALUES ( {0}, @Data )&quot;, tenant);
+   cmd.CommandText = string.Format("INSERT INTO Target ( Tenant, Data ) VALUES ( {0}, @Data )", tenant);
    
    // Build rest of the command and execute it
   }
@@ -322,7 +322,7 @@ public class Bucket&lt;T&gt;
    }
    catch
    {
-    Console.WriteLine(&quot;Error&quot;);
+    Console.WriteLine("Error");
    }
   }
  }
@@ -422,7 +422,7 @@ namespace CodeAnalysisDemo
    }
   }
 
-  [SuppressMessage(&quot;Microsoft.Performance&quot;, &quot;CA1822&quot;, Justification = &quot;Will reference 'this' later&quot;)]
+  [SuppressMessage("Microsoft.Performance", "CA1822", Justification = "Will reference 'this' later")]
   public void CopyFile(string sourceFileName)
   {
    var stream = new FileStream(sourceFileName, FileMode.Open);
@@ -447,17 +447,17 @@ namespace CodeAnalysisDemo
    }
   }
 
-  [SuppressMessage(&quot;Microsoft.Performance&quot;, &quot;CA1822&quot;, Justification = &quot;Will reference 'this' later&quot;)]
+  [SuppressMessage("Microsoft.Performance", "CA1822", Justification = "Will reference 'this' later")]
   public void WriteToDatabase(SqlConnection conn, string tenant)
   {
    if (conn == null || (conn.State &amp; ConnectionState.Open) == 0)
    {
-    throw new ArgumentException(&quot;conn must not be null and must be open&quot;);
+    throw new ArgumentException("conn must not be null and must be open");
    }
 
    var cmd = conn.CreateCommand();
-   cmd.CommandText = &quot;INSERT INTO Target ( Tenant, Data ) VALUES ( @Tenant, @Data )&quot;;
-   cmd.Parameters.Add(&quot;@Tenant&quot;, System.Data.SqlDbType.NVarChar, 100).Value = tenant;
+   cmd.CommandText = "INSERT INTO Target ( Tenant, Data ) VALUES ( @Tenant, @Data )";
+   cmd.Parameters.Add("@Tenant", System.Data.SqlDbType.NVarChar, 100).Value = tenant;
 
    // Build rest of the command and execute it
   }
@@ -470,7 +470,7 @@ namespace CodeAnalysisDemo
    }
    catch
    {
-    Console.WriteLine(&quot;Error&quot;);
+    Console.WriteLine("Error");
     throw;
    }
   }

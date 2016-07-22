@@ -17,23 +17,23 @@ module CrmModule {
     lastName: string;
   }
   
-  // Note that Person would not need to specify &quot;implements IPerson&quot; 
-  // explicitely. Even if the &quot;implements&quot; clause would not be there, 
+  // Note that Person would not need to specify "implements IPerson" 
+  // explicitely. Even if the "implements" clause would not be there, 
   // Person would be compatible with IPerson because of structural subtyping.
   export class Person implements IPerson {
     private isNew: bool;       // a private member only accessible inside Person
     public firstName: string;  // a public member accessible from outside
     
     // Here you see how to define a constructor
-    // Note the keyword &quot;public&quot; used for parameter &quot;lastName&quot;. It 
-    // makes &quot;lastName&quot; a public property. &quot;firstName&quot; is assigned manually.
+    // Note the keyword "public" used for parameter "lastName". It 
+    // makes "lastName" a public property. "firstName" is assigned manually.
     constructor(firstName: string, public lastName: string) {
       this.firstName = firstName;
     }
     
     // A public method...
     public toString() {
-      return this.lastName + &quot;, &quot; + this.firstName;
+      return this.lastName + ", " + this.firstName;
     }
     
     // A public get accessor...
@@ -42,24 +42,24 @@ module CrmModule {
         (this.firstName.length &gt; 0 &amp;&amp; this.lastName.length &gt; 0);
     }
     
-    // Note the function type literal used for the &quot;completeCallback&quot; parameter.
-    // &quot;repository&quot; has no type. Therefore it is of type &quot;Any&quot;.
+    // Note the function type literal used for the "completeCallback" parameter.
+    // "repository" has no type. Therefore it is of type "Any".
     public savePerson(repository, completedCallback: (bool) =&gt; void) {
       var code = repository.saveViaRestService(this);
       completedCallback(code === 200);
     }
   }
   
-  // Create derived classes using the &quot;extends&quot; keyword
+  // Create derived classes using the "extends" keyword
   export class VipPerson extends Person {
-    // Note that &quot;VipPerson&quot; does not define a constructor. It gets a
+    // Note that "VipPerson" does not define a constructor. It gets a
     // constructor with appropriate parameters from its base class
     // automatically.
     
-    // Note how we override &quot;toString&quot; here. Use &quot;super&quot; to access 
+    // Note how we override "toString" here. Use "super" to access 
     // the base class.
     public toString() {
-      return super.toString() + &quot; (VIP)&quot;;
+      return super.toString() + " (VIP)";
     }
   }
   
@@ -69,7 +69,7 @@ module CrmModule {
       public potentialRevenueEur: number;
       public contacts: IPerson[];      // Array type
       
-      // Note that we use the &quot;IPerson&quot; interface here.
+      // Note that we use the "IPerson" interface here.
       public addContact(p: IPerson) {
         this.contacts.push(p);
       }
@@ -84,7 +84,7 @@ module CrmModule {
 
 // Note how we instanciate the Person class here.
 var p: CrmModule.Person;
-p = new CrmModule.Person(&quot;Max&quot;, &quot;Muster&quot;);
+p = new CrmModule.Person("Max", "Muster");
 
 // Change the HTML DOM via TypeScript. Try to play around with this code
 // in the TypeScript Playground and you will see that you have IntelliSense
@@ -92,42 +92,42 @@ p = new CrmModule.Person(&quot;Max&quot;, &quot;Muster&quot;);
 var button = document.createElement('button')
 button.innerText = p.toString()
 button.onclick = function() {
-  alert(&quot;Hello&quot; + p.firstName)
+  alert("Hello" + p.firstName)
 }
 document.body.appendChild(button)
 
 // Call a method and pass a callback function.
 var r = { 
   saveViaRestService: function (p: CrmModule.Person) {
-    alert(&quot;Saving &quot; + p.toString());
+    alert("Saving " + p.toString());
     return 200;
   }
 };
-p.savePerson(r, function(success: string) { alert(&quot;Saved&quot;); });
+p.savePerson(r, function(success: string) { alert("Saved"); });
 
 // Create an instance of the derived class.
 var v: CrmModule.VipPerson;
-v = new CrmModule.VipPerson(&quot;Tom&quot;, &quot;Turbo&quot;);
+v = new CrmModule.VipPerson("Tom", "Turbo");
 // Note how we access the get accessor here.
 if (!v.isValid) {
-  alert(&quot;Person is invalid&quot;);
+  alert("Person is invalid");
 }
 else {
-  // Not that &quot;toString&quot; calls the overridden version from the derived class
+  // Not that "toString" calls the overridden version from the derived class
   // VipPerson.
   alert(v.toString());
 }
 
-// Note how we import a module here and assign it the alias &quot;S&quot;.
+// Note how we import a module here and assign it the alias "S".
 import S = CrmModule.Sales;
 var s: S.Opportunity;
 s = new S.Opportunity();
 s.potentialRevenueEur = 1000;
-// Note structural subtyping here. You can call &quot;addContact&quot; with 
+// Note structural subtyping here. You can call "addContact" with 
 // any object type compatible with IPerson.
 s.addContact(v);
-s.addContact({ firstName: &quot;Rainer&quot;, lastName: &quot;Stropek&quot; });
-s.addContact(&lt;CrmModule.IPerson&gt; { firstName: &quot;Rainer&quot;, lastName: &quot;Stropek&quot; });
+s.addContact({ firstName: "Rainer", lastName: "Stropek" });
+s.addContact(&lt;CrmModule.IPerson&gt; { firstName: "Rainer", lastName: "Stropek" });
 var val = S.Opportunity.convertToUsd(s.potentialRevenueEur);
 {% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Modules in TypeScript</h2>{% highlight javascript %}module Crm {
     export class Customer {
@@ -143,10 +143,10 @@ module Crm {
     }    
 }
 
-var classesInCrmModule = &quot;&quot;;
+var classesInCrmModule = "";
 for(var key in Crm)
 {
-     classesInCrmModule += key + &quot; &quot;;
+     classesInCrmModule += key + " ";
      
 }
 document.body.innerText = classesInCrmModule;
@@ -165,28 +165,28 @@ interface JQueryStatic {
 }
 
 declare var $: JQueryStatic;
-{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">app.ts:</p>{% highlight javascript %}/// &lt;reference path=&quot;jQuery.d.ts&quot; /&gt;
+{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">app.ts:</p>{% highlight javascript %}/// &lt;reference path="jQuery.d.ts" /&gt;
 
 $(document.body).ready(function(){
-    alert(&quot;Loaded&quot;);
-    $(&quot;a&quot;).click(function(event) {
-        alert(&quot;As you can see, the link no longer took you to timecockpit.com&quot;);
+    alert("Loaded");
+    $("a").click(function(event) {
+        alert("As you can see, the link no longer took you to timecockpit.com");
         event.preventDefault();
    });
 });
 {% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">default.htm:</p>{% highlight javascript %}&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;html lang="en" xmlns="http://www.w3.org/1999/xhtml"&gt;
 &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;meta charset="utf-8" /&gt;
     &lt;title&gt;jQuery from TypeScript&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;app.css&quot; type=&quot;text/css&quot; /&gt;
-    &lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;app.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" href="app.css" type="text/css" /&gt;
+    &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script src="app.js"&gt;&lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
     &lt;h1&gt;jQuery from TypeScript&lt;/h1&gt;
-    &lt;div id=&quot;content&quot;&gt;
-        &lt;a href=&quot;http://www.timecockpit.com&quot;&gt;Click me!&lt;/a&gt;
+    &lt;div id="content"&gt;
+        &lt;a href="http://www.timecockpit.com"&gt;Click me!&lt;/a&gt;
     &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;{% endhighlight %}

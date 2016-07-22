@@ -182,7 +182,7 @@ Used to implement optimistic locking.</li>
   {% highlight javascript %}CloudBlob blob;
 (blob = connection.ConfirmationContainer
  .GetBlobReference(messagePayload.RowKey))
- .UploadText(string.Format(&quot;Order {0} accepted!&quot;, messagePayload.RowKey));
+ .UploadText(string.Format("Order {0} accepted!", messagePayload.RowKey));
 // In practise we would retrieve a shared access signature (i.e. URL) for the blob here
 // using blob.GetSharedAccessSignature and send the URL to the customer. {% endhighlight %}
   <h2>Recap And Summary</h2>

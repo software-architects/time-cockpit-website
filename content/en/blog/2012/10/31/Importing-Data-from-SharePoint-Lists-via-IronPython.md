@@ -14,32 +14,32 @@ permalink: /blog/2012/10/31/Importing-Data-from-SharePoint-Lists-via-IronPython
   <img src="{{site.baseurl}}/content/images/blog/2012/10/List.png" title="SharePoint List Data" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">SharePoint uses columns of different types like <em>string/text</em> or <em>choice</em> which have been chosen for this article.</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2012/10/ListColumns.png" title="List Columns" />
-</p><p xmlns="http://www.w3.org/1999/xhtml">The schema and data stored in SharePoint can be accessed in different ways. While end users use the web- or the rich-client, programs use the <a href="http://msdn.microsoft.com/library/ff798388.aspx" title="client-SDK" target="_blank">client-SDK</a> or the <a href="http://msdn.microsoft.com/library/ff798339.aspx" title="REST/XML service interface" target="_blank">REST/XML service interface</a>. The service interface provides easy access for fully fetching small- to mid-sized lists or manipulating entries. It is especially useful when using <a href="http://ironpython.net" title="IronPython" target="_blank">IronPython</a> and the <a href="http://msdn.microsoft.com/library/gg145045.aspx" title="BCL" target="_blank">BCL</a>. Another advantage of the service interface over the client SDK is that you do not have to add any additional libraries. The data can be fetched via <a href="http://msdn.microsoft.com/library/system.net.webrequest.aspx" title="web-requests" target="_blank">web-requests</a>. Use <a href="http://msdn.microsoft.com/library/system.xml.linq.xdocument.aspx" title="XDocument" target="_blank">XDocument</a> to process it.</p><p xmlns="http://www.w3.org/1999/xhtml">The following code snippet shows one entry from the XML document of a complete list. Note that the values of nodes within the properties collection contain the relevant information.</p>{% highlight javascript %}  &lt;entry m:etag=&quot;W/&amp;quot;2&amp;quot;&quot;&gt;
+</p><p xmlns="http://www.w3.org/1999/xhtml">The schema and data stored in SharePoint can be accessed in different ways. While end users use the web- or the rich-client, programs use the <a href="http://msdn.microsoft.com/library/ff798388.aspx" title="client-SDK" target="_blank">client-SDK</a> or the <a href="http://msdn.microsoft.com/library/ff798339.aspx" title="REST/XML service interface" target="_blank">REST/XML service interface</a>. The service interface provides easy access for fully fetching small- to mid-sized lists or manipulating entries. It is especially useful when using <a href="http://ironpython.net" title="IronPython" target="_blank">IronPython</a> and the <a href="http://msdn.microsoft.com/library/gg145045.aspx" title="BCL" target="_blank">BCL</a>. Another advantage of the service interface over the client SDK is that you do not have to add any additional libraries. The data can be fetched via <a href="http://msdn.microsoft.com/library/system.net.webrequest.aspx" title="web-requests" target="_blank">web-requests</a>. Use <a href="http://msdn.microsoft.com/library/system.xml.linq.xdocument.aspx" title="XDocument" target="_blank">XDocument</a> to process it.</p><p xmlns="http://www.w3.org/1999/xhtml">The following code snippet shows one entry from the XML document of a complete list. Note that the values of nodes within the properties collection contain the relevant information.</p>{% highlight javascript %}  &lt;entry m:etag="W/&amp;quot;2&amp;quot;"&gt;
     &lt;id&gt;http://sps2010/ImportDemo/_vti_bin/listdata.svc/Customer(2)&lt;/id&gt;
-    &lt;title type=&quot;text&quot;&gt;C2&lt;/title&gt;
+    &lt;title type="text"&gt;C2&lt;/title&gt;
     &lt;updated&gt;2012-10-30T16:17:19+01:00&lt;/updated&gt;
     &lt;author&gt;
       &lt;name /&gt;
     &lt;/author&gt;
-    &lt;link rel=&quot;edit&quot; title=&quot;CustomerItem&quot; href=&quot;Customer(2)&quot; /&gt;
-    &lt;link rel=&quot;http://schemas.microsoft.com/ado/2007/08/dataservices/related/Country&quot; type=&quot;application/atom+xml;type=entry&quot; title=&quot;Country&quot; href=&quot;Customer(2)/Country&quot; /&gt;
-    &lt;link rel=&quot;http://schemas.microsoft.com/ado/2007/08/dataservices/related/CreatedBy&quot; type=&quot;application/atom+xml;type=entry&quot; title=&quot;CreatedBy&quot; href=&quot;Customer(2)/CreatedBy&quot; /&gt;
-    &lt;link rel=&quot;http://schemas.microsoft.com/ado/2007/08/dataservices/related/ModifiedBy&quot; type=&quot;application/atom+xml;type=entry&quot; title=&quot;ModifiedBy&quot; href=&quot;Customer(2)/ModifiedBy&quot; /&gt;
-    &lt;link rel=&quot;http://schemas.microsoft.com/ado/2007/08/dataservices/related/Attachments&quot; type=&quot;application/atom+xml;type=feed&quot; title=&quot;Attachments&quot; href=&quot;Customer(2)/Attachments&quot; /&gt;
-    &lt;category term=&quot;Microsoft.SharePoint.DataService.CustomerItem&quot; scheme=&quot;http://schemas.microsoft.com/ado/2007/08/dataservices/scheme&quot; /&gt;
-    &lt;content type=&quot;application/xml&quot;&gt;
+    &lt;link rel="edit" title="CustomerItem" href="Customer(2)" /&gt;
+    &lt;link rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/Country" type="application/atom+xml;type=entry" title="Country" href="Customer(2)/Country" /&gt;
+    &lt;link rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/CreatedBy" type="application/atom+xml;type=entry" title="CreatedBy" href="Customer(2)/CreatedBy" /&gt;
+    &lt;link rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/ModifiedBy" type="application/atom+xml;type=entry" title="ModifiedBy" href="Customer(2)/ModifiedBy" /&gt;
+    &lt;link rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/Attachments" type="application/atom+xml;type=feed" title="Attachments" href="Customer(2)/Attachments" /&gt;
+    &lt;category term="Microsoft.SharePoint.DataService.CustomerItem" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" /&gt;
+    &lt;content type="application/xml"&gt;
       &lt;m:properties&gt;
         &lt;d:ContentTypeID&gt;0x0100A129BD8C09415944A763E4D4C2E0BA13&lt;/d:ContentTypeID&gt;
         &lt;d:Title&gt;C2&lt;/d:Title&gt;
         &lt;d:Name&gt;Customer 2&lt;/d:Name&gt;
         &lt;d:CountryValue&gt;AT&lt;/d:CountryValue&gt;
-        &lt;d:Id m:type=&quot;Edm.Int32&quot;&gt;2&lt;/d:Id&gt;
+        &lt;d:Id m:type="Edm.Int32"&gt;2&lt;/d:Id&gt;
         &lt;d:ContentType&gt;Item&lt;/d:ContentType&gt;
-        &lt;d:Modified m:type=&quot;Edm.DateTime&quot;&gt;2012-10-30T16:17:19&lt;/d:Modified&gt;
-        &lt;d:Created m:type=&quot;Edm.DateTime&quot;&gt;2012-10-30T16:14:19&lt;/d:Created&gt;
-        &lt;d:CreatedById m:type=&quot;Edm.Int32&quot;&gt;1&lt;/d:CreatedById&gt;
-        &lt;d:ModifiedById m:type=&quot;Edm.Int32&quot;&gt;1&lt;/d:ModifiedById&gt;
-        &lt;d:Owshiddenversion m:type=&quot;Edm.Int32&quot;&gt;2&lt;/d:Owshiddenversion&gt;
+        &lt;d:Modified m:type="Edm.DateTime"&gt;2012-10-30T16:17:19&lt;/d:Modified&gt;
+        &lt;d:Created m:type="Edm.DateTime"&gt;2012-10-30T16:14:19&lt;/d:Created&gt;
+        &lt;d:CreatedById m:type="Edm.Int32"&gt;1&lt;/d:CreatedById&gt;
+        &lt;d:ModifiedById m:type="Edm.Int32"&gt;1&lt;/d:ModifiedById&gt;
+        &lt;d:Owshiddenversion m:type="Edm.Int32"&gt;2&lt;/d:Owshiddenversion&gt;
         &lt;d:Version&gt;1.0&lt;/d:Version&gt;
         &lt;d:Path&gt;/ImportDemo/Lists/Customer&lt;/d:Path&gt;
       &lt;/m:properties&gt;
@@ -66,7 +66,7 @@ nsD = clr.Convert('http://schemas.microsoft.com/ado/2007/08/dataservices', XName
 nsM = clr.Convert('http://schemas.microsoft.com/ado/2007/08/dataservices/metadata', XNamespace){% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The following function wraps fetching the XML-data from SharePoint and processing it into an XDocument.</p>{% highlight javascript %}# get XDocument from sharepoint
 def getDocument(listUrl, credentials):
     request = WebRequest.Create(listUrl)
-    request.Method = &quot;GET&quot;
+    request.Method = "GET"
     request.Credentials = credentials
     with request.GetResponse() as response:
         with response.GetResponseStream() as stream:
@@ -78,17 +78,17 @@ def getValue(startNode, name, valueConverter, valueNodeFallback):
         # fallback for choice strings
         if node is None:
             if valueNodeFallback:
-                node = startNode.Descendants(nsD + (name + &quot;Value&quot;)).Single()
+                node = startNode.Descendants(nsD + (name + "Value")).Single()
             else:
-                raise Exception(String.Format(&quot;Could not find node {0}&quot;, name))
+                raise Exception(String.Format("Could not find node {0}", name))
             
-        nullAttribute = node.Attribute(nsM + &quot;null&quot;)
+        nullAttribute = node.Attribute(nsM + "null")
         if nullAttribute is not None and Convert.ToBoolean(nullAttribute.Value):
             return None
         else:
             return valueConverter(node.Value)
     except Exception, e:
-        raise Exception(String.Format(&quot;Could not get value for {0}.&quot;, name), e)
+        raise Exception(String.Format("Could not get value for {0}.", name), e)
 
 # extract named string value from xml node
 def getString(startNode, name, trim):
@@ -98,9 +98,9 @@ def getString(startNode, name, trim):
     else:
         return value{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The next set of functions handles processing XML-sub-trees into time cockpit <em>Customer</em> EntityObjects. Note that <em>countries</em> is a <a href="http://msdn.microsoft.com/library/xfhwa508.aspx" title="dictionary" target="_blank">dictionary</a> used to look up <em>Country</em><a href="http://help.timecockpit.com/html/dfbc3e13-f897-51fd-b343-445a00f695b8.htm" title="EntityObjects" target="_blank">EntityObjects</a> via their ISO code. Maintaining the choice-column in SharePoint and the countries within time cockpit is not in the scope of this article.</p>{% highlight javascript %}# create Customer EntityObject from xml sub-tree
 def getCustomer(node, dc, countries):
-    code = getString(node, &quot;Title&quot;, True)
-    name = getString(node, &quot;Name&quot;, True)
-    countryCode = getString(node, &quot;Country&quot;, True)
+    code = getString(node, "Title", True)
+    name = getString(node, "Name", True)
+    countryCode = getString(node, "Country", True)
     customer = dc.CreateCustomer()
     customer.Code = code
     customer.CompanyName = name
@@ -110,7 +110,7 @@ def getCustomer(node, dc, countries):
 
 # get all customers from xml document
 def getCustomers(doc, dc, countries):
-    customers = doc.Descendants(nsM + &quot;properties&quot;).Select(lambda n: getCustomer(n, dc, countries))
+    customers = doc.Descendants(nsM + "properties").Select(lambda n: getCustomer(n, dc, countries))
     return customers.ToDictionary(lambda c: c.Code, lambda c: c){% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The last helper function compares already existing data with the data from SharePoint. First it looks at all new keys/customer codes from SharePoint and adds the corresponding EntityObjects to the result. Then all relevant members are checked for changes between SharePoint and time cockpit. If changes are found, the member values are put in the existing object which is added to result for updating it.</p>{% highlight javascript %}# determine new/updated customers (no deletion once imported)
 def getUpdateBatch(existingCustomers, sharepointCustomers):
     result = List[EntityObject]()
@@ -128,8 +128,8 @@ def getUpdateBatch(existingCustomers, sharepointCustomers):
             result.Add(existing)
 
     return result{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The primary body of the script gets the necessary data (converted to a dictionary via LINQ for easier handling), determines which updates need to happen, and saves the changes within a transaction. </p>{% highlight javascript %}# get existing data from time cockpit
-existingCustomers = dc.Select(&quot;From C In Customer.Include(*) Select C&quot;).ToDictionary(lambda c: c.Code, lambda c: c)
-existingCountries = dc.Select(&quot;From C In Country Select C&quot;).ToDictionary(lambda c: c.IsoCode, lambda c: c)
+existingCustomers = dc.Select("From C In Customer.Include(*) Select C").ToDictionary(lambda c: c.Code, lambda c: c)
+existingCountries = dc.Select("From C In Country Select C").ToDictionary(lambda c: c.IsoCode, lambda c: c)
 
 # get customers from sharepoint
 sharepointCustomersDoc = getDocument(customerUrl, credentials)
@@ -139,7 +139,7 @@ sharepointCustomers = getCustomers(sharepointCustomersDoc, dc, existingCountries
 dc.BeginTransaction()
 try:
     for customer in getUpdateBatch(existingCustomers, sharepointCustomers):
-        Logger.Write(LogLevel.Verbose, &quot;Saving {0}&quot;, customer.Code)
+        Logger.Write(LogLevel.Verbose, "Saving {0}", customer.Code)
         dc.SaveObject(customer)
     dc.TryCommitTransaction()
 except:

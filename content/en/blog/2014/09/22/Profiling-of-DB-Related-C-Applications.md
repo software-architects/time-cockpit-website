@@ -55,9 +55,9 @@ namespace AdoNetPerfProfiling
     {
         static void Main(string[] args)
         {
-            using (WebApp.Start&lt;Startup&gt;(&quot;http://localhost:12345&quot;))
+            using (WebApp.Start&lt;Startup&gt;("http://localhost:12345"))
             {
-                Console.WriteLine(&quot;Listening on port 12345. Press any key to quit.&quot;);
+                Console.WriteLine("Listening on port 12345. Press any key to quit.");
                 Console.ReadLine();
             }
         }
@@ -80,8 +80,8 @@ namespace AdoNetPerfProfiling
         private static void SetupWebApiRoutes(HttpConfiguration config)
         {
             config.Routes.MapHttpRoute(
-                name: &quot;webapi&quot;,
-                routeTemplate: &quot;api/{controller}&quot;,
+                name: "webapi",
+                routeTemplate: "api/{controller}",
                 defaults: new { customerName = RouteParameter.Optional }
             );
         }
@@ -115,7 +115,7 @@ namespace AdoNetPerfProfiling.Controller
         {
             try
             {
-                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings[&quot;AdventureWorks&quot;].ConnectionString))
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["AdventureWorks"].ConnectionString))
                 {
                     connection.Open();
 
@@ -141,7 +141,7 @@ namespace AdoNetPerfProfiling.Controller
         {
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = &quot;SELECT AddressTypeID FROM Person.AddressType WHERE Name = 'Main Office'&quot;;
+                command.CommandText = "SELECT AddressTypeID FROM Person.AddressType WHERE Name = 'Main Office'";
                 return (int)command.ExecuteScalar();
             }
         }
@@ -158,10 +158,10 @@ namespace AdoNetPerfProfiling.Controller
                 command.CommandTimeout = 600;
 
                 // The following line is a problem. It does not specify size for NVARCHAR -&gt; SQL Server cannot reuse exec plan.
-                command.Parameters.AddWithValue(&quot;@customerName&quot;, customerName);
-                // command.Parameters.Add(&quot;@customerName&quot;, SqlDbType.NVarChar, 50).Value = customerName;
+                command.Parameters.AddWithValue("@customerName", customerName);
+                // command.Parameters.Add("@customerName", SqlDbType.NVarChar, 50).Value = customerName;
 
-                command.Parameters.AddWithValue(&quot;@AddressTypeID&quot;, addressTypeID);
+                command.Parameters.AddWithValue("@AddressTypeID", addressTypeID);
                 using (var adapter = new SqlDataAdapter(command))
                 {
                     adapter.Fill(result);
@@ -182,23 +182,23 @@ namespace AdoNetPerfProfiling.Controller
             foreach (var row in rows)
             {
                 var jsonRow = new JObject(
-                    new JProperty(&quot;LastName&quot;, row[&quot;LastName&quot;]),
-                    new JProperty(&quot;FirstName&quot;, row[&quot;FirstName&quot;]),
-                    new JProperty(&quot;AddressLine1&quot;, row[&quot;AddressLine1&quot;]),
-                    new JProperty(&quot;AddressLine2&quot;, row[&quot;AddressLine2&quot;]),
-                    new JProperty(&quot;City&quot;, row[&quot;City&quot;]),
-                    new JProperty(&quot;CountryRegionName&quot;, row[&quot;CountryRegionName&quot;]));
+                    new JProperty("LastName", row["LastName"]),
+                    new JProperty("FirstName", row["FirstName"]),
+                    new JProperty("AddressLine1", row["AddressLine1"]),
+                    new JProperty("AddressLine2", row["AddressLine2"]),
+                    new JProperty("City", row["City"]),
+                    new JProperty("CountryRegionName", row["CountryRegionName"]));
                 jsonResult.Add(jsonRow);
             }
 
             return jsonResult;
         }
     }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Note that the algorithm shown above uses a T4 template to generate the SQL SELECT statement:</p>{% highlight javascript %}&lt;#@ template language=&quot;C#&quot; #&gt;
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Note that the algorithm shown above uses a T4 template to generate the SQL SELECT statement:</p>{% highlight javascript %}&lt;#@ template language="C#" #&gt;
 
 -- The following line is a problem. It changes during every SQL execution. Therefore, SQL Server
 -- cannot do proper exec plan caching.
-PRINT 'Execution start time: &lt;#= DateTime.UtcNow.ToString(&quot;O&quot;) #&gt;';
+PRINT 'Execution start time: &lt;#= DateTime.UtcNow.ToString("O") #&gt;';
 
 SELECT    p.LastName, p.FirstName, a.AddressLine1, a.AddressLine2, a.City, cr.Name as CountryRegionName
         -- UPPER(p.LastName) AS UpperLastName, UPPER(p.FirstName) AS UpperFirstName
@@ -219,7 +219,7 @@ WHERE    &lt;# if (this.IncludeNameFilter) { #&gt;p.FirstName LIKE '%' + @custom
             WHERE    c.PersonID = p.BusinessEntityID)
 ORDER BY p.LastName, p.FirstName, cr.Name, a.City;
 
-PRINT 'Execution start time: &lt;#= DateTime.UtcNow.ToString(&quot;O&quot;) #&gt;';{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Take a second and review our first implementation. Do you find flaws? Do you think you have ideas for enhancing the algorithm? During the workshop I demo the following topics. I encourage you to do the same when working through this article.</p><ol xmlns="http://www.w3.org/1999/xhtml">
+PRINT 'Execution start time: &lt;#= DateTime.UtcNow.ToString("O") #&gt;';{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Take a second and review our first implementation. Do you find flaws? Do you think you have ideas for enhancing the algorithm? During the workshop I demo the following topics. I encourage you to do the same when working through this article.</p><ol xmlns="http://www.w3.org/1999/xhtml">
   <li>Create a Visual Studio Web and Load test to generate a standardized usage scenario (the test is in my GitHub repo, too)</li>
   <li>Run the load test while profiling CPU in Visual Studio. Do we have a CPU problem?</li>
   <li>Collect a SQL statement with Visual Studio IntelliTrace, run it in SQL Management Studio and analyze it (how long does it take? How does the execution plan look like?)</li>
@@ -265,7 +265,7 @@ namespace AdoNetPerfProfiling.Controller
                 {
                     if (customerCache == null)
                     {
-                        using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings[&quot;AdventureWorks&quot;].ConnectionString))
+                        using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["AdventureWorks"].ConnectionString))
                         {
                             connection.Open();
 
@@ -280,20 +280,20 @@ namespace AdoNetPerfProfiling.Controller
 
             // This approach uses an ADO.NET DataView to query the cache.
             var view = new DataView(CachingSearchController.customerCache);
-            view.RowFilter = &quot;LastName LIKE '%&quot; + customerName + &quot;%' OR FirstName LIKE '%&quot; + customerName + &quot;%'&quot;;
+            view.RowFilter = "LastName LIKE '%" + customerName + "%' OR FirstName LIKE '%" + customerName + "%'";
             return Ok(CachingSearchController.ConvertToJson(view.Cast&lt;DataRowView&gt;(), (row, colName) =&gt; row[colName]));
 
             // This approach replaces ADO.NET DataView with (stupid) LINQ.
             //var rows = CachingSearchController.customerCache.Rows.Cast&lt;DataRow&gt;().ToArray();
             //var tempResult = rows.Where(
-            //    r =&gt; r[&quot;LastName&quot;].ToString().ToUpper().Contains(customerName.ToUpper())
-            //        || r[&quot;FirstName&quot;].ToString().ToUpper().Contains(customerName.ToUpper())).ToArray();
+            //    r =&gt; r["LastName"].ToString().ToUpper().Contains(customerName.ToUpper())
+            //        || r["FirstName"].ToString().ToUpper().Contains(customerName.ToUpper())).ToArray();
             //return Ok(CachingSearchController.ConvertToJson(tempResult, (row, col) =&gt; row[col]));
 
             // And now with less stupid LINQ.
             //var customerNameUppercase = customerName.ToUpper();
-            //var lastNameOrdinal = CachingSearchController.customerCache.Columns.IndexOf(&quot;UpperLastName&quot;);
-            //var firstNameOrdinal = CachingSearchController.customerCache.Columns.IndexOf(&quot;UpperFirstName&quot;);
+            //var lastNameOrdinal = CachingSearchController.customerCache.Columns.IndexOf("UpperLastName");
+            //var firstNameOrdinal = CachingSearchController.customerCache.Columns.IndexOf("UpperFirstName");
             //var tempResult = CachingSearchController.customerCache
             //    .Rows
             //    .Cast&lt;DataRow&gt;()
@@ -314,12 +314,12 @@ namespace AdoNetPerfProfiling.Controller
             foreach (var row in rows)
             {
                 var jsonRow = new JObject(
-                    new JProperty(&quot;LastName&quot;, getColumn(row, &quot;LastName&quot;)),
-                    new JProperty(&quot;FirstName&quot;, getColumn(row, &quot;FirstName&quot;)),
-                    new JProperty(&quot;AddressLine1&quot;, getColumn(row, &quot;AddressLine1&quot;)),
-                    new JProperty(&quot;AddressLine2&quot;, getColumn(row, &quot;AddressLine2&quot;)),
-                    new JProperty(&quot;City&quot;, getColumn(row, &quot;City&quot;)),
-                    new JProperty(&quot;CountryRegionName&quot;, getColumn(row, &quot;CountryRegionName&quot;)));
+                    new JProperty("LastName", getColumn(row, "LastName")),
+                    new JProperty("FirstName", getColumn(row, "FirstName")),
+                    new JProperty("AddressLine1", getColumn(row, "AddressLine1")),
+                    new JProperty("AddressLine2", getColumn(row, "AddressLine2")),
+                    new JProperty("City", getColumn(row, "City")),
+                    new JProperty("CountryRegionName", getColumn(row, "CountryRegionName")));
                 jsonResult.Add(jsonRow);
             }
 
@@ -372,7 +372,7 @@ namespace AdoNetPerfProfiling.Controller
                 {
                     if (customerCache == null)
                     {
-                        using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings[&quot;AdventureWorks&quot;].ConnectionString))
+                        using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["AdventureWorks"].ConnectionString))
                         {
                             connection.Open();
 

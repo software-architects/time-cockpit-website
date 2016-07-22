@@ -62,12 +62,12 @@ model = Context.GetWritableModel()
 model.Customer.Properties.Add(
     NumericProperty(
     { 
-        &quot;Name&quot;: &quot;BillomatID&quot;, 
-        &quot;InvariantFriendlyName&quot;: &quot;Billomat ID&quot;, 
-        &quot;Scale&quot;: 0, 
-        &quot;Precision&quot;: 18,
-        &quot;IsNullable&quot;: True, 
-        &quot;Ownership&quot;: Ownership.ApplicationSpecific 
+        "Name": "BillomatID", 
+        "InvariantFriendlyName": "Billomat ID", 
+        "Scale": 0, 
+        "Precision": 18,
+        "IsNullable": True, 
+        "Ownership": Ownership.ApplicationSpecific 
     }))
 
 Context.SaveModel(model){% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The following script selects all customers in time cockpit and inserts or updates them in billomat:</p>{% highlight javascript %}clr.AddReference('System.Xml.Linq')
@@ -80,19 +80,19 @@ from System.Threading import Thread
 from System.Globalization import CultureInfo
 
 #################################################################################
-apiUrl = &quot;https://[your billomat id].billomat.net/api/&quot;
-apiToken = &quot;[your api key]&quot;
+apiUrl = "https://[your billomat id].billomat.net/api/"
+apiToken = "[your api key]"
 update = False
 #################################################################################
 
 def GetItems(resource, id): 
     url = apiUrl + resource
     if id != None:
-        url = url + &quot;/&quot; + id
+        url = url + "/" + id
     request = WebRequest.Create(url)
-    request.Method = &quot;GET&quot;
-    request.Headers[&quot;X-BillomatApiKey&quot;] = apiToken
-    request.Accept = &quot;application/xml&quot;
+    request.Method = "GET"
+    request.Headers["X-BillomatApiKey"] = apiToken
+    request.Accept = "application/xml"
     
     response = request.GetResponse()
     stream = response.GetResponseStream()
@@ -109,17 +109,17 @@ def SaveItem(resource, id, xml):
     
     url = apiUrl + resource
     if id != None:
-        url = url + &quot;/&quot; + id.ToString()
+        url = url + "/" + id.ToString()
     request = WebRequest.Create(url)
     
     if id == None:
-        request.Method = &quot;POST&quot;
+        request.Method = "POST"
     else:
-        request.Method = &quot;PUT&quot;
+        request.Method = "PUT"
         
-    request.Headers[&quot;X-BillomatApiKey&quot;] = apiToken
-    request.Accept = &quot;application/xml&quot;
-    request.ContentType = &quot;application/xml&quot;
+    request.Headers["X-BillomatApiKey"] = apiToken
+    request.Accept = "application/xml"
+    request.ContentType = "application/xml"
     request.ContentLength = data.Length
     
     stream = request.GetRequestStream()
@@ -134,44 +134,44 @@ def SaveItem(resource, id, xml):
     stream.Close()
     response.Close()
     
-    if response.StatusCode.ToString() == &quot;OK&quot; or response.StatusCode.ToString() == &quot;Created&quot;:
+    if response.StatusCode.ToString() == "OK" or response.StatusCode.ToString() == "Created":
         return result
     else:
         print response.StatusCode
         return None
     
 def UpdateCustomers():
-    for customer in Context.Select(&quot;From C In Customer.Include('Country') Select C&quot;):
+    for customer in Context.Select("From C In Customer.Include('Country') Select C"):
         xml = XDocument()
-        client = XElement(&quot;client&quot;)
+        client = XElement("client")
         xml.Add(client)
-        client.Add(XElement(&quot;name&quot;, customer.CompanyName))
-        client.Add(XElement(&quot;street&quot;, customer.Street))
-        client.Add(XElement(&quot;zip&quot;, customer.ZipCode))
-        client.Add(XElement(&quot;city&quot;, customer.Town))
-        client.Add(XElement(&quot;country_code&quot;, customer.Country.IsoCode))
-        client.Add(XElement(&quot;phone&quot;, customer.Phone))
-        client.Add(XElement(&quot;fax&quot;, customer.Fax))
-        client.Add(XElement(&quot;email&quot;, customer.Email))
-        client.Add(XElement(&quot;vat_number&quot;, customer.VatID))
+        client.Add(XElement("name", customer.CompanyName))
+        client.Add(XElement("street", customer.Street))
+        client.Add(XElement("zip", customer.ZipCode))
+        client.Add(XElement("city", customer.Town))
+        client.Add(XElement("country_code", customer.Country.IsoCode))
+        client.Add(XElement("phone", customer.Phone))
+        client.Add(XElement("fax", customer.Fax))
+        client.Add(XElement("email", customer.Email))
+        client.Add(XElement("vat_number", customer.VatID))
                 
         if customer.APP_BillomatID == None:
             print customer.Code
         else:
-            print customer.Code + &quot; - &quot; + customer.APP_BillomatID.ToString()
+            print customer.Code + " - " + customer.APP_BillomatID.ToString()
             
-        result = SaveItem(&quot;clients&quot;, customer.APP_BillomatID, xml)
+        result = SaveItem("clients", customer.APP_BillomatID, xml)
         
         if result == None:
-            print &quot;\tERROR: Customer &quot; + customer.CompanyName + &quot; could not be imported&quot;
+            print "\tERROR: Customer " + customer.CompanyName + " could not be imported"
         else:
             if customer.APP_BillomatID == None:
                 xdoc = XDocument.Parse(result)
-                customer.APP_BillomatID = xdoc.Element(&quot;client&quot;).Element(&quot;id&quot;).Value
+                customer.APP_BillomatID = xdoc.Element("client").Element("id").Value
                 Context.SaveObject(customer)
     
 encoding = UTF8Encoding()
-Thread.CurrentThread.CurrentCulture = CultureInfo(&quot;en-US&quot;)    
+Thread.CurrentThread.CurrentCulture = CultureInfo("en-US")    
 
 UpdateCustomers(){% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">Basic Invoicing Process</h3><p xmlns="http://www.w3.org/1999/xhtml">A basic invoicing process with time cockpit and billomat could look as follows:</p><ol xmlns="http://www.w3.org/1999/xhtml">
   <li>First you run the script to update all customers in billomat (you can automate this process using time cockpit's <a href="http://help.timecockpit.com/?topic=html/7c78b76a-2526-4408-accc-ccae19bbca45.htm" target="_blank">ExecuteScript</a> feature). When a customer is imported for the first time, you should complete some data like payment terms or tax rules in billomat.</li>

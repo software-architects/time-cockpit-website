@@ -27,28 +27,28 @@ var mandrill = require('mandrill-api/mandrill');
 
 // Query for finding all projects with budget overrun
 var tcql = { 
-    &quot;query&quot;: &quot;From P In Project \
+    "query": "From P In Project \
         Where (From T In P.Timesheets Select New With { .TotalHours = Sum(T.DurationInHours) }) &gt; P.BudgetInHours \
         Select New With { \
             P.Code, \
             P.Description, \
             P.BudgetInHours, \
             .TotalEffectiveHours = (From T In P.Timesheets Select New With { .TotalHours = Sum(T.DurationInHours) }) \
-        }&quot; };
+        }" };
 var dataToSend = JSON.stringify(tcql);
 
 // Send query to time cockpit's OData Web API
 needle.post(
-    &quot;https://apipreview.timecockpit.com/select&quot;, 
+    "https://apipreview.timecockpit.com/select", 
     dataToSend,
     { 
         // Add your time cockpit user/password here
-        username: &quot;youruser@yourcompany.com&quot;, 
-        password: &quot;Y0urP@ssw0rd&quot;,
-        auth: &quot;basic&quot;,
+        username: "youruser@yourcompany.com", 
+        password: "Y0urP@ssw0rd",
+        auth: "basic",
         headers : {
-            accept: &quot;application/json&quot;,
-            &quot;Content-Type&quot;: &quot;application/json&quot;
+            accept: "application/json",
+            "Content-Type": "application/json"
         }
         
     },
@@ -59,17 +59,17 @@ needle.post(
         // The email content is driven by a template. Here we set up the
         // merge fields used in the template.
         var mergeVariables = [{
-                &quot;name&quot;: &quot;PROJECTNAME&quot;,
-                &quot;content&quot;: null // will be filled inside the following loop
+                "name": "PROJECTNAME",
+                "content": null // will be filled inside the following loop
             }];
-        var template_name = &quot;Project Overrun&quot;;
+        var template_name = "Project Overrun";
         var message = {
             // In practice you might want to replace the recipient to e.g.
             // the project manager stored in time cockpit's database. For demo
             // purposes we use a static email address here.
-            &quot;to&quot;: [{ &quot;email&quot;: &quot;rainer@timecockpit.com&quot; }],
-            &quot;merge&quot;: true,
-            &quot;global_merge_vars&quot;: mergeVariables
+            "to": [{ "email": "rainer@timecockpit.com" }],
+            "merge": true,
+            "global_merge_vars": mergeVariables
         };
         
         // Loop over all projects with budget overrun
@@ -78,20 +78,20 @@ needle.post(
             mergeVariables[0].content = body.value[counter].USR_Code;
 
             // Print a status message
-            console.log(&quot;Sending message concerning overrun in project &quot; + body.value[counter].USR_Code);
+            console.log("Sending message concerning overrun in project " + body.value[counter].USR_Code);
     
             // Send email using Mandrill
             mandrill_client.messages.sendTemplate({
-                &quot;template_name&quot;: template_name, 
-                &quot;template_content&quot;: null, 
-                &quot;message&quot;: message});
+                "template_name": template_name, 
+                "template_content": null, 
+                "message": message});
         }
     });{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">The script uses two nodejs modules: <em>needle</em> for sending http requests and the <em>mandrill</em> SDK for sending emails through the Mandrill service. We need to make these two modules available for our script. Therefore we create a <em>package.json</em> file:</p>{% highlight javascript %}{
-  &quot;name&quot;: &quot;ProjectOverrunSample&quot;,
-  &quot;version&quot;: &quot;0.1.0&quot;,
-  &quot;dependencies&quot;: {
-    &quot;mandrill-api&quot;: &quot;1.0.x&quot;,
-    &quot;needle&quot;: &quot;0.7.x&quot;
+  "name": "ProjectOverrunSample",
+  "version": "0.1.0",
+  "dependencies": {
+    "mandrill-api": "1.0.x",
+    "needle": "0.7.x"
   }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">That's it. That's all the code you need. You can test this script on your local machine. To make that easier, we created a batch file:</p>{% highlight javascript %}call npm install
 call node SendEmail.js{% endhighlight %}<f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">

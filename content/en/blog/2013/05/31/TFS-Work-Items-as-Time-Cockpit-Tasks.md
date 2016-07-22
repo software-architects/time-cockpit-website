@@ -27,20 +27,20 @@ class TFS(object):
 
     def connect(self):
         import clr
-        clr.AddReferenceToFileAndPath(r&quot;C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\ReferenceAssemblies\v2.0\Microsoft.TeamFoundation.dll&quot;)
-        clr.AddReference(&quot;Microsoft.TeamFoundation.Client.dll&quot;)
-        clr.AddReference(&quot;Microsoft.TeamFoundation.VersionControl.Client.dll&quot;)
-        clr.AddReference(&quot;Microsoft.TeamFoundation.WorkItemTracking.Client.dll&quot;)
+        clr.AddReferenceToFileAndPath(r"C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\ReferenceAssemblies\v2.0\Microsoft.TeamFoundation.dll")
+        clr.AddReference("Microsoft.TeamFoundation.Client.dll")
+        clr.AddReference("Microsoft.TeamFoundation.VersionControl.Client.dll")
+        clr.AddReference("Microsoft.TeamFoundation.WorkItemTracking.Client.dll")
         from Microsoft.TeamFoundation.Client import WindowsCredential, TfsClientCredentials, TfsTeamProjectCollection
         tfsCreds = TfsClientCredentials(WindowsCredential(), True)
         self.server = TfsTeamProjectCollection(self.uri, tfsCreds)
         if self.server is None:
-            raise InvalidOperationException(&quot;Could not get TFS server for &quot; + self.uri + &quot;.&quot;)
+            raise InvalidOperationException("Could not get TFS server for " + self.uri + ".")
 
         self.server.EnsureAuthenticated();
 
         if not self.server.HasAuthenticated:
-            raise InvalidOperationException(&quot;TFS could not authenticate.&quot;)
+            raise InvalidOperationException("TFS could not authenticate.")
     
         self._connected = True
 
@@ -49,20 +49,20 @@ class TFS(object):
         from System.Collections.Generic import Dictionary
 
         if not self._connected:
-            raise InvalidOperationException(&quot;TFS not connected.&quot;)
+            raise InvalidOperationException("TFS not connected.")
         
         workItemStore = self.server.GetService(clr.GetClrType(WorkItemStore))
 
         if workItemStore is None:
-            raise InvalidOperationException(&quot;Could not get WorkItemStore.&quot;)
+            raise InvalidOperationException("Could not get WorkItemStore.")
 
         parameters = Dictionary[String, String]()
-        parameters.Add(&quot;Project&quot;, projectName)
-        query = &quot;Select [Id], [Title], [Changed Date] From WorkItems Where [System.TeamProject] = @Project&quot;
+        parameters.Add("Project", projectName)
+        query = "Select [Id], [Title], [Changed Date] From WorkItems Where [System.TeamProject] = @Project"
         if fromDate is not None:
-            query = query + &quot; And [Changed Date] &gt;= '&quot; + fromDate.ToString(&quot;yyyy-MM-dd&quot;, CultureInfo.InvariantCulture) + &quot;'&quot;
+            query = query + " And [Changed Date] &gt;= '" + fromDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) + "'"
 
-        query = query + &quot; Order By [Changed Date] Asc&quot;
+        query = query + " Order By [Changed Date] Asc"
 
         return workItemStore.Query(query, parameters){% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Please note that while being a bad practice to use string concatenation or string builders for handling parameters there are situations where it is unavoidable. As seen in line 40 the project name is handled via the parameters collection. If the date is passed as a parameter there can be several issues related to culture info and date formats. If the <a href="http://msdn.microsoft.com/library/system.datetime.aspx" target="_blank">DateTime</a> is added as a string the API will complain that compared types (String vs. DateTime) are not compatible. If the parameters dictionary is changed to <em>Dictionary[String, Object]</em> the API will implicitly call <a href="http://msdn.microsoft.com/library/zdtaw1bw.aspx" target="_blank">ToString</a> which will result in an invalid date format in most cases.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Creating and Updating Tasks</h2><p xmlns="http://www.w3.org/1999/xhtml">Now that TFS connectivity can be easily handled we need to look at which projects need to be updated, query the data and update the corresponding objects in time cockpit. The following sample does so by executing the following steps:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Get all projects with TFS meta information.</li>
@@ -71,7 +71,7 @@ class TFS(object):
 
 <ul><li>The existing time cockpit tasks corresponding to the TFS work items are selected.</li><li>The necessary create or update operations are executed. Newly created tasks will be assigned to the correct project.</li><li>By looking at the latest update timestamp of all changed work items we determine the maximum update date and store it in the time cockpit project.</li></ul></li>
 </ul>{% highlight javascript %}# get all projects relevant to the TFS import
-tfsProjects = dc.Select(&quot;From P In Project Where :IsNullOrEmpty(P.TfsServer) = False And :IsNullOrEmpty(P.TfsProject) = False Select P&quot;)
+tfsProjects = dc.Select("From P In Project Where :IsNullOrEmpty(P.TfsServer) = False And :IsNullOrEmpty(P.TfsProject) = False Select P")
 
 # get all the different TFS servers used in the projects
 projectsByServer = tfsProjects.GroupBy(lambda p: p.TfsServer)
@@ -84,7 +84,7 @@ for serverProjects in projectsByServer:
         try:
             updatedItems = tfs.query_work_items(project.TfsProject, project.TfsLastUpdate)
             if updatedItems.Count == 0:
-                Logger.Write(LogLevel.Verbose, &quot;No updates for project '{0}'.&quot;, project.Code)
+                Logger.Write(LogLevel.Verbose, "No updates for project '{0}'.", project.Code)
                 continue
 
             lastUpdate = project.TfsLastUpdate;
@@ -95,15 +95,15 @@ for serverProjects in projectsByServer:
                 if lastUpdate is None or item.ChangedDate &gt;= lastUpdate:
 
                     # try to retrieve existing task from time cockpit
-                    task = dc.SelectSingleWithParams({ &quot;Query&quot;: &quot;From T In Task Where T.Project = @ProjectUuid And T.Code = @Code Select T&quot;, &quot;@Code&quot;: id, &quot;@ProjectUuid&quot;: project.ProjectUuid })
+                    task = dc.SelectSingleWithParams({ "Query": "From T In Task Where T.Project = @ProjectUuid And T.Code = @Code Select T", "@Code": id, "@ProjectUuid": project.ProjectUuid })
                     if task is None:
-                        Logger.Write(LogLevel.Information, &quot;Creating task '{0}' for project '{1}'.&quot;, id, project.Code)
+                        Logger.Write(LogLevel.Information, "Creating task '{0}' for project '{1}'.", id, project.Code)
                         task = dc.CreateTask()
                         task.Code = id
                         task.Project = project
 
                     if task.Description != item.Title:
-                        Logger.Write(LogLevel.Information, &quot;Updating title of task '{0}' for project '{1}' from '{2}' to '{3}'.&quot;, id, project.Code, task.Description, item.Title)
+                        Logger.Write(LogLevel.Information, "Updating title of task '{0}' for project '{1}' from '{2}' to '{3}'.", id, project.Code, task.Description, item.Title)
                         task.Description = item.Title
                     
                     dc.SaveObject(task)
@@ -113,7 +113,7 @@ for serverProjects in projectsByServer:
 
             # update the latest known update timestamp for the project
             if project.TfsLastUpdate != maxUpdate:
-                Logger.Write(LogLevel.Information, &quot;Updating project update date for '{0}' from '{1}' to '{2}'.&quot;, project.Code, project.TfsLastUpdate, maxUpdate)
+                Logger.Write(LogLevel.Information, "Updating project update date for '{0}' from '{1}' to '{2}'.", project.Code, project.TfsLastUpdate, maxUpdate)
                 project.TfsLastUpdate = maxUpdate
                 dc.SaveObject(project)
             if commit:
@@ -122,7 +122,7 @@ for serverProjects in projectsByServer:
                 dc.TryRollbackTransaction()
         except Exception, e:
             dc.TryRollbackTransaction()
-            Logger.Write(LogLevel.Error, &quot;Error while handling '{0}': {1}&quot;, project.TfsProject, e.message){% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Example</h2><p xmlns="http://www.w3.org/1999/xhtml">We ran this script using a demo project hosted in a Team Foundation Services account. Several work items of different types and with different descriptions were created.</p><p xmlns="http://www.w3.org/1999/xhtml">
+            Logger.Write(LogLevel.Error, "Error while handling '{0}': {1}", project.TfsProject, e.message){% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Example</h2><p xmlns="http://www.w3.org/1999/xhtml">We ran this script using a demo project hosted in a Team Foundation Services account. Several work items of different types and with different descriptions were created.</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2013/05/tfs0.png" alt="First TFS Work Items" title="First TFS Work Items" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">After running our script we can have a look at the <em>Time Cockpit.UI.log</em> file to check if all the items have been created as expected and that the last update date is also changed accordingly.</p>{% highlight javascript %}Creating task '12' for project 'Demo Project'.
 Updating title of task '12' for project 'Demo Project' from '' to 'Simple Bug'.

@@ -16,7 +16,7 @@ interface IGreetingService {
 
 // The following class represents the provider
 class GreetingService implements ng.IServiceProvider {
-    private greeting = &quot;Hello World!&quot;;
+    private greeting = "Hello World!";
 
     // Configuration function
     public setGreeting(greeting: string) {
@@ -38,11 +38,11 @@ class ControllerNeedingProvider {
     }
 }
 
-angular.module(&quot;ProviderApp&quot;, [])
+angular.module("ProviderApp", [])
     // Define provider
-    .provider(&quot;GreetingService&quot;, GreetingService)
-    // Configure provider (note the suffix &quot;Provider&quot; here)
+    .provider("GreetingService", GreetingService)
+    // Configure provider (note the suffix "Provider" here)
     .config((GreetingServiceProvider: GreetingService) =&gt; {
-        GreetingServiceProvider.setGreeting(&quot;Hello Provider&quot;);
+        GreetingServiceProvider.setGreeting("Hello Provider");
     })
-    .controller(&quot;ControllerNeedingProvider&quot;, ControllerNeedingProvider);{% endhighlight %}
+    .controller("ControllerNeedingProvider", ControllerNeedingProvider);{% endhighlight %}

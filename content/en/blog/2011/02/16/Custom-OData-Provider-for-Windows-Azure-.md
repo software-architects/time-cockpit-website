@@ -76,7 +76,7 @@ namespace CustomODataService
   { 
     public static void InitializeService(DataServiceConfiguration config) 
     { 
-      config.SetEntitySetAccessRule(&quot;*&quot;, EntitySetRights.AllRead); 
+      config.SetEntitySetAccessRule("*", EntitySetRights.AllRead); 
       config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V2; 
     } 
   } 
@@ -114,8 +114,8 @@ namespace CustomODataService
     {% highlight javascript %}/// &lt;summary&gt; 
 /// Helper function that generates service metadata for entity framework entities based on reflection 
 /// &lt;/summary&gt; 
-/// &lt;typeparam name=&quot;TEntity&quot;&gt;Entity framework entity type&lt;/typeparam&gt; 
-/// &lt;param name=&quot;namespaceName&quot;&gt;Name of the namespace to which the entity type should be assigned&lt;/param&gt; 
+/// &lt;typeparam name="TEntity"&gt;Entity framework entity type&lt;/typeparam&gt; 
+/// &lt;param name="namespaceName"&gt;Name of the namespace to which the entity type should be assigned&lt;/param&gt; 
 public static IDataServiceMetadataProvider BuildMetadataForEntityFrameworkEntity&lt;TEntity&gt;(string namespaceName) 
 { 
     var productType = new ResourceType( 
@@ -157,7 +157,7 @@ public void TestLocalQuery()
 { 
   using (var context = RealEstateEntities.Create()) 
   { 
-    var result = context.RealEstate.Take(25).Where(re =&gt; re.Location == &quot;Wien&quot; &amp;&amp; re.HasBalcony.Value).OrderBy(re =&gt; re.SizeOfGarden).ToArray(); 
+    var result = context.RealEstate.Take(25).Where(re =&gt; re.Location == "Wien" &amp;&amp; re.HasBalcony.Value).OrderBy(re =&gt; re.SizeOfGarden).ToArray(); 
   } 
 }{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">Custom LINQ Provider - First Steps</h3><p xmlns="http://www.w3.org/1999/xhtml">If you want to implement <span class="InlineCode">IQueryable</span> you should really consider using the <a href="http://iqtoolkit.codeplex.com/">IQToolkit</a>.  If offers a base class <span class="InlineCode">QueryProvider</span>. You can derive your custom <span class="InlineCode">IQueryable</span> from that class. In our case we will implement the class <span class="InlineCode">ShardingProvider</span>. It should be able to send a single Linq-to-Entities query to mulitple database in parallel and consolidate the partly results after that. The declaration of our new class looks like this:</p>{% highlight javascript %}public class ShardingProvider&lt;TContext, TEntity&gt; 
     : QueryProvider 
@@ -175,17 +175,17 @@ public void TestLocalQuery()
     { 
         if (contextCreator == null) 
         { 
-            throw new ArgumentNullException(&quot;contextCreator&quot;); 
+            throw new ArgumentNullException("contextCreator"); 
         } 
 
         if (entityProvider == null) 
         { 
-            throw new ArgumentNullException(&quot;entityProvider&quot;); 
+            throw new ArgumentNullException("entityProvider"); 
         } 
 
         if (connectionStrings == null) 
         { 
-            throw new ArgumentNullException(&quot;connectionStrings&quot;); 
+            throw new ArgumentNullException("connectionStrings"); 
         } 
 
         this.ContextCreator = contextCreator; 
@@ -206,13 +206,13 @@ public void TestLocalQuery()
 public void TestMethod2() 
 { 
     var queryable = CreateQueryableRoot(); 
-    var result = queryable.Take(25).Where(re =&gt; re.Location == &quot;Wien&quot; &amp;&amp; re.HasBalcony.Value).OrderBy(re =&gt; re.SizeOfGarden).ToArray(); 
+    var result = queryable.Take(25).Where(re =&gt; re.Location == "Wien" &amp;&amp; re.HasBalcony.Value).OrderBy(re =&gt; re.SizeOfGarden).ToArray(); 
 } 
 
 private static Query&lt;RealEstate&gt; CreateQueryableRoot() 
 { 
-    string shardingConnectingString = ConfigurationManager.AppSettings[&quot;ShardingDatabaseConnection&quot;]; 
-    int numberOfShardingDatabases = Int32.Parse(ConfigurationManager.AppSettings[&quot;NumberOfShardingDatabases&quot;]); 
+    string shardingConnectingString = ConfigurationManager.AppSettings["ShardingDatabaseConnection"]; 
+    int numberOfShardingDatabases = Int32.Parse(ConfigurationManager.AppSettings["NumberOfShardingDatabases"]); 
 
     var connectionStrings = Enumerable.Range(1, numberOfShardingDatabases) 
         .Select(i =&gt; string.Format(shardingConnectingString, i)) 
@@ -222,8 +222,8 @@ private static Query&lt;RealEstate&gt; CreateQueryableRoot()
         new ShardingProvider&lt;RealEstateEntities, RealEstate&gt;( 
             (s) =&gt; new RealEstateEntities(new EntityConnectionStringBuilder() 
             { 
-                Metadata = &quot;res://*/RealEstateModel.csdl|res://*/RealEstateModel.ssdl|res://*/RealEstateModel.msl&quot;, 
-                Provider = &quot;System.Data.SqlClient&quot;, 
+                Metadata = "res://*/RealEstateModel.csdl|res://*/RealEstateModel.ssdl|res://*/RealEstateModel.msl", 
+                Provider = "System.Data.SqlClient", 
                 ProviderConnectionString = s 
             }.ConnectionString), 
             (ctx) =&gt; ctx.RealEstate, 
@@ -250,22 +250,22 @@ namespace CustomODataService
         { 
             if (RoleEnvironment.IsAvailable) 
             { 
-                numberOfShardingDatabases = Int32.Parse(RoleEnvironment.GetConfigurationSettingValue(&quot;NumberOfShardingDatabases&quot;)); 
+                numberOfShardingDatabases = Int32.Parse(RoleEnvironment.GetConfigurationSettingValue("NumberOfShardingDatabases")); 
             } 
             else 
             { 
-                numberOfShardingDatabases = Int32.Parse(ConfigurationManager.AppSettings[&quot;NumberOfShardingDatabases&quot;]); 
+                numberOfShardingDatabases = Int32.Parse(ConfigurationManager.AppSettings["NumberOfShardingDatabases"]); 
             } 
         } 
 
         public override IQueryable GetQueryable(ResourceSet set) 
         { 
-            if (set.Name == &quot;RealEstate&quot;) 
+            if (set.Name == "RealEstate") 
             { 
                 return CreateQueryable(); 
             } 
 
-            throw new NotSupportedException(string.Format(&quot;{0} not found&quot;, set.Name)); 
+            throw new NotSupportedException(string.Format("{0} not found", set.Name)); 
         } 
 
         protected static IQueryable&lt;RealEstate&gt; CreateQueryable() 
@@ -273,11 +273,11 @@ namespace CustomODataService
             string shardingConnectingString; 
             if (RoleEnvironment.IsAvailable) 
             { 
-                shardingConnectingString = RoleEnvironment.GetConfigurationSettingValue(&quot;ShardingDatabaseConnection&quot;); 
+                shardingConnectingString = RoleEnvironment.GetConfigurationSettingValue("ShardingDatabaseConnection"); 
             } 
             else 
             { 
-                shardingConnectingString = ConfigurationManager.AppSettings[&quot;ShardingDatabaseConnection&quot;]; 
+                shardingConnectingString = ConfigurationManager.AppSettings["ShardingDatabaseConnection"]; 
             } 
 
             var connectionStrings = Enumerable.Range(1, numberOfShardingDatabases) 
@@ -287,8 +287,8 @@ namespace CustomODataService
             return new Query&lt;RealEstate&gt;(new ShardingProvider&lt;RealEstateEntities, RealEstate&gt;( 
                 (s) =&gt; new RealEstateEntities(new EntityConnectionStringBuilder() 
                 { 
-                    Metadata = &quot;res://*/RealEstateModel.csdl|res://*/RealEstateModel.ssdl|res://*/RealEstateModel.msl&quot;, 
-                    Provider = &quot;System.Data.SqlClient&quot;, 
+                    Metadata = "res://*/RealEstateModel.csdl|res://*/RealEstateModel.ssdl|res://*/RealEstateModel.msl", 
+                    Provider = "System.Data.SqlClient", 
                     ProviderConnectionString = s 
                 }.ConnectionString), 
                 (context) =&gt; context.RealEstate, 
@@ -321,8 +321,8 @@ namespace ShardingProvider
     /// Implements a query provider that takes a query (i.e. an expression tree) using Entity Framework and sends it 
     /// to multiple underlying databases in parallel (sharding). 
     /// &lt;/summary&gt; 
-    /// &lt;typeparam name=&quot;TContext&quot;&gt;Entity Framework object context type&lt;/typeparam&gt; 
-    /// &lt;typeparam name=&quot;TEntity&quot;&gt;Entity framework entity type&lt;/typeparam&gt; 
+    /// &lt;typeparam name="TContext"&gt;Entity Framework object context type&lt;/typeparam&gt; 
+    /// &lt;typeparam name="TEntity"&gt;Entity framework entity type&lt;/typeparam&gt; 
     public class ShardingProvider&lt;TContext, TEntity&gt; 
         : QueryProvider 
         where TContext : ObjectContext 
@@ -348,7 +348,7 @@ namespace ShardingProvider
                 .ToArray(); 
             if (keyProperties.Count() != 1) 
             { 
-                throw new ArgumentException(&quot;TEntity has to have a key consisting of a single property (EdmScalarPropertyAttribute.EntityKeyProperty)&quot;, &quot;TEntity&quot;); 
+                throw new ArgumentException("TEntity has to have a key consisting of a single property (EdmScalarPropertyAttribute.EntityKeyProperty)", "TEntity"); 
             } 
 
             KeyProperty = keyProperties.First(); 
@@ -360,24 +360,24 @@ namespace ShardingProvider
         /// &lt;summary&gt; 
         /// Initializes a new instance of the ShardingProvider class 
         /// &lt;/summary&gt; 
-        /// &lt;param name=&quot;contextCreator&quot;&gt;Function that can be used to create an underlying entity framework context object&lt;/param&gt; 
-        /// &lt;param name=&quot;entityProvider&quot;&gt;Function that returns the IQueryable from the underlying entity framework context object&lt;/param&gt; 
-        /// &lt;param name=&quot;connectionStrings&quot;&gt;SQL connection string to sharding databases&lt;/param&gt; 
+        /// &lt;param name="contextCreator"&gt;Function that can be used to create an underlying entity framework context object&lt;/param&gt; 
+        /// &lt;param name="entityProvider"&gt;Function that returns the IQueryable from the underlying entity framework context object&lt;/param&gt; 
+        /// &lt;param name="connectionStrings"&gt;SQL connection string to sharding databases&lt;/param&gt; 
         public ShardingProvider(ContextCreatorDelegate contextCreator, EntityProviderDelegate entityProvider, params string[] connectionStrings) 
         { 
             if (contextCreator == null) 
             { 
-                throw new ArgumentNullException(&quot;contextCreator&quot;); 
+                throw new ArgumentNullException("contextCreator"); 
             } 
 
             if (entityProvider == null) 
             { 
-                throw new ArgumentNullException(&quot;entityProvider&quot;); 
+                throw new ArgumentNullException("entityProvider"); 
             } 
 
             if (connectionStrings == null) 
             { 
-                throw new ArgumentNullException(&quot;connectionStrings&quot;); 
+                throw new ArgumentNullException("connectionStrings"); 
             } 
 
             this.ContextCreator = contextCreator; 
@@ -391,7 +391,7 @@ namespace ShardingProvider
             var methodInfoExpr = verifyer.Visit(expression) as MethodCallExpression; 
             if (!verifyer.IsValid) 
             { 
-                throw new ShardingProviderException(&quot;Linq query is not valid&quot;); 
+                throw new ShardingProviderException("Linq query is not valid"); 
             } 
 
             // Send query to all sharding databases in parallel 
@@ -421,21 +421,21 @@ namespace ShardingProvider
             return (ex3 = Expression.Lambda&lt;Func&lt;IEnumerable&lt;TEntity&gt;&gt;&gt;( 
                 Expression.Call( 
                     typeof(Enumerable), 
-                    &quot;Take&quot;, 
+                    "Take", 
                     new[] { typeof(TEntity) }, 
                     Expression.Call( 
                         typeof(Enumerable), 
-                        &quot;ThenBy&quot;, 
+                        "ThenBy", 
                         new[] { typeof(TEntity), KeyProperty.PropertyType }, 
                         Expression.Call( 
                             typeof(Enumerable), 
-                            verifyer.Ascending ? &quot;OrderBy&quot; : &quot;OrderByDescending&quot;, 
+                            verifyer.Ascending ? "OrderBy" : "OrderByDescending", 
                             new[] { typeof(TEntity), ((PropertyInfo)verifyer.OrderByLambdaBody.Member).PropertyType }, 
                             Expression.Constant(result), 
                             verifyer.OrderByLambda), 
                         Expression.Lambda( 
                             Expression.MakeMemberAccess( 
-                                param2 = Expression.Parameter(typeof(TEntity), &quot;src&quot;), 
+                                param2 = Expression.Parameter(typeof(TEntity), "src"), 
                                 KeyProperty), 
                             param2)), 
                     verifyer.TakeExpression))) 

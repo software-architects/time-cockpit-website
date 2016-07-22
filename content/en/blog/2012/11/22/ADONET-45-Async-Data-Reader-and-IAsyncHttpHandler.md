@@ -13,15 +13,15 @@ permalink: /blog/2012/11/22/ADONET-45-Async-Data-Reader-and-IAsyncHttpHandler
     {
         public void ProcessRequest(HttpContext context)
         {
-            context.Response.Write(&quot;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;table&gt;&quot;);
+            context.Response.Write("&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;table&gt;");
 
-            using (var connection = new SqlConnection(@&quot;Data Source =&quot;&quot;(LocalDB)\TestInstance&quot;&quot;&quot;))
+            using (var connection = new SqlConnection(@"Data Source =""(LocalDB)\TestInstance"""))
             {
                 connection.Open();
 
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = &quot;Select id, FirstName, LastName From [dbo].[Table];&quot;;
+                    command.CommandText = "Select id, FirstName, LastName From [dbo].[Table];";
 
                     var reader = command.ExecuteReader();
 
@@ -30,13 +30,13 @@ permalink: /blog/2012/11/22/ADONET-45-Async-Data-Reader-and-IAsyncHttpHandler
                         var id = reader.GetInt32(0);
                         var firstName = reader.GetString(1);
                         var lastName = reader.GetString(2);
-                        var line = string.Format(&quot;&lt;tr&gt;&lt;td&gt;{0}&lt;/td&gt;&lt;td&gt;{1}&lt;/td&gt;&lt;td&gt;{2}&lt;/td&gt;&lt;/tr&gt;&quot;, id, firstName, lastName);
+                        var line = string.Format("&lt;tr&gt;&lt;td&gt;{0}&lt;/td&gt;&lt;td&gt;{1}&lt;/td&gt;&lt;td&gt;{2}&lt;/td&gt;&lt;/tr&gt;", id, firstName, lastName);
                         context.Response.Write(line);
                     }
                 }
             }
 
-            context.Response.Write(&quot;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;&quot;);
+            context.Response.Write("&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;");
         }
 
         public bool IsReusable
@@ -53,15 +53,15 @@ permalink: /blog/2012/11/22/ADONET-45-Async-Data-Reader-and-IAsyncHttpHandler
         {
             using (StreamWriter sw = new StreamWriter(context.Response.OutputStream))
             {
-                await sw.WriteLineAsync(&quot;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;table&gt;&quot;);
+                await sw.WriteLineAsync("&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;table&gt;");
 
-                using (var connection = new SqlConnection(@&quot;Data Source =&quot;&quot;(LocalDB)\TestInstance&quot;&quot;&quot;))
+                using (var connection = new SqlConnection(@"Data Source =""(LocalDB)\TestInstance"""))
                 {
                     await connection.OpenAsync().ConfigureAwait(false);
 
                     using (var command = connection.CreateCommand())
                     {
-                        command.CommandText = &quot;Select id, FirstName, LastName From [dbo].[Table];&quot;;
+                        command.CommandText = "Select id, FirstName, LastName From [dbo].[Table];";
 
                         var reader = await command.ExecuteReaderAsync().ConfigureAwait(false);
 
@@ -70,13 +70,13 @@ permalink: /blog/2012/11/22/ADONET-45-Async-Data-Reader-and-IAsyncHttpHandler
                             var id = reader.GetInt32(0);
                             var firstName = reader.GetString(1);
                             var lastName = reader.GetString(2);
-                            var line = string.Format(&quot;&lt;tr&gt;&lt;td&gt;{0}&lt;/td&gt;&lt;td&gt;{1}&lt;/td&gt;&lt;td&gt;{2}&lt;/td&gt;&lt;/tr&gt;&quot;, id, firstName, lastName);
+                            var line = string.Format("&lt;tr&gt;&lt;td&gt;{0}&lt;/td&gt;&lt;td&gt;{1}&lt;/td&gt;&lt;td&gt;{2}&lt;/td&gt;&lt;/tr&gt;", id, firstName, lastName);
                             await sw.WriteLineAsync(line);
                         }
                     }
                 }
 
-                await sw.WriteLineAsync(&quot;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;&quot;);
+                await sw.WriteLineAsync("&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;");
             }
         }
 

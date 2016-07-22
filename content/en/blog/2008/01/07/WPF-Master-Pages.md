@@ -20,33 +20,33 @@ permalink: /blog/2008/01/07/WPF-Master-Pages
   <li>and the main content</li>
 </ul><p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">The screenshot shows the first page of the applications. In this case all three areas contain some text. But as we will see later in the sample we are not limited to text.</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img height="350" width="500" src="{{site.baseurl}}/content/images/blog/2008/01/Page1.png" class="     mceC1Focused" />
-</p><p xmlns="http://www.w3.org/1999/xhtml">If I would build this page without using a master page I would start with a new blank page and then I would arrange different types of controls on this page. I used Stackpanels and a Grid to arrange the logo and the three types of content on the page.</p>{% highlight javascript %}&lt;Page x:Class=&quot;MasterPages.Page.PageWithoutMaster&quot;
-  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
-  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
-  Title=&quot;PageWithoutMaster&quot;&gt;
+</p><p xmlns="http://www.w3.org/1999/xhtml">If I would build this page without using a master page I would start with a new blank page and then I would arrange different types of controls on this page. I used Stackpanels and a Grid to arrange the logo and the three types of content on the page.</p>{% highlight javascript %}&lt;Page x:Class="MasterPages.Page.PageWithoutMaster"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Title="PageWithoutMaster"&gt;
   &lt;Page.Resources&gt;
     &lt;ResourceDictionary&gt;
       &lt;ResourceDictionary.MergedDictionaries&gt;
-        &lt;ResourceDictionary Source=&quot;../Style/Logo.xaml&quot; /&gt;
-        &lt;ResourceDictionary Source=&quot;../Style/Standard.xaml&quot; /&gt;
+        &lt;ResourceDictionary Source="../Style/Logo.xaml" /&gt;
+        &lt;ResourceDictionary Source="../Style/Standard.xaml" /&gt;
       &lt;/ResourceDictionary.MergedDictionaries&gt;
     &lt;/ResourceDictionary&gt;
   &lt;/Page.Resources&gt;
   
   &lt;StackPanel&gt;
-    &lt;Grid Height=&quot;70&quot;&gt;
-      &lt;Image Source=&quot;{StaticResource SoftwareArchitectsLogoBackground}&quot;
-        Stretch=&quot;Fill&quot; /&gt;
-      &lt;Grid Margin=&quot;10&quot;&gt;
-        &lt;Image Source=&quot;{StaticResource SoftwareArchitectsLogo}&quot; 
-          HorizontalAlignment=&quot;Left&quot; /&gt;
+    &lt;Grid Height="70"&gt;
+      &lt;Image Source="{StaticResource SoftwareArchitectsLogoBackground}"
+        Stretch="Fill" /&gt;
+      &lt;Grid Margin="10"&gt;
+        &lt;Image Source="{StaticResource SoftwareArchitectsLogo}" 
+          HorizontalAlignment="Left" /&gt;
       &lt;/Grid&gt;
     &lt;/Grid&gt;
-    &lt;StackPanel Margin=&quot;10&quot;&gt;
-      &lt;TextBlock Style=&quot;{StaticResource Title}&quot;&gt;
+    &lt;StackPanel Margin="10"&gt;
+      &lt;TextBlock Style="{StaticResource Title}"&gt;
         About us
       &lt;/TextBlock&gt;
-      &lt;TextBlock Style=&quot;{StaticResource Abstract}&quot;&gt;
+      &lt;TextBlock Style="{StaticResource Abstract}"&gt;
         software architects builds a ...
       &lt;/TextBlock&gt;
       &lt;TextBlock&gt;
@@ -76,7 +76,7 @@ permalink: /blog/2008/01/07/WPF-Master-Pages
     }
 
     public static readonly DependencyProperty TitleProperty =
-      DependencyProperty.Register(&quot;Title&quot;, typeof(object), 
+      DependencyProperty.Register("Title", typeof(object), 
       typeof(Master), new UIPropertyMetadata());
 
     public object Abstract
@@ -86,7 +86,7 @@ permalink: /blog/2008/01/07/WPF-Master-Pages
     }
 
     public static readonly DependencyProperty AbstractProperty =
-      DependencyProperty.Register(&quot;Abstract&quot;, typeof(object), 
+      DependencyProperty.Register("Abstract", typeof(object), 
       typeof(Master), new UIPropertyMetadata());
 
     public object Content
@@ -96,39 +96,39 @@ permalink: /blog/2008/01/07/WPF-Master-Pages
     }
 
     public static readonly DependencyProperty ContentProperty =
-      DependencyProperty.Register(&quot;Content&quot;, typeof(object), 
+      DependencyProperty.Register("Content", typeof(object), 
       typeof(Master), new UIPropertyMetadata());
   }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">As you may know WPF does not add layout information into the class implementing a custom control like <span class="InlineCode">Master</span>. The content of the file <span class="InlineCode">generic.xaml</span> defines the look of the control. This file is automatically created by Visual Studio as soon as you add a custom control to your project.</p><p xmlns="http://www.w3.org/1999/xhtml">In my case I defined a style for my new class <span class="InlineCode">Master</span> in generic.xaml. This is the place where the arrangement of the areas should happen. Just as in the single page before I used Stackpanels and Grids to arrange the logo and all the other parts of the page. The key to include the content of the dependency properties is the control <span class="InlineCode">ContentPresenter</span>. I inserted three of them and bound them to the three dependency properties of the <span class="InlineCode">Master</span>class.</p><p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">I added some <span class="InlineCode">ResourceDictionary</span>objects to the generic.xaml for my more complex styles like the logo, which is entirely built in XAML.</p>{% highlight javascript %}&lt;ResourceDictionary
-  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
-  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
-  xmlns:local=&quot;clr-namespace:MasterPages.Master&quot;&gt;
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:local="clr-namespace:MasterPages.Master"&gt;
 
   &lt;ResourceDictionary.MergedDictionaries&gt;
-    &lt;ResourceDictionary Source=&quot;Style/Logo.xaml&quot; /&gt;
-    &lt;ResourceDictionary Source=&quot;Style/Master.xaml&quot; /&gt;
+    &lt;ResourceDictionary Source="Style/Logo.xaml" /&gt;
+    &lt;ResourceDictionary Source="Style/Master.xaml" /&gt;
   &lt;/ResourceDictionary.MergedDictionaries&gt;
 
-  &lt;Style TargetType=&quot;{x:Type local:Master}&quot;&gt;
-    &lt;Setter Property=&quot;Template&quot;&gt;
+  &lt;Style TargetType="{x:Type local:Master}"&gt;
+    &lt;Setter Property="Template"&gt;
       &lt;Setter.Value&gt;
-        &lt;ControlTemplate TargetType=&quot;{x:Type local:Master}&quot;&gt;
+        &lt;ControlTemplate TargetType="{x:Type local:Master}"&gt;
           &lt;StackPanel&gt;
-            &lt;Grid Height=&quot;70&quot;&gt;
+            &lt;Grid Height="70"&gt;
               &lt;Image 
-                Source=&quot;{StaticResource SoftwareArchitectsLogoBackground}&quot;
-                Stretch=&quot;Fill&quot; /&gt;
-              &lt;Grid Margin=&quot;10&quot;&gt;
-                &lt;Image Source=&quot;{StaticResource SoftwareArchitectsLogo}&quot; 
-                  HorizontalAlignment=&quot;Left&quot; /&gt;
+                Source="{StaticResource SoftwareArchitectsLogoBackground}"
+                Stretch="Fill" /&gt;
+              &lt;Grid Margin="10"&gt;
+                &lt;Image Source="{StaticResource SoftwareArchitectsLogo}" 
+                  HorizontalAlignment="Left" /&gt;
               &lt;/Grid&gt;
             &lt;/Grid&gt;
-            &lt;StackPanel Margin=&quot;10&quot;&gt;
-              &lt;ContentPresenter Content=&quot;{TemplateBinding Title}&quot; 
-                Style=&quot;{StaticResource Title}&quot; /&gt;
-              &lt;ContentPresenter Content=&quot;{TemplateBinding Abstract}&quot; 
-                Style=&quot;{StaticResource Abstract}&quot; /&gt;
-              &lt;ContentPresenter Content=&quot;{TemplateBinding Content}&quot; /&gt;
+            &lt;StackPanel Margin="10"&gt;
+              &lt;ContentPresenter Content="{TemplateBinding Title}" 
+                Style="{StaticResource Title}" /&gt;
+              &lt;ContentPresenter Content="{TemplateBinding Abstract}" 
+                Style="{StaticResource Abstract}" /&gt;
+              &lt;ContentPresenter Content="{TemplateBinding Content}" /&gt;
             &lt;/StackPanel&gt;
           &lt;/StackPanel&gt;
         &lt;/ControlTemplate&gt;
@@ -140,11 +140,11 @@ permalink: /blog/2008/01/07/WPF-Master-Pages
   <li>add a dependency property for each area of the page and</li>
   <li>define the layout of the control in the file generic.xaml.</li>
 </ul><h2 class="Head" xmlns="http://www.w3.org/1999/xhtml">
-  <a id="UsingTheMasterPage" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="UsingTheMasterPage"></a>Using the Master Page</h2><p xmlns="http://www.w3.org/1999/xhtml">Finally we are able to build a new page based on the master page. Therefore we need a reference to to class <span class="InlineCode">Master </span> in our WPF file: <span class="InlineCode">xmlns:m="clr-namespace:MasterPages.Master"</span>. I chose the prefix m for my <span class="InlineCode">Master</span> class. With this prefix I can add a new instance of <span class="InlineCode">Master</span> to the page. Inside of &lt;m:Master&gt; I can set the<span class="InlineCode">Title</span>, the <span class="InlineCode">Abstract</span> and the <span class="InlineCode">Content</span> property of the class.</p><p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">In this case I only used text but as you can see in the next sample I am not limited to text.</p>{% highlight javascript %}&lt;Page x:Class=&quot;MasterPages.Page.Page1&quot;
-  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
-  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
-  xmlns:m=&quot;clr-namespace:MasterPages.Master&quot;
-  Title=&quot;Page1&quot;&gt;
+  <a id="UsingTheMasterPage" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="UsingTheMasterPage"></a>Using the Master Page</h2><p xmlns="http://www.w3.org/1999/xhtml">Finally we are able to build a new page based on the master page. Therefore we need a reference to to class <span class="InlineCode">Master </span> in our WPF file: <span class="InlineCode">xmlns:m="clr-namespace:MasterPages.Master"</span>. I chose the prefix m for my <span class="InlineCode">Master</span> class. With this prefix I can add a new instance of <span class="InlineCode">Master</span> to the page. Inside of &lt;m:Master&gt; I can set the<span class="InlineCode">Title</span>, the <span class="InlineCode">Abstract</span> and the <span class="InlineCode">Content</span> property of the class.</p><p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">In this case I only used text but as you can see in the next sample I am not limited to text.</p>{% highlight javascript %}&lt;Page x:Class="MasterPages.Page.Page1"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:m="clr-namespace:MasterPages.Master"
+  Title="Page1"&gt;
   &lt;m:Master&gt;
     &lt;m:Master.Title&gt;
       About us
@@ -156,11 +156,11 @@ permalink: /blog/2008/01/07/WPF-Master-Pages
       In the long term software architects will offer ...
     &lt;/m:Master.Content&gt;
   &lt;/m:Master&gt;
-&lt;/Page&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">To show the advange of a master page I added a second page to my project. Again I do not have to care about layout any more. I just add the <span class="InlineCode">Master</span> control to my page and set the properties of the control. But this time I add more advanved content to the control. The<span class="InlineCode">Content</span> property holds a <span class="InlineCode">StackPanel</span> with a <span class="InlineCode">ListBox</span>.</p>{% highlight javascript %}&lt;Page x:Class=&quot;MasterPages.Page.Page2&quot;
-  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
-  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
-  xmlns:m=&quot;clr-namespace:MasterPages.Master&quot;
-  Title=&quot;Page2&quot;&gt;
+&lt;/Page&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">To show the advange of a master page I added a second page to my project. Again I do not have to care about layout any more. I just add the <span class="InlineCode">Master</span> control to my page and set the properties of the control. But this time I add more advanved content to the control. The<span class="InlineCode">Content</span> property holds a <span class="InlineCode">StackPanel</span> with a <span class="InlineCode">ListBox</span>.</p>{% highlight javascript %}&lt;Page x:Class="MasterPages.Page.Page2"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:m="clr-namespace:MasterPages.Master"
+  Title="Page2"&gt;
   &lt;m:Master&gt;
     &lt;m:Master.Title&gt;
       Page 2
@@ -180,11 +180,11 @@ permalink: /blog/2008/01/07/WPF-Master-Pages
   &lt;/m:Master&gt;
 &lt;/Page&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">As you can see in the following screenshot my second page looks similar to my first one. Instead of the text it shows a <span class="InlineCode">ListBox</span> with some items. </p><p xmlns="http://www.w3.org/1999/xhtml">
   <img height="350" width="500" src="{{site.baseurl}}/content/images/blog/2008/01/Page2.png" />
-</p><p xmlns="http://www.w3.org/1999/xhtml">If you want to access controls of your page in the codebehind file you just have to add a name to the control. In the following sample I added a <span class="InlineCode">Button</span> to the <span class="InlineCode">Content</span> area of my page.</p>{% highlight javascript %}&lt;Page x:Class=&quot;MasterPages.Page.Page3&quot; 
-  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot; 
-  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot; 
+</p><p xmlns="http://www.w3.org/1999/xhtml">If you want to access controls of your page in the codebehind file you just have to add a name to the control. In the following sample I added a <span class="InlineCode">Button</span> to the <span class="InlineCode">Content</span> area of my page.</p>{% highlight javascript %}&lt;Page x:Class="MasterPages.Page.Page3" 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
   
-  Title=&quot;Page3&quot;&gt; 
+  Title="Page3"&gt; 
   &lt;m:Master&gt; 
     &lt;m:Master.Title&gt; 
       Page 3 
@@ -194,7 +194,7 @@ permalink: /blog/2008/01/07/WPF-Master-Pages
     &lt;/m:Master.Abstract&gt; 
     &lt;m:Master.Content&gt; 
       &lt;StackPanel&gt; 
-        &lt;Button Name=&quot;btnShowMessage&quot; Content=&quot;Show MessageBox&quot; /&gt; 
+        &lt;Button Name="btnShowMessage" Content="Show MessageBox" /&gt; 
       &lt;/StackPanel&gt; 
     &lt;/m:Master.Content&gt; 
   &lt;/m:Master&gt; 
@@ -208,7 +208,7 @@ protected override void OnInitialized(EventArgs e)
 
 private void BtnShowMessage_Click(object sender, RoutedEventArgs e) 
 { 
-  MessageBox.Show(&quot;You clicked the button.&quot;); 
+  MessageBox.Show("You clicked the button."); 
 } 
 
 ...{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Again I dot not have to care about the layout of the page. The logo, the background, the colors and everything else that makes up a page in my project is encapsulated in the <span class="InlineCode">Master</span>class. I just have to care about the things that are unique to my page like the button and its eventhandler.</p><p xmlns="http://www.w3.org/1999/xhtml">

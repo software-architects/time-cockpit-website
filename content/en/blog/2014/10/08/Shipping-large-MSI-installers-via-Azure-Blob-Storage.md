@@ -9,14 +9,14 @@ lang: en
 permalink: /blog/2014/10/08/Shipping-large-MSI-installers-via-Azure-Blob-Storage
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">Recently I did a <a href="http://wixtoolset.org" target="_blank">WiX</a> (Windows Installer XML) and <a href="http://msdn.microsoft.com/en-us/library/cc185688(v=vs.85).aspx" target="_blank">MSI</a> training at a customer in Germany. One of the questions I got asked was how to deliver large MSI installers efficiently to customers via web. The goal was to minimize download time. In this blog article I describe a possible approach.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">You can download the entire sample from my <a href="https://github.com/rstropek/Samples/tree/master/WiXSamples/CompositeWpfAppWithInstaller" target="_blank">GitHub Samples</a> repository.</p><h2 xmlns="http://www.w3.org/1999/xhtml">WiX/MSI Preconditions</h2><p xmlns="http://www.w3.org/1999/xhtml">In many cases developers try to keep things simple by packaging everyhing an installer needs into a single MSI file. WiX has a very convenient feature for that: <a href="http://wixtoolset.org/documentation/manual/v3/xsd/wix/mediatemplate.html" target="_blank"><em>MediaTemplate</em></a> with <em>EmbedCab="yes"</em>.</p><p xmlns="http://www.w3.org/1999/xhtml">The problem with this approach is that the MSI quickly gets quite large. This isn't an issue for small applications and customers with strong internet connections. However, if you have to deliver complex installations to devices spread over the whole globe partly with GPRS connections, this becomes a big problem.</p><p xmlns="http://www.w3.org/1999/xhtml">Fortunately WiX and MSI are old technologies. They where originally developed in an age where software was shipped using diskettes. For those of you how are too young, <a href="http://en.wikipedia.org/wiki/Floppy_disk" target="_blank">here is the Wikipedia article</a> describing what a "diskette" is ;-) At that time, installers were too large for a single storage medium. Data had to be split up. For that, MSI supports external <a href="http://en.wikipedia.org/wiki/Cabinet_(file_format)" target="_blank"><em>Cabinet files</em></a> (CAB).</p><p xmlns="http://www.w3.org/1999/xhtml">In WiX, you can setup media using the <em><a href="http://wixtoolset.org/documentation/manual/v3/xsd/wix/media.html" target="_blank">Media</a></em> tag. Once you defined your disks, you can assign each <em><a href="http://wixtoolset.org/documentation/manual/v3/xsd/wix/file.html" target="_blank">File</a></em> to the appropriate disk. The following example shows how this is done. It is taken from a larger sample that you can find in my <a href="https://github.com/rstropek/Samples/blob/master/WiXSamples/CompositeWpfAppWithInstaller/CompositeWpfApp.InstallCab/Product.wxs" target="_blank">GitHub Samples repository</a>.</p>{% highlight javascript %}&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<p xmlns="http://www.w3.org/1999/xhtml">Recently I did a <a href="http://wixtoolset.org" target="_blank">WiX</a> (Windows Installer XML) and <a href="http://msdn.microsoft.com/en-us/library/cc185688(v=vs.85).aspx" target="_blank">MSI</a> training at a customer in Germany. One of the questions I got asked was how to deliver large MSI installers efficiently to customers via web. The goal was to minimize download time. In this blog article I describe a possible approach.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">You can download the entire sample from my <a href="https://github.com/rstropek/Samples/tree/master/WiXSamples/CompositeWpfAppWithInstaller" target="_blank">GitHub Samples</a> repository.</p><h2 xmlns="http://www.w3.org/1999/xhtml">WiX/MSI Preconditions</h2><p xmlns="http://www.w3.org/1999/xhtml">In many cases developers try to keep things simple by packaging everyhing an installer needs into a single MSI file. WiX has a very convenient feature for that: <a href="http://wixtoolset.org/documentation/manual/v3/xsd/wix/mediatemplate.html" target="_blank"><em>MediaTemplate</em></a> with <em>EmbedCab="yes"</em>.</p><p xmlns="http://www.w3.org/1999/xhtml">The problem with this approach is that the MSI quickly gets quite large. This isn't an issue for small applications and customers with strong internet connections. However, if you have to deliver complex installations to devices spread over the whole globe partly with GPRS connections, this becomes a big problem.</p><p xmlns="http://www.w3.org/1999/xhtml">Fortunately WiX and MSI are old technologies. They where originally developed in an age where software was shipped using diskettes. For those of you how are too young, <a href="http://en.wikipedia.org/wiki/Floppy_disk" target="_blank">here is the Wikipedia article</a> describing what a "diskette" is ;-) At that time, installers were too large for a single storage medium. Data had to be split up. For that, MSI supports external <a href="http://en.wikipedia.org/wiki/Cabinet_(file_format)" target="_blank"><em>Cabinet files</em></a> (CAB).</p><p xmlns="http://www.w3.org/1999/xhtml">In WiX, you can setup media using the <em><a href="http://wixtoolset.org/documentation/manual/v3/xsd/wix/media.html" target="_blank">Media</a></em> tag. Once you defined your disks, you can assign each <em><a href="http://wixtoolset.org/documentation/manual/v3/xsd/wix/file.html" target="_blank">File</a></em> to the appropriate disk. The following example shows how this is done. It is taken from a larger sample that you can find in my <a href="https://github.com/rstropek/Samples/blob/master/WiXSamples/CompositeWpfAppWithInstaller/CompositeWpfApp.InstallCab/Product.wxs" target="_blank">GitHub Samples repository</a>.</p>{% highlight javascript %}&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;Wix ...&gt;
     &lt;Product ...&gt;
         &lt;Package ... /&gt;
 
         &lt;!-- Note that this variant of the sample splits installer into multiple CAB files --&gt;
-        &lt;Media Id=&quot;1&quot; Cabinet=&quot;Disk1.cab&quot; EmbedCab=&quot;no&quot; CompressionLevel=&quot;high&quot; /&gt;
-        &lt;Media Id=&quot;2&quot; Cabinet=&quot;Disk2.cab&quot; EmbedCab=&quot;no&quot; CompressionLevel=&quot;high&quot; /&gt;
+        &lt;Media Id="1" Cabinet="Disk1.cab" EmbedCab="no" CompressionLevel="high" /&gt;
+        &lt;Media Id="2" Cabinet="Disk2.cab" EmbedCab="no" CompressionLevel="high" /&gt;
 
         &lt;Directory ...&gt;
         &lt;/Directory&gt;
@@ -25,17 +25,17 @@ permalink: /blog/2014/10/08/Shipping-large-MSI-installers-via-Azure-Blob-Storage
             &lt;!-- Components/files necessary to run the shell --&gt;
             &lt;!-- Note that all components for the shell are stored in CAB file 1 --&gt;
             &lt;Component ...&gt;
-                &lt;File ... DiskId=&quot;1&quot; /&gt;
+                &lt;File ... DiskId="1" /&gt;
             &lt;/Component&gt;
             &lt;Component ...&gt;
-                &lt;File ... DiskId=&quot;1&quot; /&gt;
+                &lt;File ... DiskId="1" /&gt;
             &lt;/Component&gt;
         &lt;/DirectoryRef&gt;
 
         &lt;DirectoryRef ...&gt;
             &lt;!-- Note that all components for the extension are stored in CAB file 2 --&gt;
             &lt;Component ...&gt;
-                &lt;File ... DiskId=&quot;2&quot; /&gt;
+                &lt;File ... DiskId="2" /&gt;
             &lt;/Component&gt;
         &lt;/DirectoryRef&gt;
 
@@ -43,10 +43,10 @@ permalink: /blog/2014/10/08/Shipping-large-MSI-installers-via-Azure-Blob-Storage
             &lt;!-- Note that all components for the SDK are stored in CAB file 2 --&gt;
             &lt;!-- SDK components/files --&gt;
             &lt;Component ...&gt;
-                &lt;File ... DiskId=&quot;2&quot; /&gt;
+                &lt;File ... DiskId="2" /&gt;
             &lt;/Component&gt;
             &lt;Component ...
-                &lt;File ... DiskId=&quot;2&quot; /&gt;
+                &lt;File ... DiskId="2" /&gt;
             &lt;/Component&gt;
         &lt;/DirectoryRef&gt;
         

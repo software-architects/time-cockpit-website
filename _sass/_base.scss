@@ -4,11 +4,14 @@ body {
 	font-family: $base-font-family;
 	font-size: $base-font-size;
 	line-height: $base-line-height;
+	letter-spacing: 0.1px;
 }
 
 h1, h2, h3 {
 	color: $main-color;
 	font-weight: lighter;
+	margin-top: 40px;
+    margin-bottom: 20px;
 }
 
 h1, h1 a {
@@ -25,4 +28,8 @@ h3, h3 a {
 
 img {
 	max-width: 100%;
+}
+
+p {
+	margin: 0 0 20px;
 }

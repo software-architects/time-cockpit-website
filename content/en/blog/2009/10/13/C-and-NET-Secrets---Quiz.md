@@ -41,7 +41,7 @@ permalink: /blog/2009/10/13/C-and-NET-Secrets---Quiz
     }
     public override string ToString()
     {
-        return FirstName + &quot; &quot; + LastName;
+        return FirstName + " " + LastName;
     }
 }{% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">This class uses <span class="InlineCode">System.String</span>.</p>{% highlight javascript %}internal class PersonSystemString
 {
@@ -62,22 +62,22 @@ permalink: /blog/2009/10/13/C-and-NET-Secrets---Quiz
     }
     public override System.String ToString()
     {
-        return FirstName + &quot; &quot; + LastName;
+        return FirstName + " " + LastName;
     }
 }{% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">The implementation of Main uses implicitly typed variables. This is a new featur of C# 3.0! See question 2 for more details about implicitly typed variables.</p>{% highlight javascript %}static class Program
 {
     static void Main()
     {
-        var pString = new PersonString(&quot;Rainer&quot;, &quot;Stropek&quot;);
+        var pString = new PersonString("Rainer", "Stropek");
         System.Console.WriteLine(pString);
 
-        var pSystemString = new PersonSystemString(&quot;Rainer&quot;, &quot;Stropek&quot;);
+        var pSystemString = new PersonSystemString("Rainer", "Stropek");
         System.Console.WriteLine(pSystemString);
     }
 }{% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">
   <img alt="IL code of the two classes" src="{{site.baseurl}}/content/images/blog/2009/10/DotNetQuizQuestion1_large.png" class="   " />
   <em>IL code of the two classes</em>
-</p><p xmlns="http://www.w3.org/1999/xhtml">After compiling the program we can use ILDASM (MS Intermediate Language Disassembler) to generate a readable version of the IL:</p>{% highlight javascript %}ildasm.exe /output=&quot;$(TargetDir)\$(TargetName).il&quot; $(TargetPath){% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">If you compare the IL of the two classes you can see that they are (with the exception of their names) absolutely identical.</p><h2 class="Head" xmlns="http://www.w3.org/1999/xhtml">
+</p><p xmlns="http://www.w3.org/1999/xhtml">After compiling the program we can use ILDASM (MS Intermediate Language Disassembler) to generate a readable version of the IL:</p>{% highlight javascript %}ildasm.exe /output="$(TargetDir)\$(TargetName).il" $(TargetPath){% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">If you compare the IL of the two classes you can see that they are (with the exception of their names) absolutely identical.</p><h2 class="Head" xmlns="http://www.w3.org/1999/xhtml">
   <a id="Q3" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="Q3"></a>Question 3 - Implicitly Typed Variables</h2><p class="Abstract" xmlns="http://www.w3.org/1999/xhtml">
   <strong>C# 3.0 introduces implicitly typed local variables. You do not need to specify a type for a local variable any more! The compiler figures out which type to use for you. So what do you think; does the following code work?</strong>
 </p>{% highlight javascript %}namespace ImplicitTypes
@@ -86,7 +86,7 @@ permalink: /blog/2009/10/13/C-and-NET-Secrets---Quiz
     {
         static void Main()
         {
-            var v = &quot;Hello World!&quot;;
+            var v = "Hello World!";
             v = 10;
             System.Console.WriteLine(v);
         }
@@ -100,9 +100,9 @@ permalink: /blog/2009/10/13/C-and-NET-Secrets---Quiz
     {
         static void Main()
         {
-            var stringValue = &quot;Hello World!&quot;;
+            var stringValue = "Hello World!";
             var stringValue2 = stringValue;
-            stringValue = &quot;Hello Austria!&quot;;
+            stringValue = "Hello Austria!";
             System.Console.WriteLine(stringValue2);
 
             var array = new[] { 1, 2, 3, 4 };
@@ -140,7 +140,7 @@ namespace Finalizers
         ~FileGenerator()
         {
             // Just a debug output
-            Console.WriteLine(&quot;Closing file!&quot;);
+            Console.WriteLine("Closing file!");
         }
         public void Generate(int Length)
         {
@@ -149,7 +149,7 @@ namespace Finalizers
         public void Dispose()
         {
             // Just a debug output
-            Console.WriteLine(&quot;Disposing object!&quot;);
+            Console.WriteLine("Disposing object!");
         }
     }
 
@@ -164,7 +164,7 @@ namespace Finalizers
         {
             Generate();
             // Here we do some work; simulated by ReadLine statement
-            Console.Write(&quot;Please Press Enter...&quot;);
+            Console.Write("Please Press Enter...");
             Console.ReadLine();
         }
     }
@@ -223,11 +223,11 @@ namespace Finalizers
     {
         static void Method1()
         {
-            System.Console.WriteLine(&quot;Method1&quot;);
+            System.Console.WriteLine("Method1");
         }
         static void Method2()
         {
-            System.Console.WriteLine(&quot;Method2&quot;);
+            System.Console.WriteLine("Method2");
         }
         static void Main()
         {

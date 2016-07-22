@@ -31,19 +31,19 @@ namespace CustomLinqProvider
     public static class DemoNames
     {
         public static readonly IReadOnlyList&lt;string&gt; LastNames = new [] {
-            &quot;Smith&quot;, &quot;Johnson&quot;, &quot;Williams&quot;, &quot;Jones&quot;, &quot;Brown&quot;, &quot;Davis&quot;, &quot;Miller&quot;, &quot;Wilson&quot;, &quot;Moore&quot;, &quot;Taylor&quot; /*, ...*/
+            "Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor" /*, ...*/
         };
 
         public static readonly IReadOnlyList&lt;string&gt; FirstNames = new[] {
-            &quot;Jack&quot;, &quot;Lewis&quot;, &quot;Riley&quot;, &quot;James&quot;, &quot;Logan&quot; /*, ...*/
+            "Jack", "Lewis", "Riley", "James", "Logan" /*, ...*/
         };
 
         public static readonly IReadOnlyList&lt;string&gt; CompanyNamesPart1 = new[] { 
-            &quot;Corina&quot;, &quot;Amelia&quot;, &quot;Menno&quot;, &quot;Malthe&quot;, &quot;Hartwing&quot;, &quot;Marlen&quot; /*, ...*/ };
+            "Corina", "Amelia", "Menno", "Malthe", "Hartwing", "Marlen" /*, ...*/ };
         public static readonly IReadOnlyList&lt;string&gt; CompanyNamesPart2 = new[] { 
-            &quot;Construction&quot;, &quot;Engineering&quot;, &quot;Consulting&quot;, &quot;Trading&quot;, &quot;Metal Construction&quot;, &quot;Publishers&quot;  /*, ...*/ };
+            "Construction", "Engineering", "Consulting", "Trading", "Metal Construction", "Publishers"  /*, ...*/ };
         public static readonly IReadOnlyList&lt;string&gt; CompanyNamesPart3 = new[] {
-            &quot;Ltd&quot;, &quot;Limited&quot;, &quot;Corporation&quot;, &quot;Limited Company&quot;, &quot;Joint Venture&quot;, &quot;Ltd.&quot;, &quot;Cooperative&quot; };
+            "Ltd", "Limited", "Corporation", "Limited Company", "Joint Venture", "Ltd.", "Cooperative" };
     }
 }{% endhighlight %}
 </p><p xmlns="http://www.w3.org/1999/xhtml">Publishing generated customer demo data with OData is really simple. Here is the code you need for it:</p><p xmlns="http://www.w3.org/1999/xhtml">
@@ -85,8 +85,8 @@ namespace CustomODataService
         {
             // TODO: set rules to indicate which entity sets and service operations are visible, updatable, etc.
             // Examples:
-            config.SetEntitySetAccessRule(&quot;*&quot;, EntitySetRights.AllRead);
-            // config.SetServiceOperationAccessRule(&quot;MyServiceOperation&quot;, ServiceOperationRights.All);
+            config.SetEntitySetAccessRule("*", EntitySetRights.AllRead);
+            // config.SetServiceOperationAccessRule("MyServiceOperation", ServiceOperationRights.All);
             config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V2;
             config.UseVerboseErrors = true;
         }
@@ -230,7 +230,7 @@ namespace CustomODataService.CustomDataServiceBase
         /// &lt;summary&gt;
         /// Creates a queryable for the specified resource set
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;set&quot;&gt;Resource set for which the queryable should be created&lt;/param&gt;
+        /// &lt;param name="set"&gt;Resource set for which the queryable should be created&lt;/param&gt;
         IQueryable GetQueryable(ResourceSet set);
     }
 }{% endhighlight %}
@@ -250,7 +250,7 @@ namespace CustomODataService.CustomDataServiceBase
         /// &lt;summary&gt;
         /// Add a resource type
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;type&quot;&gt;Type to add&lt;/param&gt;
+        /// &lt;param name="type"&gt;Type to add&lt;/param&gt;
         public void AddResourceType(ResourceType type)
         {
             type.SetReadOnly();
@@ -260,7 +260,7 @@ namespace CustomODataService.CustomDataServiceBase
         /// &lt;summary&gt;
         /// Adds the resource set.
         /// &lt;/summary&gt;
-        /// &lt;param name=&quot;set&quot;&gt;The set.&lt;/param&gt;
+        /// &lt;param name="set"&gt;The set.&lt;/param&gt;
         public void AddResourceSet(ResourceSet set)
         {
             set.SetReadOnly();
@@ -287,7 +287,7 @@ namespace CustomODataService.CustomDataServiceBase
                 var resourceProperty = new ResourceProperty(
                     property.Name,
                     // For simplicity let's assume that the property with postfix ID is the key property
-                    ResourcePropertyKind.Primitive | (property.Name.EndsWith(&quot;ID&quot;) ? ResourcePropertyKind.Key : 0),
+                    ResourcePropertyKind.Primitive | (property.Name.EndsWith("ID") ? ResourcePropertyKind.Key : 0),
                     ResourceType.GetPrimitiveResourceType(property.PropertyType));
                 productType.AddProperty(resourceProperty);
             }
@@ -302,12 +302,12 @@ namespace CustomODataService.CustomDataServiceBase
         #region Implementation of IDataServiceMetadataProvider
         public string ContainerName
         {
-            get { return &quot;Container&quot;; }
+            get { return "Container"; }
         }
 
         public string ContainerNamespace
         {
-            get { return &quot;Namespace&quot;; }
+            get { return "Namespace"; }
         }
 
         public IEnumerable&lt;ResourceType&gt; GetDerivedTypes(ResourceType resourceType)
@@ -318,7 +318,7 @@ namespace CustomODataService.CustomDataServiceBase
 
         public ResourceAssociationSet GetResourceAssociationSet(ResourceSet resourceSet, ResourceType resourceType, ResourceProperty resourceProperty)
         {
-            throw new NotImplementedException(&quot;No relationships.&quot;);
+            throw new NotImplementedException("No relationships.");
         }
 
         public bool HasDerivedTypes(ResourceType resourceType)
@@ -448,14 +448,14 @@ namespace CustomODataService
 
         public CustomerService()
         {
-            this.customerMetadata = CustomDataServiceMetadataProvider.BuildDefaultMetadataForClass&lt;Customer&gt;(&quot;DefaultNamespace&quot;);
+            this.customerMetadata = CustomDataServiceMetadataProvider.BuildDefaultMetadataForClass&lt;Customer&gt;("DefaultNamespace");
             this.dataSource = new CustomDataServiceProvider(this.customerMetadata, new CustomerServiceDataContext());
         }
 
         public static void InitializeService(DataServiceConfiguration config)
         {
             // Enable read for all entities
-            config.SetEntitySetAccessRule(&quot;*&quot;, EntitySetRights.AllRead);
+            config.SetEntitySetAccessRule("*", EntitySetRights.AllRead);
 
             // Various other settings
             config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V2;

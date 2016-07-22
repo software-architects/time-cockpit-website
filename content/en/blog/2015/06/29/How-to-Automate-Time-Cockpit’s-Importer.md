@@ -16,53 +16,53 @@ permalink: /blog/2015/06/29/How-to-Automate-Time-Cockpit’s-Importer
   <li>Users cannot remember storage locations (e.g. file server) where upstream systems store files</li>
   <li>Users run imports seldom. Therefore they forget how to start it.</li>
 </ul><h2 xmlns="http://www.w3.org/1999/xhtml">Automate the Import</h2><p xmlns="http://www.w3.org/1999/xhtml">You can automate imports using <em>Actions</em> written in time cockpit scripting language (Python). Such actions can be triggered manually or periodically. The import action has to call time cockpit's Import Module and trigger the corresponding <a href="https://help.timecockpit.com/?topic=html/ee560e49-e503-4d80-9167-2e6533f50dbe.htm" target="_blank"><em>Import Definition</em></a>. It contains all the information that time cockpit needs to read the source file, map it to you data structure in time cockpit and write the data to your time cockpit database.</p><p xmlns="http://www.w3.org/1999/xhtml">We want to share sample code for such an action so it becomes easier for you to automate your own import process. Here is the sample code:</p><h2 xmlns="http://www.w3.org/1999/xhtml">
-  {% highlight javascript %}clr.AddReference(&quot;System&quot;)&#xD;
-clr.AddReference(&quot;TimeCockpit.Data.Import&quot;)&#xD;
-from System.Text import Encoding&#xD;
-from System.IO import File&#xD;
-from TimeCockpit.Data.Import import *&#xD;
-&#xD;
-def actionSample(actionContext):&#xD;
-&#xD;
-    # implementation of event handler&#xD;
-    def printMessage(source, worksheet, row, severity, message):&#xD;
-        # e.g. error handling, abort action ...&#xD;
-        print(message)&#xD;
-&#xD;
-    def printProgress(s, ws, max, current, created, updated):&#xD;
-        print ws, current, max&#xD;
-&#xD;
-    def printFinished(source, reportDataArray, reportMimeType, sourceDataArray, sourceMimeType):&#xD;
-        print 'Finished importing...'&#xD;
-&#xD;
-&#xD;
-    def performImport(impDefName, importFilePath):    &#xD;
-        sourceData = File.ReadAllBytes(importFilePath)&#xD;
-        &#xD;
-        # check existence of the import definition&#xD;
-        impDef = Context.SelectSingleWithParams({ &#xD;
-        &quot;Query&quot; : &quot;From I In ImportDefinition Where I.ImportDefinitionName = @DefName Select I&quot;, &#xD;
-        &quot;@DefName&quot; : impDefName })&#xD;
-        if impDef == None:&#xD;
-            raise ValidationException(&quot;The import definition &quot; + impDefName + &quot; could not be found.&quot;)    &#xD;
-            &#xD;
-        importTaskId = Guid.NewGuid()&#xD;
-        definition = ImportBookDefinition.ReadXaml(Encoding.UTF8.GetString(impDef.APP_Definition))        &#xD;
-        engine = ImportEngineFactory.Create(ImportEngineFactory.XlsxEngine, Context)    &#xD;
-        &#xD;
-        # attach event handlers&#xD;
-        engine.OnMessage += printMessage        &#xD;
-        engine.OnProgress += printProgress&#xD;
-        engine.OnReportFinished += printFinished        &#xD;
-        &#xD;
-        engine.PerformImport(definition, True, sourceData, impDefName, importTaskId, impDef.ObjectUuid, None)&#xD;
-&#xD;
-    # names of your previous created import definitions in the module &quot;Management&quot; in the section &quot;Settings/Import Definitions&quot;&#xD;
-    importDefCust = 'Auto-Import-Customers'&#xD;
-    importDefP = 'Auto-Import-Projects'&#xD;
-    &#xD;
-    # call imports in certain order&#xD;
-    performImport(importDefCust, '''C:\Documents\ImportContent\customerImport.xlsx''')&#xD;
+  {% highlight javascript %}clr.AddReference("System")
+clr.AddReference("TimeCockpit.Data.Import")
+from System.Text import Encoding
+from System.IO import File
+from TimeCockpit.Data.Import import *
+
+def actionSample(actionContext):
+
+    # implementation of event handler
+    def printMessage(source, worksheet, row, severity, message):
+        # e.g. error handling, abort action ...
+        print(message)
+
+    def printProgress(s, ws, max, current, created, updated):
+        print ws, current, max
+
+    def printFinished(source, reportDataArray, reportMimeType, sourceDataArray, sourceMimeType):
+        print 'Finished importing...'
+
+
+    def performImport(impDefName, importFilePath):    
+        sourceData = File.ReadAllBytes(importFilePath)
+        
+        # check existence of the import definition
+        impDef = Context.SelectSingleWithParams({ 
+        "Query" : "From I In ImportDefinition Where I.ImportDefinitionName = @DefName Select I", 
+        "@DefName" : impDefName })
+        if impDef == None:
+            raise ValidationException("The import definition " + impDefName + " could not be found.")    
+            
+        importTaskId = Guid.NewGuid()
+        definition = ImportBookDefinition.ReadXaml(Encoding.UTF8.GetString(impDef.APP_Definition))        
+        engine = ImportEngineFactory.Create(ImportEngineFactory.XlsxEngine, Context)    
+        
+        # attach event handlers
+        engine.OnMessage += printMessage        
+        engine.OnProgress += printProgress
+        engine.OnReportFinished += printFinished        
+        
+        engine.PerformImport(definition, True, sourceData, impDefName, importTaskId, impDef.ObjectUuid, None)
+
+    # names of your previous created import definitions in the module "Management" in the section "Settings/Import Definitions"
+    importDefCust = 'Auto-Import-Customers'
+    importDefP = 'Auto-Import-Projects'
+    
+    # call imports in certain order
+    performImport(importDefCust, '''C:\Documents\ImportContent\customerImport.xlsx''')
     performImport(importDefP, '''C:\Documents\ImportContent\projectImport.xlsx'''){% endhighlight %}How The Code Works</h2><p xmlns="http://www.w3.org/1999/xhtml">The method <code>performImport</code> contains the important part of the action.</p><ol xmlns="http://www.w3.org/1999/xhtml">
   <li>First, we read the content of the file that should be imported with <code class="python functions">File</code><code class="python plain">.ReadAllBytes</code>.</li>
   <li>Next, we load the import definition into the local variable <code>definition</code>. The import definition defines how to map the columns in the Excel or CSV file to the corresponding time cockpit data structure.</li>

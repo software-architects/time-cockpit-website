@@ -12,7 +12,7 @@ permalink: /blog/2011/03/28/BIG-DAYS-2011---Parallel-Programming-
 <p xmlns="http://www.w3.org/1999/xhtml">At the BIG&gt;DAYS 2011, the largest roadshow of Microsoft in Austria with approx. 1,700 visitors, I do a session about parallel programming together with Andreas Schabus. In the session we start with the basics of parallel programming in .NET 4 and C# 4. Based on that we discuss the importance of parallel programming in Windows Azure and do demos for scaling out compute tasks into the cloud as well as a demo for parallel querying using the concept of horizontal sharding in the SQL Azure database layer.</p><p xmlns="http://www.w3.org/1999/xhtml">If you are interested in the slides, <a href="{{site.baseurl}}/content/images/blog/2011/03/BigDays 2011_Parallel Data Processing On Premise und in der Cloud FINAL.pdf" target="_blank">here they are</a> (unfortunately only available in German; however, samples are international by nature).</p><p xmlns="http://www.w3.org/1999/xhtml">Today I found the time to record the introductory demo of the talk (my cat forced me to keep sitting in front of my computer by laying down on my lap so I had some minutes of "spare" time). If you are interested here is the video of the demo. If you are wondering what's the difference between tasks and threads in .NET 4 or you just want to get into parallel programming it could help.</p><iframe width="480" height="390" title="YouTube video player" src="https://www.youtube.com/embed/r1FbKiHYHcw" frameborder="0" xmlns="http://www.w3.org/1999/xhtml"></iframe><h2 xmlns="http://www.w3.org/1999/xhtml">Step 1 - Performing a task in background</h2>{% highlight javascript %}Action&lt;Action&gt; measure = (body) =&gt;{ 
   var startTime = DateTime.Now; 
   body(); 
-  Console.WriteLine(&quot;{0} {1}&quot;, Thread.CurrentThread.ManagedThreadId, DateTime.Now - startTime); 
+  Console.WriteLine("{0} {1}", Thread.CurrentThread.ManagedThreadId, DateTime.Now - startTime); 
 }; 
 
 Action calcProcess = () =&gt; { for (int i = 0; i &lt; 350000000; i++);}; 
@@ -32,7 +32,7 @@ measure(() =&gt;{
 });{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Still a lot of code. It is much easier like this:</p>{% highlight javascript %}Parallel.For(0, 10, _ =&gt; { measure(calcProcess); });{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Step 2 - Perform IO-bound tasks instead of parallel calculations</h2><p xmlns="http://www.w3.org/1999/xhtml">Take the first sample and simulate IO bound tasks instead of parallel calculations. You will see that TPL behaves differently (see videos for details):</p>{% highlight javascript %}Action&lt;Action&gt; measure = (body) =&gt;{ 
   var startTime = DateTime.Now; 
   body(); 
-  Console.WriteLine(&quot;{0} {1}&quot;, Thread.CurrentThread.ManagedThreadId, 
+  Console.WriteLine("{0} {1}", Thread.CurrentThread.ManagedThreadId, 
   DateTime.Now - startTime); 
 }; 
 

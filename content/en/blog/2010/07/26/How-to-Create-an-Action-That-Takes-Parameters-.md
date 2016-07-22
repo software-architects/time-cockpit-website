@@ -20,8 +20,8 @@ permalink: /blog/2010/07/26/How-to-Create-an-Action-That-Takes-Parameters-
   <img alt="Creating an action parameter" src="{{site.baseurl}}/content/images/blog/2010/07/create_actionparam (2).png" class="     " />
 </p><h2 xmlns="http://www.w3.org/1999/xhtml">Creating an execution condition</h2><p xmlns="http://www.w3.org/1999/xhtml">As we want our action to only work on timesheets, we need to define a condition under which circumstances an action should work. So we choose the <span class="InlineCode">Conditions</span> section and add a new condition <span class="InlineCode">TimesheetCondition</span>. Under <span class="InlineCode">Entity</span> we choose <span class="InlineCode">APP_Timesheet</span>. Now, we have an action that has a parameter and functions only on timesheets. Unfortunately, the action has no source code to execute. So the next step is to implement the IronPython code that does the real work.</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img alt="Creating an execution condition" src="{{site.baseurl}}/content/images/blog/2010/07/creation_condition (2).png" class="   mceC1Focused mceC1Focused" />
-</p><h2 xmlns="http://www.w3.org/1999/xhtml">Providing source code that does the actual work</h2><p xmlns="http://www.w3.org/1999/xhtml">The source code that does the trick looks like the following:</p>{% highlight javascript %}clr.AddReference(&quot;PresentationFramework&quot;) 
-clr.AddReference(&quot;System&quot;) 
+</p><h2 xmlns="http://www.w3.org/1999/xhtml">Providing source code that does the actual work</h2><p xmlns="http://www.w3.org/1999/xhtml">The source code that does the trick looks like the following:</p>{% highlight javascript %}clr.AddReference("PresentationFramework") 
+clr.AddReference("System") 
 from System.Windows import MessageBox 
 def actionSample(actionContext): 
   # the input set contains the selected timesheets 

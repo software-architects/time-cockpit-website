@@ -66,7 +66,7 @@ Select New With
   <img src="{{site.baseurl}}/content/images/blog/2014/09/Templates05.png" />
 </p><h3 xmlns="http://www.w3.org/1999/xhtml">Script Sources</h3><p xmlns="http://www.w3.org/1999/xhtml">Script sources are new in the latest version of time cockpit. They work similarly to the TCQL templates sources described above. The difference is that you create a Python script to generate time sheet templates instead of a TCQL query. As you might know, time cockpit's scripting engine is very powerful when it comes to accessing external data. COM, databases, REST web APIs, all those data exchange technologies are available. Therefore, script sources enable you to create time sheet templates based on any internal or external data.</p><h3 xmlns="http://www.w3.org/1999/xhtml">Script Source Example: Outlook Tasks</h3><p xmlns="http://www.w3.org/1999/xhtml">Let's look at an example. The following script creates time sheet templates based on your Outlook tasks. If you completed an Outlook task today, it is likely that you have to create a corresponding time sheet record. Therefore it makes perfect sense to suggest time sheet templates for Outlook tasks.</p><p xmlns="http://www.w3.org/1999/xhtml">
   {% highlight javascript %}# Use Outlook's COM object model to access tasks
-clr.AddReference(&quot;Microsoft.Office.Interop.Outlook&quot;)
+clr.AddReference("Microsoft.Office.Interop.Outlook")
 from Microsoft.Office.Interop.Outlook import *
 from System.Collections.Generic import List
 
@@ -75,46 +75,46 @@ def getTimesheets(templateQueryContext):
     def EnumerateFolders(folder, condition):
         for email in folder.Items.Restrict(condition):
             entity = modelEntity.CreateEntityObject()
-            status = &quot;OPEN&quot; if email.TaskCompletedDate == DateTime(4501, 1, 1) else &quot;DONE&quot;
+            status = "OPEN" if email.TaskCompletedDate == DateTime(4501, 1, 1) else "DONE"
             
             entity.Description = email.Subject
-            entity.ResultTitle = status + &quot;: &quot; + email.Subject
-            entity.ResultSortOrder = status + &quot;: &quot; + email.Subject
+            entity.ResultTitle = status + ": " + email.Subject
+            entity.ResultSortOrder = status + ": " + email.Subject
             result.Add(entity)
             
         for childFolder in folder.Folders:
             EnumerateFolders(childFolder, condition)
     
     # Setup a data structure that holds the templates' data
-    modelEntity = ModelEntity({ &quot;Name&quot;: &quot;Result&quot; })
-    modelEntity.Properties.Add(TextProperty({ &quot;Name&quot;: &quot;Description&quot; }))
-    modelEntity.Properties.Add(TextProperty({ &quot;Name&quot;: &quot;ResultTitle&quot; }))
-    modelEntity.Properties.Add(TextProperty({ &quot;Name&quot;: &quot;ResultSortOrder&quot; }))
+    modelEntity = ModelEntity({ "Name": "Result" })
+    modelEntity.Properties.Add(TextProperty({ "Name": "Description" }))
+    modelEntity.Properties.Add(TextProperty({ "Name": "ResultTitle" }))
+    modelEntity.Properties.Add(TextProperty({ "Name": "ResultSortOrder" }))
     
     # Create a helper variable that will receive the resulting templates
     result = List[EntityObject]()
     
-    date = templateQueryContext.BeginTime.ToString(&quot;d&quot;)
+    date = templateQueryContext.BeginTime.ToString("d")
     
     # Create an Outlook application object
     application = ApplicationClass()
     
     # Enumerate over all tasks and create templates from it
     taskFolder = application.Session.GetDefaultFolder(OlDefaultFolders.olFolderTasks)
-    condition = &quot;([Complete] = true and [DateCompleted] = '&quot; + date + &quot;') or ([Complete] = false and [DueDate] &lt;= '&quot; + date + &quot;')&quot;
+    condition = "([Complete] = true and [DateCompleted] = '" + date + "') or ([Complete] = false and [DueDate] &lt;= '" + date + "')"
     
     for task in taskFolder.Items.Restrict(condition):
         entity = modelEntity.CreateEntityObject()
-        status = &quot;OPEN&quot; if task.Status == 0 else &quot;DONE&quot;
+        status = "OPEN" if task.Status == 0 else "DONE"
     
         entity.Description = task.Subject
-        entity.ResultTitle = status + &quot;: &quot; + task.Subject
-        entity.ResultSortOrder = status + &quot;: &quot; + task.Subject
+        entity.ResultTitle = status + ": " + task.Subject
+        entity.ResultSortOrder = status + ": " + task.Subject
         result.Add(entity)
     
     # Enumerate over tasks based on emails
     emailFolder = application.Session.GetDefaultFolder(OlDefaultFolders.olFolderInbox)
-    condition = &quot;[TaskDueDate] = '&quot; + date + &quot;' or [TaskCompletedDate] = '&quot; + date + &quot;'&quot;
+    condition = "[TaskDueDate] = '" + date + "' or [TaskCompletedDate] = '" + date + "'"
     
     EnumerateFolders(emailFolder, condition)
     

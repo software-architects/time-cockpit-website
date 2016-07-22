@@ -15,15 +15,15 @@ permalink: /blog/2013/09/03/Saving-Money-in-the-Cloud-with-Async-Programming
     {
         Console.WriteLine(
             client.DownloadString(new Uri(string.Format(
-                &quot;http://{0}&quot;,
-                (Dns.GetHostAddresses(&quot;www.timecockpit.com&quot;))[0]))));
+                "http://{0}",
+                (Dns.GetHostAddresses("www.timecockpit.com"))[0]))));
     }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">As you can see this code gets the IP address of a host name and downloads content using http. Doing these operations synchronously will block the thread for quite a long time as the public internet is involved.</p><p xmlns="http://www.w3.org/1999/xhtml">Note that you have had the option to perform such high latency operations in the background already since the early days of .NET. You could for instance use the <em>Begin/End</em> methods with <em>IAsyncResult</em> as the following code shows. Note that <em>DownloadSomeText</em> is a synchronous method because it waits until everything is completed using an <em>AutoResetEvent</em>. However, it would be trivial to change the code so that it could do useful things during the download process.</p>{% highlight javascript %}private static void DownloadSomeText()
 {
     var finishedEvent = new AutoResetEvent(false);
 
     // Notice the IAsyncResult-pattern here
-    Dns.BeginGetHostAddresses(&quot;www.timecockpit.net&quot;, GetHostEntryFinished, 
+    Dns.BeginGetHostAddresses("www.timecockpit.net", GetHostEntryFinished, 
         finishedEvent);
     finishedEvent.WaitOne();
 }
@@ -40,20 +40,20 @@ private static void GetHostEntryFinished(IAsyncResult result)
             ((AutoResetEvent)result.AsyncState).Set();
         };
         client.DownloadStringAsync(new Uri(string.Format(
-            &quot;http://{0}&quot;,
+            "http://{0}",
             hostEntry[0].ToString())));
     }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Compare this code with our original synchronous implementation. Ugly, isn’t it? It is error prone, hard to read, hard to maintain, etc. There has to be a better way. Since .NET 4 there is one: The <em>Task Asynchronous Pattern</em>. .NET 4 introduced tasks and task-related APIs:</p>{% highlight javascript %}private static void DownloadSomeTextSync()
 {
     var finishedEvent = new AutoResetEvent(false);
 
-    Dns.GetHostAddressesAsync(&quot;www.timecockpit.com&quot;)
+    Dns.GetHostAddressesAsync("www.timecockpit.com")
         .ContinueWith(dnsResultTask =&gt;
             {
                 using (var client = new WebClient())
                 {
                     client.DownloadStringTaskAsync(new Uri(string.Format(
-                        &quot;http://{0}&quot;,
+                        "http://{0}",
                         dnsResultTask.Result[0])))
                         .ContinueWith(downloadResultTask =&gt;
                             {
@@ -70,8 +70,8 @@ private static void GetHostEntryFinished(IAsyncResult result)
     {
         Console.WriteLine(
             await client.DownloadStringTaskAsync(new Uri(string.Format(
-                &quot;http://{0}&quot;,
-                (await Dns.GetHostAddressesAsync(&quot;www.timecockpit.com&quot;))[0]))));
+                "http://{0}",
+                (await Dns.GetHostAddressesAsync("www.timecockpit.com"))[0]))));
     }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Compare this code with the synchronous version again. Doesn’t it look surprisingly similar? It does. This is the goal of <em>async</em> and <em>await</em>, making async programming so simple that everyone can use it in everyday programming.</p><h1 xmlns="http://www.w3.org/1999/xhtml">Await vs. Wait</h1><p xmlns="http://www.w3.org/1999/xhtml">You are probably already familiar with the <em>Wait</em> family of methods of the <em>Task Parallel Library</em> (TPL). They allow you to wait until a task or a collection of tasks has been finished. You might wonder what’s the difference between <em>await</em> and <em>Wait</em>. The difference is huge.</p><p xmlns="http://www.w3.org/1999/xhtml">While <em>Wait</em> blocks the thread, <em>await</em> does not block it. In fact .NET will return from the current method whenever it reaches an <em>await</em> statement. It will continue the execution with the code after (or around) the <em>await</em> statement when the background task has been finished.</p><p xmlns="http://www.w3.org/1999/xhtml">The following example should demonstrate what I mean:</p>{% highlight javascript %}namespace ConsoleApplication1
 {
@@ -79,11 +79,11 @@ private static void GetHostEntryFinished(IAsyncResult result)
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(&quot;Starting&quot;);
+            Console.WriteLine("Starting");
             PerformHighLatencyOperationsAsync();
             while (true)
             {
-                Console.WriteLine(&quot;Do something useful (e.g. handle other HTTP requests or display animation)...&quot;);
+                Console.WriteLine("Do something useful (e.g. handle other HTTP requests or display animation)...");
                 Thread.Sleep(100);
             }
         }
@@ -114,11 +114,11 @@ private static void GetHostEntryFinished(IAsyncResult result)
     }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">If you run this program you will see that the main method continues after it calls <em>PerformHighLatencyOperationsAsync</em>. This is the case because <em>PerformHighLatencyOperationsAsync</em> returns after it has reached the first <em>await</em> statement (in the line <em>var value = await PerformHighLatencyGetAsync()</em>). When <em>PerformHighLatencyGetAsync</em> returns, .NET will continue with the assignment operation <em>value = await …</em> and go to the next line of code.</p><p xmlns="http://www.w3.org/1999/xhtml">If you would change the main method so that it uses TPL’s <em>Wait</em> method, the result is completely different.</p>{% highlight javascript %}static void Main(string[] args)
 {
-    Console.WriteLine(&quot;Starting&quot;);
+    Console.WriteLine("Starting");
     PerformHighLatencyOperationsAsync().Wait();
     while (true)
     {
-        Console.WriteLine(&quot;Do something useful (e.g. handle other HTTP requests or display animation)...&quot;);
+        Console.WriteLine("Do something useful (e.g. handle other HTTP requests or display animation)...");
         Thread.Sleep(100);
     }
 }
@@ -166,7 +166,7 @@ namespace BeeInMyGarden.Data
     public class BlogContext : DbContext
     {
         public BlogContext()
-            : base(&quot;BlogDatabase&quot;)
+            : base("BlogDatabase")
         {
         }
 
@@ -187,15 +187,15 @@ namespace BeeInMyGarden.Data
                 var newItem = new BlogItem()
                 {
                     BlogId = 3,
-                    Title = &quot;Der erste, selbst gefangene Bienenschwarm&quot;,
-                    FeaturedImageUri = &quot;http://bienenimgarten.files.wordpress.com/2013/06/img_1509.jpg?w=500&quot;,
-                    Content = @&quot;
+                    Title = "Der erste, selbst gefangene Bienenschwarm",
+                    FeaturedImageUri = "http://bienenimgarten.files.wordpress.com/2013/06/img_1509.jpg?w=500",
+                    Content = @"
 Gestern war ein ereignisreicher Tag in unserem jungen Imkerleben. Als wir am Abend von einem Ausflug mit dem Moutainbike nach 
 Hause gekommen sind, erreichte uns ein Anruf vom Obmann unseres Imkervereins. Er wurde verständigt und um Hilfe gebeten, da 
 sich ganz in unserer Nähe ein Bienenscharm in einem privaten Garten niedergelassen hatte. Er fragte uns, um wir uns darum 
 kümmern möchten. Wow, das war eine unvorhergesehene Herausforderung. Wir hatten erst bei einem Schwarm – unserem eigenen – geholfen 
 und jetzt sollten wir uns gleich alleine um das Einfangen kümmern. Aber was soll’s, Erfahrung macht den Meister. Also haben 
-wir zugesagt und uns bei dem betroffenen Gartenbesitzer telefonisch angekündigt...&quot;
+wir zugesagt und uns bei dem betroffenen Gartenbesitzer telefonisch angekündigt..."
                 };
 
                 this.BlogItems.Add(newItem);
@@ -207,9 +207,9 @@ wir zugesagt und uns bei dem betroffenen Gartenbesitzer telefonisch angekündigt
                 var newItem = new BlogItem()
                 {
                     BlogId = 2,
-                    Title = &quot;Türe auf – eine vergrößerte Fluglochöffnung muss her&quot;,
-                    FeaturedImageUri = &quot;http://bienenimgarten.files.wordpress.com/2013/06/img_0804.jpg?w=500&quot;,
-                    Content = @&quot;
+                    Title = "Türe auf – eine vergrößerte Fluglochöffnung muss her",
+                    FeaturedImageUri = "http://bienenimgarten.files.wordpress.com/2013/06/img_0804.jpg?w=500",
+                    Content = @"
 Türe auf!
 ---------
 
@@ -218,7 +218,7 @@ es so richtig rund. Bei unserem gestrigen Bienenbesuch haben wir bemerkt, dass d
 echter Engpass ist. Die Bienen müssen sich zum Rein- und Rausgehen richtig anstellen. Aus diesem Grund haben wir heute 
 einen Fluglochkeil mit größerer Öffnung gebastelt. Am Foto unten (anklicken zum Vergrößern) sieht man den Unterschied. 
 Der obere Fluglochkeil ist der, den man mit der Dadant-Beute von der Firma Janisch bekommt. Den unteren haben wir heute 
-gebaut. Im Sommer werden wir den vergrößerten verwenden. Der kleine passt für den Herbst und Winter dann sicher wieder optimal...&quot;
+gebaut. Im Sommer werden wir den vergrößerten verwenden. Der kleine passt für den Herbst und Winter dann sicher wieder optimal..."
                 };
 
                 this.BlogItems.Add(newItem);
@@ -230,15 +230,15 @@ gebaut. Im Sommer werden wir den vergrößerten verwenden. Der kleine passt für
                 var newItem = new BlogItem()
                 {
                     BlogId = 1,
-                    Title = &quot;Es brummt im Bienenstock&quot;,
-                    FeaturedImageUri = &quot;http://bienenimgarten.files.wordpress.com/2013/06/dscf3078.jpg?w=500&quot;,
-                    Content = @&quot;
+                    Title = "Es brummt im Bienenstock",
+                    FeaturedImageUri = "http://bienenimgarten.files.wordpress.com/2013/06/dscf3078.jpg?w=500",
+                    Content = @"
 In einem unserer letzten Blogartikel haben wir berichtet, dass unsere Königin (die sogenannte Weisel) tot ist. Das war ein 
 herber Rückschlag, da wir nicht wussten, ob eine zweite im Volk ist. Heute haben wir tolle Neuigkeiten: Es ist so gut wie 
 sicher, dass unser Volk nicht weisellos ist. Herausgefunden haben wir das mit Hilfe unseres Imkereivereinobmanns. Wir haben 
 gemeinsam den Stock geöffnet und uns die Brut angesehen. Die tote Königin haben wir vor ziemlich genau einer Woche gefunden. 
 In den Wabenzellen fanden wir aber gestern sowohl Eier als auch Bienenlarven, die teilweise erst wenige Tage alt waren. Das ist 
-nur möglich mit einer aktiven Königin...&quot;
+nur möglich mit einer aktiven Königin..."
                 };
 
                 this.BlogItems.Add(newItem);
@@ -247,7 +247,7 @@ nur möglich mit einer aktiven Königin...&quot;
         }
     }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Last but not least don’t forget to change the database connection string in your <em>web.config</em> file accordingly. I will use Microsoft’s LocalDB as it comes with Visual Studio out of the box:</p>{% highlight javascript %}  &lt;connectionStrings&gt;
-    &lt;add name=&quot;BlogDatabase&quot; providerName=&quot;System.Data.SqlClient&quot; connectionString=&quot;Data Source=(localdb)\V11.0;Initial Catalog=BeeInGarden;Integrated Security=True;Connection Timeout=10&quot; /&gt;
+    &lt;add name="BlogDatabase" providerName="System.Data.SqlClient" connectionString="Data Source=(localdb)\V11.0;Initial Catalog=BeeInGarden;Integrated Security=True;Connection Timeout=10" /&gt;
   &lt;/connectionStrings&gt;{% endhighlight %}<p class="CodeCxSpFirst" xmlns="http://www.w3.org/1999/xhtml">Please add the connection string to the test project’s <em>App.config</em> file, too. We will need that in a minute.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Step 3: Add Async Web API</h2><p xmlns="http://www.w3.org/1999/xhtml">The project template for ASP.NET MVC 4 Web APIs adds a sample API controller called <em>ValuesController</em>. For our purposes we can rename it to <em>BlogController</em> and change its implementation as follows:</p>{% highlight javascript %}using BeeInMyGarden.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -337,7 +337,7 @@ namespace WpfApplication3
 
             using (var client = new WebClient())
             {
-                var result = await client.DownloadStringTaskAsync(&quot;http://beeinmygardenwaws.azurewebsites.net/api/Blog/1&quot;);
+                var result = await client.DownloadStringTaskAsync("http://beeinmygardenwaws.azurewebsites.net/api/Blog/1");
                 var blogItem = await JsonConvert.DeserializeObjectAsync&lt;BlogItem&gt;(result);
                 this.BlogItem = blogItem;
             }
@@ -385,19 +385,19 @@ namespace WpfApplication3
             }
         }
     }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Note especially the implementation of <em>OnGetBlogPostAsync</em>. It uses .NET's task-based API for accessing the web service. The method starts on the UI thread. As mentioned before, .NET will return on the UI thread after each <em>await</em>. Therefore we do not need to call <em>Dispatcher.BeginInvoke</em>.</p><p xmlns="http://www.w3.org/1999/xhtml">For completeness here is the XAML code that uses the above view model. I kept it really simple because it is for demonstration purposes only.</p>{% highlight javascript %}&lt;Window x:Class=&quot;WpfApplication3.MainWindow&quot;
-        xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
-        xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
-        Title=&quot;MainWindow&quot; Height=&quot;350&quot; Width=&quot;525&quot;&gt;
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Note especially the implementation of <em>OnGetBlogPostAsync</em>. It uses .NET's task-based API for accessing the web service. The method starts on the UI thread. As mentioned before, .NET will return on the UI thread after each <em>await</em>. Therefore we do not need to call <em>Dispatcher.BeginInvoke</em>.</p><p xmlns="http://www.w3.org/1999/xhtml">For completeness here is the XAML code that uses the above view model. I kept it really simple because it is for demonstration purposes only.</p>{% highlight javascript %}&lt;Window x:Class="WpfApplication3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525"&gt;
     &lt;Window.Resources&gt;
-        &lt;BooleanToVisibilityConverter x:Key=&quot;BoolToVisConverter&quot; /&gt;
+        &lt;BooleanToVisibilityConverter x:Key="BoolToVisConverter" /&gt;
     &lt;/Window.Resources&gt;
     &lt;DockPanel&gt;
-        &lt;Button DockPanel.Dock=&quot;Top&quot; Command=&quot;{Binding Path=GetBlogPostCommand}&quot;&gt;Load&lt;/Button&gt;
+        &lt;Button DockPanel.Dock="Top" Command="{Binding Path=GetBlogPostCommand}"&gt;Load&lt;/Button&gt;
         &lt;Grid&gt;
-            &lt;TextBox Text=&quot;{Binding Path=BlogItem.Content}&quot; /&gt;
-            &lt;Border Background=&quot;LightGray&quot; Opacity=&quot;0.5&quot; Visibility=&quot;{Binding Path=IsLoading, Converter={StaticResource BoolToVisConverter}}&quot;&gt;
-                &lt;TextBlock Text=&quot;Loading...&quot; HorizontalAlignment=&quot;Center&quot; VerticalAlignment=&quot;Center&quot; /&gt;
+            &lt;TextBox Text="{Binding Path=BlogItem.Content}" /&gt;
+            &lt;Border Background="LightGray" Opacity="0.5" Visibility="{Binding Path=IsLoading, Converter={StaticResource BoolToVisConverter}}"&gt;
+                &lt;TextBlock Text="Loading..." HorizontalAlignment="Center" VerticalAlignment="Center" /&gt;
             &lt;/Border&gt;
         &lt;/Grid&gt;
     &lt;/DockPanel&gt;

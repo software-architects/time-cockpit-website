@@ -81,7 +81,7 @@ permalink: /blog/2014/01/16/Software-Quality-Days-2014-Model-Driven-Development-
         if (this.Region == Region.ASIA)
         {
             // internal bills are always ok.
-            if (this.Supplier == &quot;INTERNAL&quot;)
+            if (this.Supplier == "INTERNAL")
             {
                 return true;
             }

@@ -15,10 +15,10 @@ permalink: /blog/2012/12/17/Debugging-and-Interactive-Development-of-Time-Cockpi
 </h3><p xmlns="http://www.w3.org/1999/xhtml">The <a href="http://pytools.codeplex.com" target="_blank">Python Tools for Visual Studio</a> (version 1.5 at the time of this writing) add support for Python to different parts of the <a href="http://en.wikipedia.org/wiki/Integrated_development_environment" target="_blank">IDE</a>.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Sample python script</h2><p xmlns="http://www.w3.org/1999/xhtml">Creating a fully working python file which can be debugged and is capable of using the <a href="http://help.timecockpit.com/?topic=html/3541dc4c-c6b3-e953-a326-b083c76d7884.htm" target="_blank">time cockpit SDK</a> involves some <a href="http://en.wikipedia.org/wiki/Boilerplate_code" target="_blank">boilerplate code</a>. We are working on reducing the required steps for future versions of our SDK. Many of the steps might also be relevant for other .NET application SDKs.</p><h3 xmlns="http://www.w3.org/1999/xhtml">Basic Configuration</h3><p xmlns="http://www.w3.org/1999/xhtml">We first set up some basic configuration variables. They define if the client or server database should be used, where the time cockpit binaries are located and where the log-file should be written to.</p>{% highlight javascript %}from System import Environment
 
 # Configuration
-timeCockpitLocation = Environment.ExpandEnvironmentVariables(r&quot;%ProgramW6432%\software architects\time cockpit\time cockpit 2010&quot;)
-logFileName = r&quot;python.log&quot;{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">App.config Handling</h3><p xmlns="http://www.w3.org/1999/xhtml">As explained in <a href="http://www.software-architects.com/devblog/2012/10/29/appconfig-in-IronPython-without-additional-assemblies" target="_blank">another post</a> a library might depend on a companion app.config file. The following shows the required utility class and the setup required for time cockpit.</p>{% highlight javascript %}# Configuration file handling
+timeCockpitLocation = Environment.ExpandEnvironmentVariables(r"%ProgramW6432%\software architects\time cockpit\time cockpit 2010")
+logFileName = r"python.log"{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">App.config Handling</h3><p xmlns="http://www.w3.org/1999/xhtml">As explained in <a href="http://www.software-architects.com/devblog/2012/10/29/appconfig-in-IronPython-without-additional-assemblies" target="_blank">another post</a> a library might depend on a companion app.config file. The following shows the required utility class and the setup required for time cockpit.</p>{% highlight javascript %}# Configuration file handling
 import clr
-clr.AddReference(&quot;System.Configuration&quot;)
+clr.AddReference("System.Configuration")
 from System.Configuration.Internal import IInternalConfigSystem
 class ConfigurationProxy(IInternalConfigSystem):
     def __init__(self, fileName):
@@ -28,7 +28,7 @@ class ConfigurationProxy(IInternalConfigSystem):
         self.__customSections = Dictionary[String, IConfigurationSectionHandler]()
         loaded = self.Load(fileName)
         if not loaded:
-            raise ConfigurationErrorsException(String.Format(&quot;File: {0} could not be found or was not a valid cofiguration file.&quot;, fileName))
+            raise ConfigurationErrorsException(String.Format("File: {0} could not be found or was not a valid cofiguration file.", fileName))
 
     def Load(self, fileName):
         from System.Configuration import ExeConfigurationFileMap, ConfigurationManager, ConfigurationUserLevel
@@ -38,7 +38,7 @@ class ConfigurationProxy(IInternalConfigSystem):
         return self.__config.HasFile
     
     def GetSection(self, configKey):
-        if configKey == &quot;appSettings&quot;:
+        if configKey == "appSettings":
             return self.__BuildAppSettings()
         return self.__config.GetSection(configKey)
     
@@ -58,12 +58,12 @@ class ConfigurationProxy(IInternalConfigSystem):
     def InjectToConfigurationManager(self):
         from System.Reflection import BindingFlags
         from System.Configuration import ConfigurationManager
-        configSystem = clr.GetClrType(ConfigurationManager).GetField(&quot;s_configSystem&quot;, BindingFlags.Static | BindingFlags.NonPublic)
+        configSystem = clr.GetClrType(ConfigurationManager).GetField("s_configSystem", BindingFlags.Static | BindingFlags.NonPublic)
         configSystem.SetValue(None, self){% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">References and Imports</h3><p xmlns="http://www.w3.org/1999/xhtml">The next step is loading the necessary DLLs, importing types and <a href="~/blog/2012/01/22/Python-in-Time-Cockpit-17" target="_blank">setting up LINQ</a>.</p>{% highlight javascript %}# References
-clr.AddReferenceToFileAndPath(Path.Combine(timeCockpitLocation, &quot;TimeCockpit.Data.dll&quot;))
-clr.AddReference(&quot;TimeCockpit.Common&quot;)
-clr.AddReference(&quot;TimeCockpit.UI.Common&quot;)
-clr.AddReference(&quot;System.Core&quot;)
+clr.AddReferenceToFileAndPath(Path.Combine(timeCockpitLocation, "TimeCockpit.Data.dll"))
+clr.AddReference("TimeCockpit.Common")
+clr.AddReference("TimeCockpit.UI.Common")
+clr.AddReference("System.Core")
 import System
 from TimeCockpit.Common import Logger, LogLevel
 from TimeCockpit.UI.Common import TimeCockpitApplication, DataContextConnections, ConnectionType
@@ -73,10 +73,10 @@ Logger.Initialize(logFileName, TimeCockpitApplication.Current.ApplicationSetting
 TimeCockpitApplication.Current.InitializeDataContext(False, True)
 connection = DataContextConnections.Current.Single(lambda dcc: dcc.ConnectionType == ConnectionType.ApplicationServer)
 connection.InitializeOrThrow(False)
-Context = connection.DataContext{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">Main Script Content</h3><p xmlns="http://www.w3.org/1999/xhtml">Now we are good to go. An environment very similar to the <a href="http://help.timecockpit.com/?topic=html/c20d94e9-97dc-48a8-9171-fd3bb70dad86.htm" target="_blank">built-in script editor</a> has been set up which can now be run in Visual Studio, other IDEs or stand-alone IronPython. The only difference is that the set of implicitly available imports has been simplified (the download contains the full and simplified versions).</p><p xmlns="http://www.w3.org/1999/xhtml">In this sample we query all projects, iterate over them and print them in different ways depending on some condition.</p>{% highlight javascript %}projects = Context.Select(&quot;From P In Project Select P&quot;)
+Context = connection.DataContext{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">Main Script Content</h3><p xmlns="http://www.w3.org/1999/xhtml">Now we are good to go. An environment very similar to the <a href="http://help.timecockpit.com/?topic=html/c20d94e9-97dc-48a8-9171-fd3bb70dad86.htm" target="_blank">built-in script editor</a> has been set up which can now be run in Visual Studio, other IDEs or stand-alone IronPython. The only difference is that the set of implicitly available imports has been simplified (the download contains the full and simplified versions).</p><p xmlns="http://www.w3.org/1999/xhtml">In this sample we query all projects, iterate over them and print them in different ways depending on some condition.</p>{% highlight javascript %}projects = Context.Select("From P In Project Select P")
 for p in projects:
     if p.ProjectName.Contains('c'):
-        print &quot;!!&quot;, p.ProjectName, p.StartDate
+        print "!!", p.ProjectName, p.StartDate
     else:
         print p.ProjectName, p.StartDate{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Debugging</h2><p xmlns="http://www.w3.org/1999/xhtml">Our self-contained time cockpit python script can be debugged in different ways. If you just want to use our SDK a python-based approach like the <strong>Standard Python launcher</strong> in <strong>PyTools</strong> works best. This shows the Python-perspective of all objects, allows to use the watch window and similar inspection mechanisms. If you would like to debug and step into .NET code called from within the python script you want to use the <strong>IronPython (.NET) launcher</strong>. There is <a href="https://pytools.codeplex.com/discussions/392621" target="_blank">currently no mixed-mode debugger</a> in PyTools which would allow to transparently debug both kinds of code.</p><h3 xmlns="http://www.w3.org/1999/xhtml">Breakpoints</h3><p xmlns="http://www.w3.org/1999/xhtml">Breakpoints can be used to suspend execution. PyTools <a href="http://pytools.codeplex.com/wikipage?title=PTVS%20FAQ" target="_blank">should also support</a> conditional breakpoints, but I was <a href="http://pytools.codeplex.com/workitem/947" target="_blank">unable to use them</a> in the current version.</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2012/12/Python Breakpoint" alt="Python Breakpoint" title="Python Breakpoint" />
@@ -93,7 +93,7 @@ def printRelevantProjects(projects, isRelevant):
     for p in projects.Where(isRelevant):
         print p.ProjectName, p.StartDate
 
-projects = Context.Select(&quot;From P In Project Select P&quot;)
+projects = Context.Select("From P In Project Select P")
 # TODO complete me{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">We now like to test the functions and try possible variations using the Python Debug Interactive window.</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2012/12/Python Interactive 0" alt="Python Interactive" title="Python Interactive" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">This allows us to write ad-hoc Python code with some completion and type information.</p><p xmlns="http://www.w3.org/1999/xhtml">

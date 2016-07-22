@@ -18,13 +18,13 @@ permalink: /blog/2010/07/29/Proof-of-Concept-Itemized-Call-List-Import
   <li>Filter the list of calls/short message to prevent duplicate imports (by looking at which ranges of data are already available).</li>
   <li>Store the data.</li>
 </ul><p class="InfoBox" xmlns="http://www.w3.org/1999/xhtml">Please be aware that the script uses some non-public interfaces which may change in the future. It is only a way of enabling this use case until more platforms are supported by the call log import signal tracker or native mobile clients.</p>{% highlight javascript %}# CONFIGURE!
-fileName = &quot;C:\\Temp\\Kostenabfrage.csv&quot;
+fileName = "C:\\Temp\\Kostenabfrage.csv"
 
 # imports and references
-clr.AddReference(&quot;System.Core&quot;)
-clr.AddReference(&quot;TimeCockpit.UI.Common&quot;)
-clr.AddReference(&quot;TimeCockpit.SignalStorage&quot;)
-clr.AddReference(&quot;LumenWorks.Framework.IO&quot;)
+clr.AddReference("System.Core")
+clr.AddReference("TimeCockpit.UI.Common")
+clr.AddReference("TimeCockpit.SignalStorage")
+clr.AddReference("LumenWorks.Framework.IO")
 from System import DateTime, TimeSpan
 from System.Collections.Generic import List
 from System.Globalization import CultureInfo
@@ -36,7 +36,7 @@ from LumenWorks.Framework.IO.Csv import CsvReader
 
 # determine lineage
 currentDeviceId = TimeCockpitApplication.Current.ApplicationSettings.DeviceId
-lineage = Context.SelectSingleWithParams({ &quot;Query&quot;: &quot;From L In SignalLineage Where L.Device.DeviceUuid = @DeviceUuid Order By L.BeginTime Desc Select L&quot;, &quot;@DeviceUuid&quot;: currentDeviceId })
+lineage = Context.SelectSingleWithParams({ "Query": "From L In SignalLineage Where L.Device.DeviceUuid = @DeviceUuid Order By L.BeginTime Desc Select L", "@DeviceUuid": currentDeviceId })
 
 # parse EGN file
 calls = List[EntityObject]()
@@ -56,32 +56,32 @@ try:
 
     while csv.ReadNextRecord():
         entryType = csv[7]
-        if entryType == &quot;TEL&quot;:
+        if entryType == "TEL":
             call = Context.CreateCleansedPhoneCallSignal()
 
-            call.BeginTime = DateTime.ParseExact(csv[4], &quot;dd.MM.yyyy&quot;, CultureInfo.InvariantCulture).Add(TimeSpan.Parse(csv[5], CultureInfo.InvariantCulture))
-            if csv[13] == &quot;ankommend&quot;:
-                call.Direction = &quot;Incoming&quot;
-                call.PhoneNumber = &quot;&quot;
+            call.BeginTime = DateTime.ParseExact(csv[4], "dd.MM.yyyy", CultureInfo.InvariantCulture).Add(TimeSpan.Parse(csv[5], CultureInfo.InvariantCulture))
+            if csv[13] == "ankommend":
+                call.Direction = "Incoming"
+                call.PhoneNumber = ""
             else:
-                call.Direction = &quot;Outgoing&quot;
+                call.Direction = "Outgoing"
                 call.PhoneNumber = csv[13]
 
             call.EndTime = call.BeginTime.Add(TimeSpan.Parse(csv[8], CultureInfo.InvariantCulture))
             call.Finalized = True
-            call.RemoteParty = &quot;&quot;
+            call.RemoteParty = ""
             call.Lineage = lineage
             calls.Add(call)
             
-        elif entryType == &quot;SMS&quot;:
+        elif entryType == "SMS":
             message = Context.CreateCleansedShortMessageSignal()
 
-            message.Direction = &quot;Outgoing&quot;
-            message.EventTime = DateTime.ParseExact(csv[4], &quot;dd.MM.yyyy&quot;, CultureInfo.InvariantCulture).Add(TimeSpan.Parse(csv[5], CultureInfo.InvariantCulture))
+            message.Direction = "Outgoing"
+            message.EventTime = DateTime.ParseExact(csv[4], "dd.MM.yyyy", CultureInfo.InvariantCulture).Add(TimeSpan.Parse(csv[5], CultureInfo.InvariantCulture))
             message.Finalized = True
             message.PhoneNumber = csv[13]
-            message.RemoteParty = &quot;&quot;
-            message.Subject = &quot;&quot;
+            message.RemoteParty = ""
+            message.Subject = ""
             message.Lineage = lineage
             messages.Add(message)
 
@@ -92,9 +92,9 @@ finally:
         streamReader.Dispose()
 
 # filter signals to prevent duplicate imports
-query = &quot;From C In Chunk Where C.Device.DeviceUuid = @DeviceUuid And C.Entity.EntityName = @SignalEntityName Select New With { .MinBeginTime = Min(C.BeginTime), .MaxEndTime = Max(C.EndTime) }&quot;
-callSignalDates = Context.SelectSingleWithParams({ &quot;Query&quot;: query, &quot;@DeviceUuid&quot;: currentDeviceId , &quot;@SignalEntityName&quot;: &quot;APP_CleansedPhoneCallSignal&quot; })
-messageSignalDates = Context.SelectSingleWithParams({ &quot;Query&quot;: query, &quot;@DeviceUuid&quot;: currentDeviceId , &quot;@SignalEntityName&quot;: &quot;APP_CleansedShortMessageSignal&quot; })
+query = "From C In Chunk Where C.Device.DeviceUuid = @DeviceUuid And C.Entity.EntityName = @SignalEntityName Select New With { .MinBeginTime = Min(C.BeginTime), .MaxEndTime = Max(C.EndTime) }"
+callSignalDates = Context.SelectSingleWithParams({ "Query": query, "@DeviceUuid": currentDeviceId , "@SignalEntityName": "APP_CleansedPhoneCallSignal" })
+messageSignalDates = Context.SelectSingleWithParams({ "Query": query, "@DeviceUuid": currentDeviceId , "@SignalEntityName": "APP_CleansedShortMessageSignal" })
 
 if callSignalDates.MinBeginTime != None:
     calls = Enumerable.ToList(Enumerable.Where(calls, lambda c: c.BeginTime &gt; callSignalDates.MaxEndTime or c.EndTime &lt; callSignalDates.MinBeginTime ))
@@ -106,17 +106,17 @@ ssm = SignalStorageManager(Context)
 
 if calls.Count &gt; 0:
     ssm.Store(calls)
-    print &quot;Imported&quot;, calls.Count, &quot;phone calls&quot;
+    print "Imported", calls.Count, "phone calls"
 else:
-    print &quot;No phone calls imported&quot;
+    print "No phone calls imported"
 
 if messages.Count &gt; 0:
     ssm.Store(messages)
-    print &quot;Imported&quot;, messages.Count, &quot;short messages&quot;
+    print "Imported", messages.Count, "short messages"
 else:
-    print &quot;No short messages imported&quot;
+    print "No short messages imported"
 
-print &quot;done.&quot;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">During the creation of the script we became aware of several limitations of this approach compared to our phone import signal tracker (which uses a call log exported from the phone) or future native phone clients/signal trackers:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+print "done."{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">During the creation of the script we became aware of several limitations of this approach compared to our phone import signal tracker (which uses a call log exported from the phone) or future native phone clients/signal trackers:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>No caller name is provided.</li>
   <li>Phone numbers are trimmed for privacy reasons.</li>
   <li>Only outgoing calls/messages (and incoming roaming calls) are tracked.</li>

@@ -1,63 +1,5 @@
 @import "_variables.scss";
 
-div.header {
-	margin-bottom: 20px;
-	background-color: $main-color;
-	color: #fff;
-
-	.navbar {
-		border: none;
-		background-color: transparent;
-		margin-bottom: 0;
-	}
-
-	.navbar-default .navbar-nav > li > a  {
-		text-transform: uppercase;
-		color: #fff;
-		font-size: 16px;
-	}
-
-	.navbar-default .navbar-nav > li:first-of-type > a  {
-		padding-left: 0;
-	}
-
-	.navbar-default .navbar-nav > li:last-of-type > a {
-		padding-right: 0;
-	}
-
-	.navbar-collapse {
-		padding-left: 0;
-		padding-right: 0;
-
-		.navbar-nav {
-			margin-left: 0;
-			margin-right: 0;
-		}
-	}
-
-	.navbar-default .navbar-toggle .icon-bar {
-		color: #fff;
-	}
-
-	a.site-title {
-		svg {
-			height: 30px;
-			width: auto;
-			margin: 10px 0 0 0;
-		}
-	}
-
-	.header-side-menu {
-		line-height: 45px;
-
-		a {
-			color: #fff;
-			opacity: 0.8;
-			text-decoration: none;
-		}
-	}
-}
-
 .tc-banner {
 	background-image: url(/time-cockpit-website/content/images/banner.jpg);
 	background-size: cover;
@@ -72,6 +14,13 @@ div.header {
 	}
 }
 
+div.content {
+	margin-top: 100px;
+	z-index: 0;
+	min-height: calc(100vh - 100px - 170px);
+    box-sizing: border-box;
+}
+
 footer {
 	margin-top: 40px;
 	background-color: #222;
@@ -84,16 +33,73 @@ footer {
 
 p.highlighted {
 	text-align: center;
-    background-color: $main-color;
-    color: #fff;
-    padding: 20px 40px;
+	background-color: $main-color;
+	color: #fff;
+	padding: 20px 40px;
 }
 
 p.showcase {
 	background-color: #ededed;
-    padding: 20px 20px;
+	padding: 20px 20px;
 }
 
 span.highlightedText {
-    font-size: 30px;
+	font-size: 30px;
+}
+
+.customerLogos {
+	 a {
+		display: block;
+		height: 100px;
+		margin-bottom: 20px;
+		border: 1px solid #ddd;
+		padding: 10px;
+		text-align: center;
+	}
+
+	img {
+		max-height: 100%;
+		position: relative;
+		top: 50%;
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		-o-transform: translateY(-50%);
+		-webkit-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+}
+
+input[type=button], input[type=submit], a.linkButton, a.linkButtonMain {
+	color: #fff !important;
+	background-color: $highlight-color;
+	border: none;
+	line-height: 14px;
+	padding: 5px 20px;
+	font-size: 14px;
+	text-transform: uppercase;
+	cursor: pointer;
+	text-decoration: none;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+p.imageCaption {
+    margin-top: -20px;
+    margin-bottom: 20px;
+
+	&, & a {
+		font-size: 11px;
+		line-height: 15px;
+	}
+}
+
+.floatRight {
+    float: right;
+    margin-left: 20px;
+}
+
+.floatLeft {
+    float: left;
+    margin-right: 20px;
 }

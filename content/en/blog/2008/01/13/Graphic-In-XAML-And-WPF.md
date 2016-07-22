@@ -47,67 +47,67 @@ permalink: /blog/2008/01/13/Graphic-In-XAML-And-WPF
 </p><p xmlns="http://www.w3.org/1999/xhtml">
   <span class="Highlighted">XAML und WPF Programmierhandbuch
 <br /></span> Figure 7.27, Page 467<br /></p><p xmlns="http://www.w3.org/1999/xhtml">At the first glance Geometries (objects derived from <span class="Highlighted">Geometry</span>) seem to be similar as Shapes. Actually they are quite different. Geometries do not represent graphical objects that are ready to be displayed on the screen. They just specify the shape of an object.</p><p xmlns="http://www.w3.org/1999/xhtml">In our case it makes sense to use Drawing Objects to implement the logo because it is a relatively static graphical object. Here is the XAML code for the basic shapes of the logo:</p><p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">Note the namespace declaration for<span class="Highlighted">PresentationOptions</span>. You need this to be able to freeze Freezables.</p>{% highlight javascript %}&lt;Page
-  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot; 
-  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:PresentationOptions=
-    &quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation/options&quot; 
-  xmlns:mc=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot; 
-  mc:Ignorable=&quot;PresentationOptions&quot; &gt;{% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">We put the logo into the page's resource collection. Thus the logo could easily be extracted into a separate XAML file (e.g. App.xaml or another file).</p><p class="Code" xmlns="http://www.w3.org/1999/xhtml">
+    "http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" 
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  mc:Ignorable="PresentationOptions" &gt;{% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">We put the logo into the page's resource collection. Thus the logo could easily be extracted into a separate XAML file (e.g. App.xaml or another file).</p><p class="Code" xmlns="http://www.w3.org/1999/xhtml">
   {% highlight javascript %}  &lt;Page.Resources&gt;{% endhighlight %}
   <br /> Here you can see the declaration of the two graphic objects ("software" and "architects"). Note that we use <strong>frozen</strong> Drawing objects.</p><p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">You should also take a look at how we combine multiple <span class="Highlighted">PathGeometry</span>-objects using <span class="Highlighted">GeometryGroup</span>. I will go into details concerning this class later.</p>{% highlight javascript %}    &lt;!-- ****** SOFTWARE ******************************************* --&gt;
-    &lt;!-- Geometry for the word &quot;software&quot; --&gt;
-    &lt;GeometryGroup x:Key=&quot;LogoSoftware&quot; 
-      PresentationOptions:Freeze=&quot;True&quot; &gt;
-      &lt;PathGeometry Figures=&quot;M 0.31163807,145.75739 ... z&quot; /&gt;
-      &lt;PathGeometry Figures=&quot;M 70.074606,115.57876 ... z&quot; /&gt;
-      &lt;PathGeometry Figures=&quot;M 173.53291,0.40830421 ... z&quot; /&gt;
-      &lt;PathGeometry Figures=&quot;M 307.03223,184.21003 ... z&quot; /&gt;
-      &lt;PathGeometry Figures=&quot;M 391.22711,96.183574 ... z&quot; /&gt;
-      &lt;PathGeometry Figures=&quot;M 426.25331,184.22683 ... z&quot; /&gt;
-      &lt;PathGeometry Figures=&quot;M 501.63047,145.55673 ... z&quot; /&gt;
+    &lt;!-- Geometry for the word "software" --&gt;
+    &lt;GeometryGroup x:Key="LogoSoftware" 
+      PresentationOptions:Freeze="True" &gt;
+      &lt;PathGeometry Figures="M 0.31163807,145.75739 ... z" /&gt;
+      &lt;PathGeometry Figures="M 70.074606,115.57876 ... z" /&gt;
+      &lt;PathGeometry Figures="M 173.53291,0.40830421 ... z" /&gt;
+      &lt;PathGeometry Figures="M 307.03223,184.21003 ... z" /&gt;
+      &lt;PathGeometry Figures="M 391.22711,96.183574 ... z" /&gt;
+      &lt;PathGeometry Figures="M 426.25331,184.22683 ... z" /&gt;
+      &lt;PathGeometry Figures="M 501.63047,145.55673 ... z" /&gt;
     &lt;/GeometryGroup&gt;
 
     &lt;!-- ****** ARCHITECTS **************************************** --&gt;
-    &lt;!-- Geometry for the word &quot;architects&quot; --&gt;
-    &lt;GeometryGroup x:Key=&quot;LogoArchitects&quot; 
-      PresentationOptions:Freeze=&quot;True&quot; &gt;
-      &lt;PathGeometry Figures=&quot;M 391.29841,156.18357 ... z&quot; /&gt;
-      &lt;PathGeometry Figures=&quot;M 426.35415,242.80498 ... z&quot; /&gt;
-      &lt;PathGeometry Figures=&quot;M 590.3878,242.94013 ... z&quot; /&gt;
-      &lt;PathGeometry Figures=&quot;M 625.36802,242.94013 ... z&quot; /&gt;
-      &lt;PathGeometry Figures=&quot;M 682.10338,226.72431 ... z&quot; /&gt;
-      &lt;PathGeometry Figures=&quot;M 735.83215,206.36345 ... z&quot; /&gt;
-      &lt;PathGeometry Figures=&quot;M 502.24129,206.22951 ... z&quot; /&gt;
-      &lt;PathGeometry Figures=&quot;M 805.67431,206.22951 ... z&quot; /&gt;
-      &lt;PathGeometry Figures=&quot;M 869.59918,226.66181 ... z&quot; /&gt;
-      &lt;PathGeometry Figures=&quot;M 873.62206,206.17249 ... z&quot; /&gt;
+    &lt;!-- Geometry for the word "architects" --&gt;
+    &lt;GeometryGroup x:Key="LogoArchitects" 
+      PresentationOptions:Freeze="True" &gt;
+      &lt;PathGeometry Figures="M 391.29841,156.18357 ... z" /&gt;
+      &lt;PathGeometry Figures="M 426.35415,242.80498 ... z" /&gt;
+      &lt;PathGeometry Figures="M 590.3878,242.94013 ... z" /&gt;
+      &lt;PathGeometry Figures="M 625.36802,242.94013 ... z" /&gt;
+      &lt;PathGeometry Figures="M 682.10338,226.72431 ... z" /&gt;
+      &lt;PathGeometry Figures="M 735.83215,206.36345 ... z" /&gt;
+      &lt;PathGeometry Figures="M 502.24129,206.22951 ... z" /&gt;
+      &lt;PathGeometry Figures="M 805.67431,206.22951 ... z" /&gt;
+      &lt;PathGeometry Figures="M 869.59918,226.66181 ... z" /&gt;
+      &lt;PathGeometry Figures="M 873.62206,206.17249 ... z" /&gt;
     &lt;/GeometryGroup&gt;{% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">Here we define the gradient brushes used in the logo.</p>{% highlight javascript %}    &lt;!-- ****** BRUSHES ******************************************* --&gt;
-    &lt;!-- Brush for the word &quot;software&quot; --&gt;
-    &lt;LinearGradientBrush x:Key=&quot;SoftwareBrush&quot; StartPoint=&quot;0,1&quot; 
-      EndPoint=&quot;0,0&quot; PresentationOptions:Freeze=&quot;True&quot;&gt;
-      &lt;GradientStop Color=&quot;#76ba52&quot; Offset=&quot;0.0&quot; /&gt;
-      &lt;GradientStop Color=&quot;#c0dd89&quot; Offset=&quot;1.0&quot; /&gt;
+    &lt;!-- Brush for the word "software" --&gt;
+    &lt;LinearGradientBrush x:Key="SoftwareBrush" StartPoint="0,1" 
+      EndPoint="0,0" PresentationOptions:Freeze="True"&gt;
+      &lt;GradientStop Color="#76ba52" Offset="0.0" /&gt;
+      &lt;GradientStop Color="#c0dd89" Offset="1.0" /&gt;
     &lt;/LinearGradientBrush&gt;
 
-    &lt;!-- Brush for the word &quot;architects&quot; --&gt;
-    &lt;LinearGradientBrush x:Key=&quot;ArchitectsBrush&quot; StartPoint=&quot;0,1&quot; 
-      EndPoint=&quot;0,0&quot; PresentationOptions:Freeze=&quot;True&quot;&gt;
-      &lt;GradientStop Color=&quot;#264da6&quot; Offset=&quot;0.0&quot; /&gt;
-      &lt;GradientStop Color=&quot;#15306c&quot; Offset=&quot;1.0&quot; /&gt;
+    &lt;!-- Brush for the word "architects" --&gt;
+    &lt;LinearGradientBrush x:Key="ArchitectsBrush" StartPoint="0,1" 
+      EndPoint="0,0" PresentationOptions:Freeze="True"&gt;
+      &lt;GradientStop Color="#264da6" Offset="0.0" /&gt;
+      &lt;GradientStop Color="#15306c" Offset="1.0" /&gt;
     &lt;/LinearGradientBrush&gt;{% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">As we said before Drawing Objects needs a Framework Element helper to display them on the screen. In our case the class <span class="Highlighted">Image</span> is used for that. <span class="Highlighted">Image</span> needs a descendant of<span class="Highlighted">ImageSource</span> as the source of the image. For this reason we provide a <span class="Highlighted">DrawingImage</span>-object (<span class="Highlighted">DrawingImage</span> derives from<span class="Highlighted">ImageSource</span>) in the resource dictionary.</p>{% highlight javascript %}    &lt;!-- ****** LOGO ********************************************** --&gt;
-    &lt;DrawingImage x:Key=&quot;SoftwareArchitectsLogo&quot; 
-      PresentationOptions:Freeze=&quot;True&quot; &gt;
+    &lt;DrawingImage x:Key="SoftwareArchitectsLogo" 
+      PresentationOptions:Freeze="True" &gt;
       &lt;DrawingImage.Drawing&gt;
         &lt;DrawingGroup&gt;
-          &lt;GeometryDrawing Brush=&quot;{StaticResource SoftwareBrush}&quot; 
-            Geometry=&quot;{StaticResource LogoSoftware}&quot; /&gt;
-          &lt;GeometryDrawing Brush=&quot;{StaticResource ArchitectsBrush}&quot; 
-            Geometry=&quot;{StaticResource LogoArchitects}&quot; /&gt;
+          &lt;GeometryDrawing Brush="{StaticResource SoftwareBrush}" 
+            Geometry="{StaticResource LogoSoftware}" /&gt;
+          &lt;GeometryDrawing Brush="{StaticResource ArchitectsBrush}" 
+            Geometry="{StaticResource LogoArchitects}" /&gt;
         &lt;/DrawingGroup&gt;
       &lt;/DrawingImage.Drawing&gt;
     &lt;/DrawingImage&gt;
   &lt;/Page.Resources&gt;{% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">Three lines of code are enough to display the logo in any WPF window or page. Everything else is defined in the resources.</p>{% highlight javascript %}  &lt;Canvas&gt;
-    &lt;Image Source=&quot;{StaticResource SoftwareArchitectsLogo}&quot; /&gt;
+    &lt;Image Source="{StaticResource SoftwareArchitectsLogo}" /&gt;
   &lt;/Canvas&gt;
 &lt;/Page&gt;{% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">Here you can see the logo implemented with the code shown above in XAMLPad. XAMLPad is a small tool with which you can prototype your XAML code. It is included in the free <a href="http://msdn2.microsoft.com/en-us/windowsvista/aa904955.aspx" target="_blank">Windows SDK</a>.</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img height="262" alt="Logo In XAML Pad" width="449" src="{{site.baseurl}}/content/images/blog/2008/01/LogoInXamlPad.png" />
@@ -116,37 +116,37 @@ permalink: /blog/2008/01/13/Graphic-In-XAML-And-WPF
   <img height="323" alt="CombinedGeometry Applied In The Logo" width="361" src="{{site.baseurl}}/content/images/blog/2008/01/LogoDarkBottom.png" class="   " />
 </p>{% highlight javascript %}&lt;Page.Resources&gt;
 [...]{% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">Note how we reference the existing Geometry of the word "software" by using the<span class="Highlighted">StaticResource</span>-Markup Extension.</p>{% highlight javascript %}  &lt;!-- Geometry for the dark area at the bottom of the letters 
-       of the word &quot;software&quot; --&gt;
-  &lt;CombinedGeometry x:Key=&quot;LogoSoftwareBottomShape&quot; 
-    GeometryCombineMode=&quot;Exclude&quot; 
-    Geometry1=&quot;{StaticResource LogoSoftware}&quot; 
-    PresentationOptions:Freeze=&quot;True&quot;&gt;
+       of the word "software" --&gt;
+  &lt;CombinedGeometry x:Key="LogoSoftwareBottomShape" 
+    GeometryCombineMode="Exclude" 
+    Geometry1="{StaticResource LogoSoftware}" 
+    PresentationOptions:Freeze="True"&gt;
     &lt;CombinedGeometry.Geometry2&gt;
-      &lt;RectangleGeometry Rect=&quot;0,0,519,145&quot; /&gt;
+      &lt;RectangleGeometry Rect="0,0,519,145" /&gt;
     &lt;/CombinedGeometry.Geometry2&gt;
   &lt;/CombinedGeometry&gt;
 
   [...]
 
   &lt;!-- Brush for the dark area at the bottom of the letters 
-       of the word &quot;software&quot; --&gt;
-  &lt;SolidColorBrush x:Key=&quot;SoftwareBottomShapeBrush&quot; 
-    Color=&quot;#76BA52&quot; PresentationOptions:Freeze=&quot;True&quot; /&gt;
+       of the word "software" --&gt;
+  &lt;SolidColorBrush x:Key="SoftwareBottomShapeBrush" 
+    Color="#76BA52" PresentationOptions:Freeze="True" /&gt;
 
   [...]
 
   &lt;!-- ****** LOGO ********************************************** --&gt;
-  &lt;DrawingImage x:Key=&quot;SoftwareArchitectsLogo&quot; 
-    PresentationOptions:Freeze=&quot;True&quot; &gt;
+  &lt;DrawingImage x:Key="SoftwareArchitectsLogo" 
+    PresentationOptions:Freeze="True" &gt;
     &lt;DrawingImage.Drawing&gt;
       &lt;DrawingGroup&gt;
-        &lt;GeometryDrawing Brush=&quot;{StaticResource SoftwareBrush}&quot;
-          Geometry=&quot;{StaticResource LogoSoftware}&quot; /&gt;
+        &lt;GeometryDrawing Brush="{StaticResource SoftwareBrush}"
+          Geometry="{StaticResource LogoSoftware}" /&gt;
         &lt;GeometryDrawing 
-          Brush=&quot;{StaticResource SoftwareBottomShapeBrush}&quot; 
-          Geometry=&quot;{StaticResource LogoSoftwareBottomShape}&quot; /&gt;
-        &lt;GeometryDrawing Brush=&quot;{StaticResource ArchitectsBrush}&quot; 
-          Geometry=&quot;{StaticResource LogoArchitects}&quot; /&gt;
+          Brush="{StaticResource SoftwareBottomShapeBrush}" 
+          Geometry="{StaticResource LogoSoftwareBottomShape}" /&gt;
+        &lt;GeometryDrawing Brush="{StaticResource ArchitectsBrush}" 
+          Geometry="{StaticResource LogoArchitects}" /&gt;
       &lt;/DrawingGroup&gt;
     &lt;/DrawingImage.Drawing&gt;
   &lt;/DrawingImage&gt;
@@ -159,83 +159,83 @@ permalink: /blog/2008/01/13/Graphic-In-XAML-And-WPF
 <br /></span> Figure 7.39, Page 484</p><p xmlns="http://www.w3.org/1999/xhtml">In our case we do not only use a <span class="Highlighted">Transform</span>-object. Additionally we use <a href="http://www.software-architects.com/TechnicalArticles/GraphicInWPF/tabid/74/Default.aspx#CombiningGeometryObjects" target="_blank">CombinedGeometry</a> to truncate the mirrored words. If we would not do that objects that follow the logo horizontally would show a strange distance from the logo.</p>{% highlight javascript %}&lt;Page.Resources&gt;
 [...]
 
-  &lt;!-- Geometry for the mirror-effect of the word &quot;software&quot; --&gt;
-  &lt;CombinedGeometry x:Key=&quot;LogoSoftwareMirror&quot; 
-    GeometryCombineMode=&quot;Exclude&quot; 
-    PresentationOptions:Freeze=&quot;True&quot;&gt;
+  &lt;!-- Geometry for the mirror-effect of the word "software" --&gt;
+  &lt;CombinedGeometry x:Key="LogoSoftwareMirror" 
+    GeometryCombineMode="Exclude" 
+    PresentationOptions:Freeze="True"&gt;
     &lt;CombinedGeometry.Geometry1&gt;
       &lt;GeometryGroup&gt;
-        &lt;PathGeometry Figures=&quot;M 0.31163807,145.75739 ... z&quot; /&gt;
-        &lt;PathGeometry Figures=&quot;M 70.074606,115.57876 ... z&quot; /&gt;
-        &lt;PathGeometry Figures=&quot;M 173.53291,0.40830421 ... z&quot; /&gt;
-        &lt;PathGeometry Figures=&quot;M 307.03223,184.21003 ... z&quot; /&gt;
-        &lt;PathGeometry Figures=&quot;M 391.22711,96.183574 ... z&quot; /&gt;
-        &lt;PathGeometry Figures=&quot;M 426.25331,184.22683 ... z&quot; /&gt;
-        &lt;PathGeometry Figures=&quot;M 501.63047,145.55673 ... z&quot; /&gt;
+        &lt;PathGeometry Figures="M 0.31163807,145.75739 ... z" /&gt;
+        &lt;PathGeometry Figures="M 70.074606,115.57876 ... z" /&gt;
+        &lt;PathGeometry Figures="M 173.53291,0.40830421 ... z" /&gt;
+        &lt;PathGeometry Figures="M 307.03223,184.21003 ... z" /&gt;
+        &lt;PathGeometry Figures="M 391.22711,96.183574 ... z" /&gt;
+        &lt;PathGeometry Figures="M 426.25331,184.22683 ... z" /&gt;
+        &lt;PathGeometry Figures="M 501.63047,145.55673 ... z" /&gt;
       &lt;/GeometryGroup&gt;
     &lt;/CombinedGeometry.Geometry1&gt;
     &lt;CombinedGeometry.Geometry2&gt;
-      &lt;RectangleGeometry Rect=&quot;0,0,519,145&quot; /&gt;
+      &lt;RectangleGeometry Rect="0,0,519,145" /&gt;
     &lt;/CombinedGeometry.Geometry2&gt;{% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">You can apply a transformation by assigning the appropriate decendent class of<span class="Highlighted">Transform</span> to the <span class="Highlighted">Transform</span>-property of the object you want to change.</p>{% highlight javascript %}    &lt;CombinedGeometry.Transform&gt;
       &lt;TransformGroup&gt;
-        &lt;ScaleTransform CenterY=&quot;184&quot; ScaleY=&quot;-1&quot; /&gt;
+        &lt;ScaleTransform CenterY="184" ScaleY="-1" /&gt;
       &lt;/TransformGroup&gt;
     &lt;/CombinedGeometry.Transform&gt;
   &lt;/CombinedGeometry&gt;
   [...]
 
-  &lt;!-- Geometry for the mirror-effect of the word &quot;architects&quot; --&gt;
-  &lt;CombinedGeometry x:Key=&quot;LogoArchitectsMirror&quot; 
-    GeometryCombineMode=&quot;Exclude&quot; 
-    PresentationOptions:Freeze=&quot;True&quot;&gt;
+  &lt;!-- Geometry for the mirror-effect of the word "architects" --&gt;
+  &lt;CombinedGeometry x:Key="LogoArchitectsMirror" 
+    GeometryCombineMode="Exclude" 
+    PresentationOptions:Freeze="True"&gt;
     &lt;CombinedGeometry.Geometry1&gt;
-      &lt;GeometryGroup PresentationOptions:Freeze=&quot;True&quot; &gt;
+      &lt;GeometryGroup PresentationOptions:Freeze="True" &gt;
         &lt;PathGeometry .../&gt;
         [...]
       &lt;/GeometryGroup&gt;
     &lt;/CombinedGeometry.Geometry1&gt;
     &lt;CombinedGeometry.Geometry2&gt;
-      &lt;RectangleGeometry Rect=&quot;330,0,604,206&quot; /&gt;
+      &lt;RectangleGeometry Rect="330,0,604,206" /&gt;
     &lt;/CombinedGeometry.Geometry2&gt;
     &lt;CombinedGeometry.Transform&gt;
       &lt;TransformGroup&gt;
-        &lt;ScaleTransform CenterY=&quot;243&quot; ScaleY=&quot;-1&quot; /&gt;
+        &lt;ScaleTransform CenterY="243" ScaleY="-1" /&gt;
       &lt;/TransformGroup&gt;
     &lt;/CombinedGeometry.Transform&gt;
   &lt;/CombinedGeometry&gt;
   [...]
 
-  &lt;!-- Brush for the mirror-effect of the word &quot;software&quot; --&gt;
-  &lt;LinearGradientBrush x:Key=&quot;SoftwareMirrorBrush&quot; StartPoint=&quot;0,1&quot; 
-    EndPoint=&quot;0,0&quot; PresentationOptions:Freeze=&quot;True&quot;&gt;
-    &lt;GradientStop Color=&quot;#0076ba52&quot; Offset=&quot;0.4&quot; /&gt;
-    &lt;GradientStop Color=&quot;#60c0dd89&quot; Offset=&quot;1.0&quot; /&gt;
+  &lt;!-- Brush for the mirror-effect of the word "software" --&gt;
+  &lt;LinearGradientBrush x:Key="SoftwareMirrorBrush" StartPoint="0,1" 
+    EndPoint="0,0" PresentationOptions:Freeze="True"&gt;
+    &lt;GradientStop Color="#0076ba52" Offset="0.4" /&gt;
+    &lt;GradientStop Color="#60c0dd89" Offset="1.0" /&gt;
   &lt;/LinearGradientBrush&gt;
 
-  &lt;!-- Brush for the mirror-effect of the word &quot;architects&quot; --&gt;
-  &lt;LinearGradientBrush x:Key=&quot;ArchitectsMirrorBrush&quot; StartPoint=&quot;0,1&quot;
-    EndPoint=&quot;0,0&quot; PresentationOptions:Freeze=&quot;True&quot;&gt;
-    &lt;GradientStop Color=&quot;#00264da6&quot; Offset=&quot;0&quot; /&gt;
-    &lt;GradientStop Color=&quot;#3015306c&quot; Offset=&quot;1.0&quot; /&gt;
+  &lt;!-- Brush for the mirror-effect of the word "architects" --&gt;
+  &lt;LinearGradientBrush x:Key="ArchitectsMirrorBrush" StartPoint="0,1"
+    EndPoint="0,0" PresentationOptions:Freeze="True"&gt;
+    &lt;GradientStop Color="#00264da6" Offset="0" /&gt;
+    &lt;GradientStop Color="#3015306c" Offset="1.0" /&gt;
   &lt;/LinearGradientBrush&gt;
   [...]
 
   &lt;!-- ****** LOGO ********************************************** --&gt;
-  &lt;DrawingImage x:Key=&quot;SoftwareArchitectsLogo&quot; 
-    PresentationOptions:Freeze=&quot;True&quot; &gt;
+  &lt;DrawingImage x:Key="SoftwareArchitectsLogo" 
+    PresentationOptions:Freeze="True" &gt;
     &lt;DrawingImage.Drawing&gt;
       &lt;DrawingGroup&gt;
-          &lt;GeometryDrawing Brush=&quot;{StaticResource SoftwareBrush}&quot;
-            Geometry=&quot;{StaticResource LogoSoftware}&quot; /&gt;
-          &lt;GeometryDrawing Brush=&quot;{StaticResource SoftwareMirrorBrush}&quot;
-            Geometry=&quot;{StaticResource LogoSoftwareMirror}&quot; /&gt;
+          &lt;GeometryDrawing Brush="{StaticResource SoftwareBrush}"
+            Geometry="{StaticResource LogoSoftware}" /&gt;
+          &lt;GeometryDrawing Brush="{StaticResource SoftwareMirrorBrush}"
+            Geometry="{StaticResource LogoSoftwareMirror}" /&gt;
           &lt;GeometryDrawing 
-            Brush=&quot;{StaticResource SoftwareBottomShapeBrush}&quot; 
-            Geometry=&quot;{StaticResource LogoSoftwareBottomShape}&quot; /&gt;
-          &lt;GeometryDrawing Brush=&quot;{StaticResource ArchitectsBrush}&quot; 
-            Geometry=&quot;{StaticResource LogoArchitects}&quot; /&gt;
-          &lt;GeometryDrawing Brush=&quot;{StaticResource ArchitectsMirrorBrush}&quot; 
-            Geometry=&quot;{StaticResource LogoArchitectsMirror}&quot; /&gt;
+            Brush="{StaticResource SoftwareBottomShapeBrush}" 
+            Geometry="{StaticResource LogoSoftwareBottomShape}" /&gt;
+          &lt;GeometryDrawing Brush="{StaticResource ArchitectsBrush}" 
+            Geometry="{StaticResource LogoArchitects}" /&gt;
+          &lt;GeometryDrawing Brush="{StaticResource ArchitectsMirrorBrush}" 
+            Geometry="{StaticResource LogoArchitectsMirror}" /&gt;
       &lt;/DrawingGroup&gt;
     &lt;/DrawingImage.Drawing&gt;
   &lt;/DrawingImage&gt;
@@ -250,67 +250,67 @@ permalink: /blog/2008/01/13/Graphic-In-XAML-And-WPF
   <li>...support the mini-language for path expressions in <span class="Highlighted">PathGeometry</span>. It is just supported in <span class="Highlighted">Path</span>.</li>
   <li>...know Markup Extensions like {StaticResource ...} or {Binding ...}. You have to implement the corresponding functionality yourself using JavaScript.</li>
 </ul><p xmlns="http://www.w3.org/1999/xhtml">Here is the source code of an implementation of a simplified version of the logo in Silverlight. You can see how similar the Silverlight version is to the WPF version.</p><p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">Note that there is no reference related to freezing Freezables in the Silverlight version. Silverlight does not know Freezables.</p>{% highlight javascript %}&lt;Canvas
-  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot; 
-  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot; 
-  xmlns:mc=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot; &gt;
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" &gt;
 
-  &lt;Path x:Name=&quot;SoftwarePath&quot;
-    Data=&quot;M 0.31163807,145.75739 ... z&quot;&gt;
+  &lt;Path x:Name="SoftwarePath"
+    Data="M 0.31163807,145.75739 ... z"&gt;
     &lt;Path.Fill&gt;
-      &lt;LinearGradientBrush StartPoint=&quot;0,1&quot; EndPoint=&quot;0,0&quot;&gt;
-        &lt;GradientStop Color=&quot;#76ba52&quot; Offset=&quot;0.0&quot; /&gt;
-        &lt;GradientStop Color=&quot;#c0dd89&quot; Offset=&quot;1.0&quot; /&gt;
+      &lt;LinearGradientBrush StartPoint="0,1" EndPoint="0,0"&gt;
+        &lt;GradientStop Color="#76ba52" Offset="0.0" /&gt;
+        &lt;GradientStop Color="#c0dd89" Offset="1.0" /&gt;
       &lt;/LinearGradientBrush&gt;
     &lt;/Path.Fill&gt;
     &lt;Path.RenderTransform&gt;
       &lt;TransformGroup&gt;
-        &lt;ScaleTransform ScaleX=&quot;0.25&quot; ScaleY=&quot;0.25&quot; /&gt;
-        &lt;TranslateTransform x:Name=&quot;SoftwareTranslateAnimation&quot; /&gt;
+        &lt;ScaleTransform ScaleX="0.25" ScaleY="0.25" /&gt;
+        &lt;TranslateTransform x:Name="SoftwareTranslateAnimation" /&gt;
       &lt;/TransformGroup&gt;
     &lt;/Path.RenderTransform&gt;{% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">For demonstration purposes we added a small animation here. We used <span class="Highlighted">DoubleAnimation</span>-objects to let the logo fly and fade in.</p>{% highlight javascript %}    &lt;Path.Triggers&gt;
-      &lt;EventTrigger RoutedEvent=&quot;Path.Loaded&quot;&gt;
+      &lt;EventTrigger RoutedEvent="Path.Loaded"&gt;
         &lt;BeginStoryboard&gt;
           &lt;Storyboard&gt;
             &lt;DoubleAnimation
-              Storyboard.TargetName=&quot;SoftwareTranslateAnimation&quot;
-              Storyboard.TargetProperty=&quot;Y&quot;
-              From=&quot;-50&quot; To=&quot;0&quot; Duration=&quot;0:0:0.5&quot; /&gt;
+              Storyboard.TargetName="SoftwareTranslateAnimation"
+              Storyboard.TargetProperty="Y"
+              From="-50" To="0" Duration="0:0:0.5" /&gt;
             &lt;DoubleAnimation
-              Storyboard.TargetName=&quot;SoftwarePath&quot;
-              Storyboard.TargetProperty=&quot;Opacity&quot;
-              From=&quot;0&quot; To=&quot;1&quot; Duration=&quot;0:0:0.5&quot; /&gt;
+              Storyboard.TargetName="SoftwarePath"
+              Storyboard.TargetProperty="Opacity"
+              From="0" To="1" Duration="0:0:0.5" /&gt;
           &lt;/Storyboard&gt;
         &lt;/BeginStoryboard&gt;
       &lt;/EventTrigger&gt;
     &lt;/Path.Triggers&gt;
   &lt;/Path&gt;
 
-  &lt;Path x:Name=&quot;ArchitectsPath&quot;
-    Data=&quot;M 391.29841,156.18357 ... z&quot;&gt;
+  &lt;Path x:Name="ArchitectsPath"
+    Data="M 391.29841,156.18357 ... z"&gt;
     &lt;Path.Fill&gt;
-      &lt;LinearGradientBrush StartPoint=&quot;0,1&quot; EndPoint=&quot;0,0&quot;&gt;
-        &lt;GradientStop Color=&quot;#264da6&quot; Offset=&quot;0.0&quot; /&gt;
-        &lt;GradientStop Color=&quot;#15306c&quot; Offset=&quot;1.0&quot; /&gt;
+      &lt;LinearGradientBrush StartPoint="0,1" EndPoint="0,0"&gt;
+        &lt;GradientStop Color="#264da6" Offset="0.0" /&gt;
+        &lt;GradientStop Color="#15306c" Offset="1.0" /&gt;
       &lt;/LinearGradientBrush&gt;
     &lt;/Path.Fill&gt;
     &lt;Path.RenderTransform&gt;
       &lt;TransformGroup&gt;
-        &lt;ScaleTransform ScaleX=&quot;0.25&quot; ScaleY=&quot;0.25&quot; /&gt;
-        &lt;TranslateTransform x:Name=&quot;ArchitectsTranslateAnimation&quot; /&gt;
+        &lt;ScaleTransform ScaleX="0.25" ScaleY="0.25" /&gt;
+        &lt;TranslateTransform x:Name="ArchitectsTranslateAnimation" /&gt;
       &lt;/TransformGroup&gt;
     &lt;/Path.RenderTransform&gt;
     &lt;Path.Triggers&gt;
-      &lt;EventTrigger RoutedEvent=&quot;Path.Loaded&quot;&gt;
+      &lt;EventTrigger RoutedEvent="Path.Loaded"&gt;
         &lt;BeginStoryboard&gt;
           &lt;Storyboard&gt;
             &lt;DoubleAnimation
-              Storyboard.TargetName=&quot;ArchitectsTranslateAnimation&quot;
-              Storyboard.TargetProperty=&quot;Y&quot;
-              From=&quot;50&quot; To=&quot;0&quot; Duration=&quot;0:0:0.5&quot; /&gt;
+              Storyboard.TargetName="ArchitectsTranslateAnimation"
+              Storyboard.TargetProperty="Y"
+              From="50" To="0" Duration="0:0:0.5" /&gt;
             &lt;DoubleAnimation
-              Storyboard.TargetName=&quot;ArchitectsPath&quot;
-              Storyboard.TargetProperty=&quot;Opacity&quot;
-              From=&quot;0&quot; To=&quot;1&quot; Duration=&quot;0:0:0.5&quot; /&gt;
+              Storyboard.TargetName="ArchitectsPath"
+              Storyboard.TargetProperty="Opacity"
+              From="0" To="1" Duration="0:0:0.5" /&gt;
           &lt;/Storyboard&gt;
         &lt;/BeginStoryboard&gt;
       &lt;/EventTrigger&gt;

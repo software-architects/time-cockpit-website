@@ -17,10 +17,10 @@ EditModelEntityName - Name of the model entity to edit
 EditProperty - Property in the result of the list, that contains the uuid of the entity to edit
 <br />
 The new properties are especially helpful when building lists with a query that contains "New With". Results of such lists could not be edited in former versions:
-<br />{% highlight javascript %}&lt;List AutoGenerateColumns=&quot;False&quot; 
-EditModelEntityName=&quot;Task&quot; EditProperty=&quot;TaskUuid&quot; 
-Query=&quot;From T In Task.Include('FFGTask').Include('Project.Customer').Include('UserDetail') Select New With { T.TaskUuid, T.TFSId, T.UserDetail, T.Title, T.WorkItemState, .Hours = (From TS In       T.Timesheets Where TS.EndTime &amp;lt; #2010-06-01# Select New With { .Duration = Sum(TS.DurationInHours) }) }&quot; 
-xmlns=&quot;clr-namespace:TimeCockpit.Data.DataModel.View;assembly=TimeCockpit.Data&quot;&gt;
+<br />{% highlight javascript %}&lt;List AutoGenerateColumns="False" 
+EditModelEntityName="Task" EditProperty="TaskUuid" 
+Query="From T In Task.Include('FFGTask').Include('Project.Customer').Include('UserDetail') Select New With { T.TaskUuid, T.TFSId, T.UserDetail, T.Title, T.WorkItemState, .Hours = (From TS In       T.Timesheets Where TS.EndTime &amp;lt; #2010-06-01# Select New With { .Duration = Sum(TS.DurationInHours) }) }" 
+xmlns="clr-namespace:TimeCockpit.Data.DataModel.View;assembly=TimeCockpit.Data"&gt;
    ...
 &lt;/List&gt;{% endhighlight %}<br /></li>
   <li>The number of displayed items in lists is limited to 500 by default. You can get all rows by clicking "Show all rows" at the bottom right corner. If you want to change the limit you can do so at Options / Data.</li>

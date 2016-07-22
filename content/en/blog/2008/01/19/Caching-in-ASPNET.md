@@ -52,7 +52,7 @@ permalink: /blog/2008/01/19/Caching-in-ASPNET
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">We want our http handler to send a file to the client. As we are listening to files with the paths *.gif.ashx, *.jpg.ashx and *.png.ashx, all we have to do is to remove the ".ashx" from the request path to get the file we want to send to the client. Besides we extract the filename and the extension from the file.</p>{% highlight javascript %}public void ProcessRequest(HttpContext context) 
 { 
   string file = context.Server.MapPath 
-    (context.Request.FilePath.Replace(&quot;.ashx&quot;, &quot;&quot;)); 
+    (context.Request.FilePath.Replace(".ashx", "")); 
   string filename = file.Substring(file.LastIndexOf('\\') + 1); 
   string extension = file.Substring(file.LastIndexOf('.') + 1);{% endhighlight %}<p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">I will show you the code for the class CachingSection a little bit later.</p><p xmlns="http://www.w3.org/1999/xhtml">In the next step we load the configuration for the <span class="InlineCode">CachingHandler</span> from the web.config file. Therfore I built a class <span class="InlineCode">CachingSection</span>, which contains a property <span class="InlineCode">CachingTimeSpan</span> and a collection <span class="InlineCode">FileExtensions</span>, which knows the content type for each file extension. With help of this config class we configure the <span class="InlineCode">HttpCachePolicy</span> object of the response:</p><ul xmlns="http://www.w3.org/1999/xhtml">
   <li>
@@ -64,7 +64,7 @@ permalink: /blog/2008/01/19/Caching-in-ASPNET
   <li>
     <span class="InlineCode">ContentType</span> sets the MIME type of the response.</li>
 </ul>{% highlight javascript %}  CachingSection config = (CachingSection)context.GetSection 
-    (&quot;SoftwareArchitects/Caching&quot;); 
+    ("SoftwareArchitects/Caching"); 
   if (config != null) 
   { 
     context.Response.Cache.SetExpires 
@@ -77,8 +77,8 @@ permalink: /blog/2008/01/19/Caching-in-ASPNET
     { 
       context.Response.ContentType = fileExtension.ContentType; 
     } 
-  }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Finally we add the content-disposition header to the response to tell the client that it should open the file in the browser (inline). Additionally we set the filename to the name without the extension .ashx, because this is the name, that will be displayed when you try to download the file. Then we use <span class="InlineCode">WriteFile</span> to send the file to the client.</p>{% highlight javascript %}  context.Response.AddHeader(&quot;content-disposition&quot;,  
-    &quot;inline; filename=&quot; + filename); 
+  }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Finally we add the content-disposition header to the response to tell the client that it should open the file in the browser (inline). Additionally we set the filename to the name without the extension .ashx, because this is the name, that will be displayed when you try to download the file. Then we use <span class="InlineCode">WriteFile</span> to send the file to the client.</p>{% highlight javascript %}  context.Response.AddHeader("content-disposition",  
+    "inline; filename=" + filename); 
   context.Response.WriteFile(file); 
 }{% endhighlight %}<h3 class="Head" xmlns="http://www.w3.org/1999/xhtml">
   <a id="configurationSections" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="configurationSections"></a>Defining Custom Configuration Sections in web.config</h3><p xmlns="http://www.w3.org/1999/xhtml">In the http handler we used a custom class to read some configuration information from the web.config file. Therfore I built the class <span class="InlineCode">CachingSection</span> derived from<span class="InlineCode">ConfigurationSection</span>. In this class I implemented a property <span class="InlineCode">CachingTimeSpan</span>, which holds a <span class="InlineCode">TimeSpan</span> value for the time to cache objects on the client, and a property<span class="InlineCode">FileExtensions</span>, which holds a collection of <span class="InlineCode">FileExtension</span> objects. To map these properties to elements in web.config you simply have to add a <span class="InlineCode">ConfigurationProperty</span>attribute to each property, which can be set in web.config.</p><p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">Download complete code for <a target="_blank" href="{{site.baseurl}}/content/images/blog/2008/01/CachingSection.cs">CachingSection.cs</a>.</p>{% highlight javascript %}namespace SoftwareArchitects.Web.Configuration 
@@ -88,18 +88,18 @@ permalink: /blog/2008/01/19/Caching-in-ASPNET
   /// &lt;/summary&gt; 
   public class CachingSection : ConfigurationSection 
   { 
-    [ConfigurationProperty(&quot;CachingTimeSpan&quot;, IsRequired = true)] 
+    [ConfigurationProperty("CachingTimeSpan", IsRequired = true)] 
     public TimeSpan CachingTimeSpan  
     { 
-      get { return (TimeSpan)base[&quot;CachingTimeSpan&quot;]; } 
-      set { base[&quot;CachingTimeSpan&quot;] = value; } 
+      get { return (TimeSpan)base["CachingTimeSpan"]; } 
+      set { base["CachingTimeSpan"] = value; } 
     } 
 
-    [ConfigurationProperty(&quot;FileExtensions&quot;, IsDefaultCollection = true,  
+    [ConfigurationProperty("FileExtensions", IsDefaultCollection = true,  
       IsRequired = true)] 
     public FileExtensionCollection FileExtensions  
     { 
-      get { return ((FileExtensionCollection)base[&quot;FileExtensions&quot;]); } 
+      get { return ((FileExtensionCollection)base["FileExtensions"]); } 
     } 
   }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">To support not only single values but also collections we have to implement a class derived from <span class="InlineCode">ConfigurationElementCollection</span>. In our sample we need a collection to configure a list of valid extensions with their corresponding content types. </p>{% highlight javascript %}  /// &lt;summary&gt; 
   /// List of available file extensions 
@@ -112,60 +112,60 @@ permalink: /blog/2008/01/19/Caching-in-ASPNET
   /// &lt;/summary&gt; 
   public class FileExtension : ConfigurationElement 
   { 
-    [ConfigurationProperty(&quot;Extension&quot;, IsRequired = true)] 
+    [ConfigurationProperty("Extension", IsRequired = true)] 
     public string Extension 
     { 
-      get { return (string)base[&quot;Extension&quot;]; } 
-      set { base[&quot;Extension&quot;] = value.Replace(&quot;.&quot;, &quot;&quot;); } 
+      get { return (string)base["Extension"]; } 
+      set { base["Extension"] = value.Replace(".", ""); } 
     } 
 
-    [ConfigurationProperty(&quot;ContentType&quot;, IsRequired = true)] 
+    [ConfigurationProperty("ContentType", IsRequired = true)] 
     public string ContentType 
     { 
-      get { return (string)base[&quot;ContentType&quot;]; } 
-      set { base[&quot;ContentType&quot;] = value; } 
+      get { return (string)base["ContentType"]; } 
+      set { base["ContentType"] = value; } 
     } 
   } 
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">All we have to do now is to add a configuration section to our web.config. In the <span class="InlineCode">configSections</span> tag we add a new <span class="InlineCode">sectionGroup</span> with the name SoftwareArchitects. In this group we add a section named <span class="InlineCode">Caching</span>. The attribute type specifies the class and the assembly of our <span class="InlineCode">CachingSection</span> class. Of course we have to add the assembly with the<span class="InlineCode">CachingSection</span> class to the bin folder of the web application. Then we can add a new tag with the name of the group to the configuration tag. Inside of the group we add a new tag with the name of the section, and in this section all properties we have defined in the<span class="InlineCode">CachingSection</span> class are now available.</p>{% highlight javascript %}&lt;configuration&gt; 
   &lt;configSections&gt; 
-    &lt;sectionGroup name=&quot;SoftwareArchitects&quot;&gt; 
-      &lt;section name=&quot;Caching&quot; requirePermission=&quot;false&quot;  
-        type=&quot;SoftwareArchitects.Web.Configuration.CachingSection,  
-        SoftwareArchitects.Web.CachingHandler&quot; /&gt; 
+    &lt;sectionGroup name="SoftwareArchitects"&gt; 
+      &lt;section name="Caching" requirePermission="false"  
+        type="SoftwareArchitects.Web.Configuration.CachingSection,  
+        SoftwareArchitects.Web.CachingHandler" /&gt; 
     &lt;/sectionGroup&gt; 
   &lt;/configSections&gt; 
 
   &lt;SoftwareArchitects&gt; 
-    &lt;Caching CachingTimeSpan=&quot;1&quot;&gt; 
+    &lt;Caching CachingTimeSpan="1"&gt; 
       &lt;FileExtensions&gt; 
-        &lt;add Extension=&quot;gif&quot; ContentType=&quot;image\gif&quot; /&gt; 
-        &lt;add Extension=&quot;jpg&quot; ContentType=&quot;image\jpeg&quot; /&gt; 
-        &lt;add Extension=&quot;png&quot; ContentType=&quot;image\png&quot; /&gt; 
+        &lt;add Extension="gif" ContentType="image\gif" /&gt; 
+        &lt;add Extension="jpg" ContentType="image\jpeg" /&gt; 
+        &lt;add Extension="png" ContentType="image\png" /&gt; 
       &lt;/FileExtensions&gt; 
     &lt;/Caching&gt; 
   &lt;/SoftwareArchitects&gt; 
 
   ...{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Now there is only one last thing missing until we can use the <span class="InlineCode">CachingHandler</span>. We have to add it to the <span class="InlineCode">httpHandlers</span> section in web.config. There we have to add an entry for each file extension we want to map to our http handler. I decided to support images with the extensions .gif, .jpg and .png. So I added a handler for the paths *.gif.ashx, *.jpg.ashx and *.png.ashx. In the type attribute I specified class and assembly of the http handler. Of course the assembly must be placed in the bin folder as well.</p><p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">You could also use other file extensions like *.gifx. But to do so you need to have access to IIS to configure the new extension to be handeled by the aspnet_isapi.dll. As I do not have access to the IIS of our hosting provider, I had to use *.ashx, because it is already mapped to aspnet_isapi.dll.</p>{% highlight javascript %}  &lt;httpHandlers&gt; 
-    &lt;add verb=&quot;*&quot; path=&quot;*.gif.ashx&quot;  
-      type=&quot;SoftwareArchitects.Web.CachingHandler,  
-      SoftwareArchitects.Web.CachingHandler&quot;/&gt; 
-    &lt;add verb=&quot;*&quot; path=&quot;*.jpg.ashx&quot;  
-      type=&quot;SoftwareArchitects.Web.CachingHandler,  
-      SoftwareArchitects.Web.CachingHandler&quot;/&gt; 
-    &lt;add verb=&quot;*&quot; path=&quot;*.png.ashx&quot;  
-      type=&quot;SoftwareArchitects.Web.CachingHandler,  
-      SoftwareArchitects.Web.CachingHandler&quot;/&gt; 
+    &lt;add verb="*" path="*.gif.ashx"  
+      type="SoftwareArchitects.Web.CachingHandler,  
+      SoftwareArchitects.Web.CachingHandler"/&gt; 
+    &lt;add verb="*" path="*.jpg.ashx"  
+      type="SoftwareArchitects.Web.CachingHandler,  
+      SoftwareArchitects.Web.CachingHandler"/&gt; 
+    &lt;add verb="*" path="*.png.ashx"  
+      type="SoftwareArchitects.Web.CachingHandler,  
+      SoftwareArchitects.Web.CachingHandler"/&gt; 
   &lt;/httpHandlers&gt; 
 &lt;/configuration&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Finally I added the extension .ashx to all images in the web site (in .css files and .aspx files). When I monitored a request to the main page of <a href="http://www.software-architects.com/"><font color="#800080">http://www.software-architects.com</font></a> again, the first request still generated 20 requests to the web server but from the second request on it took only 7 requests to load the page, because the images were cached on the client.</p><p xmlns="http://www.w3.org/1999/xhtml">You can see how it works right here in this article. Right-click on an image and open the properties dialog. You will see, that the URL ends with .ashx. When you right-click on an image and select "Save Picture as..." the suggested filename does not include the extension .ashx because of the content-disposition header.</p><p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">Of course you can use the handler for other file types like javascript files of css files, too. So you could reduce the number of requests again.</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img height="347" width="523" src="http://web.archive.org/web/20091114122003im_/http://www.software-architects.com/Portals/1/Articles/ASPNETCaching/MNM_mitCaching.png.ashx" />
 </p><h3 class="Head" xmlns="http://www.w3.org/1999/xhtml">
-  <a id="testCaching" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="testCaching"></a>Testing the CachingHandler</h3><p xmlns="http://www.w3.org/1999/xhtml">You can easily test the caching of images with a simple web site. I added a web site project with the name CachingWebSite to the Visual Studio Solution with which you can try how it works (<a href="{{site.baseurl}}/content/images/blog/2008/01/CachingHandler.zip">download complete solution</a>). On the one hand the web site contains a page Default.aspx, which contains an image tag. You can see that the image source ends with .ashx.</p>{% highlight javascript %}&lt;img src=&quot;/Portals/1/App_Themes/Standard/Images/LogoWithMenuBackground.png.ashx&quot; /&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">On the other hand the web site contains a theme Standard with a stylesheet Style.css. In the stylesheet I use a background image. Again the image source ends with .ashx.</p>{% highlight javascript %}body  
+  <a id="testCaching" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="testCaching"></a>Testing the CachingHandler</h3><p xmlns="http://www.w3.org/1999/xhtml">You can easily test the caching of images with a simple web site. I added a web site project with the name CachingWebSite to the Visual Studio Solution with which you can try how it works (<a href="{{site.baseurl}}/content/images/blog/2008/01/CachingHandler.zip">download complete solution</a>). On the one hand the web site contains a page Default.aspx, which contains an image tag. You can see that the image source ends with .ashx.</p>{% highlight javascript %}&lt;img src="/Portals/1/App_Themes/Standard/Images/LogoWithMenuBackground.png.ashx" /&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">On the other hand the web site contains a theme Standard with a stylesheet Style.css. In the stylesheet I use a background image. Again the image source ends with .ashx.</p>{% highlight javascript %}body  
 { 
   margin: 0px; 
   padding: 0px; 
   background-image: url(Images/MenuBackground.png.ashx); 
   background-repeat: repeat-x; 
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">In the web.config of the web site I inserted a custom section to configure the CachingHandler and a http handler for each extension, exactly as explained above. Furthermore I added the trace tag to the system.web section to trace every request to a file.</p>{% highlight javascript %}&lt;trace enabled=&quot;true&quot; pageOutput=&quot;false&quot; requestLimit=&quot;50&quot; mostRecent=&quot;true&quot; /&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">When I start my web site project I see the Default.aspx page with the logo, which is defined in Default.aspx, and with the background image, which is defined in the stylesheet.</p><p xmlns="http://www.w3.org/1999/xhtml">
+}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">In the web.config of the web site I inserted a custom section to configure the CachingHandler and a http handler for each extension, exactly as explained above. Furthermore I added the trace tag to the system.web section to trace every request to a file.</p>{% highlight javascript %}&lt;trace enabled="true" pageOutput="false" requestLimit="50" mostRecent="true" /&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">When I start my web site project I see the Default.aspx page with the logo, which is defined in Default.aspx, and with the background image, which is defined in the stylesheet.</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img height="368" width="523" src="{{site.baseurl}}/content/images/blog/2008/01/CachingWebSite.png" class="  " />
 </p><p xmlns="http://www.w3.org/1999/xhtml">To view the trace I opened a new tab in IE and replaced Default.aspx with Trace.axd in the URL. The trace shows that four request were necessary to display the page Default.aspx.</p><p class="DecoratorRight" xmlns="http://www.w3.org/1999/xhtml">For the first request and every time the users hits F5 all files are sent to the client.</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img height="368" width="523" src="{{site.baseurl}}/content/images/blog/2008/01/Trace_withoutCaching.png" class="  " />

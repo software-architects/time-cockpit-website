@@ -26,39 +26,39 @@ permalink: /blog/2016/05/01/Azure-Functions---Seamlessly-Connecting-Time-Cockpit
   <img src="{{site.baseurl}}/content/images/blog/2016/04/create-function-step-1.png" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">Next, we select the appropriate template. As you can see, there are lots of templates available that make it easier for you to start. As mentioned above, we are using a timer functions to begin with. The programming language in this example will be C#:</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">Note that the schedule is defined based on a <a href="https://en.wikipedia.org/wiki/Cron#CRON_expression" target="_blank">Cron expression</a>. There are many Cron expression builders available on the web (e.g. <a href="http://www.cronmaker.com/" target="_blank">Cronmaker</a>).</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2016/04/create-function-step-2.png" />
-</p><h3 xmlns="http://www.w3.org/1999/xhtml">Sample Code</h3><p xmlns="http://www.w3.org/1999/xhtml">The good news is that you don't need to write a complete C# application for Azure Functions. It uses C# Scripts instead (came recently with Visual Studio 2015 Update 1; <a href="https://msdn.microsoft.com/en-us/magazine/mt614271.aspx" target="_blank">read more about C# Scripting</a>). Of course, the code of the function depends on your specific needs. However, here is a sample script querying time cockpit's <em>Country</em> table and writing the result to the function's log. You can use it as a starting point to create your time cockpit integration script.</p>{% highlight javascript %}#r &quot;System.Configuration&quot;&#xD;
-#r &quot;Newtonsoft.Json&quot;&#xD;
-&#xD;
-using System;&#xD;
-using System.Configuration;&#xD;
-using System.Text;&#xD;
-using Newtonsoft.Json; &#xD;
-&#xD;
-const string timeCockpitBaseUrl = &quot;https://api.timecockpit.com&quot;;&#xD;
-&#xD;
-public static string Base64Encode(string plainText) =&gt; Convert.ToBase64String(Encoding.UTF8.GetBytes(plainText));&#xD;
-&#xD;
-public static async Task Run(TimerInfo myTimer, TraceWriter log)&#xD;
-{&#xD;
-    string timeCockpitAuth = ${body}quot;{ConfigurationManager.AppSettings[&quot;tcUser&quot;]}:{ConfigurationManager.AppSettings[&quot;tcPassword&quot;]}&quot;;&#xD;
-    using (var client = new HttpClient())&#xD;
-    { &#xD;
-        var queryObject = new { query = &quot;From C In Country Select C&quot; };&#xD;
-        using (var request = new HttpRequestMessage&#xD;
-            {&#xD;
-                RequestUri = new Uri(${body}quot;{timeCockpitBaseUrl}/select&quot;),&#xD;
-                Method = HttpMethod.Post,&#xD;
-                Content = new StringContent(JsonConvert.SerializeObject(queryObject), Encoding.UTF8, &quot;application/json&quot;)&#xD;
-            })&#xD;
-        {&#xD;
-            request.Headers.Add(&quot;Authorization&quot;, ${body}quot;Basic {Base64Encode(timeCockpitAuth)}&quot;);&#xD;
-            &#xD;
-            using (var response = await client.SendAsync(request)) &#xD;
-            {&#xD;
-                log.Verbose(await response.Content.ReadAsStringAsync());&#xD;
-            }&#xD;
-        }&#xD;
-    }&#xD;
+</p><h3 xmlns="http://www.w3.org/1999/xhtml">Sample Code</h3><p xmlns="http://www.w3.org/1999/xhtml">The good news is that you don't need to write a complete C# application for Azure Functions. It uses C# Scripts instead (came recently with Visual Studio 2015 Update 1; <a href="https://msdn.microsoft.com/en-us/magazine/mt614271.aspx" target="_blank">read more about C# Scripting</a>). Of course, the code of the function depends on your specific needs. However, here is a sample script querying time cockpit's <em>Country</em> table and writing the result to the function's log. You can use it as a starting point to create your time cockpit integration script.</p>{% highlight javascript %}#r "System.Configuration"
+#r "Newtonsoft.Json"
+
+using System;
+using System.Configuration;
+using System.Text;
+using Newtonsoft.Json; 
+
+const string timeCockpitBaseUrl = "https://api.timecockpit.com";
+
+public static string Base64Encode(string plainText) =&gt; Convert.ToBase64String(Encoding.UTF8.GetBytes(plainText));
+
+public static async Task Run(TimerInfo myTimer, TraceWriter log)
+{
+    string timeCockpitAuth = ${body}quot;{ConfigurationManager.AppSettings["tcUser"]}:{ConfigurationManager.AppSettings["tcPassword"]}";
+    using (var client = new HttpClient())
+    { 
+        var queryObject = new { query = "From C In Country Select C" };
+        using (var request = new HttpRequestMessage
+            {
+                RequestUri = new Uri(${body}quot;{timeCockpitBaseUrl}/select"),
+                Method = HttpMethod.Post,
+                Content = new StringContent(JsonConvert.SerializeObject(queryObject), Encoding.UTF8, "application/json")
+            })
+        {
+            request.Headers.Add("Authorization", ${body}quot;Basic {Base64Encode(timeCockpitAuth)}");
+            
+            using (var response = await client.SendAsync(request)) 
+            {
+                log.Verbose(await response.Content.ReadAsStringAsync());
+            }
+        }
+    }
 }{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">Handling Secrets</h3><p xmlns="http://www.w3.org/1999/xhtml">Whenever you access time cockpit (same is true for many other systems), you need to authenticate using user and password, a token or something similar.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">Never write such security-critical setting directly in your code!</p><p xmlns="http://www.w3.org/1999/xhtml">You should store such secrets in your function's <em>Application Settings</em> instead. Here is where you can find them:</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2016/04/functions-app-settings.png" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">Here you see how you enter time cockpit user and password for our sample script:</p><p xmlns="http://www.w3.org/1999/xhtml">

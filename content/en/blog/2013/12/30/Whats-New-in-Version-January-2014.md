@@ -18,9 +18,9 @@ permalink: /blog/2013/12/30/Whats-New-in-Version-January-2014
 </p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2013/12/actions-in-forms.png" alt="Actions in forms" title="Actions in forms" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">Additionally, you could use actions in list and form definitions to allow the user to execute the action by clicking on a hyperlink. The following list definition adds an <em>action</em> hyperlink to the list of time sheet entries that allows to create an invoice from one single time sheet entry.</p>{% highlight javascript %}    ...
-    &lt;BoundCell Content=&quot;=Current.Billed&quot; /&gt;
-    &lt;BoundCell Content=&quot;=Current.FixedPrice&quot; /&gt;
-    &lt;ActionCell Content=&quot;Create Invoice ...&quot; Action=&quot;APP_CreateInvoiceAction&quot; EntityObject=&quot;=Current.Me&quot; /&gt;
+    &lt;BoundCell Content="=Current.Billed" /&gt;
+    &lt;BoundCell Content="=Current.FixedPrice" /&gt;
+    &lt;ActionCell Content="Create Invoice ..." Action="APP_CreateInvoiceAction" EntityObject="=Current.Me" /&gt;
 &lt;/List&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2013/12/action-cell.png" alt="Action cell in list" title="Action cell in list" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">In the new version we allow you to specify where an action should be available. Therefore, you can specify an expression for the visibility in forms and in the ribbon (or the context menu of the list).</p><p xmlns="http://www.w3.org/1999/xhtml">

@@ -18,17 +18,17 @@ permalink: /blog/2014/06/04/Learn-by-Example-AngularJS-NodeJS-and-Typescript
 </f:function><p xmlns="http://www.w3.org/1999/xhtml">The resulting project contains a lot of stuff that we do not need for our example. You can clean up the project and delete all HTML/CSS-generation-related stuff until your project structure looks something like this:</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2014/06/NodeJSAngular/NodeAngular_CleanedProject.png" />
 </p><p xmlns="http://www.w3.org/1999/xhtml">The project template already added the express framework. It enables us to build web APIs without having to care for all the low-level details. As we are not only going to implement GET requests but POST requests (for inserting new data), too, we will need to parse JSON in the HTTP request body. For that, we need the <em>body-parser</em> module, too. Therefore we have to extend the <em>package.json</em> file a bit:</p>{% highlight javascript %}{
-  &quot;name&quot;: &quot;AngularRegistrationSample&quot;,
-  &quot;version&quot;: &quot;0.0.0&quot;,
-  &quot;description&quot;: &quot;Example&quot;,
-  &quot;main&quot;: &quot;app.js&quot;,
-  &quot;author&quot;: {
-    &quot;name&quot;: &quot;Rainer Stropek&quot;,
-    &quot;email&quot;: &quot;rainer@software-architects.at&quot;
+  "name": "AngularRegistrationSample",
+  "version": "0.0.0",
+  "description": "Example",
+  "main": "app.js",
+  "author": {
+    "name": "Rainer Stropek",
+    "email": "rainer@software-architects.at"
   },
-  &quot;dependencies&quot;: {
-    &quot;body-parser&quot;: &quot;^1.3.0&quot;,
-    &quot;express&quot;: &quot;^3.10.2&quot;
+  "dependencies": {
+    "body-parser": "^1.3.0",
+    "express": "^3.10.2"
   }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Well, strictly speaking we would not have to edit <em>package.json</em> by hand. We also do not need to call <em>npm install</em> in a command line prompt to download the additional package. The NodeJS tools integrate these things directly into Visual Studio (similar to NuGet which some of you might know from .NET development).</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
   <f:param name="MediaImage" value="MediaArchive:496cd930-6811-4f7d-90f0-250c14548185" xmlns:f="http://www.composite.net/ns/function/1.0" />
@@ -67,8 +67,8 @@ class Registration implements IRegistration {
 // Sample repository of registrations (for demo purposes just in memory
 var registrations = new Array&lt;IRegistration&gt;();
 registrations.push(
-    { salutation: &quot;Mr.&quot;, name: &quot;Tom Tailor&quot;, age: 20 },
-    { salutation: &quot;Mr.&quot;, name: &quot;Max Muster&quot;, age: 19 });
+    { salutation: "Mr.", name: "Tom Tailor", age: 20 },
+    { salutation: "Mr.", name: "Max Muster", age: 19 });
 
 
 // Setup express
@@ -76,17 +76,17 @@ var app = express();
 app.use(bodyParser());
 
 // Uncommend this line to demo basic auth
-// app.use(express.basicAuth((user, password) =&gt; user == &quot;user2&quot; &amp;&amp; password == &quot;password&quot;));
+// app.use(express.basicAuth((user, password) =&gt; user == "user2" &amp;&amp; password == "password"));
 
 
 // Implement web API
-app.get(&quot;/api/registrations&quot;, (req, res) =&gt; {
+app.get("/api/registrations", (req, res) =&gt; {
     // Get all registrations
     res.send(registrations);
 });
 
 // Register
-app.post(&quot;/api/register&quot;, (req, res) =&gt; {
+app.post("/api/register", (req, res) =&gt; {
     var registration = new Registration(&lt;IRegistration&gt;req.body);
     if (registration.isValid()) {
         registrations.push(registration);
@@ -110,13 +110,13 @@ app.listen(process.env.PORT || 3000);{% endhighlight %}<h2 xmlns="http://www.w3.
   <f:param name="ThumbnailMaxHeight" value="800" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ImageMaxWidth" value="1920" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ImageMaxHeight" value="1280" xmlns:f="http://www.composite.net/ns/function/1.0" />
-</f:function><p xmlns="http://www.w3.org/1999/xhtml">We need a few more components for our clients. In contrast to NodeJS where we used <em>NPM</em> (<em>Node Package Manager</em>), we now use <em>NuGet</em>. You can either right-click on the project, select <em>Manage NuGet Packages</em> and select the packages by hand or you can copy/past the following code in your <em>packages.config</em> file:</p>{% highlight javascript %}&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+</f:function><p xmlns="http://www.w3.org/1999/xhtml">We need a few more components for our clients. In contrast to NodeJS where we used <em>NPM</em> (<em>Node Package Manager</em>), we now use <em>NuGet</em>. You can either right-click on the project, select <em>Manage NuGet Packages</em> and select the packages by hand or you can copy/past the following code in your <em>packages.config</em> file:</p>{% highlight javascript %}&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;packages&gt;
-  &lt;package id=&quot;angularjs&quot; version=&quot;1.2.16&quot; targetFramework=&quot;net451&quot; /&gt;
-  &lt;package id=&quot;angularjs.TypeScript.DefinitelyTyped&quot; version=&quot;1.0.4&quot; targetFramework=&quot;net451&quot; /&gt;
-  &lt;package id=&quot;bootstrap&quot; version=&quot;3.1.1&quot; targetFramework=&quot;net451&quot; /&gt;
-  &lt;package id=&quot;jQuery&quot; version=&quot;1.9.1&quot; targetFramework=&quot;net451&quot; /&gt;
-  &lt;package id=&quot;jquery.TypeScript.DefinitelyTyped&quot; version=&quot;0.8.7&quot; targetFramework=&quot;net451&quot; /&gt;
+  &lt;package id="angularjs" version="1.2.16" targetFramework="net451" /&gt;
+  &lt;package id="angularjs.TypeScript.DefinitelyTyped" version="1.0.4" targetFramework="net451" /&gt;
+  &lt;package id="bootstrap" version="3.1.1" targetFramework="net451" /&gt;
+  &lt;package id="jQuery" version="1.9.1" targetFramework="net451" /&gt;
+  &lt;package id="jquery.TypeScript.DefinitelyTyped" version="0.8.7" targetFramework="net451" /&gt;
 &lt;/packages&gt;{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">Angular Controllers in Typescript, Data Binding</h3><p xmlns="http://www.w3.org/1999/xhtml">First, let us display our list or existing registrations. For that, we need to create an AngularJS controller. <em>Controller</em>, like in MVC (Model-View-<em>Controller</em>). Take a look at the following code.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">Do you recognize the code reuse from the server? The client and the server share the same data structure and the same business logic.</p><p xmlns="http://www.w3.org/1999/xhtml">For the sake of simplicity, I copy the code from the server to the client. In practice, you would probably create a shared module and reuse identical files. If you follow along, call the following file <em>registrations.ts</em>.</p>{% highlight javascript %}// A simple logger interface to demonstrate AngularJS depdency injection.
 // The implementatio of the logger is published in index.ts.
 interface ILogger {
@@ -168,8 +168,8 @@ class RegistrationsViewModel {
     constructor($scope: IRegistrationsViewModel, $http: ng.IHttpService, private logger: ILogger) {
         $scope.registrations = new Array&lt;IRegistration&gt;();
         $scope.refresh = () =&gt; {
-            logger.log(&quot;Requesting...&quot;);
-            $http.get&lt;Array&lt;IRegistration&gt;&gt;(&quot;/api/registrations&quot;)
+            logger.log("Requesting...");
+            $http.get&lt;Array&lt;IRegistration&gt;&gt;("/api/registrations")
                 .success(registrations =&gt; {
                     registrations.forEach(r =&gt; $scope.registrations.push(r));
                 });
@@ -177,9 +177,9 @@ class RegistrationsViewModel {
     }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Having this controller, building the data-bound client code is a piece of cake. Here is the HTML from <em>registrations.html</em> including the AngularJS data binding attributes:</p>{% highlight javascript %}&lt;h1&gt;Registration Sample&lt;/h1&gt;
 
-&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; ng-click=&quot;refresh()&quot;&gt;Refresh&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary" ng-click="refresh()"&gt;Refresh&lt;/button&gt;
 
-&lt;table class=&quot;table&quot; style=&quot;max-width: 300px;&quot;&gt;
+&lt;table class="table" style="max-width: 300px;"&gt;
     &lt;thead&gt;
         &lt;tr&gt;
             &lt;th&gt;Salutation&lt;/th&gt;
@@ -188,7 +188,7 @@ class RegistrationsViewModel {
         &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-        &lt;tr ng-repeat=&quot;reg in registrations&quot;&gt;
+        &lt;tr ng-repeat="reg in registrations"&gt;
             &lt;td&gt;{{reg.salutation}}&lt;/td&gt;
             &lt;td&gt;{{reg.name}}&lt;/td&gt;
             &lt;td&gt;{{reg.age}}&lt;/td&gt;
@@ -196,84 +196,84 @@ class RegistrationsViewModel {
     &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;Do you want to &lt;a href=&quot;#register&quot;&gt;register&lt;/a&gt;?&lt;/p&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">We do not only want to view the registrations. We also want to be able to register new people. Therefore we create an additional controller called <em>register.ts</em>:</p>{% highlight javascript %}interface IRegisterViewModel extends ng.IScope, IRegistration {
+&lt;p&gt;Do you want to &lt;a href="#register"&gt;register&lt;/a&gt;?&lt;/p&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">We do not only want to view the registrations. We also want to be able to register new people. Therefore we create an additional controller called <em>register.ts</em>:</p>{% highlight javascript %}interface IRegisterViewModel extends ng.IScope, IRegistration {
     save: () =&gt; void;
 }
 
 class RegisterViewModel {
     constructor($scope: IRegisterViewModel, $http: ng.IHttpService, private logger: ILogger) {
         $scope.save = () =&gt; {
-            $http.post(&quot;/api/register&quot;, { name: $scope.name, salutation: $scope.salutation, age: $scope.age }, { headers: { &quot;Content-Type&quot;: &quot;application/json&quot; } })
+            $http.post("/api/register", { name: $scope.name, salutation: $scope.salutation, age: $scope.age }, { headers: { "Content-Type": "application/json" } })
                 .success(_ =&gt; {
-                    alert(&quot;You are registered!&quot;);
+                    alert("You are registered!");
                 })
                 .error(_ =&gt; {
-                    alert(&quot;Sorry, not possible!&quot;);
+                    alert("Sorry, not possible!");
                 });
         }
     }
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">And here is the corresponding HTML file called <em>register.html</em>:</p>{% highlight javascript %}&lt;h1&gt;Registration Sample&lt;/h1&gt;
 
-&lt;form role=&quot;form&quot; style=&quot;max-width: 300px;&quot;&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-        &lt;label for=&quot;salutation&quot;&gt;Salution:&lt;/label&gt;
-        &lt;select class=&quot;form-control&quot; ng-model=&quot;salutation&quot;&gt;
-            &lt;option value=&quot;Mr.&quot; ng-selected=&quot;salutation=='Mr.'&quot;&gt;Mr.&lt;/option&gt;
-            &lt;option value=&quot;Ms.&quot; ng-selected=&quot;salutation=='Ms.'&quot;&gt;Ms.&lt;/option&gt;
+&lt;form role="form" style="max-width: 300px;"&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label for="salutation"&gt;Salution:&lt;/label&gt;
+        &lt;select class="form-control" ng-model="salutation"&gt;
+            &lt;option value="Mr." ng-selected="salutation=='Mr.'"&gt;Mr.&lt;/option&gt;
+            &lt;option value="Ms." ng-selected="salutation=='Ms.'"&gt;Ms.&lt;/option&gt;
         &lt;/select&gt;
-        &lt;div class=&quot;form-group&quot;&gt;
-            &lt;label for=&quot;name&quot;&gt;Name:&lt;/label&gt;
-            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Name&quot; ng-model=&quot;name&quot; /&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="name"&gt;Name:&lt;/label&gt;
+            &lt;input type="text" class="form-control" placeholder="Name" ng-model="name" /&gt;
         &lt;/div&gt;
-        &lt;div class=&quot;form-group&quot;&gt;
-            &lt;label for=&quot;name&quot;&gt;Age:&lt;/label&gt;
-            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Age&quot; ng-model=&quot;age&quot; /&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="name"&gt;Age:&lt;/label&gt;
+            &lt;input type="text" class="form-control" placeholder="Age" ng-model="age" /&gt;
         &lt;/div&gt;
-        &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; ng-click=&quot;save()&quot;&gt;Register&lt;/button&gt;
+        &lt;button type="button" class="btn btn-primary" ng-click="save()"&gt;Register&lt;/button&gt;
     &lt;/div&gt;
 &lt;/form&gt;
 
-&lt;p&gt;Do you want to view &lt;a href=&quot;#/&quot;&gt;registrations&lt;/a&gt;?&lt;/p&gt;{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">Single Page App (SPA)</h3><p xmlns="http://www.w3.org/1999/xhtml">Did you recognize that the HTML code above is not complete? They have only been fragments. The reason for this is that we want to use AngularJS routing service to build a <em>Single Page App</em> (SPA). A SPA loads a single file and loads the necessary view fragments in the background.</p><p xmlns="http://www.w3.org/1999/xhtml">We need an HTML file that hosts our fragments. Here is the code for <em>index.html</em>. Note the attribute <em>ng-view</em>. This is where the fragments shown above will be inserted.</p>{% highlight javascript %}&lt;!DOCTYPE html&gt;
+&lt;p&gt;Do you want to view &lt;a href="#/"&gt;registrations&lt;/a&gt;?&lt;/p&gt;{% endhighlight %}<h3 xmlns="http://www.w3.org/1999/xhtml">Single Page App (SPA)</h3><p xmlns="http://www.w3.org/1999/xhtml">Did you recognize that the HTML code above is not complete? They have only been fragments. The reason for this is that we want to use AngularJS routing service to build a <em>Single Page App</em> (SPA). A SPA loads a single file and loads the necessary view fragments in the background.</p><p xmlns="http://www.w3.org/1999/xhtml">We need an HTML file that hosts our fragments. Here is the code for <em>index.html</em>. Note the attribute <em>ng-view</em>. This is where the fragments shown above will be inserted.</p>{% highlight javascript %}&lt;!DOCTYPE html&gt;
 
-&lt;html lang=&quot;en&quot;&gt;
+&lt;html lang="en"&gt;
 &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;meta charset="utf-8" /&gt;
     &lt;title&gt;TypeScript HTML App&lt;/title&gt;
 
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;Content/bootstrap.css&quot; type=&quot;text/css&quot; /&gt;
+    &lt;link rel="stylesheet" href="Content/bootstrap.css" type="text/css" /&gt;
 
-    &lt;script src=&quot;Scripts/jquery-1.9.1.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;Scripts/angular.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;Scripts/angular-route.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;Scripts/bootstrap.js&quot;&gt;&lt;/script&gt;
+    &lt;script src="Scripts/jquery-1.9.1.js"&gt;&lt;/script&gt;
+    &lt;script src="Scripts/angular.js"&gt;&lt;/script&gt;
+    &lt;script src="Scripts/angular-route.js"&gt;&lt;/script&gt;
+    &lt;script src="Scripts/bootstrap.js"&gt;&lt;/script&gt;
 
-    &lt;script src=&quot;registrations.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;register.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;
+    &lt;script src="registrations.js"&gt;&lt;/script&gt;
+    &lt;script src="register.js"&gt;&lt;/script&gt;
+    &lt;script src="index.js"&gt;&lt;/script&gt;
 &lt;/head&gt;
-&lt;body ng-app=&quot;RegistrationApp&quot;&gt;
+&lt;body ng-app="RegistrationApp"&gt;
     &lt;div ng-view&gt;&lt;/div&gt;
 &lt;/body&gt;
-&lt;/html&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Finally, here is the corresponding Typescript file <em>index.ts</em>:</p>{% highlight javascript %}angular.module(&quot;RegistrationApp&quot;, [&quot;ngRoute&quot;])
+&lt;/html&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Finally, here is the corresponding Typescript file <em>index.ts</em>:</p>{% highlight javascript %}angular.module("RegistrationApp", ["ngRoute"])
     // The logger to demonstrate AngularJS dependency injection
-    .factory(&quot;logger&quot;, () =&gt; new DefaultLogger())
+    .factory("logger", () =&gt; new DefaultLogger())
     // Our controllers for the two views
-    .controller(&quot;RegistrationsController&quot;, RegistrationsViewModel)
-    .controller(&quot;RegisterController&quot;, RegisterViewModel)
+    .controller("RegistrationsController", RegistrationsViewModel)
+    .controller("RegisterController", RegisterViewModel)
     // The routes for the SPA
     .config(($routeProvider: ng.route.IRouteProvider) =&gt; {
         $routeProvider
-            .when(&quot;/&quot;, {
-                templateUrl: &quot;registrations.html&quot;, controller: &quot;RegistrationsController&quot;
+            .when("/", {
+                templateUrl: "registrations.html", controller: "RegistrationsController"
             })
-            .when(&quot;/register&quot;, {
-                templateUrl: &quot;register.html&quot;, controller: &quot;RegisterController&quot;
+            .when("/register", {
+                templateUrl: "register.html", controller: "RegisterController"
             });
     });{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Step 3: Joining Server and Client</h2><p xmlns="http://www.w3.org/1999/xhtml">So how can we bring server and client together? It turns out that the express framework we used in our NodeJS server can serve static files, too. Just add one line to the server’s <em>app.ts</em> file:</p>{% highlight javascript %}...
 // Setup express
 var app = express();
 app.use(bodyParser());
-app.use(express.static(&quot;../Client&quot;)); // &lt;== ADD THIS LINE
+app.use(express.static("../Client")); // &lt;== ADD THIS LINE
 ...{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">That’s it. You can try your client. The following screenshot shows our client in Chrome’s debugger where you can watch the REST API work in the background.</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
   <f:param name="MediaImage" value="MediaArchive:0745f82c-c003-4541-bcd6-6fe2001bbb55" xmlns:f="http://www.composite.net/ns/function/1.0" />
   <f:param name="ThumbnailMaxWidth" value="800" xmlns:f="http://www.composite.net/ns/function/1.0" />

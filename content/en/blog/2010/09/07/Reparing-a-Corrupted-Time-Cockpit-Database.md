@@ -14,7 +14,7 @@ permalink: /blog/2010/09/07/Reparing-a-Corrupted-Time-Cockpit-Database
   <li>Delete the time cockpit configuration file. This file can be found in the folder “C:\Users\&lt;Username&gt;\AppData\Local\software architects\Time Cockpit\”. Please note that the AppData folder is hidden by default. Enter the complete path in Windows Explorer and you should be able to get there.</li>
   <li>Start time cockpit again. time cockpit will present you the initial configuration assistant.</li>
 </ul><h2 xmlns="http://www.w3.org/1999/xhtml">Option 2: Repair the offline database</h2><p xmlns="http://www.w3.org/1999/xhtml">time cockpit uses a SQL CE Database (version 3.5 SP1). To recover the data you can use a small tool provided by us upon request. This is a temporary solution and will be integrated directly into time cockpit in one of the upcoming versions.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Option 3: Repair the offline database using SQL Server Management Studio</h2><p xmlns="http://www.w3.org/1999/xhtml">In case you have access to SQL Server Management Studio (Express), you can open the “time cockpit.tic” file using that. Management Studio will tell you that the database file is corrupted and will offer to repair.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Option 4: Your own code</h2><p xmlns="http://www.w3.org/1999/xhtml">The 4 Option is more for the brave among you: Writing your own code. Don’t fear, it is actually quite straight forward. The SQL CE.NET Libraries provides a class, SqlCeEngine. This class has two especially interesting methods, Verify and Repair. These functions provide information about the status of the database and try to repair the database in case of corruption.</p>{% highlight javascript %}bool isBroken = false;
-using (var sqlceengine = new SqlCeEngine(@&quot;Data Source = &quot; + this.databasePath))
+using (var sqlceengine = new SqlCeEngine(@"Data Source = " + this.databasePath))
 {
     if (!sqlceengine.Verify())
     {
@@ -24,7 +24,7 @@ using (var sqlceengine = new SqlCeEngine(@&quot;Data Source = &quot; + this.data
 
 if (isBroken)
 {
-    using (var sqlceengine = new SqlCeEngine(@&quot;Data Source = &quot; + this.databasePath))
+    using (var sqlceengine = new SqlCeEngine(@"Data Source = " + this.databasePath))
     {
         try
         {
@@ -33,7 +33,7 @@ if (isBroken)
         catch (Exception ex)
         {
             MessageBox.Show(string.Format(
-                @&quot;Repair without loosing data (RepairOption.RecoverAllOrFail) threw exception: {0}&quot;,
+                @"Repair without loosing data (RepairOption.RecoverAllOrFail) threw exception: {0}",
                 ex.Message));
         }
     }

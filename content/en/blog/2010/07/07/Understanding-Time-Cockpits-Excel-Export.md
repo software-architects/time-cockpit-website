@@ -13,25 +13,25 @@ permalink: /blog/2010/07/07/Understanding-Time-Cockpits-Excel-Export
   <img src="{{site.baseurl}}/content/images/blog/2010/07/Zeitbuchungen_list.png" class="    " />
 </p><p xmlns="http://www.w3.org/1999/xhtml">As you can see there are a few columns having names like "Benutzer", "Beginnzeit". In our data model these are the friendly names. The List itself is defined with the name APP_DefaultTimesheetList (which has the friendly name "Zeitbuchungen"). Lets take a look at how that list is defined: right-click on the name of the list (APP_DefaultTimesheetList) and choose "Edit list". In the top register row, select "Listdefinition". You should see something similar to this, without the yellow and red markings, which I will explain in a second:</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img alt="List definition" src="{{site.baseurl}}/content/images/blog/2010/07/list_definition.png" class="      " />
-</p><p xmlns="http://www.w3.org/1999/xhtml">So the text in the list definition, contains, well, the definition of the list. This is XML markup, which I guess a few of you might be quite familiar with. I will extract that piece of code (we can argue whether it's code or not somewhere else) again for your convenience. I broke the query part into multiple lines, to not mess up all of the layout:</p>{% highlight javascript %}&lt;List AllowDelete=&quot;True&quot; AllowEdit=&quot;True&quot; AutoGenerateColumns=&quot;False&quot; 
-       EditFormName=&quot;APP_TimesheetForm&quot; ModelEntityName=&quot;APP_Timesheet&quot; 
-       Query=&quot;From Current In APP_Timesheet
+</p><p xmlns="http://www.w3.org/1999/xhtml">So the text in the list definition, contains, well, the definition of the list. This is XML markup, which I guess a few of you might be quite familiar with. I will extract that piece of code (we can argue whether it's code or not somewhere else) again for your convenience. I broke the query part into multiple lines, to not mess up all of the layout:</p>{% highlight javascript %}&lt;List AllowDelete="True" AllowEdit="True" AutoGenerateColumns="False" 
+       EditFormName="APP_TimesheetForm" ModelEntityName="APP_Timesheet" 
+       Query="From Current In APP_Timesheet
                  .Include('APP_UserDetail').Include('APP_Task.APP_Project.APP_Customer')
                  .Include('APP_Project.APP_Customer').Include('APP_Invoice') 
               Order By Current.APP_BeginTime 
-              Select Current&quot; 
-       xmlns=&quot;clr-namespace:TimeCockpit.Data.DataModel.View;assembly=TimeCockpit.Data&quot;&gt;
-  &lt;BoundCell Content=&quot;=Current.APP_UserDetail&quot; Header=&quot;Benutzer&quot; /&gt;
-  &lt;BoundCell Content=&quot;=Current.APP_BeginTime&quot; Header=&quot;Beginnzeit&quot; /&gt;
-  &lt;BoundCell Content=&quot;=Current.APP_EndTime&quot; Header=&quot;Endzeit&quot; /&gt;
-  &lt;BoundCell Content=&quot;=Current.APP_Description&quot; Header=&quot;Beschreibung der Tätigkeit&quot; /&gt;
-  &lt;BoundCell Content=&quot;=Current.APP_Location&quot; Header=&quot;Arbeitsort&quot; /&gt;
-  &lt;BoundCell Content=&quot;=Current.APP_Project&quot; Header=&quot;Projekt&quot; /&gt;
-  &lt;BoundCell Content=&quot;=Current.APP_Task&quot; Header=&quot;Tätigkeit&quot; /&gt;
-  &lt;NumericCell Content=&quot;=Current.APP_HourlyRateActual&quot; Header=&quot;Effektiver Stundensatz&quot; 
-    NumberFormatPattern=&quot;#,##0.00&quot; /&gt;
-  &lt;BoundCell Content=&quot;=Current.APP_Billable&quot; Header=&quot;Verrechenbar&quot; /&gt;
-  &lt;BoundCell Content=&quot;=Current.APP_Billed&quot; Header=&quot;Verrechnet&quot; /&gt;
+              Select Current" 
+       xmlns="clr-namespace:TimeCockpit.Data.DataModel.View;assembly=TimeCockpit.Data"&gt;
+  &lt;BoundCell Content="=Current.APP_UserDetail" Header="Benutzer" /&gt;
+  &lt;BoundCell Content="=Current.APP_BeginTime" Header="Beginnzeit" /&gt;
+  &lt;BoundCell Content="=Current.APP_EndTime" Header="Endzeit" /&gt;
+  &lt;BoundCell Content="=Current.APP_Description" Header="Beschreibung der Tätigkeit" /&gt;
+  &lt;BoundCell Content="=Current.APP_Location" Header="Arbeitsort" /&gt;
+  &lt;BoundCell Content="=Current.APP_Project" Header="Projekt" /&gt;
+  &lt;BoundCell Content="=Current.APP_Task" Header="Tätigkeit" /&gt;
+  &lt;NumericCell Content="=Current.APP_HourlyRateActual" Header="Effektiver Stundensatz" 
+    NumberFormatPattern="#,##0.00" /&gt;
+  &lt;BoundCell Content="=Current.APP_Billable" Header="Verrechenbar" /&gt;
+  &lt;BoundCell Content="=Current.APP_Billed" Header="Verrechnet" /&gt;
 &lt;/List&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">If you look at the XML it defines a list consisting of a BoundCell as well as a NumericCell. The list itself has a few properties such as Query, ModelEntityName, AllowEdit and Delete, etc. The most interesting here is the Query property. It defines the query to be executed against the database to retrieve the data required to show the list. In non-programmer lingo, if we want somebody to give us a List of something, we use a question ("hey give me a list of something."). Here, this is done by the Query. Of course, we cannot (yet) use plain english to formulate those queries, therefore we use a language that time cockpit and we can speak: TCQL. Now, most of you familiar with SQL will see a lot of similarities, and actually TCQL is translated into SQL and executed against the database. But lets stay simple. I will not go much further into TCQL in this post, but will definitely cover it in another blog entry.</p><div xmlns="http://www.w3.org/1999/xhtml">The TCQL statement here is this, which basically gives us all APP_Timesheets and orders them by the BeginTime.</div>{% highlight javascript %}From Current In APP_Timesheet
 .Include('APP_UserDetail')
 .Include('APP_Task.APP_Project.APP_Customer')

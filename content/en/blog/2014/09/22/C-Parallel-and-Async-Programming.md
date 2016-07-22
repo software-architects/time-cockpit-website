@@ -59,11 +59,11 @@ namespace PiWithMonteCarlo.TestDriver
         {
             var iterations = 20000000 * Environment.ProcessorCount;
 
-            ExecuteAndPrint(&quot;Trivial PI Calculator&quot;, TrivialPiCalculator.Calculate, iterations);
-            ExecuteAndPrint(&quot;\n(Stupid) Parallel.For PI Calculator&quot;, ParallelForPiCalculator.Calculate, iterations);
-            ExecuteAndPrint(&quot;\nParallel.For PI Calculator&quot;, EnhancedParallelForPiCalculator.Calculate, iterations);
-            ExecuteAndPrint(&quot;\nPLinq PI Calculator&quot;, PlinqPiCalculator.Calculate, iterations);
-            ExecuteAndPrint(&quot;\nFast PI Calculator&quot;, FastPiCalculator.Calculate, iterations);
+            ExecuteAndPrint("Trivial PI Calculator", TrivialPiCalculator.Calculate, iterations);
+            ExecuteAndPrint("\n(Stupid) Parallel.For PI Calculator", ParallelForPiCalculator.Calculate, iterations);
+            ExecuteAndPrint("\nParallel.For PI Calculator", EnhancedParallelForPiCalculator.Calculate, iterations);
+            ExecuteAndPrint("\nPLinq PI Calculator", PlinqPiCalculator.Calculate, iterations);
+            ExecuteAndPrint("\nFast PI Calculator", FastPiCalculator.Calculate, iterations);
         }
 
         private static void ExecuteAndPrint(string label, Func&lt;int, double&gt; calculation, int iterations)
@@ -75,7 +75,7 @@ namespace PiWithMonteCarlo.TestDriver
         private static void PrintResult(Tuple&lt;double, TimeSpan&gt; r, int iterations)
         {
             Console.WriteLine(
-                &quot;{0} ({1:#,##0.0000} sec for {2:#,##0} iterations = {3:#,##0.00} iter/sec)&quot;, 
+                "{0} ({1:#,##0.0000} sec for {2:#,##0} iterations = {3:#,##0.00} iter/sec)", 
                 r.Item1, 
                 r.Item2.TotalSeconds, 
                 iterations, 
@@ -137,7 +137,7 @@ using System.Threading.Tasks;
 namespace PiWithMonteCarlo
 {
     /// &lt;summary&gt;
-    /// Enhanced version of &lt;see cref=&quot;ParallelForPiCalculator&quot;/&gt;.
+    /// Enhanced version of &lt;see cref="ParallelForPiCalculator"/&gt;.
     /// &lt;/summary&gt;
     public static class EnhancedParallelForPiCalculator
     {
@@ -216,7 +216,7 @@ namespace PiWithMonteCarlo
             var procCount = Environment.ProcessorCount;
             if (iterations % procCount != 0)
             {
-                throw new ArgumentException(&quot;Must be a multiple of Environment.ProcessorCount&quot;, &quot;iterations&quot;);
+                throw new ArgumentException("Must be a multiple of Environment.ProcessorCount", "iterations");
             }
 
             // Distribute iterations evenly across processors
@@ -285,7 +285,7 @@ namespace PiWithMonteCarlo
 #endif
 
     /// &lt;summary&gt;
-    /// Async version of &lt;see cref=&quot;FastPiCalculator&quot;/&gt;.
+    /// Async version of &lt;see cref="FastPiCalculator"/&gt;.
     /// &lt;/summary&gt;
     public class FastPiAsyncCalculator
     {

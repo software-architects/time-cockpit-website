@@ -69,7 +69,7 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
 {% highlight javascript %}/// &lt;summary&gt;
 /// Represents a reader for SWIFT files
 /// &lt;/summary&gt;
-/// &lt;typeparam name=&quot;T&quot;&gt;Parameter type that should be used for reading files&lt;/typeparam&gt;{% endhighlight %}</li>
+/// &lt;typeparam name="T"&gt;Parameter type that should be used for reading files&lt;/typeparam&gt;{% endhighlight %}</li>
   <li> Run StyleCop on the project using <em>Tools / Run StyleCop</em>. Note that StyleCop tells you that you have forgotten the period at the end of the summary text.
 
 <ul><li>Correct that error by adding the period</li></ul></li>
@@ -94,7 +94,7 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
  /// &lt;summary&gt;
  /// Represents a reader for SWIFT files.
  /// &lt;/summary&gt;
- /// &lt;typeparam name=&quot;T&quot;&gt;Parameter type that should be used for reading files.&lt;/typeparam&gt;
+ /// &lt;typeparam name="T"&gt;Parameter type that should be used for reading files.&lt;/typeparam&gt;
  public class SwiftFileReader&lt;T&gt; : TextReader
  {
   /// &lt;summary&gt;
@@ -111,7 +111,7 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
   }
 
   /// &lt;summary&gt;
-  /// Initializes a new instance of the &lt;see cref=&quot;SwiftFileReader{T}&quot;/&gt; class.
+  /// Initializes a new instance of the &lt;see cref="SwiftFileReader{T}"/&gt; class.
   /// &lt;/summary&gt;
   public SwiftFileReader()
    : this(TimeSpan.FromMinutes(1))
@@ -119,9 +119,9 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
   }
 
   /// &lt;summary&gt;
-  /// Initializes a new instance of the &lt;see cref=&quot;SwiftFileReader{T}&quot;/&gt; class.
+  /// Initializes a new instance of the &lt;see cref="SwiftFileReader{T}"/&gt; class.
   /// &lt;/summary&gt;
-  /// &lt;param name=&quot;timeout&quot;&gt;Timeout for reading (see &lt;see cref=&quot;Timeout&quot;/&gt;).&lt;/param&gt;
+  /// &lt;param name="timeout"&gt;Timeout for reading (see &lt;see cref="Timeout"/&gt;).&lt;/param&gt;
   public SwiftFileReader(TimeSpan timeout)
   {
    this.Timeout = timeout;
@@ -149,11 +149,11 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
   /// &lt;summary&gt;
   /// Converts the content of the file.
   /// &lt;/summary&gt;
-  /// &lt;typeparam name=&quot;TDest&quot;&gt;Type of resulting objects.&lt;/typeparam&gt;
-  /// &lt;param name=&quot;sizeLimit&quot;&gt;The size limit for the result.&lt;/param&gt;
+  /// &lt;typeparam name="TDest"&gt;Type of resulting objects.&lt;/typeparam&gt;
+  /// &lt;param name="sizeLimit"&gt;The size limit for the result.&lt;/param&gt;
   /// &lt;returns&gt;
   /// &lt;para&gt;Returns the file's content as an enumerable.&lt;/para&gt;
-  /// &lt;para&gt;The result contains max. &lt;paramref name=&quot;sizeLimit&quot;/&gt; objects.&lt;/para&gt;
+  /// &lt;para&gt;The result contains max. &lt;paramref name="sizeLimit"/&gt; objects.&lt;/para&gt;
   /// &lt;/returns&gt;
   public IEnumerable&lt;TDest&gt; ConvertFileContent&lt;TDest&gt;(int sizeLimit)
   {
@@ -166,10 +166,10 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
   /// &lt;returns&gt;
   /// A string containing all characters from the current position to the end of the TextReader.
   /// &lt;/returns&gt;
-  /// &lt;exception cref=&quot;T:System.IO.IOException&quot;&gt;An I/O error occurs. &lt;/exception&gt;
-  /// &lt;exception cref=&quot;T:System.ObjectDisposedException&quot;&gt;The &lt;see cref=&quot;T:System.IO.TextReader&quot;/&gt; is closed. &lt;/exception&gt;
-  /// &lt;exception cref=&quot;T:System.OutOfMemoryException&quot;&gt;There is insufficient memory to allocate a buffer for the returned string. &lt;/exception&gt;
-  /// &lt;exception cref=&quot;T:System.ArgumentOutOfRangeException&quot;&gt;The number of characters in the next line is larger than &lt;see cref=&quot;F:System.Int32.MaxValue&quot;/&gt;&lt;/exception&gt;
+  /// &lt;exception cref="T:System.IO.IOException"&gt;An I/O error occurs. &lt;/exception&gt;
+  /// &lt;exception cref="T:System.ObjectDisposedException"&gt;The &lt;see cref="T:System.IO.TextReader"/&gt; is closed. &lt;/exception&gt;
+  /// &lt;exception cref="T:System.OutOfMemoryException"&gt;There is insufficient memory to allocate a buffer for the returned string. &lt;/exception&gt;
+  /// &lt;exception cref="T:System.ArgumentOutOfRangeException"&gt;The number of characters in the next line is larger than &lt;see cref="F:System.Int32.MaxValue"/&gt;&lt;/exception&gt;
   public override string ReadToEnd()
   {
    return base.ReadToEnd();
@@ -208,10 +208,10 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
 </ul>{% highlight javascript %}/// &lt;summary&gt;
 /// Represents a reader for SWIFT files.
 /// &lt;/summary&gt;
-/// &lt;typeparam name=&quot;T&quot;&gt;Parameter type that should be used for reading files.&lt;/typeparam&gt;
+/// &lt;typeparam name="T"&gt;Parameter type that should be used for reading files.&lt;/typeparam&gt;
 /// &lt;example&gt;
-/// The following example shows how to use the &lt;see cref=&quot;SwiftFileReader{T}&quot;/&gt; class:
-/// &lt;code source=&quot;..\CSharpCodeDoc\UsageSamples.cs&quot; region=&quot;SwiftReaderClassSample&quot; lang=&quot;C#&quot; /&gt;
+/// The following example shows how to use the &lt;see cref="SwiftFileReader{T}"/&gt; class:
+/// &lt;code source="..\CSharpCodeDoc\UsageSamples.cs" region="SwiftReaderClassSample" lang="C#" /&gt;
 /// &lt;/example&gt;
 public class SwiftFileReader&lt;T&gt; : TextReader
 { [...] }{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
@@ -227,8 +227,8 @@ public int Size { get; private set; }{% endhighlight %}<ul xmlns="http://www.w3.
 <ul><li>Note how the <span class="InlineCode">see langword</span> element is used.</li></ul></li>
 </ul>{% highlight javascript %}/// &lt;returns&gt;
 /// &lt;para&gt;Returns the file's content as an enumerable.&lt;/para&gt;
-/// &lt;para&gt;The result contains max. &lt;paramref name=&quot;sizeLimit&quot;/&gt; objects.&lt;/para&gt;
-/// &lt;para&gt;Result will never be &lt;see langword=&quot;null&quot;/&gt;.&lt;/para&gt;
+/// &lt;para&gt;The result contains max. &lt;paramref name="sizeLimit"/&gt; objects.&lt;/para&gt;
+/// &lt;para&gt;Result will never be &lt;see langword="null"/&gt;.&lt;/para&gt;
 /// &lt;/returns&gt;
 public IEnumerable&lt;TDest&gt; ConvertFileContent&lt;TDest&gt;(int sizeLimit){% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Add a method <span class="InlineCode">Dec</span> with two overloads and add documentation to the <span class="InlineCode">overloads</span> section in the documentation:</li>
@@ -239,7 +239,7 @@ public void Dec()
 }
 
 /// &lt;summary&gt;Decrements the number by amount.&lt;/summary&gt;
-/// &lt;param name=&quot;amount&quot;&gt;The amount to decrement it by.&lt;/param&gt;
+/// &lt;param name="amount"&gt;The amount to decrement it by.&lt;/param&gt;
 public void Dec(int amount)
 {
 }{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
@@ -273,9 +273,9 @@ public void Dec(int amount)
 
 <ul><li>Option: You can open it you favorite XML editor instead</li></ul></li>
   <li>Define the content of the file as follows (<strong><em>don't forget to replace the GUID in the topic id with your guid</em></strong>):</li>
-</ul>{% highlight javascript %}&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;topic id=&quot;b7b0a984-7cab-4ab7-ba17-39618dfb6feb&quot; revisionNumber=&quot;1&quot;&gt;
-  &lt;developerConceptualDocument xmlns=&quot;http://ddue.schemas.microsoft.com/authoring/2003/5&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+</ul>{% highlight javascript %}&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;topic id="b7b0a984-7cab-4ab7-ba17-39618dfb6feb" revisionNumber="1"&gt;
+  &lt;developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
     
     &lt;summary&gt;
       &lt;para&gt;SWIFT reader library&lt;/para&gt;
@@ -286,7 +286,7 @@ public void Dec(int amount)
       &lt;autoOutline /&gt;
     &lt;/introduction&gt;
 
-    &lt;section address=&quot;Introduction&quot;&gt;
+    &lt;section address="Introduction"&gt;
       &lt;title&gt;Introduction&lt;/title&gt;
       &lt;content&gt;
         &lt;para&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam 
@@ -297,33 +297,33 @@ public void Dec(int amount)
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
         At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd 
         gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&lt;/para&gt;
-        &lt;alert class=&quot;note&quot;&gt;
+        &lt;alert class="note"&gt;
           &lt;para&gt;This is just a placeholder text.&lt;/para&gt;
         &lt;/alert&gt;
       &lt;/content&gt;
     &lt;/section&gt;
 
-    &lt;section address=&quot;UsageSample&quot;&gt;
+    &lt;section address="UsageSample"&gt;
       &lt;title&gt;How to use&lt;/title&gt;
       &lt;content&gt;
         &lt;para&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam 
         nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, 
         sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.&lt;/para&gt;
-        &lt;code language=&quot;C#&quot;&gt;
+        &lt;code language="C#"&gt;
           &lt;![CDATA[
 var myobj = new SwiftFileReader&lt;object&gt;();
 // do something with myobj
 myobj.Dispose();
           ]]&gt;
         &lt;/code&gt;
-        &lt;code language=&quot;VB.NET&quot;&gt;
+        &lt;code language="VB.NET"&gt;
           &lt;![CDATA[
 Dim myobj = New SwiftFileReader(Of Object)()
 ' do something with myobj
 myobj.Dispose()
           ]]&gt;
         &lt;/code&gt;
-        &lt;para&gt;Don't forget what we have said in &lt;link xlink:href=&quot;#Introduction&quot;&gt;Introduction&lt;/link&gt;&lt;/para&gt;
+        &lt;para&gt;Don't forget what we have said in &lt;link xlink:href="#Introduction"&gt;Introduction&lt;/link&gt;&lt;/para&gt;
       &lt;/content&gt;
     &lt;/section&gt;
 
@@ -349,9 +349,9 @@ myobj.Dispose()
     </ul>
   </li>
   <li>Define the content of the file as follows (<strong><em>don't forget to replace the GUID in the topic id with your guid</em></strong>):</li>
-</ul>{% highlight javascript %}&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;topic id=&quot;7e268ef9-b888-4094-bca8-1d51c95f6382&quot; revisionNumber=&quot;1&quot;&gt;
-  &lt;developerConceptualDocument xmlns=&quot;http://ddue.schemas.microsoft.com/authoring/2003/5&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+</ul>{% highlight javascript %}&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;topic id="7e268ef9-b888-4094-bca8-1d51c95f6382" revisionNumber="1"&gt;
+  &lt;developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
 
     &lt;summary&gt;
       &lt;para&gt;Details about using the library&lt;/para&gt;
@@ -361,7 +361,7 @@ myobj.Dispose()
       &lt;para&gt;This document shows how to use the library&lt;/para&gt;
     &lt;/introduction&gt;
 
-    &lt;section address=&quot;Overview&quot;&gt;
+    &lt;section address="Overview"&gt;
       &lt;title&gt;Overview&lt;/title&gt;
       &lt;content&gt;
         &lt;para&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam 
@@ -373,12 +373,12 @@ myobj.Dispose()
         At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd 
         gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&lt;/para&gt;
         &lt;para&gt;Note how we use 
-        &lt;codeEntityReference qualifyHint=&quot;true&quot;&gt;T:CSharpCodeDoc.SwiftFileReader`1&lt;/codeEntityReference&gt;
+        &lt;codeEntityReference qualifyHint="true"&gt;T:CSharpCodeDoc.SwiftFileReader`1&lt;/codeEntityReference&gt;
         in the examples below. Isn't that cool??&lt;/para&gt;
       &lt;/content&gt;
     &lt;/section&gt;
 
-    &lt;section address=&quot;Examples&quot;&gt;
+    &lt;section address="Examples"&gt;
       &lt;title&gt;Examples&lt;/title&gt;
       &lt;content&gt;
         &lt;para&gt;Here you see some examples&lt;/para&gt;
@@ -387,7 +387,7 @@ myobj.Dispose()
     &lt;/section&gt;
 
     &lt;relatedTopics&gt;
-      &lt;link xlink:href=&quot;b7b0a984-7cab-4ab7-ba17-39618dfb6feb&quot;/&gt;
+      &lt;link xlink:href="b7b0a984-7cab-4ab7-ba17-39618dfb6feb"/&gt;
       &lt;codeEntityReference&gt;T:CSharpCodeDoc.SwiftFileReader`1&lt;/codeEntityReference&gt;
       &lt;codeEntityReference&gt;M:CSharpCodeDoc.SwiftFileReader`1.Dec&lt;/codeEntityReference&gt;
     &lt;/relatedTopics&gt;
@@ -402,7 +402,7 @@ myobj.Dispose()
   <li>Add image to <span class="InlineCode">Introduction</span> section in <span class="InlineCode">Overview.aml</span>:</li>
 </ul>{% highlight javascript %}&lt;mediaLink&gt;
 &lt;caption&gt;Title&lt;/caption&gt;
-&lt;image placement=&quot;center&quot; xlink:href=&quot;TitleImage&quot;/&gt;
+&lt;image placement="center" xlink:href="TitleImage"/&gt;
 &lt;/mediaLink&gt;{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
   <li>Preview help content in SHFB by pressing F5.</li>
   <li>Build your SHFB project and view the generated CHM file. Especially note how the changes you have done to your documentation during this lab changed the resulting compiled help file. </li>

@@ -10,12 +10,12 @@ permalink: /blog/2009/10/13/Scroll-Synchronization-in-WPF-and-Silverlight
 ---
 
 <p xmlns="http://www.w3.org/1999/xhtml">Imagine you have two ListBoxes with lots of items. Whenever a user scrolls in one of the two ListBoxes, the other one should be updated, too. What we want to do in this article is to create a simple attached property, that allows us to group scrollable controls. In the following sample you see two ScrollViewers, whose scroll positions are synchronized because they are both attached to the same ScrollGroup "Group1":</p>{% highlight javascript %}&lt;ScrollViewer 
-Name=&quot;ScrollViewer1&quot; scroll:ScrollSynchronizer.ScrollGroup=&quot;Group1&quot;&gt;
+Name="ScrollViewer1" scroll:ScrollSynchronizer.ScrollGroup="Group1"&gt;
    ...
 &lt;/ScrollViewer&gt;
   
 &lt;ScrollViewer 
-Name=&quot;ScrollViewer2&quot; scroll:ScrollSynchronizer.ScrollGroup=&quot;Group1&quot;&gt;
+Name="ScrollViewer2" scroll:ScrollSynchronizer.ScrollGroup="Group1"&gt;
    ...
 &lt;/ScrollViewer&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">
   <span>
@@ -35,7 +35,7 @@ Name=&quot;ScrollViewer2&quot; scroll:ScrollSynchronizer.ScrollGroup=&quot;Group
 {
     public static readonly DependencyProperty ScrollGroupProperty =
         DependencyProperty.RegisterAttached(
-        &quot;ScrollGroup&quot;, 
+        "ScrollGroup", 
         typeof(string), 
         typeof(ScrollSynchronizer), 
         new PropertyMetadata(new PropertyChangedCallback(
@@ -146,24 +146,24 @@ private static void Scroll(ScrollViewer changedScrollViewer)
     } 
 }{% endhighlight %}<h2 class="Head" xmlns="http://www.w3.org/1999/xhtml">
   <a id="Testing" name="Testing" class="mceItemAnchor"></a>Testing the ScrollSynchronizer</h2><p xmlns="http://www.w3.org/1999/xhtml">To test the new attached property we build a simple UI with two ScrollViewers. For both ScrollViewers we assign the value "Group1" to the <span class="InlineCode">ScrollGroup</span> property.</p>{% highlight javascript %}&lt;Window  
-xmlns:scroll=&quot;clr-namespace:SoftwareArchitects.Windows.Controls; 
-assembly=SoftwareArchitects.Windows.Controls.ScrollSynchronizer&quot; 
+xmlns:scroll="clr-namespace:SoftwareArchitects.Windows.Controls; 
+assembly=SoftwareArchitects.Windows.Controls.ScrollSynchronizer" 
 ...&gt; 
-    &lt;Grid Margin=&quot;10&quot;&gt; 
+    &lt;Grid Margin="10"&gt; 
   
         &lt;Grid.ColumnDefinitions&gt; 
-            &lt;ColumnDefinition Width=&quot;*&quot; /&gt; 
-            &lt;ColumnDefinition Width=&quot;*&quot; /&gt; 
+            &lt;ColumnDefinition Width="*" /&gt; 
+            &lt;ColumnDefinition Width="*" /&gt; 
         &lt;/Grid.ColumnDefinitions&gt; 
    
-        &lt;ScrollViewer Grid.Column=&quot;0&quot; Name=&quot;ScrollViewer1&quot;  
-        Margin=&quot;0,0,5,0&quot; scroll:ScrollSynchronizer.ScrollGroup=&quot;Group1&quot;&gt; 
-            &lt;StackPanel Name=&quot;Panel1&quot; /&gt; 
+        &lt;ScrollViewer Grid.Column="0" Name="ScrollViewer1"  
+        Margin="0,0,5,0" scroll:ScrollSynchronizer.ScrollGroup="Group1"&gt; 
+            &lt;StackPanel Name="Panel1" /&gt; 
         &lt;/ScrollViewer&gt; 
    
-        &lt;ScrollViewer Grid.Column=&quot;1&quot; Name=&quot;ScrollViewer2&quot;  
-        Margin=&quot;5,0,0,0&quot; scroll:ScrollSynchronizer.ScrollGroup=&quot;Group1&quot;&gt; 
-            &lt;StackPanel Name=&quot;Panel2&quot; /&gt; 
+        &lt;ScrollViewer Grid.Column="1" Name="ScrollViewer2"  
+        Margin="5,0,0,0" scroll:ScrollSynchronizer.ScrollGroup="Group1"&gt; 
+            &lt;StackPanel Name="Panel2" /&gt; 
         &lt;/ScrollViewer&gt; 
     &lt;/Grid&gt; 
 &lt;/Window&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">In the code-behind file we add some TextBlocks to both panels, so that the ScrollBars will get visible.</p>{% highlight javascript %}public Window1() 
@@ -174,39 +174,39 @@ assembly=SoftwareArchitects.Windows.Controls.ScrollSynchronizer&quot;
     for (var i = 0; i &lt; 100; i++) 
     { 
         this.Panel1.Children.Add(new TextBlock()  
-            { Text = string.Format(&quot;This is item {0}&quot;, i) }); 
+            { Text = string.Format("This is item {0}", i) }); 
         this.Panel2.Children.Add(new TextBlock()  
-            { Text = string.Format(&quot;This is item {0}&quot;, i) }); 
+            { Text = string.Format("This is item {0}", i) }); 
     } 
 }{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Done! We have two synchronized ScrollViewers:</p><p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2009/10/SynchronizedScrollViewers.png" class="mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused" />
 </p><h2 class="Head" xmlns="http://www.w3.org/1999/xhtml">
-  <a id="ListBoxes" name="ListBoxes" class="mceItemAnchor"></a>Synchronizing ListBoxes</h2><p xmlns="http://www.w3.org/1999/xhtml">Now, how can we get other controls synchronized? Let's replace the ScrollViewers by two ListBoxes. Unfortunately we cannot set the attached property <span class="InlineCode">ScrollGroup</span> to the ListBoxes. In the <span class="InlineCode">OnScrollGroupChanged</span> callback we assume, that we will always get a <span class="InlineCode">ScrollViewer</span>. So we could enhance the ScrollSynchronizer to accept other types of controls, or we could simply add a style for the <span class="InlineCode">ScrollViewer</span> within the ListBoxes, that sets the <span class="InlineCode">ScrollGroup</span>property. In this case no changes are necessary for out <span class="InlineCode">ScrollSynchronizer</span>.</p>{% highlight javascript %}&lt;ListBox Grid.Column=&quot;0&quot; Name=&quot;ListBox1&quot; Margin=&quot;0,0,5,0&quot;&gt; 
+  <a id="ListBoxes" name="ListBoxes" class="mceItemAnchor"></a>Synchronizing ListBoxes</h2><p xmlns="http://www.w3.org/1999/xhtml">Now, how can we get other controls synchronized? Let's replace the ScrollViewers by two ListBoxes. Unfortunately we cannot set the attached property <span class="InlineCode">ScrollGroup</span> to the ListBoxes. In the <span class="InlineCode">OnScrollGroupChanged</span> callback we assume, that we will always get a <span class="InlineCode">ScrollViewer</span>. So we could enhance the ScrollSynchronizer to accept other types of controls, or we could simply add a style for the <span class="InlineCode">ScrollViewer</span> within the ListBoxes, that sets the <span class="InlineCode">ScrollGroup</span>property. In this case no changes are necessary for out <span class="InlineCode">ScrollSynchronizer</span>.</p>{% highlight javascript %}&lt;ListBox Grid.Column="0" Name="ListBox1" Margin="0,0,5,0"&gt; 
     &lt;ListBox.Resources&gt; 
-        &lt;Style TargetType=&quot;ScrollViewer&quot;&gt; 
-            &lt;Setter Property=&quot;scroll:ScrollSynchronizer.ScrollGroup&quot;  
-                Value=&quot;Group1&quot; /&gt; 
+        &lt;Style TargetType="ScrollViewer"&gt; 
+            &lt;Setter Property="scroll:ScrollSynchronizer.ScrollGroup"  
+                Value="Group1" /&gt; 
         &lt;/Style&gt; 
     &lt;/ListBox.Resources&gt; 
 &lt;/ListBox&gt; 
 
-&lt;ListBox Grid.Column=&quot;1&quot; Name=&quot;ListBox2&quot; Margin=&quot;5,0,0,0&quot;&gt; 
+&lt;ListBox Grid.Column="1" Name="ListBox2" Margin="5,0,0,0"&gt; 
     &lt;ListBox.Resources&gt; 
-        &lt;Style TargetType=&quot;ScrollViewer&quot;&gt; 
-            &lt;Setter Property=&quot;scroll:ScrollSynchronizer.ScrollGroup&quot;  
-                Value=&quot;Group1&quot; /&gt; 
+        &lt;Style TargetType="ScrollViewer"&gt; 
+            &lt;Setter Property="scroll:ScrollSynchronizer.ScrollGroup"  
+                Value="Group1" /&gt; 
         &lt;/Style&gt; 
     &lt;/ListBox.Resources&gt; 
 &lt;/ListBox&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">A nicer way to do this would be to set the style in the <span class="InlineCode">Grid </span> resources, so it applies to all ScrollViewers in the grid automatically.</p>{% highlight javascript %}&lt;Grid.Resources&gt; 
-    &lt;Style TargetType=&quot;ScrollViewer&quot;&gt; 
-        &lt;Setter Property=&quot;scroll:ScrollSynchronizer.ScrollGroup&quot;  
-            Value=&quot;Group1&quot; /&gt; 
+    &lt;Style TargetType="ScrollViewer"&gt; 
+        &lt;Setter Property="scroll:ScrollSynchronizer.ScrollGroup"  
+            Value="Group1" /&gt; 
     &lt;/Style&gt; 
 &lt;/Grid.Resources&gt; 
 
-&lt;ListBox Grid.Column=&quot;0&quot; Name=&quot;ListBox1&quot; Margin=&quot;0,0,5,0&quot; /&gt; 
+&lt;ListBox Grid.Column="0" Name="ListBox1" Margin="0,0,5,0" /&gt; 
 
-&lt;ListBox Grid.Column=&quot;1&quot; Name=&quot;ListBox2&quot; Margin=&quot;5,0,0,0&quot; /&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">
+&lt;ListBox Grid.Column="1" Name="ListBox2" Margin="5,0,0,0" /&gt;{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">
   <img src="{{site.baseurl}}/content/images/blog/2009/10/SynchronizedListBoxes.png" class="mceC1Focused" />
 </p><h2 class="Head" xmlns="http://www.w3.org/1999/xhtml">
   <a id="Silverlight" name="Silverlight" class="mceItemAnchor"></a>Silverlight Support</h2><p xmlns="http://www.w3.org/1999/xhtml">Basically this solution would also work for Silverlight. In detail there are some differences like a <span class="InlineCode">ScrollViewer</span> does not provide the <span class="InlineCode">ScrollChanged</span> event in Silverlight. But you can bypass this problem by using the <span class="InlineCode">Scroll</span> and <span class="InlineCode">ValueChanged</span> events of the underlying ScrollBars. Another problem is that the Style for the <span class="InlineCode">ScrollViewer</span> is not applied in the ListBox sample, even when using the <span class="InlineCode">ImplicitStyleManager</span>. So I ended up setting the attached property in code for Silverlight. In the <a href="{{site.baseurl}}/content/images/blog/2009/10/SynchronizedScrollViewers.zip">source code download</a> you will find a working solution for WPF and Silverlight.</p><p xmlns="http://www.w3.org/1999/xhtml">

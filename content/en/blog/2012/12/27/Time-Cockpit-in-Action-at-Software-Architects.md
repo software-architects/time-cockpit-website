@@ -95,7 +95,7 @@ permalink: /blog/2012/12/27/Time-Cockpit-in-Action-at-Software-Architects
 </p><h3 xmlns="http://www.w3.org/1999/xhtml">Project Controlling</h3><p xmlns="http://www.w3.org/1999/xhtml">The last step in the process is project controlling. Time cockpit comes with a few predefined lists you can use to analyze your database. You can easily filter, sort, and group your results. For our own project controlling in development projects we have created a bunch of <strong><a href="~/blog/2012/10/01/Customizing-Lists-and-Forms-in-Time-Cockpit" target="_blank">custom lists</a> based on <a href="http://help.timecockpit.com/?topic=html/a7465f29-c739-4a14-bf5b-09821133dd9a.htm" target="_blank">TCQL</a></strong>. Here is an example of such a query. It shows a list of tasks (=work items) from a specific project. The list contains the task's budget, the actual time spent, and the ratio of budget vs. actual time. You can easily create similar queries and add them to your time cockpit menu to share them with other team members.</p>{% highlight javascript %}From T In Timesheet
 Where T.Project.Code = 'MyProject' And T.BeginTime &gt;= #2012-01-01# And T.EndTime &lt; #2012-02-01#
 Select New With {
-    .Title = T.Task.TFSId + &quot;: &quot; + T.Task.Title,
+    .Title = T.Task.TFSId + ": " + T.Task.Title,
     .BudgetInHours = Sum(T.Task.BudgetInHours),
     .TotalTime = Sum(T.DurationInHours),
     .Ratio = Sum(T.DurationInHours) * 100 / Sum(T.Task.BudgetInHours)

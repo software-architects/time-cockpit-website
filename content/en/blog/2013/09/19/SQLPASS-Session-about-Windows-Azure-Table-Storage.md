@@ -113,10 +113,10 @@ namespace SqlPassTableStorageSample
 
         public static string BuildRowKey(string orderId)
         {
-            // Note that the generated row key for order header starts with the char &quot;O&quot;.
+            // Note that the generated row key for order header starts with the char "O".
             // Therefore we can easily filter for all order headers by checking the first
             // letter of the row key.
-            return string.Format(&quot;O{0}_H&quot;, orderId);
+            return string.Format("O{0}_H", orderId);
         }
     }
 
@@ -144,10 +144,10 @@ namespace SqlPassTableStorageSample
 
         public static string BuildRowKey(string orderId, int lineNumber)
         {
-            // Note that the generated row key for order header starts with the char &quot;L&quot;.
+            // Note that the generated row key for order header starts with the char "L".
             // Therefore we can easily filter for all order lines by checking the first
             // letter of the row key.
-            return string.Format(&quot;L{0}_{1:0000}&quot;, orderId, lineNumber);
+            return string.Format("L{0}_{1:0000}", orderId, lineNumber);
         }
     }
 
@@ -160,16 +160,16 @@ namespace SqlPassTableStorageSample
 
             // Use the following code to connect to dev storage WITH Fiddler.
             var account = new CloudStorageAccount(
-                new StorageCredentials(&quot;devstoreaccount1&quot;, &quot;Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==&quot;),
-                new Uri(&quot;http://ipv4.fiddler:10000/devstoreaccount1/&quot;, UriKind.Absolute),
-                new Uri(&quot;http://ipv4.fiddler:10001/devstoreaccount1/&quot;, UriKind.Absolute),
-                new Uri(&quot;http://ipv4.fiddler:10002/devstoreaccount1/&quot;, UriKind.Absolute));
+                new StorageCredentials("devstoreaccount1", "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw=="),
+                new Uri("http://ipv4.fiddler:10000/devstoreaccount1/", UriKind.Absolute),
+                new Uri("http://ipv4.fiddler:10001/devstoreaccount1/", UriKind.Absolute),
+                new Uri("http://ipv4.fiddler:10002/devstoreaccount1/", UriKind.Absolute));
 
             // Use the following code to connect to storage account in the cloud
             // and read credentials from app.config.
             ////var credentials = new StorageCredentials(
-            ////    ConfigurationManager.AppSettings[&quot;AccountName&quot;],
-            ////    ConfigurationManager.AppSettings[&quot;AccountPassword&quot;]);
+            ////    ConfigurationManager.AppSettings["AccountName"],
+            ////    ConfigurationManager.AppSettings["AccountPassword"]);
             ////var account = new CloudStorageAccount(credentials, true);
             
             // Create and configure table client 
@@ -184,31 +184,31 @@ namespace SqlPassTableStorageSample
             SharedAccessSignature(tableClient);
 
             // And now we are done
-            Console.WriteLine(&quot;Done!&quot;);
+            Console.WriteLine("Done!");
             Console.ReadKey();
         }
 
         public static async Task DropTableAsync(CloudTableClient tableClient)
         {
-            Console.WriteLine(&quot;\nScenario: Drop table&quot;);
+            Console.WriteLine("\nScenario: Drop table");
 
-            var table = tableClient.GetTableReference(&quot;Orders&quot;);
+            var table = tableClient.GetTableReference("Orders");
             if (await table.DeleteIfExistsAsync())
             {
-                Console.WriteLine(&quot;Table deleted&quot;);
+                Console.WriteLine("Table deleted");
             }
         }
 
         public static async Task CreateTableWithBasicDataManipulationAsync(CloudTableClient tableClient)
         {
-            Console.WriteLine(&quot;\nScenario: Create table with basic data manipulation&quot;);
+            Console.WriteLine("\nScenario: Create table with basic data manipulation");
 
             // Create a table.
-            var table = tableClient.GetTableReference(&quot;Orders&quot;);
+            var table = tableClient.GetTableReference("Orders");
             await table.CreateIfNotExistsAsync();
 
             // Set some demo values
-            var customerCode = &quot;Rainer&quot;;
+            var customerCode = "Rainer";
             var orderId = Guid.NewGuid().ToString();
 
             // Add a row with sample data
@@ -219,36 +219,36 @@ namespace SqlPassTableStorageSample
                 TotalPrice = 100
             };
             await table.ExecuteAsync(TableOperation.Insert(order));
-            Console.WriteLine(&quot;New order has been created&quot;);
+            Console.WriteLine("New order has been created");
 
             // Retrieve a specific row by partition key and row key
             var result = await table.ExecuteAsync(
                 TableOperation.Retrieve&lt;Order&gt;(customerCode, Order.BuildRowKey(orderId)));
             var readOrder = (Order)result.Result;           // remember retrieved order, we will 
                                                             // need it later again
-            Console.WriteLine(&quot;Retrieve successful; Order ID = {0}&quot;, readOrder.RowKey);
+            Console.WriteLine("Retrieve successful; Order ID = {0}", readOrder.RowKey);
 
             // Update a row (this works)
             order.TotalPrice += 10;
             await table.ExecuteAsync(TableOperation.Replace(order));
-            Console.WriteLine(&quot;Order has been updated&quot;);
+            Console.WriteLine("Order has been updated");
 
             // Update a row (only works if ETag is specified as shown).
             // This demos optimistic concurrency. If you do not specify the etag *,
             // table storage will throw an exception as the underlying data row has
             // been altered since reading the order in readOrder.
             readOrder.TotalPrice += 20;
-            readOrder.ETag = order.ETag = &quot;*&quot;;
+            readOrder.ETag = order.ETag = "*";
             await table.ExecuteAsync(TableOperation.Replace(readOrder));
 
             // Delete a row
             await table.ExecuteAsync(TableOperation.Delete(order));
-            Console.WriteLine(&quot;Order has been deleted&quot;);
+            Console.WriteLine("Order has been deleted");
         }
 
         public static async Task CreateTableWithBatchOperationsAsync(CloudTableClient tableClient)
         {
-            Console.WriteLine(&quot;\nScenario: Create table and execute a batch operation&quot;);
+            Console.WriteLine("\nScenario: Create table and execute a batch operation");
 
             // Create a table.
             // Note that we store order headers and order lines in the SAME table.
@@ -258,11 +258,11 @@ namespace SqlPassTableStorageSample
             // database is all about designing for certain data access scenarios. Here
             // we design for a scenario in which it is common to read all order data
             // for a single customer knowing the customer's code (=partition key).
-            var table = tableClient.GetTableReference(&quot;Orders&quot;);
+            var table = tableClient.GetTableReference("Orders");
             await table.CreateIfNotExistsAsync();
 
             // Set some demo values
-            var customerCode = &quot;Rainer&quot;;
+            var customerCode = "Rainer";
             var orderId = Guid.NewGuid().ToString();
             var totalPrice = 0;
 
@@ -276,7 +276,7 @@ namespace SqlPassTableStorageSample
             {
                 batch.Insert(new OrderLine()
                 {
-                    Product = &quot;Bike&quot;,
+                    Product = "Bike",
                     Amount = lineCount,
                     ItemPrice = 5,
                     TotalPrice = lineCount * 5,
@@ -297,15 +297,15 @@ namespace SqlPassTableStorageSample
             // Note that the batch is executed in an atomic transaction
             await table.ExecuteBatchAsync(batch);
 
-            Console.WriteLine(&quot;New order with order lines has been created&quot;);
+            Console.WriteLine("New order with order lines has been created");
         }
 
         public static async Task QueryScenariosAsync(CloudTableClient tableClient)
         {
-            Console.WriteLine(&quot;\nScenario: Querying data (with new IQueryable feature from storage library 2.1)&quot;);
+            Console.WriteLine("\nScenario: Querying data (with new IQueryable feature from storage library 2.1)");
 
             // Check if table exists
-            var table = tableClient.GetTableReference(&quot;Orders&quot;);
+            var table = tableClient.GetTableReference("Orders");
             if (!await table.ExistsAsync())
             {
                 return;
@@ -316,20 +316,20 @@ namespace SqlPassTableStorageSample
             // done on the server, not on the client. Note that it does NOT
             // use async API. It blocks the calling thread.
             (from ol in table.CreateQuery&lt;OrderLine&gt;()
-             where ol.PartitionKey == &quot;Rainer&quot; 
-                &amp;&amp; ol.RowKey.CompareTo(&quot;L&quot;) &gt; 0 &amp;&amp; ol.RowKey.CompareTo(&quot;LZ&quot;) &lt; 0
+             where ol.PartitionKey == "Rainer" 
+                &amp;&amp; ol.RowKey.CompareTo("L") &gt; 0 &amp;&amp; ol.RowKey.CompareTo("LZ") &lt; 0
              select ol)
                 .AsTableQuery()
                 .Execute()
                 .ToList()
-                .ForEach(ol =&gt; Console.WriteLine(&quot;Order Line {0} (Product: '{1}')&quot;, ol.RowKey, ol.Product));
+                .ForEach(ol =&gt; Console.WriteLine("Order Line {0} (Product: '{1}')", ol.RowKey, ol.Product));
 
             #region Async segmented query 
             // The following Linq query is executed in segments (i.e. result is delivered in
             // segments if result set is large). Segmented queries support async execution.
             var orderQuery = (from o in table.CreateQuery&lt;Order&gt;()
-                              where o.PartitionKey == &quot;Rainer&quot;
-                                &amp;&amp; o.RowKey.CompareTo(&quot;O&quot;) &gt; 0 &amp;&amp; o.RowKey.CompareTo(&quot;OZ&quot;) &lt; 0
+                              where o.PartitionKey == "Rainer"
+                                &amp;&amp; o.RowKey.CompareTo("O") &gt; 0 &amp;&amp; o.RowKey.CompareTo("OZ") &lt; 0
                               select o).AsTableQuery();
 
             // Loop over all segments
@@ -342,7 +342,7 @@ namespace SqlPassTableStorageSample
                 // Iterate over all items in current segment
                 foreach (var item in segment)
                 {
-                    Console.WriteLine(&quot;Order {0} (Customer: {1})&quot;, item.RowKey, item.CustomerCode);
+                    Console.WriteLine("Order {0} (Customer: {1})", item.RowKey, item.CustomerCode);
                 }
 
                 // Store continuation token for retrieving the next segment
@@ -356,11 +356,11 @@ namespace SqlPassTableStorageSample
             // IterateResultAsync analyzes the result and generates Order or OrderLine
             // objects depending on the type of entity.
             var query = table.CreateQuery&lt;DynamicTableEntity&gt;()
-                .Where(e =&gt; e.PartitionKey == &quot;Rainer&quot;)
+                .Where(e =&gt; e.PartitionKey == "Rainer")
                 .AsTableQuery();
             foreach (var item in await IterateResultAsync(query))
             {
-                Console.WriteLine(&quot;Entity: {0}, CLR Type: {1}&quot;, item.RowKey, item.GetType().Name);
+                Console.WriteLine("Entity: {0}, CLR Type: {1}", item.RowKey, item.GetType().Name);
             }
         }
 
@@ -373,7 +373,7 @@ namespace SqlPassTableStorageSample
             var newQuery = query
                     .Resolve&lt;DynamicTableEntity, ITableEntity&gt;((pk, rk, ts, props, etag) =&gt;
                     {
-                        if (rk.StartsWith(&quot;L&quot;))
+                        if (rk.StartsWith("L"))
                         {
                             // Generate order line entity
                             return new OrderLine(pk, rk, ts, props, etag);
@@ -407,10 +407,10 @@ namespace SqlPassTableStorageSample
 
         public static void SharedAccessSignature(CloudTableClient tableClient)
         {
-            Console.WriteLine(&quot;\nScenario: Querying data (with new IQueryable feature from storage library 2.1)&quot;);
+            Console.WriteLine("\nScenario: Querying data (with new IQueryable feature from storage library 2.1)");
 
             // Check if table exists
-            var table = tableClient.GetTableReference(&quot;Orders&quot;);
+            var table = tableClient.GetTableReference("Orders");
             if (!table.Exists())
             {
                 return;
@@ -425,18 +425,18 @@ namespace SqlPassTableStorageSample
             };
 
             // Limit access to order (not order lines) for customer Rainer
-            var token = table.GetSharedAccessSignature(policy, null, &quot;Rainer&quot;, &quot;O&quot;, &quot;Rainer&quot;, &quot;OZ&quot;);
-            Console.WriteLine(&quot;Token: {0}&quot;, token);
+            var token = table.GetSharedAccessSignature(policy, null, "Rainer", "O", "Rainer", "OZ");
+            Console.WriteLine("Token: {0}", token);
 
             // Read all order data for customer Rainer -&gt; order lines must not be returned
             var restrictedClient = new CloudTableClient(
                 tableClient.BaseUri,
                 new StorageCredentials(token));
-            var restrictedTable = restrictedClient.GetTableReference(&quot;Orders&quot;);
+            var restrictedTable = restrictedClient.GetTableReference("Orders");
             foreach (var item in restrictedTable.ExecuteQuery(new TableQuery&lt;DynamicTableEntity&gt;())
                 .GroupBy(e =&gt; e.RowKey.Substring(0, 1)))
             {
-                Console.WriteLine(&quot;Type: {0}, Number of items: {1}&quot;, item.Key, item.Count());
+                Console.WriteLine("Type: {0}, Number of items: {1}", item.Key, item.Count());
             }
         }
     }

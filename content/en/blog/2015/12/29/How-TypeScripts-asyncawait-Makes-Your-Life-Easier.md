@@ -20,53 +20,53 @@ permalink: /blog/2015/12/29/How-TypeScripts-asyncawait-Makes-Your-Life-Easier
 		</h2><p xmlns="http://www.w3.org/1999/xhtml">Here is a short samples that shows how you can use TypeScript's async/await in conjunction with time cockpit. It uses the 
 			<a href="https://www.npmjs.com/package/needle" target="_blank">Needle module</a> for sending HTTP GET requests to time cockpit's web api. Take a look at the method 
 			<em>getCustomersPerCountry</em>. It demonstrates the power of async/await. The method is written as it would be using just synchronous methods. In fact it uses multiple async methods but async/await is hiding all the complexity.
-			{% highlight javascript %}/// &lt;reference path=&quot;typings/tsd.d.ts&quot; /&gt;&#xD;
-import * as needle from &quot;needle&quot;;&#xD;
-import * as chalk from &quot;chalk&quot;;&#xD;
-&#xD;
-// Some constants for configuration&#xD;
-const tcBaseUrl = &quot;https://apipreview.timecockpit.com/&quot;;&#xD;
-const tcUser = &quot;demo@timecockpit.com&quot;;&#xD;
-const tcPassword = &quot;...&quot;;&#xD;
-&#xD;
-interface ICountry { APP_IsoCode: string; }&#xD;
-interface ICustomer { APP_CompanyName: string; }&#xD;
-&#xD;
-// Note how we wrap the needle.get calls in the following two helper functions using a Promise&#xD;
-// (see also https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise)&#xD;
-&#xD;
-function getTokenAsync() {&#xD;
-    return new Promise&lt;string&gt;((resolve, _) =&gt;&#xD;
-        needle.get(&#xD;
-            `${tcBaseUrl}token`,&#xD;
-            { username: tcUser, password: tcPassword, auth: &quot;Basic&quot; },&#xD;
-            (_, resp, __) =&gt; resolve(resp.body)));&#xD;
-}&#xD;
-&#xD;
-function queryTimeCockpitAsync&lt;T&gt;(odataPath: string, token: string) {&#xD;
-    var headers = { accept: &quot;application/json&quot;, Authorization: `Bearer ${token}` };&#xD;
-    return new Promise&lt;T[]&gt;((resolve, _) =&gt;&#xD;
-        needle.get(&#xD;
-            `${tcBaseUrl}odata/${odataPath}`, &#xD;
-            { headers: headers },&#xD;
-            (_, resp, __) =&gt; resolve(resp.body.value)));&#xD;
-}&#xD;
-&#xD;
-// The next function demonstrates the power of async/await in TypeScript.&#xD;
-// As you can see, the function is written as it would be synchronous.&#xD;
-// The &quot;await&quot; keyword is caring for all the magic necessary for async processing.&#xD;
-&#xD;
-async function getCustomersPerCountry() {&#xD;
-    var token = await getTokenAsync();&#xD;
-    var countries = await queryTimeCockpitAsync&lt;ICountry&gt;(&quot;APP_Country?$select=APP_IsoCode&quot;, token);&#xD;
-    for(var i = 0; i&lt; countries.length; i++) {&#xD;
-        var country = countries[i];&#xD;
-        console.log(chalk.bgGreen.white(country.APP_IsoCode));&#xD;
-        var customers = await queryTimeCockpitAsync&lt;ICustomer&gt;(&#xD;
-            `APP_Customer?$filter=APP_Country/APP_IsoCode eq '${country.APP_IsoCode}'&amp;$select=APP_CompanyName`,&#xD;
-            token);&#xD;
-        customers.forEach(c =&gt; console.log(c.APP_CompanyName));&#xD;
-    }&#xD;
-}&#xD;
-&#xD;
+			{% highlight javascript %}/// &lt;reference path="typings/tsd.d.ts" /&gt;
+import * as needle from "needle";
+import * as chalk from "chalk";
+
+// Some constants for configuration
+const tcBaseUrl = "https://apipreview.timecockpit.com/";
+const tcUser = "demo@timecockpit.com";
+const tcPassword = "...";
+
+interface ICountry { APP_IsoCode: string; }
+interface ICustomer { APP_CompanyName: string; }
+
+// Note how we wrap the needle.get calls in the following two helper functions using a Promise
+// (see also https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+function getTokenAsync() {
+    return new Promise&lt;string&gt;((resolve, _) =&gt;
+        needle.get(
+            `${tcBaseUrl}token`,
+            { username: tcUser, password: tcPassword, auth: "Basic" },
+            (_, resp, __) =&gt; resolve(resp.body)));
+}
+
+function queryTimeCockpitAsync&lt;T&gt;(odataPath: string, token: string) {
+    var headers = { accept: "application/json", Authorization: `Bearer ${token}` };
+    return new Promise&lt;T[]&gt;((resolve, _) =&gt;
+        needle.get(
+            `${tcBaseUrl}odata/${odataPath}`, 
+            { headers: headers },
+            (_, resp, __) =&gt; resolve(resp.body.value)));
+}
+
+// The next function demonstrates the power of async/await in TypeScript.
+// As you can see, the function is written as it would be synchronous.
+// The "await" keyword is caring for all the magic necessary for async processing.
+
+async function getCustomersPerCountry() {
+    var token = await getTokenAsync();
+    var countries = await queryTimeCockpitAsync&lt;ICountry&gt;("APP_Country?$select=APP_IsoCode", token);
+    for(var i = 0; i&lt; countries.length; i++) {
+        var country = countries[i];
+        console.log(chalk.bgGreen.white(country.APP_IsoCode));
+        var customers = await queryTimeCockpitAsync&lt;ICustomer&gt;(
+            `APP_Customer?$filter=APP_Country/APP_IsoCode eq '${country.APP_IsoCode}'&amp;$select=APP_CompanyName`,
+            token);
+        customers.forEach(c =&gt; console.log(c.APP_CompanyName));
+    }
+}
+
 getCustomersPerCountry();{% endhighlight %}</p>

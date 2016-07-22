@@ -33,7 +33,7 @@ namespace TaskBasics
                     watch.Start();
                     subTask();
                     Console.WriteLine(
-                        &quot;Thread ID: {0}\t{1}&quot;,
+                        "Thread ID: {0}\t{1}",
                         Thread.CurrentThread.ManagedThreadId,
                         watch.Elapsed);
                 };
@@ -94,7 +94,7 @@ namespace TaskContinuations
                 })
                 .ContinueWith(_ =&gt; are.Set());
 
-            Console.WriteLine(&quot;Do something interesting on UI thread&quot;);
+            Console.WriteLine("Do something interesting on UI thread");
 
             are.WaitOne();
         }
@@ -198,7 +198,7 @@ namespace PiWithMonteCarlo
 
                         if (numberOfCalculations % 10000000 == 0)
                         {
-                            Console.WriteLine(&quot;{0}\t{1}&quot;,
+                            Console.WriteLine("{0}\t{1}",
                                 numberOfCalculations / 1000 / (DateTime.Now - startDateTime).TotalSeconds,
                                 (double)numberOfValuesInside / numberOfCalculations * 4);
                         }
@@ -221,7 +221,7 @@ namespace TasksAdvancedTips
     {
         static void Main(string[] args)
         {
-            ExecuteProcessAsync(&quot;cmd&quot;, &quot;/C echo done&quot;).Wait();
+            ExecuteProcessAsync("cmd", "/C echo done").Wait();
         }
 
         static Task ExecuteProcessAsync(string commandLine, string arguments)
@@ -366,15 +366,15 @@ namespace FastAndFluidUI
 
         private async Task RefreshDataAsync(CancellationToken token)
         {
-            using (var conn = new SqlConnection(&quot;Server=mydb.database.windows.net;Database=BastaWorkshop;User=BastaWorkshop;Password=P@ssW0rd!&quot;))
+            using (var conn = new SqlConnection("Server=mydb.database.windows.net;Database=BastaWorkshop;User=BastaWorkshop;Password=P@ssW0rd!"))
             {
                 await conn.OpenAsync(token);
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @&quot;
+                    cmd.CommandText = @"
 WAITFOR DELAY '0:0:5';
 SELECT * FROM Customers;
-&quot;;
+";
                     using (var reader = await cmd.ExecuteReaderAsync(token))
                     {
                         while (reader.Read())
@@ -425,8 +425,8 @@ namespace RoslynAndExpressionTrees
             Expression&lt;Func&lt;int, int, int, bool&gt;&gt; ex = (x, y, z) =&gt;
                 x == 5 &amp;&amp; (y == 7 || z == 3 || y == 5);
 
-            var p1 = Expression.Parameter(typeof(int), &quot;x&quot;);
-            var p2 = Expression.Parameter(typeof(int), &quot;y&quot;);
+            var p1 = Expression.Parameter(typeof(int), "x");
+            var p2 = Expression.Parameter(typeof(int), "y");
             Expression&lt;Func&lt;int, int, int&gt;&gt; ex2 =
                 Expression.Lambda&lt;Func&lt;int, int, int&gt;&gt;(
                     Expression.Add(
@@ -437,9 +437,9 @@ namespace RoslynAndExpressionTrees
 
             var engine = Python.CreateEngine();
             var scope = engine.CreateScope();
-            var p = new Person() { FirstName = &quot;Mad&quot;, LastName = &quot;Max&quot; };
-            scope.SetVariable(&quot;p&quot;, p);
-            var script = engine.CreateScriptSourceFromString(&quot;p.FirstName=\&quot;Rainer\&quot;&quot;);
+            var p = new Person() { FirstName = "Mad", LastName = "Max" };
+            scope.SetVariable("p", p);
+            var script = engine.CreateScriptSourceFromString("p.FirstName=\"Rainer\"");
             script.Execute(scope);
 
             Console.WriteLine(p.FirstName);
