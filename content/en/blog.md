@@ -5,9 +5,11 @@ permalink: /blog/
 ---
 
 <div class="row blog-overview">
-{% for page in (site.pages | where:page.layout == "blog") %}
+{% assign blogposts = site.pages | where: "layout","blog" | sort: "title" | reverse %}
+
+{% for page in blogposts %}
 	<div class="col-sm-12"><h2>{{ page.title }}</h2></div>
-	<div class="col-sm-12"><p>{{ page.date }}</p></div>
+	<div class="col-sm-12"><p>{{ page.date | date_to_xmlschema }}</p></div>
 	<div class="col-sm-8"><p>{{ page.teaser }}</p></div>
 	<div class="col-sm-4"><img src="{{ page.bannerimage | prepend: site.baseurl }}" /></div>
 	<div class="col-sm-12"><p><a href="{{ page.url | prepend: site.baseurl }}">Read more ...</a></p></div>
