@@ -20,16 +20,6 @@ div.content {
     box-sizing: border-box;
 }
 
-footer {
-	margin-top: 40px;
-	background-color: #222;
-	color: #fff;
-
-	a {
-		color: #fff;
-	}
-}
-
 p.highlighted {
 	text-align: center;
 	background-color: $main-color;
@@ -101,4 +91,26 @@ p.imageCaption {
 .floatLeft {
     float: left;
     margin-right: 20px;
+}
+
+.tc-highlight-container-default, .tc-highlight-container-main, .tc-highlight-container-info {
+	padding-top: 60px;
+	padding-bottom: 60px;
+
+	> div.container > div.row:first-of-type {
+		margin-top: -40px;
+	}
+
+	> div.container > div.row > div:last-of-type > *:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
+.tc-highlight-container-main {
+	background-color: $main-color;
+	color: #fff;
+}
+
+.tc-highlight-container-info {
+	background-color: #ddd;
 }

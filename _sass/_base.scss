@@ -1,3 +1,4 @@
+@import "bootstrap/bootstrap/_variables.scss";
 @import "_variables.scss";
 
 body {
@@ -8,8 +9,7 @@ body {
 }
 
 h1, h2, h3 {
-	color: $main-color;
-	font-weight: lighter;
+	color: $header-color;
 	margin-top: 40px;
     margin-bottom: 20px;
 }
@@ -19,11 +19,25 @@ h1, h1 a {
 }
 
 h2, h2 a {
-	font-size: 24px;
+	font-size: 26px;
 }
 
 h3, h3 a {
-	font-size: 28px;
+	font-size: 20px;
+}
+
+@media (max-width: $screen-sm-max) { 
+	h1, h1 a {
+		font-size: 26px;
+	}
+
+	h2, h2 a {
+		font-size: 22px;
+	}
+
+	h3, h3 a {
+		font-size: 18px;
+	}
 }
 
 img {
@@ -32,4 +46,18 @@ img {
 
 p {
 	margin: 0 0 20px;
+}
+
+a {
+	text-decoration: none;
+	color: $main-color;
+
+	&:hover {
+		text-decoration: underline;	
+		color: darken($main-color, 20%);
+	}
+}
+
+blockquote {
+	font-size: $base-font-size;
 }
