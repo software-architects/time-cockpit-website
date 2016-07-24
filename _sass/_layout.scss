@@ -13,13 +13,6 @@
 	}
 }
 
-div.content {
-	margin-top: 100px;
-	z-index: 0;
-	min-height: calc(100vh - 100px - 170px);
-    box-sizing: border-box;
-}
-
 p.highlighted {
 	text-align: center;
 	background-color: $main-color;
@@ -62,15 +55,21 @@ input[type=button], input[type=submit], a.linkButton, a.linkButtonMain {
 	color: #fff !important;
 	background-color: $highlight-color;
 	border: none;
-	line-height: 14px;
-	padding: 5px 20px;
-	font-size: 14px;
+	line-height: 20px;
+	padding: 10px 20px;
+	font-size: 16px;
 	text-transform: uppercase;
 	cursor: pointer;
 	text-decoration: none;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+	border-radius: 5px;
+
+	span.glyphicon {
+		top: 2px;
+		margin-left: 10px;
+	}
 }
 
 p.imageCaption {
@@ -93,7 +92,8 @@ p.imageCaption {
     margin-right: 20px;
 }
 
-.tc-highlight-container-default, .tc-highlight-container-main, .tc-highlight-container-info {
+/* containers */
+.tc-container-white, .tc-container-blue, .tc-container-lightgray {
 	padding-top: 60px;
 	padding-bottom: 60px;
 
@@ -101,16 +101,48 @@ p.imageCaption {
 		margin-top: -40px;
 	}
 
-	> div.container > div.row > div:last-of-type > *:last-of-type {
+	> div.container > div.row > div:last-of-type > p:last-of-type {
 		margin-bottom: 0;
 	}
 }
 
-.tc-highlight-container-main {
+.tc-container-blue {
 	background-color: $main-color;
 	color: #fff;
 }
 
-.tc-highlight-container-info {
-	background-color: #ddd;
+.tc-container-lightgray {
+	background-color: #e0e0e0;
+}
+
+/* pricing */
+.tc-pricing {
+	padding: 20px 40px;
+	background-color: #fff;
+	color: $base-text-color;
+	border-radius: 10px;
+
+	*:first-of-type {
+		margin-top: 0px;
+	}
+
+	ul {
+		padding-left: 0;
+
+		li {
+			list-style-type: none;
+			font-size: $larger-font-size;
+
+			&:before { 
+				color: $highlight-color;
+				font-family: "Glyphicons Halflings";
+				content: "\e013"; 
+				padding-right: 10px;
+			}
+		}
+	}
+
+	p.trial-account {
+		margin-top: 40px;
+	}
 }

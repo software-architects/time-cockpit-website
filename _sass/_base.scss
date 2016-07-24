@@ -6,12 +6,17 @@ body {
 	font-size: $base-font-size;
 	line-height: $base-line-height;
 	letter-spacing: 0.1px;
+	color: $base-text-color;
 }
 
 h1, h2, h3 {
 	color: $header-color;
 	margin-top: 40px;
     margin-bottom: 20px;
+
+	small {
+		color: $header-color;
+	}
 }
 
 h1, h1 a {
@@ -60,4 +65,28 @@ a {
 
 blockquote {
 	font-size: $base-font-size;
+	padding: 0;
+	border: none;
+
+	img {
+		border-radius: 50%;
+		-webkit-filter: grayscale(100%);
+		filter: grayscale(100%);
+		width: 130px;
+		float: left;
+		margin-right: 30px;
+		margin-bottom: 20px;
+
+		&:hover {
+			-webkit-filter: grayscale(0%);
+			filter: grayscale(0%);
+		}
+	}
+}
+
+div.content {
+	margin-top: 100px;
+	z-index: 0;
+	min-height: calc(100vh - 100px - 130px);
+    box-sizing: border-box;
 }
