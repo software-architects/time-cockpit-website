@@ -11,6 +11,7 @@ permalink: /
 		</div>
 	</div>
 </div>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-4 frontpageMainItem" onclick="javascript:document.location.href='{{site.baseurl}}/tour/grafischer-kalender/';">

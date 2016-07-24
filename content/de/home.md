@@ -1,8 +1,16 @@
 ---
-layout: page
+layout: full-width-page
 title: time cockpit - Zeiterfassung
 permalink: /de/
 ---
+
+<div class="tc-banner">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12"></div>
+		</div>
+	</div>
+</div>
 
 <h1 class="textaligncenter" xmlns="http://www.w3.org/1999/xhtml">Zeiterfassung mit time cockpit</h1><div class="container" xmlns="http://www.w3.org/1999/xhtml">
   <div class="row">
@@ -111,28 +119,33 @@ permalink: /de/
     </div>
   </div>
   <hr />
-  <div class="row">
-    <div class="col-sm-12">
-      <h2>Was unsere Kunden sagen
-					</h2>
-    </div>
-    <div class="col-sm-12 col-md-4">
-      <p class="quote">
-        <span class="quote">„</span>Your staff has also been outstanding! They have helped us to implement specialized processes related specifically to our needs to help streamline the way we do billing. They are always very responsive and spot on with their direction and instruction. They also check back to be sure that what they have provided has accomplished the task!<span class="quote">”</span></p>
-      <p class="customer">
-        <strong>Tom Campbell</strong> of <a href="http://ctechgolf.com" target="_blank">C-Tech</a></p>
-    </div>
-    <div class="col-sm-12 col-md-4">
-      <p class="quote">
-        <span class="quote">„</span>Die hervorragende Supportqualität zeichnet time cockpit besonders aus. Egal ob bei Versionswechseln oder bei Fragen rund um die time cockpit API – das Supportteam steht uns immer mit Rat und Tat zur Seite.<span class="quote">”</span></p>
-      <p class="customer">
-        <strong>Rene Nulsch</strong> von <a href="http://www.softline-solutions.de/" target="_blank">Softline Solutions GmbH</a></p>
-    </div>
-    <div class="col-sm-12 col-md-4">
-      <p class="quote">
-        <span class="quote">„</span>Durch den Einsatz von time cockpit können wir unsere Leistungen viel transparenter für unsere Kunden erfassen und abrechnen. Wir schätzen eine Umsatzsteigerung von fast 25 %!<span class="quote">”</span></p>
-      <p class="customer">
-        <strong>Paul Scholda</strong> von <a href="http://www.ehouse.at" target="_blank">eHouse</a></p>
-    </div>
-  </div>
+</div>
+
+<!-- TODO: Size of images does not fit for all sizes -->
+<div class="tc-container-lightgray">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>Was unsere Kunden sagen</h2>
+			</div>
+			<div class="col-sm-4">
+				<blockquote>
+					<p>Your staff has also been outstanding! They have helped us to implement specialized processes related specifically to our needs to help streamline the way we do billing. They are always very responsive and spot on with their direction and instruction. They also check back to be sure that what they have provided has accomplished the task!</p>
+					<footer><cite>Tom Campbell</cite> von <a href="http://ctechgolf.com" target="_blank">C-Tech</a></footer>
+				</blockquote>
+			</div>
+			<div class="col-sm-4">
+				<blockquote>
+					<p>Durch den Einsatz von time cockpit können wir unsere Leistungen viel transparenter für unsere Kunden erfassen und abrechnen. Wir schätzen eine Umsatzsteigerung von fast 25 %!</p>
+					<footer><cite>Paul Scholda</cite> von <a href="http://www.ehouse.at/" target="_blank">eHouse</a></footer>
+				</blockquote>
+			</div>
+			<div class="col-sm-4">
+				<blockquote>
+					<p>Die hervorragende Supportqualität zeichnet time cockpit besonders aus. Egal ob bei Versionswechseln oder bei Fragen rund um die time cockpit API – das Supportteam steht uns immer mit Rat und Tat zur Seite.</p>
+					<footer><cite>Rene Nulsch</cite> von <a href="http://www.softline-solutions.de/" target="_blank">Softline Solutions GmbH</a></footer>
+				</blockquote>
+			</div>
+		</div>
+	</div>
 </div>

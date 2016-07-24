@@ -51,9 +51,13 @@ span.highlightedText {
 	}
 }
 
+p.tc-action-button {
+	margin-top: 40px;
+}
+
 input[type=button], input[type=submit], a.linkButton, a.linkButtonMain {
 	color: #fff !important;
-	background-color: $highlight-color;
+	background-color: $main-color;
 	border: none;
 	line-height: 20px;
 	padding: 10px 20px;
@@ -64,7 +68,6 @@ input[type=button], input[type=submit], a.linkButton, a.linkButtonMain {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	border-radius: 5px;
 
 	span.glyphicon {
 		top: 2px;
@@ -96,6 +99,7 @@ p.imageCaption {
 .tc-container-white, .tc-container-blue, .tc-container-lightgray {
 	padding-top: 60px;
 	padding-bottom: 60px;
+	position: relative;
 
 	> div.container > div.row:first-of-type {
 		margin-top: -40px;
@@ -103,6 +107,15 @@ p.imageCaption {
 
 	> div.container > div.row > div:last-of-type > p:last-of-type {
 		margin-bottom: 0;
+	}
+
+	.tc-container-image {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		margin-top: -60px;
+		margin-bottom: -60px;
+		opacity: 0.3;
 	}
 }
 
@@ -117,32 +130,37 @@ p.imageCaption {
 
 /* pricing */
 .tc-pricing {
-	padding: 20px 40px;
-	background-color: #fff;
-	color: $base-text-color;
-	border-radius: 10px;
-
-	*:first-of-type {
-		margin-top: 0px;
-	}
-
-	ul {
-		padding-left: 0;
-
-		li {
-			list-style-type: none;
-			font-size: $larger-font-size;
-
-			&:before { 
-				color: $highlight-color;
-				font-family: "Glyphicons Halflings";
-				content: "\e013"; 
-				padding-right: 10px;
-			}
+	.tc-container {
+		.tc-container-image {
+			background-image: url(/time-cockpit-website/content/images/banner.jpg);
+			background-size: cover;
 		}
 	}
 
-	p.trial-account {
-		margin-top: 40px;
+	.tc-pricing-details {
+		padding: 20px 40px;
+		background-color: #fff;
+		color: $base-text-color;
+
+		h1 {
+			font-size: 40px;
+			margin-top: 0px;
+		}
+
+		ul {
+			padding-left: 0;
+
+			li {
+				list-style-type: none;
+				font-size: $larger-font-size;
+
+				&:before { 
+					color: $main-color;
+					font-family: "Glyphicons Halflings";
+					content: "\e013"; 
+					padding-right: 10px;
+				}
+			}
+		}
 	}
 }
