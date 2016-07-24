@@ -20,6 +20,7 @@ permalink: /de/preis/preis/
 						<li>Datenimport und -export</li>
 						<li>Reporting</li>
 						<li>Full- und HTML5-Client</li>
+						<li>Anpassbar und erweiterbar</li>
 						<li>Email Support</li>
 						<li>1 Stunde Unterstützung bei Anpassungen</li>
 					</ul>

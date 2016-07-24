@@ -75,7 +75,7 @@ input[type=button], input[type=submit], a.linkButton, a.linkButtonMain {
 	}
 
 	&:hover {
-		color: darken($main-color, 20%);
+		background-color: darken($main-color, 20%);
 	}
 }
 
@@ -100,7 +100,7 @@ p.imageCaption {
 }
 
 /* containers */
-.tc-container-white, .tc-container-blue, .tc-container-lightgray {
+.tc-container-white, .tc-container-blue, .tc-container-lightgray, .tc-container-darkgray {
 	padding-top: 60px;
 	padding-bottom: 60px;
 	position: relative;
@@ -125,11 +125,48 @@ p.imageCaption {
 
 .tc-container-blue {
 	background-color: $main-color;
-	color: #fff;
 }
 
 .tc-container-lightgray {
 	background-color: #e0e0e0;
+}
+
+.tc-container-darkgray {
+	background-color: #444;
+
+}
+
+.tc-container-darkgray, .tc-container-blue {
+	color: #fff;
+
+	h1, h2, h3, a {
+		color: #fff;
+	}
+
+	input[type=button], input[type=submit], a.linkButton, a.linkButtonMain {
+		color: $main-color !important;
+		background-color: #fff;
+	}
+}
+
+/* home */
+.tc-home {
+	.tc-container {
+		.tc-container-image {
+			background-image: url(/time-cockpit-website/content/images/banner.jpg);
+			background-size: cover;
+		}
+	}
+}
+
+/* home */
+.tc-contact {
+	.tc-container {
+		.tc-container-image {
+			background-image: url(/time-cockpit-website/content/images/banner.jpg);
+			background-size: cover;
+		}
+	}
 }
 
 /* pricing */
@@ -162,7 +199,7 @@ p.imageCaption {
 					color: $main-color;
 					font-family: "Glyphicons Halflings";
 					content: "\e013"; 
-					padding-right: 10px;
+					padding-right: 15px;
 				}
 			}
 		}
