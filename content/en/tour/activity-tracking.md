@@ -4,8 +4,8 @@ title: Activity Tracking for Accurate Time Sheets
 permalink: /tour/activity-tracking/
 ---
 
-<h1 xmlns="http://www.w3.org/1999/xhtml">Activity Tracking
-		</h1><div class="tour" xmlns="http://www.w3.org/1999/xhtml">
+<h1>Activity Tracking
+		</h1><div class="tour">
   <div class="row">
     <div class="col-sm-12 col-md-6">
       <h2>Reconstruct Your Day
@@ -15,14 +15,14 @@ permalink: /tour/activity-tracking/
       </p>
       <p>Turn on time cockpit’s signal tracker to automatically get a log of your work done on your PC. Import the call history from your phone if phone calls are relevant for your time sheet. As a developer connect time cockpit to your Microsoft Team Foundation Server to see when you checked in files and when changes happened to your work items.
 				</p>
-      <p>Time cockpits <a href="{{site.baseurl}}/tour/grafischer-kalender/">graphical time sheet calendar</a> visualizes this log and lets you transform it into time sheet entries with a few mouse clicks.
+      <p>Time cockpits <a href="{{site.baseurl}}/tour/graphical-calendar/">graphical time sheet calendar</a> visualizes this log and lets you transform it into time sheet entries with a few mouse clicks.
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:1bbae7a2-b766-4c6c-a3a4-5bdeb8d7cf2c" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:1bbae7a2-b766-4c6c-a3a4-5bdeb8d7cf2c" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -38,10 +38,10 @@ permalink: /tour/activity-tracking/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:969ca3ba-0b4e-4405-90b3-cf804d2454a9" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:969ca3ba-0b4e-4405-90b3-cf804d2454a9" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -69,10 +69,10 @@ permalink: /tour/activity-tracking/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:89b7c8a0-3237-43cf-a2e5-023823c117c0" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:89b7c8a0-3237-43cf-a2e5-023823c117c0" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">

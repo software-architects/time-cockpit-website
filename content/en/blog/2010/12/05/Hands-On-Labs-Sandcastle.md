@@ -9,13 +9,13 @@ lang: en
 permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">This week I will be one of the speakers at <a href="http://basta-on-tour.de/csharp2010/" target="_blank">BASTA On Tour</a> in Munich. One of the topics I am going to speak about is code documentation with Sandcastle. In this blog post I want to share my slides and summarize the hands-on labs that I am going to go through with the participants.</p><ul xmlns="http://www.w3.org/1999/xhtml">
+<p>This week I will be one of the speakers at <a href="http://basta-on-tour.de/csharp2010/" target="_blank">BASTA On Tour</a> in Munich. One of the topics I am going to speak about is code documentation with Sandcastle. In this blog post I want to share my slides and summarize the hands-on labs that I am going to go through with the participants.</p><ul>
   <li>
     <a href="{{site.baseurl}}/content/images/blog/2010/12/Microsoft Help And Sandcastle.pdf" target="_blank">Download Slides</a> (PDF)</li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">Hands-On Lab 1: The Raw Sandcastle Process</h2><p xmlns="http://www.w3.org/1999/xhtml">Although it is likely that you will use one of the sandcastle UI tools that the community provides it is worthful to have an understanding about what happens behind the scenes. Therefore you will use the raw sandcastle command-line api to generate a CHM file for a sime C# sour file in this first hands-on lab.</p><p xmlns="http://www.w3.org/1999/xhtml">Prerequisites:</p><ol xmlns="http://www.w3.org/1999/xhtml">
+</ul><h2>Hands-On Lab 1: The Raw Sandcastle Process</h2><p>Although it is likely that you will use one of the sandcastle UI tools that the community provides it is worthful to have an understanding about what happens behind the scenes. Therefore you will use the raw sandcastle command-line api to generate a CHM file for a sime C# sour file in this first hands-on lab.</p><p>Prerequisites:</p><ol>
   <li>Download and install the June 2010 release of Sandcastle from <a href="http://sandcastle.codeplex.com/" target="_blank">http://sandcastle.codeplex.com/</a></li>
   <li>Option: Install the latest Sandcastle style path from <a href="http://sandcastlestyles.codeplex.com/" target="_blank">http://sandcastlestyles.codeplex.com/</a></li>
-</ol><p xmlns="http://www.w3.org/1999/xhtml">Lab step by step description:</p><ol xmlns="http://www.w3.org/1999/xhtml">
+</ol><p>Lab step by step description:</p><ol>
   <li>Copy sandcastle's <span class="InlineCode">Examples</span> folder:
 <br /><span class="InlineCode">copy c:\Program Files (x86)\Sandcastle\Examples c:\temp\Sandcastle Examples</span></li>
   <li>Open a <em>Visual Studio Command Prompt (2010)</em></li>
@@ -35,25 +35,25 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
 
 <ol><li><span class="InlineCode">chm\test.hhc</span></li><li><span class="InlineCode">chm\test.hhk</span></li><li><span class="InlineCode">chm\test.hhp</span></li><li>Content in <span class="InlineCode">chm\html</span>, <span class="InlineCode">chm\icons</span>, <span class="InlineCode">chm\scripts</span> and <span class="InlineCode">chm\styles</span></li></ol></li>
   <li>Open the resulting CHM file <span class="InlineCode">chm\test.chm</span>.</li>
-</ol><h2 xmlns="http://www.w3.org/1999/xhtml">Hands-On Lab 2: Sandcastle Helpfile Builder</h2><p xmlns="http://www.w3.org/1999/xhtml">Prerequisites:</p><ol xmlns="http://www.w3.org/1999/xhtml">
+</ol><h2>Hands-On Lab 2: Sandcastle Helpfile Builder</h2><p>Prerequisites:</p><ol>
   <li>Download and install the July 2010 release of Sandcastle Help File Builder (SHFB) from <a href="http://shfb.codeplex.com/" target="_blank">http://shfb.codeplex.com/</a></li>
   <li>Execute Hands-on lab 1 (see above) so that you have a compiled version of the file <span class="InlineCode">test.cs</span>.</li>
-</ol><p xmlns="http://www.w3.org/1999/xhtml">Lab step by step description:</p><ol xmlns="http://www.w3.org/1999/xhtml">
+</ol><p>Lab step by step description:</p><ol>
   <li>Launch Sandcastle Help File Builder.</li>
   <li>Create a new project called <span class="InlineCode">test.shfbproj.</span></li>
   <li>Add <span class="InlineCode">test.dll</span> and <span class="InlineCode">comments.xml</span> (both results from lab 1) as a documentation source using the SHFB's project explorer.</li>
   <li>Build project using <em>Documentation / Build Project</em>.</li>
   <li>Launch generated CHM file using <em>Documentation / View Help File / View HTML Help 1 (.chm) File</em></li>
   <li>Experiment with different project settings; try to generate and launch <em>MSHelpViewer</em> help file format using the project's <span class="InlineCode">HelpFileFormat</span> property.</li>
-</ol><h2 xmlns="http://www.w3.org/1999/xhtml">Hands-On Lab 3: Documenting Sample Class Library</h2><p xmlns="http://www.w3.org/1999/xhtml">Prerequisites:</p><ol xmlns="http://www.w3.org/1999/xhtml">
+</ol><h2>Hands-On Lab 3: Documenting Sample Class Library</h2><p>Prerequisites:</p><ol>
   <li>Download and install the latest release of StyleCop from <a href="http://stylecop.codeplex.com/" target="_blank">http://stylecop.codeplex.com/</a></li>
   <li>Download and install the latest release of GhostDoc from <a href="http://submain.com/products/ghostdoc.aspx" target="_blank">http://submain.com/products/ghostdoc.aspx</a></li>
-</ol><p xmlns="http://www.w3.org/1999/xhtml">Lab step by step description:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+</ol><p>Lab step by step description:</p><ul>
   <li>Launch Visual Studio 2010</li>
   <li>Create a new <em>C# Class Library</em> project called <span class="InlineCode">CSharpCodeDoc</span></li>
   <li>Add the following class to the class library:
 
-<f:function name="Composite.Web.Html.SyntaxHighlighter" xmlns:f="http://www.composite.net/ns/function/1.0"><f:param name="SourceCode" value="namespace CSharpCodeDoc&#xA;{&#xA; using System;&#xA; using System.Collections.Generic;&#xA; using System.IO;&#xA;&#xA; public class SwiftFileReader&lt;T&gt; : TextReader&#xA; {&#xA;  private static object lockObject;&#xA;&#xA;  static SwiftFileReader()&#xA;  {&#xA;   lockObject = new object();&#xA;  }&#xA;&#xA;  public SwiftFileReader()&#xA;   : this(TimeSpan.FromMinutes(1))&#xA;  {&#xA;  }&#xA;&#xA;  public SwiftFileReader(TimeSpan timeout)&#xA;  {&#xA;   this.Timeout = timeout;&#xA;  }&#xA;&#xA;  public TimeSpan Timeout { get; set; }&#xA;&#xA;  public int Size { get; private set; }&#xA;&#xA;  public bool HasReachedLimit { get; private set; }  public IEnumerable&lt;TDest&gt; ConvertFileContent&lt;TDest&gt;(int sizeLimit)&#xA;  {&#xA;   throw new NotImplementedException();&#xA;  }&#xA;&#xA;  public override string ReadToEnd()&#xA;  {&#xA;   return base.ReadToEnd();&#xA;  }&#xA; }&#xA;}" xmlns:f="http://www.composite.net/ns/function/1.0" /><f:param name="CodeType" value="c#" xmlns:f="http://www.composite.net/ns/function/1.0" /></f:function></li>
+<function name="Composite.Web.Html.SyntaxHighlighter"><param name="SourceCode" value="namespace CSharpCodeDoc&#xA;{&#xA; using System;&#xA; using System.Collections.Generic;&#xA; using System.IO;&#xA;&#xA; public class SwiftFileReader&lt;T&gt; : TextReader&#xA; {&#xA;  private static object lockObject;&#xA;&#xA;  static SwiftFileReader()&#xA;  {&#xA;   lockObject = new object();&#xA;  }&#xA;&#xA;  public SwiftFileReader()&#xA;   : this(TimeSpan.FromMinutes(1))&#xA;  {&#xA;  }&#xA;&#xA;  public SwiftFileReader(TimeSpan timeout)&#xA;  {&#xA;   this.Timeout = timeout;&#xA;  }&#xA;&#xA;  public TimeSpan Timeout { get; set; }&#xA;&#xA;  public int Size { get; private set; }&#xA;&#xA;  public bool HasReachedLimit { get; private set; }  public IEnumerable&lt;TDest&gt; ConvertFileContent&lt;TDest&gt;(int sizeLimit)&#xA;  {&#xA;   throw new NotImplementedException();&#xA;  }&#xA;&#xA;  public override string ReadToEnd()&#xA;  {&#xA;   return base.ReadToEnd();&#xA;  }&#xA; }&#xA;}" /><param name="CodeType" value="c#" /></function></li>
   <li>Make sure that the class library builds correctly.</li>
   <li>Right-click on the project in <em>Solution Explorer</em> and open choose <em>StyleCop Settings.</em></li>
   <li>
@@ -66,10 +66,10 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
 <ul><li>Tip: You could integrate this step in your corporate's build process and even treat StyleCop warnings as errors. With this you can make sure that developers do not forget to write code documentation XML.</li></ul></li>
   <li>Add documentation header to class:
 
-{% highlight javascript %}/// &lt;summary&gt;
+{% highlight javascript %}/// <summary>
 /// Represents a reader for SWIFT files
-/// &lt;/summary&gt;
-/// &lt;typeparam name="T"&gt;Parameter type that should be used for reading files&lt;/typeparam&gt;{% endhighlight %}</li>
+/// </summary>
+/// <typeparam name="T">Parameter type that should be used for reading files</typeparam>{% endhighlight %}</li>
   <li> Run StyleCop on the project using <em>Tools / Run StyleCop</em>. Note that StyleCop tells you that you have forgotten the period at the end of the summary text.
 
 <ul><li>Correct that error by adding the period</li></ul></li>
@@ -91,99 +91,99 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
  using System.Collections.Generic;
  using System.IO;
 
- /// &lt;summary&gt;
+ /// <summary>
  /// Represents a reader for SWIFT files.
- /// &lt;/summary&gt;
- /// &lt;typeparam name="T"&gt;Parameter type that should be used for reading files.&lt;/typeparam&gt;
- public class SwiftFileReader&lt;T&gt; : TextReader
+ /// </summary>
+ /// <typeparam name="T">Parameter type that should be used for reading files.</typeparam>
+ public class SwiftFileReader<T> : TextReader
  {
-  /// &lt;summary&gt;
+  /// <summary>
   /// Internal helper object used for locking.
-  /// &lt;/summary&gt;
+  /// </summary>
   private static object lockObject;
 
-  /// &lt;summary&gt;
+  /// <summary>
   /// Initializes static members of the SwiftFileReader class.
-  /// &lt;/summary&gt;
+  /// </summary>
   static SwiftFileReader()
   {
    lockObject = new object();
   }
 
-  /// &lt;summary&gt;
-  /// Initializes a new instance of the &lt;see cref="SwiftFileReader{T}"/&gt; class.
-  /// &lt;/summary&gt;
+  /// <summary>
+  /// Initializes a new instance of the <see cref="SwiftFileReader{T}"/> class.
+  /// </summary>
   public SwiftFileReader()
    : this(TimeSpan.FromMinutes(1))
   {
   }
 
-  /// &lt;summary&gt;
-  /// Initializes a new instance of the &lt;see cref="SwiftFileReader{T}"/&gt; class.
-  /// &lt;/summary&gt;
-  /// &lt;param name="timeout"&gt;Timeout for reading (see &lt;see cref="Timeout"/&gt;).&lt;/param&gt;
+  /// <summary>
+  /// Initializes a new instance of the <see cref="SwiftFileReader{T}"/> class.
+  /// </summary>
+  /// <param name="timeout">Timeout for reading (see <see cref="Timeout"/>).</param>
   public SwiftFileReader(TimeSpan timeout)
   {
    this.Timeout = timeout;
   }
 
-  /// &lt;summary&gt;
+  /// <summary>
   /// Gets or sets the timeout for reading.
-  /// &lt;/summary&gt;
-  /// &lt;value&gt;Timeout for reading.&lt;/value&gt;
+  /// </summary>
+  /// <value>Timeout for reading.</value>
   public TimeSpan Timeout { get; set; }
 
-  /// &lt;summary&gt;
+  /// <summary>
   /// Gets the size of the file.
-  /// &lt;/summary&gt;
-  /// &lt;value&gt;Size of the file.&lt;/value&gt;
+  /// </summary>
+  /// <value>Size of the file.</value>
   public int Size { get; private set; }
 
-  /// &lt;summary&gt;
+  /// <summary>
   /// Gets a value indicating whether this instance has reached limit.
-  /// &lt;/summary&gt;
-  /// &lt;value&gt;Returns &lt;c&gt;true&lt;/c&gt; if this instance has reached limit; otherwise, &lt;c&gt;false&lt;/c&gt;.
-  /// &lt;/value&gt;
+  /// </summary>
+  /// <value>Returns <c>true</c> if this instance has reached limit; otherwise, <c>false</c>.
+  /// </value>
   public bool HasReachedLimit { get; private set; }
 
-  /// &lt;summary&gt;
+  /// <summary>
   /// Converts the content of the file.
-  /// &lt;/summary&gt;
-  /// &lt;typeparam name="TDest"&gt;Type of resulting objects.&lt;/typeparam&gt;
-  /// &lt;param name="sizeLimit"&gt;The size limit for the result.&lt;/param&gt;
-  /// &lt;returns&gt;
-  /// &lt;para&gt;Returns the file's content as an enumerable.&lt;/para&gt;
-  /// &lt;para&gt;The result contains max. &lt;paramref name="sizeLimit"/&gt; objects.&lt;/para&gt;
-  /// &lt;/returns&gt;
-  public IEnumerable&lt;TDest&gt; ConvertFileContent&lt;TDest&gt;(int sizeLimit)
+  /// </summary>
+  /// <typeparam name="TDest">Type of resulting objects.</typeparam>
+  /// <param name="sizeLimit">The size limit for the result.</param>
+  /// <returns>
+  /// <para>Returns the file's content as an enumerable.</para>
+  /// <para>The result contains max. <paramref name="sizeLimit"/> objects.</para>
+  /// </returns>
+  public IEnumerable<TDest> ConvertFileContent<TDest>(int sizeLimit)
   {
    throw new NotImplementedException();
   }
 
-  /// &lt;summary&gt;
+  /// <summary>
   /// Reads all characters from the current position to the end of the TextReader and returns them as one string.
-  /// &lt;/summary&gt;
-  /// &lt;returns&gt;
+  /// </summary>
+  /// <returns>
   /// A string containing all characters from the current position to the end of the TextReader.
-  /// &lt;/returns&gt;
-  /// &lt;exception cref="T:System.IO.IOException"&gt;An I/O error occurs. &lt;/exception&gt;
-  /// &lt;exception cref="T:System.ObjectDisposedException"&gt;The &lt;see cref="T:System.IO.TextReader"/&gt; is closed. &lt;/exception&gt;
-  /// &lt;exception cref="T:System.OutOfMemoryException"&gt;There is insufficient memory to allocate a buffer for the returned string. &lt;/exception&gt;
-  /// &lt;exception cref="T:System.ArgumentOutOfRangeException"&gt;The number of characters in the next line is larger than &lt;see cref="F:System.Int32.MaxValue"/&gt;&lt;/exception&gt;
+  /// </returns>
+  /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+  /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextReader"/> is closed. </exception>
+  /// <exception cref="T:System.OutOfMemoryException">There is insufficient memory to allocate a buffer for the returned string. </exception>
+  /// <exception cref="T:System.ArgumentOutOfRangeException">The number of characters in the next line is larger than <see cref="F:System.Int32.MaxValue"/></exception>
   public override string ReadToEnd()
   {
    return base.ReadToEnd();
   }
  }
-}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+}{% endhighlight %}<ul>
   <li>Enable the generation of a code documentation XML file in the project's property window (<em>Build</em> tab) in Visual Studio.</li>
   <li>Build your solution using the <em>Debug</em> configuration.</li>
   <li>Create a <em>Sandcastle Help File Builder</em> project named <span class="InlineCode">CSharpCodeDoc.</span></li>
   <li>Add <span class="InlineCode">CSharpCodeDoc.dll</span> and <span class="InlineCode">CSharpCodeDoc.XML</span> located in the project's <span class="InlineCode">bin/Debug</span> folder to the SHFB project using SHFB's project explorer.</li>
   <li>Build your SHFB project and view the generated CHM file.</li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">Hands-On Lab 4: Advanced Features For C# Code Documentation</h2><p xmlns="http://www.w3.org/1999/xhtml">Prerequisites:</p><ol xmlns="http://www.w3.org/1999/xhtml">
+</ul><h2>Hands-On Lab 4: Advanced Features For C# Code Documentation</h2><p>Prerequisites:</p><ol>
   <li>Execute Hands-on lab 3 (see above).</li>
-</ol><p xmlns="http://www.w3.org/1999/xhtml">Lab step by step description:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+</ol><p>Lab step by step description:</p><ul>
   <li>Add file <span class="InlineCode">UsageSamples.cs</span>with C# example code to your project:
 
 {% highlight javascript %}namespace CSharpCodeDoc
@@ -193,7 +193,7 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
 #region SwiftReaderClassSample
   public static void ReadSwiftUsingSwiftReader()
   {
-   using (var reader = new SwiftFileReader&lt;object&gt;())
+   using (var reader = new SwiftFileReader<object>())
    {
     // ToDo: Show how to use the reader here.
    }
@@ -205,64 +205,64 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
   <li>Change documentation of class <span class="InlineCode">SwiftFileReader&lt;T&gt;</span>as follows:
 
 <ul><li>Note how the previously created example code is referenced.</li></ul></li>
-</ul>{% highlight javascript %}/// &lt;summary&gt;
+</ul>{% highlight javascript %}/// <summary>
 /// Represents a reader for SWIFT files.
-/// &lt;/summary&gt;
-/// &lt;typeparam name="T"&gt;Parameter type that should be used for reading files.&lt;/typeparam&gt;
-/// &lt;example&gt;
-/// The following example shows how to use the &lt;see cref="SwiftFileReader{T}"/&gt; class:
-/// &lt;code source="..\CSharpCodeDoc\UsageSamples.cs" region="SwiftReaderClassSample" lang="C#" /&gt;
-/// &lt;/example&gt;
-public class SwiftFileReader&lt;T&gt; : TextReader
-{ [...] }{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+/// </summary>
+/// <typeparam name="T">Parameter type that should be used for reading files.</typeparam>
+/// <example>
+/// The following example shows how to use the <see cref="SwiftFileReader{T}"/> class:
+/// <code source="..\CSharpCodeDoc\UsageSamples.cs" region="SwiftReaderClassSample" lang="C#" />
+/// </example>
+public class SwiftFileReader<T> : TextReader
+{ [...] }{% endhighlight %}<ul>
   <li>Exclude the property <span class="InlineCode">Size</span> from documentation by adding an <span class="InlineCode">exclude</span> element:</li>
-</ul>{% highlight javascript %}/// &lt;summary&gt;
+</ul>{% highlight javascript %}/// <summary>
 /// Gets the size of the file.
-/// &lt;/summary&gt;
-/// &lt;value&gt;Size of the file.&lt;/value&gt;
-/// &lt;exclude /&gt;
-public int Size { get; private set; }{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+/// </summary>
+/// <value>Size of the file.</value>
+/// <exclude />
+public int Size { get; private set; }{% endhighlight %}<ul>
   <li>Add a paragraph to the <span class="InlineCode">return</span> section of the documentation for the method <span class="InlineCode">ConvertFileContent</span>:
 
 <ul><li>Note how the <span class="InlineCode">see langword</span> element is used.</li></ul></li>
-</ul>{% highlight javascript %}/// &lt;returns&gt;
-/// &lt;para&gt;Returns the file's content as an enumerable.&lt;/para&gt;
-/// &lt;para&gt;The result contains max. &lt;paramref name="sizeLimit"/&gt; objects.&lt;/para&gt;
-/// &lt;para&gt;Result will never be &lt;see langword="null"/&gt;.&lt;/para&gt;
-/// &lt;/returns&gt;
-public IEnumerable&lt;TDest&gt; ConvertFileContent&lt;TDest&gt;(int sizeLimit){% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}/// <returns>
+/// <para>Returns the file's content as an enumerable.</para>
+/// <para>The result contains max. <paramref name="sizeLimit"/> objects.</para>
+/// <para>Result will never be <see langword="null"/>.</para>
+/// </returns>
+public IEnumerable<TDest> ConvertFileContent<TDest>(int sizeLimit){% endhighlight %}<ul>
   <li>Add a method <span class="InlineCode">Dec</span> with two overloads and add documentation to the <span class="InlineCode">overloads</span> section in the documentation:</li>
-</ul>{% highlight javascript %}/// &lt;summary&gt;Decrements the number by 1.&lt;/summary&gt;
-/// &lt;overloads&gt;This method has two overloads.&lt;/overloads&gt;
+</ul>{% highlight javascript %}/// <summary>Decrements the number by 1.</summary>
+/// <overloads>This method has two overloads.</overloads>
 public void Dec()
 {
 }
 
-/// &lt;summary&gt;Decrements the number by amount.&lt;/summary&gt;
-/// &lt;param name="amount"&gt;The amount to decrement it by.&lt;/param&gt;
+/// <summary>Decrements the number by amount.</summary>
+/// <param name="amount">The amount to decrement it by.</param>
 public void Dec(int amount)
 {
-}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+}{% endhighlight %}<ul>
   <li>Add file <span class="InlineCode">NamespaceDoc.cs</span> with documentation for your namespace to your project:</li>
 </ul>{% highlight javascript %}namespace CSharpCodeDoc
 {
  using System.Runtime.CompilerServices;
  
- /// &lt;summary&gt;
+ /// <summary>
  /// Contains sample classes for code documentation.
- /// &lt;/summary&gt;
+ /// </summary>
  [CompilerGenerated]
  internal class NamespaceDoc
  {
  }
-}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+}{% endhighlight %}<ul>
   <li>Build your project and make sure that there are no errors.</li>
   <li>Run StyleCop on your project and make sure that there are not errors or warnings.</li>
   <li>Build your SHFB project and view the generated CHM file. Especially note how the changes you have done to your documentation during this lab changed the resulting compiled help file.</li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">Hands-On Lab 5: Adding Conceptual Content</h2><p xmlns="http://www.w3.org/1999/xhtml">Prerequisites:</p><ol xmlns="http://www.w3.org/1999/xhtml">
+</ul><h2>Hands-On Lab 5: Adding Conceptual Content</h2><p>Prerequisites:</p><ol>
   <li>Download latest version of the MAML Guide from <a href="http://sandcastlestyles.codeplex.com/releases/view/17333" target="_blank">http://sandcastlestyles.codeplex.com/releases/view/17333</a></li>
   <li>Execute Hands-on lab 4 (see above).</li>
-</ol><p xmlns="http://www.w3.org/1999/xhtml">Lab step by step description:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+</ol><p>Lab step by step description:</p><ul>
   <li>Add content layout using SHFB's <em>Project Explorer</em><ul><li>Right-click project name, select <em>Add / New Item / Content Layout</em></li><li>Add <span class="InlineCode">Content Layout.content</span></li></ul></li>
   <li>Open content layout in SHFB with a double click</li>
   <li>Add conceptual document using SHFB's <em>Content Layout Editor</em>.
@@ -273,69 +273,69 @@ public void Dec(int amount)
 
 <ul><li>Option: You can open it you favorite XML editor instead</li></ul></li>
   <li>Define the content of the file as follows (<strong><em>don't forget to replace the GUID in the topic id with your guid</em></strong>):</li>
-</ul>{% highlight javascript %}&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;topic id="b7b0a984-7cab-4ab7-ba17-39618dfb6feb" revisionNumber="1"&gt;
-  &lt;developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
+</ul>{% highlight javascript %}<?xml version="1.0" encoding="utf-8"?>
+<topic id="b7b0a984-7cab-4ab7-ba17-39618dfb6feb" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
     
-    &lt;summary&gt;
-      &lt;para&gt;SWIFT reader library&lt;/para&gt;
-    &lt;/summary&gt;
+    <summary>
+      <para>SWIFT reader library</para>
+    </summary>
     
-    &lt;introduction&gt;
-      &lt;para&gt;This class libary supports loading of SWIFT documents.&lt;/para&gt;
-      &lt;autoOutline /&gt;
-    &lt;/introduction&gt;
+    <introduction>
+      <para>This class libary supports loading of SWIFT documents.</para>
+      <autoOutline />
+    </introduction>
 
-    &lt;section address="Introduction"&gt;
-      &lt;title&gt;Introduction&lt;/title&gt;
-      &lt;content&gt;
-        &lt;para&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam 
+    <section address="Introduction">
+      <title>Introduction</title>
+      <content>
+        <para>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam 
         nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, 
         sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit 
         amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy 
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
         At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd 
-        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&lt;/para&gt;
-        &lt;alert class="note"&gt;
-          &lt;para&gt;This is just a placeholder text.&lt;/para&gt;
-        &lt;/alert&gt;
-      &lt;/content&gt;
-    &lt;/section&gt;
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</para>
+        <alert class="note">
+          <para>This is just a placeholder text.</para>
+        </alert>
+      </content>
+    </section>
 
-    &lt;section address="UsageSample"&gt;
-      &lt;title&gt;How to use&lt;/title&gt;
-      &lt;content&gt;
-        &lt;para&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam 
+    <section address="UsageSample">
+      <title>How to use</title>
+      <content>
+        <para>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam 
         nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, 
-        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.&lt;/para&gt;
-        &lt;code language="C#"&gt;
-          &lt;![CDATA[
-var myobj = new SwiftFileReader&lt;object&gt;();
+        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</para>
+        <code language="C#">
+          <![CDATA[
+var myobj = new SwiftFileReader<object>();
 // do something with myobj
 myobj.Dispose();
-          ]]&gt;
-        &lt;/code&gt;
-        &lt;code language="VB.NET"&gt;
-          &lt;![CDATA[
+          ]]>
+        </code>
+        <code language="VB.NET">
+          <![CDATA[
 Dim myobj = New SwiftFileReader(Of Object)()
 ' do something with myobj
 myobj.Dispose()
-          ]]&gt;
-        &lt;/code&gt;
-        &lt;para&gt;Don't forget what we have said in &lt;link xlink:href="#Introduction"&gt;Introduction&lt;/link&gt;&lt;/para&gt;
-      &lt;/content&gt;
-    &lt;/section&gt;
+          ]]>
+        </code>
+        <para>Don't forget what we have said in <link xlink:href="#Introduction">Introduction</link></para>
+      </content>
+    </section>
 
-    &lt;relatedTopics&gt;
-      &lt;externalLink&gt;
-          &lt;linkText&gt;Homepage of Rainer&lt;/linkText&gt;
-          &lt;linkAlternateText&gt;time cockpit&lt;/linkAlternateText&gt;
-          &lt;linkUri&gt;http://www.timecockpit.com&lt;/linkUri&gt;
-      &lt;/externalLink&gt;
-    &lt;/relatedTopics&gt;
-  &lt;/developerConceptualDocument&gt;
-&lt;/topic&gt;{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+    <relatedTopics>
+      <externalLink>
+          <linkText>Homepage of Rainer</linkText>
+          <linkAlternateText>time cockpit</linkAlternateText>
+          <linkUri>http://www.timecockpit.com</linkUri>
+      </externalLink>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>{% endhighlight %}<ul>
   <li>Preview help content in SHFB by pressing F5.</li>
   <li>Add code snippets file using SHFB's <em>Project Explorer</em><ul><li>Right-click project name, select <em>Add / New Item / Code Snippet</em></li><li>Add <span class="InlineCode">Code Snippets.snippets</span></li></ul></li>
   <li>Open code snippets file in SHFB with a double click; note how the code snippets are defined (we will not change the generated sample code here).</li>
@@ -349,50 +349,50 @@ myobj.Dispose()
     </ul>
   </li>
   <li>Define the content of the file as follows (<strong><em>don't forget to replace the GUID in the topic id with your guid</em></strong>):</li>
-</ul>{% highlight javascript %}&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;topic id="7e268ef9-b888-4094-bca8-1d51c95f6382" revisionNumber="1"&gt;
-  &lt;developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
+</ul>{% highlight javascript %}<?xml version="1.0" encoding="utf-8"?>
+<topic id="7e268ef9-b888-4094-bca8-1d51c95f6382" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
 
-    &lt;summary&gt;
-      &lt;para&gt;Details about using the library&lt;/para&gt;
-    &lt;/summary&gt;
+    <summary>
+      <para>Details about using the library</para>
+    </summary>
 
-    &lt;introduction&gt;
-      &lt;para&gt;This document shows how to use the library&lt;/para&gt;
-    &lt;/introduction&gt;
+    <introduction>
+      <para>This document shows how to use the library</para>
+    </introduction>
 
-    &lt;section address="Overview"&gt;
-      &lt;title&gt;Overview&lt;/title&gt;
-      &lt;content&gt;
-        &lt;para&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam 
+    <section address="Overview">
+      <title>Overview</title>
+      <content>
+        <para>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam 
         nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, 
         sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit 
         amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy 
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
         At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd 
-        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&lt;/para&gt;
-        &lt;para&gt;Note how we use 
-        &lt;codeEntityReference qualifyHint="true"&gt;T:CSharpCodeDoc.SwiftFileReader`1&lt;/codeEntityReference&gt;
-        in the examples below. Isn't that cool??&lt;/para&gt;
-      &lt;/content&gt;
-    &lt;/section&gt;
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</para>
+        <para>Note how we use 
+        <codeEntityReference qualifyHint="true">T:CSharpCodeDoc.SwiftFileReader`1</codeEntityReference>
+        in the examples below. Isn't that cool??</para>
+      </content>
+    </section>
 
-    &lt;section address="Examples"&gt;
-      &lt;title&gt;Examples&lt;/title&gt;
-      &lt;content&gt;
-        &lt;para&gt;Here you see some examples&lt;/para&gt;
-        &lt;codeReference&gt;ClassDefinition#Define&lt;/codeReference&gt;
-      &lt;/content&gt;
-    &lt;/section&gt;
+    <section address="Examples">
+      <title>Examples</title>
+      <content>
+        <para>Here you see some examples</para>
+        <codeReference>ClassDefinition#Define</codeReference>
+      </content>
+    </section>
 
-    &lt;relatedTopics&gt;
-      &lt;link xlink:href="b7b0a984-7cab-4ab7-ba17-39618dfb6feb"/&gt;
-      &lt;codeEntityReference&gt;T:CSharpCodeDoc.SwiftFileReader`1&lt;/codeEntityReference&gt;
-      &lt;codeEntityReference&gt;M:CSharpCodeDoc.SwiftFileReader`1.Dec&lt;/codeEntityReference&gt;
-    &lt;/relatedTopics&gt;
-  &lt;/developerConceptualDocument&gt;
-&lt;/topic&gt;{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+    <relatedTopics>
+      <link xlink:href="b7b0a984-7cab-4ab7-ba17-39618dfb6feb"/>
+      <codeEntityReference>T:CSharpCodeDoc.SwiftFileReader`1</codeEntityReference>
+      <codeEntityReference>M:CSharpCodeDoc.SwiftFileReader`1.Dec</codeEntityReference>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>{% endhighlight %}<ul>
   <li>Preview help content in SHFB by pressing F5.</li>
   <li>Download the following image into your SHFB project directory:
 <br /><img width="500" height="375" src="{{site.baseurl}}/content/images/blog/2010/12/Microsoft Help And Sandcastle (1).png" class="   mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused" /></li>
@@ -400,10 +400,10 @@ myobj.Dispose()
   <li>Click on the image in SHFB's <em>Project Explorer</em> and change <em>BuildAction</em> to <em>Image</em> in bitmap properties.</li>
   <li>Change <em>ImageId</em> to <em>TitleImage</em> in bitmap properties.</li>
   <li>Add image to <span class="InlineCode">Introduction</span> section in <span class="InlineCode">Overview.aml</span>:</li>
-</ul>{% highlight javascript %}&lt;mediaLink&gt;
-&lt;caption&gt;Title&lt;/caption&gt;
-&lt;image placement="center" xlink:href="TitleImage"/&gt;
-&lt;/mediaLink&gt;{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}<mediaLink>
+<caption>Title</caption>
+<image placement="center" xlink:href="TitleImage"/>
+</mediaLink>{% endhighlight %}<ul>
   <li>Preview help content in SHFB by pressing F5.</li>
   <li>Build your SHFB project and view the generated CHM file. Especially note how the changes you have done to your documentation during this lab changed the resulting compiled help file. </li>
 </ul>

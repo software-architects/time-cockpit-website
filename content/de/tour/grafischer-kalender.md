@@ -4,8 +4,8 @@ title: Grafischer Kalender zur Zeiterfassung
 permalink: /de/tour/grafischer-kalender/
 ---
 
-<h1 xmlns="http://www.w3.org/1999/xhtml">Grafischer Kalender
-		</h1><div class="tour" xmlns="http://www.w3.org/1999/xhtml">
+<h1>Grafischer Kalender
+		</h1><div class="tour">
   <div class="row">
     <div class="col-sm-12">
       <p>Sehen Sie den grafischen Kalender in diesem kurzen Video (3:45) in Aktion (Englisch).
@@ -28,10 +28,10 @@ permalink: /de/tour/grafischer-kalender/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:e8d4c306-4aa7-44c8-a0ca-73cef101f90e" />
-        <f:param name="GroupName" value="page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:e8d4c306-4aa7-44c8-a0ca-73cef101f90e" />
+        <param name="GroupName" value="page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -47,10 +47,10 @@ permalink: /de/tour/grafischer-kalender/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:f0fd62e7-deb0-4fb9-869a-a03fa363cefb" />
-        <f:param name="GroupName" value="page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:f0fd62e7-deb0-4fb9-869a-a03fa363cefb" />
+        <param name="GroupName" value="page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -66,10 +66,10 @@ permalink: /de/tour/grafischer-kalender/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:f60342bc-c903-4761-8f7e-dfd7309c3060" />
-        <f:param name="GroupName" value="page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:f60342bc-c903-4761-8f7e-dfd7309c3060" />
+        <param name="GroupName" value="page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -81,14 +81,14 @@ permalink: /de/tour/grafischer-kalender/
       </p>
       <p>Während eines arbeitsreichen Tages kann es mühsam sein, ständig aufzuschreiben woran Sie arbeiten. Time cockpit zeichnet für Sie auf, woran Sie arbeiten, und visualisiert Ihre Aktivitäten im Zeitbuchungskalender.
 				</p>
-      <p>Egal ob Sie Ihre Zeiterfassung am Ende des Tages, der Woche oder des Monats erledigen, time cockpit wird Sie an jede Stunde, die Sie gearbeitet haben, erinnern. Lesen Sie mehr über die <a href="{{site.baseurl}}/tour/aktivitaeten-aufzeichnen/">Aktivitätstracker</a>.
+      <p>Egal ob Sie Ihre Zeiterfassung am Ende des Tages, der Woche oder des Monats erledigen, time cockpit wird Sie an jede Stunde, die Sie gearbeitet haben, erinnern. Lesen Sie mehr über die <a href="{{site.baseurl}}/de/tour/aktivitaeten-aufzeichnen/">Aktivitätstracker</a>.
 				</p>
     </div>
     <div class="sixcol innercol last">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:1bbae7a2-b766-4c6c-a3a4-5bdeb8d7cf2c" />
-        <f:param name="GroupName" value="page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:1bbae7a2-b766-4c6c-a3a4-5bdeb8d7cf2c" />
+        <param name="GroupName" value="page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -104,10 +104,10 @@ permalink: /de/tour/grafischer-kalender/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:1499cbe7-2c25-4c40-ab32-690b23a7d2dc" />
-        <f:param name="GroupName" value="page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:1499cbe7-2c25-4c40-ab32-690b23a7d2dc" />
+        <param name="GroupName" value="page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -121,10 +121,10 @@ permalink: /de/tour/grafischer-kalender/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:6af58ecc-af5c-46f8-b479-a020794de638" />
-        <f:param name="GroupName" value="page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:6af58ecc-af5c-46f8-b479-a020794de638" />
+        <param name="GroupName" value="page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -138,10 +138,10 @@ permalink: /de/tour/grafischer-kalender/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:77d03f02-788f-47b1-adbe-0d5638f67aad" />
-        <f:param name="GroupName" value="page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:77d03f02-788f-47b1-adbe-0d5638f67aad" />
+        <param name="GroupName" value="page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -155,10 +155,10 @@ permalink: /de/tour/grafischer-kalender/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:ed478b22-789a-41f4-aec1-a7ff37108233" />
-        <f:param name="GroupName" value="page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:ed478b22-789a-41f4-aec1-a7ff37108233" />
+        <param name="GroupName" value="page" />
+      </function>
     </div>
   </div>
 </div>

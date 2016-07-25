@@ -9,14 +9,14 @@ lang: en
 permalink: /blog/2010/11/12/Custom-SSIS-Data-Source-For-Loading-Azure-Tables-Into-SQL-Server
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">Yesterday the wether in Frankfurt was horrible and so my plane from Berlin was late. I missed my connection flight to Linz and had to stay in a hotel in Frankfurt. Therefore I had some time and I used it for implementing a little sample showing how you can use a customer SSIS data source to easily transfer data from Windows Azure Table Storage to SQL Server databases using the ETL tool "SQL Server Integration Services" (SSIS).</p><p xmlns="http://www.w3.org/1999/xhtml">Here is the <a href="{{site.baseurl}}/content/images/blog/2010/11/TableStorageSsisSource.zip" target="_blank">source code for download</a>.</p><p xmlns="http://www.w3.org/1999/xhtml">
+<p>Yesterday the wether in Frankfurt was horrible and so my plane from Berlin was late. I missed my connection flight to Linz and had to stay in a hotel in Frankfurt. Therefore I had some time and I used it for implementing a little sample showing how you can use a customer SSIS data source to easily transfer data from Windows Azure Table Storage to SQL Server databases using the ETL tool "SQL Server Integration Services" (SSIS).</p><p>Here is the <a href="{{site.baseurl}}/content/images/blog/2010/11/TableStorageSsisSource.zip" target="_blank">source code for download</a>.</p><p>
   <strong>
     <em>Please remember</em>
-  </strong>:</p><ol xmlns="http://www.w3.org/1999/xhtml">
+  </strong>:</p><ol>
   <li>This is just a sample.</li>
   <li>The code has not been tested.</li>
   <li>If you want to use this stuff you have to compile and deploy it. Check out the post-build actions in the project to see which DLLs you have to copy to which folders in order to make them run.</li>
-</ol><p xmlns="http://www.w3.org/1999/xhtml">Let's start by demonstrating how the resulting component works inside SSIS. For this I have created this very short video:</p><embed width="480" height="385" src="https://www.youtube.com/v/xTgpCZBwUlA?fs=1&amp;hl=de_DE" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" xmlns="http://www.w3.org/1999/xhtml" /><p xmlns="http://www.w3.org/1999/xhtml">Now let's take a look at the source code.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Reading an Azure Table without a fixed class</h2><p xmlns="http://www.w3.org/1999/xhtml">The first problem that has to be solved is to read data from an Azure table without knowing it's schema at compile time. There is an <a href="http://social.msdn.microsoft.com/Forums/en-US/windowsazure/thread/481afa1b-03a9-42d9-ae79-9d5dc33b9297/" target="_blank">excellent post</a> covering that in the Azure Community pages. I took the sourcecode shown there and extended/modified it a little bit so that it fits to what I needed.</p><p xmlns="http://www.w3.org/1999/xhtml">First class is just a helper representing a column in the table store (Column.cs):</p>{% highlight javascript %}using System;
+</ol><p>Let's start by demonstrating how the resulting component works inside SSIS. For this I have created this very short video:</p><embed width="480" height="385" src="https://www.youtube.com/v/xTgpCZBwUlA?fs=1&amp;hl=de_DE" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" /><p>Now let's take a look at the source code.</p><h2>Reading an Azure Table without a fixed class</h2><p>The first problem that has to be solved is to read data from an Azure table without knowing it's schema at compile time. There is an <a href="http://social.msdn.microsoft.com/Forums/en-US/windowsazure/thread/481afa1b-03a9-42d9-ae79-9d5dc33b9297/" target="_blank">excellent post</a> covering that in the Azure Community pages. I took the sourcecode shown there and extended/modified it a little bit so that it fits to what I needed.</p><p>First class is just a helper representing a column in the table store (Column.cs):</p>{% highlight javascript %}using System;
 using Microsoft.SqlServer.Dts.Runtime.Wrapper;
 
 namespace TableStorageSsisSource
@@ -84,14 +84,14 @@ namespace TableStorageSsisSource
    }
   }
  }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Second class represents a row inside the table store (without strong schema; GenericEntity.cs):</p>{% highlight javascript %}using System.Collections.Generic;
+}{% endhighlight %}<p>Second class represents a row inside the table store (without strong schema; GenericEntity.cs):</p>{% highlight javascript %}using System.Collections.Generic;
 using Microsoft.WindowsAzure.StorageClient;
 
 namespace TableStorageSsisSource
 {
     public class GenericEntity : TableServiceEntity
     {
-        private Dictionary&lt;string, Column&gt; properties = new Dictionary&lt;string, Column&gt;();
+        private Dictionary<string, Column> properties = new Dictionary<string, Column>();
 
         public Column this[string key]
         {
@@ -113,12 +113,12 @@ namespace TableStorageSsisSource
             }
         }
 
-        public IEnumerable&lt;Column&gt; GetProperties()
+        public IEnumerable<Column> GetProperties()
         {
             return this.properties.Values;
         }
 
-        public void SetProperties(IEnumerable&lt;Column&gt; properties)
+        public void SetProperties(IEnumerable<Column> properties)
         {
             foreach (var property in properties)
             {
@@ -126,7 +126,7 @@ namespace TableStorageSsisSource
             }
         }
     }   
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Last but not least we need a context class that interprets the AtomPub format and builds the generic content objects (GenericTableContent.cs):</p>{% highlight javascript %}using System;
+}{% endhighlight %}<p>Last but not least we need a context class that interprets the AtomPub format and builds the generic content objects (GenericTableContent.cs):</p>{% highlight javascript %}using System;
 using System.Data.Services.Client;
 using System.Linq;
 using System.Xml.Linq;
@@ -141,12 +141,12 @@ namespace TableStorageSsisSource
    : base(baseAddress, credentials)
   {
    this.IgnoreMissingProperties = true;
-   this.ReadingEntity += new EventHandler&lt;ReadingWritingEntityEventArgs&gt;(GenericTableContext_ReadingEntity);
+   this.ReadingEntity += new EventHandler<ReadingWritingEntityEventArgs>(GenericTableContext_ReadingEntity);
   }
 
   public GenericEntity GetFirstOrDefault(string tableName)
   {
-   return this.CreateQuery&lt;GenericEntity&gt;(tableName).FirstOrDefault();
+   return this.CreateQuery<GenericEntity>(tableName).FirstOrDefault();
   }
 
   private static readonly XNamespace AtomNamespace = "http://www.w3.org/2005/Atom";
@@ -162,7 +162,7 @@ namespace TableStorageSsisSource
      .Element(AtomNamespace + "content")
      .Element(AstoriaMetadataNamespace + "properties")
      .Elements()
-     .Select(p =&gt;
+     .Select(p =>
       new
       {
        Name = p.Name.LocalName,
@@ -170,13 +170,13 @@ namespace TableStorageSsisSource
        TypeName = p.Attribute(AstoriaMetadataNamespace + "type") == null ? null : p.Attribute(AstoriaMetadataNamespace + "type").Value,
        p.Value
       })
-     .Select(dp =&gt; new Column(dp.Name, dp.TypeName, dp.Value.ToString()))
+     .Select(dp => new Column(dp.Name, dp.TypeName, dp.Value.ToString()))
      .ToList()
-     .ForEach(column =&gt; entity[column.ColumnName] = column);
+     .ForEach(column => entity[column.ColumnName] = column);
    }
   }
  }
-}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">The Custom SSIS Data Source</h2><p xmlns="http://www.w3.org/1999/xhtml">The custom SSIS data source is quite simple (TableStorageSsisSource.cs):</p>{% highlight javascript %}using System.Collections.Generic;
+}{% endhighlight %}<h2>The Custom SSIS Data Source</h2><p>The custom SSIS data source is quite simple (TableStorageSsisSource.cs):</p>{% highlight javascript %}using System.Collections.Generic;
 using Microsoft.SqlServer.Dts.Pipeline;
 using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
 using Microsoft.WindowsAzure;
@@ -215,7 +215,7 @@ namespace TableStorageSsisSource
    var storageConnectionString = (string)this.ComponentMetaData.CustomPropertyCollection["StorageConnectionString"].Value;
    var tableName = (string)this.ComponentMetaData.CustomPropertyCollection["TableName"].Value;
 
-   if (!string.IsNullOrEmpty(storageConnectionString) &amp;&amp; !string.IsNullOrEmpty(tableName))
+   if (!string.IsNullOrEmpty(storageConnectionString) && !string.IsNullOrEmpty(tableName))
    {
     var cloudStorageAccount = CloudStorageAccount.Parse(storageConnectionString);
     var context = new GenericTableContext(cloudStorageAccount.TableEndpoint.AbsoluteUri, cloudStorageAccount.Credentials);
@@ -235,7 +235,7 @@ namespace TableStorageSsisSource
    return resultingColumn;
   }
 
-  private List&lt;ColumnInfo&gt; columnInformation;
+  private List<ColumnInfo> columnInformation;
   private GenericTableContext context;
   private struct ColumnInfo
   {
@@ -245,7 +245,7 @@ namespace TableStorageSsisSource
 
   public override void PreExecute()
   {
-   this.columnInformation = new List&lt;ColumnInfo&gt;();
+   this.columnInformation = new List<ColumnInfo>();
    IDTSOutput100 output = ComponentMetaData.OutputCollection[0];
 
    var cloudStorageAccount = CloudStorageAccount.Parse((string)this.ComponentMetaData.CustomPropertyCollection["StorageConnectionString"].Value);
@@ -265,11 +265,11 @@ namespace TableStorageSsisSource
    IDTSOutput100 output = ComponentMetaData.OutputCollection[0];
    PipelineBuffer buffer = buffers[0];
 
-   foreach (var item in this.context.CreateQuery&lt;GenericEntity&gt;((string)this.ComponentMetaData.CustomPropertyCollection["TableName"].Value))
+   foreach (var item in this.context.CreateQuery<GenericEntity>((string)this.ComponentMetaData.CustomPropertyCollection["TableName"].Value))
    {
     buffer.AddRow();
 
-    for (int x = 0; x &lt; columnInformation.Count; x++)
+    for (int x = 0; x < columnInformation.Count; x++)
     {
      var ci = (ColumnInfo)columnInformation[x];
      var value = item[ci.ColumnName].Value;

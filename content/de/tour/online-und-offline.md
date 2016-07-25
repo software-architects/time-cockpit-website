@@ -4,8 +4,8 @@ title: Zeiterfassung Online und Offline
 permalink: /de/tour/online-und-offline/
 ---
 
-<h1 xmlns="http://www.w3.org/1999/xhtml">Online und Offline
-		</h1><div class="tour" xmlns="http://www.w3.org/1999/xhtml">
+<h1>Online und Offline
+		</h1><div class="tour">
   <div class="row">
     <div class="col-sm-12 col-md-6">
       <h2>Offline arbeiten
@@ -17,10 +17,10 @@ permalink: /de/tour/online-und-offline/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:d16896f7-34bd-46b7-8408-2d910f75ac48" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:d16896f7-34bd-46b7-8408-2d910f75ac48" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -30,17 +30,17 @@ permalink: /de/tour/online-und-offline/
       <p>
         <strong>Verwenden Sie den Online Client, wenn Sie nur einen Browser zur Verfügung haben.</strong>
       </p>
-      <p>Wenn Sie den installierten Full-Client gerade nicht verwenden können, können Sie mit jedem Browser, der <a href="http://www.microsoft.com/silverlight/" target="_blank">Microsoft Silverlight</a> unterstützt (wird unter Apple unterstützt), auf time cockpit zugreifen. Im Browser haben Sie das gleiche UI zur Verfügung wie im Full-Client. Wenn Sie Ihr persönliches Signaldatenpasswort eingeben, können auch Signale von Ihren anderen Devices angezeigt werden. Nur für die Aufzeichnung von Aktivitäten brauchen Sie den Full-Client (<a href="{{site.baseurl}}/tour/aktivitaeten-aufzeichnen/">lesen Sie mehr über das Aufzeichnen von Aktivitäten...</a>).
+      <p>Wenn Sie den installierten Full-Client gerade nicht verwenden können, können Sie mit jedem Browser, der <a href="http://www.microsoft.com/silverlight/" target="_blank">Microsoft Silverlight</a> unterstützt (wird unter Apple unterstützt), auf time cockpit zugreifen. Im Browser haben Sie das gleiche UI zur Verfügung wie im Full-Client. Wenn Sie Ihr persönliches Signaldatenpasswort eingeben, können auch Signale von Ihren anderen Devices angezeigt werden. Nur für die Aufzeichnung von Aktivitäten brauchen Sie den Full-Client (<a href="{{site.baseurl}}/de/tour/aktivitaeten-aufzeichnen/">lesen Sie mehr über das Aufzeichnen von Aktivitäten...</a>).
 				</p>
       <p>
         <a class="linkButton" href="http://login.timecockpit.com" target="_blank">time cockpit online starten</a>
       </p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:e046cb46-fa91-42d0-a508-a8f1963534d9" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:e046cb46-fa91-42d0-a508-a8f1963534d9" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -53,7 +53,7 @@ permalink: /de/tour/online-und-offline/
       <p>Sie brauchen Ihre time cockpit Daten nicht manuell auf Ihren neuen PC zu übertragen. Downloaden und installieren Sie den Full-Client auf Ihrem neuen PC und geben Sie Benutzername und Passwort ein. Time cockpit synchronisiert automatisch Ihre Daten auf den neuen PC.
 				</p>
       <p>
-        <a class="linkButton" href="{{site.baseurl}}/account/overview/">Management Portal öffnen und neuen Full-Client downloaden</a>
+        <a class="linkButton" href="{{site.baseurl}}/de/account/overview/">Management Portal öffnen und neuen Full-Client downloaden</a>
       </p>
     </div>
   </div>

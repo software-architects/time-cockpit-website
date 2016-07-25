@@ -9,18 +9,18 @@ lang: en
 permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">Did you ever ask yourself how you are doing in terms of time tracking compared to other people? This test unveils your time tracking fitness level. Try it. It's fun and you might get ideas how you could enhance your existing time tracking practice.<br /></p><div id="app" xmlns="http://www.w3.org/1999/xhtml"></div><script id="errorView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
+<p>Did you ever ask yourself how you are doing in terms of time tracking compared to other people? This test unveils your time tracking fitness level. Try it. It's fun and you might get ideas how you could enhance your existing time tracking practice.<br /></p><div id="app"></div><script id="errorView" type="text/x-kendo-template">
   <h2>Uuups ...</h2>
   <p>    
    An error has occured. We are very sorry.    
   </p>
   <button data-bind="click: gotoFirstStep" class="k-primary" data-role="button">Start test from the beginning ...</button>
-</script><script id="layout" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
+</script><script id="layout" type="text/x-kendo-template">
   <div class="questionNumber" data-bind="visible: isQuestion">    
    Question <span data-bind="text: currentStep"></span> of 10:    
   </div>
   <div id="content"></div>
-</script><script id="welcomeView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
+</script><script id="welcomeView" type="text/x-kendo-template">
   <p>
     <img src="{{site.baseurl}}/content/images/blog/2014/06/P1010036.jpg" />
   </p>
@@ -43,7 +43,7 @@ permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
    You do not want to take the test but you want to see the results of all the people who did?    
    No problem, you can go directly to the <a href="#100">statistics page</a>.    
   </p>
-</script><script id="trackingView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
+</script><script id="trackingView" type="text/x-kendo-template">
   <div class="questionArea">
     <h2 data-bind="text: questions.tracking"></h2>
     <p class="introText">    
@@ -62,7 +62,7 @@ permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
     </p>
     <button data-bind="click: gotoNextStep, enabled: canGotoNextStep" class="k-primary" data-role="button">Next ...</button>
   </div>
-</script><script id="softwareView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
+</script><script id="softwareView" type="text/x-kendo-template">
   <div class="questionArea">
     <h2 data-bind="text: questions.software"></h2>
     <p class="introText">    
@@ -85,7 +85,7 @@ permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
     </p>
     <button data-bind="click: gotoNextStep, enabled: canGotoNextStep" class="k-primary" data-role="button">Next ...</button>
   </div>
-</script><script id="detailView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
+</script><script id="detailView" type="text/x-kendo-template">
   <div class="questionArea">
     <h2 data-bind="text: questions.detail"></h2>
     <p class="introText">    
@@ -113,7 +113,7 @@ permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
     </p>
     <button data-bind="click: gotoNextStep, enabled: canGotoNextStep" class="k-primary" data-role="button">Next ...</button>
   </div>
-</script><script id="processesView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
+</script><script id="processesView" type="text/x-kendo-template">
   <div class="questionArea">
     <h2 data-bind="text: questions.processes"></h2>
     <p class="introText">    
@@ -137,7 +137,7 @@ permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
     </p>
     <button data-bind="click: gotoNextStep, enabled: canGotoNextStep" class="k-primary" data-role="button">Next ...</button>
   </div>
-</script><script id="delayView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
+</script><script id="delayView" type="text/x-kendo-template">
   <div class="questionArea">
     <h2 data-bind="text: questions.delay"></h2>
     <p class="introText">    
@@ -160,7 +160,7 @@ permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
     </p>
     <button data-bind="click: gotoNextStep, enabled: canGotoNextStep" class="k-primary" data-role="button">Next ...</button>
   </div>
-</script><script id="dataQualityView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
+</script><script id="dataQualityView" type="text/x-kendo-template">
   <div class="questionArea">
     <h2 data-bind="text: questions.dataQuality"></h2>
     <p class="introText">    
@@ -185,7 +185,7 @@ permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
     </p>
     <button data-bind="click: gotoNextStep, enabled: canGotoNextStep" class="k-primary" data-role="button">Next ...</button>
   </div>
-</script><script id="reportView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
+</script><script id="reportView" type="text/x-kendo-template">
   <div class="questionArea">
     <h2 data-bind="text: questions.report"></h2>
     <p class="introText">    
@@ -208,7 +208,7 @@ permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
     </p>
     <button data-bind="click: gotoNextStep, enabled: canGotoNextStep" class="k-primary" data-role="button">Next ...</button>
   </div>
-</script><script id="alertsView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
+</script><script id="alertsView" type="text/x-kendo-template">
   <div class="questionArea">
     <h2 data-bind="text: questions.alerts"></h2>
     <p class="introText">    
@@ -237,7 +237,7 @@ permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
     </p>
     <button data-bind="click: gotoNextStep, enabled: canGotoNextStep" class="k-primary" data-role="button">Next ...</button>
   </div>
-</script><script id="interfacesView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
+</script><script id="interfacesView" type="text/x-kendo-template">
   <div class="questionArea">
     <h2 data-bind="text: questions.interfaces"></h2>
     <p class="introText">    
@@ -265,7 +265,7 @@ permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
     </p>
     <button data-bind="click: gotoNextStep, enabled: canGotoNextStep" class="k-primary" data-role="button">Next ...</button>
   </div>
-</script><script id="securityView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
+</script><script id="securityView" type="text/x-kendo-template">
   <div class="questionArea">
     <h2 data-bind="text: questions.security"></h2>
     <p class="introText">    
@@ -288,7 +288,7 @@ permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
     </p>
     <button data-bind="click: gotoNextStep, enabled: canGotoNextStep" class="k-primary" data-role="button">Next ...</button>
   </div>
-</script><script id="resultView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
+</script><script id="resultView" type="text/x-kendo-template">
   <div class="questionArea">
     <div data-bind="visible: resultZero">
       <h2>
@@ -439,7 +439,7 @@ permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
     <p>    
     We hope you liked this time tracking fitness test. <a href="http://www.timecockpit.com">Back to time cockpit homepage ...</a></p>
   </div>
-</script><script id="statisticView" type="text/x-kendo-template" xmlns="http://www.w3.org/1999/xhtml">
+</script><script id="statisticView" type="text/x-kendo-template">
   <h2>Statistics</h2>
   <div class="resultArea">
     <p>    
@@ -469,4 +469,4 @@ permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test
     <p>    
     We hope you liked this time tracking fitness test. <a href="http://www.timecockpit.com">Back to time cockpit homepage ...</a></p>
   </div>
-</script><script src="/Frontend/Scripts/TimeTrackingFitnessTest/jquery.min.js" xmlns="http://www.w3.org/1999/xhtml"></script><script src="/Frontend/Scripts/TimeTrackingFitnessTest/kendo.all.min.js" xmlns="http://www.w3.org/1999/xhtml"></script><script src="/Frontend/Scripts/TimeTrackingFitnessTest/app.js" xmlns="http://www.w3.org/1999/xhtml"></script>
+</script><script src="/Frontend/Scripts/TimeTrackingFitnessTest/jquery.min.js"></script><script src="/Frontend/Scripts/TimeTrackingFitnessTest/kendo.all.min.js"></script><script src="/Frontend/Scripts/TimeTrackingFitnessTest/app.js"></script>

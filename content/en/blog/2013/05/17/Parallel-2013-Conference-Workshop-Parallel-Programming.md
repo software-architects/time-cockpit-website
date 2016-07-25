@@ -9,10 +9,10 @@ lang: en
 permalink: /blog/2013/05/17/Parallel-2013-Conference-Workshop-Parallel-Programming
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">On May 17th I did a workshop on parallel programming at <a href="http://www.parallel2013.de" target="_blank">parallel 2013</a> conference in Karlsruhe. The attendees asked me to publish some of the live coding samples I did. In this blog you can find the samples.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Slides</h2><p xmlns="http://www.w3.org/1999/xhtml">The slides for the workshop were handed out to attendees on memory sticks. However, my slides were quite similar to the slides I have used in my parallel programming workshop at the last <a href="http://www.basta.net" target="_blank">BASTA</a> conference. You can find them on SlideShare:</p><iframe src="http://de.slideshare.net/slideshow/embed_code/15297267?rel=0" width="512" height="421" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" xmlns="http://www.w3.org/1999/xhtml"></iframe><div style="margin-bottom:5px" data-mce-style="margin-bottom: 5px;" xmlns="http://www.w3.org/1999/xhtml">
+<p>On May 17th I did a workshop on parallel programming at <a href="http://www.parallel2013.de" target="_blank">parallel 2013</a> conference in Karlsruhe. The attendees asked me to publish some of the live coding samples I did. In this blog you can find the samples.</p><h2>Slides</h2><p>The slides for the workshop were handed out to attendees on memory sticks. However, my slides were quite similar to the slides I have used in my parallel programming workshop at the last <a href="http://www.basta.net" target="_blank">BASTA</a> conference. You can find them on SlideShare:</p><iframe src="http://de.slideshare.net/slideshow/embed_code/15297267?rel=0" width="512" height="421" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe><div style="margin-bottom:5px" data-mce-style="margin-bottom: 5px;">
   <strong>
     <a href="http://de.slideshare.net/rstropek/parallel-und-async-basta-at-2012-rainer-stropek" title="Parallel and Async Programming With C#" target="_blank">Parallel and Async Programming With C#</a>
-  </strong> from <strong><a href="http://de.slideshare.net/rstropek" target="_blank">Rainer Stropek</a></strong></div><h2 xmlns="http://www.w3.org/1999/xhtml">Sample for Introduction for Tasks</h2><p xmlns="http://www.w3.org/1999/xhtml">Here is the sample code that I have developed step by step to describe what a <em>Task</em> is in .NET:</p>{% highlight javascript %}using System;
+  </strong> from <strong><a href="http://de.slideshare.net/rstropek" target="_blank">Rainer Stropek</a></strong></div><h2>Sample for Introduction for Tasks</h2><p>Here is the sample code that I have developed step by step to describe what a <em>Task</em> is in .NET:</p>{% highlight javascript %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +26,7 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             //var tasks = new Task[10];
-            //for (int i = 0; i &lt; tasks.Length; i++)
+            //for (int i = 0; i < tasks.Length; i++)
             //{
             //  tasks[i] = DivideAsync(100, i);
             //}
@@ -34,49 +34,49 @@ namespace ConsoleApplication1
             //Task.WaitAll(tasks);
 
             //Task.WaitAll(Enumerable.Range(0, 10)
-            //  .Where(i =&gt; i % 2 == 0)
-            //  .Select(i =&gt; DivideAsync(100, i))
+            //  .Where(i => i % 2 == 0)
+            //  .Select(i => DivideAsync(100, i))
             //  .ToArray());
 
-            Task.Run(() =&gt; 42)
-                .ContinueWith(t =&gt;
+            Task.Run(() => 42)
+                .ContinueWith(t =>
                     {
                         Task.Factory.ContinueWhenAll(
                             Enumerable.Range(0, 3)
-                                .Select(i =&gt; Task.Run(() =&gt; { Thread.Sleep(200); return 5; }))
+                                .Select(i => Task.Run(() => { Thread.Sleep(200); return 5; }))
                                 .ToArray(),
-                                tArray =&gt;
+                                tArray =>
                                 {
                                     Thread.Sleep(200);
                                     Console.WriteLine(
-                                        tArray.Aggregate&lt;Task&lt;int&gt;, int&gt;(
+                                        tArray.Aggregate<Task<int>, int>(
                                             0,
-                                            (agg, current) =&gt; agg + current.Result)
+                                            (agg, current) => agg + current.Result)
                                         );
                                 }, TaskContinuationOptions.AttachedToParent);
                     })
                 .Wait();
         }
 
-        static Task&lt;int&gt; NullTask = Task.FromResult(0);
-        static Task&lt;int&gt; DivideAsync(int x, int y)
+        static Task<int> NullTask = Task.FromResult(0);
+        static Task<int> DivideAsync(int x, int y)
         {
             if (y == 0)
             {
                 // return NullTask;
-                var tcs = new TaskCompletionSource&lt;int&gt;();
+                var tcs = new TaskCompletionSource<int>();
                 tcs.SetException(new DivideByZeroException());
                 return tcs.Task;
             }
 
-            return Task.Run(() =&gt;
+            return Task.Run(() =>
                 {
                     Thread.Sleep(500);
                     return x / y;
                 });
         }
     }
-}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Monte Carlo Simulation to Calculate PI</h2><p xmlns="http://www.w3.org/1999/xhtml">This is the serial implementation of the monte carlo simulation example from which we started our discussion about parallel algorithms:</p>{% highlight javascript %}using System;
+}{% endhighlight %}<h2>Monte Carlo Simulation to Calculate PI</h2><p>This is the serial implementation of the monte carlo simulation example from which we started our discussion about parallel algorithms:</p>{% highlight javascript %}using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -93,14 +93,14 @@ namespace ConsoleApplication1
             MonteCarloSerial();
         }
 
-        /// &lt;summary&gt;
+        /// <summary>
         /// Serial implementation of our monte carlo algorithm for calculating PI
-        /// &lt;/summary&gt;
-        /// &lt;remarks&gt;
-        /// On my laptop this shows the following results:&lt;br/&gt;
-        /// 3,14171336&lt;/br&gt;
-        /// 32,1411226701302&lt;/br&gt;
-        /// &lt;/remarks&gt;
+        /// </summary>
+        /// <remarks>
+        /// On my laptop this shows the following results:<br/>
+        /// 3,14171336</br>
+        /// 32,1411226701302</br>
+        /// </remarks>
         public static void MonteCarloSerial()
         {
             var rand = new Random();
@@ -109,12 +109,12 @@ namespace ConsoleApplication1
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            for(int i=0; i&lt;iterations; i++)
+            for(int i=0; i<iterations; i++)
             {
                 var a = rand.NextDouble();
                 var b = rand.NextDouble();
                 var c = Math.Sqrt(a * a + b * b);
-                if (c &lt;= 1)
+                if (c <= 1)
                 {
                     counterInside++;
                 }
@@ -125,14 +125,14 @@ namespace ConsoleApplication1
             Console.WriteLine(iterations / 1000000 / stopwatch.Elapsed.TotalSeconds);
         }
     }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">After a few steps we parallelized the algorithm. Note that it was not our goal to come up with the most optimal algorithm for calculating PI using monte carlo simulation. We have just used the example to discuss various aspects of parallel programming with .NET.</p>{% highlight javascript %}private static void MonteCarloAdvancedParallel()
+}{% endhighlight %}<p>After a few steps we parallelized the algorithm. Note that it was not our goal to come up with the most optimal algorithm for calculating PI using monte carlo simulation. We have just used the example to discuss various aspects of parallel programming with .NET.</p>{% highlight javascript %}private static void MonteCarloAdvancedParallel()
 {
     var counterInside = 0;
     var iterations = 350000000;
     var stopwatch = new Stopwatch();
     stopwatch.Start();
 
-    Parallel.For(0, 8, i =&gt;
+    Parallel.For(0, 8, i =>
     {
         if (rand == null)
         {
@@ -140,12 +140,12 @@ namespace ConsoleApplication1
         }
 
         var localCounterInside = 0;
-        for (var j = 0; j &lt; iterations / 8; j++)
+        for (var j = 0; j < iterations / 8; j++)
         {
             var a = rand.NextDouble();
             var b = rand.NextDouble();
             var c = a * a + b * b;
-            if (c &lt;= 1)
+            if (c <= 1)
             {
                 localCounterInside++;
             }
@@ -157,7 +157,7 @@ namespace ConsoleApplication1
     stopwatch.Stop();
     Console.WriteLine(((double)counterInside) / ((double)iterations) * 4);
     Console.WriteLine(iterations / 1000000 / stopwatch.Elapsed.TotalSeconds);
-}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Producer/Consumer Pattern</h2><p xmlns="http://www.w3.org/1999/xhtml">In the workshop we discussed various possibilities of implementing producer/consumer problems. The attendees asked me to publish one possible algorithm which makes use of the <em>BlockingCollection&lt;T&gt;</em> class:</p>{% highlight javascript %}using System;
+}{% endhighlight %}<h2>Producer/Consumer Pattern</h2><p>In the workshop we discussed various possibilities of implementing producer/consumer problems. The attendees asked me to publish one possible algorithm which makes use of the <em>BlockingCollection&lt;T&gt;</em> class:</p>{% highlight javascript %}using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -171,21 +171,21 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            var queue = new BlockingCollection&lt;int&gt;(5);
+            var queue = new BlockingCollection<int>(5);
 
             // Alternative: TPL Dataflow Library von .NET 4.5
 
             // Producer/Consumer oder Pipline-Algorithmen
-            var producer = Task.Run(() =&gt;
+            var producer = Task.Run(() =>
                 {
-                    for (int i = 0; i &lt; 100; i++)
+                    for (int i = 0; i < 100; i++)
                     {
                         Thread.Sleep(100);
                         queue.Add(i);
                     }
                 });
 
-            var consumer = Task.Run(() =&gt;
+            var consumer = Task.Run(() =>
                 {
                     foreach (var item in queue.GetConsumingEnumerable())
                     {

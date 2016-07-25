@@ -9,9 +9,9 @@ lang: en
 permalink: /blog/2015/09/18/RESTful-Web-API-Design
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">
+<p>
   <img src="{{site.baseurl}}/content/images/blog/2015/09/restful-web-api-design-title.png" />
-</p><p xmlns="http://www.w3.org/1999/xhtml">Yesterday I did a workshop at the <a href="http://software-architecture-summit.de/" target="_blank">Software Architecture Summit</a> in Berlin. More than 60 software architects came to my sessions about RESTful Web API Design. In this blog article I share my slides, code, and links to tools/technologies I mentioned. I hope you find the resources useful.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Agenda</h2><p xmlns="http://www.w3.org/1999/xhtml">Here is the agenda describing what I covered in the workshop:</p><div style="margin-left: 2em" data-mce-style="margin-left: 2em" xmlns="http://www.w3.org/1999/xhtml">
+</p><p>Yesterday I did a workshop at the <a href="http://software-architecture-summit.de/" target="_blank">Software Architecture Summit</a> in Berlin. More than 60 software architects came to my sessions about RESTful Web API Design. In this blog article I share my slides, code, and links to tools/technologies I mentioned. I hope you find the resources useful.</p><h2>Agenda</h2><p>Here is the agenda describing what I covered in the workshop:</p><div style="margin-left: 2em" data-mce-style="margin-left: 2em">
   <p>
     <em>RESTful Web APIs have become an integral part of modern software packages. They are important for integration scenarios in enterprises and in the cloud. This workshop is dedicated to designing RESTful Web APIs. Rainer Stropek, himself founder a SaaS-focused company, will guide you through the world of RESTful APIs. In particular, Rainer will speak about the following topics:</em>
   </p>
@@ -38,15 +38,15 @@ permalink: /blog/2015/09/18/RESTful-Web-API-Design
       <em>Code samples using Node.js with JavaScript and CoreCLR with C#</em>
     </li>
   </ul>
-</div><h2 xmlns="http://www.w3.org/1999/xhtml">Slides</h2><p xmlns="http://www.w3.org/1999/xhtml">Here you can view the slides online. Those who prefer downloading a PDF version including hyperlinks can find the PDF document <a href="{{site.baseurl}}/content/images/blog/2015/09/RESTful Web API Design.pdf" target="_blank">here</a>.</p><script async="async" class="speakerdeck-embed" data-id="b3a97bbb619d407b8766c604c9ee0fa4" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js" xmlns="http://www.w3.org/1999/xhtml"></script><h2 xmlns="http://www.w3.org/1999/xhtml">Code
-<br /></h2><p xmlns="http://www.w3.org/1999/xhtml">The workshop did not focus on coding. However, to illustrate some priciples I showed simple coding examples. You can find all of them in my Github Samples repository. Here are the links:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+</div><h2>Slides</h2><p>Here you can view the slides online. Those who prefer downloading a PDF version including hyperlinks can find the PDF document <a href="{{site.baseurl}}/content/images/blog/2015/09/RESTful Web API Design.pdf" target="_blank">here</a>.</p><script async="async" class="speakerdeck-embed" data-id="b3a97bbb619d407b8766c604c9ee0fa4" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script><h2>Code
+<br /></h2><p>The workshop did not focus on coding. However, to illustrate some priciples I showed simple coding examples. You can find all of them in my Github Samples repository. Here are the links:</p><ul>
   <li>
     <a href="https://github.com/rstropek/Samples/tree/master/NodeRestAPI" target="_blank">Small Node.js + Express Web API</a>
   </li>
   <li>
     <a href="https://github.com/rstropek/Samples/tree/master/ODataFaq" target="_blank">OData introduction (C# + .NET)</a>
   </li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">Important Resources</h2><p xmlns="http://www.w3.org/1999/xhtml">Here are links to tools and technologies I showed or mentioned during the workshop:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+</ul><h2>Important Resources</h2><p>Here are links to tools and technologies I showed or mentioned during the workshop:</p><ul>
   <li>
     <a href="http://azure.microsoft.com/en-us/documentation/services/mobile-services/" target="_blank">Microsoft Azure Mobile Services</a>
   </li>

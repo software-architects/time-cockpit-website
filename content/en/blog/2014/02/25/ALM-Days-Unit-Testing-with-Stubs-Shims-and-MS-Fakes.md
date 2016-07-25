@@ -9,7 +9,7 @@ lang: en
 permalink: /blog/2014/02/25/ALM-Days-Unit-Testing-with-Stubs-Shims-and-MS-Fakes
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">At <a href="http://alm-days.de/" target="_blank">ALM Days</a> my second talk is about unit testing with <a href="http://msdn.microsoft.com/en-us/library/hh549175.aspx" target="_blank">Microsoft Fakes</a>, Stubs, and Shims. Here is the sample that I am going to use.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">A reference implementation of the sample can be found on <a href="https://github.com/rstropek/Samples/tree/master/SudokuBoard" target="_blank">GitHub</a>. During the session coding will be live. Therefore it is likely that the sample shown in the session is not 100% identical with the reference implementation on GitHub.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Sample 1: Integration Tests</h2><p xmlns="http://www.w3.org/1999/xhtml">My sample contains a class <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/BoardStreamRepository.cs"><em>BoardStreamRepository</em></a>. It can handle any kind of stream and uses the interface <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/IStreamManager.cs"><em>IStreamManager</em></a> to get it. The sample project contains two implementations of this interface: One for local files (<a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/FileStreamManager.cs"><em>FileStreamManager</em></a>) and one for Windows Azure Blob Storage (<a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/CloudBlobStreamManager.cs"><em>CloudBlobStreamManager</em></a>). You could write integration tests for both classes:</p>{% highlight javascript %}namespace Samples.Sudoku.Test
+<p>At <a href="http://alm-days.de/" target="_blank">ALM Days</a> my second talk is about unit testing with <a href="http://msdn.microsoft.com/en-us/library/hh549175.aspx" target="_blank">Microsoft Fakes</a>, Stubs, and Shims. Here is the sample that I am going to use.</p><p class="showcase">A reference implementation of the sample can be found on <a href="https://github.com/rstropek/Samples/tree/master/SudokuBoard" target="_blank">GitHub</a>. During the session coding will be live. Therefore it is likely that the sample shown in the session is not 100% identical with the reference implementation on GitHub.</p><h2>Sample 1: Integration Tests</h2><p>My sample contains a class <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/BoardStreamRepository.cs"><em>BoardStreamRepository</em></a>. It can handle any kind of stream and uses the interface <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/IStreamManager.cs"><em>IStreamManager</em></a> to get it. The sample project contains two implementations of this interface: One for local files (<a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/FileStreamManager.cs"><em>FileStreamManager</em></a>) and one for Windows Azure Blob Storage (<a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/CloudBlobStreamManager.cs"><em>CloudBlobStreamManager</em></a>). You could write integration tests for both classes:</p>{% highlight javascript %}namespace Samples.Sudoku.Test
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.IO;
@@ -17,9 +17,9 @@ permalink: /blog/2014/02/25/ALM-Days-Unit-Testing-with-Stubs-Shims-and-MS-Fakes
     using System.Reflection;
     using System.Threading.Tasks;
 
-    /// &lt;summary&gt;
+    /// <summary>
     /// Integration tests for reading/writing board data.
-    /// &lt;/summary&gt;
+    /// </summary>
     [TestClass]
     public class BoardReaderWriterIntegrationTests
     {
@@ -32,7 +32,7 @@ permalink: /blog/2014/02/25/ALM-Days-Unit-Testing-with-Stubs-Shims-and-MS-Fakes
             const string sampleBoardName = "SampleBoard";
 
             var directory = Path.Combine(this.TestContext.TestDir, "Boards");
-            await Task.Run(() =&gt; Directory.CreateDirectory(directory));
+            await Task.Run(() => Directory.CreateDirectory(directory));
             using (var stream = new FileStream(Path.Combine(directory, sampleBoardName), FileMode.CreateNew))
             {
                 await stream.WriteAsync(BoardSampleData.sampleBoard, 0, BoardSampleData.sampleBoard.Length);
@@ -64,9 +64,9 @@ permalink: /blog/2014/02/25/ALM-Days-Unit-Testing-with-Stubs-Shims-and-MS-Fakes
     using System.Threading;
     using System.Threading.Tasks;
 
-    /// &lt;summary&gt;
+    /// <summary>
     /// Tests for stream manager classes
-    /// &lt;/summary&gt;
+    /// </summary>
     [TestClass]
     public class StreamManagerTest
     {
@@ -115,7 +115,7 @@ permalink: /blog/2014/02/25/ALM-Days-Unit-Testing-with-Stubs-Shims-and-MS-Fakes
 
         ...
     }
-}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Sample 2: Using Stubs</h2><p xmlns="http://www.w3.org/1999/xhtml">
+}{% endhighlight %}<h2>Sample 2: Using Stubs</h2><p>
   <em>
     <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/BoardStreamRepository.cs" target="_blank">BoardStreamRepository</a> </em> and <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/IStreamManager.cs" target="_blank"><em>IStreamManager</em></a> are a perfect example for using an auto-generated <a href="http://msdn.microsoft.com/en-us/library/hh549174.aspx" target="_blank">Stub</a> to unit-test <em><a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/BoardStreamRepository.cs">BoardStreamRepository</a></em> on its own. Note how I use stubs in <em>SetupBoardStreamRepository</em> in the following code snippet:</p>{% highlight javascript %}namespace Samples.Sudoku.Test
 {
@@ -126,9 +126,9 @@ permalink: /blog/2014/02/25/ALM-Days-Unit-Testing-with-Stubs-Shims-and-MS-Fakes
     using System.Linq;
     using System.Threading.Tasks;
 
-    /// &lt;summary&gt;
-    /// Tests for &lt;see cref="Samples.Sudoku.BoardStreamRepository"/&gt;
-    /// &lt;/summary&gt;
+    /// <summary>
+    /// Tests for <see cref="Samples.Sudoku.BoardStreamRepository"/>
+    /// </summary>
     [TestClass]
     public class BoardStreamRepositoryTest
     {
@@ -155,8 +155,8 @@ permalink: /blog/2014/02/25/ALM-Days-Unit-Testing-with-Stubs-Shims-and-MS-Fakes
         {
             var repository = BoardStreamRepositoryTest.SetupBoardStreamRepository(new byte[] { 1, 2 });
 
-            await AssertExtensions.ThrowsExceptionAsync&lt;Exception&gt;(
-                async () =&gt; await repository.LoadAsync("DummyBoardName"));
+            await AssertExtensions.ThrowsExceptionAsync<Exception>(
+                async () => await repository.LoadAsync("DummyBoardName"));
         }
 
         [TestMethod]
@@ -174,12 +174,12 @@ permalink: /blog/2014/02/25/ALM-Days-Unit-Testing-with-Stubs-Shims-and-MS-Fakes
         private static BoardStreamRepository SetupBoardStreamRepository(byte[] buffer)
         {
             var stub = new StubIStreamManager();
-            stub.OpenStreamAsyncStringAccessMode = (_, __) =&gt;
+            stub.OpenStreamAsyncStringAccessMode = (_, __) =>
                 Task.FromResult(new MemoryStream(buffer) as Stream);
             return new BoardStreamRepository(stub);
         }
     }
-}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Sample 3: Using Shims</h2><p xmlns="http://www.w3.org/1999/xhtml">If you want to test <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/FileStreamManager.cs"><em>FileStreamManager</em></a> and <em><a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/CloudBlobStreamManager.cs">CloudBlobStreamManager</a></em> but you do not want to build a complex testing environment with samples files on local storage and in Windows Azure Blob Storage, you can use <a href="http://msdn.microsoft.com/en-us/library/hh549176.aspx" target="_blank">Shims</a> to isolate your code. This also has the big advantage of keeping your unit test fast.<br /></p>{% highlight javascript %}[TestMethod]
+}{% endhighlight %}<h2>Sample 3: Using Shims</h2><p>If you want to test <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/FileStreamManager.cs"><em>FileStreamManager</em></a> and <em><a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/CloudBlobStreamManager.cs">CloudBlobStreamManager</a></em> but you do not want to build a complex testing environment with samples files on local storage and in Windows Azure Blob Storage, you can use <a href="http://msdn.microsoft.com/en-us/library/hh549176.aspx" target="_blank">Shims</a> to isolate your code. This also has the big advantage of keeping your unit test fast.<br /></p>{% highlight javascript %}[TestMethod]
 [TestCategory("With fakes")]
 public async Task CloudBlobStreamManagerShimmedLoadTest()
 {
@@ -187,13 +187,13 @@ public async Task CloudBlobStreamManagerShimmedLoadTest()
     using (ShimsContext.Create())
     {
         // Setup shims
-        ShimCloudBlobContainer.AllInstances.GetBlockBlobReferenceString = (container, blobName) =&gt;
+        ShimCloudBlobContainer.AllInstances.GetBlockBlobReferenceString = (container, blobName) =>
             {
                 Assert.AreEqual(dummyContainerUri, container.Uri.AbsoluteUri);
                 Assert.AreEqual(dummyBoardName, blobName);
                 return new CloudBlockBlob(new Uri(dummyContainerUri));
             };
-        ShimCloudBlockBlob.AllInstances.OpenReadAsync = (blob) =&gt;
+        ShimCloudBlockBlob.AllInstances.OpenReadAsync = (blob) =>
             Task.FromResult(new MemoryStream(BoardSampleData.sampleBoard) as Stream);
 
         // Execute
@@ -213,12 +213,12 @@ public async Task FileStreamManagerShimmedLoadTest()
     using (ShimsContext.Create())
     {
         // Note how we use a shimmed constructor here.
-        ShimFileStream.ConstructorStringFileMode = (@this, fileName, __) =&gt;
+        ShimFileStream.ConstructorStringFileMode = (@this, fileName, __) =>
             {
                 Assert.IsTrue(fileName.EndsWith("\\AppData\\Roaming\\Boards\\" + dummyBoardName));
                 new ShimFileStream(@this)
                     {
-                        ReadAsyncByteArrayInt32Int32CancellationToken = (buffer, ___, ____, _____) =&gt;
+                        ReadAsyncByteArrayInt32Int32CancellationToken = (buffer, ___, ____, _____) =>
                         {
                             BoardSampleData.sampleBoard.CopyTo(buffer, 0);
                             return Task.FromResult(BoardSampleData.sampleBoard.Length);
@@ -231,15 +231,15 @@ public async Task FileStreamManagerShimmedLoadTest()
 
         Assert.IsTrue(BoardSampleData.sampleBoard.SequenceEqual((byte[])result));
     }
-}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Sample 4: Advanced Shims</h2><p xmlns="http://www.w3.org/1999/xhtml">You might want to test <em><a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/CloudBlobStreamManager.cs">CloudBlobStreamManager</a></em> together with the Windows Azure Storage SDK. However, you still might not want to build a test environment in Azure. The solution could be shimming .NET's <em>WebRequest</em> class. The Windows Azure Storage SDK uses it behind the scenes.</p>{% highlight javascript %}[TestMethod]
+}{% endhighlight %}<h2>Sample 4: Advanced Shims</h2><p>You might want to test <em><a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/CloudBlobStreamManager.cs">CloudBlobStreamManager</a></em> together with the Windows Azure Storage SDK. However, you still might not want to build a test environment in Azure. The solution could be shimming .NET's <em>WebRequest</em> class. The Windows Azure Storage SDK uses it behind the scenes.</p>{% highlight javascript %}[TestMethod]
 [TestCategory("With fakes")]
 public async Task CloudBlobShimmedWebRequestTest()
 {
     // Setup blob to simulate
-    var simulatedBlobs = new Dictionary&lt;string, byte[]&gt;();
+    var simulatedBlobs = new Dictionary<string, byte[]>();
     simulatedBlobs.Add(string.Format("/{0}/{1}", dummyContainerName, dummyBoardName), BoardSampleData.sampleBoard);
 
-    await this.ExecuteWithShimmedWebRequestForBlockBlobsAsync(simulatedBlobs, async () =&gt;
+    await this.ExecuteWithShimmedWebRequestForBlockBlobsAsync(simulatedBlobs, async () =>
         {
             var storageKey = ConfigurationManager.AppSettings["StorageKey"];
 
@@ -248,7 +248,7 @@ public async Task CloudBlobShimmedWebRequestTest()
         });
 }
 
-private async Task ExecuteWithShimmedWebRequestForBlockBlobsAsync(Dictionary&lt;string, byte[]&gt; simulatedBlobs, Func&lt;Task&gt; body)
+private async Task ExecuteWithShimmedWebRequestForBlockBlobsAsync(Dictionary<string, byte[]> simulatedBlobs, Func<Task> body)
 {
     // Note how we create the shims context here
     using (ShimsContext.Create())
@@ -256,7 +256,7 @@ private async Task ExecuteWithShimmedWebRequestForBlockBlobsAsync(Dictionary&lt;
         // Azure storage uses IAsyncResult-pattern in the background. Therefore we have to create shims
         // for Begin/EndGetResponse. BTW - you can check the code of Azure Storage Library at
         // https://github.com/WindowsAzure/azure-storage-net
-        ShimHttpWebRequest.AllInstances.BeginGetResponseAsyncCallbackObject = (@this, callback, state) =&gt;
+        ShimHttpWebRequest.AllInstances.BeginGetResponseAsyncCallbackObject = (@this, callback, state) =>
         {
             // Check if the request matches on of the blobs that we should simulate
             byte[] requestedBlob;
@@ -269,10 +269,10 @@ private async Task ExecuteWithShimmedWebRequestForBlockBlobsAsync(Dictionary&lt;
             var result = new StubIAsyncResult()
             {
                 // Azure Storage Library relies on a wait handle. We give one back that is immediately set.
-                AsyncWaitHandleGet = () =&gt; new ManualResetEvent(true),
+                AsyncWaitHandleGet = () => new ManualResetEvent(true),
 
                 // We pass on the state 
-                AsyncStateGet = () =&gt; state
+                AsyncStateGet = () => state
             };
 
             // We immediately call the callback as we do not have to wait for a real web request to finish
@@ -280,7 +280,7 @@ private async Task ExecuteWithShimmedWebRequestForBlockBlobsAsync(Dictionary&lt;
             return result;
         };
 
-        ShimHttpWebRequest.AllInstances.EndGetResponseIAsyncResult = (@this, __) =&gt;
+        ShimHttpWebRequest.AllInstances.EndGetResponseIAsyncResult = (@this, __) =>
         {
             // Check if the request matches on of the blobs that we should simulate
             byte[] requestedBlob;
@@ -312,7 +312,7 @@ private async Task ExecuteWithShimmedWebRequestForBlockBlobsAsync(Dictionary&lt;
             // As the headers are complete, we can now build the shimmed web response
             return new ShimHttpWebResponse()
             {
-                GetResponseStream = () =&gt;
+                GetResponseStream = () =>
                 {
                     // Simulate downloaded bytes
                     return new MemoryStream(requestedBlob);
@@ -320,14 +320,14 @@ private async Task ExecuteWithShimmedWebRequestForBlockBlobsAsync(Dictionary&lt;
 
                 // Status code depends on x-ms-range request header
                 // (see Azure Storage HTTP docs for details)
-                StatusCodeGet = () =&gt; string.IsNullOrEmpty(@this.Headers["x-ms-range"]) ? HttpStatusCode.OK : HttpStatusCode.PartialContent,
-                HeadersGet = () =&gt; headers,
-                ContentLengthGet = () =&gt; requestedBlob.Length,
-                ContentTypeGet = () =&gt; "application/octet-stream",
-                LastModifiedGet = () =&gt; new DateTime(2014, 1, 1)
+                StatusCodeGet = () => string.IsNullOrEmpty(@this.Headers["x-ms-range"]) ? HttpStatusCode.OK : HttpStatusCode.PartialContent,
+                HeadersGet = () => headers,
+                ContentLengthGet = () => requestedBlob.Length,
+                ContentTypeGet = () => "application/octet-stream",
+                LastModifiedGet = () => new DateTime(2014, 1, 1)
             };
         };
 
         await body();
     }
-}{% endhighlight %}<div id="mcepastebin" contenteditable="true" data-mce-bogus="1" style="position: absolute; top: 20px; width: 10px; height: 633px; overflow: hidden; opacity: 0; left: -65535px;" xmlns="http://www.w3.org/1999/xhtml">%MCEPASTEBIN%</div>
+}{% endhighlight %}<div id="mcepastebin" contenteditable="true" data-mce-bogus="1" style="position: absolute; top: 20px; width: 10px; height: 633px; overflow: hidden; opacity: 0; left: -65535px;">%MCEPASTEBIN%</div>

@@ -4,13 +4,13 @@ title: Time Tracking with Time Cockpit -  Try 30 Days for Free
 permalink: /create-trial-account/
 ---
 
-<div class="row" xmlns="http://www.w3.org/1999/xhtml">
+<div class="row">
   <div class="col-sm-6 col-md-5">
     <h1>Start Full Free 30-Day Trial
 				</h1>
-    <f:function name="Composite.AspNet.LoadUserControl" xmlns:f="http://www.composite.net/ns/function/1.0">
-      <f:param name="Path" value="~/Frontend/Custom/Web/Forms/Controls/CreateTrialAccount.ascx" />
-    </f:function>
+    <function name="Composite.AspNet.LoadUserControl">
+      <param name="Path" value="~/Frontend/Custom/Web/Forms/Controls/CreateTrialAccount.ascx" />
+    </function>
     <p>Your trial account is free and no action is required if you do not want to continue using time cockpit.
 				</p>
   </div>

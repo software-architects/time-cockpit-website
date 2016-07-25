@@ -9,9 +9,9 @@ lang: en
 permalink: /blog/2015/10/31/Office-365-Calendar-Add-In-with-Time-Cockpit
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">
+<p>
   <img src="{{site.baseurl}}/content/images/blog/2015/10/office365-addin-timecockpit.png" />
-</p><p xmlns="http://www.w3.org/1999/xhtml">Office 365 makes it quite easy to create add-ins using HTML and JavaScript. Time cockpit also offers an easy-to-use API for these web technologies. In this blog article I walk you through a short sample that demonstrates how to create an Outlook calendar add-in accessing time cockpit's project database.</p><p xmlns="http://www.w3.org/1999/xhtml">This sample uses the following technologies:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+</p><p>Office 365 makes it quite easy to create add-ins using HTML and JavaScript. Time cockpit also offers an easy-to-use API for these web technologies. In this blog article I walk you through a short sample that demonstrates how to create an Outlook calendar add-in accessing time cockpit's project database.</p><p>This sample uses the following technologies:</p><ul>
   <li>
     <a href="https://msdn.microsoft.com/en-us/library/office/jj220060.aspx" target="_blank">Office Add-ins</a>
   </li>
@@ -27,42 +27,42 @@ permalink: /blog/2015/10/31/Office-365-Calendar-Add-In-with-Time-Cockpit
   <li>
     <a href="http://www.typescriptlang.org/" target="_blank">TypeScript</a>
   </li>
-</ul><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">Do you know that we offer consulting and development services for <a href="http://www.timecockpit.com" target="_blank">time cockpit</a>? If you want to integrate time cockpit with other systems like Office, accounting, CRM, etc. but you do not have the necessary technical skills in your team, please <a href="~/help-support/contact-us" target="_blank">contact us</a>. We would love to help.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Video</h2><div class="videoWrapper" xmlns="http://www.w3.org/1999/xhtml">
+</ul><p class="showcase">Do you know that we offer consulting and development services for <a href="http://www.timecockpit.com" target="_blank">time cockpit</a>? If you want to integrate time cockpit with other systems like Office, accounting, CRM, etc. but you do not have the necessary technical skills in your team, please <a href="~/help-support/contact-us" target="_blank">contact us</a>. We would love to help.</p><h2>Video</h2><div class="videoWrapper">
   <iframe width="800" height="600" src="https://www.youtube.com/embed/bSmREYWGJvc?rel=0" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-</div><h2 xmlns="http://www.w3.org/1999/xhtml">Source Code</h2><div xmlns="http://www.w3.org/1999/xhtml">You can find the complete source code in our <a href="https://github.com/software-architects/TimeCockpit.Scripts/tree/master/Timecockpit.AngularOutlookPlugin" target="_blank">Github repository</a>. Here are the two most important pieces of source code for this sample: The manifest describing the add-in and the add-in's TypeScript implementation.</div><h3 xmlns="http://www.w3.org/1999/xhtml">Office Add-in Manifest</h3><div xmlns="http://www.w3.org/1999/xhtml">
-  {% highlight javascript %}&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
-  &lt;!-- Read more about Office Add-Ins manifests at https://msdn.microsoft.com/en-us/library/office/dn554255.aspx --&gt;
-  &lt;OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="MailApp"&gt;
-    &lt;Id&gt;47ACA615-DC95-469D-81EB-12F31D80348E&lt;/Id&gt;
-    &lt;Version&gt;0.0.1.0&lt;/Version&gt;
-    &lt;ProviderName&gt;time cockpit&lt;/ProviderName&gt;
-    &lt;DefaultLocale&gt;en-US&lt;/DefaultLocale&gt;
-    &lt;DisplayName DefaultValue="Project Picker" /&gt;
-    &lt;Description DefaultValue="Time Cockpit Project Picker Sample" /&gt;
-    &lt;SupportUrl DefaultValue="http://www.timecockpit.com" /&gt;
-    &lt;Hosts&gt;
-      &lt;Host Name="Mailbox" /&gt;
-    &lt;/Hosts&gt;
-    &lt;Requirements&gt;
-      &lt;Sets&gt;
-        &lt;Set Name="MailBox" MinVersion="1.1" /&gt;
-      &lt;/Sets&gt;
-    &lt;/Requirements&gt;
-    &lt;FormSettings&gt;
-      &lt;Form xsi:type="ItemEdit"&gt;
-        &lt;DesktopSettings&gt;
-          &lt;SourceLocation DefaultValue="https://projectpicker.azurewebsites.net/index.html" /&gt;
-        &lt;/DesktopSettings&gt;
-      &lt;/Form&gt;
-    &lt;/FormSettings&gt;
-    &lt;Permissions&gt;ReadWriteItem&lt;/Permissions&gt;
-    &lt;Rule xsi:type="RuleCollection" Mode="Or"&gt;
-      &lt;Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Edit" /&gt;
-    &lt;/Rule&gt;
-    &lt;DisableEntityHighlighting&gt;false&lt;/DisableEntityHighlighting&gt;
-  &lt;/OfficeApp&gt;{% endhighlight %}
-</div><h3 xmlns="http://www.w3.org/1999/xhtml">Add-in TypeScript Implementation</h3><div xmlns="http://www.w3.org/1999/xhtml">
-  {% highlight javascript %}/// &lt;reference path="typings/tsd.d.ts" /&gt;
+</div><h2>Source Code</h2><div>You can find the complete source code in our <a href="https://github.com/software-architects/TimeCockpit.Scripts/tree/master/Timecockpit.AngularOutlookPlugin" target="_blank">Github repository</a>. Here are the two most important pieces of source code for this sample: The manifest describing the add-in and the add-in's TypeScript implementation.</div><h3>Office Add-in Manifest</h3><div>
+  {% highlight javascript %}<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <!-- Read more about Office Add-Ins manifests at https://msdn.microsoft.com/en-us/library/office/dn554255.aspx -->
+  <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="MailApp">
+    <Id>47ACA615-DC95-469D-81EB-12F31D80348E</Id>
+    <Version>0.0.1.0</Version>
+    <ProviderName>time cockpit</ProviderName>
+    <DefaultLocale>en-US</DefaultLocale>
+    <DisplayName DefaultValue="Project Picker" />
+    <Description DefaultValue="Time Cockpit Project Picker Sample" />
+    <SupportUrl DefaultValue="http://www.timecockpit.com" />
+    <Hosts>
+      <Host Name="Mailbox" />
+    </Hosts>
+    <Requirements>
+      <Sets>
+        <Set Name="MailBox" MinVersion="1.1" />
+      </Sets>
+    </Requirements>
+    <FormSettings>
+      <Form xsi:type="ItemEdit">
+        <DesktopSettings>
+          <SourceLocation DefaultValue="https://projectpicker.azurewebsites.net/index.html" />
+        </DesktopSettings>
+      </Form>
+    </FormSettings>
+    <Permissions>ReadWriteItem</Permissions>
+    <Rule xsi:type="RuleCollection" Mode="Or">
+      <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Edit" />
+    </Rule>
+    <DisableEntityHighlighting>false</DisableEntityHighlighting>
+  </OfficeApp>{% endhighlight %}
+</div><h3>Add-in TypeScript Implementation</h3><div>
+  {% highlight javascript %}/// <reference path="typings/tsd.d.ts" />
 
 'use strict';
 
@@ -71,7 +71,7 @@ interface IProject {
     APP_ProjectUuid: string;
     APP_Code: string;
 }
-interface IOdataResult&lt;T&gt; {
+interface IOdataResult<T> {
     value: T[];
 }
 
@@ -83,7 +83,7 @@ class ProjectListController {
         // Check if there is already a token in local storage
         this.token = localStorage.getItem("ProjectPickerToken");
         if (!this.token) {
-            // No token -&gt; redirect to login page
+            // No token -> redirect to login page
             $location.url('/getToken');
         } else {
             this.refreshProjectListAsync();
@@ -101,21 +101,21 @@ class ProjectListController {
         this.isLoading = true;
         
         // Get project list using OData
-        this.$http.get&lt;IOdataResult&lt;IProject&gt;&gt;(
-            "https://apipreview.timecockpit.com/odata/APP_Project?$select=APP_ProjectUuid,APP_Code&amp;$top=20&amp;$orderby=APP_Code",
+        this.$http.get<IOdataResult<IProject>>(
+            "https://apipreview.timecockpit.com/odata/APP_Project?$select=APP_ProjectUuid,APP_Code&$top=20&$orderby=APP_Code",
             { headers: { "Authorization": "Bearer " + this.token } })
             .then(
-                // Success -&gt; save project list
-                projects =&gt; this.projects = projects.data.value,
-                // Error -&gt; if unauthorized, redirect to login page
-                err =&gt; { if (err.status === 401) { this.$location.url("/getToken"); } })
+                // Success -> save project list
+                projects => this.projects = projects.data.value,
+                // Error -> if unauthorized, redirect to login page
+                err => { if (err.status === 401) { this.$location.url("/getToken"); } })
             // Reset loading indicator
-            .finally(() =&gt; this.isLoading = false)
+            .finally(() => this.isLoading = false)
     }
     
     /** Transfers project code to current appointment's subject field */
     public pickAppointment(projectCode: string) {
-        var currentAppointment = &lt;Office.Types.AppointmentCompose&gt;Office.context.mailbox.item;
+        var currentAppointment = <Office.Types.AppointmentCompose>Office.context.mailbox.item;
         currentAppointment.subject.setAsync("Working on project '" + projectCode + "'");
     }
     
@@ -137,19 +137,19 @@ class GetTokenController {
     
     /** Gets the token using basic auth */
     public getToken() {
-        if (this.userName &amp;&amp; this.password) {
+        if (this.userName && this.password) {
             // Convert user:password to base64
             var base64UserPassword = window.btoa(this.userName + ':' + this.password);
             
             // Get the bearer token using user + password
-            this.$http.get&lt;string&gt;(
+            this.$http.get<string>(
                 "https://apipreview.timecockpit.com/token", 
                 { headers: { "Authorization": "Basic " + base64UserPassword } })
                 .then(
-                    // Success -&gt; save token in local storage
-                    token =&gt; this.saveToken(token.data), 
-                    // Error -&gt; activate error message
-                    _ =&gt; this.loginError = true);
+                    // Success -> save token in local storage
+                    token => this.saveToken(token.data), 
+                    // Error -> activate error message
+                    _ => this.loginError = true);
         }
     }
     
@@ -164,47 +164,47 @@ class GetTokenController {
 angular.module('ProjectPicker', [ 'ngRoute' ])
     .controller('projectListController', ProjectListController)
     .controller('getTokenController', GetTokenController)
-    .config(($routeProvider : angular.route.IRouteProvider) =&gt; {
+    .config(($routeProvider : angular.route.IRouteProvider) => {
         $routeProvider
             .when('/projectList', { 
                 template: `
-                &lt;h1&gt;Project List&lt;/h1&gt;
-                &lt;p ng-click="vm.clearLocalStorage()"&gt;Clear login cache&lt;/p&gt;
-                &lt;p class="text-info" ng-show="vm.isLoading"&gt;
+                <h1>Project List</h1>
+                <p ng-click="vm.clearLocalStorage()">Clear login cache</p>
+                <p class="text-info" ng-show="vm.isLoading">
                     Loading projects from time cockpit ...
-                &lt;/p&gt;
-                &lt;table class="table table-hover"&gt;
-                    &lt;tr ng-repeat="p in vm.projects"
-                        ng-click="vm.pickAppointment(p.APP_Code)"&gt;
-                        &lt;td&gt;{{ p.APP_Code }}&lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/table&gt;
+                </p>
+                <table class="table table-hover">
+                    <tr ng-repeat="p in vm.projects"
+                        ng-click="vm.pickAppointment(p.APP_Code)">
+                        <td>{{ p.APP_Code }}</td>
+                    </tr>
+                </table>
                 `,
                 controller: 'projectListController',
                 controllerAs: 'vm'
             })
             .when('/getToken', { 
                 template: `
-                &lt;h1&gt;Login&lt;/h1&gt;
-                &lt;form&gt;
-                    &lt;div class="form-group"&gt;
-                        &lt;label for="userName"&gt;User:&lt;/label&gt;
-                        &lt;input type="email" class="form-control" id="userName" 
+                <h1>Login</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="userName">User:</label>
+                        <input type="email" class="form-control" id="userName" 
                                placeholder="Time cockpit user name ..."
-                               ng-model="vm.userName"&gt;
-                    &lt;/div&gt;
-                    &lt;div class="form-group"&gt;
-                        &lt;label for="password"&gt;Password:&lt;/label&gt;
-                        &lt;input type="password" class="form-control" id="password" 
+                               ng-model="vm.userName">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" 
                                placeholder="Time cockpit password ..."
-                               ng-model="vm.password"&gt;
-                    &lt;/div&gt;
-                    &lt;p class="text-warning" ng-show="vm.loginError"&gt;
+                               ng-model="vm.password">
+                    </div>
+                    <p class="text-warning" ng-show="vm.loginError">
                         There was an error logging in. Correct password?
-                    &lt;/p&gt;
-                    &lt;button class="btn btn-default" ng-click="vm.getToken()"
-                            ng-disabled="!vm.userName || !vm.password"&gt;Login&lt;/button&gt;
-                &lt;/form&gt;
+                    </p>
+                    <button class="btn btn-default" ng-click="vm.getToken()"
+                            ng-disabled="!vm.userName || !vm.password">Login</button>
+                </form>
                 `,
                 controller: 'getTokenController',
                 controllerAs: 'vm'
@@ -213,7 +213,7 @@ angular.module('ProjectPicker', [ 'ngRoute' ])
     });
 
     // Add office initializer
-    Office.initialize = () =&gt; {
+    Office.initialize = () => {
         angular.bootstrap(jQuery('#container'), ['ProjectPicker']);
     };
 {% endhighlight %}

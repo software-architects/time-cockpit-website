@@ -9,11 +9,11 @@ lang: en
 permalink: /blog/2010/11/09/Version-14-is-Available-
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">Our new version of time cockpit 1.4 is available since 8 November 2010. Main improvments are contained in the following areas:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+<p>Our new version of time cockpit 1.4 is available since 8 November 2010. Main improvments are contained in the following areas:</p><ul>
   <li>Performance</li>
   <li>Security</li>
   <li>Presentation of lists and forms</li>
-</ul><p xmlns="http://www.w3.org/1999/xhtml">Please note that all users in a tenant have to switch to the new version as soon as the first user in the tenant installs this version, because users with older versions will not be able to sync their data with the server anymore. They can continue to use time cockpit, track their signals and work locally on their pc but as long as their client version is older as the server version no synchronization with the server is possible.</p><h2 xmlns="http://www.w3.org/1999/xhtml">What's changed</h2><ul xmlns="http://www.w3.org/1999/xhtml">
+</ul><p>Please note that all users in a tenant have to switch to the new version as soon as the first user in the tenant installs this version, because users with older versions will not be able to sync their data with the server anymore. They can continue to use time cockpit, track their signals and work locally on their pc but as long as their client version is older as the server version no synchronization with the server is possible.</p><h2>What's changed</h2><ul>
   <li>Performance in time sheet calendar has improved</li>
   <li>Performance of lists with a lot of rows has improved</li>
   <li>You can specify a default list and a default form for each entity, which is used if no other list or form is specified.</li>
@@ -26,7 +26,7 @@ permalink: /blog/2010/11/09/Version-14-is-Available-
   <li>Actions can be executed in forms</li>
   <li>In the Management module multiple lists can be opened concurrently</li>
   <li>Holidays are displayed in the time sheet calendar</li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">What's fixed</h2><ul xmlns="http://www.w3.org/1999/xhtml">
+</ul><h2>What's fixed</h2><ul>
   <li>Performance in excel export</li>
   <li>Bugs in display of some lists on tablet pc's</li>
   <li>Bugs in display of the mail window when using multiple displays and on Windows XP </li>

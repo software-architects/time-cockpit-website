@@ -9,7 +9,7 @@ lang: en
 permalink: /blog/2010/07/29/Proof-of-Concept-Itemized-Call-List-Import
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">In our very successfull webinar this morning we were asked by an attendee if it is possible to import phone calls from a mobile network provider's itemized call list. We really liked the idea (thanks <a href="http://grasgruen.it/" target="_blank">grasgruen.it</a>) and decided to create a prototype/proof of concept implementation of  such an import using <a href="http://ironpython.net/" target="_blank">IronPython</a>, our own SDK and third party APIs.</p><p xmlns="http://www.w3.org/1999/xhtml">The script imports itemized call logs created by <a href="http://www.a1.net/" target="_blank">A1</a>. We looked at export files from other providers and the script should be customized to their (very similar) formats within minutes. The basic steps involved are:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+<p>In our very successfull webinar this morning we were asked by an attendee if it is possible to import phone calls from a mobile network provider's itemized call list. We really liked the idea (thanks <a href="http://grasgruen.it/" target="_blank">grasgruen.it</a>) and decided to create a prototype/proof of concept implementation of  such an import using <a href="http://ironpython.net/" target="_blank">IronPython</a>, our own SDK and third party APIs.</p><p>The script imports itemized call logs created by <a href="http://www.a1.net/" target="_blank">A1</a>. We looked at export files from other providers and the script should be customized to their (very similar) formats within minutes. The basic steps involved are:</p><ul>
   <li>Import required references.</li>
   <li>Load the CSV file using a <a href="http://www.codeproject.com/KB/database/CsvReader.aspx" target="_blank">third party library</a>.</li>
   <li>For each CSV line analyze the content.</li>
@@ -17,7 +17,7 @@ permalink: /blog/2010/07/29/Proof-of-Concept-Itemized-Call-List-Import
   <li>Collect all the call/short message entity objects.</li>
   <li>Filter the list of calls/short message to prevent duplicate imports (by looking at which ranges of data are already available).</li>
   <li>Store the data.</li>
-</ul><p class="InfoBox" xmlns="http://www.w3.org/1999/xhtml">Please be aware that the script uses some non-public interfaces which may change in the future. It is only a way of enabling this use case until more platforms are supported by the call log import signal tracker or native mobile clients.</p>{% highlight javascript %}# CONFIGURE!
+</ul><p class="InfoBox">Please be aware that the script uses some non-public interfaces which may change in the future. It is only a way of enabling this use case until more platforms are supported by the call log import signal tracker or native mobile clients.</p>{% highlight javascript %}# CONFIGURE!
 fileName = "C:\\Temp\\Kostenabfrage.csv"
 
 # imports and references
@@ -48,7 +48,7 @@ linesToSkip = 3
 
 try:
     streamReader = StreamReader(fileName)
-    while linesToSkip &gt; 0:
+    while linesToSkip > 0:
         streamReader.ReadLine()
         linesToSkip -= 1
 
@@ -97,27 +97,27 @@ callSignalDates = Context.SelectSingleWithParams({ "Query": query, "@DeviceUuid"
 messageSignalDates = Context.SelectSingleWithParams({ "Query": query, "@DeviceUuid": currentDeviceId , "@SignalEntityName": "APP_CleansedShortMessageSignal" })
 
 if callSignalDates.MinBeginTime != None:
-    calls = Enumerable.ToList(Enumerable.Where(calls, lambda c: c.BeginTime &gt; callSignalDates.MaxEndTime or c.EndTime &lt; callSignalDates.MinBeginTime ))
+    calls = Enumerable.ToList(Enumerable.Where(calls, lambda c: c.BeginTime > callSignalDates.MaxEndTime or c.EndTime < callSignalDates.MinBeginTime ))
 if messageSignalDates.MinBeginTime != None:
-    messages = Enumerable.ToList(Enumerable.Where(messages, lambda m: m.EventTime &gt; messageSignalDates.MaxEndTime or m.EventTime &lt; messageSignalDates.MinBeginTime ))
+    messages = Enumerable.ToList(Enumerable.Where(messages, lambda m: m.EventTime > messageSignalDates.MaxEndTime or m.EventTime < messageSignalDates.MinBeginTime ))
 
 # store signals
 ssm = SignalStorageManager(Context)
 
-if calls.Count &gt; 0:
+if calls.Count > 0:
     ssm.Store(calls)
     print "Imported", calls.Count, "phone calls"
 else:
     print "No phone calls imported"
 
-if messages.Count &gt; 0:
+if messages.Count > 0:
     ssm.Store(messages)
     print "Imported", messages.Count, "short messages"
 else:
     print "No short messages imported"
 
-print "done."{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">During the creation of the script we became aware of several limitations of this approach compared to our phone import signal tracker (which uses a call log exported from the phone) or future native phone clients/signal trackers:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+print "done."{% endhighlight %}<p>During the creation of the script we became aware of several limitations of this approach compared to our phone import signal tracker (which uses a call log exported from the phone) or future native phone clients/signal trackers:</p><ul>
   <li>No caller name is provided.</li>
   <li>Phone numbers are trimmed for privacy reasons.</li>
   <li>Only outgoing calls/messages (and incoming roaming calls) are tracked.</li>
-</ul><p xmlns="http://www.w3.org/1999/xhtml">Please note that the execution of this script could also be <a href="http://help.timecockpit.com/html/7c78b76a-2526-4408-accc-ccae19bbca45.htm" target="_blank">automated</a>.</p><p xmlns="http://www.w3.org/1999/xhtml">Comments, questions or suggestions are highly appreciated.</p>
+</ul><p>Please note that the execution of this script could also be <a href="http://help.timecockpit.com/html/7c78b76a-2526-4408-accc-ccae19bbca45.htm" target="_blank">automated</a>.</p><p>Comments, questions or suggestions are highly appreciated.</p>

@@ -4,13 +4,13 @@ title: Zeiterfassung mit time cockpit -  30 Tage kostenlos testen
 permalink: /de/create-trial-account/
 ---
 
-<div class="row" xmlns="http://www.w3.org/1999/xhtml">
+<div class="row">
   <div class="col-sm-6 col-md-5">
     <h1>30 Tage Test-Account
 							</h1>
-    <f:function name="Composite.AspNet.LoadUserControl" xmlns:f="http://www.composite.net/ns/function/1.0">
-      <f:param name="Path" value="~/Frontend/Custom/Web/Forms/Controls/CreateTrialAccount.ascx" />
-    </f:function>
+    <function name="Composite.AspNet.LoadUserControl">
+      <param name="Path" value="~/Frontend/Custom/Web/Forms/Controls/CreateTrialAccount.ascx" />
+    </function>
     <p>Ihr Test-Account ist kostenlos, uns Sie müssen sich nicht abmelden, wenn Sie time cockpit nicht weiterverwenden möchten.
 							</p>
   </div>

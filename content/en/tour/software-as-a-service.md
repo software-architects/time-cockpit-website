@@ -4,8 +4,8 @@ title: Software-as-a-Service Time Tracking
 permalink: /tour/software-as-a-service/
 ---
 
-<h1 xmlns="http://www.w3.org/1999/xhtml">Software-as-a-Service
-		</h1><div class="tour" xmlns="http://www.w3.org/1999/xhtml">
+<h1>Software-as-a-Service
+		</h1><div class="tour">
   <div class="row">
     <div class="col-sm-12 col-md-6">
       <h2>Flexible Subscription
@@ -20,10 +20,10 @@ permalink: /tour/software-as-a-service/
       </p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:1f7730ad-9f3c-4100-a954-5456633371d2" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:1f7730ad-9f3c-4100-a954-5456633371d2" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -33,13 +33,13 @@ permalink: /tour/software-as-a-service/
       <p>
         <strong>0.25€ per user per day – no tricks, no hidden fees.</strong>
       </p>
-      <p>We charge for time cockpit based on the number of active users per day. The fee covers the time cockpit software (you can install it on multiple PCs), the online browser client, the entire server infrastructure in the cloud necessary for your time cockpit environment, and support via email. At the end of the month you receive a digitally signed invoice with a detailed list of your active users. Payment is done via credit card. <a href="{{site.baseurl}}/preis/preis/">Read more about time cockpit pricing ...</a></p>
+      <p>We charge for time cockpit based on the number of active users per day. The fee covers the time cockpit software (you can install it on multiple PCs), the online browser client, the entire server infrastructure in the cloud necessary for your time cockpit environment, and support via email. At the end of the month you receive a digitally signed invoice with a detailed list of your active users. Payment is done via credit card. <a href="{{site.baseurl}}/pricing/pricing/">Read more about time cockpit pricing ...</a></p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:18055c3e-40af-4b7a-8ba6-5de9247a06f7" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:18055c3e-40af-4b7a-8ba6-5de9247a06f7" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">

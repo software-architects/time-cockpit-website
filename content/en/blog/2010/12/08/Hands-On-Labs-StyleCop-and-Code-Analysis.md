@@ -9,13 +9,13 @@ lang: en
 permalink: /blog/2010/12/08/Hands-On-Labs-StyleCop-and-Code-Analysis
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">This week I will be one of the speakers at <a href="http://basta-on-tour.de/csharp2010/" target="_blank"><span>BASTA On Tour</span></a> in Munich. One of the topics I am going to speak about is the Managed Extensibility Framework (MEF). In this blog post I want to share my slides and summarize the hands-on labs that I am going to go through with the participants.</p><ul xmlns="http://www.w3.org/1999/xhtml">
+<p>This week I will be one of the speakers at <a href="http://basta-on-tour.de/csharp2010/" target="_blank"><span>BASTA On Tour</span></a> in Munich. One of the topics I am going to speak about is the Managed Extensibility Framework (MEF). In this blog post I want to share my slides and summarize the hands-on labs that I am going to go through with the participants.</p><ul>
   <li>
     <a href="{{site.baseurl}}/content/images/blog/2010/12/StyleCop Code Analysis Workshop.pdf" target="_blank">Download Slides</a> (PDF)</li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">Hands-On Lab 1: StyleCop Documentation Rules</h2><p xmlns="http://www.w3.org/1999/xhtml">Prerequisites:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+</ul><h2>Hands-On Lab 1: StyleCop Documentation Rules</h2><p>Prerequisites:</p><ul>
   <li>Visual Studio 2010</li>
   <li>Download and install the latest version of the StyleCop from <a href="http://stylecop.codeplex.com/" target="_blank">http://stylecop.codeplex.com/</a></li>
-</ul><p xmlns="http://www.w3.org/1999/xhtml">Lab step by step description:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+</ul><p>Lab step by step description:</p><ul>
   <li>Create a class library project <span class="InlineCode">StyleCopDemo</span>.</li>
   <li>Add the following class to the newly created project:</li>
 </ul>{% highlight javascript %}using System;
@@ -25,20 +25,20 @@ using System.Text;
 
 namespace styleCopDemo
 {
- public class utils_Bucket&lt;T&gt;
+ public class utils_Bucket<T>
  {
   public utils_Bucket()
   {
   }
 
-  public utils_Bucket(IEnumerable&lt;Tuple&lt;string, T&gt;&gt; data)
+  public utils_Bucket(IEnumerable<Tuple<string, T>> data)
   {
    foreach (var item in data) {
     this.data[item.Item1] = item.Item2;
    }
   }
 
-  private Dictionary&lt;string, T&gt; data = new Dictionary&lt;string, T&gt;();
+  private Dictionary<string, T> data = new Dictionary<string, T>();
 
   public T this[string index]
   {
@@ -62,11 +62,11 @@ namespace styleCopDemo
 
   private string Dump()
   {
-   return this.data.Aggregate&lt;KeyValuePair&lt;string, T&gt;, StringBuilder&gt;(
+   return this.data.Aggregate<KeyValuePair<string, T>, StringBuilder>(
     new StringBuilder(),
-    (agg, item) =&gt;
+    (agg, item) =>
     {
-     if (agg.Length &gt; 0)
+     if (agg.Length > 0)
      {
       agg.Append(", ");
      }
@@ -79,7 +79,7 @@ namespace styleCopDemo
    return this.Dump();
   }
  }
-}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+}{% endhighlight %}<ul>
   <li>Launch StyleCop Settings (right-click on project, select <em>StyleCop settings</em>).</li>
   <li>Enable all rules except <em>Spacing Rules / SA1027</em></li>
   <li>Build your project and make sure that there are no errors and no warning.</li>
@@ -87,9 +87,9 @@ namespace styleCopDemo
   <li>Correct all warnings appropriately.</li>
   <li>After that your file should look similar to the following implementation:</li>
 </ul>{% highlight javascript %}//-------------------------------------------------------
-// &lt;copyright file="Bucket.cs" company="Contoso Ltd."&gt;
+// <copyright file="Bucket.cs" company="Contoso Ltd.">
 //     Copyright (c) Contoso Ltd. All rights reserved.
-// &lt;/copyright&gt;
+// </copyright>
 //-------------------------------------------------------
 
 namespace StyleCopDemo
@@ -99,29 +99,29 @@ namespace StyleCopDemo
  using System.Linq;
  using System.Text;
 
- /// &lt;summary&gt;
+ /// <summary>
  /// Implements a bucket
- /// &lt;/summary&gt;
- /// &lt;typeparam name="T"&gt;Type of the elements in the bucket&lt;/typeparam&gt;
- public class Bucket&lt;T&gt;
+ /// </summary>
+ /// <typeparam name="T">Type of the elements in the bucket</typeparam>
+ public class Bucket<T>
  {
-  /// &lt;summary&gt;
+  /// <summary>
   /// Internal helper to store data
-  /// &lt;/summary&gt;
-  private Dictionary&lt;string, T&gt; data = new Dictionary&lt;string, T&gt;();
+  /// </summary>
+  private Dictionary<string, T> data = new Dictionary<string, T>();
 
-  /// &lt;summary&gt;
+  /// <summary>
   /// Initializes a new instance of the Bucket class.
-  /// &lt;/summary&gt;
+  /// </summary>
   public Bucket()
   {
   }
 
-  /// &lt;summary&gt;
+  /// <summary>
   /// Initializes a new instance of the Bucket class.
-  /// &lt;/summary&gt;
-  /// &lt;param name="data"&gt;The initial data.&lt;/param&gt;
-  public Bucket(IEnumerable&lt;Tuple&lt;string, T&gt;&gt; data)
+  /// </summary>
+  /// <param name="data">The initial data.</param>
+  public Bucket(IEnumerable<Tuple<string, T>> data)
   {
    foreach (var item in data) 
    {
@@ -129,11 +129,11 @@ namespace StyleCopDemo
    }
   }
 
-  /// &lt;summary&gt;
+  /// <summary>
   /// Gets the element at the specified index.
-  /// &lt;/summary&gt;
-  /// &lt;param name="index"&gt;Index of the element to get.&lt;/param&gt;
-  /// &lt;value&gt;Element at the specified index.&lt;/value&gt;
+  /// </summary>
+  /// <param name="index">Index of the element to get.</param>
+  /// <value>Element at the specified index.</value>
   public T this[string index]
   {
    get
@@ -149,37 +149,37 @@ namespace StyleCopDemo
    }
   }
 
-  /// &lt;summary&gt;
+  /// <summary>
   /// Gets the length.
-  /// &lt;/summary&gt;
-  /// &lt;returns&gt;Length of the dictionary&lt;/returns&gt;
+  /// </summary>
+  /// <returns>Length of the dictionary</returns>
   public int GetLength()
   {
    return this.data.Keys.Count;
   }
 
-  /// &lt;summary&gt;
-  /// Returns a &lt;see cref="System.String"/&gt; that represents this instance.
-  /// &lt;/summary&gt;
-  /// &lt;returns&gt;
-  /// A &lt;see cref="System.String"/&gt; that represents this instance.
-  /// &lt;/returns&gt;
+  /// <summary>
+  /// Returns a <see cref="System.String"/> that represents this instance.
+  /// </summary>
+  /// <returns>
+  /// A <see cref="System.String"/> that represents this instance.
+  /// </returns>
   public override string ToString()
   {
    return this.Dump();
   }
 
-  /// &lt;summary&gt;
+  /// <summary>
   /// Dumps this instance.
-  /// &lt;/summary&gt;
-  /// &lt;returns&gt;String representation of the dictionary&lt;/returns&gt;
+  /// </summary>
+  /// <returns>String representation of the dictionary</returns>
   private string Dump()
   {
-   return this.data.Aggregate&lt;KeyValuePair&lt;string, T&gt;, StringBuilder&gt;(
+   return this.data.Aggregate<KeyValuePair<string, T>, StringBuilder>(
     new StringBuilder(),
-    (agg, item) =&gt;
+    (agg, item) =>
     {
-     if (agg.Length &gt; 0)
+     if (agg.Length > 0)
      {
       agg.Append(", ");
      }
@@ -189,17 +189,17 @@ namespace StyleCopDemo
     }).ToString();
   }
  }
-}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Hands-On Lab 2: StyleCop Build Integration</h2><p xmlns="http://www.w3.org/1999/xhtml">Prerequisites:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+}{% endhighlight %}<h2>Hands-On Lab 2: StyleCop Build Integration</h2><p>Prerequisites:</p><ul>
   <li>Visual Studio 2010</li>
   <li>Download and install the latest version of the StyleCop from <a href="http://stylecop.codeplex.com/" target="_blank"><span>http://stylecop.codeplex.com/</span></a><ul><li>Make sure that you have selected <em>MSBuild integration files</em> when installing StyleCop</li></ul></li>
   <li>Complete Hands-On Lab 1 (see above)</li>
-</ul><p xmlns="http://www.w3.org/1999/xhtml">Lab step by step description:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+</ul><p>Lab step by step description:</p><ul>
   <li>Open the resulting solution from Hands-On Lab 1 (<span class="InlineCode">StyleCopDemo</span>).</li>
   <li>Unload the <span class="InlineCode">StyleCopDemo</span> project (right-click on project in <em>Solution Explorer</em>, select <em>Unload Project</em>).</li>
   <li>Edit <span class="InlineCode">StyleCopDemo</span> project (right-click on project in <em>Solution Explorer</em>, select <em>Edit StyleCopDemo.csproj</em>).</li>
   <li>Scroll to the end of the file. Find the line <span class="InlineCode">&lt;Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" /&gt;</span>.</li>
   <li>Immediately after that line add the following line:</li>
-</ul>{% highlight javascript %}&lt;Import Project="$(ProgramFiles)\MSBuild\Microsoft\StyleCop\v4.4\Microsoft.StyleCop.targets" /&gt;{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}<Import Project="$(ProgramFiles)\MSBuild\Microsoft\StyleCop\v4.4\Microsoft.StyleCop.targets" />{% endhighlight %}<ul>
   <li>Reload the <span class="InlineCode">StyleCopDemo</span> project (right-click on project in <em>Solution Explorer</em>, select <em>Reload Project</em>).</li>
   <li>Build your project to see that there are no errors and warnings.</li>
   <li>Break a StyleCop rule (e.g. remove the documentation of a method).</li>
@@ -209,7 +209,7 @@ namespace StyleCopDemo
   <li>Unload the <span class="InlineCode">StyleCopDemo</span> project (right-click on project in <em>Solution Explorer</em>, select <em>Unload Project</em>).</li>
   <li>Edit <span class="InlineCode">StyleCopDemo</span> project (right-click on project in <em>Solution Explorer</em>, select <em>Edit StyleCopDemo.csproj</em>).</li>
   <li>Find the first <span class="InlineCode">PropertyGroup</span> in the project file and add the following setting:</li>
-</ul>{% highlight javascript %}&lt;StyleCopTreatErrorsAsWarnings&gt;false&lt;/StyleCopTreatErrorsAsWarnings&gt;{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+</ul>{% highlight javascript %}<StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>{% endhighlight %}<ul>
   <li>Reload the <span class="InlineCode">StyleCopDemo</span> project (right-click on project in <em>Solution Explorer</em>, select <em>Reload Project</em>).</li>
   <li>Build your project.
 
@@ -217,13 +217,13 @@ namespace StyleCopDemo
   <li>Suppress the warning/error using the <span class="InlineCode">SuppressMessage</span> attribute:</li>
 </ul>{% highlight javascript %}[SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", 
   Justification = "No time to write documentation...")]
-public class Bucket&lt;T&gt;
+public class Bucket<T>
 {
   ...
-}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Hands-On Lab 3: Code Analysis</h2><p xmlns="http://www.w3.org/1999/xhtml">Prerequisites:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+}{% endhighlight %}<h2>Hands-On Lab 3: Code Analysis</h2><p>Prerequisites:</p><ul>
   <li>Visual Studio 2010</li>
   <li>Complete Hands-On Lab 1 (see above)</li>
-</ul><p xmlns="http://www.w3.org/1999/xhtml">Lab step by step description:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+</ul><p>Lab step by step description:</p><ul>
   <li>Add a new class library project to solution from Hands-On Lab 1 (<span class="InlineCode">StyleCopDemo</span>).</li>
   <li>Add the following class to the newly created project:</li>
 </ul>{% highlight javascript %}namespace CodeAnalysisDemo
@@ -233,10 +233,10 @@ public class Bucket&lt;T&gt;
  using System.Data.SqlClient;
  using System.IO;
 
- public interface ISwiftItem&lt;T&gt;
+ public interface ISwiftItem<T>
  {
   string ItemName { get; }
-  List&lt;T&gt; Values { get; }
+  List<T> Values { get; }
  }
 
  public interface INamedItem
@@ -244,7 +244,7 @@ public class Bucket&lt;T&gt;
   string ItemName { get; }
  }
 
- public class SwiftItem&lt;T&gt; : ISwiftItem&lt;T&gt;
+ public class SwiftItem<T> : ISwiftItem<T>
  {
   public string ItemName
   {
@@ -252,7 +252,7 @@ public class Bucket&lt;T&gt;
    set;
   }
 
-  public List&lt;T&gt; Values
+  public List<T> Values
   {
    get;
    set;
@@ -272,13 +272,13 @@ public class Bucket&lt;T&gt;
    this.header = new object();
   }
 
-  public List&lt;Tuple&lt;string, object&gt;&gt; Settings
+  public List<Tuple<string, object>> Settings
   {
    get;
    set;
   }
 
-  public void AddObject&lt;T&gt;(SwiftItem&lt;T&gt; newObj)
+  public void AddObject<T>(SwiftItem<T> newObj)
   {
    lock (this.header)
    {
@@ -326,7 +326,7 @@ public class Bucket&lt;T&gt;
    }
   }
  }
-}{% endhighlight %}<ul xmlns="http://www.w3.org/1999/xhtml">
+}{% endhighlight %}<ul>
   <li>Build your project and make sure that there are no error and no warnings.</li>
   <li>Enable <em>Code Analysis</em> for the project and select rule set <em>Microsoft All Rules</em>.
 
@@ -347,10 +347,10 @@ namespace CodeAnalysisDemo
  using System.Diagnostics.CodeAnalysis;
  using System.IO;
 
- public interface ISwiftItem&lt;T&gt;
+ public interface ISwiftItem<T>
  {
   string ItemName { get; }
-  IEnumerable&lt;T&gt; Values { get; }
+  IEnumerable<T> Values { get; }
  }
 
  public interface INamedItem
@@ -358,7 +358,7 @@ namespace CodeAnalysisDemo
   string ItemName { get; }
  }
 
- public class SwiftItem&lt;T&gt; : ISwiftItem&lt;T&gt;
+ public class SwiftItem<T> : ISwiftItem<T>
  {
   public string ItemName
   {
@@ -366,7 +366,7 @@ namespace CodeAnalysisDemo
    set;
   }
 
-  public IEnumerable&lt;T&gt; Values
+  public IEnumerable<T> Values
   {
    get;
    set;
@@ -379,7 +379,7 @@ namespace CodeAnalysisDemo
   public object SettingValue { get; set; }
  }
 
- public class SettingCollection : Collection&lt;Setting&gt;
+ public class SettingCollection : Collection<Setting>
  {
  }
 
@@ -402,7 +402,7 @@ namespace CodeAnalysisDemo
    private set;
   }
 
-  public void AddObject&lt;T&gt;(SwiftItem&lt;T&gt; newObj)
+  public void AddObject<T>(SwiftItem<T> newObj)
   {
    if (newObj != null)
    {
@@ -450,7 +450,7 @@ namespace CodeAnalysisDemo
   [SuppressMessage("Microsoft.Performance", "CA1822", Justification = "Will reference 'this' later")]
   public void WriteToDatabase(SqlConnection conn, string tenant)
   {
-   if (conn == null || (conn.State &amp; ConnectionState.Open) == 0)
+   if (conn == null || (conn.State & ConnectionState.Open) == 0)
    {
     throw new ArgumentException("conn must not be null and must be open");
    }

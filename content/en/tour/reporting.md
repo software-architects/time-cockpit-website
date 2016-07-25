@@ -4,8 +4,8 @@ title: Time Tracking Reporting
 permalink: /tour/reporting/
 ---
 
-<h1 xmlns="http://www.w3.org/1999/xhtml">Reporting
-		</h1><div class="tour" xmlns="http://www.w3.org/1999/xhtml">
+<h1>Reporting
+		</h1><div class="tour">
   <div class="row">
     <div class="col-sm-12 col-md-6">
       <h2>Lists with Filters, Groupings, and Totals
@@ -30,15 +30,15 @@ permalink: /tour/reporting/
 					</li>
         <li>Navigate between lists using hyperlinks
 					</li>
-        <li>Possibility to add your own list definitions for frequently occurring usage scenarios (<a href="{{site.baseurl}}/tour/erweiterbarkeit/">read more about customization options ...</a>)
+        <li>Possibility to add your own list definitions for frequently occurring usage scenarios (<a href="{{site.baseurl}}/tour/extensibility/">read more about customization options ...</a>)
 					</li>
       </ul>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:b10957d9-c38f-41eb-ab98-729a7e974f33" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:b10957d9-c38f-41eb-ab98-729a7e974f33" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -82,10 +82,10 @@ permalink: /tour/reporting/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:ff023c71-1e2f-471f-936f-11faf7677729" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:ff023c71-1e2f-471f-936f-11faf7677729" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -109,10 +109,10 @@ permalink: /tour/reporting/
       </ul>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:25014f19-5f95-4565-89ec-4f211b1d8ed0" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:25014f19-5f95-4565-89ec-4f211b1d8ed0" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -125,14 +125,14 @@ permalink: /tour/reporting/
         </span>
       </p>
       <p>
-        <a href="{{site.baseurl}}/hilfe-support/kontakt/">Contact us</a> if you are interested in accessing your time cockpit database with your favorite report generator. Behind the scenes time cockpit uses a SQL Server-compatible relational database cluster to store your data. If your report generator supports SQL Server (e. g. via ODBC) it is likely that it can access your time cockpit database (note that OLE DB access is not supported).
+        <a href="{{site.baseurl}}/help-support/contact-us/">Contact us</a> if you are interested in accessing your time cockpit database with your favorite report generator. Behind the scenes time cockpit uses a SQL Server-compatible relational database cluster to store your data. If your report generator supports SQL Server (e. g. via ODBC) it is likely that it can access your time cockpit database (note that OLE DB access is not supported).
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:c9cb45e4-0f98-4e06-8116-40bf92c6d040" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:c9cb45e4-0f98-4e06-8116-40bf92c6d040" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
 </div>

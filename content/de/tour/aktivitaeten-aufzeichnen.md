@@ -4,8 +4,8 @@ title: Aktivitäten aufzeichnen für genaue Zeiterfassung
 permalink: /de/tour/aktivitaeten-aufzeichnen/
 ---
 
-<h1 xmlns="http://www.w3.org/1999/xhtml">Aktivitäten aufzeichnen
-		</h1><div class="tour" xmlns="http://www.w3.org/1999/xhtml">
+<h1>Aktivitäten aufzeichnen
+		</h1><div class="tour">
   <div class="row">
     <div class="col-sm-12 col-md-6">
       <h2>Rekonstruieren Sie Ihren Tag
@@ -15,14 +15,14 @@ permalink: /de/tour/aktivitaeten-aufzeichnen/
       </p>
       <p>Verwenden Sie die Signal Tracker um automatisch aufzuzeichnen, woran Sie gearbeitet haben. Importieren Sie die Call History von Ihrem Telefon, wenn Telefonate wichtig für Ihre Zeiterfassung sind. Als Software Entwickler können Sie time cockpit mit dem Microsoft Team Foundation Server verknüpfen. Sie sehen dann im Zeitbuchungskalender, wann Sie Files eingechecked haben und wann Sie Work Items geändert haben.
 				</p>
-      <p>Der <a href="{{site.baseurl}}/tour/grafischer-kalender/">graphische Kalender</a> visualisiert alle Signale. Sie können diese mit wenigen Mausklicks in Zeitbuchungen verwandeln.
+      <p>Der <a href="{{site.baseurl}}/de/tour/grafischer-kalender/">graphische Kalender</a> visualisiert alle Signale. Sie können diese mit wenigen Mausklicks in Zeitbuchungen verwandeln.
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:1bbae7a2-b766-4c6c-a3a4-5bdeb8d7cf2c" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:1bbae7a2-b766-4c6c-a3a4-5bdeb8d7cf2c" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -37,10 +37,10 @@ permalink: /de/tour/aktivitaeten-aufzeichnen/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:969ca3ba-0b4e-4405-90b3-cf804d2454a9" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:969ca3ba-0b4e-4405-90b3-cf804d2454a9" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -67,10 +67,10 @@ permalink: /de/tour/aktivitaeten-aufzeichnen/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:89b7c8a0-3237-43cf-a2e5-023823c117c0" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:89b7c8a0-3237-43cf-a2e5-023823c117c0" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">

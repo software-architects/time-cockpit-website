@@ -9,10 +9,10 @@ lang: en
 permalink: /blog/2013/09/19/SQLPASS-Session-about-Windows-Azure-Table-Storage
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">Today I will do a session in a <a href="http://www.sqlpass.org" target="_blank">SQLPASS</a> community <a href="http://austria.sqlpass.org/" target="_blank">meeting in Vienna</a> about Windows Azure Table Storage. The audience mainly consists of SQL experts and I have been invited to describe similarities and differences of SQL Azure and Table Storage. In this article I want to summarize important links that people who are interested in the details could use. Additionally I publish the source code of the sample that I am going to show.</p><p xmlns="http://www.w3.org/1999/xhtml">Note that the sample is built with the hot and new 2.1 release of Azure's .NET Storage Client. Therefore it can use nice features like async API, building queries with IQueryable, Shared Access Signatures for table storage, etc.</p><p xmlns="http://www.w3.org/1999/xhtml">Here are some photos from the event (click to enlarge). You can view the photos in full resolution <a href="http://www.flickr.com/photos/rainerstropek/" target="_blank">in my Flickr album</a>.</p><f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-  <f:param name="MediaFolder" value="MediaArchive:66f02333-7931-4f09-8c07-1d83a71a7531" xmlns:f="http://www.composite.net/ns/function/1.0" />
-  <f:param name="ThumbnailMaxHeight" value="75" xmlns:f="http://www.composite.net/ns/function/1.0" />
-</f:function><h2 xmlns="http://www.w3.org/1999/xhtml">The Basics</h2><ul xmlns="http://www.w3.org/1999/xhtml">
+<p>Today I will do a session in a <a href="http://www.sqlpass.org" target="_blank">SQLPASS</a> community <a href="http://austria.sqlpass.org/" target="_blank">meeting in Vienna</a> about Windows Azure Table Storage. The audience mainly consists of SQL experts and I have been invited to describe similarities and differences of SQL Azure and Table Storage. In this article I want to summarize important links that people who are interested in the details could use. Additionally I publish the source code of the sample that I am going to show.</p><p>Note that the sample is built with the hot and new 2.1 release of Azure's .NET Storage Client. Therefore it can use nice features like async API, building queries with IQueryable, Shared Access Signatures for table storage, etc.</p><p>Here are some photos from the event (click to enlarge). You can view the photos in full resolution <a href="http://www.flickr.com/photos/rainerstropek/" target="_blank">in my Flickr album</a>.</p><function name="Composite.Media.ImageGallery.Slimbox2">
+  <param name="MediaFolder" value="MediaArchive:66f02333-7931-4f09-8c07-1d83a71a7531" />
+  <param name="ThumbnailMaxHeight" value="75" />
+</function><h2>The Basics</h2><ul>
   <li>
     <a href="http://www.windowsazure.com/en-us/services/data-management/" target="_blank">Introduction about data management offerings in Windows Azure</a> covering SQL Databases and Table Storage</li>
   <li>
@@ -29,7 +29,7 @@ permalink: /blog/2013/09/19/SQLPASS-Session-about-Windows-Azure-Table-Storage
   <li>Windows Azure Training Kit
 
 <ul><li><a href="http://www.microsoft.com/en-us/download/details.aspx?id=8396" target="_blank">Download the Training Kit</a></li><li><a href="http://windowsazure-trainingkit.github.io/labs.htm" target="_blank">Browse the Training Kit online</a></li></ul></li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">Pricing</h2><ul xmlns="http://www.w3.org/1999/xhtml">
+</ul><h2>Pricing</h2><ul>
   <li>
     <a href="http://www.windowsazure.com/en-us/pricing/details/storage/" target="_blank">Windows Azure Storage Pricing</a>
   </li>
@@ -42,7 +42,7 @@ permalink: /blog/2013/09/19/SQLPASS-Session-about-Windows-Azure-Table-Storage
   <li>
     <a href="http://www.windowsazure.com/en-us/pricing/calculator/?scenario=data-management" target="_blank">Windows Azure Pricing Calculator - Storage</a>
   </li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">Deep Dive Content</h2><ul xmlns="http://www.w3.org/1999/xhtml">
+</ul><h2>Deep Dive Content</h2><ul>
   <li>
     <a href="http://msdn.microsoft.com/en-us/library/windowsazure/dd179355.aspx" target="_blank">Windows Azure Storage Services REST API Reference</a> in MSDN</li>
   <li>
@@ -64,11 +64,11 @@ permalink: /blog/2013/09/19/SQLPASS-Session-about-Windows-Azure-Table-Storage
     <a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/announcing-storage-client-library-2-1-rtm.aspx" target="_blank">What's new in Storage Client Library 2.1</a> in Storage Team Blog</li>
   <li>
     <a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2013/06/28/windows-azure-storage-build-talk-what-s-coming-best-practices-and-internals.aspx" target="_blank">What's coming in CY13</a> in Storage Team Blog</li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">Important 3rd Party Tools</h2><ul xmlns="http://www.w3.org/1999/xhtml">
+</ul><h2>Important 3rd Party Tools</h2><ul>
   <li>
     <a href="http://azurestorageexplorer.codeplex.com/" target="_blank">Azure Storage Explorer</a> on Codeplex - a free tool to interactively manage your Azure Storage Account including tables</li>
   <li>Cerebrata's <a href="http://www.cerebrata.com/" target="_blank">Azure Management Studio</a> - my personal favorite for Azure management</li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">Other Related Links</h2><ul xmlns="http://www.w3.org/1999/xhtml">
+</ul><h2>Other Related Links</h2><ul>
   <li>
     <a href="http://www.windowsazure.com/" target="_blank">Windows Azure Homepage</a> - this is where you can get your free trial subscription if you want to start playing with it</li>
   <li>
@@ -76,7 +76,7 @@ permalink: /blog/2013/09/19/SQLPASS-Session-about-Windows-Azure-Table-Storage
   </li>
   <li>
     <a href="http://www.windowsazure.com/en-us/support/trust-center/" target="_blank">Windows Azure Trust Center</a> - the number one source if you want detailed information about data security and privacy in Windows Azure</li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">Source Code of the Sample</h2>{% highlight javascript %}using Microsoft.WindowsAzure.Storage;
+</ul><h2>Source Code of the Sample</h2>{% highlight javascript %}using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.RetryPolicies;
 using Microsoft.WindowsAzure.Storage.Table;
@@ -96,7 +96,7 @@ namespace SqlPassTableStorageSample
             this.OrderDateTimeUtc = DateTimeOffset.UtcNow;
         }
 
-        public Order(string partitionKey, string rowKey, DateTimeOffset timestamp, IDictionary&lt;string, EntityProperty&gt; props, string etag)
+        public Order(string partitionKey, string rowKey, DateTimeOffset timestamp, IDictionary<string, EntityProperty> props, string etag)
             : this()
         {
             this.PartitionKey = partitionKey;
@@ -126,7 +126,7 @@ namespace SqlPassTableStorageSample
         {
         }
 
-        public OrderLine(string partitionKey, string rowKey, DateTimeOffset timestamp, IDictionary&lt;string, EntityProperty&gt; props, string etag)
+        public OrderLine(string partitionKey, string rowKey, DateTimeOffset timestamp, IDictionary<string, EntityProperty> props, string etag)
             : this()
         {
             this.PartitionKey = partitionKey;
@@ -223,7 +223,7 @@ namespace SqlPassTableStorageSample
 
             // Retrieve a specific row by partition key and row key
             var result = await table.ExecuteAsync(
-                TableOperation.Retrieve&lt;Order&gt;(customerCode, Order.BuildRowKey(orderId)));
+                TableOperation.Retrieve<Order>(customerCode, Order.BuildRowKey(orderId)));
             var readOrder = (Order)result.Result;           // remember retrieved order, we will 
                                                             // need it later again
             Console.WriteLine("Retrieve successful; Order ID = {0}", readOrder.RowKey);
@@ -272,7 +272,7 @@ namespace SqlPassTableStorageSample
             // table storage. That saves money (lower number of transactions) and leads
             // to better performance (lower latency).
             var batch = new TableBatchOperation();
-            for (int lineCount = 1; lineCount &lt;= 10; totalPrice += lineCount * 5, lineCount++)
+            for (int lineCount = 1; lineCount <= 10; totalPrice += lineCount * 5, lineCount++)
             {
                 batch.Insert(new OrderLine()
                 {
@@ -315,21 +315,21 @@ namespace SqlPassTableStorageSample
             // REST requests resulting from that query. You will see that filtering is
             // done on the server, not on the client. Note that it does NOT
             // use async API. It blocks the calling thread.
-            (from ol in table.CreateQuery&lt;OrderLine&gt;()
+            (from ol in table.CreateQuery<OrderLine>()
              where ol.PartitionKey == "Rainer" 
-                &amp;&amp; ol.RowKey.CompareTo("L") &gt; 0 &amp;&amp; ol.RowKey.CompareTo("LZ") &lt; 0
+                && ol.RowKey.CompareTo("L") > 0 && ol.RowKey.CompareTo("LZ") < 0
              select ol)
                 .AsTableQuery()
                 .Execute()
                 .ToList()
-                .ForEach(ol =&gt; Console.WriteLine("Order Line {0} (Product: '{1}')", ol.RowKey, ol.Product));
+                .ForEach(ol => Console.WriteLine("Order Line {0} (Product: '{1}')", ol.RowKey, ol.Product));
 
             #region Async segmented query 
             // The following Linq query is executed in segments (i.e. result is delivered in
             // segments if result set is large). Segmented queries support async execution.
-            var orderQuery = (from o in table.CreateQuery&lt;Order&gt;()
+            var orderQuery = (from o in table.CreateQuery<Order>()
                               where o.PartitionKey == "Rainer"
-                                &amp;&amp; o.RowKey.CompareTo("O") &gt; 0 &amp;&amp; o.RowKey.CompareTo("OZ") &lt; 0
+                                && o.RowKey.CompareTo("O") > 0 && o.RowKey.CompareTo("OZ") < 0
                               select o).AsTableQuery();
 
             // Loop over all segments
@@ -355,8 +355,8 @@ namespace SqlPassTableStorageSample
             // (order header and lines) of a customer. The helper function 
             // IterateResultAsync analyzes the result and generates Order or OrderLine
             // objects depending on the type of entity.
-            var query = table.CreateQuery&lt;DynamicTableEntity&gt;()
-                .Where(e =&gt; e.PartitionKey == "Rainer")
+            var query = table.CreateQuery<DynamicTableEntity>()
+                .Where(e => e.PartitionKey == "Rainer")
                 .AsTableQuery();
             foreach (var item in await IterateResultAsync(query))
             {
@@ -364,14 +364,14 @@ namespace SqlPassTableStorageSample
             }
         }
 
-        private static async Task&lt;IEnumerable&lt;ITableEntity&gt;&gt; IterateResultAsync(TableQuery&lt;DynamicTableEntity&gt; query)
+        private static async Task<IEnumerable<ITableEntity>> IterateResultAsync(TableQuery<DynamicTableEntity> query)
         {
-            var result = new List&lt;ITableEntity&gt;();
+            var result = new List<ITableEntity>();
             var continuationToken = new TableContinuationToken();
 
             // Add resolver to query in order to dynamically resolve result type
             var newQuery = query
-                    .Resolve&lt;DynamicTableEntity, ITableEntity&gt;((pk, rk, ts, props, etag) =&gt;
+                    .Resolve<DynamicTableEntity, ITableEntity>((pk, rk, ts, props, etag) =>
                     {
                         if (rk.StartsWith("L"))
                         {
@@ -428,13 +428,13 @@ namespace SqlPassTableStorageSample
             var token = table.GetSharedAccessSignature(policy, null, "Rainer", "O", "Rainer", "OZ");
             Console.WriteLine("Token: {0}", token);
 
-            // Read all order data for customer Rainer -&gt; order lines must not be returned
+            // Read all order data for customer Rainer -> order lines must not be returned
             var restrictedClient = new CloudTableClient(
                 tableClient.BaseUri,
                 new StorageCredentials(token));
             var restrictedTable = restrictedClient.GetTableReference("Orders");
-            foreach (var item in restrictedTable.ExecuteQuery(new TableQuery&lt;DynamicTableEntity&gt;())
-                .GroupBy(e =&gt; e.RowKey.Substring(0, 1)))
+            foreach (var item in restrictedTable.ExecuteQuery(new TableQuery<DynamicTableEntity>())
+                .GroupBy(e => e.RowKey.Substring(0, 1)))
             {
                 Console.WriteLine("Type: {0}, Number of items: {1}", item.Key, item.Count());
             }

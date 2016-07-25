@@ -9,9 +9,9 @@ lang: en
 permalink: /blog/2013/11/05/Sourcecode-Review-Criteria
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">
+<p>
   <a href="http://translate.google.com/translate?sl=de&amp;tl=en&amp;js=n&amp;prev=_t&amp;hl=de&amp;ie=UTF-8&amp;u=http%3A%2F%2Fwww.software-architects.com%2Fdevblog%2F2013%2F11%2F05%2FSourcecode-Review-Criteria" target="_blank">Auto-translate this article in English using Google Translate.</a>
-</p><p xmlns="http://www.w3.org/1999/xhtml">Ich werde regelmäßig von Kunden engagiert, um Reviews für Softwareentwicklungsprojekte speziell in Verbindung mit Microsoft-Technologie durchzuführen. Im Lauf der Jahre habe ich meine persönliche Checkliste erarbeitet. In diesem Blogartikel möchte ich eine Zusammenfassung der Checkliste zeigen. Die Detailfragestellungen in der Checkliste sind nur einige Beispiele. Jedes Kundenprojekt ist anders - man muss sie auf jeden Fall je nach Situation anpassen und erweitern. Fehlt etwas? Kommentare? Ich freue mich über Feedback im Kommentarbereich unten.</p><p xmlns="http://www.w3.org/1999/xhtml">Hinweis: Kundenspezifisch angepasste Versionen dieser Review-Checkliste verwende ich für reine Code Reviews. Für Architektur-Reviews habe ich andere Checklisten.</p><ol xmlns="http://www.w3.org/1999/xhtml">
+</p><p>Ich werde regelmäßig von Kunden engagiert, um Reviews für Softwareentwicklungsprojekte speziell in Verbindung mit Microsoft-Technologie durchzuführen. Im Lauf der Jahre habe ich meine persönliche Checkliste erarbeitet. In diesem Blogartikel möchte ich eine Zusammenfassung der Checkliste zeigen. Die Detailfragestellungen in der Checkliste sind nur einige Beispiele. Jedes Kundenprojekt ist anders - man muss sie auf jeden Fall je nach Situation anpassen und erweitern. Fehlt etwas? Kommentare? Ich freue mich über Feedback im Kommentarbereich unten.</p><p>Hinweis: Kundenspezifisch angepasste Versionen dieser Review-Checkliste verwende ich für reine Code Reviews. Für Architektur-Reviews habe ich andere Checklisten.</p><ol>
   <li>
     <strong>Sourcecode-Review</strong>
     <ol type="a">

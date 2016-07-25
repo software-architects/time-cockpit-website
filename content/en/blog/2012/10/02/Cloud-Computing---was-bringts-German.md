@@ -9,7 +9,7 @@ lang: en
 permalink: /blog/2012/10/02/Cloud-Computing---was-bringts-German
 ---
 
-<div xmlns="http://www.w3.org/1999/xhtml">
+<div>
   <p>
     <strong>Am 27. September 2012 durfte ich gemeinsam mit Thomas Rümmler von AIT einen Vortrag zum oben genannten Thema auf dem <a href="http://www.tae.de/de/kolloquien-symposien/informationstechnologie/2-symposium-software-architektur-2012.html" title="Homepage des Symposiums" target="_blank">2. Symposium für Software Architektur und effiziente Entwicklung variantenreicher Systeme</a> der <a href="http://www.tae.de/" title="Homepage Technische Akademie Esslingen" target="_blank">Technischen Akademie Esslingen</a> (Stuttgart) halten. Die Slides für unseren Vortrag finden Sie unten. Der Text wurde im Tagungshandbuch (ISBN 978-3-943563-01-6) veröffentlicht.</strong>
   </p>
@@ -141,7 +141,7 @@ permalink: /blog/2012/10/02/Cloud-Computing---was-bringts-German
   <p>Pallmann, D. (2011). <em>The Windows Azure Handbook: Volume 1: Planning &amp; Strategy</em>. Charleston: CreateSpace.</p>
   <p>Tarzey, B. &amp; Longbottom, C. (Quocirca Ltd., Hrsg.). (2009). <em>Managed hosting in Europe: A review of the managed hosting market and suppliers in Europe.</em> Zugriff am 29.12.2011. Verfügbar unter <a href="http://www.quocirca.com/media/reports/062009/16/Quocirca_-_Managed_Hosting_in_Europe_-_June_2009.pdf">http://www.quocirca.com/media/reports/062009/16/Quocirca_-_Managed_Hosting_in_Europe_-_June_2009.pdf</a>.</p>
   <p>Tietz, V., Blichmann, G. &amp; Hübsch, G. (2011). Cloud-Entwicklungsmethoden: Überblick, Bewertungen und Herausforderungen, <em>Informatik Spektrum</em> (34, Heft 4, S. 345–354). Berlin [u.a.]: Springer.</p>
-</div><div xmlns="http://www.w3.org/1999/xhtml">
+</div><div>
   <div>
     <p>
       <a id="_ftn1">[1]</a> Cloud Computing hat wahrscheinlich den gleichen Einfluss auf Software wie die Gießereien auf die Eisenwarenindustrie gehabt hat.</p>

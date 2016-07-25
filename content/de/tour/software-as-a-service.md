@@ -4,8 +4,8 @@ title: Software-as-a-Service Zeiterfassung
 permalink: /de/tour/software-as-a-service/
 ---
 
-<h1 xmlns="http://www.w3.org/1999/xhtml">Software-as-a-Service
-		</h1><div class="tour" xmlns="http://www.w3.org/1999/xhtml">
+<h1>Software-as-a-Service
+		</h1><div class="tour">
   <div class="row">
     <div class="col-sm-12 col-md-6">
       <h2>Flexibles Abonnement
@@ -16,14 +16,14 @@ permalink: /de/tour/software-as-a-service/
       <p>In time cockpit können Sie jederzeit Benutzer hinzufügen oder auch wieder sperren. Ihr monatlicher Beitrag wird tagaktuell auf Basis der aktiven Benutzer berechnet. Es gibt keinen Mindestbeitrag und keine Bindungsfrist. Wenn Sie time cockpit nicht mehr brauchen, können Sie es jederzeit ohne Kündigungsfrist kündigen.
 				</p>
       <p>
-        <a href="{{site.baseurl}}/account/overview/">time cockpit Self-Service Portal öffnen...</a>
+        <a href="{{site.baseurl}}/de/account/overview/">time cockpit Self-Service Portal öffnen...</a>
       </p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:1f7730ad-9f3c-4100-a954-5456633371d2" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:1f7730ad-9f3c-4100-a954-5456633371d2" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -33,13 +33,13 @@ permalink: /de/tour/software-as-a-service/
       <p>
         <strong>0,25 € pro Benutzer und Tag - keine Tricks, keine versteckten Gebühren.</strong>
       </p>
-      <p>Wir verrechnen für jeden aktiven Benutzer pro Tag 0,25 €. Diese Gebühr beinhaltet die Full-Client Software für mehrere PCs, die Online Version für den Browser, die gesamte Infrastruktur in der Cloud und Support per E-Mail. Am Ende jeden Monats erhalten Sie eine digital signierte Rechnung mit den detaillierten Nutzungsdaten. Die Zahlung erfolg über Kreditkarte. <a href="{{site.baseurl}}/preis/preis/">Lesen Sie mehr über das Preismodell...</a></p>
+      <p>Wir verrechnen für jeden aktiven Benutzer pro Tag 0,25 €. Diese Gebühr beinhaltet die Full-Client Software für mehrere PCs, die Online Version für den Browser, die gesamte Infrastruktur in der Cloud und Support per E-Mail. Am Ende jeden Monats erhalten Sie eine digital signierte Rechnung mit den detaillierten Nutzungsdaten. Die Zahlung erfolg über Kreditkarte. <a href="{{site.baseurl}}/de/preis/preis/">Lesen Sie mehr über das Preismodell...</a></p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:18055c3e-40af-4b7a-8ba6-5de9247a06f7" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:18055c3e-40af-4b7a-8ba6-5de9247a06f7" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
