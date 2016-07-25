@@ -1,0 +1,3 @@
+﻿function sendContactForm() {
+    alert("test");
+}

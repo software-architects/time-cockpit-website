@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/software-architects/time-cockpit-website#readme",
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^2.13.6",
+    "typescript": "^1.8.10"
   },
   "dependencies": {
     "bootstrap-sass": "^3.3.6",

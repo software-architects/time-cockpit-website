@@ -37,6 +37,11 @@ permalink: /de/hilfe-support/kontakt/
 						<div><span id="Requiredfieldvalidator1" class="error" style="display:none;">Geben Sie bitte Ihre Nachricht ein</span>
 						</div>
 					</div>
+
+					<p> 
+						<a href="..." class="linkButtonMain"> Kontaktieren Sie uns<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
+						</a>
+					<\p>
 				</div>
 			</div>
 		</div>
