@@ -13,11 +13,11 @@ permalink: /de/loesungen/case-studies/
     <p>Wir haben mit Hrn. DI Walter Moser, Geschäftsführer der Salzburger Firma <a title="Brainworx information technology GmbH" href="http://www.brainworx.at/" target="_blank">BRAINWORX information technology GmbH</a>, und der für die time cockpit Einführung verantwortlichen Projektleiterin Fr. DI Verena Schlager über das Erfolgsgeheimnis von BRAINWORX und die Gründe für die Einführung von time cockpit gesprochen.
 				</p>
     <p>
-      <a href="{{site.baseurl}}de/loesungen/case-studies/Brainworx/" title="Time Tracking at Brainworx with Time Cockpit">Lesen Sie mehr ...</a>
+      <a href="{{site.baseurl}}/de/loesungen/case-studies/Brainworx/" title="Time Tracking at Brainworx with Time Cockpit">Lesen Sie mehr ...</a>
     </p>
   </div>
   <div class="col-sm-12 col-md-4">
-    <a href="{{site.baseurl}}de/loesungen/case-studies/Brainworx/" title="Time Tracking at Brainworx with Time Cockpit">
+    <a href="{{site.baseurl}}/de/loesungen/case-studies/Brainworx/" title="Time Tracking at Brainworx with Time Cockpit">
       <img src="{{site.baseurl}}/content/images/customer_logos/brainworx_logo_246.jpg" alt="Brainworx" title="Brainworx" />
     </a>
   </div>
@@ -29,11 +29,11 @@ permalink: /de/loesungen/case-studies/
     <p>Wir telefonierten für diese Fallstudie mit Fr. Winterheller und fragten Sie danach, wie sie die organisatorischen Herausforderungen in einem wachsenden Startup meistert.
 				</p>
     <p>
-      <a href="{{site.baseurl}}de/loesungen/case-studies/Zeiterfassung-bei-mea-IT-Services-mit-time-cockpit/" title="Time Tracking at mea IT Services with Time Cockpit">Lesen Sie mehr ...</a>
+      <a href="{{site.baseurl}}/de/loesungen/case-studies/Zeiterfassung-bei-mea-IT-Services-mit-time-cockpit/" title="Time Tracking at mea IT Services with Time Cockpit">Lesen Sie mehr ...</a>
     </p>
   </div>
   <div class="col-sm-12 col-md-4">
-    <a href="{{site.baseurl}}de/loesungen/case-studies/Zeiterfassung-bei-mea-IT-Services-mit-time-cockpit/" title="Time Tracking at mea IT Services with Time Cockpit">
+    <a href="{{site.baseurl}}/de/loesungen/case-studies/Zeiterfassung-bei-mea-IT-Services-mit-time-cockpit/" title="Time Tracking at mea IT Services with Time Cockpit">
       <img src="{{site.baseurl}}/content/images/customer_logos/mea_it_services_logo_246.png" alt="mea IT Services" title="mea IT Services" />
     </a>
   </div>
@@ -43,11 +43,11 @@ permalink: /de/loesungen/case-studies/
     <p>Mit Gedanken Computer steuern, das sogenannte Brain-Computer-Interface (BCI) soll diesen Traum Realität werden lassen. Für die time cockpit Benutzer bei <a href="http://www.gtec.at/" title="g.tec" target="_blank">g.tec medical engineering</a> ist das keine Zukunftsmusik mehr. Sie haben bereits 1999 das erste kommerziell verfügbare BCI gebaut und können in Sachen BCI mittlerweile als einer der Weltmarktführer bezeichnet werden. Kurz vor seinem Abflug zu einer Workshop-Tour nach Belgien haben wir uns mit Armin Schnürer von g.tec über die Herausforderungen und Lösungen in Sachen Zeiterfassung unterhalten. Hr. Schnürer ist bei g.tec hauptverantwortlich für Vertrieb und Marketing und organisiert auch das Thema Projektzeiterfassung.
 				</p>
     <p>
-      <a href="{{site.baseurl}}de/loesungen/case-studies/Time-Tracking-at-gtec-With-Time-Cockpit/" title="Time Tracking at g.tec with Time Cockpit">Lesen Sie mehr ...</a>
+      <a href="{{site.baseurl}}/de/loesungen/case-studies/Time-Tracking-at-gtec-With-Time-Cockpit/" title="Time Tracking at g.tec with Time Cockpit">Lesen Sie mehr ...</a>
     </p>
   </div>
   <div class="col-sm-12 col-md-4">
-    <a href="{{site.baseurl}}de/loesungen/case-studies/Time-Tracking-at-gtec-With-Time-Cockpit/" title="Time Tracking at g.tec with Time Cockpit">
+    <a href="{{site.baseurl}}/de/loesungen/case-studies/Time-Tracking-at-gtec-With-Time-Cockpit/" title="Time Tracking at g.tec with Time Cockpit">
       <img src="{{site.baseurl}}/content/images/customer_logos/gtec_logo_246.jpg" alt="g.tec" title="g.tec" />
     </a>
   </div>
@@ -57,11 +57,11 @@ permalink: /de/loesungen/case-studies/
     <p>In diesem Monat möchten wir einen der längsten und treuesten time cockpit Kunden vorstellen: Raphael Schwarz, der unter dem Markennamen <a href="http://www.codeworx.at/" title="codeworx" target="_blank">codeworx</a> am Markt auftritt, hat sich in den letzten Jahren einen Namen als .NET Berater in Deutschland und Österreich gemacht. Im Interview berichtet uns Raphael, welche Herausforderungen er als Freiberufler zu meistern hat und wie er erfolgreich SaaS Lösungen wie time cockpit zur Administration seines Geschäfts nutzt.
 				</p>
     <p>
-      <a href="{{site.baseurl}}de/loesungen/case-studies/Zeiterfassung-bei-codeworx-mit-time-cockpit/" title="Zeiterfassung bei codeworx mit time cockpit">Lesen Sie mehr ...</a>
+      <a href="{{site.baseurl}}/de/loesungen/case-studies/Zeiterfassung-bei-codeworx-mit-time-cockpit/" title="Zeiterfassung bei codeworx mit time cockpit">Lesen Sie mehr ...</a>
     </p>
   </div>
   <div class="col-sm-12 col-md-4">
-    <a href="{{site.baseurl}}de/loesungen/case-studies/Zeiterfassung-bei-codeworx-mit-time-cockpit/" rel="Zeiterfassung bei codeworx mit time cockpit" title="Zeiterfassung bei codeworx mit time cockpit">
+    <a href="{{site.baseurl}}/de/loesungen/case-studies/Zeiterfassung-bei-codeworx-mit-time-cockpit/" rel="Zeiterfassung bei codeworx mit time cockpit" title="Zeiterfassung bei codeworx mit time cockpit">
       <img src="{{site.baseurl}}/content/images/customer_logos/codeworx_logo_246.png" alt="codeworx" title="codeworx" />
     </a>
   </div>
@@ -73,11 +73,11 @@ permalink: /de/loesungen/case-studies/
     <p>Wir haben Herrn René Nulsch, Geschäftsführer der Softline Solutions GmbH in Leipzig, vor das Mikrofon gebeten und ihn zu seinen Erfahrungen über Zeiterfassung im Allgemeinen und time cockpit im Speziellen interviewt.
 				</p>
     <p>
-      <a href="{{site.baseurl}}de/loesungen/case-studies/Time-Tracking-at-Softline-with-Time-Cockpit/">Lesen Sie mehr ...</a>
+      <a href="{{site.baseurl}}/de/loesungen/case-studies/Time-Tracking-at-Softline-with-Time-Cockpit/">Lesen Sie mehr ...</a>
     </p>
   </div>
   <div class="col-sm-12 col-md-4">
-    <a href="{{site.baseurl}}de/loesungen/case-studies/Time-Tracking-at-Softline-with-Time-Cockpit/">
+    <a href="{{site.baseurl}}/de/loesungen/case-studies/Time-Tracking-at-Softline-with-Time-Cockpit/">
       <img src="{{site.baseurl}}/content/images/customer_logos/softline_group_logo.png" alt="Softline Solutions GmbH" title="Softline Solutions GmbH" />
     </a>
   </div>
@@ -88,11 +88,11 @@ permalink: /de/loesungen/case-studies/
       <a href="http://teich.cflex.com/" target="_blank">Constantia Teich GmbH</a> ist mit rund 800 MitarbeiterInnen ein Leitunternehmen der Constantia Flexibles. Das Unternehmen ist ein international führender Anbieter flexibler Verpackungsmaterialien. Zeiterfassung spielt in den Shared Service Centern von Constantia Teich eine große Rolle, da Leistungen an zentraler Stelle in der Gruppe erbracht und dann entsprechend weiterverrechnet werden müssen.
 				</p>
     <p>
-      <a href="{{site.baseurl}}de/loesungen/case-studies/Constantia-Teich/">Lesen Sie mehr ...</a>
+      <a href="{{site.baseurl}}/de/loesungen/case-studies/Constantia-Teich/">Lesen Sie mehr ...</a>
     </p>
   </div>
   <div class="col-sm-12 col-md-4">
-    <a href="{{site.baseurl}}de/loesungen/case-studies/Constantia-Teich/">
+    <a href="{{site.baseurl}}/de/loesungen/case-studies/Constantia-Teich/">
       <img src="{{site.baseurl}}/content/images/customer_logos/teich_logo_246.png" alt="Constantia Teich GmbH" title="Constantia Teich GmbH" />
     </a>
   </div>
@@ -102,11 +102,11 @@ permalink: /de/loesungen/case-studies/
     <p>ERESNET GmbH ist Österreichs größter IT Provider für Immobilienmakler. Die Firma betreibt <a href="http://www.immobilien.net/" target="_blank">www.immobilien.net</a>, die größte Internetplattform für Immobilien in Österreich. Zusätzlich bietet ERESNET Software Lösungen (z.B. <a href="http://www.webreal.at/" target="_blank">WebReal</a>) und statistische Daten (z.B. <a href="http://www.immobilien.net/immodex" target="_blank">ImmoDex</a>) für den Immobilienmarkt an. Wir haben Herrn Christian Schackerl, Leiter eines der Software Development Teams, besucht. Er hat uns erzählt, warum Zeiterfassung für ERESNET allgemein und für Development Teams im speziellen wichtig ist.
 				</p>
     <p>
-      <a href="{{site.baseurl}}de/loesungen/case-studies/webreal/">Lesen Sie mehr ...</a>
+      <a href="{{site.baseurl}}/de/loesungen/case-studies/webreal/">Lesen Sie mehr ...</a>
     </p>
   </div>
   <div class="col-sm-12 col-md-4">
-    <a href="{{site.baseurl}}de/loesungen/case-studies/softaware-gmbh/">
+    <a href="{{site.baseurl}}/de/loesungen/case-studies/softaware-gmbh/">
       <img src="{{site.baseurl}}/content/images/customer_logos/webreal_logo.png" alt="WebReal" title="WebReal" />
     </a>
   </div>
@@ -117,11 +117,11 @@ permalink: /de/loesungen/case-studies/
 				</p>
     <p>Bevor <em>softaware</em> zu time cockpit gewechselt ist, setzte das Team Microsoft Office Excel für Zeiterfassung ein. Es stellte sich als nicht ausreichend heraus. Roman Schacherl: <em>"Selbst für ein relativ kleines Team wie uns bietet eine spezialisierte Software für Zeiterfassung eine Reihe von Vorteilen: Kein manueller Aufwand, um Excel-Sheets zusammenzukopieren. Berichte und Datenanalysen können mit wenigen Mausklicks erstellt werden. Selbst nach einer stressigen Woche erinnern mich die Activity Tracker von time cockpit, woran ich gearbeitet habe. Sie verbessern dadurch die Datenqualität erheblich. Diesen Grad an Professionalisierung erreicht man nicht mit einer einfachen, auf Excel basierenden Zeiterfassung."</em></p>
     <p>
-      <a href="{{site.baseurl}}de/loesungen/case-studies/softaware-gmbh/">Lesen Sie mehr ...</a>
+      <a href="{{site.baseurl}}/de/loesungen/case-studies/softaware-gmbh/">Lesen Sie mehr ...</a>
     </p>
   </div>
   <div class="col-sm-12 col-md-4">
-    <a href="{{site.baseurl}}de/loesungen/case-studies/softaware-gmbh/">
+    <a href="{{site.baseurl}}/de/loesungen/case-studies/softaware-gmbh/">
       <img src="{{site.baseurl}}/content/images/customer_logos/softaware_logo_246.png" alt="softaware" title="softaware" />
     </a>
   </div>
@@ -132,11 +132,11 @@ permalink: /de/loesungen/case-studies/
 				</p>
     <p>Robert Hutter, Geschäftsführer und Mitgründer von PROLOGICS:<em>"Als junges Unternehmen kämpft man typischerweise mit knappen Ressourcen. Daher ist es entscheidend, diese zielgerichtet und effizient einzusetzen. Ressourcenplanung wird deutlich erleichtert, wenn man auf eine historische Datenbasis mit Zeiterfassungsdaten zurückgreifen und daraus lernen kann."</em></p>
     <p>
-      <a href="{{site.baseurl}}de/loesungen/case-studies/PROLOGICS-IT-GmbH/">Lesen Sie mehr ...</a>
+      <a href="{{site.baseurl}}/de/loesungen/case-studies/PROLOGICS-IT-GmbH/">Lesen Sie mehr ...</a>
     </p>
   </div>
   <div class="col-sm-12 col-md-4">
-    <a href="{{site.baseurl}}de/loesungen/case-studies/PROLOGICS-IT-GmbH/">
+    <a href="{{site.baseurl}}/de/loesungen/case-studies/PROLOGICS-IT-GmbH/">
       <img src="{{site.baseurl}}/content/images/customer_logos/prologics_logo.png" alt="PROLOGICS IT GmbH" title="PROLOGICS IT GmbH" />
     </a>
   </div>
@@ -147,11 +147,11 @@ permalink: /de/loesungen/case-studies/
 				</p>
     <p>Damianos Soumelidis, Geschäftsführer von Hexa Business Services: <em>"Wir hatten bereits ein Tool, eine selbstgeschriebene Software in Microsoft Access – sehr rudimentär und nicht zufriedenstellend. Es hat für fünf bis zehn Mitarbeiter ganz gut funktioniert. In der einer Größenordnung, in der wir sind – wir haben jetzt rund 30 Personen im time cockpit und überlegen sehr stark das Schwesterunternehmen to&gt;day experts mit rund 65 Personen reinzugeben – da funktioniert selbstgeschriebene Software nicht mehr."</em></p>
     <p>
-      <a href="{{site.baseurl}}de/loesungen/case-studies/hexa-business-services/">Lesen Sie mehr ...</a>
+      <a href="{{site.baseurl}}/de/loesungen/case-studies/hexa-business-services/">Lesen Sie mehr ...</a>
     </p>
   </div>
   <div class="col-sm-12 col-md-4">
-    <a href="{{site.baseurl}}de/loesungen/case-studies/hexa-business-services/">
+    <a href="{{site.baseurl}}/de/loesungen/case-studies/hexa-business-services/">
       <img src="{{site.baseurl}}/content/images/customer_logos/hexa_logo.png" alt="Hexa Business Services" title="Hexa Business Services" />
     </a>
   </div>
