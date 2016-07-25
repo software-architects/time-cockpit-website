@@ -194,6 +194,7 @@ p.imageCaption {
 			li {
 				list-style-type: none;
 				font-size: $larger-font-size;
+				line-height: $larger-line-height;
 
 				&:before { 
 					color: $main-color;
