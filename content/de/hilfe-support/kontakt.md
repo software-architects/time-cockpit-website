@@ -13,35 +13,37 @@ permalink: /de/hilfe-support/kontakt/
 					<h1>Kontakt</h1>
 					<p>Möchten Sie mehr über time cockpit wissen? Oder möchten Sie einen Termin für eine Online Demo mit einem unserer Consultants vereinbaren? Wir freuen uns auf Ihre Fragen und Anregungen.</p>
 	
-					<div>
-						<div>E-Mail Adresse
+					<form name="form" action="https://formspree.io/jovan@timecockpit.com" method="POST">
+						<div>
+							<div>E-Mail Adresse
+							</div>
+							<div><input type="email" name="email" type="text" id="email" required>
+							</div>
+							<div data-message-for="email" class="tc-error">Geben Sie bitte Ihre E-Mail Adresse ein. Die angegebene E-Mail Adresse ist nicht gültig.
+							</div>
 						</div>
-						<div><input name="email" type="text" id="email">
-						</div>
-						<div><span id="EmailRequired" class="error" style="display:none;">Geben Sie bitte Ihre E-Mail Adresse ein.</span> <span id="EmailRegexValidator" class="error" style="display:none;">Die angegebene E-Mail Adresse ist nicht gültig.</span>
-						</div>
-					</div>
 
-					<div class="confirmationField" style="height: 0; visibility: hidden;">
-						<div>Feld bitte leer lassen
+						<div class="confirmationField" style="height: 0; visibility: hidden;">
+							<div>Feld bitte leer lassen
+							</div>
+							<div><input name="emailConfirmation" type="text" id="emailConfirmation">
+							</div>
 						</div>
-						<div><input name="emailConfirmation" type="text" id="emailConfirmation">
-						</div>
-					</div>
 
-					<div>
-						<div>Nachricht
+						<div>
+							<div>Nachricht
+							</div>
+							<div><textarea type="text" name="message" rows="2" cols="20" id="message" style="height:150px;" required></textarea>
+							</div>
+							<div data-message-for="message" class="tc-error">Geben Sie bitte Ihre Nachricht ein.
+							</div>
 						</div>
-						<div><textarea name="message" rows="2" cols="20" id="message" style="height:150px;"></textarea>
-						</div>
-						<div><span id="Requiredfieldvalidator1" class="error" style="display:none;">Geben Sie bitte Ihre Nachricht ein</span>
-						</div>
-					</div>
 
-					<p> 
-						<a href="..." class="linkButtonMain"> Kontaktieren Sie uns<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
-						</a>
-					<\p>
+						<p> 
+							<button type="submit" class="linkButtonMain"> Kontaktieren Sie uns<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
+							</button>
+						</p>
+					</form>
 				</div>
 			</div>
 		</div>

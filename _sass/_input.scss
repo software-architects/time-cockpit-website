@@ -1,0 +1,33 @@
+@import "_variables.scss";
+
+input, select, textarea {
+	width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;
+
+    &:focus { 
+        border-color:$main-color;
+        border-style: solid;
+        outline-style:none;
+    }
+}
+
+input, select, textarea{
+
+    &.tc-touched:invalid{
+        border-color:red;
+
+    }
+}
+
+div.tc-error{
+
+    color:red;
+    display:none;
+}
+
+div.tc-error-visible{
+
+    display:block;
+}
