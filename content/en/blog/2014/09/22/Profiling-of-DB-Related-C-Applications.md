@@ -9,7 +9,7 @@ lang: en
 permalink: /blog/2014/09/22/Profiling-of-DB-Related-C-Applications
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">At BASTA 2014 I will do a <a href="http://www.software-architects.com/devblog/2014/09/21/BASTA-2014-C-Fitness" target="_blank">full-day C# workshop</a>. One of the topics will be profiling. In this blog article I share the code of my demo and describe the scenario I will cover.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">You can download the entire sample from <a href="https://github.com/rstropek/Samples/tree/master/ProfilingWorkshop" target="_blank">my GitHub Samples Repository</a>.</p><h2 xmlns="http://www.w3.org/1999/xhtml">The Scenario</h2><p xmlns="http://www.w3.org/1999/xhtml">We want to develop a simple REST web API for searching customers in <a href="http://msftdbprodsamples.codeplex.com/" target="_blank">Microsoft's Adventure Works DB</a>. Imagine we first prototyped the underlying query in SQL Management Studio:</p>{% highlight javascript %}DECLARE @customerName NVARCHAR(50)
+<p>At BASTA 2014 I will do a <a href="http://www.software-architects.com/devblog/2014/09/21/BASTA-2014-C-Fitness" target="_blank">full-day C# workshop</a>. One of the topics will be profiling. In this blog article I share the code of my demo and describe the scenario I will cover.</p><p class="showcase">You can download the entire sample from <a href="https://github.com/rstropek/Samples/tree/master/ProfilingWorkshop" target="_blank">my GitHub Samples Repository</a>.</p><h2>The Scenario</h2><p>We want to develop a simple REST web API for searching customers in <a href="http://msftdbprodsamples.codeplex.com/" target="_blank">Microsoft's Adventure Works DB</a>. Imagine we first prototyped the underlying query in SQL Management Studio:</p>{% highlight javascript %}DECLARE @customerName NVARCHAR(50)
 SET @customername = 'Smith'
  
 DECLARE @AddressTypeID INT
@@ -27,7 +27,7 @@ FROM    Person.Person p
         LEFT JOIN Person.StateProvince sp on a.StateProvinceID = sp.StateProvinceID
         LEFT JOIN Person.CountryRegion cr on sp.CountryRegionCode = cr.CountryRegionCode
 WHERE    p.FirstName LIKE '%' + @customerName + '%' OR p.LastName LIKE '%' + @customerName + '%' AND
-        5000 &lt; (
+        5000 < (
             SELECT    SUM(sod.OrderQty * sod.UnitPrice * (1 - sod.UnitPriceDiscount)) AS Revenue
             FROM    Sales.Customer c
                     INNER JOIN Sales.SalesOrderHeader soh on c.CustomerID = soh.CustomerID
@@ -35,13 +35,13 @@ WHERE    p.FirstName LIKE '%' + @customerName + '%' OR p.LastName LIKE '%' + @cu
             WHERE    c.PersonID = p.BusinessEntityID)
 ORDER BY p.LastName, p.FirstName, cr.Name, a.City;
 
-PRINT 'Execution start time: ' + CAST(GETDATE() AS VARCHAR(50));{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">As you can see, the query isn't trivial. For test purposes, I installed the Adventure Works sample DB in the smallest <a href="http://azure.microsoft.com/en-us/pricing/details/sql-database/" target="_blank">Microsoft Azure SQL Database</a> (<em>Basic</em> pricing tier).</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">
-  <a href="http://azure.microsoft.com" target="_blank">Microsoft Azure</a> is an awesome platform for testing your applications. You can get ready-made VMs with latest releases of Visual Studio (including VS14 CTP). Just use your MSDN account and your Visual Studio in the cloud is even correctly licensed. During the workshop, I will do all of my demos based on Azure VMs and Azure SQL Databases.</p><p xmlns="http://www.w3.org/1999/xhtml">The web API should be running in a self-hosted command line EXE using Owin/Katana. Customer searches are performed with URLs like <em>http://localhost:12345/api/BasicSearch?customerName=Lee</em>.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Basic Implementation</h2><p xmlns="http://www.w3.org/1999/xhtml">If you want to follow along, start by creating a command line EXE with the following NuGet packages:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+PRINT 'Execution start time: ' + CAST(GETDATE() AS VARCHAR(50));{% endhighlight %}<p>As you can see, the query isn't trivial. For test purposes, I installed the Adventure Works sample DB in the smallest <a href="http://azure.microsoft.com/en-us/pricing/details/sql-database/" target="_blank">Microsoft Azure SQL Database</a> (<em>Basic</em> pricing tier).</p><p class="showcase">
+  <a href="http://azure.microsoft.com" target="_blank">Microsoft Azure</a> is an awesome platform for testing your applications. You can get ready-made VMs with latest releases of Visual Studio (including VS14 CTP). Just use your MSDN account and your Visual Studio in the cloud is even correctly licensed. During the workshop, I will do all of my demos based on Azure VMs and Azure SQL Databases.</p><p>The web API should be running in a self-hosted command line EXE using Owin/Katana. Customer searches are performed with URLs like <em>http://localhost:12345/api/BasicSearch?customerName=Lee</em>.</p><h2>Basic Implementation</h2><p>If you want to follow along, start by creating a command line EXE with the following NuGet packages:</p><ul>
   <li>Microsoft.AspNet.WebApi.Owin</li>
   <li>Microsoft.Owin.Host.HttpListener</li>
   <li>Microsoft.Owin.Hosting</li>
   <li>Dapper (we will need that one later)</li>
-</ul><p xmlns="http://www.w3.org/1999/xhtml">Next, create the startup code:</p>{% highlight javascript %}using AdoNetPerfProfiling.Controller;
+</ul><p>Next, create the startup code:</p>{% highlight javascript %}using AdoNetPerfProfiling.Controller;
 using Microsoft.Owin.Hosting;
 using Owin;
 using System;
@@ -55,7 +55,7 @@ namespace AdoNetPerfProfiling
     {
         static void Main(string[] args)
         {
-            using (WebApp.Start&lt;Startup&gt;("http://localhost:12345"))
+            using (WebApp.Start<Startup>("http://localhost:12345"))
             {
                 Console.WriteLine("Listening on port 12345. Press any key to quit.");
                 Console.ReadLine();
@@ -86,7 +86,7 @@ namespace AdoNetPerfProfiling
             );
         }
     }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">With that, we are ready to go. So let's create a very basic implementation:</p>{% highlight javascript %}using AdoNetPerfProfiling.DataAccess;
+}{% endhighlight %}<p>With that, we are ready to go. So let's create a very basic implementation:</p>{% highlight javascript %}using AdoNetPerfProfiling.DataAccess;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -98,18 +98,18 @@ using System.Web.Http;
 
 namespace AdoNetPerfProfiling.Controller
 {
-    /// &lt;summary&gt;
+    /// <summary>
     /// Trivial implementation of for a customer search service
-    /// &lt;/summary&gt;
+    /// </summary>
     public class BasicSearchController : ApiController
     {
-        /// &lt;summary&gt;
+        /// <summary>
         /// HTTP Getter
-        /// &lt;/summary&gt;
-        /// &lt;remarks&gt;
+        /// </summary>
+        /// <remarks>
         /// Note that this is a very trivial implementation with lots of problems. One of the most important ones is
         /// that the function is sync. We will have to make it async later.
-        /// &lt;/remarks&gt;
+        /// </remarks>
         [HttpGet]
         public IHttpActionResult Get([FromUri]string customerName)
         {
@@ -124,7 +124,7 @@ namespace AdoNetPerfProfiling.Controller
                     var result = new DataTable();
                     BasicSearchController.QueryCustomers(connection, customerName, addressTypePrimary, true, result);
 
-                    var jsonResult = BasicSearchController.ConvertToJson(result.Rows.Cast&lt;DataRow&gt;());
+                    var jsonResult = BasicSearchController.ConvertToJson(result.Rows.Cast<DataRow>());
                     return Ok(jsonResult);
                 }
             }
@@ -134,9 +134,9 @@ namespace AdoNetPerfProfiling.Controller
             }
         }
 
-        /// &lt;summary&gt;
+        /// <summary>
         /// Helper function to get address type ID of 'Main Office'
-        /// &lt;/summary&gt;
+        /// </summary>
         internal static int FetchMainOfficeAddressTypeID(SqlConnection connection)
         {
             using (var command = connection.CreateCommand())
@@ -146,9 +146,9 @@ namespace AdoNetPerfProfiling.Controller
             }
         }
 
-        /// &lt;summary&gt;
+        /// <summary>
         /// Helper function to read all customers and put them into a data table
-        /// &lt;/summary&gt;
+        /// </summary>
         internal static void QueryCustomers(SqlConnection connection, string customerName, int addressTypeID, bool includeNameFilter,  DataTable result)
         {
             using (var command = connection.CreateCommand())
@@ -157,7 +157,7 @@ namespace AdoNetPerfProfiling.Controller
                 command.CommandText = new SelectBuilder() { IncludeNameFilter = includeNameFilter }.TransformText();
                 command.CommandTimeout = 600;
 
-                // The following line is a problem. It does not specify size for NVARCHAR -&gt; SQL Server cannot reuse exec plan.
+                // The following line is a problem. It does not specify size for NVARCHAR -> SQL Server cannot reuse exec plan.
                 command.Parameters.AddWithValue("@customerName", customerName);
                 // command.Parameters.Add("@customerName", SqlDbType.NVarChar, 50).Value = customerName;
 
@@ -169,14 +169,14 @@ namespace AdoNetPerfProfiling.Controller
             }
         }
 
-        /// &lt;summary&gt;
+        /// <summary>
         /// Helper function to convert a collection of data rows into JSON result
-        /// &lt;/summary&gt;
-        /// &lt;remarks&gt;
+        /// </summary>
+        /// <remarks>
         /// Note that this implementation isn't very clever. It has a dependency on DataRow although it's core
         /// logic does only use a very tiny bit of DataRow's functionality. Bad design. We have to re-think this later.
-        /// &lt;/remarks&gt;
-        private static JToken ConvertToJson(IEnumerable&lt;DataRow&gt; rows)
+        /// </remarks>
+        private static JToken ConvertToJson(IEnumerable<DataRow> rows)
         {
             var jsonResult = new JArray();
             foreach (var row in rows)
@@ -194,11 +194,11 @@ namespace AdoNetPerfProfiling.Controller
             return jsonResult;
         }
     }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Note that the algorithm shown above uses a T4 template to generate the SQL SELECT statement:</p>{% highlight javascript %}&lt;#@ template language="C#" #&gt;
+}{% endhighlight %}<p>Note that the algorithm shown above uses a T4 template to generate the SQL SELECT statement:</p>{% highlight javascript %}<#@ template language="C#" #>
 
 -- The following line is a problem. It changes during every SQL execution. Therefore, SQL Server
 -- cannot do proper exec plan caching.
-PRINT 'Execution start time: &lt;#= DateTime.UtcNow.ToString("O") #&gt;';
+PRINT 'Execution start time: <#= DateTime.UtcNow.ToString("O") #>';
 
 SELECT    p.LastName, p.FirstName, a.AddressLine1, a.AddressLine2, a.City, cr.Name as CountryRegionName
         -- UPPER(p.LastName) AS UpperLastName, UPPER(p.FirstName) AS UpperFirstName
@@ -210,8 +210,8 @@ FROM    Person.Person p
         LEFT JOIN Person.Address a on bea.AddressID = a.AddressID
         LEFT JOIN Person.StateProvince sp on a.StateProvinceID = sp.StateProvinceID
         LEFT JOIN Person.CountryRegion cr on sp.CountryRegionCode = cr.CountryRegionCode
-WHERE    &lt;# if (this.IncludeNameFilter) { #&gt;p.FirstName LIKE '%' + @customerName + '%' OR p.LastName LIKE '%' + @customerName + '%' AND &lt;# } #&gt;
-        5000 &lt; (
+WHERE    <# if (this.IncludeNameFilter) { #>p.FirstName LIKE '%' + @customerName + '%' OR p.LastName LIKE '%' + @customerName + '%' AND <# } #>
+        5000 < (
             SELECT    SUM(sod.OrderQty * sod.UnitPrice * (1 - sod.UnitPriceDiscount)) AS Revenue
             FROM    Sales.Customer c
                     INNER JOIN Sales.SalesOrderHeader soh on c.CustomerID = soh.CustomerID
@@ -219,7 +219,7 @@ WHERE    &lt;# if (this.IncludeNameFilter) { #&gt;p.FirstName LIKE '%' + @custom
             WHERE    c.PersonID = p.BusinessEntityID)
 ORDER BY p.LastName, p.FirstName, cr.Name, a.City;
 
-PRINT 'Execution start time: &lt;#= DateTime.UtcNow.ToString("O") #&gt;';{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Take a second and review our first implementation. Do you find flaws? Do you think you have ideas for enhancing the algorithm? During the workshop I demo the following topics. I encourage you to do the same when working through this article.</p><ol xmlns="http://www.w3.org/1999/xhtml">
+PRINT 'Execution start time: <#= DateTime.UtcNow.ToString("O") #>';{% endhighlight %}<p>Take a second and review our first implementation. Do you find flaws? Do you think you have ideas for enhancing the algorithm? During the workshop I demo the following topics. I encourage you to do the same when working through this article.</p><ol>
   <li>Create a Visual Studio Web and Load test to generate a standardized usage scenario (the test is in my GitHub repo, too)</li>
   <li>Run the load test while profiling CPU in Visual Studio. Do we have a CPU problem?</li>
   <li>Collect a SQL statement with Visual Studio IntelliTrace, run it in SQL Management Studio and analyze it (how long does it take? How does the execution plan look like?)</li>
@@ -235,7 +235,7 @@ FROM
           END - QS.statement_start_offset)/2) + 1) AS statement_text
      FROM sys.dm_exec_query_stats AS QS
      CROSS APPLY sys.dm_exec_sql_text(QS.sql_handle) as ST) as query_stats
-order by last_execution_time desc{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">You will probably find out that we do not have a CPU problem at all. The DB query is simply too slow. Additionally, the execution plan is not cached. So change the T4 template and the algorithm to make it cache execution plans. That solves our perf problem to a certain degree.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Caching</h2><p xmlns="http://www.w3.org/1999/xhtml">In our scenario we assume that we cannot make the DB faster (in practice it would only take a few mouse clicks thanks to Microsoft Azure SQL Database different pricing tiers). So we have to re-think our approach. Let's just cache the result and look for customers in memory. Our first approach uses ADO.NET's <em>DataView</em> mechanism:</p><p xmlns="http://www.w3.org/1999/xhtml">
+order by last_execution_time desc{% endhighlight %}<p>You will probably find out that we do not have a CPU problem at all. The DB query is simply too slow. Additionally, the execution plan is not cached. So change the T4 template and the algorithm to make it cache execution plans. That solves our perf problem to a certain degree.</p><h2>Caching</h2><p>In our scenario we assume that we cannot make the DB faster (in practice it would only take a few mouse clicks thanks to Microsoft Azure SQL Database different pricing tiers). So we have to re-think our approach. Let's just cache the result and look for customers in memory. Our first approach uses ADO.NET's <em>DataView</em> mechanism:</p><p>
   {% highlight javascript %}using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -247,9 +247,9 @@ using System.Web.Http;
 
 namespace AdoNetPerfProfiling.Controller
 {
-    /// &lt;summary&gt;
+    /// <summary>
     /// Trying to enhance performance by caching query result
-    /// &lt;/summary&gt;
+    /// </summary>
     public class CachingSearchController : ApiController
     {
         private static DataTable customerCache = null;
@@ -281,14 +281,14 @@ namespace AdoNetPerfProfiling.Controller
             // This approach uses an ADO.NET DataView to query the cache.
             var view = new DataView(CachingSearchController.customerCache);
             view.RowFilter = "LastName LIKE '%" + customerName + "%' OR FirstName LIKE '%" + customerName + "%'";
-            return Ok(CachingSearchController.ConvertToJson(view.Cast&lt;DataRowView&gt;(), (row, colName) =&gt; row[colName]));
+            return Ok(CachingSearchController.ConvertToJson(view.Cast<DataRowView>(), (row, colName) => row[colName]));
 
             // This approach replaces ADO.NET DataView with (stupid) LINQ.
-            //var rows = CachingSearchController.customerCache.Rows.Cast&lt;DataRow&gt;().ToArray();
+            //var rows = CachingSearchController.customerCache.Rows.Cast<DataRow>().ToArray();
             //var tempResult = rows.Where(
-            //    r =&gt; r["LastName"].ToString().ToUpper().Contains(customerName.ToUpper())
+            //    r => r["LastName"].ToString().ToUpper().Contains(customerName.ToUpper())
             //        || r["FirstName"].ToString().ToUpper().Contains(customerName.ToUpper())).ToArray();
-            //return Ok(CachingSearchController.ConvertToJson(tempResult, (row, col) =&gt; row[col]));
+            //return Ok(CachingSearchController.ConvertToJson(tempResult, (row, col) => row[col]));
 
             // And now with less stupid LINQ.
             //var customerNameUppercase = customerName.ToUpper();
@@ -296,19 +296,19 @@ namespace AdoNetPerfProfiling.Controller
             //var firstNameOrdinal = CachingSearchController.customerCache.Columns.IndexOf("UpperFirstName");
             //var tempResult = CachingSearchController.customerCache
             //    .Rows
-            //    .Cast&lt;DataRow&gt;()
-            //    .Where(r =&gt; r[lastNameOrdinal].ToString().Contains(customerNameUppercase)
+            //    .Cast<DataRow>()
+            //    .Where(r => r[lastNameOrdinal].ToString().Contains(customerNameUppercase)
             //            || r[firstNameOrdinal].ToString().Contains(customerNameUppercase));
-            //return Ok(CachingSearchController.ConvertToJson(tempResult, (row, col) =&gt; row[col]));
+            //return Ok(CachingSearchController.ConvertToJson(tempResult, (row, col) => row[col]));
         }
 
-        /// &lt;summary&gt;
+        /// <summary>
         /// Helper function to convert a collection of data rows into JSON result
-        /// &lt;/summary&gt;
-        /// &lt;remarks&gt;
+        /// </summary>
+        /// <remarks>
         /// Much better implementation than in BasicSearch. Uses functional program to make algorithm general.
-        /// &lt;/remarks&gt;
-        internal static JToken ConvertToJson&lt;T&gt;(IEnumerable&lt;T&gt; rows, Func&lt;T, string, object&gt; getColumn)
+        /// </remarks>
+        internal static JToken ConvertToJson<T>(IEnumerable<T> rows, Func<T, string, object> getColumn)
         {
             var jsonResult = new JArray();
             foreach (var row in rows)
@@ -326,15 +326,15 @@ namespace AdoNetPerfProfiling.Controller
             return jsonResult;
         }
     }
-}{% endhighlight %}Before you start profiling, ask yourself whether you think that the new approach will be faster? Does it still have flaws?</p><p xmlns="http://www.w3.org/1999/xhtml">During the workshop I demo the following topics:</p><ol xmlns="http://www.w3.org/1999/xhtml">
+}{% endhighlight %}Before you start profiling, ask yourself whether you think that the new approach will be faster? Does it still have flaws?</p><p>During the workshop I demo the following topics:</p><ol>
   <li>CPU profiling in Visual Studio</li>
   <li>CPU profiling with PerfView</li>
   <li>CPU profiling with Red Gate's <a href="http://www.red-gate.com/products/dotnet-development/ants-performance-profiler/" target="_blank">ANTS Performance Profiler</a></li>
-</ol><p xmlns="http://www.w3.org/1999/xhtml">Seems that <em>DataView</em> is a performance problem, right? So let's replace it with LINQ. Experiment with the different search algorithms in the sample shown above (line 42 and following). During the workshop I use them for the following discussions:</p><ol xmlns="http://www.w3.org/1999/xhtml">
+</ol><p>Seems that <em>DataView</em> is a performance problem, right? So let's replace it with LINQ. Experiment with the different search algorithms in the sample shown above (line 42 and following). During the workshop I use them for the following discussions:</p><ol>
   <li>How can you destroy LINQ's performance with poor programming?</li>
   <li>Garbage Collector profiling with PerfView</li>
   <li>Profiling Windows system calls with PerfView</li>
-</ol><h2 xmlns="http://www.w3.org/1999/xhtml">POCO Approach</h2><p xmlns="http://www.w3.org/1999/xhtml">Seems that caching ADO.NET data isn't very efficient, right? So let's change that to POCOs. Note the use of the light-weight OR mapper <a href="https://github.com/StackExchange/dapper-dot-net" target="_blank"><em>Dapper</em></a>:</p>{% highlight javascript %}using AdoNetPerfProfiling.DataAccess;
+</ol><h2>POCO Approach</h2><p>Seems that caching ADO.NET data isn't very efficient, right? So let's change that to POCOs. Note the use of the light-weight OR mapper <a href="https://github.com/StackExchange/dapper-dot-net" target="_blank"><em>Dapper</em></a>:</p>{% highlight javascript %}using AdoNetPerfProfiling.DataAccess;
 using Dapper;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -343,9 +343,9 @@ using System.Web.Http;
 
 namespace AdoNetPerfProfiling.Controller
 {
-    /// &lt;summary&gt;
+    /// <summary>
     /// Trying to enhance performance by caching query result
-    /// &lt;/summary&gt;
+    /// </summary>
     public class CachingPocoSearchController : ApiController
     {
         internal class CustomerResult
@@ -378,7 +378,7 @@ namespace AdoNetPerfProfiling.Controller
 
                             var addressTypePrimary = BasicSearchController.FetchMainOfficeAddressTypeID(connection);
 
-                            CachingPocoSearchController.customerCache = connection.Query&lt;CustomerResult&gt;(
+                            CachingPocoSearchController.customerCache = connection.Query<CustomerResult>(
                                 new SelectBuilder() { IncludeNameFilter = false }.TransformText(),
                                 new { AddressTypeID = addressTypePrimary })
                                 .ToArray();
@@ -389,8 +389,8 @@ namespace AdoNetPerfProfiling.Controller
 
             var customerNameUppercase = customerName.ToUpper();
             var tempResult = CachingPocoSearchController.customerCache
-                .Where(r =&gt; r.UpperFirstName.Contains(customerNameUppercase) || r.UpperLastName.Contains(customerNameUppercase));
+                .Where(r => r.UpperFirstName.Contains(customerNameUppercase) || r.UpperLastName.Contains(customerNameUppercase));
             return Ok(tempResult);
         }
     }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Wow, the code looks much cleaner now and it is shorter. But is it faster? Try it our yourself using the load test and a profiler of your choice.</p><p xmlns="http://www.w3.org/1999/xhtml">Have fun!</p>
+}{% endhighlight %}<p>Wow, the code looks much cleaner now and it is shorter. But is it faster? Try it our yourself using the load test and a profiler of your choice.</p><p>Have fun!</p>

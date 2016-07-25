@@ -4,8 +4,8 @@ title: Time Tracking Extensibility
 permalink: /tour/extensibility/
 ---
 
-<h1 xmlns="http://www.w3.org/1999/xhtml">Extensibility
-		</h1><div class="tour" xmlns="http://www.w3.org/1999/xhtml">
+<h1>Extensibility
+		</h1><div class="tour">
   <div class="row">
     <div class="col-sm-12">
       <h2>Data Model
@@ -39,10 +39,10 @@ permalink: /tour/extensibility/
       </ul>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:13f62e3e-825e-434f-ae16-957b9a2828b2" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:13f62e3e-825e-434f-ae16-957b9a2828b2" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -59,10 +59,10 @@ permalink: /tour/extensibility/
       <div></div>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:0309ad8b-152d-4451-a29c-e86ad50d9ffe" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:0309ad8b-152d-4451-a29c-e86ad50d9ffe" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -76,10 +76,10 @@ permalink: /tour/extensibility/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:bf811252-67ad-4757-afb1-7092eca393eb" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:bf811252-67ad-4757-afb1-7092eca393eb" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -106,10 +106,10 @@ permalink: /tour/extensibility/
 		</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:d99dea2c-969f-4fa6-b62f-2dcd8f96601b" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:d99dea2c-969f-4fa6-b62f-2dcd8f96601b" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -139,10 +139,10 @@ permalink: /tour/extensibility/
       </p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:b872a5d2-2647-4699-97fe-570695a4092d" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:b872a5d2-2647-4699-97fe-570695a4092d" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">

@@ -4,6 +4,6 @@ title: Legal Notice - Time Cockpit
 permalink: /legal-notice/
 ---
 
-<h1 xmlns="http://www.w3.org/1999/xhtml">
+<h1>
   <br />
 </h1>

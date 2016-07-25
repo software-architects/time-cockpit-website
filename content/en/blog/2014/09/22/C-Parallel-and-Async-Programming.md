@@ -9,7 +9,7 @@ lang: en
 permalink: /blog/2014/09/22/C-Parallel-and-Async-Programming
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">At BASTA 2014 I will do a <a href="http://www.software-architects.com/devblog/2014/09/21/BASTA-2014-C-Fitness" target="_blank">full-day C# workshop</a>. One of the topics will be parallel and async programming. In this blog article I share the code of my demo and describe the scenario I will cover: TPL, async/await, profiling of CPU-bound algorithms.</p><h2 xmlns="http://www.w3.org/1999/xhtml">The Scenario</h2><p xmlns="http://www.w3.org/1999/xhtml">The sample scenario is one that I used multiple times before: Calculating PI using a <a href="http://en.wikipedia.org/wiki/Monte_Carlo_method" target="_blank">Monte Carlo Simulation</a>. However, for the BASTA workshop I have completely rewritten the sample code. I also included some demos for upcoming C# 6 features.</p><p class="showcase" xmlns="http://www.w3.org/1999/xhtml">You can download the entire sample from <a href="https://github.com/rstropek/Samples/tree/master/ProfilingWorkshop" target="_blank">my GitHub Samples repository</a>.</p><p xmlns="http://www.w3.org/1999/xhtml">Let's start with a trivial, synchronous implementation. During the workshop, I put it in a portable class library as I will use the sample to speak about PCLs and NuGet, too. But this is a topic for another blog article ...</p>{% highlight javascript %}using System;
+<p>At BASTA 2014 I will do a <a href="http://www.software-architects.com/devblog/2014/09/21/BASTA-2014-C-Fitness" target="_blank">full-day C# workshop</a>. One of the topics will be parallel and async programming. In this blog article I share the code of my demo and describe the scenario I will cover: TPL, async/await, profiling of CPU-bound algorithms.</p><h2>The Scenario</h2><p>The sample scenario is one that I used multiple times before: Calculating PI using a <a href="http://en.wikipedia.org/wiki/Monte_Carlo_method" target="_blank">Monte Carlo Simulation</a>. However, for the BASTA workshop I have completely rewritten the sample code. I also included some demos for upcoming C# 6 features.</p><p class="showcase">You can download the entire sample from <a href="https://github.com/rstropek/Samples/tree/master/ProfilingWorkshop" target="_blank">my GitHub Samples repository</a>.</p><p>Let's start with a trivial, synchronous implementation. During the workshop, I put it in a portable class library as I will use the sample to speak about PCLs and NuGet, too. But this is a topic for another blog article ...</p>{% highlight javascript %}using System;
 #if LANG_EXPERIMENTAL
 // Note c# 6 using static here
 using System.Math;
@@ -17,16 +17,16 @@ using System.Math;
 
 namespace PiWithMonteCarlo
 {
-    /// &lt;summary&gt;
+    /// <summary>
     /// Trivial, synchronous calculation algorithm
-    /// &lt;/summary&gt;
+    /// </summary>
     public static class TrivialPiCalculator
     {
         public static double Calculate(int iterations)
         {
             int inCircle = 0;
             var random = new Random();
-            for (int i = 0; i &lt; iterations; i++)
+            for (int i = 0; i < iterations; i++)
             {
                 var a = random.NextDouble();
                 var b = random.NextDouble();
@@ -39,7 +39,7 @@ namespace PiWithMonteCarlo
 #else
                 var c = Math.Sqrt(a * a + b * b);
 #endif
-                if (c &lt;= 1)
+                if (c <= 1)
                 {
                     inCircle++;
                 }
@@ -48,7 +48,7 @@ namespace PiWithMonteCarlo
             return ((double)inCircle / iterations) * 4;
         }
     }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">For comparing the performance of the different calculation algorithms we add a command line test driver:</p>{% highlight javascript %}using System;
+}{% endhighlight %}<p>For comparing the performance of the different calculation algorithms we add a command line test driver:</p>{% highlight javascript %}using System;
 using System.Diagnostics;
 
 namespace PiWithMonteCarlo.TestDriver
@@ -66,13 +66,13 @@ namespace PiWithMonteCarlo.TestDriver
             ExecuteAndPrint("\nFast PI Calculator", FastPiCalculator.Calculate, iterations);
         }
 
-        private static void ExecuteAndPrint(string label, Func&lt;int, double&gt; calculation, int iterations)
+        private static void ExecuteAndPrint(string label, Func<int, double> calculation, int iterations)
         {
             Console.WriteLine(label);
-            PrintResult(Measure(() =&gt; calculation(iterations)), iterations);
+            PrintResult(Measure(() => calculation(iterations)), iterations);
         }
 
-        private static void PrintResult(Tuple&lt;double, TimeSpan&gt; r, int iterations)
+        private static void PrintResult(Tuple<double, TimeSpan> r, int iterations)
         {
             Console.WriteLine(
                 "{0} ({1:#,##0.0000} sec for {2:#,##0} iterations = {3:#,##0.00} iter/sec)", 
@@ -82,24 +82,24 @@ namespace PiWithMonteCarlo.TestDriver
                 iterations / r.Item2.TotalSeconds);
         }
 
-        private static Tuple&lt;T, TimeSpan&gt; Measure&lt;T&gt;(Func&lt;T&gt; body)
+        private static Tuple<T, TimeSpan> Measure<T>(Func<T> body)
         {
             var watch = new Stopwatch();
             watch.Start();
             var result = body();
             watch.Stop();
-            return new Tuple&lt;T, TimeSpan&gt;(result, watch.Elapsed);
+            return new Tuple<T, TimeSpan>(result, watch.Elapsed);
         }
     }
-}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Trivial Parallelization</h2><p xmlns="http://www.w3.org/1999/xhtml">TPL contains a useful construct: <em>Parallel.For</em>. It makes it quite simple to turn a sequential for loop into a parallel algorithm. So let's use it in our sample:</p>{% highlight javascript %}using System;
+}{% endhighlight %}<h2>Trivial Parallelization</h2><p>TPL contains a useful construct: <em>Parallel.For</em>. It makes it quite simple to turn a sequential for loop into a parallel algorithm. So let's use it in our sample:</p>{% highlight javascript %}using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace PiWithMonteCarlo
 {
-    /// &lt;summary&gt;
+    /// <summary>
     /// Very simple implementation with Parallel.For
-    /// &lt;/summary&gt;
+    /// </summary>
     public static class ParallelForPiCalculator
     {
         public static double Calculate(int iterations)
@@ -108,7 +108,7 @@ namespace PiWithMonteCarlo
             int inCircle = 0;
             var random = new Random();
 
-            Parallel.For(0, iterations, i =&gt;
+            Parallel.For(0, iterations, i =>
                 {
                     double a, b;
                     lock (randomLockObject)
@@ -118,7 +118,7 @@ namespace PiWithMonteCarlo
                     }
 
                     var c = Math.Sqrt(a * a + b * b);
-                    if (c &lt;= 1)
+                    if (c <= 1)
                     {
                         Interlocked.Increment(ref inCircle);
                     }
@@ -127,7 +127,7 @@ namespace PiWithMonteCarlo
             return ((double)inCircle / iterations) * 4;
         }
     }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">What do you think, does it use all CPU cores? Will it be faster? Try it using our test driver shown above.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Enhanced Parallel.For</h2><p xmlns="http://www.w3.org/1999/xhtml">It turns out that our parallel version uses more CPU but is slower. So we have to enhance it. This could look something like this:</p>{% highlight javascript %}using System;
+}{% endhighlight %}<p>What do you think, does it use all CPU cores? Will it be faster? Try it using our test driver shown above.</p><h2>Enhanced Parallel.For</h2><p>It turns out that our parallel version uses more CPU but is slower. So we have to enhance it. This could look something like this:</p>{% highlight javascript %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -136,9 +136,9 @@ using System.Threading.Tasks;
 
 namespace PiWithMonteCarlo
 {
-    /// &lt;summary&gt;
-    /// Enhanced version of &lt;see cref="ParallelForPiCalculator"/&gt;.
-    /// &lt;/summary&gt;
+    /// <summary>
+    /// Enhanced version of <see cref="ParallelForPiCalculator"/>.
+    /// </summary>
     public static class EnhancedParallelForPiCalculator
     {
         public static double Calculate(int iterations)
@@ -150,23 +150,23 @@ namespace PiWithMonteCarlo
             Parallel.For(0, iterations,
                 // doesn't make sense to use more threads than we have processors
                 new ParallelOptions() { MaxDegreeOfParallelism = Environment.ProcessorCount }, 
-                () =&gt; 0, (i, _, tLocal) =&gt;
+                () => 0, (i, _, tLocal) =>
                     {
 #if LANG_EXPERIMENTAL
                         // Note C# 6 declarating expression here
                         return tLocal += Math.Sqrt((var a = random.NextDouble()) * a 
-                            + (var b = random.NextDouble()) * b) &lt;= 1 ? 1 : 0;
+                            + (var b = random.NextDouble()) * b) <= 1 ? 1 : 0;
 #else
                         double a, b;
-                        return tLocal += Math.Sqrt((a = random.NextDouble()) * a + (b = random.NextDouble()) * b) &lt;= 1 ? 1 : 0;
+                        return tLocal += Math.Sqrt((a = random.NextDouble()) * a + (b = random.NextDouble()) * b) <= 1 ? 1 : 0;
 #endif
                     },
-                subTotal =&gt; Interlocked.Add(ref inCircle, subTotal));
+                subTotal => Interlocked.Add(ref inCircle, subTotal));
 
             return ((double)inCircle / iterations) * 4;
         }
     }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Much better like this, isn't it?</p><h2 xmlns="http://www.w3.org/1999/xhtml">PLINQ</h2><p xmlns="http://www.w3.org/1999/xhtml">During the workshop I show a PLINQ implementation, too. We discuss the different programming styles and check the performance results.</p>{% highlight javascript %}using System;
+}{% endhighlight %}<p>Much better like this, isn't it?</p><h2>PLINQ</h2><p>During the workshop I show a PLINQ implementation, too. We discuss the different programming styles and check the performance results.</p>{% highlight javascript %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -175,9 +175,9 @@ using System.Threading.Tasks;
 
 namespace PiWithMonteCarlo
 {
-    /// &lt;summary&gt;
+    /// <summary>
     /// Monte carlo written with PLINQ
-    /// &lt;/summary&gt;
+    /// </summary>
     public static class PlinqPiCalculator
     {
         public static double Calculate(int iterations)
@@ -186,21 +186,21 @@ namespace PiWithMonteCarlo
             var inCircle = ParallelEnumerable.Range(0, iterations)
                 // doesn't make sense to use more threads than we have processors
                 .WithDegreeOfParallelism(Environment.ProcessorCount)
-                .Select(_ =&gt;
+                .Select(_ =>
                 {
                     double a, b;
-                    return Math.Sqrt((a = random.NextDouble()) * a + (b = random.NextDouble()) * b) &lt;= 1;
+                    return Math.Sqrt((a = random.NextDouble()) * a + (b = random.NextDouble()) * b) <= 1;
                 })
-                .Aggregate&lt;bool, int, int&gt;(
+                .Aggregate<bool, int, int>(
                     0, // Seed
-                    (agg, val) =&gt; val ? agg + 1 : agg, // Iterations
-                    (agg, subTotal) =&gt; agg + subTotal, // Aggregating subtotals
-                    result =&gt; result); // No projection of result needed
+                    (agg, val) => val ? agg + 1 : agg, // Iterations
+                    (agg, subTotal) => agg + subTotal, // Aggregating subtotals
+                    result => result); // No projection of result needed
 
             return ((double)inCircle / iterations) * 4;
         }
     }
-}{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Fast Implementation Using Tasks</h2><p xmlns="http://www.w3.org/1999/xhtml">So let's try what we can achieve if we handcraft the tasks ourselves.</p>{% highlight javascript %}using System;
+}{% endhighlight %}<h2>Fast Implementation Using Tasks</h2><p>So let's try what we can achieve if we handcraft the tasks ourselves.</p>{% highlight javascript %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -225,19 +225,19 @@ namespace PiWithMonteCarlo
             // One array slot per processor
             var inCircleLocal = new int[procCount];
             var tasks = new Task[procCount];
-            for (var proc = 0; proc &lt; procCount; proc++)
+            for (var proc = 0; proc < procCount; proc++)
             {
                 var procIndex = proc; // Helper for closure
 
                 // Start one task per processor
-                tasks[proc] = Task.Run(() =&gt;
+                tasks[proc] = Task.Run(() =>
                     {
                         var inCircleLocalCounter = 0;
                         var random = new Random(procIndex);
-                        for (var index = 0; index &lt; iterPerProc; index++)
+                        for (var index = 0; index < iterPerProc; index++)
                         {
                             double a, b;
-                            if (Math.Sqrt((a = random.NextDouble()) * a + (b = random.NextDouble()) * b) &lt;= 1)
+                            if (Math.Sqrt((a = random.NextDouble()) * a + (b = random.NextDouble()) * b) <= 1)
                             {
                                 inCircleLocalCounter++;
                             }
@@ -253,7 +253,7 @@ namespace PiWithMonteCarlo
             return ((double)inCircle / iterations) * 4;
         }
     }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Go on and compare the different algorithms. Impressed of how much faster the last one is?</p><h2 xmlns="http://www.w3.org/1999/xhtml">Async Programming</h2><p xmlns="http://www.w3.org/1999/xhtml">During the workshop we spend quite some time discussing the difference between parallel and async programming. The following sample algorithm takes the last implementation shown above and converts it to an easy-to-use async method:</p>{% highlight javascript %}using System;
+}{% endhighlight %}<p>Go on and compare the different algorithms. Impressed of how much faster the last one is?</p><h2>Async Programming</h2><p>During the workshop we spend quite some time discussing the difference between parallel and async programming. The following sample algorithm takes the last implementation shown above and converts it to an easy-to-use async method:</p>{% highlight javascript %}using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -262,9 +262,9 @@ using System.Threading.Tasks;
 namespace PiWithMonteCarlo
 {
 #if LANG_EXPERIMENTAL
-    /// &lt;summary&gt;
+    /// <summary>
     /// Note C# 6 primay constructor and auto-property initializer here
-    /// &lt;/summary&gt;
+    /// </summary>
     public class PiCalculatorIntermediateResult(long iterations, double resultPi)
     {
         public double ResultPi { get; } = resultPi;
@@ -284,14 +284,14 @@ namespace PiWithMonteCarlo
     }
 #endif
 
-    /// &lt;summary&gt;
-    /// Async version of &lt;see cref="FastPiCalculator"/&gt;.
-    /// &lt;/summary&gt;
+    /// <summary>
+    /// Async version of <see cref="FastPiCalculator"/>.
+    /// </summary>
     public class FastPiAsyncCalculator
     {
         public static async Task CalculateAsync(CancellationToken cancellationToken, 
-            Func&lt;PiCalculatorIntermediateResult, Task&gt; reportIntermediateResultAsyncCallback,
-            Func&lt;Task&gt; stoppedCallback)
+            Func<PiCalculatorIntermediateResult, Task> reportIntermediateResultAsyncCallback,
+            Func<Task> stoppedCallback)
         {
             // Number of iterations after which we check if it is time to report results back to caller
             const long timerCheckInterval = 100000;
@@ -307,12 +307,12 @@ namespace PiWithMonteCarlo
                 var inCircleArray = new long[procCount];
                 var iterationsArray = new long[procCount];
                 var tasksArray = new Task[procCount];
-                for (var proc = 0; proc &lt; procCount; proc++)
+                for (var proc = 0; proc < procCount; proc++)
                 {
                     var procIndex = proc; // Helper for closure
 
                     // Start one task per processor
-                    tasksArray[proc] = Task.Run(() =&gt;
+                    tasksArray[proc] = Task.Run(() =>
                     {
                         long inCircleLocalCounter = 0;
                         long iterationsLocalCounter = 0;
@@ -321,17 +321,17 @@ namespace PiWithMonteCarlo
                         {
                             iterationsLocalCounter++;
                             double a, b;
-                            if (Math.Sqrt((a = random.NextDouble()) * a + (b = random.NextDouble()) * b) &lt;= 1)
+                            if (Math.Sqrt((a = random.NextDouble()) * a + (b = random.NextDouble()) * b) <= 1)
                             {
                                 inCircleLocalCounter++;
                             }
 
-                            if (index &gt;= timerCheckInterval)
+                            if (index >= timerCheckInterval)
                             {
                                 index = 0;
                                 lock (watch)
                                 {
-                                    if (watch.ElapsedMilliseconds &gt;= 1000)
+                                    if (watch.ElapsedMilliseconds >= 1000)
                                     {
                                         // Every second we stop calculating and report result back
                                         break;
@@ -361,7 +361,7 @@ namespace PiWithMonteCarlo
             await stoppedCallback();
         }
     }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Based on that, it is easy to add a platform-independent ViewModel implementation (could be used in a e.g. Windows Store app, WPF, etc.).</p>{% highlight javascript %}using Microsoft.Practices.Prism.Commands;
+}{% endhighlight %}<p>Based on that, it is easy to add a platform-independent ViewModel implementation (could be used in a e.g. Windows Store app, WPF, etc.).</p>{% highlight javascript %}using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
 using System;
 using System.Diagnostics;
@@ -371,20 +371,20 @@ using System.Windows.Input;
 
 namespace PiWithMonteCarlo
 {
-    /// &lt;summary&gt;
+    /// <summary>
     /// Viewmodel that can easily be consumed in XAML-based applications
-    /// &lt;/summary&gt;
+    /// </summary>
     public class FastPiAsyncCalculatorViewModel : BindableBase
     {
         public FastPiAsyncCalculatorViewModel()
         {
             this.startCommand = new DelegateCommand(
-                async () =&gt; await this.OnStartCalculation(),
-                () =&gt; !this.IsCalculating);
+                async () => await this.OnStartCalculation(),
+                () => !this.IsCalculating);
 
             this.stopCommand = new DelegateCommand(
                 this.OnStopCalculation,
-                () =&gt; this.IsCalculating);
+                () => this.IsCalculating);
         }
 
         private CancellationTokenSource cts = null;
@@ -402,10 +402,10 @@ namespace PiWithMonteCarlo
                 this.cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
                 await FastPiAsyncCalculator.CalculateAsync(
                     this.cts.Token,
-                    result =&gt;
+                    result =>
                     {
                         // Navigate back to UI thread to update notification properties
-                        SynchronizationContext.Current.Post(new SendOrPostCallback(_ =&gt;
+                        SynchronizationContext.Current.Post(new SendOrPostCallback(_ =>
                         {
                             this.CalcualtedPi = result.ResultPi;
                             this.Iterations += result.Iterations;
@@ -413,7 +413,7 @@ namespace PiWithMonteCarlo
                         }), null);
                         return FastPiAsyncCalculatorViewModel.finishedTask;
                     },
-                    () =&gt;
+                    () =>
                     {
                         // Switch state to not calculating
                         this.IsCalculating = false;
@@ -480,4 +480,4 @@ namespace PiWithMonteCarlo
         }
         #endregion
     }
-}{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">Have fun playing around with the code!</p>
+}{% endhighlight %}<p>Have fun playing around with the code!</p>

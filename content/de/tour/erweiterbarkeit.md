@@ -4,8 +4,8 @@ title: Erweiterbare Zeiterfassung
 permalink: /de/tour/erweiterbarkeit/
 ---
 
-<h1 xmlns="http://www.w3.org/1999/xhtml">Erweiterbarkeit
-		</h1><div class="tour" xmlns="http://www.w3.org/1999/xhtml">
+<h1>Erweiterbarkeit
+		</h1><div class="tour">
   <div class="row">
     <div class="col-sm-12">
       <h2>Datenmodell
@@ -39,10 +39,10 @@ permalink: /de/tour/erweiterbarkeit/
       </ul>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:13f62e3e-825e-434f-ae16-957b9a2828b2" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:13f62e3e-825e-434f-ae16-957b9a2828b2" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -58,10 +58,10 @@ permalink: /de/tour/erweiterbarkeit/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:0309ad8b-152d-4451-a29c-e86ad50d9ffe" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:0309ad8b-152d-4451-a29c-e86ad50d9ffe" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -75,10 +75,10 @@ permalink: /de/tour/erweiterbarkeit/
 				</p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:bf811252-67ad-4757-afb1-7092eca393eb" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:bf811252-67ad-4757-afb1-7092eca393eb" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">
@@ -103,10 +103,10 @@ permalink: /de/tour/erweiterbarkeit/
       </ul>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:d99dea2c-969f-4fa6-b62f-2dcd8f96601b" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:d99dea2c-969f-4fa6-b62f-2dcd8f96601b" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <p>In der <a href="https://help.timecockpit.com/?topic=html/5d6e34c5-3b08-4fa4-baa0-45eb707b6b78.htm" target="_blank">time cockpit Hilfe</a> finden Sie weitere Informationen zur OData Web API.
@@ -126,7 +126,7 @@ permalink: /de/tour/erweiterbarkeit/
       <ul class="checkList">
         <li class="Checklist">Importieren oder Exportieren Sie Daten über CSV oder XML Dateien, Web Services, ...
 					</li>
-        <li class="Checklist">Generieren Sie automatisch Microsoft Office Excel Reports (<a href="{{site.baseurl}}/tour/reporting/">lesen Sie mehr über Reporting...</a>)
+        <li class="Checklist">Generieren Sie automatisch Microsoft Office Excel Reports (<a href="{{site.baseurl}}/de/tour/reporting/">lesen Sie mehr über Reporting...</a>)
 					</li>
         <li class="Checklist">Implementieren Sie Prozesse wie die Freigabe von Urlauben, dem Erstellen von Rechnungen, ...
 					</li>
@@ -138,10 +138,10 @@ permalink: /de/tour/erweiterbarkeit/
       </p>
     </div>
     <div class="col-sm-12 col-md-6">
-      <f:function name="Composite.Media.ImageGallery.Slimbox2" xmlns:f="http://www.composite.net/ns/function/1.0">
-        <f:param name="MediaImage" value="MediaArchive:b872a5d2-2647-4699-97fe-570695a4092d" />
-        <f:param name="GroupName" value=" page" />
-      </f:function>
+      <function name="Composite.Media.ImageGallery.Slimbox2">
+        <param name="MediaImage" value="MediaArchive:b872a5d2-2647-4699-97fe-570695a4092d" />
+        <param name="GroupName" value=" page" />
+      </function>
     </div>
   </div>
   <div class="row">

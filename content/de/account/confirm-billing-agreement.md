@@ -4,6 +4,6 @@ title: Kreditkartendaten - Time Cockpit
 permalink: /de/account/confirm-billing-agreement/
 ---
 
-<f:function name="TimeCockpit.Security.AuthenticationRequired.Functions.EnsureIsAdmin" xmlns:f="http://www.composite.net/ns/function/1.0" /><h1 xmlns="http://www.w3.org/1999/xhtml">Kreditkartendaten</h1><f:function name="Composite.AspNet.LoadUserControl" xmlns:f="http://www.composite.net/ns/function/1.0">
-  <f:param name="Path" value="~/Frontend/Custom/Web/Forms/Controls/ConfirmBillingAgreement.ascx" />
-</f:function>
+<function name="TimeCockpit.Security.AuthenticationRequired.Functions.EnsureIsAdmin" /><h1>Kreditkartendaten</h1><function name="Composite.AspNet.LoadUserControl">
+  <param name="Path" value="~/Frontend/Custom/Web/Forms/Controls/ConfirmBillingAgreement.ascx" />
+</function>

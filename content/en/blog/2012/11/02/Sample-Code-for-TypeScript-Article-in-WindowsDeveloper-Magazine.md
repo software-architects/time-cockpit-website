@@ -9,7 +9,7 @@ lang: en
 permalink: /blog/2012/11/02/Sample-Code-for-TypeScript-Article-in-WindowsDeveloper-Magazine
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">I am currently writing an article about <a href="http://www.typescriptlang.org" target="_blank">TypeScript</a> for the upcoming issue of the German <a href="http://it-republik.de/dotnet/windowsdeveloper-ausgaben" target="_blank">Windows.Developer</a> magazine. It contains a larger code sample demonstrating some key concepts of the new language. Some readers might be interested in playing with the sample code in TypeScript's <a href="http://www.typescriptlang.org/Playground/" target="_blank">Playground</a>. Probably they do not want to type in the sample code. Therefore I publish the code in this article.</p><h2 xmlns="http://www.w3.org/1999/xhtml">OO Concepts in TypeScript</h2><p xmlns="http://www.w3.org/1999/xhtml">The first sample deals with the TypeScript language. It demonstrates some OO concepts of the language:</p>{% highlight javascript %}// Define a top-level module
+<p>I am currently writing an article about <a href="http://www.typescriptlang.org" target="_blank">TypeScript</a> for the upcoming issue of the German <a href="http://it-republik.de/dotnet/windowsdeveloper-ausgaben" target="_blank">Windows.Developer</a> magazine. It contains a larger code sample demonstrating some key concepts of the new language. Some readers might be interested in playing with the sample code in TypeScript's <a href="http://www.typescriptlang.org/Playground/" target="_blank">Playground</a>. Probably they do not want to type in the sample code. Therefore I publish the code in this article.</p><h2>OO Concepts in TypeScript</h2><p>The first sample deals with the TypeScript language. It demonstrates some OO concepts of the language:</p>{% highlight javascript %}// Define a top-level module
 module CrmModule {
   // Define an interface that specifies what a person must consist of.
   export interface IPerson {
@@ -39,12 +39,12 @@ module CrmModule {
     // A public get accessor...
     public get isValid() {
       return this.isNew || 
-        (this.firstName.length &gt; 0 &amp;&amp; this.lastName.length &gt; 0);
+        (this.firstName.length > 0 && this.lastName.length > 0);
     }
     
     // Note the function type literal used for the "completeCallback" parameter.
     // "repository" has no type. Therefore it is of type "Any".
-    public savePerson(repository, completedCallback: (bool) =&gt; void) {
+    public savePerson(repository, completedCallback: (bool) => void) {
       var code = repository.saveViaRestService(this);
       completedCallback(code === 200);
     }
@@ -127,9 +127,9 @@ s.potentialRevenueEur = 1000;
 // any object type compatible with IPerson.
 s.addContact(v);
 s.addContact({ firstName: "Rainer", lastName: "Stropek" });
-s.addContact(&lt;CrmModule.IPerson&gt; { firstName: "Rainer", lastName: "Stropek" });
+s.addContact(<CrmModule.IPerson> { firstName: "Rainer", lastName: "Stropek" });
 var val = S.Opportunity.convertToUsd(s.potentialRevenueEur);
-{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Modules in TypeScript</h2>{% highlight javascript %}module Crm {
+{% endhighlight %}<h2>Modules in TypeScript</h2>{% highlight javascript %}module Crm {
     export class Customer {
         constructor(public custName: string) {
         }
@@ -150,13 +150,13 @@ for(var key in Crm)
      
 }
 document.body.innerText = classesInCrmModule;
-{% endhighlight %}<h2 xmlns="http://www.w3.org/1999/xhtml">Interfaces and Ambient Declarations</h2><p xmlns="http://www.w3.org/1999/xhtml">The second sample shows the power of <em>Ambient Declarations</em> in TypeScript:</p><p xmlns="http://www.w3.org/1999/xhtml">jQuery.d.ts:</p>{% highlight javascript %}interface JQueryEventObject extends Event {
+{% endhighlight %}<h2>Interfaces and Ambient Declarations</h2><p>The second sample shows the power of <em>Ambient Declarations</em> in TypeScript:</p><p>jQuery.d.ts:</p>{% highlight javascript %}interface JQueryEventObject extends Event {
   preventDefault(): any;
 }
 
 interface JQuery {
   ready(handler: any): JQuery;
-  click(handler: (eventObject: JQueryEventObject) =&gt; any): JQuery;
+  click(handler: (eventObject: JQueryEventObject) => any): JQuery;
 }
 
 interface JQueryStatic {
@@ -165,7 +165,7 @@ interface JQueryStatic {
 }
 
 declare var $: JQueryStatic;
-{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">app.ts:</p>{% highlight javascript %}/// &lt;reference path="jQuery.d.ts" /&gt;
+{% endhighlight %}<p>app.ts:</p>{% highlight javascript %}/// <reference path="jQuery.d.ts" />
 
 $(document.body).ready(function(){
     alert("Loaded");
@@ -174,19 +174,19 @@ $(document.body).ready(function(){
         event.preventDefault();
    });
 });
-{% endhighlight %}<p xmlns="http://www.w3.org/1999/xhtml">default.htm:</p>{% highlight javascript %}&lt;!DOCTYPE html&gt;
-&lt;html lang="en" xmlns="http://www.w3.org/1999/xhtml"&gt;
-&lt;head&gt;
-    &lt;meta charset="utf-8" /&gt;
-    &lt;title&gt;jQuery from TypeScript&lt;/title&gt;
-    &lt;link rel="stylesheet" href="app.css" type="text/css" /&gt;
-    &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"&gt;&lt;/script&gt;
-    &lt;script src="app.js"&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;jQuery from TypeScript&lt;/h1&gt;
-    &lt;div id="content"&gt;
-        &lt;a href="http://www.timecockpit.com"&gt;Click me!&lt;/a&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;{% endhighlight %}
+{% endhighlight %}<p>default.htm:</p>{% highlight javascript %}<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery from TypeScript</title>
+    <link rel="stylesheet" href="app.css" type="text/css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <h1>jQuery from TypeScript</h1>
+    <div id="content">
+        <a href="http://www.timecockpit.com">Click me!</a>
+    </div>
+</body>
+</html>{% endhighlight %}

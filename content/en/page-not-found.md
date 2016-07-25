@@ -4,9 +4,9 @@ title: Page Not Found - Time Cockpit
 permalink: /page-not-found/
 ---
 
-<h1 xmlns="http://www.w3.org/1999/xhtml">Page Not Found
-		</h1><p xmlns="http://www.w3.org/1999/xhtml">Sorry, the page you are looking for has not been found. Maybe you want to visit some of our working pages.
-		</p><div class="row" xmlns="http://www.w3.org/1999/xhtml">
+<h1>Page Not Found
+		</h1><p>Sorry, the page you are looking for has not been found. Maybe you want to visit some of our working pages.
+		</p><div class="row">
   <div class="col-sm-12 col-md-4">
     <h2>Time Cockpit Website
 				</h2>

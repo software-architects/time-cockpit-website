@@ -9,9 +9,9 @@ lang: en
 permalink: /blog/2015/05/03/Global-Azure-Bootcamp-2015---Slides-and-Photos
 ---
 
-<p xmlns="http://www.w3.org/1999/xhtml">
+<p>
   <img src="{{site.baseurl}}/content/images/blog/2015/05/Global-Azure-Bootcamp.jpg" style="width: 100%;" data-mce-style="width: 100%;" />
-</p><p xmlns="http://www.w3.org/1999/xhtml">A week ago we hosted the <a href="http://austriaazurebootcamp2015.eventday.com" target="_blank">Austrian event of the Global Azure Bootcamp</a>. It was a great day. We could welcome 91 attendees which is +40% compared to last year.</p><p xmlns="http://www.w3.org/1999/xhtml">Thanks to all who came to Global Azure Bootcamp. We hope to see you again next year!<br /></p><h2 xmlns="http://www.w3.org/1999/xhtml">Slides</h2><p xmlns="http://www.w3.org/1999/xhtml">Many people asked for the session slides. Here are the links to all the slides decks that the GAB speakers sent to me.</p><ul xmlns="http://www.w3.org/1999/xhtml">
+</p><p>A week ago we hosted the <a href="http://austriaazurebootcamp2015.eventday.com" target="_blank">Austrian event of the Global Azure Bootcamp</a>. It was a great day. We could welcome 91 attendees which is +40% compared to last year.</p><p>Thanks to all who came to Global Azure Bootcamp. We hope to see you again next year!<br /></p><h2>Slides</h2><p>Many people asked for the session slides. Here are the links to all the slides decks that the GAB speakers sent to me.</p><ul>
   <li>
     <a href="{{site.baseurl}}/content/images/blog/2015/05/GAB/Create Test Azure.pdf" target="_blank">
       <em>{Create} Test Azure</em>, Anton Kalcik</a>
@@ -40,5 +40,5 @@ permalink: /blog/2015/05/03/Global-Azure-Bootcamp-2015---Slides-and-Photos
     <a href="{{site.baseurl}}/content/images/blog/2015/05/GAB/GAB15_SparkOnAzure_HP_Grahsl.pdf" target="_blank">
       <em>Mit HDInsight &amp; Script Actions zum Spark Cluster in Azure</em>, Hans-Peter Grahsl</a>
   </li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">Photos
-<br /></h2><p xmlns="http://www.w3.org/1999/xhtml">I have taken some pictures during the event. You can find them in this <a href="https://www.flickr.com/photos/rainerstropek/sets/72157652184123846/" target="_blank">Flickr album</a>.<br /></p>
+</ul><h2>Photos
+<br /></h2><p>I have taken some pictures during the event. You can find them in this <a href="https://www.flickr.com/photos/rainerstropek/sets/72157652184123846/" target="_blank">Flickr album</a>.<br /></p>

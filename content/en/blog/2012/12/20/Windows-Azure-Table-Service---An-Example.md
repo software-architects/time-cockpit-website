@@ -9,7 +9,7 @@ lang: en
 permalink: /blog/2012/12/20/Windows-Azure-Table-Service---An-Example
 ---
 
-<h2 xmlns="http://www.w3.org/1999/xhtml">Introduction</h2><p xmlns="http://www.w3.org/1999/xhtml">In September 2012 I did a session on Microsoft Windows Azure's Table Storage at the <a href="http://pronet2012.dotnet-austria.at/" target="_blank">Professional .NET 2012 Community Conference</a> in Vienna. In this blog post I would like to publish the video and sample code I presented during the session.</p><h2 xmlns="http://www.w3.org/1999/xhtml">Video (German)</h2><iframe width="853" height="480" src="https://www.youtube.com/embed/TjRM4L5JKzM?rel=0" frameborder="0" allowfullscreen="allowfullscreen" xmlns="http://www.w3.org/1999/xhtml"></iframe><h2 xmlns="http://www.w3.org/1999/xhtml">Important Links</h2><ul xmlns="http://www.w3.org/1999/xhtml">
+<h2>Introduction</h2><p>In September 2012 I did a session on Microsoft Windows Azure's Table Storage at the <a href="http://pronet2012.dotnet-austria.at/" target="_blank">Professional .NET 2012 Community Conference</a> in Vienna. In this blog post I would like to publish the video and sample code I presented during the session.</p><h2>Video (German)</h2><iframe width="853" height="480" src="https://www.youtube.com/embed/TjRM4L5JKzM?rel=0" frameborder="0" allowfullscreen="allowfullscreen"></iframe><h2>Important Links</h2><ul>
   <li>
     <a href="http://www.windowsazure.com/" target="_blank">Windows Azure Portal</a> - includes access to trial accounts, pricing calculator, how-to descriptions, links to the documentation, SDK downloads, etc.</li>
   <li>Some basics: <a href="http://msdn.microsoft.com/en-us/library/windowsazure/dd179338.aspx" target="_blank">Understanding the Table Service data model</a> .</li>
@@ -19,14 +19,14 @@ permalink: /blog/2012/12/20/Windows-Azure-Table-Service---An-Example
   <li>
     <a href="http://msdn.microsoft.com/en-us/library/hh680934(v=pandp.50)" target="_blank">Transient Fault Handling Block</a> - implementation of retry strategies for Azure Storage created by Microsoft's Patterns &amp; Practices team.</li>
   <li>Blog post by Azure's storage team introducing <a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx" target="_blank">shared access signature in Table Services</a>.</li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">Azure SDK From github</h2><p xmlns="http://www.w3.org/1999/xhtml">In my session I demonstrated the use of shared access signatures (SAS) with table storage. This security feature has been available for blobs from the first day on. Microsoft introduced it for table services in the latest service release for the Azure storage platform. When I did my session in September 2012 the stable version of the .NET SDK for table services (1.7.0) did not support SAS for table services. Therefore you needed to download the latest preview (1.7.1) from github and compile it yourself. Today this is not necessary any more. However, I will add a checklist for getting and building the Azure SDK just in case you will have to do it for any reason:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+</ul><h2>Azure SDK From github</h2><p>In my session I demonstrated the use of shared access signatures (SAS) with table storage. This security feature has been available for blobs from the first day on. Microsoft introduced it for table services in the latest service release for the Azure storage platform. When I did my session in September 2012 the stable version of the .NET SDK for table services (1.7.0) did not support SAS for table services. Therefore you needed to download the latest preview (1.7.1) from github and compile it yourself. Today this is not necessary any more. However, I will add a checklist for getting and building the Azure SDK just in case you will have to do it for any reason:</p><ul>
   <li>Get github client (e.g. for <a href="http://windows.github.com/" target="_blank">windows</a>)</li>
   <li>Start the git shell</li>
   <li>Initialize your git repository (if you do not already have one): <em>git init</em></li>
   <li>Pull the Azure SDK branch you need for the Azure SDK. Example: <em>git pull https://github.com/WindowsAzure/azure-sdk-for-net.git sdk_1.7.1</em></li>
   <li>Open <em>StorageClient.csproj</em> in Visual Studio and compile it</li>
   <li>Add a reference to the generated DLL in your project</li>
-</ul><h2 xmlns="http://www.w3.org/1999/xhtml">Sample Code</h2><p xmlns="http://www.w3.org/1999/xhtml">Here is the sample code that I will use during my session. It demonstrates the following aspects of table storage:</p><ul xmlns="http://www.w3.org/1999/xhtml">
+</ul><h2>Sample Code</h2><p>Here is the sample code that I will use during my session. It demonstrates the following aspects of table storage:</p><ul>
   <li>Authentication with account name/key</li>
   <li>Synchronous write and query operations</li>
   <li>Batching (entity group transactions) - I will use Fiddler to show what is going on in the background.</li>
@@ -53,7 +53,7 @@ namespace ConsoleApplication1
 
     public class DynamicEntry : TableServiceEntity
     {
-        internal Dictionary&lt;string,&gt; values = new Dictionary&lt;string,&gt;();
+        internal Dictionary<string,> values = new Dictionary<string,>();
     }
 
     public class Program
@@ -126,7 +126,7 @@ namespace ConsoleApplication1
             if (tableClient.CreateTableIfNotExist("SyncTable"))
             {
                 // Add some demo data
-                for (int i = 0; i &lt; 2000; i++)
+                for (int i = 0; i < 2000; i++)
                 {
                     context.AddObject("SyncTable", new LogEntry() { PartitionKey = "X", RowKey = i.ToString(), Message = string.Format("Message {0}", i) });
                     if ((i + 1) % 100 == 0)
@@ -139,14 +139,14 @@ namespace ConsoleApplication1
             // Note that the following line would NOT return all rows because of
             // continuation logic of table storage.
             // var logs = context
-            //  .CreateQuery&lt;logentry&gt;("SyncTable")
-            //  .Where(l =&gt; l.PartitionKey == "X")
+            //  .CreateQuery<logentry>("SyncTable")
+            //  .Where(l => l.PartitionKey == "X")
             //  .ToArray();
 
             // You have to use CloudTableQuery instead.
             var logQuery = context
-                .CreateQuery&lt;logentry&gt;("SyncTable")
-                .Where(l =&gt; l.PartitionKey == "X")
+                .CreateQuery<logentry>("SyncTable")
+                .Where(l => l.PartitionKey == "X")
                 .AsTableServiceQuery();
             var logs = logQuery.Execute();
             Console.WriteLine(logs.Count());
@@ -155,18 +155,18 @@ namespace ConsoleApplication1
         private async void SimpleWriteSampleAsync(CloudTableClient tableClient)
         {
             var context = tableClient.GetDataServiceContext();
-            if (await Task.Factory.FromAsync&lt;string,&gt;(
+            if (await Task.Factory.FromAsync<string,>(
                 tableClient.BeginCreateTableIfNotExist,
                 tableClient.EndCreateTableIfNotExist,
                 "SyncTable2",
                 null))
             {
-                for (int i = 0; i &lt; 2000; i++)
+                for (int i = 0; i < 2000; i++)
                 {
                     context.AddObject("SyncTable2", new LogEntry() { PartitionKey = "X", RowKey = i.ToString(), Message = string.Format("Message {0}", i) });
                     if ((i + 1) % 100 == 0)
                     {
-                        await Task.Factory.FromAsync&lt;savechangesoptions,&gt;(
+                        await Task.Factory.FromAsync<savechangesoptions,>(
                             context.BeginSaveChangesWithRetries,
                             context.EndSaveChangesWithRetries,
                             SaveChangesOptions.Batch,
@@ -176,10 +176,10 @@ namespace ConsoleApplication1
             }
 
             var q = context
-                .CreateQuery&lt;logentry&gt;("SyncTable2")
-                .Where(l =&gt; l.PartitionKey == "X")
+                .CreateQuery<logentry>("SyncTable2")
+                .Where(l => l.PartitionKey == "X")
                 .AsTableServiceQuery();
-            var segment = await Task.Factory.FromAsync&lt;resultsegment&lt;logentry&gt;&gt;(
+            var segment = await Task.Factory.FromAsync<resultsegment<logentry>>(
                 q.BeginExecuteSegmented,
                 q.EndExecuteSegmented,
                 null);
@@ -189,7 +189,7 @@ namespace ConsoleApplication1
 
                 if (segment.ContinuationToken != null)
                 {
-                    segment = await Task.Factory.FromAsync&lt;resultsegment&lt;logentry&gt;&gt;(
+                    segment = await Task.Factory.FromAsync<resultsegment<logentry>>(
                         segment.BeginGetNext,
                         segment.EndGetNext,
                         null);
@@ -207,7 +207,7 @@ namespace ConsoleApplication1
         private void SchemalessAccess(CloudTableClient tableClient)
         {
             var context = tableClient.GetDataServiceContext();
-            context.ReadingEntity += (s, e) =&gt;
+            context.ReadingEntity += (s, e) =>
             {
                 var entity = e.Entity as DynamicEntry;
                 if (entity != null)
@@ -216,20 +216,20 @@ namespace ConsoleApplication1
                      .Element(AtomNamespace + "content")
                      .Element(AstoriaMetadataNamespace + "properties")
                      .Elements()
-                     .Select(p =&gt;
+                     .Select(p =>
                       new
                       {
                           Name = p.Name.LocalName,
                           p.Value
                       })
                      .ToList()
-                     .ForEach(column =&gt; entity.values[column.Name] = column.Value);
+                     .ForEach(column => entity.values[column.Name] = column.Value);
                 }
             };
 
             var log = context
-                .CreateQuery&lt;dynamicentry&gt;("SyncTable")
-                .Where(l =&gt; l.PartitionKey == "X" &amp;&amp; l.RowKey == "1")
+                .CreateQuery<dynamicentry>("SyncTable")
+                .Where(l => l.PartitionKey == "X" && l.RowKey == "1")
                 .First();
 
             Console.WriteLine(log.values["Message"]);
@@ -241,8 +241,8 @@ namespace ConsoleApplication1
 
             // Access correct table
             var logQuery = context
-                .CreateQuery&lt;logentry&gt;("SyncTable")
-                .Where(l =&gt; l.PartitionKey == "X" &amp;&amp; l.RowKey == "1")
+                .CreateQuery<logentry>("SyncTable")
+                .Where(l => l.PartitionKey == "X" && l.RowKey == "1")
                 .AsTableServiceQuery();
             var logs = logQuery.Execute();
             Console.WriteLine(logs.Count());
@@ -250,8 +250,8 @@ namespace ConsoleApplication1
             try
             {
                 logQuery = context
-                    .CreateQuery&lt;logentry&gt;("SyncTable")
-                    .Where(l =&gt; l.PartitionKey == "X" &amp;&amp; l.RowKey == "3")
+                    .CreateQuery<logentry>("SyncTable")
+                    .Where(l => l.PartitionKey == "X" && l.RowKey == "3")
                     .AsTableServiceQuery();
                 logs = logQuery.Execute();
                 Console.WriteLine(logs.Count());
