@@ -17,17 +17,28 @@ input, select, textarea{
 
     &.tc-touched:invalid{
         border-color:red;
-
     }
 }
 
-div.tc-error{
-
+span.tc-error{
     color:red;
     display:none;
 }
 
-div.tc-error-visible{
-
+span.tc-error-visible{
     display:block;
+}
+
+.confirmationField{
+    height: 0; 
+    visibility: hidden;
+    margin: 0;
+}
+
+textarea{
+    height:150px;
+}
+
+.acceptTermsOfService{
+    font-size:12px;
 }

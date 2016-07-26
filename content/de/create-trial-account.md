@@ -6,13 +6,50 @@ permalink: /de/create-trial-account/
 
 <div class="row">
   <div class="col-sm-6 col-md-5">
-    <h1>30 Tage Test-Account
-							</h1>
-    <function name="Composite.AspNet.LoadUserControl">
-      <param name="Path" value="~/Frontend/Custom/Web/Forms/Controls/CreateTrialAccount.ascx" />
-    </function>
-    <p>Ihr Test-Account ist kostenlos, uns Sie müssen sich nicht abmelden, wenn Sie time cockpit nicht weiterverwenden möchten.
-							</p>
+    <h1>30 Tage Test-Account</h1>
+		
+	<form name="form" action="https://formspree.io/jovan@timecockpit.com" method="POST">
+		<p>
+			<label>Vorname</label>
+			<input type="text" name="vorname" id="vorname" required />
+			<span data-message-for="vorname" class="tc-error">Bitte geben Sie Ihren Vornamen ein.</span>
+		</p>
+
+		<p>
+			<label>Nachname</label>
+			<input type="text" name="nachname" id="nachname" required />
+			<span data-message-for="nachname" class="tc-error">Bitte geben Sie Ihren Nachnamen ein.</span>
+		</p>
+
+		<p>
+			<label>E-Mail Addresse</label>
+			<input name="email" id="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" required />
+			<span data-message-for="email" class="tc-error">Bitte geben Sie Ihre E-Mail Adresse ein.</span>
+		</p>
+
+		<p>
+			<label>Passwort</label>
+			<input type="password" name="passwort" id="passwort" required />
+			<span data-message-for="passwort" class="tc-error">Bitte wählen Sie ein Passwort für Ihren time cockpit Account.</span>
+		</p>
+
+		<p class="confirmationField">
+			<label>Feld bitte leer lassen</label>
+			<span><input name="emailConfirmation" type="text" id="emailConfirmation" data-empty-required /></span>
+		</p>
+
+		<p class="text-right"> 
+			<a onclick="createAccount(event)" class="linkButtonMain">Account erstellen<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
+			</a>
+		</p>
+	</form>
+
+	<p class="acceptTermsOfService">
+		Durch Klicken auf "Account erstellen" akzeptieren Sie die
+		<a href="/time-cockpit-website/de/impressum/lizenzbestimmungen/" target="_blank"> Nutzungsbedingungen</a>
+		.
+	</p>
+    <p>Ihr Test-Account ist kostenlos, uns Sie müssen sich nicht abmelden, wenn Sie time cockpit nicht weiterverwenden möchten</p>
   </div>
   <div class="hidden-sm col-md-2">
     <!--<div class="inputAlternatives">or

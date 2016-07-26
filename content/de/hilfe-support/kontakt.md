@@ -14,34 +14,26 @@ permalink: /de/hilfe-support/kontakt/
 					<p>Möchten Sie mehr über time cockpit wissen? Oder möchten Sie einen Termin für eine Online Demo mit einem unserer Consultants vereinbaren? Wir freuen uns auf Ihre Fragen und Anregungen.</p>
 	
 					<form name="form" action="https://formspree.io/jovan@timecockpit.com" method="POST">
-						<div>
-							<div>E-Mail Adresse
-							</div>
-							<div><input type="email" name="email" type="text" id="email" required>
-							</div>
-							<div data-message-for="email" class="tc-error">Geben Sie bitte Ihre E-Mail Adresse ein. Die angegebene E-Mail Adresse ist nicht gültig.
-							</div>
-						</div>
+						<p>
+							<label>E-Mail Adresse</label>
+							<input name="email" id="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" required />
+							<span data-message-for="email" class="tc-error">Geben Sie bitte Ihre E-Mail Adresse ein. Die angegebene E-Mail Adresse ist nicht gültig.</span>
+						</p>
 
-						<div class="confirmationField" style="height: 0; visibility: hidden;">
-							<div>Feld bitte leer lassen
-							</div>
-							<div><input name="emailConfirmation" type="text" id="emailConfirmation">
-							</div>
-						</div>
+						<p class="confirmationField">
+							<label>Feld bitte leer lassen</label>
+							<span><input name="emailConfirmation" type="text" id="emailConfirmation" data-empty-required /></span>
+						</p>
 
-						<div>
-							<div>Nachricht
-							</div>
-							<div><textarea type="text" name="message" rows="2" cols="20" id="message" style="height:150px;" required></textarea>
-							</div>
-							<div data-message-for="message" class="tc-error">Geben Sie bitte Ihre Nachricht ein.
-							</div>
-						</div>
+						<p>
+							<label>Nachricht</label>
+							<textarea type="text" name="message" rows="2" cols="20" id="message" required></textarea>
+							<span data-message-for="message" class="tc-error">Geben Sie bitte Ihre Nachricht ein.</span>
+						</p>
 
-						<p> 
-							<button type="submit" class="linkButtonMain"> Kontaktieren Sie uns<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
-							</button>
+						<p class="text-right"> 
+							<a onclick="sendForm(event)" class="linkButtonMain"> Kontaktieren Sie uns<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
+							</a>
 						</p>
 					</form>
 				</div>
