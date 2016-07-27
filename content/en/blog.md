@@ -15,8 +15,12 @@ permalink: /blog/
 				<p>{{ page.date | date_to_long_string }}</p>
 				<p>{{ page.teaser }}</p>
 				<p><a href="{{ page.url | prepend: site.baseurl }}">Read more ...</a></p>
+			</div>			
+			<div class="col-sm-4">
+			{% if page.bannerimage != null %}
+				<img src="{{ page.bannerimage | prepend: site.baseurl }}" />
+			{% endif %}
 			</div>
-			<div class="col-sm-4"><img src="{{ page.bannerimage | prepend: site.baseurl }}" /></div>
 		{% endfor %}
 		</div>
 	</div>
