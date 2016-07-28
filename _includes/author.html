@@ -1,0 +1,44 @@
+{% if page.path contains "/de/" %}
+{% assign language = "de" %}
+{% else %}
+{% assign language = "en" %}
+{% endif %}
+
+<div class="tags-expo">
+    <div class="tags-expo-section">
+        {% assign authors = site.data.authors | sort: "firstname" | sort: "lastname" %}
+        {% for author in authors %}
+            {% capture fullname %}{{author.firstname}} {{author.lastname}}{% endcapture %}
+        
+            {% assign counter = 0 %}
+
+            {% assign posts = site.posts | where: "lang",language %}
+            {% for post in posts | sort: "date" reverse %}
+                {% if post.author contains fullname %}
+                    {% assign counter = counter | plus:1 %}   
+                {% endif %}
+            {% endfor %}
+
+            {% if counter != 0 %}
+                <h2 id="{{ fullname }}">{{ fullname }}</h2>
+            {% else %}
+                {% continue %}
+            {% endif %}
+
+            <ul class="tags-expo-posts">
+                {% assign posts = site.posts | where: "lang",language %}
+                {% for post in posts | sort: "date" reverse %}
+                    {% if post.author contains fullname %}
+                        <li>
+                            <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
+                                {{ post.title }}
+                                <small class="post-date">{{ post.date | date_to_string }}</small>
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </div>
+</div>
+

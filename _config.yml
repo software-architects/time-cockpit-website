@@ -24,5 +24,4 @@ exclude: [
 	gulpfile.js, 
 	package.json, 
 	time-cockpit-website.sln, 
-	additional_content,
 	typescript]

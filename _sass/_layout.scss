@@ -7,12 +7,6 @@
 	height: 500px;
 }
 
-.blog-overview {
-	img {
-		width: 100%;
-	}
-}
-
 p.highlighted {
 	text-align: center;
 	background-color: $main-color;
@@ -157,6 +151,18 @@ p.imageCaption {
 			background-size: cover;
 		}
 	}
+}
+
+.tc-blogoverview {
+    .tc-next,.tc-previous{
+        cursor: pointer;
+    }
+
+    .tc-blogteaser {
+	    img {
+		    width: 100%;
+	    }
+    }
 }
 
 /* home */

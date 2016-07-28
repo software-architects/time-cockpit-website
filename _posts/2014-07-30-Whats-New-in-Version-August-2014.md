@@ -1,0 +1,13 @@
+---
+layout: blog
+title: What's New in Version August 2014
+excerpt: This month we deliver performance improvements in several parts of time cockpit. Additionally, we included a workaround for a bug in Microsoft's garbage collector that some time cockpit customers had to struggle with.
+author: Karin Huber
+date: 2014-07-30
+bannerimage: 
+lang: en
+tags: [time cockpit]
+permalink: /blog/2014/07/30/Whats-New-in-Version-August-2014
+---
+
+<p>The new version August 2014 (1.27) is downwards compatible to version March 2013 (1.10) and later. You can use all of these versions in a single account simultaneously.</p><h2>Changes in the new Version</h2><h3>Performance in Timesheet Calendar</h3><p>In the timesheet calendar of time cockpit some users experienced problems when moving or resizing timesheet entries. In the new version this should work faster, now.</p><h3>Performance for Typing in Textboxes of the Timesheet Form</h3><p>If you have lots of validation rules in your data model, typing could get very slow because the timesheet entry is validated on every key stroke. In the new version we have delayed the validation a bit to allow you to enter your timesheet entries faster.</p><h3>Avoid Prompting for Outlook Profile if Outlook is Installed but not Used</h3><p>When Microsoft Outlook is installed on a PC but not configured, time cockpit showed an annoying message every few minutes that asked for the Outlook Profile to use. You already could disable the use of Microsoft Outlook in the <em>Options</em> dialog of time cockpit and in the signal tracker configuration. In the new version you do not have to disable it explicitly. Time cockpit recognizes that Outlook is not configured (and probably not used by you) and does not show the message anymore.</p><h3>On Some PCs Time Cockpit Crashed Without Any Error Message</h3><p>On some PCs customers experienced strange crashes of time cockpit without any error message displayed. In the event log we found an error "Faulting module name: clr.dll" with exit code 80131506. It turned out that the root cause of the problem is a bug in Microsoft's garbage collector (for details see <a href="http://support.microsoft.com/kb/2640103/en-us" target="_blank">http://support.microsoft.com/kb/2640103/en-us</a>)<a href="http://support.microsoft.com/kb/2640103/en-us" target="_blank"></a>. Although there is a hotfix provided by Microsoft that should solve the problem, we decided to temporarily disable concurrent garbage collection (for details see <a href="http://support.microsoft.com/kb/2679415/en-us">http://support.microsoft.com/kb/2679415/en-us</a>) which should also solve the issue. Please let us know if you are still experiencing this problem.</p>

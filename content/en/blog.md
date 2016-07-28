@@ -3,27 +3,49 @@ layout: page
 title: Time Cockpit Blog - Tips and News from the Time Cockpit Team
 permalink: /blog/
 ---
+{% assign counter = 0 %}
+<div class="tc-blogoverview">
+	<div class="row">
+		<div class="col-sm-10">
+			{% assign site_count = site.posts | count %}
+			{% assign pages = site_count | divided_by:10 %}
+			{% assign curr_page = 1 %}
+			{% assign blogposts = site.posts | where: "layout","blog" | where: "lang","en" | sort: "date" | reverse %}
+			{% for post in blogposts %}
+				{% if counter < 10 %}
+					<div class="row tc-blogteaser">
+				{% else %}
+					<div class="row tc-blogteaser hidden">
+					{% assign curr_page = curr_page | plus:1 %}
+				{% endif %}
+					<div class="col-sm-12"><h2>{{ post.title }}</h2></div>
+					<div class="col-sm-8">
+						<p>{{ post.date | date_to_long_string }}</p>
+						<p>{{ post.excerpt }}</p>
+						<p><a href="{{ post.url | prepend: site.baseurl }}">Read more ...</a></p>
+					</div>
+					<div class="col-sm-4">
+					{% if post.bannerimage != null %}
+						<img src="{{ post.bannerimage | prepend: site.baseurl }}" />
+					{% endif %}
+					</div>
+				</div>
+				{% assign counter = counter | plus:1 %}
+			{% endfor %}
 
-<div class="row">
-	<div class="col-sm-10">
-		<div class="row blog-overview">
-		{% assign blogposts = site.pages | where: "layout","blog" | where: "lang","en" | sort: "date" | reverse %}
-
-		{% for page in blogposts %}
-			<div class="col-sm-12"><h2>{{ page.title }}</h2></div>
-			<div class="col-sm-8">
-				<p>{{ page.date | date_to_long_string }}</p>
-				<p>{{ page.teaser }}</p>
-				<p><a href="{{ page.url | prepend: site.baseurl }}">Read more ...</a></p>
-			</div>			
-			<div class="col-sm-4">
-			{% if page.bannerimage != null %}
-				<img src="{{ page.bannerimage | prepend: site.baseurl }}" />
-			{% endif %}
+			<div class="pagination">
+				<a onclick="previousPage()" class="tc-previous">Previous
+					
+				</a>
+				<span class="tc-current-page"></span>
+				<a onclick="nextPage()" class="tc-next">Next</a>
 			</div>
-		{% endfor %}
 		</div>
-	</div>
-	<div class="col-sm-2">
+		<div class="col-sm-2">
+			{% include tagcloud.html %}
+		</div>
+		<div class="col-sm-2">
+			{% include authorcloud.html %}
+		</div>
 	</div>
 </div>

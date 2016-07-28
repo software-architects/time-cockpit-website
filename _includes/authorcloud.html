@@ -1,0 +1,20 @@
+﻿{% if page.path contains "/de/" %}
+{% assign language = "de" %}
+{% assign languagePath = "/de/" %}
+{% else %}
+{% assign language = "en" %}
+{% assign languagePath = "/" %}
+{% endif %}
+
+{% assign authorItems = site.data.authors | sort: "firstname" | sort: "lastname" %}
+{% for author in authorItems %}
+{% capture fullname %}{{author.firstname}} {{author.lastname}}{% endcapture %}
+<div class="site-tag">
+    <a href="{{site.baseurl}}{{ languagePath }}blog/authors#{{ fullname }}">
+        {% assign blogposts = site.posts | where: "author",fullname | where: "lang",language | size %}
+        {% if blogposts != 0 %}
+        {{ fullname }} ({{ blogposts }})
+        {% endif %}
+    </a>
+</div>
+{% endfor %}
