@@ -5,6 +5,7 @@ excerpt: At time cockpit we are in close contact with our customers and we value
 author: Alexander Huber
 date: 2013-09-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2013/09/30/Whats-New-In-Version-October-2013

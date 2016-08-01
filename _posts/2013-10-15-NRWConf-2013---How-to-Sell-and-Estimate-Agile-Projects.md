@@ -5,6 +5,7 @@ excerpt: Last week I travelled to Wuppertal to participate in the community conf
 author: Rainer Stropek
 date: 2013-10-15
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Project Management,time cockpit]
 permalink: /blog/2013/10/15/NRWConf-2013---How-to-Sell-and-Estimate-Agile-Projects

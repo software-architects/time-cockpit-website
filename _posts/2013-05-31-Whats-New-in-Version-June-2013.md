@@ -5,6 +5,7 @@ excerpt: In the newest version of time cockpit we introduce a new signal type fo
 author: Karin Huber
 date: 2013-05-31
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Google Latitude,Location,time cockpit]
 permalink: /blog/2013/05/31/Whats-New-in-Version-June-2013

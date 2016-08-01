@@ -5,6 +5,7 @@ excerpt: In last month’s blog article I described how to import data from Visu
 author: Alexander Huber
 date: 2015-05-18
 bannerimage: /content/images/blog/2015/05/Hybrid Connection Architecture.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2015/05/18/Integrating-On-Premise-Resources-Into-Time-Cockpit-

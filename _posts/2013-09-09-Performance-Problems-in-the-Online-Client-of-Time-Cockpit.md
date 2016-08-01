@@ -5,6 +5,7 @@ excerpt: You may have recognized that the performance of the time cockpit online
 author: Karin Huber
 date: 2013-09-09
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2013/09/09/Performance-Problems-in-the-Online-Client-of-Time-Cockpit

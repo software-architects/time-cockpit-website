@@ -5,6 +5,7 @@ excerpt: Our company has been a Microsoft partner for many years. Each January, 
 author: Rainer Stropek
 date: 2015-01-22
 bannerimage: /content/images/blog/2015/01/logo.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 ref: /de/blog/2015/01/22/Erfolgreiche-Zertifizierung-für-time-cockpit

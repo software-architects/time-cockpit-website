@@ -5,6 +5,7 @@ excerpt: Last month we added the custom report feature as a preview to time cock
 author: Rainer Stropek
 date: 2014-03-31
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Reporting,time cockpit]
 permalink: /blog/2014/03/31/Custom-Reporting-in-Time-Cockpit-is-Final

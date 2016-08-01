@@ -5,6 +5,7 @@ excerpt: Upon popular request I would like to explain the current possibilities 
 author: Simon Opelt
 date: 2010-08-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2010/08/30/Time-Cockpit-in-Remote-Desktop-and-Workstation-Sharing-Scenarios-

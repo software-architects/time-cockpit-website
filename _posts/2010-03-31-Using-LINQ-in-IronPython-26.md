@@ -5,6 +5,7 @@ excerpt: Up until (and including) our beta 2 release time cockpit used IronPytho
 author: Simon Opelt
 date: 2010-03-31
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Iron Python]
 permalink: /blog/2010/03/31/Using-LINQ-in-IronPython-26

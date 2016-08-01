@@ -5,6 +5,7 @@ excerpt: In our last blogpost (see here), we covered how to create actions with 
 author: Alexander Huber
 date: 2010-07-28
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2010/07/28/How-to-Create-a-Custom-Form-for-an-Action-Parameter

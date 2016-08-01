@@ -5,6 +5,7 @@ excerpt: Extensibility is an important aspect of time cockpit and its underlying
 author: Rainer Stropek
 date: 2012-10-01
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2012/10/01/Customizing-Lists-and-Forms-in-Time-Cockpit

@@ -5,6 +5,7 @@ excerpt: We are pleased to announce the new version March 2013 of time cockpit. 
 author: Karin Huber
 date: 2013-02-28
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2013/02/28/Whats-New-in-Version-March-2013

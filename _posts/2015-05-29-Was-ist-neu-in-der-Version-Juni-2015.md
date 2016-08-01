@@ -5,6 +5,7 @@ excerpt: Der Mai war nun der zweite Monat, in dem wir den Fokus unserer Entwickl
 author: Karin Huber
 date: 2015-05-29
 bannerimage: /content/images/blog/2015/05/time-cockpit-june-2015.png
+bannerimagesource: 
 lang: de
 tags: [time cockpit]
 permalink: /de/blog/2015/05/29/Was-ist-neu-in-der-Version-Juni-2015

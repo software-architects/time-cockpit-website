@@ -5,6 +5,7 @@ excerpt: Out of the box time cockpit ships with a powerful importer that can imp
 author: Alexander Huber
 date: 2014-01-28
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Excel,time cockpit]
 permalink: /blog/2014/01/28/Importer-Improvements

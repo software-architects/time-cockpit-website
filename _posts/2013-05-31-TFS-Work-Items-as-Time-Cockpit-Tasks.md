@@ -5,6 +5,7 @@ excerpt: If you are using Team Foundation Server for your daily development and 
 author: Simon Opelt
 date: 2013-05-31
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Iron Python,TFS,time cockpit]
 permalink: /blog/2013/05/31/TFS-Work-Items-as-Time-Cockpit-Tasks

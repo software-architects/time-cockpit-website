@@ -5,6 +5,7 @@ excerpt: We deliver our software time cockpit as a service (SaaS model). By send
 author: Rainer Stropek
 date: 2015-08-31
 bannerimage: /content/images/blog/2015/08/usefull-useless-small.jpg
+bannerimagesource: Image source -  <a href="https://pixabay.com/de/ortsschild-strasse-n%C3%BCtzlich-nutzen-822236/" target="_blank">https://pixabay.com/de/ortsschild-strasse-n%C3%BCtzlich-nutzen-822236/</a>, <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.de" target="_blank">Creative Commons</a> License
 lang: en
 tags: [time cockpit]
 permalink: /blog/2015/08/31/10-Great-Sources-for-Innovation-Ideas-in-Agile-Projects

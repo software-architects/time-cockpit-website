@@ -5,6 +5,7 @@ excerpt: In this article we address 5 topics you should consider before and duri
 author: Rainer Stropek
 date: 2014-05-01
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/05/01/Muscle-Memory-for-Your-Organization

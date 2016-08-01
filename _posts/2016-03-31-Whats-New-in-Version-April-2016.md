@@ -5,6 +5,7 @@ excerpt: Piece by piece we bring time cockpit's full client features to our HTML
 author: Rainer Stropek
 date: 2016-03-31
 bannerimage: /content/images/blog/2016/03/time-cockpit-april-2016.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 ref: /de/blog/2016/03/31/Was-ist-neu-in-der-Version-April-2016

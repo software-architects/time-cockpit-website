@@ -5,6 +5,7 @@ excerpt: Support is an important aspect when offering software as a service. We 
 author: Rainer Stropek
 date: 2014-03-28
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/03/28/Behind-the-Scenes-Time-Cockpit-Support-Metrics

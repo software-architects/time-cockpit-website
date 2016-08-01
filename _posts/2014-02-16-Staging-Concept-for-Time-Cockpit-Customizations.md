@@ -5,6 +5,7 @@ excerpt: One of the unique possibilities of time cockpit is its extensibility. Y
 author: Rainer Stropek
 date: 2014-02-16
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/02/16/Staging-Concept-for-Time-Cockpit-Customizations

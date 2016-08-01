@@ -5,6 +5,7 @@ excerpt: If you introduce time tracking in your company you usually want to acco
 author: Karin Huber
 date: 2012-12-27
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [billomat,Iron Python,time cockpit]
 permalink: /blog/2012/12/27/Raise-Productivity-by-Enhancing-Your-Billing-Process

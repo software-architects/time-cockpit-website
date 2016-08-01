@@ -5,6 +5,7 @@ excerpt: This month we have put our focus on better error diagnostics and minor 
 author: Karin Huber
 date: 2015-01-30
 bannerimage: /content/images/blog/2015/01/time-cockpit-february-2015.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 ref: /de/blog/2015/01/30/Was-ist-neu-in-der-Version-Februar-2015

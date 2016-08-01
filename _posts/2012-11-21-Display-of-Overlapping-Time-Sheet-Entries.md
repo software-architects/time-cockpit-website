@@ -5,6 +5,7 @@ excerpt: In the new version of time cockpit for winter 2012/2013 we will fix the
 author: Karin Huber
 date: 2012-11-21
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2012/11/21/Display-of-Overlapping-Time-Sheet-Entries

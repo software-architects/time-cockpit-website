@@ -5,6 +5,7 @@ excerpt: In the HTML5 Client we have added support for a large number of advance
 author: Karin Huber
 date: 2015-03-31
 bannerimage: /content/images/blog/2015/03/time-cockpit-april-2015.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 ref: /de/blog/2015/03/31/Was-ist-neu-in-der-Version-April-2015

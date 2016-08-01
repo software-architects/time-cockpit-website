@@ -5,6 +5,7 @@ excerpt: If you want to play with a web api like the one from time cockpit, you 
 author: Rainer Stropek
 date: 2014-11-05
 bannerimage: /content/images/blog/2014/11/01PostmanQuery.png
+bannerimagesource: 
 lang: en
 tags: [OData,time cockpit]
 permalink: /blog/2014/11/05/Testing-Time-Cockpits-OData-Web-API-with-Postman

@@ -5,6 +5,7 @@ excerpt: Time cockpit can assist you in keeping track of your phone calls. By us
 author: Simon Opelt
 date: 2013-01-22
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Android,Mobile,time cockpit]
 permalink: /blog/2013/01/22/Synchronized-Android-Call-Log-Import

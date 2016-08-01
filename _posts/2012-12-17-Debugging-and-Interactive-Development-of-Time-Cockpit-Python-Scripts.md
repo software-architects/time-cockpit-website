@@ -5,6 +5,7 @@ excerpt: It is easy to create small scripts to automate tasks or extend time coc
 author: Simon Opelt
 date: 2012-12-17
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Iron Python,time cockpit]
 permalink: /blog/2012/12/17/Debugging-and-Interactive-Development-of-Time-Cockpit-Python-Scripts

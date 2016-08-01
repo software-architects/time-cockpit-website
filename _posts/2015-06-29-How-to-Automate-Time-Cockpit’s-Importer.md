@@ -5,6 +5,7 @@ excerpt: If you want to import a single Excel or CSV file, time cockpit's Import
 author: Michael Kubitschka
 date: 2015-06-29
 bannerimage: /content/images/blog/2015/06/start-auto-import.jpg
+bannerimagesource: 
 lang: en
 tags: [Iron Python,time cockpit]
 permalink: /blog/2015/06/29/How-to-Automate-Time-Cockpit’s-Importer

@@ -5,6 +5,7 @@ excerpt: Data protection is an important topic when it comes to cloud computing.
 author: Rainer Stropek
 date: 2015-09-30
 bannerimage: /content/images/blog/2015/09/lightning-cloud-small.jpg
+bannerimagesource: Image source -  <a href="https://flic.kr/p/ofiC5K" target="_blank">https://flic.kr/p/ofiC5K</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [time cockpit]
 permalink: /blog/2015/09/30/Is-the-Cloud-Still-a-Safe-Harbor

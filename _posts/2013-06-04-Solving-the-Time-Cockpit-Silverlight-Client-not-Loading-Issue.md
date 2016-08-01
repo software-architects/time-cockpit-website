@@ -5,6 +5,7 @@ excerpt: Today one of our customers reported an issue that time cockpit's Silver
 author: Philipp Aumayr
 date: 2013-06-04
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: []
 permalink: /blog/2013/06/04/Solving-the-Time-Cockpit-Silverlight-Client-not-Loading-Issue

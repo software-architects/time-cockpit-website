@@ -5,6 +5,7 @@ excerpt: In the new version we have focused on two topics. First, we have improv
 author: Karin Huber
 date: 2016-02-29
 bannerimage: /content/images/blog/2016/02/time-cockpit-march-2016.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 ref: /de/blog/2016/02/29/Was-ist-neu-in-der-Version-März-2016

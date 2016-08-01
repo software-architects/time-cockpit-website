@@ -5,6 +5,7 @@ excerpt: Time cockpit can work online or offline. All changes are synchronized t
 author: Philipp Aumayr
 date: 2013-06-25
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,Azure,C#,time cockpit]
 permalink: /blog/2013/06/25/Faster-Synchronization-in-Time-Cockpit-July-2013

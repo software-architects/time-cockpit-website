@@ -5,6 +5,7 @@ excerpt: In this article, we will show how you can connect time cockpit with Of
 author: Alexander Huber
 date: 2015-09-30
 bannerimage: /content/images/blog/2015/09/OutookIntegrationSmall.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2015/09/30/Staff-Vacation-Calendar-with-Time-Cockpit-and-Office-365

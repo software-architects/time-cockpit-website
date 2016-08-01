@@ -5,6 +5,7 @@ excerpt: The new time cockpit version contains lots of usability improvements fo
 author: Rainer Stropek
 date: 2015-02-27
 bannerimage: /content/images/blog/2015/02/time-cockpit-march-2015.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 ref: /de/blog/2015/02/27/Was-ist-neu-in-der-Version-März-2015

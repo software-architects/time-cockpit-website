@@ -5,6 +5,7 @@ excerpt: On the first sight, time tracking is a seemingly trival process. Start 
 author: Rainer Stropek
 date: 2014-08-28
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/08/28/Learn-From-Best-in-Class-Confirmation-and-Approval-Processes

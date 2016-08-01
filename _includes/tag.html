@@ -21,7 +21,7 @@
             {% assign posts = site.posts | where: "lang",language %}
             {% for post in posts | sort: "date" reverse %}
                 {% if post.tags contains taglist[1] %}
-                    {% assign counter = counter | plus: 1 %}
+                {% assign counter = counter | plus: 1 %}
                 {% endif %}
             {% endfor %}
 

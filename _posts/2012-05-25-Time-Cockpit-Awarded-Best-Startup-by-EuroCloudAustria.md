@@ -5,6 +5,7 @@ excerpt: We are happy to announce that time cockpit won the first place in the E
 author: Philipp Aumayr
 date: 2012-05-25
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Awards]
 permalink: /blog/2012/05/25/Time-Cockpit-Awarded-Best-Startup-by-EuroCloudAustria

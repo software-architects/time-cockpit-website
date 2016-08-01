@@ -5,6 +5,7 @@ excerpt: At the current time of the year, many people are thinking about their N
 author: Rainer Stropek
 date: 2013-12-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Project Management,time cockpit]
 permalink: /blog/2013/12/30/Stop-Mistaking-Being-Busy-for-Being-Productive

@@ -5,6 +5,7 @@ excerpt: Nowadays people are on the alert for data security and privacy when it 
 author: Rainer Stropek
 date: 2013-11-29
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure,time cockpit]
 permalink: /blog/2013/11/29/Time-Cockpit-and-Cloud-Security

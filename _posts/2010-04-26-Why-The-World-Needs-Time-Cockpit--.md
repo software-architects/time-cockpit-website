@@ -5,6 +5,7 @@ excerpt: Naturally most services companies do not primarily provide physical goo
 author: Rainer Stropek
 date: 2010-04-26
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2010/04/26/Why-The-World-Needs-Time-Cockpit--

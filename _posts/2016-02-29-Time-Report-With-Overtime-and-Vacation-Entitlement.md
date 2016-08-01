@@ -5,6 +5,7 @@ excerpt: In time cockpit version March 2016 we have enhanced the default time re
 author: Michael Kubitschka
 date: 2016-02-29
 bannerimage: /content/images/blog/2016/02/overtime.png
+bannerimagesource: 
 lang: en
 tags: [Reporting,time cockpit]
 ref: /de/blog/2016/02/29/Stundenzettel-mit-Überstunden-und-Resturlaub

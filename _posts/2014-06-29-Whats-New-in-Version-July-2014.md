@@ -5,6 +5,7 @@ excerpt: This month we have added various productivity functions to time cockpit
 author: Karin Huber
 date: 2014-06-29
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/06/29/Whats-New-in-Version-July-2014

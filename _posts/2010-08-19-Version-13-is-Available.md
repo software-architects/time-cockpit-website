@@ -5,6 +5,7 @@ excerpt: Version 1.3 contains mainly improvements in display and editing of list
 author: Karin Huber
 date: 2010-08-19
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2010/08/19/Version-13-is-Available

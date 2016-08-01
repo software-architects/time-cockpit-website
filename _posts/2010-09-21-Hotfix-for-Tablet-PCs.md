@@ -5,6 +5,7 @@ excerpt: On tablet pc's and on pc's which have the service 'Tablet PC Input Serv
 author: Karin Huber
 date: 2010-09-21
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2010/09/21/Hotfix-for-Tablet-PCs

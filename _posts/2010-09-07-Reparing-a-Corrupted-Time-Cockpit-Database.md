@@ -5,6 +5,7 @@ excerpt: Lately we had a customer with a corrupted local database. Various sourc
 author: Philipp Aumayr
 date: 2010-09-07
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [SQLCE]
 permalink: /blog/2010/09/07/Reparing-a-Corrupted-Time-Cockpit-Database

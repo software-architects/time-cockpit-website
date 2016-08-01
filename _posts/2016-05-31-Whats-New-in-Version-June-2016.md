@@ -5,6 +5,7 @@ excerpt: This month we have put our focus on these two topcis -  handling time-o
 author: Karin Huber
 date: 2016-05-31
 bannerimage: /content/images/blog/2016/05/time-cockpit-june-2016.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2016/05/31/Whats-New-in-Version-June-2016

@@ -5,9 +5,9 @@ excerpt: It has been 6 and a half years now since we have gone live with time co
 author: Alexander Huber
 date: 2016-06-23
 bannerimage: /content/images/blog/2016/06/how to introduce tc - gears.jpg
+bannerimagesource: https://pixabay.com/en/gears-cogs-machine-machinery-1236578/
 lang: en
 tags: [Project Management,time cockpit]
-ref: /de/blog/2016/06/23/How-To-Introduce-Time-Cockpit
 permalink: /blog/2016/06/23/How-To-Introduce-Time-Cockpit
 ---
 

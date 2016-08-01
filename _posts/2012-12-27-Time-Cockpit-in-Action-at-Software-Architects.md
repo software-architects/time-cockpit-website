@@ -5,6 +5,7 @@ excerpt: Month by month we portray customers who successfully use time cockpit f
 author: Rainer Stropek
 date: 2012-12-27
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Project Management,time cockpit]
 permalink: /blog/2012/12/27/Time-Cockpit-in-Action-at-Software-Architects

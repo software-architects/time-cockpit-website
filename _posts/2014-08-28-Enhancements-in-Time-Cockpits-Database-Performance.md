@@ -5,6 +5,7 @@ excerpt: We find it important to continuously improve time cockpit's performance
 author: Rainer Stropek
 date: 2014-08-28
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [SQL,time cockpit]
 permalink: /blog/2014/08/28/Enhancements-in-Time-Cockpits-Database-Performance

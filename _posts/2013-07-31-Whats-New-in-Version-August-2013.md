@@ -5,6 +5,7 @@ excerpt: This month we have focused on the performance of the time sheet calenda
 author: Karin Huber
 date: 2013-07-31
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2013/07/31/Whats-New-in-Version-August-2013

@@ -5,6 +5,7 @@ excerpt: In version April 2013 we have focused on the formatting profiles in the
 author: Karin Huber
 date: 2013-03-20
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2013/03/20/Whats-New-in-Version-April-2013

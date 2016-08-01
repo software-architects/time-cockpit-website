@@ -5,6 +5,7 @@ excerpt: Time cockpit is a great platform for managing time- and project-related
 author: Rainer Stropek
 date: 2015-11-30
 bannerimage: /content/images/blog/2015/11/power-bi.png
+bannerimagesource: 
 lang: en
 tags: [Reporting,time cockpit]
 permalink: /blog/2015/11/30/Integrating-Time-Cockpit-with-Power-BI

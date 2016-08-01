@@ -5,6 +5,7 @@ excerpt: Der in time cockpit enthaltene Standard-Stundenzettel wurde in der Mär
 author: Michael Kubitschka
 date: 2016-02-29
 bannerimage: /content/images/blog/2016/02/overtime.png
+bannerimagesource: 
 lang: de
 tags: [Reporting,time cockpit]
 permalink: /de/blog/2016/02/29/Stundenzettel-mit-Überstunden-und-Resturlaub

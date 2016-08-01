@@ -5,6 +5,7 @@ excerpt: Recently, a customer asked us how to book compensatory time off in the 
 author: Alexander Huber
 date: 2013-01-16
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2013/01/16/Compensatory-Time-Off-in-Time-Cockpit

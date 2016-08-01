@@ -5,6 +5,7 @@ excerpt: This year the Softwarepark Hagenberg Award was presented the 4th time t
 author: Karin Huber
 date: 2010-11-25
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2010/11/25/2nd-Place-for-Time-Cockpit-

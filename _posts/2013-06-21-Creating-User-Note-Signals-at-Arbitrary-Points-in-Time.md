@@ -5,6 +5,7 @@ excerpt: Time cockpit allows you to take notes during your daily work. Such a no
 author: Simon Opelt
 date: 2013-06-21
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2013/06/21/Creating-User-Note-Signals-at-Arbitrary-Points-in-Time

@@ -5,6 +5,7 @@ excerpt: Microsoft Power BI is getting more and more attention in the market. We
 author: Rainer Stropek
 date: 2016-06-30
 bannerimage: /content/images/blog/2016/06/sales-dashboard-small.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2016/06/30/Case-Study-Time-Cockpit-and-Power-BI-at-AIT

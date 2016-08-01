@@ -5,6 +5,7 @@ excerpt: The other day, a friend of mine asked me for a list containing the time
 author: Philipp Aumayr
 date: 2011-03-17
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2011/03/17/Time-Cockpit-Customization-A-slightly-advanced-List-

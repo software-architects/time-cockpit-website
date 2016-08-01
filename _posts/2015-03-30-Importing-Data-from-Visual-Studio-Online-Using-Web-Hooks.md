@@ -5,6 +5,7 @@ excerpt: We at software architects adapt time cockpit to the needs of our custom
 author: Alexander Huber
 date: 2015-03-30
 bannerimage: /content/images/blog/2015/03/webhooks_550.png
+bannerimagesource: 
 lang: en
 tags: [Azure,time cockpit,Visual Studio]
 permalink: /blog/2015/03/30/Importing-Data-from-Visual-Studio-Online-Using-Web-Hooks

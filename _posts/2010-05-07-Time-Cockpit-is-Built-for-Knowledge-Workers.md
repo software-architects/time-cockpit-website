@@ -5,6 +5,7 @@ excerpt: The importance of time cockpit’s primary target market, the tertiary 
 author: Rainer Stropek
 date: 2010-05-07
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2010/05/07/Time-Cockpit-is-Built-for-Knowledge-Workers

@@ -5,6 +5,7 @@ excerpt: 2014 has been a successful year for our company. We could raise our rev
 author: Rainer Stropek
 date: 2015-01-27
 bannerimage: /content/images/blog/2015/01/Blog_20150109_1.jpg
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 ref: /de/blog/2015/01/27/Wir-werden-größer

@@ -5,6 +5,7 @@ excerpt: One of the key benefits of time cockpit is the customizability. A thing
 author: Philipp Aumayr
 date: 2012-11-22
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Iron Python,time cockpit]
 permalink: /blog/2012/11/22/Hiding-Menu-Items-Depending-on-the-User

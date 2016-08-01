@@ -5,6 +5,7 @@ excerpt: In many companies, each year starts with planning. Planning the financi
 author: Rainer Stropek
 date: 2015-01-30
 bannerimage: /content/images/blog/2015/01/4675779231_5f18d43e31_b.jpg
+bannerimagesource: Image source -  <a href="https://flic.kr/p/88bAgi" target="_blank">https://flic.kr/p/88bAgi</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [Agile,Project Management,Scrum]
 ref: /de/blog/2015/01/30/Budgetierung-in-agilen-Umgebungen---Acht-Tipps-um-das-Unvorhersagbare-zu-planen

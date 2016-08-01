@@ -5,6 +5,7 @@ excerpt: Today we had a potential customer having difficulites with the excel ex
 author: Philipp Aumayr
 date: 2010-07-07
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2010/07/07/Understanding-Time-Cockpits-Excel-Export

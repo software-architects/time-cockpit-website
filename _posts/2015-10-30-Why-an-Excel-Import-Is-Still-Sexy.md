@@ -5,6 +5,7 @@ excerpt: It is true, there are lots of ways to get data in and out of time cockp
 author: Alexander Huber
 date: 2015-10-30
 bannerimage: /content/images/blog/2015/09/Sexy_Importer.png
+bannerimagesource: 
 lang: en
 tags: [About]
 permalink: /blog/2015/10/30/Why-an-Excel-Import-Is-Still-Sexy

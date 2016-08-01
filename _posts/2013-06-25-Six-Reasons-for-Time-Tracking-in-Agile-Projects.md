@@ -5,6 +5,7 @@ excerpt: Time tracking in agile projects is a controversially discussed topic in
 author: Rainer Stropek
 date: 2013-06-25
 bannerimage: /content/images/blog/2013/06/Agreement-and-Certainty-Matrix.png
+bannerimagesource: 
 lang: en
 tags: [Agile,Project Management,Scrum]
 ref: /de/blog/2013/06/25/Sechs-Gründe-für-Zeiterfassung-in-agilen-Projekten

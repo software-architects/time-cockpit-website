@@ -5,6 +5,7 @@ excerpt: Last month we published a quiz in which you can demonstrate your estima
 author: Rainer Stropek
 date: 2013-08-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Project Management]
 permalink: /blog/2013/08/30/Estimation-Quiz---Results

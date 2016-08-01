@@ -5,6 +5,7 @@ excerpt: Last week I was speaker at a large conference in Germany. Although I ma
 author: Rainer Stropek
 date: 2014-09-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/09/30/How-Transparency-Leads-to-Innovation

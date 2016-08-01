@@ -5,6 +5,7 @@ excerpt: This sample shows how to import customers from Microsoft CRM into time 
 author: Karin Huber
 date: 2012-10-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,C#,time cockpit]
 permalink: /blog/2012/10/30/Import-Customers-From-Microsoft-Dynamics-CRM-Online

@@ -5,6 +5,7 @@ excerpt: Time cockpit got a new log file format which makes troubleshooting much
 author: Karin Huber
 date: 2014-11-30
 bannerimage: /content/images/blog/2014/11/time-cockpit-december-2014.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/11/30/Whats-New-in-Version-December-2014

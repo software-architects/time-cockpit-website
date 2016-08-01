@@ -5,6 +5,7 @@ excerpt: At software architects we live and breathe agile development. Agile pri
 author: Rainer Stropek
 date: 2013-08-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Project Management]
 ref: /de/blog/2013/08/30/Projektreporting-in-agilen-Projekten

@@ -5,6 +5,7 @@ excerpt: Do you have customized time cockpit or plan to customize it? If yes, yo
 author: Alexander Huber
 date: 2016-05-27
 bannerimage: /content/images/blog/2016/05/sandbox-small.jpg
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2016/05/27/Playing-in-the-Sandbox

@@ -5,6 +5,7 @@ excerpt: Recently we got a question from a customer who wanted to access time co
 author: Rainer Stropek
 date: 2014-09-26
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,C#,OData,Visual Studio]
 permalink: /blog/2014/09/26/Accessing-Time-Cockpits-OData-Web-API-With-Visual-Studio

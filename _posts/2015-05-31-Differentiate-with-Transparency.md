@@ -5,6 +5,7 @@ excerpt: Granted, time tracking is not one of our customers' favorite tasks. How
 author: Rainer Stropek
 date: 2015-05-31
 bannerimage: /content/images/blog/2015/05/SoftwareDiaryThumbnail.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2015/05/31/Differentiate-with-Transparency

@@ -5,6 +5,7 @@ excerpt: Im Geschäftsleben wollen Manager normalerweise vorab wissen, wie lange
 author: Rainer Stropek
 date: 2016-03-23
 bannerimage: /content/images/blog/2016/03/budget-small.jpg
+bannerimagesource: Image source -  <a href="https://flic.kr/p/s7aUff" target="_blank">https://flic.kr/p/s7aUff</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 lang: de
 tags: [Agile,Project Management,Time Management]
 permalink: /de/blog/2016/03/23/Gesundheitscheck-Aufwand-und-Kosten-in-agilen-Projekten

@@ -5,6 +5,7 @@ excerpt: Dieses Monat haben wir uns auf zwei Themen konzentriert -  die einfache
 author: Karin Huber
 date: 2016-05-01
 bannerimage: /content/images/blog/2016/04/time-cockpit-may-2016.png
+bannerimagesource: 
 lang: de
 tags: [time cockpit]
 permalink: /de/blog/2016/05/01/Was-ist-neu-in-der-Version-Mai-2016

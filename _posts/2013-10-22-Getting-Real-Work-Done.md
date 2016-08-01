@@ -5,6 +5,7 @@ excerpt: It is a well-known fact that constant interruptions can have quite nega
 author: Rainer Stropek
 date: 2013-10-22
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2013/10/22/Getting-Real-Work-Done

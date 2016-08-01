@@ -5,6 +5,7 @@ excerpt: Agile principles have become quite popular in software development. The
 author: Rainer Stropek
 date: 2014-07-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/07/30/Why-Should-Agile-Stop-at-Software-Development

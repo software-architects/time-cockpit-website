@@ -5,6 +5,7 @@ excerpt: In the current version of time cockpit, there is a bug in the excel exp
 author: Philipp Aumayr
 date: 2013-10-16
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2013/10/16/Excel-Exporter-and-Formatting-Profiles

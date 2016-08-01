@@ -5,6 +5,7 @@ excerpt: In our very successfull webinar this morning we were asked by an attend
 author: Simon Opelt
 date: 2010-07-29
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2010/07/29/Proof-of-Concept-Itemized-Call-List-Import

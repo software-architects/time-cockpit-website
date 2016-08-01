@@ -5,6 +5,7 @@ excerpt: With the release of time cockpit 1.7 we are happy to ship IronPython 2.
 author: Simon Opelt
 date: 2012-01-22
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Iron Python]
 permalink: /blog/2012/01/22/Python-in-Time-Cockpit-17

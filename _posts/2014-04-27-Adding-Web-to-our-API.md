@@ -5,6 +5,7 @@ excerpt: This month, we are very proud that we can publish the first public prev
 author: Rainer Stropek
 date: 2014-04-27
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [OData,time cockpit]
 permalink: /blog/2014/04/27/Adding-Web-to-our-API

@@ -5,6 +5,7 @@ excerpt: Das Risiko für Konflikte bei erstmaliger Einführung einer Projektzeit
 author: Rainer Stropek
 date: 2014-09-03
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/09/03/German-Funktionen-zum-Schutz-der-Privatsphäre

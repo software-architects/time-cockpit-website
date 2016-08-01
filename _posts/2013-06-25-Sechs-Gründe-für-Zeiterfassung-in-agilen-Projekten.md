@@ -5,6 +5,7 @@ excerpt: Zeiterfassung ist in vielen Projektteams ein kontrovers diskutiertes Th
 author: Rainer Stropek
 date: 2013-06-25
 bannerimage: /content/images/blog/2013/06/Agreement-and-Certainty-Matrix.png
+bannerimagesource: 
 lang: de
 tags: [Agile,Project Management,Scrum]
 permalink: /de/blog/2013/06/25/Sechs-Gründe-für-Zeiterfassung-in-agilen-Projekten

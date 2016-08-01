@@ -5,6 +5,7 @@ excerpt: The latest version of time cockpit adds the ability to create custom re
 author: Rainer Stropek
 date: 2014-02-27
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/02/27/Building-Custom-Reports-in-Time-Cockpit

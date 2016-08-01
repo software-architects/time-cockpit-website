@@ -5,6 +5,7 @@ excerpt: In der neuen Version haben wir uns auf zwei Themen konzentriert. Als er
 author: Karin Huber
 date: 2016-02-29
 bannerimage: /content/images/blog/2016/02/time-cockpit-march-2016.png
+bannerimagesource: 
 lang: de
 tags: [time cockpit]
 permalink: /de/blog/2016/02/29/Was-ist-neu-in-der-Version-März-2016

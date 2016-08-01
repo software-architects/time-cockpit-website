@@ -5,6 +5,7 @@ excerpt: In business life, managers usually want to know upfront how long a proj
 author: Rainer Stropek
 date: 2016-03-17
 bannerimage: /content/images/blog/2016/03/budget-small.jpg
+bannerimagesource: Image source -  <a href="https://flic.kr/p/s7aUff" target="_blank">https://flic.kr/p/s7aUff</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [time cockpit]
 ref: /de/blog/2016/03/23/Gesundheitscheck-Aufwand-und-Kosten-in-agilen-Projekten

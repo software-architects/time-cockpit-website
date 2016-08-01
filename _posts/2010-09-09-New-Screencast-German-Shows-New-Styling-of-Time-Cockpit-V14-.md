@@ -5,6 +5,7 @@ excerpt: In October 2010 we will release version 1.4 of the time tracking tool t
 author: Rainer Stropek
 date: 2010-09-09
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2010/09/09/New-Screencast-German-Shows-New-Styling-of-Time-Cockpit-V14-

@@ -5,6 +5,7 @@ excerpt: Regularly, customers ask us how to send emails when certain things happ
 author: Rainer Stropek
 date: 2014-05-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure,OData,time cockpit]
 permalink: /blog/2014/05/30/Warning-Emails-in-Case-of-Budget-Overrun

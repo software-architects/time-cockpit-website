@@ -5,6 +5,7 @@ excerpt: We have lots of new features and improvements in time cockpit this mont
 author: Karin Huber
 date: 2015-07-31
 bannerimage: /content/images/blog/2015/07/time-cockpit-august-2015.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 ref: /de/blog/2015/07/31/Was-ist-neu-in-der-Version-August-2015

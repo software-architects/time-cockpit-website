@@ -5,6 +5,7 @@ excerpt: Today is an exciting day for the entire time cockpit team. We are openi
 author: Rainer Stropek
 date: 2014-12-15
 bannerimage: /content/images/blog/2014/12/15467456315_977b4fa0a0_k.jpg
+bannerimagesource: Image source -  <a href="https://flic.kr/p/pyNKTi" target="_blank">https://flic.kr/p/pyNKTi</a>, <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/12/15/Opening-HTML5-Client-for-Public-Preview

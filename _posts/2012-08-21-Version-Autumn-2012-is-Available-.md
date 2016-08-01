@@ -5,6 +5,7 @@ excerpt: With the new autumn release you can install time cockpit on your pc or 
 author: Karin Huber
 date: 2012-08-21
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2012/08/21/Version-Autumn-2012-is-Available-

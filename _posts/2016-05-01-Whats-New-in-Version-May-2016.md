@@ -5,6 +5,7 @@ excerpt: This month we have mainly focused on two topics -  date / time input an
 author: Karin Huber
 date: 2016-05-01
 bannerimage: /content/images/blog/2016/04/time-cockpit-may-2016.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 ref: /de/blog/2016/05/01/Was-ist-neu-in-der-Version-Mai-2016

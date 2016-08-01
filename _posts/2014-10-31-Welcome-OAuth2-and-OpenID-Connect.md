@@ -5,6 +5,7 @@ excerpt: When we did our yearly strategy meeting at the beginning of 2014, we de
 author: Rainer Stropek
 date: 2014-10-31
 bannerimage: /content/images/blog/2014/10/BrickByBrick.jpg
+bannerimagesource: Image source -  <a href="http://commons.wikimedia.org/wiki/File:Bricklayer_J4.jpg" target="_blank">http://commons.wikimedia.org/wiki/File:Bricklayer_J4.jpg</a>, Creative Commons License
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/10/31/Welcome-OAuth2-and-OpenID-Connect

@@ -5,6 +5,7 @@ excerpt: For this version we have put the finishing touches to our new reporting
 author: Karin Huber
 date: 2014-03-31
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/03/31/Whats-New-in-Version-April-2014

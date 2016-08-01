@@ -5,6 +5,7 @@ excerpt: Leider haben wir diese Woche einen unerfreulichen Fehler in time cockpi
 author: Rainer Stropek
 date: 2015-01-08
 bannerimage: /content/images/blog/2015/01/missing-signal-lanes-preview.png
+bannerimagesource: 
 lang: de
 tags: [time cockpit]
 permalink: /de/blog/2015/01/08/Fehler-in-der-Signaldarstellung

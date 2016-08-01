@@ -5,6 +5,7 @@ excerpt: Time cockpit bietet seit dieser Version Funktionen zur automatischen Pr
 author: Alexander Huber
 date: 2015-07-31
 bannerimage: /content/images/blog/2015/07/keyboard_350.png
+bannerimagesource: 
 lang: de
 tags: []
 permalink: /de/blog/2015/07/31/Arbeitszeitverletzungen-und-Höchstarbeitszeit

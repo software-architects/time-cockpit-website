@@ -5,6 +5,7 @@ excerpt: This month we improved the performance of initial synchronization. Espe
 author: Karin Huber
 date: 2013-06-28
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2013/06/28/Whats-New-in-Version-July-2013

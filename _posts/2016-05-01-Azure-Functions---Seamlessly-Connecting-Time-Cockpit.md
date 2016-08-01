@@ -5,6 +5,7 @@ excerpt: In nearly every time cockpit implementation project, we have to integra
 author: Rainer Stropek
 date: 2016-05-01
 bannerimage: /content/images/blog/2016/04/function-hero-image-small.jpg
+bannerimagesource: Image source -  <a href="https://flic.kr/p/8tHxFC" target="_blank">https://flic.kr/p/8tHxFC</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [About]
 permalink: /blog/2016/05/01/Azure-Functions---Seamlessly-Connecting-Time-Cockpit

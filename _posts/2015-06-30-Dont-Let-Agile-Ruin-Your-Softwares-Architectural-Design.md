@@ -5,6 +5,7 @@ excerpt: Architects call the central idea or concept of a building "parti".  You
 author: Rainer Stropek
 date: 2015-06-30
 bannerimage: /content/images/blog/2015/06/louvre-lens-parti-thumb.jpg
+bannerimagesource: Image source -  <a href="https://flic.kr/p/hqFAs2" target="_blank">https://flic.kr/p/hqFAs2</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [Agile,Project Management,time cockpit]
 permalink: /blog/2015/06/30/Dont-Let-Agile-Ruin-Your-Softwares-Architectural-Design

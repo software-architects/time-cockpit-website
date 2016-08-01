@@ -5,6 +5,7 @@ excerpt: In this version of time cockpit we made the usage of actions more conve
 author: Alexander Huber
 date: 2013-04-29
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2013/04/29/Whats-New-in-Version-May-2013

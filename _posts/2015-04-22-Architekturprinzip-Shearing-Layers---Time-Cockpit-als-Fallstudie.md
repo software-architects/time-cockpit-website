@@ -5,6 +5,7 @@ excerpt: Vor ein paar Monaten habe ich einen Blogartikel über das Konzept der "
 author: Rainer Stropek
 date: 2015-04-22
 bannerimage: /content/images/blog/2015/04/selexyz_dominicanen_bookstore_small.jpg
+bannerimagesource: Image source -  <a href="https://flic.kr/p/rqmzA5" target="_blank">https://flic.kr/p/rqmzA5</a>, <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Creative Commons</a> License
 lang: de
 tags: [Project Management,time cockpit,Time Management]
 permalink: /de/blog/2015/04/22/Architekturprinzip-Shearing-Layers---Time-Cockpit-als-Fallstudie

@@ -5,6 +5,7 @@ excerpt: In this blog post we show you how to customize time cockpit so that pro
 author: Alexander Huber
 date: 2012-11-23
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Iron Python,time cockpit]
 permalink: /blog/2012/11/23/Get-Notified-When-a-Project-is-Exceeding-Its-Budget

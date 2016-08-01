@@ -5,6 +5,7 @@ excerpt: We did Scrum years ago for the initial development of time cockpit. Gra
 author: Rainer Stropek
 date: 2014-12-31
 bannerimage: /content/images/blog/2014/12/5141328136_16d8f73ee7_b.jpg
+bannerimagesource: Image source -  <a href="https://flic.kr/p/8QjDJy" target="_blank">https://flic.kr/p/8QjDJy</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [Project Management,time cockpit]
 ref: /de/blog/2014/12/31/Warum-wir-für-time-cockpit-nicht-Scrum-verwenden

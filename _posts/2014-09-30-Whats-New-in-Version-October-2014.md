@@ -5,6 +5,7 @@ excerpt: As announced last month, we have made more performance improvements thi
 author: Karin Huber
 date: 2014-09-30
 bannerimage: /content/images/blog/2014/09/time-cockpit-october-2014.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/09/30/Whats-New-in-Version-October-2014

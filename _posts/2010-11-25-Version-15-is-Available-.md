@@ -5,6 +5,7 @@ excerpt: This new version of time cockpit is available for a few days now. The m
 author: Karin Huber
 date: 2010-11-25
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2010/11/25/Version-15-is-Available-

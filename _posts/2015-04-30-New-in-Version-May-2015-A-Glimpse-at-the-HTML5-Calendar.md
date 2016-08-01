@@ -5,6 +5,7 @@ excerpt: This month we have focused mainly on the new HTML5 time tracking calend
 author: Karin Huber
 date: 2015-04-30
 bannerimage: /content/images/blog/2015/04/time-cockpit-may-2015.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 ref: /de/blog/2015/04/30/Neu-im-Mai-2015-Ein-erster-Blick-auf-den-HTML-Kalender

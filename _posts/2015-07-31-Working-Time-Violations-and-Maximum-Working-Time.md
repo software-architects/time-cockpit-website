@@ -5,6 +5,7 @@ excerpt: In the latest version of time cockpit, we added built-in functions for 
 author: Alexander Huber
 date: 2015-07-31
 bannerimage: /content/images/blog/2015/07/keyboard_350.png
+bannerimagesource: 
 lang: en
 tags: []
 ref: /de/blog/2015/07/31/Arbeitszeitverletzungen-und-Höchstarbeitszeit

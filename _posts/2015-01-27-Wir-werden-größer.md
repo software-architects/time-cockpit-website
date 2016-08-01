@@ -5,6 +5,7 @@ excerpt: 2014 war ein erfolgreiches Jahr für uns. Wir konnten einen Umsatzrekor
 author: Rainer Stropek
 date: 2015-01-27
 bannerimage: /content/images/blog/2015/01/Blog_20150109_1.jpg
+bannerimagesource: 
 lang: de
 tags: [time cockpit]
 permalink: /de/blog/2015/01/27/Wir-werden-größer

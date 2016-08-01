@@ -5,6 +5,7 @@ excerpt: This month we have focused on improving the behavior of lists in the HT
 author: Karin Huber
 date: 2015-11-30
 bannerimage: /content/images/blog/2015/11/time-cockpit-december-2015.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2015/11/30/Whats-New-in-Version-December-2015

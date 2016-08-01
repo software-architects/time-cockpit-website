@@ -5,6 +5,7 @@ excerpt: It feels like yesterday when we moved into our first single-room office
 author: Rainer Stropek
 date: 2014-07-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/07/30/We-Have-Moved-to-a-New-Office-Location

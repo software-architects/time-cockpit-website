@@ -5,6 +5,7 @@ excerpt: In the last quarter of 2013 we started to add first reporting features 
 author: Karin Huber
 date: 2014-02-28
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Reporting,time cockpit]
 permalink: /blog/2014/02/28/Whats-New-in-Version-March-2014

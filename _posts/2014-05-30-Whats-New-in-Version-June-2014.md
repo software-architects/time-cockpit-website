@@ -5,6 +5,7 @@ excerpt: This month we improved sync handling in time cockpit's full client and 
 author: Rainer Stropek
 date: 2014-05-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/05/30/Whats-New-in-Version-June-2014

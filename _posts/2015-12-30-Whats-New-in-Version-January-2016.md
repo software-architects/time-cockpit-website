@@ -5,6 +5,7 @@ excerpt: This month our main focus was adding responsive design to our HTML5 cli
 author: Rainer Stropek
 date: 2015-12-30
 bannerimage: /content/images/blog/2015/12/time-cockpit-january-2016.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 ref: /de/blog/2015/12/30/Was-ist-neu-in-der-Version-Jänner-2016

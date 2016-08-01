@@ -5,6 +5,7 @@ excerpt: This month we continue the spate of performance and productivity improv
 author: Karin Huber
 date: 2013-08-29
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2013/08/29/Whats-New-In-Version-September-2013

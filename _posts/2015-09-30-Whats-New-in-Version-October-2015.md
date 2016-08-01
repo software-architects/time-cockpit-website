@@ -5,6 +5,7 @@ excerpt: This month we continued our work on time cockpit's HTML5 client. We add
 author: Karin Huber
 date: 2015-09-30
 bannerimage: /content/images/blog/2015/09/time-cockpit-october-2015.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2015/09/30/Whats-New-in-Version-October-2015

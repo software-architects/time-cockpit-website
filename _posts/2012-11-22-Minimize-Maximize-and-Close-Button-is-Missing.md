@@ -5,6 +5,7 @@ excerpt: When running time cockpit in Windows 8 the minimize, maximize, and clos
 author: Karin Huber
 date: 2012-11-22
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit,WPF]
 permalink: /blog/2012/11/22/Minimize-Maximize-and-Close-Button-is-Missing

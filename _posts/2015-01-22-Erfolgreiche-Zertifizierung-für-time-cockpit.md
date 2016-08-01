@@ -5,6 +5,7 @@ excerpt: Wir sind seit vielen Jahren Microsoft Partner. Jeden Jänner müssen wi
 author: Rainer Stropek
 date: 2015-01-22
 bannerimage: /content/images/blog/2015/01/logo.png
+bannerimagesource: 
 lang: de
 tags: [time cockpit]
 permalink: /de/blog/2015/01/22/Erfolgreiche-Zertifizierung-für-time-cockpit

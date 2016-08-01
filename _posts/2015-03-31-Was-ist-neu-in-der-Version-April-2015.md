@@ -5,6 +5,7 @@ excerpt: Im HTML5 Client unterstützen wir nun viele erweiterte Konfigurationsop
 author: Karin Huber
 date: 2015-03-31
 bannerimage: /content/images/blog/2015/03/time-cockpit-april-2015.png
+bannerimagesource: 
 lang: de
 tags: [time cockpit]
 permalink: /de/blog/2015/03/31/Was-ist-neu-in-der-Version-April-2015

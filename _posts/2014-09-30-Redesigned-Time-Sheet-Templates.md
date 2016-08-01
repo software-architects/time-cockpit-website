@@ -5,6 +5,7 @@ excerpt: Time cockpit has had support for time sheet templates for years. For th
 author: Rainer Stropek
 date: 2014-09-30
 bannerimage: /content/images/blog/2014/09/Templates06.png
+bannerimagesource: 
 lang: en
 tags: [Iron Python,time cockpit]
 permalink: /blog/2014/09/30/Redesigned-Time-Sheet-Templates

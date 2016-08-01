@@ -5,6 +5,7 @@ excerpt: Office 365 is a very successful cloud service from Microsoft. Millions 
 author: Rainer Stropek
 date: 2016-01-31
 bannerimage: /content/images/blog/2016/01/time-cockpit-february-2016.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 ref: /de/blog/2016/01/31/Was-ist-neu-in-der-Version-Februar-2016

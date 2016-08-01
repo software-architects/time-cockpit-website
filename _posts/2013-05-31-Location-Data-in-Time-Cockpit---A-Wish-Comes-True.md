@@ -5,6 +5,7 @@ excerpt: From the very first day of our time cockpit project we wanted to suppor
 author: Rainer Stropek
 date: 2013-05-31
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Google Latitude,time cockpit]
 permalink: /blog/2013/05/31/Location-Data-in-Time-Cockpit---A-Wish-Comes-True

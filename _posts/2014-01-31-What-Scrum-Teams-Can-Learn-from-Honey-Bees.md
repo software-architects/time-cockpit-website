@@ -5,6 +5,7 @@ excerpt: One of my hobbies in my private live is beekeeping. A colony of honey b
 author: Rainer Stropek
 date: 2014-01-31
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Project Management]
 permalink: /blog/2014/01/31/What-Scrum-Teams-Can-Learn-from-Honey-Bees

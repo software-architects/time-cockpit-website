@@ -5,6 +5,7 @@ excerpt: Unfortunately, we found a very unpleasant bug in time cockpit this week
 author: Rainer Stropek
 date: 2015-01-08
 bannerimage: /content/images/blog/2015/01/missing-signal-lanes-preview.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 ref: /de/blog/2015/01/08/Fehler-in-der-Signaldarstellung

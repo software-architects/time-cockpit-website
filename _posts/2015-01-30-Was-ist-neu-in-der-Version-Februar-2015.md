@@ -5,6 +5,7 @@ excerpt: Dieses Monat haben wir uns auf Verbesserungen im Bereich der Fehlerdiag
 author: Karin Huber
 date: 2015-01-30
 bannerimage: /content/images/blog/2015/01/time-cockpit-february-2015.png
+bannerimagesource: 
 lang: de
 tags: [time cockpit]
 permalink: /de/blog/2015/01/30/Was-ist-neu-in-der-Version-Februar-2015

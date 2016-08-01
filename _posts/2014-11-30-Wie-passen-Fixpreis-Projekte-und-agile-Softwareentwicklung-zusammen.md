@@ -5,6 +5,7 @@ excerpt: Haben wir nicht alle in Projektmanagement-Kursen gelernt, dass Fixpreis
 author: Rainer Stropek
 date: 2014-11-30
 bannerimage: /content/images/blog/2014/11/2085887252_06b49ee29d_b.jpg
+bannerimagesource: Image source -  <a href="https://flic.kr/p/4bjHBj" target="_blank">https://flic.kr/p/4bjHBj</a>, <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Creative Commons</a> License
 lang: de
 tags: [Agile,Project Management]
 permalink: /de/blog/2014/11/30/Wie-passen-Fixpreis-Projekte-und-agile-Softwareentwicklung-zusammen

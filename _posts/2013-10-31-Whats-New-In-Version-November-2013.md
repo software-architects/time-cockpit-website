@@ -5,6 +5,7 @@ excerpt: In this release of time cockpit, we focused on two things. First, we st
 author: Alexander Huber
 date: 2013-10-31
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2013/10/31/Whats-New-In-Version-November-2013

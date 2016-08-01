@@ -5,6 +5,7 @@ excerpt: This month we focused on bringing time cockpit's Excel importer to the 
 author: Alexander Huber
 date: 2015-10-30
 bannerimage: /content/images/blog/2015/10/time-cockpit-november-2015.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2015/10/30/Whats-New-in-Version-November-2015

@@ -5,6 +5,7 @@ excerpt: A common scenario in time cockpit is assigning different permissions to
 author: Rainer Stropek
 date: 2014-07-14
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/07/14/Setting-Up-Team-Leader--Member-Permissions-in-Time-Cockpit

@@ -5,6 +5,7 @@ excerpt: Some time cockpit beta users reported problems when viewing projects or
 author: Karin Huber
 date: 2010-03-31
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2010/03/31/Error-When-Viewing-Projects-or-Timesheets-in-Administration-View-

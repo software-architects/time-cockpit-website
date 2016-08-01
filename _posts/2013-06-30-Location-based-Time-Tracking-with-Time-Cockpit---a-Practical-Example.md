@@ -5,6 +5,7 @@ excerpt: Of course we are using our own software for internal time tracking, too
 author: Rainer Stropek
 date: 2013-06-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Google Latitude,Location,time cockpit]
 permalink: /blog/2013/06/30/Location-based-Time-Tracking-with-Time-Cockpit---a-Practical-Example

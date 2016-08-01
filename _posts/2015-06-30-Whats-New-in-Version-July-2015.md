@@ -5,6 +5,7 @@ excerpt: This month we have added a much requested feature to the HTML5 time tra
 author: Karin Huber
 date: 2015-06-30
 bannerimage: /content/images/blog/2015/06/time-cockpit-july-2015.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2015/06/30/Whats-New-in-Version-July-2015

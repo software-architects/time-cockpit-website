@@ -5,6 +5,7 @@ excerpt: This month we deliver performance improvements in several parts of time
 author: Karin Huber
 date: 2014-07-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/07/30/Whats-New-in-Version-August-2014

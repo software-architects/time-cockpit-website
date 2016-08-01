@@ -5,6 +5,7 @@ excerpt: In our next version we will add a new column types for bars to lists. W
 author: Karin Huber
 date: 2012-11-29
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2012/11/29/Data-Bars-in-Lists

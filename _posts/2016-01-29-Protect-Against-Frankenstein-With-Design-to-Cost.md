@@ -5,6 +5,7 @@ excerpt: Although software is intangible, it ages. As a consequence, every softw
 author: Rainer Stropek
 date: 2016-01-29
 bannerimage: /content/images/blog/2016/01/frankenstein-small.jpg
+bannerimagesource: 
 lang: en
 tags: [Project Management]
 permalink: /blog/2016/01/29/Protect-Against-Frankenstein-With-Design-to-Cost

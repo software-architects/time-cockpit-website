@@ -27,6 +27,7 @@ permalink: /blog/
 					<div class="col-sm-4">
 					{% if post.bannerimage != null %}
 						<img src="{{ post.bannerimage | prepend: site.baseurl }}" />
+						<span class="tc-image-footer">{{post.bannerimagesource}}</span>
 					{% endif %}
 					</div>
 				</div>
@@ -34,9 +35,7 @@ permalink: /blog/
 			{% endfor %}
 
 			<div class="pagination">
-				<a onclick="previousPage()" class="tc-previous">Previous
-					
-				</a>
+				<a onclick="previousPage()" class="tc-previous">Previous</a>
 				<span class="tc-current-page"></span>
 				<a onclick="nextPage()" class="tc-next">Next</a>
 			</div>

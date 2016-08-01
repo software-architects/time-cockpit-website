@@ -5,6 +5,7 @@ excerpt: December 2013 has primarily been a planning month for us. We defined th
 author: Karin Huber
 date: 2013-12-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Reporting,time cockpit]
 permalink: /blog/2013/12/30/Whats-New-in-Version-January-2014

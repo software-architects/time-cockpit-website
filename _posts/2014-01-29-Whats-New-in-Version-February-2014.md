@@ -5,6 +5,7 @@ excerpt: In this release of time cockpit we focused on sync and Excel importer. 
 author: Alexander Huber
 date: 2014-01-29
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/01/29/Whats-New-in-Version-February-2014

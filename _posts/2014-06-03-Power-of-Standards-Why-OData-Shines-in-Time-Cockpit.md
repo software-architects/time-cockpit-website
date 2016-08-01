@@ -5,6 +5,7 @@ excerpt: For time cockpit we have decided to bet the farm on OData instead of a 
 author: Rainer Stropek
 date: 2014-06-03
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [OData,time cockpit]
 permalink: /blog/2014/06/03/Power-of-Standards-Why-OData-Shines-in-Time-Cockpit

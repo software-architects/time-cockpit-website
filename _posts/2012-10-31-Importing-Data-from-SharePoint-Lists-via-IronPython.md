@@ -5,6 +5,7 @@ excerpt: Using just around 100 lines of code, basic customer master data can be 
 author: Simon Opelt
 date: 2012-10-31
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Iron Python,time cockpit]
 permalink: /blog/2012/10/31/Importing-Data-from-SharePoint-Lists-via-IronPython

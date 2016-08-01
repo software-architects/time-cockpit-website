@@ -5,6 +5,7 @@ excerpt: Agreed, data is what drives most businesses. However, having a lot of d
 author: Alexander Huber
 date: 2014-04-29
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [OData,time cockpit]
 permalink: /blog/2014/04/29/Your-Data-in-a-Geographical-Context

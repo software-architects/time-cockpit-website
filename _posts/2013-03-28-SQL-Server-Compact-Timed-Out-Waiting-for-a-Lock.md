@@ -5,6 +5,7 @@ excerpt: First of all, a big thank you to our customers! Since we have added the
 author: Karin Huber
 date: 2013-03-28
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [SQLCE,time cockpit]
 permalink: /blog/2013/03/28/SQL-Server-Compact-Timed-Out-Waiting-for-a-Lock

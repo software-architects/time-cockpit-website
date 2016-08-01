@@ -5,6 +5,7 @@ excerpt: Dieses Monat haben wir uns auf den Zeitbuchungskalender in HTML5 fokusi
 author: Karin Huber
 date: 2015-04-30
 bannerimage: /content/images/blog/2015/04/time-cockpit-may-2015.png
+bannerimagesource: 
 lang: de
 tags: [time cockpit]
 permalink: /de/blog/2015/04/30/Neu-im-Mai-2015-Ein-erster-Blick-auf-den-HTML-Kalender

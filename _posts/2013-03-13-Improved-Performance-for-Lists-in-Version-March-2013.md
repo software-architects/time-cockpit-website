@@ -5,6 +5,7 @@ excerpt: In version 1.10 we have modified most lists in time cockpit for better 
 author: Karin Huber
 date: 2013-03-13
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2013/03/13/Improved-Performance-for-Lists-in-Version-March-2013

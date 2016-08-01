@@ -5,6 +5,7 @@ excerpt: Did you ever ask yourself how you are doing in terms of time tracking c
 author: Rainer Stropek
 date: 2014-06-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/06/30/Time-Tracking-Fitness-Test

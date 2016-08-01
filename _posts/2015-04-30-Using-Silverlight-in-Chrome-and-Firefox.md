@@ -5,6 +5,7 @@ excerpt: While Microsoft will support Silverlight until 2021, Google will remove
 author: Rainer Stropek
 date: 2015-04-30
 bannerimage: /content/images/blog/2015/04/Silverlight.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2015/04/30/Using-Silverlight-in-Chrome-and-Firefox

@@ -5,6 +5,7 @@ excerpt: Time cockpit allows you to assign time bookings to tasks and projects. 
 author: Simon Opelt
 date: 2013-04-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Iron Python,time cockpit]
 permalink: /blog/2013/04/30/Importing-JIRA-Issues-as-Time-Cockpit-Tasks

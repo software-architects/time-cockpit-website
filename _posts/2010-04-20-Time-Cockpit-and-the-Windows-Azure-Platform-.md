@@ -5,6 +5,7 @@ excerpt: For the Microsoft Worldwide Partner Conference we have created a video 
 author: Rainer Stropek
 date: 2010-04-20
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2010/04/20/Time-Cockpit-and-the-Windows-Azure-Platform-

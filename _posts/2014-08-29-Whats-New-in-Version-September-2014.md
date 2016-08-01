@@ -5,6 +5,7 @@ excerpt: This month we have focused heavily on performance. The first batch of i
 author: Karin Huber
 date: 2014-08-29
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/08/29/Whats-New-in-Version-September-2014

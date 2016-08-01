@@ -5,6 +5,7 @@ excerpt: Last week I learned a lesson about the agile approach in such critical 
 author: Rainer Stropek
 date: 2014-05-18
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Project Management,time cockpit]
 permalink: /blog/2014/05/18/Agile-and-Scrum-in-Mission-Critical-Projects

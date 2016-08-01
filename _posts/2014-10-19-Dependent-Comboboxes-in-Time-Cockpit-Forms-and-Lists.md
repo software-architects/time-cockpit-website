@@ -5,6 +5,7 @@ excerpt: Comboboxes that depend on each other are a common requirement in time c
 author: Rainer Stropek
 date: 2014-10-19
 bannerimage: /content/images/blog/2014/10/Filtered Combobox.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/10/19/Dependent-Comboboxes-in-Time-Cockpit-Forms-and-Lists

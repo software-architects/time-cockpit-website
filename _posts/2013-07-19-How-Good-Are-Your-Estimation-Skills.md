@@ -5,6 +5,7 @@ excerpt: Estimation is hard, especially in agile projects. At the beginning of a
 author: Rainer Stropek
 date: 2013-07-19
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Project Management,time cockpit]
 permalink: /blog/2013/07/19/How-Good-Are-Your-Estimation-Skills

@@ -5,6 +5,7 @@ excerpt: In this release of time cockpit we have improved the new reporting feat
 author: Karin Huber
 date: 2013-11-29
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2013/11/29/Whats-New-In-Version-December-2013

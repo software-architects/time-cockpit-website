@@ -5,6 +5,7 @@ excerpt: In time cockpit Umsetzungsprojekten lernen wir viele verschiedene Firme
 author: Rainer Stropek
 date: 2016-03-31
 bannerimage: /content/images/blog/2016/03/black-swans-small.jpg
+bannerimagesource: Image source -  <a href="https://flic.kr/p/bBHv54" target="_blank">https://flic.kr/p/bBHv54</a>, <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Creative Commons</a> License
 lang: de
 tags: [time cockpit]
 permalink: /de/blog/2016/03/31/Schwarze-Schwäne-es-gibt-sie-wirklich

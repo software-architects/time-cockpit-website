@@ -5,6 +5,7 @@ excerpt: A few months ago I wrote a blog article about the concept of "Shearing 
 author: Rainer Stropek
 date: 2015-04-30
 bannerimage: /content/images/blog/2015/04/selexyz_dominicanen_bookstore_small.jpg
+bannerimagesource: Image source -  <a href="https://flic.kr/p/rqmzA5" target="_blank">https://flic.kr/p/rqmzA5</a>, <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [Project Management,time cockpit,Time Management]
 permalink: /blog/2015/04/30/Shearing-Layers---Time-Cockpit-Case-Study

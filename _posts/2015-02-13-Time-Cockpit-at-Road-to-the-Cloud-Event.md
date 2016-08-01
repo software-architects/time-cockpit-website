@@ -5,6 +5,7 @@ excerpt: Yesterday, I was speaker at Microsoft's Road to the Cloud event in Vien
 author: Rainer Stropek
 date: 2015-02-13
 bannerimage: /content/images/blog/2015/02/RoadToTheCloud_Thumbnail.jpg
+bannerimagesource: Image source -  <a href="https://flic.kr/p/fyLSSK" target="_blank">https://flic.kr/p/fyLSSK</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [Azure,time cockpit]
 ref: /de/blog/2015/02/13/Time-Cockpit-beim-Road-to-the-Cloud-Event

@@ -5,8 +5,10 @@ excerpt: More and more users are using the new HTML5 client of time cockpit. We 
 author: Karin Huber
 date: 2016-06-29
 bannerimage: /content/images/blog/2016/06/time-cockpit-july-2016.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: /de/blog/2016/06/29/Was-ist-neu-in-der-Version-Juli-2016
 permalink: /blog/2016/06/29/Whats-New-in-Version-July-2016
 ---
 

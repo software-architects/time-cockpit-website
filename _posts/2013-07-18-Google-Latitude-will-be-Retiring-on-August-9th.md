@@ -5,6 +5,7 @@ excerpt: Google has decided that they will be retiring Google Latitude on August
 author: Karin Huber
 date: 2013-07-18
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Google Latitude,Location,time cockpit]
 permalink: /blog/2013/07/18/Google-Latitude-will-be-Retiring-on-August-9th

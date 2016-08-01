@@ -5,6 +5,7 @@ excerpt: In the September version of time cockpit we have improved the importer 
 author: Rainer Stropek
 date: 2014-08-29
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/08/29/Compound-Keys-in-Excel-Import

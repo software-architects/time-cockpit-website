@@ -5,6 +5,7 @@ excerpt: Many of our customers use Node.js to extend time cockpit. They automate
 author: Rainer Stropek
 date: 2015-12-29
 bannerimage: /content/images/blog/2015/12/time-cockpit-typescript-async-await.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit,TypeScript]
 permalink: /blog/2015/12/29/How-TypeScripts-asyncawait-Makes-Your-Life-Easier

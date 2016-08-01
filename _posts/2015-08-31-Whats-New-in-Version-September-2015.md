@@ -5,6 +5,7 @@ excerpt: This month, the graphical time sheet calendar of our HTML5 client previ
 author: Rainer Stropek
 date: 2015-08-31
 bannerimage: /content/images/blog/2015/08/time-cockpit-september-2015.png
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2015/08/31/Whats-New-in-Version-September-2015

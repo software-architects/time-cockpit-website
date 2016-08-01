@@ -5,6 +5,7 @@ excerpt: Time cockpit contains a powerful importer for Excel and CSV files. You 
 author: Michael Kubitschka
 date: 2015-10-30
 bannerimage: /content/images/blog/2015/09/check-importer-results.png
+bannerimagesource: 
 lang: en
 tags: [About]
 permalink: /blog/2015/10/30/How-to-Use-the-Excel-Import-in-the-HTML-5-Web-Client

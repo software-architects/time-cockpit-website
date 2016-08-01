@@ -5,6 +5,7 @@ excerpt: Years ago when we defined the cornerstones of time cockpit, we decided 
 author: Karin Huber
 date: 2014-04-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/04/30/Whats-New-in-Version-May-2014

@@ -5,6 +5,7 @@ excerpt: Time cockpit has been able to handle overtime agreements for quite a lo
 author: Rainer Stropek
 date: 2014-05-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /blog/2014/05/30/New-Compensatory-Time-Off-Feature

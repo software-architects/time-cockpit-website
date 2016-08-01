@@ -5,6 +5,7 @@ excerpt: Those of you who use time cockpit’s browser version might have run in
 author: Alexander Huber
 date: 2014-11-27
 bannerimage: /content/images/blog/2014/11/3878741556_53c9155d4b_b.jpg
+bannerimagesource: Image source -  <a href="https://flic.kr/p/6UKyJq" target="_blank">https://flic.kr/p/6UKyJq</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [Iron Python,time cockpit]
 permalink: /blog/2014/11/27/Why-You-Need-to-Sign-Your-Custom-Code
