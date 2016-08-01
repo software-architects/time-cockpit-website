@@ -6,7 +6,7 @@ permalink: /de/blog/
 {% assign counter = 0 %}
 <div class="tc-blogoverview">
 	<div class="row">
-		<div class="col-sm-10">
+		<div class="col-sm-9">
 			{% assign site_count = site.posts | count %}
 			{% assign pages = site_count | divided_by:10 %}
 			{% assign curr_page = 1 %}
@@ -41,10 +41,10 @@ permalink: /de/blog/
 				<a onclick="nextPage()" class="tc-next">Next</a>
 			</div>
 		</div>
-		<div class="col-sm-2">
+		<div class="col-sm-3">
+			<h3>Tags</h3>
 			{% include tagcloud.html %}
-		</div>
-		<div class="col-sm-2">
+			<h3>Autoren</h3>
 			{% include authorcloud.html %}
 		</div>
 	</div>
