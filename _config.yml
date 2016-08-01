@@ -16,6 +16,7 @@ baseurl: "/time-cockpit-website" # the subpath of your site, e.g. /blog
 url: "https://www.timecockpit.com" # the base hostname & protocol for your site
 twitter_username: timecockpit
 github_username:  software-architects
+array: []
 
 # Build settings
 markdown: kramdown
