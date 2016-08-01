@@ -5,7 +5,7 @@ permalink: /de/preis/preis/
 ---
 
 <div class="tc-pricing">
-	<div class="tc-container tc-container-lightgray">
+	<div class="tc-container tc-container-lightblue">
 		<div class="tc-container-image"></div>
 		<div class="container">
 			<div class="col-xs-hidden col-sm-2 col-md-3">
@@ -93,7 +93,7 @@ permalink: /de/preis/preis/
 	</div>
 
 	<!-- TODO: Size of images does not fit for all sizes -->
-	<div class="tc-container tc-container-lightgray">
+	<div class="tc-container tc-container-lightblue">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">

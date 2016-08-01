@@ -181,7 +181,12 @@ p.imageCaption {
 			color: $base-text-color;
 
 			h3 {
+				font-size: 18px;
 				color: $header-color;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
 			}
 		}
 
