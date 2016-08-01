@@ -5,6 +5,8 @@ Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 
 var gulp = require("gulp");
 var ts = require('gulp-typescript');
+var imageop = require('gulp-image-optimization');
+var imagemin = require('gulp-imagemin');
 
 gulp.task("default", ["copyBootstrapFiles","buildTypescript"], function () {
     // place code for your default task here
@@ -29,3 +31,9 @@ gulp.task("buildTypescript", function () {
         }))
         .pipe(gulp.dest("scripts"));
 });
+
+gulp.task('images', () =>
+    gulp.src(['content/images/**/*.jpeg', 'content/images/**/*.gif', 'content/images/**/*.jpg', 'content/images/**/*.png'])
+        .pipe(imagemin())
+        .pipe(gulp.dest('content/images-compressed/'))
+);
