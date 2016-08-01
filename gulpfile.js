@@ -7,6 +7,8 @@ var gulp = require("gulp");
 var ts = require('gulp-typescript');
 var imageop = require('gulp-image-optimization');
 var imagemin = require('gulp-imagemin');
+var filter = require('gulp-filter');
+var newer = require('gulp-newer');
 
 gulp.task("default", ["copyBootstrapFiles","buildTypescript"], function () {
     // place code for your default task here
@@ -32,8 +34,13 @@ gulp.task("buildTypescript", function () {
         .pipe(gulp.dest("scripts"));
 });
 
-gulp.task('images', () =>
-    gulp.src(['content/images/**/*.jpeg', 'content/images/**/*.gif', 'content/images/**/*.jpg', 'content/images/**/*.png'])
+gulp.task('images', function () {
+    var allFilter = filter(['**/*.jpeg', '**/*.gif', '**/*.jpg', '**/*.png'], { restore: true });
+
+    return gulp.src('content/imagesOriginal/**/*')
+        .pipe(newer('content/images'))
+        .pipe(allFilter)
         .pipe(imagemin())
-        .pipe(gulp.dest('content/images-compressed/'))
-);
+        .pipe(allFilter.restore)
+        .pipe(gulp.dest('content/images'))
+});
