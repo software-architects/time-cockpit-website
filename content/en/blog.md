@@ -5,9 +5,9 @@ lang: en
 permalink: /blog/
 ---
 {% assign counter = 0 %}
-<div class="tc-blogoverview">
-	<div class="row">
-		<div class="col-sm-9">
+<div class="row">
+	<div class="col-sm-8">
+		<div class="row tc-blogoverview">
 			{% assign site_count = site.posts | count %}
 			{% assign pages = site_count | divided_by:10 %}
 			{% assign curr_page = 1 %}
@@ -38,16 +38,21 @@ permalink: /blog/
 
 		<div class="row">
 			<div class="tc-pager">
-				<a onclick="previousPage()" class="tc-previous"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span></a>
-				<span class="tc-current-page"></span>
-				<a onclick="nextPage()" class="tc-next">Next</a>
+				<div>
+					<a onclick="previousPage()" class="tc-previous"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span></a>
+				</div>
+				<div class="tc-page-number tc-current-page"></div>
+				<div>
+					<a onclick="nextPage()" class="tc-next"><span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></a>
+				</div>
 			</div>
 		</div>
-		<div class="col-sm-3">
-			<h3>Tags</h3>
-			{% include tagcloud.html %}
-			<h3>Authors</h3>
-			{% include authorcloud.html %}
-		</div>
+	</div>
+
+	<div class="col-sm-4">
+		<h3>Tags</h3>
+		{% include tagcloud.html %}
+		<h3>Authors</h3>
+		{% include authorcloud.html %}
 	</div>
 </div>
