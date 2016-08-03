@@ -27,27 +27,40 @@ function previousPage() {
     startElement -= 10;
     endElement -= 10;
     updatePaging();
+    window.scrollTo(0, 0);
 }
 function nextPage() {
     currentPage++;
     startElement += 10;
     endElement += 10;
     updatePaging();
+    window.scrollTo(0, 0);
+}
+function resetHidden() {
+    if ($(".tc-pager .tc-previous").hasClass("hidden"))
+        $(".tc-pager .tc-previous").removeClass("hidden");
+    if ($(".tc-pager .glyphicon.glyphicon-circle-arrow-right.disabled").hasClass("hidden"))
+        $(".tc-pager .glyphicon.glyphicon-circle-arrow-right.disabled").removeClass("hidden");
+    if ($(".tc-pager .glyphicon.glyphicon-circle-arrow-left.disabled").hasClass("hidden"))
+        $(".tc-pager .glyphicon.glyphicon-circle-arrow-left.disabled").removeClass("hidden");
+    if ($(".tc-pager .tc-next").hasClass("hidden"))
+        $(".tc-pager .tc-next").removeClass("hidden");
 }
 function updatePaging() {
     $(".tc-pager .tc-current-page").empty();
     $(".tc-pager .tc-current-page").append(currentPage.toString() + " / " + numberOfPages.toString());
+    resetHidden();
     if (currentPage <= 1) {
         $(".tc-pager .tc-previous").addClass("hidden");
+        $(".tc-pager .glyphicon.glyphicon-circle-arrow-right.disabled").addClass("hidden");
     }
-    else {
-        $(".tc-pager .tc-previous").removeClass("hidden");
-    }
-    if (currentPage >= numberOfPages) {
+    else if (currentPage >= numberOfPages) {
+        $(".tc-pager .glyphicon.glyphicon-circle-arrow-left.disabled").addClass("hidden");
         $(".tc-pager .tc-next").addClass("hidden");
     }
     else {
-        $(".tc-pager .tc-next").removeClass("hidden");
+        $(".tc-pager .glyphicon.glyphicon-circle-arrow-left.disabled").addClass("hidden");
+        $(".tc-pager .glyphicon.glyphicon-circle-arrow-right.disabled").addClass("hidden");
     }
     elements.addClass("hidden");
     elements.slice(startElement, endElement).removeClass("hidden");

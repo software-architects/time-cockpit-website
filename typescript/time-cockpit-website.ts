@@ -1,4 +1,4 @@
-﻿/// <reference path="../typings/jquery/jquery.d.ts" />
+/// <reference path="../typings/jquery/jquery.d.ts" />
 var currentPage: number = 1;
 var numberOfPages: number = 1;
 var startElement: number = 0;
@@ -35,6 +35,7 @@ function previousPage() {
     startElement -= 10;
     endElement -= 10;
     updatePaging();
+    window.scrollTo(0,0);
 }
 
 function nextPage() {
@@ -42,22 +43,36 @@ function nextPage() {
     startElement += 10;
     endElement += 10;
     updatePaging();
+    window.scrollTo(0, 0);
+}
+
+function resetHidden() {
+    if ($(".tc-pager .tc-previous").hasClass("hidden"))
+        $(".tc-pager .tc-previous").removeClass("hidden");
+    if ($(".tc-pager .glyphicon.glyphicon-circle-arrow-right.disabled").hasClass("hidden"))
+        $(".tc-pager .glyphicon.glyphicon-circle-arrow-right.disabled").removeClass("hidden");
+    if ($(".tc-pager .glyphicon.glyphicon-circle-arrow-left.disabled").hasClass("hidden"))
+        $(".tc-pager .glyphicon.glyphicon-circle-arrow-left.disabled").removeClass("hidden");
+    if ($(".tc-pager .tc-next").hasClass("hidden"))
+        $(".tc-pager .tc-next").removeClass("hidden");
 }
 
 function updatePaging() {
     $(".tc-pager .tc-current-page").empty();
     $(".tc-pager .tc-current-page").append(currentPage.toString() + " / " + numberOfPages.toString());
 
+    resetHidden();
+
     if (currentPage <= 1) {
         $(".tc-pager .tc-previous").addClass("hidden");
-    } else {
-        $(".tc-pager .tc-previous").removeClass("hidden");
-    }
-
-    if (currentPage >= numberOfPages) {
+        $(".tc-pager .glyphicon.glyphicon-circle-arrow-right.disabled").addClass("hidden");
+    } else if (currentPage >= numberOfPages) {
+        $(".tc-pager .glyphicon.glyphicon-circle-arrow-left.disabled").addClass("hidden");
         $(".tc-pager .tc-next").addClass("hidden");
+
     } else {
-        $(".tc-pager .tc-next").removeClass("hidden");
+        $(".tc-pager .glyphicon.glyphicon-circle-arrow-left.disabled").addClass("hidden");
+        $(".tc-pager .glyphicon.glyphicon-circle-arrow-right.disabled").addClass("hidden");
     }
 
     elements.addClass("hidden");

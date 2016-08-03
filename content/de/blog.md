@@ -40,10 +40,12 @@ permalink: /de/blog/
 			<div class="tc-pager">
 				<div>
 					<a onclick="previousPage()" class="tc-previous"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span></a>
+					<span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span>
 				</div>
 				<div class="tc-page-number tc-current-page"></div>
 				<div>
 					<a onclick="nextPage()" class="tc-next"><span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></a>
+					<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true">
 				</div>
 			</div>
 		</div>
