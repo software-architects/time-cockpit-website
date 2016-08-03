@@ -16,7 +16,7 @@ function sendForm(eventData: any) {
     }
 
     if(form.find(emptyrequiredVar).filter((index: number, elem: Element) => { return (<any>elem).value; }).length > 0){
-            return false;
+        return false;
     }
 
     form.submit();
@@ -45,19 +45,19 @@ function nextPage() {
 }
 
 function updatePaging() {
-    $(".tc-blogoverview .tc-current-page").empty();
-    $(".tc-blogoverview .tc-current-page").append("Page: " + currentPage.toString() + " / " + numberOfPages.toString());
+    $(".tc-pager .tc-current-page").empty();
+    $(".tc-pager .tc-current-page").append(currentPage.toString() + " / " + numberOfPages.toString());
 
     if (currentPage <= 1) {
-        $(".tc-blogoverview .tc-previous").addClass("hidden");
+        $(".tc-pager .tc-previous").addClass("hidden");
     } else {
-        $(".tc-blogoverview .tc-previous").removeClass("hidden");
+        $(".tc-pager .tc-previous").removeClass("hidden");
     }
 
     if (currentPage >= numberOfPages) {
-        $(".tc-blogoverview .tc-next").addClass("hidden");
+        $(".tc-pager .tc-next").addClass("hidden");
     } else {
-        $(".tc-blogoverview .tc-next").removeClass("hidden");
+        $(".tc-pager .tc-next").removeClass("hidden");
     }
 
     elements.addClass("hidden");

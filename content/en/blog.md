@@ -1,12 +1,13 @@
 ---
 layout: page
 title: Time Cockpit Blog - Tips and News from the Time Cockpit Team
+lang: en
 permalink: /blog/
 ---
 {% assign counter = 0 %}
-<div class="tc-blogoverview">
-	<div class="row">
-		<div class="col-sm-10">
+<div class="row">
+	<div class="col-sm-10">
+		<div class="tc-blogoverview">
 			{% assign site_count = site.posts | count %}
 			{% assign pages = site_count | divided_by:10 %}
 			{% assign curr_page = 1 %}
@@ -33,18 +34,21 @@ permalink: /blog/
 				</div>
 				{% assign counter = counter | plus:1 %}
 			{% endfor %}
+		</div>
 
-			<div class="pagination">
-				<a onclick="previousPage()" class="tc-previous">Previous</a>
+		<div class="row">
+			<div class="tc-pager">
+				<a onclick="previousPage()" class="tc-previous"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span></a>
 				<span class="tc-current-page"></span>
-				<a onclick="nextPage()" class="tc-next">Next</a>
+				<a onclick="nextPage()" class="tc-next"><span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></a>
 			</div>
 		</div>
-		<div class="col-sm-2">
-			{% include tagcloud.html %}
-		</div>
-		<div class="col-sm-2">
-			{% include authorcloud.html %}
-		</div>
+	</div>
+
+	<div class="col-sm-2">
+		{% include tagcloud.html %}
+	</div>
+	<div class="col-sm-2">
+		{% include authorcloud.html %}
 	</div>
 </div>
