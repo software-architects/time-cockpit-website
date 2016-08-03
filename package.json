@@ -25,6 +25,7 @@
     "gulp-typescript": "^2.13.6",
     "gulp-uglify": "^2.0.0",
     "pump": "^1.0.1",
+    "strip-bom-buf": "^1.0.0",
     "tsd": "^0.6.5",
     "typescript": "^1.8.10"
   },

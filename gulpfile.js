@@ -10,7 +10,8 @@ var filter = require('gulp-filter');
 var newer = require('gulp-newer');
 var uglify = require('gulp-uglify');
 var pump = require('pump');
-
+var fs = require('fs');
+var stripBom = require('gulp-stripbom');
 
 gulp.task("default", ["copyBootstrapFiles","buildTypescript"], function () {
     // place code for your default task here
@@ -49,4 +50,11 @@ gulp.task("compress", function (cb) {
     ],
       cb
     );
+});
+
+gulp.task("bom", function () {
+
+    return gulp.src("test/**/*")
+            .pipe(stripBom())
+            .pipe(gulp.dest("test"));
 });
