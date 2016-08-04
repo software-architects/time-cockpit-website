@@ -1,4 +1,4 @@
-{% if page.path contains "/de/" %}
+{% if page.lang == "de" or page.path contains "/de/" %}
 {% assign languagePath = "/de/" %}
 {% assign tryNowText = "Jetzt testen" %}
 {% else %}
@@ -13,7 +13,7 @@
 				<a class="tc-logo" href="{{ site.baseurl }}{{ languagePath }}">{% include timecockpit-logo-blue.svg %}</a>
 			</div>
 			<div class="col-xs-6 col-sm-6 header-side-menu text-right">
-                {% if page.path contains "/de/" %}
+                {% if page.lang == "de" or page.path contains "/de/" %}
                     {% if page.ref != null %}
                         <a href="{{ site.baseurl }}{{ page.ref }}">English</a>
                     {% else %}
@@ -42,7 +42,7 @@
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					{% if page.path contains "/de/" %}
+					{% if page.lang == "de" or page.path contains "/de/" %}
 					{% assign menuItems = site.data.menuitems_de %}
 					{% else %}
 					{% assign menuItems = site.data.menuitems_en %}

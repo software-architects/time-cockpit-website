@@ -8,7 +8,7 @@ bannerimage: /content/images/blog/2015/01/missing-signal-lanes-preview.png
 bannerimagesource: 
 lang: de
 tags: [time cockpit]
-ref: 
+ref: /blog/2015/01/08/Bug-in-Signal-Lanes
 permalink: /de/blog/2015/01/08/Fehler-in-der-Signaldarstellung
 ---
 

@@ -8,7 +8,7 @@ bannerimage: /content/images/blog/2015/07/keyboard_350.png
 bannerimagesource: 
 lang: de
 tags: []
-ref: 
+ref: /blog/2015/07/31/Working-Time-Violations-and-Maximum-Working-Time
 permalink: /de/blog/2015/07/31/Arbeitszeitverletzungen-und-Höchstarbeitszeit
 ---
 

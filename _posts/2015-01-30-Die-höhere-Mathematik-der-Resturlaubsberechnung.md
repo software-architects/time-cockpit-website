@@ -8,7 +8,7 @@ bannerimage: /content/images/blog/2015/01/5344646082_bd0d8f1b06_o.png
 bannerimagesource: Image source -  <a href="https://flic.kr/p/99hH5o" target="_blank">https://flic.kr/p/99hH5o</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 lang: de
 tags: [time cockpit]
-ref: 
+ref: /blog/2015/01/30/“Higher-Mathematics”-of-Paid-Time-Off
 permalink: /de/blog/2015/01/30/Die-höhere-Mathematik-der-Resturlaubsberechnung
 ---
 

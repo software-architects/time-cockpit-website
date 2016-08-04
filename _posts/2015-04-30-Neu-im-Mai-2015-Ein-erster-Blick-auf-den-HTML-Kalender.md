@@ -8,7 +8,7 @@ bannerimage: /content/images/blog/2015/04/time-cockpit-may-2015.png
 bannerimagesource: 
 lang: de
 tags: [time cockpit]
-ref: 
+ref: /blog/2015/04/30/New-in-Version-May-2015-A-Glimpse-at-the-HTML5-Calendar
 permalink: /de/blog/2015/04/30/Neu-im-Mai-2015-Ein-erster-Blick-auf-den-HTML-Kalender
 ---
 

@@ -8,7 +8,7 @@ bannerimage: /content/images/blog/2016/04/time-cockpit-may-2016.png
 bannerimagesource: 
 lang: de
 tags: [time cockpit]
-ref: 
+ref: /blog/2016/05/01/Whats-New-in-Version-May-2016
 permalink: /de/blog/2016/05/01/Was-ist-neu-in-der-Version-Mai-2016
 ---
 

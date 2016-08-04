@@ -8,7 +8,7 @@ bannerimage: /content/images/blog/2015/01/Blog_20150109_1.jpg
 bannerimagesource: 
 lang: de
 tags: [time cockpit]
-ref: 
+ref: /blog/2015/01/27/We-are-Growing
 permalink: /de/blog/2015/01/27/Wir-werden-größer
 ---
 

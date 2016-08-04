@@ -4,6 +4,8 @@ var numberOfPages = 1;
 var startElement = 0;
 var endElement = 9;
 var elements = null;
+var imgElements = null;
+var attribute = null;
 function sendForm(eventData) {
     var form = $(eventData.target).parents("form").first();
     var requiredVar = "input[required], select[required], textarea[required]";
@@ -64,6 +66,11 @@ function updatePaging() {
     }
     elements.addClass("hidden");
     elements.slice(startElement, endElement).removeClass("hidden");
+    imgElements.removeAttr("src");
+    //var images = imgElements.slice(startElement, endElement);
+    imgElements.slice(startElement, endElement).each(function (index) {
+        imgElements.slice(startElement, endElement)[index].setAttribute("src", imgElements.slice(startElement, endElement)[index].getAttribute("data-img-src"));
+    });
 }
 $(document).ready(function () {
     // check user input
@@ -78,6 +85,7 @@ $(document).ready(function () {
     });
     // add paging to blog
     elements = $(".tc-blogoverview").find(".tc-blogteaser");
+    imgElements = $(".tc-blogoverview").find("img");
     numberOfPages = Math.ceil(elements.length / 10);
     currentPage = 1;
     updatePaging();

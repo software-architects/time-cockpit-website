@@ -8,7 +8,7 @@ bannerimage: /content/images/blog/2014/12/5141328136_16d8f73ee7_b.jpg
 bannerimagesource: Image source -  <a href="https://flic.kr/p/8QjDJy" target="_blank">https://flic.kr/p/8QjDJy</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 lang: de
 tags: [Agile,Scrum,time cockpit]
-ref: 
+ref: /blog/2014/12/31/Why-We-Don’t-Do-Scrum-for-Time-Cockpit
 permalink: /de/blog/2014/12/31/Warum-wir-für-time-cockpit-nicht-Scrum-verwenden
 ---
 

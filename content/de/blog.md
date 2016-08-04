@@ -28,7 +28,7 @@ permalink: /de/blog/
 					</div>
 					<div class="col-sm-4">
 					{% if post.bannerimage != null %}
-						<img src="{{ post.bannerimage | prepend: site.baseurl }}" />
+						<img data-img-src="{{ post.bannerimage | prepend: site.baseurl }}" />
 						<span class="tc-image-footer">{{post.bannerimagesource}}</span>
 					{% endif %}
 					</div>

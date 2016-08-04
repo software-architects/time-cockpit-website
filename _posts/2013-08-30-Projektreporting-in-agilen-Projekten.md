@@ -8,7 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: de
 tags: [Agile,Project Management,Scrum,time cockpit]
-ref: 
+ref: /blog/2013/08/30/Project-Reporting-in-Agile-Projects
 permalink: /de/blog/2013/08/30/Projektreporting-in-agilen-Projekten
 ---
 
