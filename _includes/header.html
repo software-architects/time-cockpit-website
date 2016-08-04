@@ -13,10 +13,19 @@
 				<a class="tc-logo" href="{{ site.baseurl }}{{ languagePath }}">{% include timecockpit-logo-blue.svg %}</a>
 			</div>
 			<div class="col-xs-6 col-sm-6 header-side-menu text-right">
-				{% if page.path contains "/de/" %}
-				<a href="{{ site.baseurl }}/">English</a>
-				{% else %}
-				<a href="{{ site.baseurl }}/de/">German</a>
+                {% if page.path contains "/de/" %}
+                    {% if page.ref != null %}
+                        <a href="{{ site.baseurl }}{{ page.ref }}">English</a>
+                    {% else %}
+                        <a href="{{ site.baseurl }}/">English</a>
+                    {% endif %}
+                {% else %}
+                    {% if page.ref != null %}
+                        <a href="{{ site.baseurl }}{{ page.ref }}">German</a>
+                    {% else %}
+                        <a href="{{ site.baseurl }}/de/">German</a>
+                    {% endif %}
+
 				{% endif %}
 			</div>
 		</div>

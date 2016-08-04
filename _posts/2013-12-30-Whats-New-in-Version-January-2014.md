@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Reporting,time cockpit]
+ref: 
 permalink: /blog/2013/12/30/Whats-New-in-Version-January-2014
 ---
 

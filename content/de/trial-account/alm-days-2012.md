@@ -1,6 +1,7 @@
 ---
 layout: page
 title: ALM Days 2012 - Time Cockpit
+ref: /trial-account/alm-days-2012/
 permalink: /de/trial-account/alm-days-2012/
 ---
 

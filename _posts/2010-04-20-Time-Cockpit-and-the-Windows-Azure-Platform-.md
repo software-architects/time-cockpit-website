@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2010/04/20/Time-Cockpit-and-the-Windows-Azure-Platform-
 ---
 

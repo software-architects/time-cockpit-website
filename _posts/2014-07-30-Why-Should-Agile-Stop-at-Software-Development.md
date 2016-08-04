@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2014/07/30/Why-Should-Agile-Stop-at-Software-Development
 ---
 

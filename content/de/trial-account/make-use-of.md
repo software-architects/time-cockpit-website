@@ -1,6 +1,7 @@
 ---
 layout: page
 title: MakeUseOf Trial Account - Time Cockpit
+ref: 
 permalink: /de/trial-account/make-use-of/
 ---
 

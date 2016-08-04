@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2010/05/07/Time-Cockpit-is-Built-for-Knowledge-Workers
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2014/07/14/Setting-Up-Team-Leader--Member-Permissions-in-Time-Cockpit
 ---
 

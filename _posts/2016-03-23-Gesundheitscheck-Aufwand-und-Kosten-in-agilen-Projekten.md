@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2016/03/budget-small.jpg
 bannerimagesource: Image source -  <a href="https://flic.kr/p/s7aUff" target="_blank">https://flic.kr/p/s7aUff</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 lang: de
 tags: [Agile,Project Management,Time Management]
+ref: 
 permalink: /de/blog/2016/03/23/Gesundheitscheck-Aufwand-und-Kosten-in-agilen-Projekten
 ---
 

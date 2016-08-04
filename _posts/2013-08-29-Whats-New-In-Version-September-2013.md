@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2013/08/29/Whats-New-In-Version-September-2013
 ---
 

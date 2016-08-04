@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2016/05/broken-concrete-small.jpg
 bannerimagesource: Image source -  <a href="https://flic.kr/p/6Du7DL" target="_blank">https://flic.kr/p/6Du7DL</a>, <a href="https://creativecommons.org/licenses/by-nc/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2016/05/31/Monolithic-Monsters-Platforms-and-Microservices
 ---
 

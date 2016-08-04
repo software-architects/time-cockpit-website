@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/02/cheetah.jpg
 bannerimagesource: Image source -  <a href="http://flic.kr/p/nUQ7Ko" target="_blank">http://flic.kr/p/nUQ7Ko</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [Performance,Permissions,time cockpit]
+ref: 
 permalink: /blog/2015/02/27/Deep-Dive-Performance-Improvements-Through-Permission-Refactoring
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2011/03/17/Time-Cockpit-Customization-A-slightly-advanced-List-
 ---
 

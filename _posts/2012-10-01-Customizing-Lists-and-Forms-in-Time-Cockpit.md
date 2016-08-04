@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2012/10/01/Customizing-Lists-and-Forms-in-Time-Cockpit
 ---
 

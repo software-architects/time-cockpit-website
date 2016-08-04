@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Pricing - Time Cockpit
+ref: /de/preis/
 permalink: /pricing/
 ---
 

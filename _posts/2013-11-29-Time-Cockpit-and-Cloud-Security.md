@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure,time cockpit]
+ref: 
 permalink: /blog/2013/11/29/Time-Cockpit-and-Cloud-Security
 ---
 

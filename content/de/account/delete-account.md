@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Account löschen - Time Cockpit
+ref: /account/delete-account/
 permalink: /de/account/delete-account/
 ---
 

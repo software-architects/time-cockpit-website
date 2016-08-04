@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Philipp Aumayr's Blog - Time Cockpit
+ref: 
 permalink: /devblog/team/philipp-aumayr/
 ---
 

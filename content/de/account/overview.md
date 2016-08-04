@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Übersicht - Time Cockpit
+ref: /account/overview/
 permalink: /de/account/overview/
 ---
 

@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2016/07/time-cockpit-august-2016.png
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2016/07/29/Whats-New-in-Version-August-2016
 ---
 

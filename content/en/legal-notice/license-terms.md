@@ -1,6 +1,7 @@
 ---
 layout: page
 title: License Terms - Time Cockpit
+ref: /de/impressum/lizenzbestimmungen/
 permalink: /legal-notice/license-terms/
 ---
 

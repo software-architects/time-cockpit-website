@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,C#,OData,Visual Studio]
+ref: 
 permalink: /blog/2014/09/26/Accessing-Time-Cockpits-OData-Web-API-With-Visual-Studio
 ---
 

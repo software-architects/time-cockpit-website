@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Awards]
+ref: 
 permalink: /blog/2012/05/25/Time-Cockpit-Awarded-Best-Startup-by-EuroCloudAustria
 ---
 

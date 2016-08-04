@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Zeiterfassung bei PROLOGICS IT GmbH mit time cockpit
+ref: /solutions/case-studies/PROLOGICS-IT-GmbH/
 permalink: /de/loesungen/case-studies/PROLOGICS-IT-GmbH/
 ---
 

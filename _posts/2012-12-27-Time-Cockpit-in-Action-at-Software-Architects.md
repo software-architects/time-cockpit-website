@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Project Management,time cockpit]
+ref: 
 permalink: /blog/2012/12/27/Time-Cockpit-in-Action-at-Software-Architects
 ---
 

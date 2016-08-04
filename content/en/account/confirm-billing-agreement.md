@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Confirm Billing Agreement - Time Cockpit
+ref: /de/account/confirm-billing-agreement/
 permalink: /account/confirm-billing-agreement/
 ---
 

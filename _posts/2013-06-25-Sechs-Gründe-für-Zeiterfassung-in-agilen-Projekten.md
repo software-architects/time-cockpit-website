@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2013/06/Agreement-and-Certainty-Matrix.png
 bannerimagesource: 
 lang: de
 tags: [Agile,Project Management,Scrum]
+ref: 
 permalink: /de/blog/2013/06/25/Sechs-Gründe-für-Zeiterfassung-in-agilen-Projekten
 ---
 

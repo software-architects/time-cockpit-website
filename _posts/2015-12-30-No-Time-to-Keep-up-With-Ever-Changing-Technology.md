@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/12/change-chance-small.png
 bannerimagesource: Image source -  <a href="https://flic.kr/p/dcZaG7" target="_blank">https://flic.kr/p/dcZaG7</a>, <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [About]
+ref: 
 permalink: /blog/2015/12/30/No-Time-to-Keep-up-With-Ever-Changing-Technology
 ---
 

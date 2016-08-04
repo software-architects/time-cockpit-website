@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Graphical Calendar for Time Tracking
+ref: /de/tour/grafischer-kalender/
 permalink: /tour/graphical-calendar/
 ---
 

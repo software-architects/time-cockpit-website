@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Documentation
+ref: /de/hilfe-support/dokumentation/
 permalink: /help-support/documentation/
 ---
 

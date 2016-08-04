@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Privacy Policy
+ref: /de/impressum/datenschutzbestimmungen/
 permalink: /legal-notice/privacy-policy/
 ---
 

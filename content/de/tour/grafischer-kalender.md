@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Grafischer Kalender zur Zeiterfassung
+ref: /tour/graphical-calendar/
 permalink: /de/tour/grafischer-kalender/
 ---
 

@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/09/time-cockpit-october-2015.png
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2015/09/30/Whats-New-in-Version-October-2015
 ---
 

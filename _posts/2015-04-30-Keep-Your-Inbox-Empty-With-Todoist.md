@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/04/to-do-small.jpg
 bannerimagesource: Image source -  <a href="https://flic.kr/p/2AcAfi" target="_blank">https://flic.kr/p/2AcAfi</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [Time Management,Todoist]
+ref: 
 permalink: /blog/2015/04/30/Keep-Your-Inbox-Empty-With-Todoist
 ---
 

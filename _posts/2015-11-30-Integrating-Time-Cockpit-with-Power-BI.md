@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/11/power-bi.png
 bannerimagesource: 
 lang: en
 tags: [Reporting,time cockpit]
+ref: 
 permalink: /blog/2015/11/30/Integrating-Time-Cockpit-with-Power-BI
 ---
 

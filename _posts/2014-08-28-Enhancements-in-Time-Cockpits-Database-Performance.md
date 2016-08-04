@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [SQL,time cockpit]
+ref: 
 permalink: /blog/2014/08/28/Enhancements-in-Time-Cockpits-Database-Performance
 ---
 

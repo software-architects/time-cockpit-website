@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2014/09/Templates06.png
 bannerimagesource: 
 lang: en
 tags: [Iron Python,time cockpit]
+ref: 
 permalink: /blog/2014/09/30/Redesigned-Time-Sheet-Templates
 ---
 

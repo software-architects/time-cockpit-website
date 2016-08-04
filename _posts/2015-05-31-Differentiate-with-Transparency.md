@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/05/SoftwareDiaryThumbnail.png
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2015/05/31/Differentiate-with-Transparency
 ---
 

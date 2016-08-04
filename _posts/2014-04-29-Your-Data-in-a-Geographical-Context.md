@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [OData,time cockpit]
+ref: 
 permalink: /blog/2014/04/29/Your-Data-in-a-Geographical-Context
 ---
 

@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/03/optimizeThumb.jpg
 bannerimagesource: Image source -  <a href="https://flic.kr/p/9TJPp3" target="_blank">https://flic.kr/p/9TJPp3</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [Performance,Project Management,time cockpit]
+ref: 
 permalink: /blog/2015/03/29/Eight-Anti-Patterns-for-Optimization-Projects
 ---
 

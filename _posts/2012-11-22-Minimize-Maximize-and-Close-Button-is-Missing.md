@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit,WPF]
+ref: 
 permalink: /blog/2012/11/22/Minimize-Maximize-and-Close-Button-is-Missing
 ---
 

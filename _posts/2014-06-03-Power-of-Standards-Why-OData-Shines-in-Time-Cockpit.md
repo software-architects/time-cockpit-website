@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [OData,time cockpit]
+ref: 
 permalink: /blog/2014/06/03/Power-of-Standards-Why-OData-Shines-in-Time-Cockpit
 ---
 

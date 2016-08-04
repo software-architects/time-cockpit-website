@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/04/Silverlight.png
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2015/04/30/Using-Silverlight-in-Chrome-and-Firefox
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Android,Mobile,time cockpit]
+ref: 
 permalink: /blog/2013/01/22/Synchronized-Android-Call-Log-Import
 ---
 

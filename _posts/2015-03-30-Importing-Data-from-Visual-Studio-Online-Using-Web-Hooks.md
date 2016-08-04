@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/03/webhooks_550.png
 bannerimagesource: 
 lang: en
 tags: [Azure,time cockpit,Visual Studio]
+ref: 
 permalink: /blog/2015/03/30/Importing-Data-from-Visual-Studio-Online-Using-Web-Hooks
 ---
 

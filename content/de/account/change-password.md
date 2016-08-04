@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Passwort ändern - Time Cockpit
+ref: /account/change-password/
 permalink: /de/account/change-password/
 ---
 

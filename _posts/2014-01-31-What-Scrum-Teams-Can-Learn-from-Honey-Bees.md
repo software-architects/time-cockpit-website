@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Project Management]
+ref: 
 permalink: /blog/2014/01/31/What-Scrum-Teams-Can-Learn-from-Honey-Bees
 ---
 

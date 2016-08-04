@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: []
+ref: 
 permalink: /blog/2013/06/04/Solving-the-Time-Cockpit-Silverlight-Client-not-Loading-Issue
 ---
 

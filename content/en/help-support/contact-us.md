@@ -1,6 +1,7 @@
 ---
 layout: full-width-page
 title: Contact Us
+ref: /de/hilfe-support/kontakt/
 permalink: /help-support/contact-us/
 ---
 

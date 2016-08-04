@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/06/start-auto-import.jpg
 bannerimagesource: 
 lang: en
 tags: [Iron Python,time cockpit]
+ref: 
 permalink: /blog/2015/06/29/How-to-Automate-Time-Cockpit’s-Importer
 ---
 

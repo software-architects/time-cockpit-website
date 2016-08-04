@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Brainworx
+ref: /de/loesungen/case-studies/Brainworx/
 permalink: /solutions/case-studies/Brainworx/
 ---
 

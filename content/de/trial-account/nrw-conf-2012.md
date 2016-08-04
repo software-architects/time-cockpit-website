@@ -1,6 +1,7 @@
 ---
 layout: page
 title: NRW Conf 2012 - Time Cockpit
+ref: /trial-account/nrw-conf-2012/
 permalink: /de/trial-account/nrw-conf-2012/
 ---
 

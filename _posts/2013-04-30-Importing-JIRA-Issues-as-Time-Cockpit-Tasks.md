@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Iron Python,time cockpit]
+ref: 
 permalink: /blog/2013/04/30/Importing-JIRA-Issues-as-Time-Cockpit-Tasks
 ---
 

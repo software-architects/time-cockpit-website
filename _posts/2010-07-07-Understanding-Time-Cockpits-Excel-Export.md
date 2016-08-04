@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2010/07/07/Understanding-Time-Cockpits-Excel-Export
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Time Tracking in Teams
+ref: /de/tour/teamwork/
 permalink: /tour/teamwork/
 ---
 

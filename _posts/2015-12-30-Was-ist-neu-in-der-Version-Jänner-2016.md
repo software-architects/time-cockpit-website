@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/12/time-cockpit-january-2016.png
 bannerimagesource: 
 lang: de
 tags: [time cockpit]
+ref: 
 permalink: /de/blog/2015/12/30/Was-ist-neu-in-der-Version-Jänner-2016
 ---
 

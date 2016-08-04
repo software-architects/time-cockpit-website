@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2014/08/28/Learn-From-Best-in-Class-Confirmation-and-Approval-Processes
 ---
 

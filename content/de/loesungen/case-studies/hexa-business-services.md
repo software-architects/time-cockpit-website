@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Zeiterfassung bei Hexa Business Services mit time cockpit
+ref: /solutions/case-studies/hexa-business-services/
 permalink: /de/loesungen/case-studies/hexa-business-services/
 ---
 

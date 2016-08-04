@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Impressum - Time Cockpit
+ref: /legal-notice/
 permalink: /de/impressum/
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Time Tracking at Constantia Teich GmbH with Time Cockpit
+ref: /de/loesungen/case-studies/Constantia-Teich/
 permalink: /solutions/case-studies/Constantia-Teich/
 ---
 

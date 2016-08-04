@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Time Tracking at PROLOGICS IT GmbH with Time Cockpit
+ref: /de/loesungen/case-studies/PROLOGICS-IT-GmbH/
 permalink: /solutions/case-studies/PROLOGICS-IT-GmbH/
 ---
 

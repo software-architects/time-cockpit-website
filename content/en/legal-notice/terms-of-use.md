@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Terms of Use - Time Cockpit
+ref: /de/impressum/nutzungsbestimmungen/
 permalink: /legal-notice/terms-of-use/
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Zeiterfassung bei Constantia Teich GmbH mit time cockpit
+ref: /solutions/case-studies/Constantia-Teich/
 permalink: /de/loesungen/case-studies/Constantia-Teich/
 ---
 

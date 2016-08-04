@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Time Tracking at Softline Group with Time Cockpit
+ref: /de/loesungen/case-studies/Time-Tracking-at-Softline-with-Time-Cockpit/
 permalink: /solutions/case-studies/Time-Tracking-at-Softline-with-Time-Cockpit/
 ---
 

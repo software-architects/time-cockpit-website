@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Google Latitude,Location,time cockpit]
+ref: 
 permalink: /blog/2013/05/31/Whats-New-in-Version-June-2013
 ---
 

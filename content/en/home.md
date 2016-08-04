@@ -1,6 +1,7 @@
 ---
 layout: full-width-page
 title: Time Tracking With Time Cockpit
+ref: /de/
 permalink: /
 ---
 

@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/12/time-cockpit-typescript-async-await.pn
 bannerimagesource: 
 lang: en
 tags: [time cockpit,TypeScript]
+ref: 
 permalink: /blog/2015/12/29/How-TypeScripts-asyncawait-Makes-Your-Life-Easier
 ---
 

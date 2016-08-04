@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2014/10/5240042369_26ab9d312a_b.jpg
 bannerimagesource: Image source -  <a href="https://flic.kr/p/8Z3A36" target="_blank">https://flic.kr/p/8Z3A36</a>, <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2014/10/27/Slow-Movers-and-Agile-Speed-Junkies---You-Need-Both-to-Succeed
 ---
 

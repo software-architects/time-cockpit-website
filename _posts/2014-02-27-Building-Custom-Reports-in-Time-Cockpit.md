@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2014/02/27/Building-Custom-Reports-in-Time-Cockpit
 ---
 

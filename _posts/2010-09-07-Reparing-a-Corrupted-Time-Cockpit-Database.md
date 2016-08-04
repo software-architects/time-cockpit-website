@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [SQLCE]
+ref: 
 permalink: /blog/2010/09/07/Reparing-a-Corrupted-Time-Cockpit-Database
 ---
 

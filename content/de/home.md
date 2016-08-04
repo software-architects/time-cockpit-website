@@ -1,6 +1,7 @@
 ---
 layout: full-width-page
 title: time cockpit - Zeiterfassung
+ref: /
 permalink: /de/
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Time Tracking at WebReal with Time Cockpit
+ref: /de/loesungen/case-studies/webreal/
 permalink: /solutions/case-studies/webreal/
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2013/09/09/Performance-Problems-in-the-Online-Client-of-Time-Cockpit
 ---
 

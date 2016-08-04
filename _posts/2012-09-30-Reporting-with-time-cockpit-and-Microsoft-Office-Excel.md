@@ -8,6 +8,7 @@ bannerimage: /content/images/tour/reporting/excel_export.png
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2012/09/30/Reporting-with-time-cockpit-and-Microsoft-Office-Excel
 ---
 

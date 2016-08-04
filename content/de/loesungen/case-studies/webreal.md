@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Zeiterfassung bei WebReal mit time cockpit
+ref: /solutions/case-studies/webreal/
 permalink: /de/loesungen/case-studies/webreal/
 ---
 

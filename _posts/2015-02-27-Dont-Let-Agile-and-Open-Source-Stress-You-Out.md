@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/02/relax.jpg
 bannerimagesource: Image source -  <a href="https://flic.kr/p/8RVu1X" target="_blank">https://flic.kr/p/8RVu1X</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [Agile]
+ref: 
 permalink: /blog/2015/02/27/Dont-Let-Agile-and-Open-Source-Stress-You-Out
 ---
 

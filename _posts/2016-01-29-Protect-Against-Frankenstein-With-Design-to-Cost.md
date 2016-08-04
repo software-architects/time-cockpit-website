@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2016/01/frankenstein-small.jpg
 bannerimagesource: 
 lang: en
 tags: [Project Management]
+ref: 
 permalink: /blog/2016/01/29/Protect-Against-Frankenstein-With-Design-to-Cost
 ---
 

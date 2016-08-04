@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Reporting,time cockpit]
+ref: 
 permalink: /blog/2014/03/31/Custom-Reporting-in-Time-Cockpit-is-Final
 ---
 

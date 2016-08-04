@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Time Tracking at g.tec with Time Cockpit
+ref: /de/loesungen/case-studies/Time-Tracking-at-gtec-With-Time-Cockpit/
 permalink: /solutions/case-studies/Time-Tracking-at-gtec-With-Time-Cockpit/
 ---
 

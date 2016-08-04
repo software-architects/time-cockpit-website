@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Kreditkartendaten - Time Cockpit
+ref: /account/confirm-billing-agreement/
 permalink: /de/account/confirm-billing-agreement/
 ---
 

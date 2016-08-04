@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2014/11/01PostmanQuery.png
 bannerimagesource: 
 lang: en
 tags: [OData,time cockpit]
+ref: 
 permalink: /blog/2014/11/05/Testing-Time-Cockpits-OData-Web-API-with-Postman
 ---
 

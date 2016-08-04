@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Rechnungen - Time Cockpit
+ref: /account/invoices/
 permalink: /de/account/invoices/
 ---
 

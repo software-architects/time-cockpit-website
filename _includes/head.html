@@ -1,4 +1,4 @@
-<head>
+﻿<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,16 @@
 	<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+
+    {% if page.ref != null %}
+        {% if page.permalink contains "/de" %}
+            <link rel="alternate" href="{{site.baseurl}}{{page.ref}}" hreflang="en" />
+            <link rel="alternate" href="{{site.baseurl}}{{page.permalink}}" hreflang="de" />
+        {% else %}
+            <link rel="alternate" href="{{site.baseurl}}{{page.ref}}" hreflang="de" />
+            <link rel="alternate" href="{{site.baseurl}}{{page.permalink}}" hreflang="en" />
+        {% endif %}
+    {% endif %}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

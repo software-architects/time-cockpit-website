@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Hilfe & Support - Time Cockpit
+ref: /help-support/
 permalink: /de/hilfe-support/
 ---
 

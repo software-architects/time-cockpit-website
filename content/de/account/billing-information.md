@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Rechnungsdaten - Time Cockpit
+ref: /account/billing-information/
 permalink: /de/account/billing-information/
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Datenschutzbestimmungen - Time Cockpit
+ref: /legal-notice/privacy-policy/
 permalink: /de/impressum/datenschutzbestimmungen/
 ---
 

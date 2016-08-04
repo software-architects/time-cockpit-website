@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2014/10/time-cockpit-november-2014.png
 bannerimagesource: 
 lang: en
 tags: [OData,time cockpit]
+ref: 
 permalink: /blog/2014/10/31/Whats-New-in-Version-November-2014
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Iron Python,time cockpit]
+ref: 
 permalink: /blog/2012/10/31/Importing-Data-from-SharePoint-Lists-via-IronPython
 ---
 

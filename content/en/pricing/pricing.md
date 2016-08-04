@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Time Tracking Software Pricing
+ref: /de/preis/preis/
 permalink: /pricing/pricing/
 ---
 

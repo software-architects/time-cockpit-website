@@ -1,6 +1,7 @@
 ---
 layout: page
 title: IT-Visions Infoday 2012
+ref: /de/trial-account/it-visions-infoday-2012/
 permalink: /trial-account/it-visions-infoday-2012/
 ---
 

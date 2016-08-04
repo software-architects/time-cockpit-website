@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/02/RoadToTheCloud_Thumbnail.jpg
 bannerimagesource: Image source -  <a href="https://flic.kr/p/fyLSSK" target="_blank">https://flic.kr/p/fyLSSK</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 lang: de
 tags: [Azure,time cockpit]
+ref: 
 permalink: /de/blog/2015/02/13/Time-Cockpit-beim-Road-to-the-Cloud-Event
 ---
 

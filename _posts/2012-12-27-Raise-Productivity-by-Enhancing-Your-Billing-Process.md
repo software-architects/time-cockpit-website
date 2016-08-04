@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [billomat,Iron Python,time cockpit]
+ref: 
 permalink: /blog/2012/12/27/Raise-Productivity-by-Enhancing-Your-Billing-Process
 ---
 

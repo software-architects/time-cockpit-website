@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Time Tracking Reporting
+ref: /de/tour/reporting/
 permalink: /tour/reporting/
 ---
 

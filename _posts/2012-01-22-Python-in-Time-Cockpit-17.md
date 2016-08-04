@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Iron Python]
+ref: 
 permalink: /blog/2012/01/22/Python-in-Time-Cockpit-17
 ---
 

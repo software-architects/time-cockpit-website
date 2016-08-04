@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Software-as-a-Service Zeiterfassung
+ref: /tour/software-as-a-service/
 permalink: /de/tour/software-as-a-service/
 ---
 

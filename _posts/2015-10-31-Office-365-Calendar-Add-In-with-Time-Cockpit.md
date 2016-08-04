@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/10/office-logo.png
 bannerimagesource: Image source -  <a href="https://commons.wikimedia.org/wiki/File:Microsoft_Office_2013_logo_and_wordmark.svg" target="_blank">Wikimedia Commons</a>
 lang: en
 tags: [OData,time cockpit]
+ref: 
 permalink: /blog/2015/10/31/Office-365-Calendar-Add-In-with-Time-Cockpit
 ---
 

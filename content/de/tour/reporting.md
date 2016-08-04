@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Zeiterfassung-Reports
+ref: /tour/reporting/
 permalink: /de/tour/reporting/
 ---
 

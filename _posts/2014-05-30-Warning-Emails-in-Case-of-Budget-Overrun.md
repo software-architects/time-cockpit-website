@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure,OData,time cockpit]
+ref: 
 permalink: /blog/2014/05/30/Warning-Emails-in-Case-of-Budget-Overrun
 ---
 

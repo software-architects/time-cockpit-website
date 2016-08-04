@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2013/10/16/Excel-Exporter-and-Formatting-Profiles
 ---
 

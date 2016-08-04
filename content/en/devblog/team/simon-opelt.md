@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Simon Opelt's Blog - Time Cockpit
+ref: 
 permalink: /devblog/team/simon-opelt/
 ---
 

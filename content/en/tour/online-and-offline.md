@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Time Tracking Online and Offline
+ref: /de/tour/online-und-offline/
 permalink: /tour/online-and-offline/
 ---
 

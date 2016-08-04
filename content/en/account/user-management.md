@@ -1,6 +1,7 @@
 ---
 layout: page
 title: User Management - Time Cockpit
+ref: /de/account/user-management/
 permalink: /account/user-management/
 ---
 

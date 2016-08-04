@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Zeiterfassung in Teams
+ref: /tour/teamwork/
 permalink: /de/tour/teamwork/
 ---
 

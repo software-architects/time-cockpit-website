@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Secure Time Tracking
+ref: /de/tour/sicherheit/
 permalink: /tour/security/
 ---
 

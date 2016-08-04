@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Billing Information - Time Cockpit
+ref: /de/account/billing-information/
 permalink: /account/billing-information/
 ---
 

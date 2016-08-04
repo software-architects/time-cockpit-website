@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Project Management,time cockpit]
+ref: 
 permalink: /blog/2014/05/18/Agile-and-Scrum-in-Mission-Critical-Projects
 ---
 

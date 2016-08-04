@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Overview
+ref: /de/impressum/uebersicht/
 permalink: /legal-notice/overview/
 ---
 

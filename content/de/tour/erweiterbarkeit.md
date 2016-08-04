@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Erweiterbare Zeiterfassung
+ref: /tour/extensibility/
 permalink: /de/tour/erweiterbarkeit/
 ---
 

@@ -2,6 +2,7 @@
 layout: page
 title: Time Cockpit Blog - Tips and News from the Time Cockpit Team
 lang: en
+ref: /de/blog/
 permalink: /blog/
 ---
 {% assign counter = 0 %}

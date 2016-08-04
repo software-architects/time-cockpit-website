@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Google Latitude,time cockpit]
+ref: 
 permalink: /blog/2013/05/31/Location-Data-in-Time-Cockpit---A-Wish-Comes-True
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Project Management,time cockpit]
+ref: 
 permalink: /blog/2013/07/19/How-Good-Are-Your-Estimation-Skills
 ---
 

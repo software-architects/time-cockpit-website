@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Iron Python,time cockpit]
+ref: 
 permalink: /blog/2012/12/17/Debugging-and-Interactive-Development-of-Time-Cockpit-Python-Scripts
 ---
 

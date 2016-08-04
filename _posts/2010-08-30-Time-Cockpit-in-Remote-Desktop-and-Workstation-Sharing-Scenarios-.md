@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2010/08/30/Time-Cockpit-in-Remote-Desktop-and-Workstation-Sharing-Scenarios-
 ---
 

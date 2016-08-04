@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,C#,time cockpit]
+ref: 
 permalink: /blog/2012/10/30/Import-Customers-From-Microsoft-Dynamics-CRM-Online
 ---
 

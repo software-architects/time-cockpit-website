@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/01/logo.png
 bannerimagesource: 
 lang: de
 tags: [time cockpit]
+ref: 
 permalink: /de/blog/2015/01/22/Erfolgreiche-Zertifizierung-für-time-cockpit
 ---
 

@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/05/Hybrid Connection Architecture.png
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2015/05/18/Integrating-On-Premise-Resources-Into-Time-Cockpit-
 ---
 

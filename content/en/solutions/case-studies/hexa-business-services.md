@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Time Tracking at Hexa Business Services with Time Cockpit
+ref: /de/loesungen/case-studies/hexa-business-services/
 permalink: /solutions/case-studies/hexa-business-services/
 ---
 

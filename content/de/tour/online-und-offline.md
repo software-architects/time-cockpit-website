@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Zeiterfassung Online und Offline
+ref: /tour/online-and-offline/
 permalink: /de/tour/online-und-offline/
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Google Latitude,Location,time cockpit]
+ref: 
 permalink: /blog/2013/07/18/Google-Latitude-will-be-Retiring-on-August-9th
 ---
 

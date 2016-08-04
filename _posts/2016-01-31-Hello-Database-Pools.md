@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2016/01/db-usage-chart-small.png
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2016/01/31/Hello-Database-Pools
 ---
 

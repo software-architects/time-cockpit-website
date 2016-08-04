@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Activity Tracking for Accurate Time Sheets
+ref: /de/tour/aktivitaeten-aufzeichnen/
 permalink: /tour/activity-tracking/
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Download - Time Cockpit
+ref: /de/account/download/
 permalink: /account/download/
 ---
 

@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2016/07/time and money.jpg
 bannerimagesource: 
 lang: en
 tags: [Project Management,time cockpit]
+ref: 
 permalink: /blog/2016/07/29/Budgetary-Control-on-Project-and-Task-Level
 ---
 

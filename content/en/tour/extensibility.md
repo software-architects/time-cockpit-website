@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Time Tracking Extensibility
+ref: /de/tour/erweiterbarkeit/
 permalink: /tour/extensibility/
 ---
 

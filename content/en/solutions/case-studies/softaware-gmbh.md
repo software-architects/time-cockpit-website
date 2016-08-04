@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Time Tracking at Softaware GmbH with Time Cockpit
+ref: /de/loesungen/case-studies/softaware-gmbh/
 permalink: /solutions/case-studies/softaware-gmbh/
 ---
 

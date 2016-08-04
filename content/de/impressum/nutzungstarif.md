@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Nutzungstarif
+ref: /legal-notice/usage-tariff/
 permalink: /de/impressum/nutzungstarif/
 ---
 

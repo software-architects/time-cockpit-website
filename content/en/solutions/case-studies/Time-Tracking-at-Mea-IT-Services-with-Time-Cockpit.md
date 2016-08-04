@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Time Tracking at Mea IT Services with Time Cockpit
+ref: /de/loesungen/case-studies/Zeiterfassung-bei-mea-IT-Services-mit-time-cockpit/
 permalink: /solutions/case-studies/Time-Tracking-at-Mea-IT-Services-with-Time-Cockpit/
 ---
 

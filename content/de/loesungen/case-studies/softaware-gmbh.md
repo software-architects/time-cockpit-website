@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Zeiterfassung bei softaware gmbh mit time cockpit
+ref: /solutions/case-studies/softaware-gmbh/
 permalink: /de/loesungen/case-studies/softaware-gmbh/
 ---
 

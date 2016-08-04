@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/09/lightning-cloud-small.jpg
 bannerimagesource: Image source -  <a href="https://flic.kr/p/ofiC5K" target="_blank">https://flic.kr/p/ofiC5K</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons</a> License
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2015/09/30/Is-the-Cloud-Still-a-Safe-Harbor
 ---
 

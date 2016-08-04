@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Zeiterfassung bei Brainworx mit time
+ref: /solutions/case-studies/Brainworx/
 permalink: /de/loesungen/case-studies/Brainworx/
 ---
 

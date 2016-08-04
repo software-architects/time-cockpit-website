@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Page Not Found - Time Cockpit
+ref: /de/page-not-found/
 permalink: /page-not-found/
 ---
 

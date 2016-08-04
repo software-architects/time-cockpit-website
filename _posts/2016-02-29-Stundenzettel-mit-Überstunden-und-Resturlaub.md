@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2016/02/overtime.png
 bannerimagesource: 
 lang: de
 tags: [Reporting,time cockpit]
+ref: 
 permalink: /de/blog/2016/02/29/Stundenzettel-mit-Überstunden-und-Resturlaub
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Sichere Zeiterfassung
+ref: /tour/security/
 permalink: /de/tour/sicherheit/
 ---
 

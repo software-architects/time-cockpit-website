@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [SQLCE,time cockpit]
+ref: 
 permalink: /blog/2013/03/28/SQL-Server-Compact-Timed-Out-Waiting-for-a-Lock
 ---
 

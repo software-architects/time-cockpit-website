@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/09/OutookIntegrationSmall.png
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2015/09/30/Staff-Vacation-Calendar-with-Time-Cockpit-and-Office-365
 ---
 

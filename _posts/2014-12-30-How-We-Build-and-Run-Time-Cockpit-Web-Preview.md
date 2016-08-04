@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2014/12/Clouds.jpg
 bannerimagesource: 
 lang: en
 tags: [Azure,time cockpit,Visual Studio]
+ref: 
 permalink: /blog/2014/12/30/How-We-Build-and-Run-Time-Cockpit-Web-Preview
 ---
 

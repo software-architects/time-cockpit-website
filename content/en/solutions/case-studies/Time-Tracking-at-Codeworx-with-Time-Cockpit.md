@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Time Tracking at Codeworx with Time Cockpit
+ref: /de/loesungen/case-studies/Zeiterfassung-bei-codeworx-mit-time-cockpit/
 permalink: /solutions/case-studies/Time-Tracking-at-Codeworx-with-Time-Cockpit/
 ---
 

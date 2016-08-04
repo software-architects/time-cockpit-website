@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2010/09/09/New-Screencast-German-Shows-New-Styling-of-Time-Cockpit-V14-
 ---
 

@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/09/Sexy_Importer.png
 bannerimagesource: 
 lang: en
 tags: [About]
+ref: 
 permalink: /blog/2015/10/30/Why-an-Excel-Import-Is-Still-Sexy
 ---
 

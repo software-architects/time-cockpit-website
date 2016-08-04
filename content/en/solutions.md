@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Customers
+ref: /de/loesungen/
 permalink: /solutions/
 ---
 

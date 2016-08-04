@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Aktivitäten aufzeichnen für genaue Zeiterfassung
+ref: /tour/activity-tracking/
 permalink: /de/tour/aktivitaeten-aufzeichnen/
 ---
 

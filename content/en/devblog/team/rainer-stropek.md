@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Rainer Stropek's Blog - Time Cockpit
+ref: 
 permalink: /devblog/team/rainer-stropek/
 ---
 

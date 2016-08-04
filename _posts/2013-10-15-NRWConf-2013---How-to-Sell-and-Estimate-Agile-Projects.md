@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Project Management,time cockpit]
+ref: 
 permalink: /blog/2013/10/15/NRWConf-2013---How-to-Sell-and-Estimate-Agile-Projects
 ---
 

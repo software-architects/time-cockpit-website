@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Nutzungsbestimmungen
+ref: /legal-notice/terms-of-use/
 permalink: /de/impressum/nutzungsbestimmungen/
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: full-width-page
 title: Preis für Zeiterfassungssoftware
+ref: /pricing/pricing/
 permalink: /de/preis/preis/
 ---
 

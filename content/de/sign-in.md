@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Anmelden
+ref: /sign-in/
 permalink: /de/sign-in/
 ---
 

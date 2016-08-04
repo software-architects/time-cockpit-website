@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/07/keyboard_350.png
 bannerimagesource: 
 lang: de
 tags: []
+ref: 
 permalink: /de/blog/2015/07/31/Arbeitszeitverletzungen-und-Höchstarbeitszeit
 ---
 

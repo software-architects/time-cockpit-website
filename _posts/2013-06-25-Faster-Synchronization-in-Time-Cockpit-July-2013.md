@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,Azure,C#,time cockpit]
+ref: 
 permalink: /blog/2013/06/25/Faster-Synchronization-in-Time-Cockpit-July-2013
 ---
 

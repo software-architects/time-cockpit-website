@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2014/11/3966991088_42ddac0ec2_o.jpg
 bannerimagesource: Image source -  <a href="https://flic.kr/p/73xSf5" target="_blank">https://flic.kr/p/73xSf5</a>, <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/">Creative Commons License</a>
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /blog/2014/11/04/Time-Cockpit-and-Gartner-Top-10-Strategic-Technology-Trends
 ---
 

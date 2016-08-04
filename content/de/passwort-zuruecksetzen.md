@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Passwort zurücksetzen - Time Cockpit
+ref: /reset-password/
 permalink: /de/passwort-zuruecksetzen/
 ---
 

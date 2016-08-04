@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/02/time-cockpit-march-2015.png
 bannerimagesource: 
 lang: de
 tags: [time cockpit]
+ref: 
 permalink: /de/blog/2015/02/27/Was-ist-neu-in-der-Version-März-2015
 ---
 

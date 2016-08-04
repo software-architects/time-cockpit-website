@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Suche
+ref: /help-support/Search/
 permalink: /de/hilfe-support/suche/
 ---
 
