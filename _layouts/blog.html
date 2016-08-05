@@ -11,10 +11,17 @@ layout: default
 					{{ content }}
 				</div>
 				<div class="col-sm-3">
-					<h3>Tags</h3>
-					{% include tagcloud.html %}
-					<h3>Autoren</h3>
-					{% include authorcloud.html %}
+                    <!--<div data-spy="affix" id="summaryAffix">-->
+                        {% if page.showtoc == true %}
+                            <h3>Content</h3>
+                            <div class="tc-toc"></div>
+                        {% endif %}
+
+					    <h3>Tags</h3>
+					    {% include tagcloud.html %}
+					    <h3>Autoren</h3>
+					    {% include authorcloud.html %}
+                    <!--</div>-->
 				</div>
 			</div>
 		</div>
