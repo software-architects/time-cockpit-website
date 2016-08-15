@@ -12,12 +12,9 @@ $footer-text-color: #ddd;
 
 $small-font-size: $base-font-size * 0.875;
 
-$spacing-unit: 30px;
-
-
 $background-color: #fdfdfd;
-$brand-color: #2a7ae2;
 
-$grey-color: #828282;
-$grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark: darken($grey-color, 25%);
+$grid-gutter-width: 40px;
+
+$border-radius: 10px;
+$border-radius-button: 5px;

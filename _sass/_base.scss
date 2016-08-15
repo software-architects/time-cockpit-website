@@ -1,4 +1,4 @@
-@import "bootstrap/bootstrap/_variables.scss";
+@import "../_sass/bootstrap/_bootstrap.scss";
 @import "_variables.scss";
 
 body {
@@ -9,7 +9,7 @@ body {
 	color: $base-text-color;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
 	color: $header-color;
 	margin-top: 40px;
     margin-bottom: 20px;
@@ -30,6 +30,10 @@ h2, h2 a {
 
 h3, h3 a {
 	font-size: 20px;
+}
+
+h4, h4 a {
+	font-size: $font-size-base;
 }
 
 @media (max-width: $screen-sm-max) { 
@@ -83,6 +87,10 @@ blockquote {
 			filter: grayscale(0%);
 		}
 	}
+}
+
+iframe {
+    max-width: 100%;
 }
 
 div.content {

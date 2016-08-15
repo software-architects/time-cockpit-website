@@ -52,7 +52,6 @@ gulp.task("compress", function (cb) {
 });
 
 gulp.task("removeBom", function () {
-
     return gulp.src("**!(.sln)/*!(.sln)")
             .pipe(stripBom())
             .pipe(gulp.dest("."));

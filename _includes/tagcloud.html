@@ -34,7 +34,7 @@
                 </a>
             {% else %}
                 <a href="{{site.baseurl}}/blog/tags#{{ taglist[1] }}"
-                   style="font-size: 200%">
+                   style="font-size: {{ counter |  times: 2 | plus: 85  }}%; line-height: 1.2em;">
                     {{ taglist[1] | replace:'-', ' ' }} ({{ counter }})
                 </a>            
             {% endif %}

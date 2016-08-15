@@ -15,24 +15,33 @@ permalink: /blog/
 			{% assign blogposts = site.posts | where: "layout","blog" | where: "lang","en" | sort: "date" | reverse %}
 			{% for post in blogposts %}
 				{% if counter < 10 %}
-					<div class="row tc-blogteaser">
+					<div class="row tc-blogteaser" onclick="document.location.href='{{ post.url | prepend: site.baseurl }}'">
 				{% else %}
-					<div class="row tc-blogteaser hidden">
+					<div class="row tc-blogteaser hidden" onclick="document.location.href='{{ post.url | prepend: site.baseurl }}'">
 					{% assign curr_page = curr_page | plus:1 %}
 				{% endif %}
+
 					<div class="col-sm-12"><h2>{{ post.title }}</h2></div>
-					<div class="col-sm-8">
-						<p>{{ post.date | date_to_long_string }}</p>
+					<div class="col-sm-7">
+						<p class="tc-blog-details">
+							{{ post.date | date_to_long_string }}
+							{% if post.tags.size > 0 %}
+							-
+							{% endif %}
+							{% for tag in post.tags %}
+								<a href="{{site.baseurl}}/blog/en/tags#{{ tag }}">{{ tag }}</a>{% if forloop.index < forloop.length %}, {% endif %}
+							{% endfor %}
+						</p>
 						<p>{{ post.excerpt }}</p>
 						<p><a href="{{ post.url | prepend: site.baseurl }}">Read more ...</a></p>
 					</div>
-					<div class="col-sm-4">
-					{% if post.bannerimage != null %}
+					<div class="col-sm-5">
+						{% if post.bannerimage != null %}
 						<img data-img-src="{{ post.bannerimage | prepend: site.baseurl }}" />
-						<span class="tc-image-footer">{{post.bannerimagesource}}</span>
-					{% endif %}
+						{% endif %}
 					</div>
 				</div>
+
 				{% assign counter = counter | plus:1 %}
 			{% endfor %}
 		</div>

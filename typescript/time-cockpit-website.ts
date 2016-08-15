@@ -110,6 +110,58 @@ $(document).ready(function () {
     currentPage = 1;
 
     updatePaging();
+
+    // add table of contents to blog articles
+    var result = $(".tc-toc");
+    var setUl = false;
+
+    if (result.length > 0) {
+        var text = "<ul>";
+        var headers = $(".tc-content").find("h2, h3, h4");
+
+        headers.each((index: number, header: Element) => {
+            if (index < headers.length) {
+                var id = "header" + index.toString();
+                if (header.attributes["id"]) {
+                    id = header.attributes["id"].value;
+                }
+
+                var tag = headers[index].tagName;
+                var previousTag = "H2";
+                if (index > 0) {
+                    previousTag = headers[index - 1].tagName;
+                }
+
+                var level = parseInt(tag.replace(/H/, ""));
+                var previousLevel = parseInt(previousTag.replace(/H/, ""));
+
+                if (level > previousLevel) {
+                    for (var i = 0; i < level - previousLevel; i++) {
+                        text += "<ul>";
+                    }
+                } else if (level < previousLevel) {
+                    text += "</ul>";
+                }
+
+                text += "<li><a href='#" + id + "'>" + header.innerHTML + "</a></li>";
+                if (!header.attributes["id"]) {
+                    header.setAttribute("id", id);
+                }
+            }
+        });
+
+        text += "</ul>";
+        result.append(text);
+
+        //setting top and bottom for affix
+        //$("#summaryAffix").affix({
+        //    offset:
+        //    {
+        //        top: $(".header").outerHeight(true),
+        //        bottom: $(".tc-container.tc-container-lightblue.tc-related-posts-container").outerHeight(true) + $(".footer").outerHeight(true)
+        //    }
+        //});
+    }
 });
 
 
