@@ -48,6 +48,7 @@ function nextPage() {
     window.scrollTo(0, 0);
 }
 
+//Reset all buttons for paging
 function resetHidden() {
     if ($(".tc-pager .tc-previous").hasClass("hidden"))
         $(".tc-pager .tc-previous").removeClass("hidden");
@@ -80,8 +81,8 @@ function updatePaging() {
     elements.addClass("hidden");
     elements.slice(startElement, endElement).removeClass("hidden");
 
+    //remove and add the src for the images
     imgElements.removeAttr("src");
-    //var images = imgElements.slice(startElement, endElement);
 
     imgElements.slice(startElement, endElement).each(function (index) {
         imgElements.slice(startElement, endElement)[index].setAttribute("src", imgElements.slice(startElement, endElement)[index].getAttribute("data-img-src"));
@@ -100,6 +101,46 @@ $(document).ready(function () {
         else
         {
             $("span[data-message-for='" + eventObject.target.id + "']").removeClass("tc-error-visible");
+        }
+    });
+
+    // add table of contents to blog articles
+    var result = $(".tc-toc");
+    var setUl = false;
+
+    if (result.length > 0) {
+        var text = "<ul>";
+        var title = $(".col-sm-8").find("h2, h3, h4");
+
+        title.each((index: number, value: Element) => {
+            if (index + 1 < title.length) {
+
+                text += "<li> <a id='link" + index + "' href='#title" + index + "'>" + value.innerHTML + "</a>  </li>";
+                value.setAttribute("id", "title" + index);
+
+                if (title[index + 1].tagName != "H2") {
+                    if (!setUl) {
+                        setUl = true;
+                        text += "<ul>";
+                    }
+                } else {
+                    if (setUl) {
+                        text += "</ul>";
+                        setUl = false;
+                    }
+            }
+        }
+    });
+
+    text += "</ul>";
+    result.append(text);
+
+    //setting top and bottom for affix
+    $("#summaryAffix").affix({
+        offset:
+        {
+            top: $(".header").outerHeight(true),
+            bottom: $(".tc-container.tc-container-lightblue.tc-related-posts-container").outerHeight(true) + $(".footer").outerHeight(true)
         }
     });
 

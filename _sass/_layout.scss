@@ -446,3 +446,13 @@ table {
 		}
 	}
 }
+
+.affix{
+    position:fixed;
+    width: 293.33px;
+}
+
+.affix-bottom{
+    position:absolute;
+    bottom: auto;
+}
