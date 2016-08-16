@@ -7,8 +7,8 @@ permalink: /blog/
 ---
 {% assign counter = 0 %}
 <div class="row">
-	<div class="col-sm-8">
-		<div class="row tc-blogoverview">
+	<div class="col-sm-8 tc-blog-overview">
+		<div class="row">
 			{% assign site_count = site.posts | count %}
 			{% assign pages = site_count | divided_by:10 %}
 			{% assign curr_page = 1 %}
